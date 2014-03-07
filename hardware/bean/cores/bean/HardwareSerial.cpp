@@ -34,46 +34,7 @@
 
 #include "HardwareSerial.h"
 
-/*
- * on ATmega8, the uart and its bits are not numbered, so there is no "TXC0"
- * definition.
- */
-#if !defined(TXC0)
-#if defined(TXC)
-#define TXC0 TXC
-#elif defined(TXC1)
-// Some devices have uart1 but no uart0
-#define TXC0 TXC1
-#else
-#error TXC0 not definable in HardwareSerial.h
-#endif
-#endif
 
-// Define constants and variables for buffering incoming serial data.  We're
-// using a ring buffer (I think), in which head is the index of the location
-// to which to write the next incoming character and tail is the index of the
-// location from which to read.
-#if (RAMEND < 1000)
-  #define SERIAL_BUFFER_SIZE 16
-#else
-  #define SERIAL_BUFFER_SIZE 64
-#endif
-
-struct ring_buffer
-{
-  unsigned char buffer[SERIAL_BUFFER_SIZE];
-  volatile unsigned int head;
-  volatile unsigned int tail;
-};
-
-#if defined(USBCON)
-  ring_buffer rx_buffer = { { 0 }, 0, 0};
-  ring_buffer tx_buffer = { { 0 }, 0, 0};
-#endif
-#if defined(UBRRH) || defined(UBRR0H)
-  ring_buffer rx_buffer  =  { { 0 }, 0, 0 };
-  ring_buffer tx_buffer  =  { { 0 }, 0, 0 };
-#endif
 #if defined(UBRR1H)
   ring_buffer rx_buffer1  =  { { 0 }, 0, 0 };
   ring_buffer tx_buffer1  =  { { 0 }, 0, 0 };
@@ -87,9 +48,8 @@ struct ring_buffer
   ring_buffer tx_buffer3  =  { { 0 }, 0, 0 };
 #endif
 
-inline void store_char(unsigned char c, ring_buffer *buffer)
-{
-  int i = (unsigned int)(buffer->head + 1) % SERIAL_BUFFER_SIZE;
+inline void store_char(unsigned char c, ring_buffer *buffer){
+  unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;
 
   // if we should be storing the received character into the location
   // just before the tail (meaning that the head would advance to the
@@ -101,44 +61,6 @@ inline void store_char(unsigned char c, ring_buffer *buffer)
   }
 }
 
-#if !defined(USART0_RX_vect) && defined(USART1_RX_vect)
-// do nothing - on the 32u4 the first USART is USART1
-#else
-#if !defined(USART_RX_vect) && !defined(USART0_RX_vect) && \
-    !defined(USART_RXC_vect)
-  #error "Don't know what the Data Received vector is called for the first UART"
-#else
-  void serialEvent() __attribute__((weak));
-  void serialEvent() {}
-  #define serialEvent_implemented
-#if defined(USART_RX_vect)
-  ISR(USART_RX_vect)
-#elif defined(USART0_RX_vect)
-  ISR(USART0_RX_vect)
-#elif defined(USART_RXC_vect)
-  ISR(USART_RXC_vect) // ATmega8
-#endif
-  {
-  #if defined(UDR0)
-    if (bit_is_clear(UCSR0A, UPE0)) {
-      unsigned char c = UDR0;
-      store_char(c, &rx_buffer);
-    } else {
-      unsigned char c = UDR0;
-    };
-  #elif defined(UDR)
-    if (bit_is_clear(UCSRA, PE)) {
-      unsigned char c = UDR;
-      store_char(c, &rx_buffer);
-    } else {
-      unsigned char c = UDR;
-    };
-  #else
-    #error UDR not defined
-  #endif
-  }
-#endif
-#endif
 
 #if defined(USART1_RX_vect)
   void serialEvent1() __attribute__((weak));
@@ -179,6 +101,7 @@ inline void store_char(unsigned char c, ring_buffer *buffer)
     if (bit_is_clear(UCSR3A, UPE3)) {
       unsigned char c = UDR3;
       store_char(c, &rx_buffer3);
+
     } else {
       unsigned char c = UDR3;
     };
@@ -202,46 +125,6 @@ void serialEventRun(void)
 }
 
 
-#if !defined(USART0_UDRE_vect) && defined(USART1_UDRE_vect)
-// do nothing - on the 32u4 the first USART is USART1
-#else
-#if !defined(UART0_UDRE_vect) && !defined(UART_UDRE_vect) && !defined(USART0_UDRE_vect) && !defined(USART_UDRE_vect)
-  #error "Don't know what the Data Register Empty vector is called for the first UART"
-#else
-#if defined(UART0_UDRE_vect)
-ISR(UART0_UDRE_vect)
-#elif defined(UART_UDRE_vect)
-ISR(UART_UDRE_vect)
-#elif defined(USART0_UDRE_vect)
-ISR(USART0_UDRE_vect)
-#elif defined(USART_UDRE_vect)
-ISR(USART_UDRE_vect)
-#endif
-{
-  if (tx_buffer.head == tx_buffer.tail) {
-	// Buffer empty, so disable interrupts
-#if defined(UCSR0B)
-    cbi(UCSR0B, UDRIE0);
-#else
-    cbi(UCSRB, UDRIE);
-#endif
-  }
-  else {
-    // There is more data in the output buffer. Send the next byte
-    unsigned char c = tx_buffer.buffer[tx_buffer.tail];
-    tx_buffer.tail = (tx_buffer.tail + 1) % SERIAL_BUFFER_SIZE;
-	
-  #if defined(UDR0)
-    UDR0 = c;
-  #elif defined(UDR)
-    UDR = c;
-  #else
-    #error UDR not defined
-  #endif
-  }
-}
-#endif
-#endif
 
 #ifdef USART1_UDRE_vect
 ISR(USART1_UDRE_vect)
@@ -459,7 +342,7 @@ void HardwareSerial::flush()
 
 size_t HardwareSerial::write(uint8_t c)
 {
-  int i = (_tx_buffer->head + 1) % SERIAL_BUFFER_SIZE;
+  unsigned int i = (_tx_buffer->head + 1) % SERIAL_BUFFER_SIZE;
 	
   // If the output buffer is full, there's nothing for it other than to 
   // wait for the interrupt handler to empty it a bit
@@ -483,17 +366,6 @@ HardwareSerial::operator bool() {
 }
 
 // Preinstantiate Objects //////////////////////////////////////////////////////
-
-#if defined(UBRRH) && defined(UBRRL)
-  HardwareSerial Serial(&rx_buffer, &tx_buffer, &UBRRH, &UBRRL, &UCSRA, &UCSRB, &UCSRC, &UDR, RXEN, TXEN, RXCIE, UDRIE, U2X);
-#elif defined(UBRR0H) && defined(UBRR0L)
-  HardwareSerial Serial(&rx_buffer, &tx_buffer, &UBRR0H, &UBRR0L, &UCSR0A, &UCSR0B, &UCSR0C, &UDR0, RXEN0, TXEN0, RXCIE0, UDRIE0, U2X0);
-#elif defined(USBCON)
-  // do nothing - Serial object and buffers are initialized in CDC code
-#else
-  #error no serial port defined  (port 0)
-#endif
-
 #if defined(UBRR1H)
   HardwareSerial Serial1(&rx_buffer1, &tx_buffer1, &UBRR1H, &UBRR1L, &UCSR1A, &UCSR1B, &UCSR1C, &UDR1, RXEN1, TXEN1, RXCIE1, UDRIE1, U2X1);
 #endif

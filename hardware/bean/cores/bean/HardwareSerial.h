@@ -27,11 +27,28 @@
 
 #include "Stream.h"
 
-struct ring_buffer;
+
+// Define constants and variables for buffering incoming serial data.  We're
+// using a ring buffer (I think), in which head is the index of the location
+// to which to write the next incoming character and tail is the index of the
+// location from which to read.
+#if (RAMEND < 1000)
+  #define SERIAL_BUFFER_SIZE 16
+#else
+  #define SERIAL_BUFFER_SIZE 64
+#endif
+
+struct ring_buffer
+{
+  unsigned char buffer[SERIAL_BUFFER_SIZE];
+  volatile unsigned int head;
+  volatile unsigned int tail;
+};
+
 
 class HardwareSerial : public Stream
 {
-  private:
+  protected:
     ring_buffer *_rx_buffer;
     ring_buffer *_tx_buffer;
     volatile uint8_t *_ubrrh;
@@ -46,6 +63,9 @@ class HardwareSerial : public Stream
     uint8_t _udrie;
     uint8_t _u2x;
     bool transmitting;
+
+
+
   public:
     HardwareSerial(ring_buffer *rx_buffer, ring_buffer *tx_buffer,
       volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
@@ -67,6 +87,7 @@ class HardwareSerial : public Stream
     using Print::write; // pull in write(str) and write(buf, size) from Print
     operator bool();
 };
+
 
 // Define config for Serial.begin(baud, config);
 #define SERIAL_5N1 0x00
@@ -94,12 +115,7 @@ class HardwareSerial : public Stream
 #define SERIAL_7O2 0x3C
 #define SERIAL_8O2 0x3E
 
-#if defined(UBRRH) || defined(UBRR0H)
-  extern HardwareSerial Serial;
-#elif defined(USBCON)
-  #include "USBAPI.h"
-//  extern HardwareSerial Serial_;  
-#endif
+
 #if defined(UBRR1H)
   extern HardwareSerial Serial1;
 #endif

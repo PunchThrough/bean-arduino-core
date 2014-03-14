@@ -22,6 +22,13 @@
 #define  MSG_LED_READ_ALL_RESP   0x2004
 #define  MSG_START_BLE_ADVERT    0x3000
 #define  MSG_STOP_BLE_ADVERT     0x3001
+#define  MSG_SET_BLE_INTERVAL    0x3002
+#define  MSG_GET_BLE_INTERVAL    0x3003
+#define  MSG_SET_TX_POWER        0x3004
+#define  MSG_GET_TX_POWER        0x3005
+#define  MSG_SET_ATMEL_INTERVAL  0x4000
+#define  MSG_GET_ATMEL_INTERVAL  0x4001
+#define  MSG_ATMEL_POWER_OFF     0x4002
 #define  MSG_LOOPBACK_DEBUG_TX   0xFE00
 #define  MSG_LOOPBACK_DEBUG_RX   0xFE80
 #define  MSG_GET_DEBUG_COUNT_TX  0xFE01
@@ -66,7 +73,9 @@ const uint8_t  BEAN_ESCAPE  = 0x7D;
   ring_buffer reply_buffer = { { 0 }, 0, 0};
 #endif
 
-inline void store_char(unsigned char c, ring_buffer *buffer){
+ static volatile bool serial_message_complete = false;
+
+static inline void store_char(unsigned char c, ring_buffer *buffer){
   unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;
 
   // if we should be storing the received character into the location
@@ -182,6 +191,7 @@ static bool rx_char(uint8_t *c){
       case WAITING_FOR_SOF:
         if(next == BEAN_SOF){
           bean_transport_state = GETTING_LENGTH;
+          serial_message_complete = false;
         }
         break;
 
@@ -224,6 +234,8 @@ static bool rx_char(uint8_t *c){
         //   assert(1);
         // }
         // RESET STATE
+        serial_message_complete = true;
+
         messageType = MSG_INVALID_TYPE;
         messageRemaining = 0;
         messageCur = 0;
@@ -290,7 +302,8 @@ inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
   }
 }
 
-size_t BeanSerialTransport::write_message(uint16_t messageId, uint8_t *body,
+size_t BeanSerialTransport::write_message(uint16_t messageId,
+                                          const uint8_t *body,
                                           size_t body_length){
   if(body_length > MAX_BODY_LENGTH){
     // TODO: do we want to throw an error, or somehow
@@ -325,14 +338,108 @@ size_t BeanSerialTransport::write(uint8_t c)
 }
 
 
+void BeanSerialTransport::call_and_response(uint16_t messageId, 
+                                            const uint8_t *body,
+                                           size_t body_length,
+                                           uint8_t * response,
+                                           size_t & response_length){
+  
+  noInterrupts();
+  // clear our rx buffer to ensure that we don't read some old message out of it
+  _reply_buffer->head = _reply_buffer->tail = 0;
+  _message_complete = false;
+  interrupts();
 
-// Preinstantiate Objects //////////////////////////////////////////////////////
+  // send our message
+  write_message(messageId, body, body_length);
+
+  //wait for RX to hold an EOF, and then return the data
+  while(!_message_complete){
+    // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
+    // TODO -- Timeout this?
+  }
+
+  // copy the message body into out
+  memcpy(response, _reply_buffer->buffer,
+         min(_reply_buffer->head, response_length));
+  response_length = _reply_buffer->head;
+} 
+
+////////
+// LED
+////////
+void BeanSerialTransport::setLed(BeanSerialTransport::BeanLedSetting &setting){
+  write_message(MSG_LED_WRITE, (uint8_t*)&setting,
+                sizeof(BeanSerialTransport::BeanLedSetting));
+}
+
+BeanSerialTransport::BeanLedSetting BeanSerialTransport::readLed(void){
+  BeanSerialTransport::BeanLedSetting led;
+  size_t response_size = sizeof(BeanSerialTransport::BeanLedSetting);
+  call_and_response(MSG_LED_READ_ALL, (uint8_t*)NULL, (size_t)0, (uint8_t*)&led,
+                    response_size);
+
+  return led;
+}
+
+/////////
+/// Radio
+/////////
+void BeanSerialTransport::setAdvertisingInterval(int interval_ms){
+  write_message(MSG_SET_BLE_INTERVAL, (uint8_t*)&interval_ms, sizeof(int));
+}
+
+int BeanSerialTransport::advertisingInterval(void){
+  int interval_ms = 0;
+  size_t response_size = sizeof(int);
+  call_and_response(MSG_GET_BLE_INTERVAL, (uint8_t*) NULL, (size_t)0,
+                   (uint8_t*)&interval_ms, response_size);
+
+  return interval_ms;
+}
+
+void BeanSerialTransport::setTxPower(BeanSerialTransport::TxPower_dB power){
+  write_message(MSG_SET_TX_POWER, (uint8_t*)&power,
+                sizeof(BeanSerialTransport::TxPower_dB));
+}
+
+BeanSerialTransport::TxPower_dB BeanSerialTransport::txPower(void){
+  BeanSerialTransport::TxPower_dB power;
+  size_t response_size = sizeof(BeanSerialTransport::TxPower_dB);
+  call_and_response(MSG_GET_TX_POWER, (uint8_t*) NULL, (size_t)0,
+                    (uint8_t*)&power, response_size);
+
+  return power;
+}
+
+
+void BeanSerialTransport::setAtmegaPowerOnInterval(int interval_ms){
+  write_message(MSG_SET_ATMEL_INTERVAL, (uint8_t*)&interval_ms, sizeof(int));
+}
+
+int BeanSerialTransport::atmegaPowerOnInterval(void){
+  int interval_ms = 0;
+  size_t response_size = sizeof(int);
+  call_and_response(MSG_GET_ATMEL_INTERVAL, (uint8_t*) NULL, (size_t)0,
+                   (uint8_t*)&interval_ms, response_size);
+
+  return interval_ms;
+}
+
+void BeanSerialTransport::powerOff(void){
+  write_message(MSG_ATMEL_POWER_OFF, (uint8_t*)NULL, 0);
+}
+
+
+//Preinstantiate Objects //////////////////////////////////////////////////////
 #if defined(UBRRH) && defined(UBRRL)
   BeanSerialTransport Serial(&rx_buffer, &tx_buffer, &UBRRH, &UBRRL, &UCSRA,
-      &UCSRB, &UCSRC, &UDR, RXEN, TXEN, RXCIE, UDRIE, U2X, &reply_buffer);
+      &UCSRB, &UCSRC, &UDR, RXEN, TXEN, RXCIE, UDRIE, U2X, &reply_buffer,
+      &serial_message_complete);
 #elif defined(UBRR0H) && defined(UBRR0L)
   BeanSerialTransport Serial(&rx_buffer, &tx_buffer, &UBRR0H, &UBRR0L, &UCSR0A,
-      &UCSR0B, &UCSR0C, &UDR0, RXEN0, TXEN0, RXCIE0, UDRIE0, U2X0, &reply_buffer);
+      &UCSR0B, &UCSR0C, &UDR0, RXEN0, TXEN0, RXCIE0, UDRIE0, U2X0, &reply_buffer,
+      &serial_message_complete);
 #elif defined(USBCON)
   // do nothing - Serial object and buffers are initialized in CDC code
 #else

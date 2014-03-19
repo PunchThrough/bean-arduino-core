@@ -8,6 +8,7 @@
 
 
 #include "BeanSerialTransport.h"
+#include "applicationMessageHeaders/AppMessages.h"
 
 
 #define  MSG_SERIAL              0x0000

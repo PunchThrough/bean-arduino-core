@@ -33,7 +33,6 @@
 #define  MSG_LOOPBACK_DEBUG_RX   0xFE80
 #define  MSG_GET_DEBUG_COUNT_TX  0xFE01
 #define  MSG_GET_DEBUG_COUNT_RX  0xFE81
-#define  MSG_INVALID_TYPE        0xFFFF
 
 const uint8_t  BEAN_SOF     = 0x7E;
 const uint8_t  BEAN_EOF     = 0x7F;
@@ -142,7 +141,7 @@ static bool rx_char(uint8_t *c){
     } bean_transport_state = WAITING_FOR_SOF;
 
     static bool escaping = false;
-    static uint16_t messageType = MSG_INVALID_TYPE;
+    static uint16_t messageType = MSG_SERIAL;
     static uint8_t messageRemaining = 0;
     static uint8_t messageCur = 0;
 
@@ -154,7 +153,6 @@ static bool rx_char(uint8_t *c){
       return;
     }
     
-
     // only handle escape char in message
     if(bean_transport_state != WAITING_FOR_SOF){
       if(escaping == true){
@@ -176,10 +174,11 @@ static bool rx_char(uint8_t *c){
 
         // RESET STATE
         escaping = false;
-        messageType = MSG_INVALID_TYPE;
+        messageType = WAITING_FOR_SOF;
         messageRemaining = 0;
         messageCur = 0;
         buffer = NULL;
+
 
         return;
       }
@@ -193,6 +192,7 @@ static bool rx_char(uint8_t *c){
           bean_transport_state = GETTING_LENGTH;
           serial_message_complete = false;
         }
+
         break;
 
       case GETTING_LENGTH:
@@ -225,7 +225,6 @@ static bool rx_char(uint8_t *c){
         if(messageRemaining == 0){
           bean_transport_state = GETTING_EOF;
         }
-      
       break;
 
       case GETTING_EOF:
@@ -235,8 +234,8 @@ static bool rx_char(uint8_t *c){
         // }
         // RESET STATE
         serial_message_complete = true;
-
-        messageType = MSG_INVALID_TYPE;
+        bean_transport_state = WAITING_FOR_SOF;
+        messageType = MSG_SERIAL;
         messageRemaining = 0;
         messageCur = 0;
         buffer = NULL;
@@ -433,7 +432,7 @@ size_t BeanSerialTransport::write(uint8_t c)
 
 size_t BeanSerialTransport::write(const uint8_t *buffer, size_t size)
 {
-  if(buffer == NULL)
+  if(buffer == NULL || size == 0)
     return 0;
 
   if(size > MAX_BODY_LENGTH){

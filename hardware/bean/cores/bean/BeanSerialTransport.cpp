@@ -328,16 +328,6 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 }
 
 
-// This is the public write function that is used all the time
-size_t BeanSerialTransport::write(uint8_t c)
-{
-  // TODO: This is painfully innefficient.
-  // Would love to figure out something better here
-  write_message(MSG_SERIAL, &c, 1);
-  return  1;
-}
-
-
 void BeanSerialTransport::call_and_response(uint16_t messageId, 
                                             const uint8_t *body,
                                            size_t body_length,
@@ -429,6 +419,69 @@ int BeanSerialTransport::atmegaPowerOnInterval(void){
 void BeanSerialTransport::powerOff(void){
   write_message(MSG_ATMEL_POWER_OFF, (uint8_t*)NULL, 0);
 }
+
+
+/////////////////////
+/////////////////////
+/////////////////////
+// This is the public write function that is used all the time
+size_t BeanSerialTransport::write(uint8_t c)
+{
+  write_message(MSG_SERIAL, &c, 1);
+  return  1;
+}
+
+size_t BeanSerialTransport::write(const uint8_t *buffer, size_t size)
+{
+  if(buffer == NULL)
+    return 0;
+
+  if(size > MAX_BODY_LENGTH){
+    size_t end = MAX_BODY_LENGTH - 1;
+    size_t start = 0;
+    while(end <= size){
+      write_message(MSG_SERIAL, buffer + start, end - start);
+      if(end == size)
+        break;
+      start = end;
+      end = min(end + MAX_BODY_LENGTH, size);
+    }
+    return size;
+  }
+  else
+    return write_message(MSG_SERIAL, buffer, size);
+}
+
+size_t BeanSerialTransport::print(const String &s)
+{
+  return write((uint8_t*)s.c_str(), (size_t)s.length());
+}
+
+size_t BeanSerialTransport::print(const __FlashStringHelper *ifsh)
+{
+  uint8_t buffer[MAX_BODY_LENGTH];
+  const char PROGMEM *p = (const char PROGMEM *)ifsh;
+  size_t n = 0;
+
+  if(ifsh == NULL)
+    return 0;
+
+  while (1) {
+    unsigned char c = pgm_read_byte(p++);
+    if (c == 0) break;
+    buffer[n++] = c;
+
+    if(n == MAX_BODY_LENGTH){
+      write_message(MSG_SERIAL, buffer, n);
+      n = 0;
+    }
+  }
+  write_message(MSG_SERIAL, buffer, n);
+  return n;
+}
+
+
+
 
 
 //Preinstantiate Objects //////////////////////////////////////////////////////

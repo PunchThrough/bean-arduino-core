@@ -9,7 +9,6 @@
 void setup() {
   // initialize serial communication at 9600 bits per second:
   Serial.begin(57600);
-  pinMode(led, OUTPUT);
   // this makes it so that the arduino read function returns
   // immediatly if there are no less bytes than asked for.
   Serial.setTimeout(0);

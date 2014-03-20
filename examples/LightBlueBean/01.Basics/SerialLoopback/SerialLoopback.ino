@@ -1,8 +1,10 @@
 /*
-  DigitalReadSerial
- Reads a digital input on pin 2, prints the result to the serial monitor 
+  Serial Loopback Test
  
- This example code is in the public domain.
+  Reads all bytes on the serial input and sends them right
+  back to the sender.
+
+  This example code is in the public domain.
  */
 
 // the setup routine runs once when you press reset:
@@ -16,11 +18,10 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-    char buffer[64];
-    size_t length = 64; 
-    length = Serial.readBytes(buffer, length);
-    buffer[length] = 0;
-    Serial.write((uint8_t*)buffer, length);    
+  char buffer[64];
+  size_t length = 64; 
+  length = Serial.readBytes(buffer, length);
+  Serial.write((uint8_t*)buffer, length);
 }
 
 

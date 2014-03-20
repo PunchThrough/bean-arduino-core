@@ -24,9 +24,12 @@ protected:
 
 
 public:
+  void debug_write(const char c){ HardwareSerial::write((uint8_t)c);};
+  void debug_loopback_full_serial_messages(void);
+
+
   virtual size_t write(uint8_t);
   size_t write(const uint8_t *buffer, size_t size);
-  void debug_write(const char c){ HardwareSerial::write((uint8_t)c);};
 
   using HardwareSerial::write; // pull in write(str) and write(buf, size) from Print
   virtual size_t print(const String &s);

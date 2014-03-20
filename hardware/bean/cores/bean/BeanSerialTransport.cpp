@@ -179,6 +179,7 @@ static bool rx_char(uint8_t *c){
         messageRemaining = 0;
         messageCur = 0;
         buffer = NULL;
+        serial_message_complete = false;
 
 
         return;
@@ -337,14 +338,14 @@ void BeanSerialTransport::call_and_response(uint16_t messageId,
   noInterrupts();
   // clear our rx buffer to ensure that we don't read some old message out of it
   _reply_buffer->head = _reply_buffer->tail = 0;
-  _message_complete = false;
+  *_message_complete = false;
   interrupts();
 
   // send our message
   write_message(messageId, body, body_length);
 
   //wait for RX to hold an EOF, and then return the data
-  while(!_message_complete){
+  while(*_message_complete == false){
     // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
     // TODO -- Timeout this?
   }
@@ -481,6 +482,24 @@ size_t BeanSerialTransport::print(const __FlashStringHelper *ifsh)
 }
 
 
+void BeanSerialTransport::debug_loopback_full_serial_messages(){
+  setTimeout(0);
+
+  char buffer[MAX_MESSAGE_LENGTH + 1];
+
+  while(1){
+    *_message_complete = false;
+
+    //wait for RX to hold an EOF, and then return the data
+    while(*_message_complete == false){
+      // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
+      // TODO -- Timeout this?
+    }
+    size_t length = MAX_MESSAGE_LENGTH + 1;
+    length = readBytes(buffer, length);
+    write((uint8_t*)buffer, length);
+  }
+}
 
 
 

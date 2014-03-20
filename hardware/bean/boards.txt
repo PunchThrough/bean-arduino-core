@@ -1,12 +1,12 @@
 lightblue-bean.name=LightBlue Bean
-lightblue-bean.upload.protocol=arduino
+lightblue-bean.upload.protocol= ptdble
 lightblue-bean.upload.maximum_size=32256
 lightblue-bean.upload.speed=57600
 lightblue-bean.build.mcu=atmega328p
 lightblue-bean.build.f_cpu=8000000L
 lightblue-bean.build.core=bean
 lightblue-bean.build.variant=standard
-lightblue-bean.build.post_compile_script=LightBlue-Bean-Mac.app/Contents/Resources/post_compile
+lightblue-bean.build.post_compile_script=Bean-Loader-Mac.app/Contents/Resources/post_compile
 
 
 ##############################################################

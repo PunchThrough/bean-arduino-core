@@ -64,19 +64,21 @@ class Bean_Serial_Transport:
         self.parser_message_buffer = []
         self.parser_message_type = []
         self.parser_init_done = True
+        self.parser_escaping = False
 
 
     def parser(self):        
-        if(self.serial_port == None or serial_port.isOpen() == False):
+        if(self.serial_port == None or self.serial_port.isOpen() == False):
             return
 
         while(self.serial_port.inWaiting() > 0):
-            bytes = self.serial_port.read(1)
-            byte = bytes[0] 
+            byte = map(ord, self.serial_port.read(1))[0]
+
+            #logging.error(byte)
 
             if(self.parser_escaping == False and byte == self.ESC_BYTE):
                 # should anything else have escaping?
-                if(self.parser_state == self.parser_states.GETTING_MESSAGE_BODY):
+                if(self.parser_state == self.ParserStates.GETTING_MESSAGE_BODY):
                     self.parser_escaping = True
                     continue
 
@@ -88,41 +90,50 @@ class Bean_Serial_Transport:
                 self.parser_escaping = False
                 byte = byte | 0x20
 
-            if(parser_state == self.ParserStates.WAITING_FOR_SOF):                
+            if(self.parser_state == self.ParserStates.WAITING_FOR_SOF):
                 if(byte == self.SOF_BYTE):
                     self.parser_state = self.ParserStates.GETTING_LENGTH
+#                    logging.debug("SOF --> LEN")
             
             elif(self.parser_state == self.ParserStates.GETTING_LENGTH):
                 self.parser_length = byte
                 self.parser_state = self.ParserStates.GETTING_MAJOR_TYPE
+#                logging.debug("LEN --> MAJ")
 
             elif(self.parser_state == self.ParserStates.GETTING_MAJOR_TYPE):
                 self.parser_message_type = []
                 self.parser_length -= 1
                 self.parser_message_type.append(byte)
                 self.parser_state = self.ParserStates.GETTING_MINOR_TYPE
+#                logging.debug("MAJ --> MIN")
 
             elif(self.parser_state == self.ParserStates.GETTING_MINOR_TYPE):
                 self.parser_length -= 1
                 self.parser_message_type.append(byte)
                 self.parser_state = self.ParserStates.GETTING_MESSAGE_BODY
+#                logging.debug("MIN --> BODY")
 
             elif(self.parser_state == self.ParserStates.GETTING_MESSAGE_BODY):
 
-                if(self.parser_message_type == MSG_ID_SERIAL_DATA):
+                if(self.parser_message_type[0] == self.MSG_ID_SERIAL_DATA[0] and
+                   self.parser_message_type[1] == self.MSG_ID_SERIAL_DATA[1]):
                     for callback in self.callbacks_serial:
-                        callback(byte)
+                        callback(chr(byte))
                 else:
                     self.parser_message_buffer.append(byte)
 
                 self.parser_length -= 1
+                if(self.parser_length == 0):
+                    self.parser_state = self.ParserStates.GETTING_EOF
+#                    logging.debug("BODY --> EOF")
 
-            elif(self.parser_stat == self.ParserStates.GETTING_EOF):
+            elif(self.parser_state == self.ParserStates.GETTING_EOF):
                 if(byte != self.EOF_BYTE):
-                    self.log_parse_error
+                    
                     continue
-                if (self.parser_message_type != self.MSG_ID_SERIAL_DATA):
-                    self.handle_message(self, self.parser_message_type, self.parser_message_buffer)
+                if(self.parser_message_type[0] != self.MSG_ID_SERIAL_DATA[0] or
+                   self.parser_message_type[1] != self.MSG_ID_SERIAL_DATA[1]):
+                    self.handle_message(tuple(self.parser_message_type), self.parser_message_buffer)
 
                 self.reset_parser()
 
@@ -156,18 +167,22 @@ class Bean_Serial_Transport:
     def open_port(self, port, baudrate):
         if(self.serial_port != None):
             self.serial_port.close
-        self.serial_port = serial.Serial(port, baudrate, timeout=0)
         self.reset_parser()
+        self.serial_port = serial.Serial(port, baudrate, timeout=0)
+        self.serial_port.flushInput()
+        logging.info("transport opened serial port: %s to baud: %d", port, baudrate  )
 
     def close_port(self):
-        self.serial_port.close
-        self.serial_port = None
+        if(self.serial_port != None):
+            self.serial_port.close
+            self.serial_port = None
+            logging.info("transport closed port")
 
     def log_port(self):
         if(self.serial_port != None):
             logging.info("serial port: " + self.serial_port.portstr)
         else:
-            logging.info("No serial port selected");
+            logging.info("No serial port needed to close.");
 
     def escape_buffer(self, buffer):
         escaped = []
@@ -192,6 +207,10 @@ class Bean_Serial_Transport:
         message.append(self.EOF_BYTE)
         return message
 
+    def send_message(self, message_type, buffer):
+        message = self.build_message(message_type, buffer)
+        self.serial_port.write(message)
+
     def add_handler(self, message, handler):
         try:
             self.message_handlers[message]
@@ -203,6 +222,10 @@ class Bean_Serial_Transport:
 
     def handle_message(self,message_type, message_body):    
         handlers = []
+
+        if(not isinstance(message_type, tuple)):
+            message_type = tuple(message_type)
+
         try:
             handlers = self.message_handlers[message_type]
         except KeyError:
@@ -227,7 +250,7 @@ if __name__ == '__main__':
 
     transport = Bean_Serial_Transport()
     port = transport.get_available_serial_ports()[0]
-    transport.open_port(port, 28800)
+    transport.open_port(port, 57600)
     transport.log_port()
     transport.close_port()
 

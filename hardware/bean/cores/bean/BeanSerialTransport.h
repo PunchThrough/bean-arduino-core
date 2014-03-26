@@ -45,7 +45,7 @@ public:
   } TxPower_dB;
 
   void setAdvertisingInterval(int interval_ms);
-  int advertisingInterval(void);
+  void setConnectionInterval(int interval_ms);
 
   void setTxPower(TxPower_dB power);
   TxPower_dB txPower(void);
@@ -53,7 +53,7 @@ public:
 // Ardiono Power Control
   void setAtmegaPowerOnInterval(int interval_ms);
   int atmegaPowerOnInterval(void);
-  void powerOff(void);
+ // void powerOff(void);
 
 // Accelerometer
   typedef enum {

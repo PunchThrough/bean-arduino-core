@@ -11,36 +11,17 @@
 #include "applicationMessageHeaders/AppMessages.h"
 
 
-#define  MSG_SERIAL              0x0000
-#define  MSG_BOOT_FWBLOCK        0x1000
-#define  MSG_BOOT_STATUS_REQ     0x1001
-#define  MSG_BOOT_STATUS         0x1002
-#define  MSG_LED_WRITE           0x2000
-#define  MSG_LED_READ            0x2001
-#define  MSG_LED_READ_RESP       0x2001
-#define  MSG_LED_WRITE_ALL       0x2081
-#define  MSG_LED_READ_ALL        0x2003
-#define  MSG_LED_READ_ALL_RESP   0x2004
-#define  MSG_START_BLE_ADVERT    0x3000
-#define  MSG_STOP_BLE_ADVERT     0x3001
-#define  MSG_SET_BLE_INTERVAL    0x3002
-#define  MSG_GET_BLE_INTERVAL    0x3003
-#define  MSG_SET_TX_POWER        0x3004
-#define  MSG_GET_TX_POWER        0x3005
-#define  MSG_SET_ATMEL_INTERVAL  0x4000
-#define  MSG_GET_ATMEL_INTERVAL  0x4001
-#define  MSG_ATMEL_POWER_OFF     0x4002
-#define  MSG_LOOPBACK_DEBUG_TX   0xFE00
-#define  MSG_LOOPBACK_DEBUG_RX   0xFE80
-#define  MSG_GET_DEBUG_COUNT_TX  0xFE01
-#define  MSG_GET_DEBUG_COUNT_RX  0xFE81
+// There is a compiler or hardware bug(?) that causes
+// HardwareSerial::write() to lock the Serial Port unless
+// it is explicitely called with a uint8_t.
+// I've copied the #defines into uint8_t types to ensure that
+// HardwareSerial::write() isn't called with a #define by mistake.
+const uint8_t  BEAN_SOF     = UT_CHAR_START;
+const uint8_t  BEAN_EOF     = UT_CHAR_END;
+const uint8_t  BEAN_ESCAPE  = UT_CHAR_ESC;
+const uint8_t  BEAN_ESCAPE_XOR = HDLC_ESCAPE_XOR;
 
-const uint8_t  BEAN_SOF     = 0x7E;
-const uint8_t  BEAN_EOF     = 0x7F;
-const uint8_t  BEAN_ESCAPE  = 0x7D;
-
-#define MAX_MESSAGE_LENGTH (SERIAL_BUFFER_SIZE - 2)
-#define MAX_BODY_LENGTH (MAX_MESSAGE_LENGTH - 2)
+#define MAX_BODY_LENGTH (APP_MSG_MAX_LENGTH - 2)
 
 
 
@@ -142,7 +123,7 @@ static bool rx_char(uint8_t *c){
     } bean_transport_state = WAITING_FOR_SOF;
 
     static bool escaping = false;
-    static uint16_t messageType = MSG_SERIAL;
+    static uint16_t messageType = MSG_ID_SERIAL_DATA;
     static uint8_t messageRemaining = 0;
     static uint8_t messageCur = 0;
 
@@ -157,7 +138,7 @@ static bool rx_char(uint8_t *c){
     // only handle escape char in message
     if(bean_transport_state != WAITING_FOR_SOF){
       if(escaping == true){
-        next |= 0x20;
+        next ^= BEAN_ESCAPE_XOR;
       }
       else if(escaping == false && next == BEAN_ESCAPE){
         escaping = true;
@@ -213,7 +194,7 @@ static bool rx_char(uint8_t *c){
         messageType |= next;
         messageRemaining--;
 
-        buffer = (messageType == MSG_SERIAL) ? &rx_buffer : &reply_buffer;
+        buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
         bean_transport_state = GETTING_MESSAGE_BODY;
         break;
 
@@ -237,7 +218,7 @@ static bool rx_char(uint8_t *c){
         // RESET STATE
         serial_message_complete = true;
         bean_transport_state = WAITING_FOR_SOF;
-        messageType = MSG_SERIAL;
+        messageType = MSG_ID_SERIAL_DATA;
         messageRemaining = 0;
         messageCur = 0;
         buffer = NULL;
@@ -296,7 +277,7 @@ inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
     case BEAN_EOF:  // fallthrough
     case BEAN_ESCAPE:
       HardwareSerial::write(BEAN_ESCAPE);
-      HardwareSerial::write(input ^ 0x20);
+      HardwareSerial::write(input ^ BEAN_ESCAPE_XOR);
     break;
     default:
       HardwareSerial::write(input);
@@ -361,18 +342,18 @@ void BeanSerialTransport::call_and_response(uint16_t messageId,
 ////////
 void BeanSerialTransport::setLedSingle(uint8_t offset, uint8_t intensity){
   uint8_t msg[] = {offset, intensity};
-  write_message(MSG_LED_WRITE, msg, sizeof(msg));
+  write_message(MSG_ID_CC_LED_WRITE, msg, sizeof(msg));
 }
 
 void BeanSerialTransport::setLed(BeanSerialTransport::BeanLedSetting &setting){
-  write_message(MSG_LED_WRITE_ALL, (uint8_t*)&setting,
+  write_message(MSG_ID_CC_LED_WRITE_ALL, (uint8_t*)&setting,
                 sizeof(BeanSerialTransport::BeanLedSetting));
 }
 
 BeanSerialTransport::BeanLedSetting BeanSerialTransport::readLed(void){
   BeanSerialTransport::BeanLedSetting led;
   size_t response_size = sizeof(BeanSerialTransport::BeanLedSetting);
-  call_and_response(MSG_LED_READ_ALL, (uint8_t*)NULL, (size_t)0, (uint8_t*)&led,
+  call_and_response(MSG_ID_CC_LED_READ_ALL, (uint8_t*)NULL, (size_t)0, (uint8_t*)&led,
                     response_size);
 
   return led;
@@ -382,49 +363,39 @@ BeanSerialTransport::BeanLedSetting BeanSerialTransport::readLed(void){
 /// Radio
 /////////
 void BeanSerialTransport::setAdvertisingInterval(int interval_ms){
-  write_message(MSG_SET_BLE_INTERVAL, (uint8_t*)&interval_ms, sizeof(int));
+  write_message(MSG_ID_BT_SET_ADV, (uint8_t*)&interval_ms, sizeof(int));
 }
 
-int BeanSerialTransport::advertisingInterval(void){
-  int interval_ms = 0;
-  size_t response_size = sizeof(int);
-  call_and_response(MSG_GET_BLE_INTERVAL, (uint8_t*) NULL, (size_t)0,
-                   (uint8_t*)&interval_ms, response_size);
 
-  return interval_ms;
+void BeanSerialTransport::setConnectionInterval(int interval_ms){
+  write_message(MSG_ID_BT_SET_CONN, (uint8_t*)&interval_ms, sizeof(int));
 }
+
 
 void BeanSerialTransport::setTxPower(BeanSerialTransport::TxPower_dB power){
-  write_message(MSG_SET_TX_POWER, (uint8_t*)&power,
+  write_message(MSG_ID_BT_SET_TX_PWR, (uint8_t*)&power,
                 sizeof(BeanSerialTransport::TxPower_dB));
 }
 
-BeanSerialTransport::TxPower_dB BeanSerialTransport::txPower(void){
-  BeanSerialTransport::TxPower_dB power;
-  size_t response_size = sizeof(BeanSerialTransport::TxPower_dB);
-  call_and_response(MSG_GET_TX_POWER, (uint8_t*) NULL, (size_t)0,
-                    (uint8_t*)&power, response_size);
-
-  return power;
-}
 
 
-void BeanSerialTransport::setAtmegaPowerOnInterval(int interval_ms){
-  write_message(MSG_SET_ATMEL_INTERVAL, (uint8_t*)&interval_ms, sizeof(int));
-}
 
-int BeanSerialTransport::atmegaPowerOnInterval(void){
-  int interval_ms = 0;
-  size_t response_size = sizeof(int);
-  call_and_response(MSG_GET_ATMEL_INTERVAL, (uint8_t*) NULL, (size_t)0,
-                   (uint8_t*)&interval_ms, response_size);
+// void BeanSerialTransport::setAtmegaPowerOnInterval(int interval_ms){
+//   write_message(MSG_ID_AR_SET_POWER_INT, (uint8_t*)&interval_ms, sizeof(int));
+// }
 
-  return interval_ms;
-}
+// int BeanSerialTransport::atmegaPowerOnInterval(void){
+//   int interval_ms = 0;
+//   size_t response_size = sizeof(int);
+//   call_and_response(MSG_ID_AR_GET_CONFIG, (uint8_t*) NULL, (size_t)0,
+//                    (uint8_t*)&interval_ms, response_size);
 
-void BeanSerialTransport::powerOff(void){
-  write_message(MSG_ATMEL_POWER_OFF, (uint8_t*)NULL, 0);
-}
+//   return interval_ms;
+// }
+
+// void BeanSerialTransport::powerOff(void){
+//   write_message(MSG_ATMEL_POWER_OFF, (uint8_t*)NULL, 0);
+// }
 
 
 /////////////////////
@@ -433,7 +404,7 @@ void BeanSerialTransport::powerOff(void){
 // This is the public write function that is used all the time
 size_t BeanSerialTransport::write(uint8_t c)
 {
-  write_message(MSG_SERIAL, &c, 1);
+  write_message(MSG_ID_SERIAL_DATA, &c, 1);
   return  1;
 }
 
@@ -446,7 +417,7 @@ size_t BeanSerialTransport::write(const uint8_t *buffer, size_t size)
     size_t end = MAX_BODY_LENGTH - 1;
     size_t start = 0;
     while(end <= size){
-      write_message(MSG_SERIAL, buffer + start, end - start);
+      write_message(MSG_ID_SERIAL_DATA, buffer + start, end - start);
       if(end == size)
         break;
       start = end;
@@ -455,7 +426,7 @@ size_t BeanSerialTransport::write(const uint8_t *buffer, size_t size)
     return size;
   }
   else
-    return write_message(MSG_SERIAL, buffer, size);
+    return write_message(MSG_ID_SERIAL_DATA, buffer, size);
 }
 
 size_t BeanSerialTransport::print(const String &s)
@@ -478,11 +449,11 @@ size_t BeanSerialTransport::print(const __FlashStringHelper *ifsh)
     buffer[n++] = c;
 
     if(n == MAX_BODY_LENGTH){
-      write_message(MSG_SERIAL, buffer, n);
+      write_message(MSG_ID_SERIAL_DATA, buffer, n);
       n = 0;
     }
   }
-  write_message(MSG_SERIAL, buffer, n);
+  write_message(MSG_ID_SERIAL_DATA, buffer, n);
   return n;
 }
 
@@ -490,7 +461,7 @@ size_t BeanSerialTransport::print(const __FlashStringHelper *ifsh)
 void BeanSerialTransport::debug_loopback_full_serial_messages(){
   setTimeout(0);
 
-  char buffer[MAX_MESSAGE_LENGTH + 1];
+  char buffer[APP_MSG_MAX_LENGTH + 1];
 
   while(1){
     *_message_complete = false;
@@ -500,7 +471,7 @@ void BeanSerialTransport::debug_loopback_full_serial_messages(){
       // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
       // TODO -- Timeout this?
     }
-    size_t length = MAX_MESSAGE_LENGTH + 1;
+    size_t length = APP_MSG_MAX_LENGTH + 1;
     length = readBytes(buffer, length);
     write((uint8_t*)buffer, length);
   }

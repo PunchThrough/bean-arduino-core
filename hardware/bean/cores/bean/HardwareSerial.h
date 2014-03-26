@@ -23,9 +23,12 @@
 #ifndef HardwareSerial_h
 #define HardwareSerial_h
 
+
 #include <inttypes.h>
 
 #include "Stream.h"
+#include "applicationMessageHeaders/AppMessages.h"
+
 
 
 // Define constants and variables for buffering incoming serial data.  We're
@@ -35,7 +38,9 @@
 #if (RAMEND < 1000)
   #define SERIAL_BUFFER_SIZE 16
 #else
-  #define SERIAL_BUFFER_SIZE 64
+  // Probably overkill here, but just ensureing that there is room
+  // for a max message + length, + SOF and EOF
+  #define SERIAL_BUFFER_SIZE (APP_MSG_MAX_LENGTH + 3)
 #endif
 
 struct ring_buffer

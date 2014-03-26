@@ -49,7 +49,6 @@ class Bean_Serial_Transport:
 
     def __init__(self):
         self.serial_port = None
-        self.parser_init_done = False
         self.reset_parser()
         self.message_handlers = {}
 
@@ -59,7 +58,6 @@ class Bean_Serial_Transport:
         self.parser_length = 0
         self.parser_message_buffer = []
         self.parser_message_type = []
-        self.parser_init_done = True
         self.parser_escaping = False
 
 

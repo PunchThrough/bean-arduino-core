@@ -50,12 +50,8 @@ class Bean_Serial_Transport:
     def __init__(self):
         self.serial_port = None
         self.parser_init_done = False
-        self.callbacks_serial = []
         self.reset_parser()
         self.message_handlers = {}
-
-    def add_serial_callback(self, function):
-        self.callbacks_serial.append(function)
 
 
     def reset_parser(self):
@@ -114,14 +110,7 @@ class Bean_Serial_Transport:
 #                logging.debug("MIN --> BODY")
 
             elif(self.parser_state == self.ParserStates.GETTING_MESSAGE_BODY):
-
-                if(self.parser_message_type[0] == self.MSG_ID_SERIAL_DATA[0] and
-                   self.parser_message_type[1] == self.MSG_ID_SERIAL_DATA[1]):
-                    for callback in self.callbacks_serial:
-                        callback(chr(byte))
-                else:
-                    self.parser_message_buffer.append(byte)
-
+                self.parser_message_buffer.append(byte)
                 self.parser_length -= 1
                 if(self.parser_length == 0):
                     self.parser_state = self.ParserStates.GETTING_EOF
@@ -129,12 +118,10 @@ class Bean_Serial_Transport:
 
             elif(self.parser_state == self.ParserStates.GETTING_EOF):
                 if(byte != self.EOF_BYTE):
-                    
+                    logging.error("Expected EOF but got: %d" % byte)                   
                     continue
-                if(self.parser_message_type[0] != self.MSG_ID_SERIAL_DATA[0] or
-                   self.parser_message_type[1] != self.MSG_ID_SERIAL_DATA[1]):
-                    self.handle_message(tuple(self.parser_message_type), self.parser_message_buffer)
-
+                
+                self.handle_message(tuple(self.parser_message_type), self.parser_message_buffer)
                 self.reset_parser()
 
 
@@ -211,7 +198,14 @@ class Bean_Serial_Transport:
         message = self.build_message(message_type, buffer)
         self.serial_port.write(message)
 
+    def check_tuple(self, message):
+        if(not isinstance(message, tuple)):
+            return tuple(message)
+        return message
+
     def add_handler(self, message, handler):
+        message = self.check_tuple(message)
+
         try:
             self.message_handlers[message]
         except KeyError:
@@ -220,11 +214,9 @@ class Bean_Serial_Transport:
         logging.debug("Adding handler to message type:" + str(message) + ", " + str(handler))
         self.message_handlers[message].append(handler)
 
-    def handle_message(self,message_type, message_body):    
+    def handle_message(self, message_type, message_body):    
+        message_type = self.check_tuple(message_type)
         handlers = []
-
-        if(not isinstance(message_type, tuple)):
-            message_type = tuple(message_type)
 
         try:
             handlers = self.message_handlers[message_type]
@@ -232,16 +224,16 @@ class Bean_Serial_Transport:
             return
 
         for handler in handlers:
-            handler(message_body)
+            handler(message_type, message_body)
 
     def remove_handler(self, message, handler):
+        message = self.check_tuple(message)
         handlers = []
+
         try:
-            handlers = self.message_handlers[message]
+            self.message_handlers[message].remove(handler)
         except KeyError:
             return
-
-        handlers.remove(handler)
 
 
 if __name__ == '__main__':

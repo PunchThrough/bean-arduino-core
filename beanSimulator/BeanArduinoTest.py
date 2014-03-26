@@ -15,11 +15,15 @@ logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 transport = BeanSerialTransport.Bean_Serial_Transport()
 
-def print_to_gui(data):
+def print_to_gui(type, data):
+    # line converts all numbers to chars and then
+    # makes a single string of them
+    # python number and char type crazyness
+    data = ''.join(chr(c) for c in data)
     terminal_output.insert(END, data)
     terminal_output.yview(END)
 
-transport.add_serial_callback(print_to_gui)
+transport.add_handler(transport.MSG_ID_SERIAL_DATA, print_to_gui)
 
 def quit_app():
     global transport
@@ -135,7 +139,7 @@ def led_set_color_to_current():
     global led_blue
     led_set_color(led_red, led_green, led_blue)
 
-def handle_led_write_all(data):
+def handle_led_write_all(type, data):
     global led_red
     global led_green
     global led_blue
@@ -144,7 +148,7 @@ def handle_led_write_all(data):
     led_blue = data[2]
     led_set_color_to_current()
 
-def handle_led_write_single(data):
+def handle_led_write_single(type, data):
     global led_red
     global led_green
     global led_blue

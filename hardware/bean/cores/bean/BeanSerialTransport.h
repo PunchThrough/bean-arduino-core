@@ -75,6 +75,7 @@ public:
     } BeanLedSetting;
 
     void setLed(BeanLedSetting &setting);
+    void setLedSingle(uint8_t offset, uint8_t intensity);
     BeanLedSetting readLed(void);
 
 

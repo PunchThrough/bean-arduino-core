@@ -359,8 +359,13 @@ void BeanSerialTransport::call_and_response(uint16_t messageId,
 ////////
 // LED
 ////////
+void BeanSerialTransport::setLedSingle(uint8_t offset, uint8_t intensity){
+  uint8_t msg[] = {offset, intensity};
+  write_message(MSG_LED_WRITE, msg, sizeof(msg));
+}
+
 void BeanSerialTransport::setLed(BeanSerialTransport::BeanLedSetting &setting){
-  write_message(MSG_LED_WRITE, (uint8_t*)&setting,
+  write_message(MSG_LED_WRITE_ALL, (uint8_t*)&setting,
                 sizeof(BeanSerialTransport::BeanLedSetting));
 }
 

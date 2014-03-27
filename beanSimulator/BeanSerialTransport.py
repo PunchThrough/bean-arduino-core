@@ -32,9 +32,8 @@ class Bean_Serial_Transport:
     MSG_ID_CC_LED_WRITE_ALL   = 0x20, 0x01
     MSG_ID_CC_LED_READ_ALL    = 0x20, 0x02
     MSG_ID_CC_ACCEL_READ      = 0x20, 0x10
-    MSG_ID_AR_SET_POWER_INT   = 0x30, 0x00
+    MSG_ID_AR_SET_POWER       = 0x30, 0x00
     MSG_ID_AR_GET_CONFIG      = 0x30, 0x06
-    MSG_ID_AR_POWER_OFFON     = 0x30, 0x10
     MSG_ID_DB_LOOPBACK        = 0xFE, 0x00
     MSG_ID_DB_COUNTER         = 0xFE, 0x01
 
@@ -67,8 +66,8 @@ class Bean_Serial_Transport:
 
         while(self.serial_port.inWaiting() > 0):
             byte = map(ord, self.serial_port.read(1))[0]
-
             #logging.error(byte)
+
 
             if(self.parser_escaping == False and byte == self.ESC_BYTE):
                 # should anything else have escaping?

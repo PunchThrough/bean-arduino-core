@@ -8,7 +8,6 @@
 
 
 #include "BeanSerialTransport.h"
-#include "applicationMessageHeaders/AppMessages.h"
 
 
 // There is a compiler or hardware bug(?) that causes
@@ -310,12 +309,12 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 }
 
 
-void BeanSerialTransport::call_and_response(uint16_t messageId, 
-                                            const uint8_t *body,
+int BeanSerialTransport::call_and_response(MSG_ID_T messageId, 
+                                           const uint8_t *body,
                                            size_t body_length,
                                            uint8_t * response,
-                                           size_t & response_length){
-  
+                                           size_t * response_length,
+                                           unsigned long timeout_ms){
   noInterrupts();
   // clear our rx buffer to ensure that we don't read some old message out of it
   _reply_buffer->head = _reply_buffer->tail = 0;
@@ -324,79 +323,145 @@ void BeanSerialTransport::call_and_response(uint16_t messageId,
 
   // send our message
   write_message(messageId, body, body_length);
-
   //wait for RX to hold an EOF, and then return the data
-  while(*_message_complete == false){
-    // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
-    // TODO -- Timeout this?
+
+  _startMillis = millis();
+  do {} while (*_message_complete == false && (millis() - _startMillis < timeout_ms));
+
+  if(*_message_complete){
+    // copy the message body into out
+    memcpy(response, _reply_buffer->buffer,
+           min(_reply_buffer->head, *response_length));
+    *response_length = _reply_buffer->head;
+
+    return 0;
   }
 
-  // copy the message body into out
-  memcpy(response, _reply_buffer->buffer,
-         min(_reply_buffer->head, response_length));
-  response_length = _reply_buffer->head;
-} 
-
-////////
-// LED
-////////
-void BeanSerialTransport::setLedSingle(uint8_t offset, uint8_t intensity){
-  uint8_t msg[] = {offset, intensity};
-  write_message(MSG_ID_CC_LED_WRITE, msg, sizeof(msg));
+  return -1;
 }
 
-void BeanSerialTransport::setLed(BeanSerialTransport::BeanLedSetting &setting){
-  write_message(MSG_ID_CC_LED_WRITE_ALL, (uint8_t*)&setting,
-                sizeof(BeanSerialTransport::BeanLedSetting));
-}
-
-BeanSerialTransport::BeanLedSetting BeanSerialTransport::readLed(void){
-  BeanSerialTransport::BeanLedSetting led;
-  size_t response_size = sizeof(BeanSerialTransport::BeanLedSetting);
-  call_and_response(MSG_ID_CC_LED_READ_ALL, (uint8_t*)NULL, (size_t)0, (uint8_t*)&led,
-                    response_size);
-
-  return led;
-}
 
 /////////
 /// Radio
 /////////
-void BeanSerialTransport::setAdvertisingInterval(int interval_ms){
-  write_message(MSG_ID_BT_SET_ADV, (uint8_t*)&interval_ms, sizeof(int));
+
+  void BeanSerialTransport::BTSetAdvertisingOnOff(const bool setting){
+    write_message(MSG_ID_BT_ADV_ONOFF, (const uint8_t*)&setting, sizeof(setting));
+  };
+
+  void BeanSerialTransport::BTSetLocalName(const char* name){
+    if(name == NULL)
+      name = "";
+    write_message(MSG_ID_BT_SET_LOCAL_NAME, (const uint8_t*)name,
+      strlen(name) + 1);
+  };
+
+  void BeanSerialTransport::BTSetPairingPin(const uint16_t pin){
+    write_message(MSG_ID_BT_SET_PIN, (const uint8_t*)&pin, sizeof(pin));
+  };
+
+
+
+void BeanSerialTransport::BTSetAdvertisingInterval(const int interval_ms){
+  write_message(MSG_ID_BT_SET_ADV, (const uint8_t*)&interval_ms, sizeof(int));
 }
 
 
-void BeanSerialTransport::setConnectionInterval(int interval_ms){
-  write_message(MSG_ID_BT_SET_CONN, (uint8_t*)&interval_ms, sizeof(int));
+void BeanSerialTransport::BTSetConnectionInterval(const int interval_ms){
+  write_message(MSG_ID_BT_SET_CONN, (const uint8_t*)&interval_ms, sizeof(int));
 }
 
 
-void BeanSerialTransport::setTxPower(BeanSerialTransport::TxPower_dB power){
-  write_message(MSG_ID_BT_SET_TX_PWR, (uint8_t*)&power,
-                sizeof(BeanSerialTransport::TxPower_dB));
+void BeanSerialTransport::BTSetTxPower(const BT_TXPOWER_DB_T& power){
+  write_message(MSG_ID_BT_SET_TX_PWR, (const uint8_t*)&power, sizeof(BT_TXPOWER_DB_T));
+}
+
+void BeanSerialTransport::BTSetScratchChar(BT_SCRATCH_T setting){
+  write_message(MSG_ID_BT_SET_SCRATCH, (uint8_t*)&setting, sizeof(setting));
+};
+
+int BeanSerialTransport::BTGetScratchChar(BT_SCRATCH_T* scratch){
+  size_t size = sizeof(BT_SCRATCH_T);
+  return call_and_response(MSG_ID_BT_GET_SCRATCH, NULL,
+                        0, (uint8_t *) scratch, &size);
+};
+
+int  BeanSerialTransport::BTGetConfig(BT_RADIOCONFIG_T *config){
+  size_t size = sizeof(BT_RADIOCONFIG_T);
+  return call_and_response(MSG_ID_BT_GET_CONFIG, NULL,
+                        0, (uint8_t *) config, &size);
+};
+
+
+////////
+// LED
+////////
+void BeanSerialTransport::ledSetSingle(const LED_IND_SETTING_T &setting){
+  write_message(MSG_ID_CC_LED_WRITE, (const uint8_t *)&setting, sizeof(setting));
+}
+
+void BeanSerialTransport::ledSet(const LED_SETTING_T &setting){
+  write_message(MSG_ID_CC_LED_WRITE_ALL, (const uint8_t *)&setting, sizeof(setting));
+}
+
+int BeanSerialTransport::ledRead(LED_SETTING_T* reading){
+  size_t size = sizeof(LED_SETTING_T);
+  return call_and_response(MSG_ID_CC_LED_READ_ALL, NULL,
+                        0, (uint8_t *) reading, &size);
 }
 
 
+////////
+// Accelerometer
+////////
+
+int BeanSerialTransport::accelRead(ACC_READING_T* reading){
+  size_t size = sizeof(ACC_READING_T);
+  return call_and_response(MSG_ID_CC_ACCEL_READ, NULL,
+                        (size_t) 0, (uint8_t *) reading, &size);
+}
 
 
-// void BeanSerialTransport::setAtmegaPowerOnInterval(int interval_ms){
-//   write_message(MSG_ID_AR_SET_POWER_INT, (uint8_t*)&interval_ms, sizeof(int));
-// }
+//Debug
+bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
+                                              const size_t size){
+  uint8_t res[size];
+  size_t  res_size = size;
+  if(call_and_response(MSG_ID_DB_LOOPBACK, message, size, res, &res_size) != 0){
+    return false;
+  }
 
-// int BeanSerialTransport::atmegaPowerOnInterval(void){
-//   int interval_ms = 0;
-//   size_t response_size = sizeof(int);
-//   call_and_response(MSG_ID_AR_GET_CONFIG, (uint8_t*) NULL, (size_t)0,
-//                    (uint8_t*)&interval_ms, response_size);
+  for(unsigned int i = 0; i < size; i++){
+    if(message[i] != res[i])
+      return false;
+  }
 
-//   return interval_ms;
-// }
+  return true;
+};
 
-// void BeanSerialTransport::powerOff(void){
-//   write_message(MSG_ATMEL_POWER_OFF, (uint8_t*)NULL, 0);
-// }
+bool BeanSerialTransport::debugEndToEndLoopbackVerify(const uint8_t *message,
+                                                      const size_t size){
+  uint8_t res[size];
+  size_t  res_size = size;
+  // note that we've set the timeout to 250 here and not the default 100ms as
+  // this is going to the phone and back.
+  if(call_and_response(MSG_ID_DB_E2E_LOOPBACK, message, size, res, &res_size, 250) != 0){
+    return false;
+  }
 
+  for(unsigned int i = 0; i < size; i++){
+    if(message[i] != res[i])
+      return false;
+  }
+
+  return true;
+};
+
+
+int  BeanSerialTransport::debugGetDebugCounter(int* counter){
+  size_t return_size;
+  return call_and_response(MSG_ID_DB_COUNTER, NULL, 0, (uint8_t*)counter, &return_size);
+};
 
 /////////////////////
 /////////////////////

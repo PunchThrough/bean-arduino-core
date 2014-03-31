@@ -3,6 +3,7 @@
 #define BeanSerialTransport_h
 
 #include "HardwareSerial.h"
+#include "applicationMessageHeaders/AppMessages.h"
 
 
 class BeanSerialTransport : public HardwareSerial
@@ -16,11 +17,11 @@ protected:
 
   size_t write_message(uint16_t messageId, const uint8_t* body, size_t body_length);
 
-  void call_and_response(uint16_t messageId, 
+  int call_and_response(MSG_ID_T messageId,
                          const uint8_t *body,
                          size_t body_length,
                          uint8_t * response,
-                         size_t & response_length);
+                         size_t * response_length, unsigned long timeout_ms=100);
 
 
 public:
@@ -36,47 +37,34 @@ public:
   size_t print(const __FlashStringHelper *ifsh);
   using Print::print;
 
-// Radio Control
-  typedef enum {
-     TxPower_4dB = 0,
-     TxPower_0dB,
-     TxPower_neg6dB,
-     TxPower_neg23dB,
-  } TxPower_dB;
 
-  void setAdvertisingInterval(int interval_ms);
-  void setConnectionInterval(int interval_ms);
+// API Control
+  //BT
+  void BTSetAdvertisingOnOff(const bool setting);
+  void BTSetAdvertisingInterval(const int interval_ms);
+  void BTSetConnectionInterval(const int interval_ms);
+  void BTSetLocalName(const char* name);
+  void BTSetPairingPin(const uint16_t pin);
+  void BTSetTxPower(const BT_TXPOWER_DB_T& power);
+  void BTSetScratchChar(BT_SCRATCH_T setting);
+  int  BTGetScratchChar(BT_SCRATCH_T *scratch);
+  int  BTGetConfig(BT_RADIOCONFIG_T *config);
 
-  void setTxPower(TxPower_dB power);
-  TxPower_dB txPower(void);
+  //LED Control
+  void ledSet(const LED_SETTING_T &setting);
+  void ledSetSingle(const LED_IND_SETTING_T &setting);
+  int ledRead(LED_SETTING_T *reading);
 
-// Ardiono Power Control
-  void setAtmegaPowerOnInterval(int interval_ms);
-  int atmegaPowerOnInterval(void);
- // void powerOff(void);
+  //Accelerometer
+  int accelRead(ACC_READING_T* reading);
 
-// Accelerometer
-  typedef enum {
-    AccelerometerAxisX = 0,
-    AccelerometerAxisY,
-    AccelerometerAxisZ,
-  } AccelerometerAxis;
-  
-  uint16_t accelerometerAxis(AccelerometerAxis axis);
+  //Arduino
+  // Skip for Now as spec is a WIP
 
-
-
-// LED Control
-    typedef struct {
-      uint8_t red;
-      uint8_t green;
-      uint8_t blue;
-    } BeanLedSetting;
-
-    void setLed(BeanLedSetting &setting);
-    void setLedSingle(uint8_t offset, uint8_t intensity);
-    BeanLedSetting readLed(void);
-
+  //Debug
+  bool debugLoopbackVerify(const uint8_t *message, const size_t size);
+  bool debugEndToEndLoopbackVerify(const uint8_t *message, const size_t size);
+  int debugGetDebugCounter(int *counter);
 
   // constructor
     BeanSerialTransport(ring_buffer *rx_buffer, ring_buffer *tx_buffer,

@@ -65,25 +65,25 @@ app.title('Bean Arduino Test Tool')
 
 beanpic = PhotoImage(file="cutout-bean.gif")
 beanpic = beanpic.subsample(8)
-Label(image=beanpic).grid(row=0,column=0,columnspan=4,sticky= N+S+E+W)
-Label(text='           Bean Arduino Test Jig             ').grid(row=1,column=0,columnspan=4)
+Label(image=beanpic).grid(row=0,sticky= N+S+E+W)
+Label(text='           Bean Arduino Test Jig             ').grid(row=1)
 
 
 # Initialize main container/frames
 
 content_frame = Frame(app)
-content_frame.grid(row=3,column=0,sticky=W+E+N+S)
+content_frame.grid(row=3, sticky=W+E+N+S)
 
 serial_chooser_frame = Frame(content_frame, padx=10)
-serial_chooser_frame.grid(row=0,column=0)
+serial_chooser_frame.grid(row=0)
 
 tests_frame = Frame(content_frame, padx=0)
-tests_frame.grid(row=1,column=0)
+tests_frame.grid(row=1) 
 
 
 
 # Serial Picker
-Label(serial_chooser_frame, text='Serial Port:').grid(row=0,column=0,sticky=W)
+Label(serial_chooser_frame, text='Serial Port:').grid(row=0, sticky=W)
 serial_chooser = StringVar()
 
 def choose_serial(port):
@@ -95,7 +95,7 @@ serial_chooser_menu = OptionMenu(serial_chooser_frame, serial_chooser,
     command=choose_serial)
 
 serial_chooser_menu.config(width=60)
-serial_chooser_menu.grid(row=1,column=0,columnspan=1,sticky=W)
+serial_chooser_menu.grid(row=1, sticky=W)
 
 serial_is_active = StringVar()
 serial_is_active.set("Off")
@@ -103,23 +103,26 @@ serial_is_active_label = Label(serial_chooser_frame, textvariable=serial_is_acti
 serial_is_active_label.grid(row=1,column=1)
 serial_is_active_label.configure(foreground=(serial_inactive_color)) 
 Label(serial_chooser_frame,
-      text='___________________________________________________________________________').grid(row=2,column=0,columnspan=1)
+      text='___________________________________________________________________________').grid(row=2)
 
 
 
 # LED Viewer
 # draw a little circle
 # update the color of the circle whenever we get a message to write the LED
-Label(content_frame, text='LED Color').grid(row=4,column=0, sticky=W, padx=10  )
-led_canvas = Canvas(content_frame)
-led_canvas.grid(row=5, column=0, columnspan=4, sticky=W)
+Label(content_frame, text='LED Color').grid(row=4, sticky=W, padx=10  )
+led_canvas = Canvas(content_frame, width=200, height=50)
+led_canvas.grid(row=5, sticky=W)
 led_shape = led_canvas.create_oval(20,10,50,40, outline="black", fill="black", width=2)
-Label(content_frame,
-      text='LED Color').grid(row=4,column=2,columnspan=4)
+led_color_text = led_canvas.create_text(100, 25, text= '0xFF00FF')
+
 
 
 def RGBToHTMLColor(rgb_tuple):
     return '#%02x%02x%02x' % rgb_tuple
+
+def RGBToString(rgb_tuple):
+    return '0x%02X%02X%02X' % rgb_tuple
 
 def led_set_color(r, g, b):
     global led_shape
@@ -128,6 +131,9 @@ def led_set_color(r, g, b):
     color_tuple = (r, g, b)
     color = RGBToHTMLColor(color_tuple)
     led_canvas.itemconfigure(led_shape, fill=color)
+    led_canvas.itemconfigure(led_color_text, text=RGBToString((r,g,b)))
+
+
 
 led_red = 0
 led_green = 0
@@ -168,18 +174,18 @@ transport.add_handler(transport.MSG_ID_CC_LED_WRITE_ALL, handle_led_write_all)
 
 # 'terminal' output
 terminal_frame = Frame(content_frame)
-terminal_frame.grid(row=100,column=0, sticky=S)
+terminal_frame.grid(row=100, sticky=S)
 
 Label(terminal_frame,
-      text='___________________________________________________________________________').grid(row=0,column=0,columnspan=1)
+      text='___________________________________________________________________________').grid(row=0)
 
 terminal_output = Text(terminal_frame, wrap=WORD, height=6, width=75, background=(terminal_color), state='normal')
-terminal_output.grid(row=1, column=0,sticky=S)
+terminal_output.grid(row=1, sticky=S)
 scrollbar = Scrollbar(terminal_frame, command=terminal_output.yview)
 terminal_output.config(yscrollcommand=scrollbar.set)
 scrollbar.grid(row=1, column=1, sticky='ns')
 
-Button(terminal_frame, text='Clear Terminal', command=lambda: terminal_output.delete(1.0, END) ).grid(row=2,column=0,sticky=E) 
+Button(terminal_frame, text='Clear Terminal', command=lambda: terminal_output.delete(1.0, END) ).grid(row=2, sticky=E) 
 
 
 app.after(1000, led_set_color, 0, 0xFF, 0x00)

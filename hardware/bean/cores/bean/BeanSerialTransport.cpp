@@ -194,7 +194,14 @@ static bool rx_char(uint8_t *c){
         messageRemaining--;
 
         buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
-        bean_transport_state = GETTING_MESSAGE_BODY;
+
+        if(messageRemaining > 0){
+          bean_transport_state = GETTING_MESSAGE_BODY;
+        }
+        else {
+          bean_transport_state = GETTING_EOF;
+        }
+
         break;
 
 

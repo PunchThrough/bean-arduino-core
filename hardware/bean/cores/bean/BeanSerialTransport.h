@@ -8,6 +8,7 @@
 
 class BeanSerialTransport : public HardwareSerial
 {
+  friend class BeanClass;
 
 protected:
   ring_buffer *_reply_buffer;
@@ -22,21 +23,6 @@ protected:
                          size_t body_length,
                          uint8_t * response,
                          size_t * response_length, unsigned long timeout_ms=100);
-
-
-public:
-  void debug_write(const char c){ HardwareSerial::write((uint8_t)c);};
-  void debug_loopback_full_serial_messages(void);
-
-
-  virtual size_t write(uint8_t);
-  size_t write(const uint8_t *buffer, size_t size);
-
-  using HardwareSerial::write; // pull in write(str) and write(buf, size) from Print
-  virtual size_t print(const String &s);
-  size_t print(const __FlashStringHelper *ifsh);
-  using Print::print;
-
 
 // API Control
   //BT
@@ -61,10 +47,22 @@ public:
   //Arduino
   // Skip for Now as spec is a WIP
 
+public:
+  virtual size_t write(uint8_t);
+  size_t write(const uint8_t *buffer, size_t size);
+
+  using HardwareSerial::write; // pull in write(str) and write(buf, size) from Print
+  virtual size_t print(const String &s);
+  size_t print(const __FlashStringHelper *ifsh);
+  using Print::print;
+
   //Debug
   bool debugLoopbackVerify(const uint8_t *message, const size_t size);
   bool debugEndToEndLoopbackVerify(const uint8_t *message, const size_t size);
   int debugGetDebugCounter(int *counter);
+  void debugWrite(const char c){ HardwareSerial::write((uint8_t)c);};
+  void debugLoopBackFullSerialMessages(void);
+
 
   // constructor
     BeanSerialTransport(ring_buffer *rx_buffer, ring_buffer *tx_buffer,
@@ -81,8 +79,8 @@ public:
     _reply_buffer = reply_buffer;
     _message_complete = message_complete;
     *message_complete = false;
-
   }; // End constructor
+
 }; // End BeanSerialTransport
 
 #if defined(UBRRH) || defined(UBRR0H)

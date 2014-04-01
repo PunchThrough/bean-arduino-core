@@ -530,7 +530,7 @@ size_t BeanSerialTransport::print(const __FlashStringHelper *ifsh)
 }
 
 
-void BeanSerialTransport::debug_loopback_full_serial_messages(){
+void BeanSerialTransport::debugLoopBackFullSerialMessages(){
   setTimeout(0);
 
   char buffer[APP_MSG_MAX_LENGTH + 1];

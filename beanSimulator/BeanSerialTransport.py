@@ -103,7 +103,11 @@ class Bean_Serial_Transport:
             elif(self.parser_state == self.ParserStates.GETTING_MINOR_TYPE):
                 self.parser_length -= 1
                 self.parser_message_type.append(byte)
-                self.parser_state = self.ParserStates.GETTING_MESSAGE_BODY
+
+                if(self.parser_length > 0):
+                    self.parser_state = self.ParserStates.GETTING_MESSAGE_BODY
+                else:
+                    self.parser_state = self.ParserStates.GETTING_EOF
 #                logging.debug("MIN --> BODY")
 
             elif(self.parser_state == self.ParserStates.GETTING_MESSAGE_BODY):
@@ -221,6 +225,7 @@ class Bean_Serial_Transport:
             return
 
         for handler in handlers:
+#            print("calling: ", handler)
             handler(message_type, message_body)
 
     def remove_handler(self, message, handler):

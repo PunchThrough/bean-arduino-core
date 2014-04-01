@@ -1,0 +1,3 @@
+1) Make Handlers take message type
+2) Looking into list.pop().  Does that resolve the byte issue?
+3) Wait for serial until entire message arrives

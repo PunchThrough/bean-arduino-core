@@ -179,13 +179,13 @@ accel_frame.grid(sticky=W)
 
 Label(accel_frame, text='Accelerometer').grid(sticky=W, padx=10  )
 
-accel_x_control = Scale(accel_frame, from_=(-1200), to=1200, label='X')
+accel_x_control = Scale(accel_frame, from_=(1200), to=-1200, label='X')
 accel_x_control.grid(row=1, sticky=W, padx=10)
 
-accel_y_control = Scale(accel_frame, from_=(-1200), to=1200, label='Y')
+accel_y_control = Scale(accel_frame, from_=(1200), to=-1200, label='Y')
 accel_y_control.grid(row=1, column=1, sticky=W, padx=10)
 
-accel_z_control = Scale(accel_frame, from_=(-1200), to=1200, label='Z')
+accel_z_control = Scale(accel_frame, from_=(1200), to=-1200, label='Z')
 accel_z_control.grid(row=1, column=2, sticky=W, padx=10)
 
 def handle_accel_read_all(type, data):

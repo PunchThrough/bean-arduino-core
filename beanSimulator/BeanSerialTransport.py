@@ -32,6 +32,7 @@ class Bean_Serial_Transport:
     MSG_ID_CC_LED_WRITE_ALL   = 0x20, 0x01
     MSG_ID_CC_LED_READ_ALL    = 0x20, 0x02
     MSG_ID_CC_ACCEL_READ      = 0x20, 0x10
+    MSG_ID_CC_ACCEL_READ_RSP  = 0x20, 0x90
     MSG_ID_AR_SET_POWER       = 0x30, 0x00
     MSG_ID_AR_GET_CONFIG      = 0x30, 0x06
     MSG_ID_DB_LOOPBACK        = 0xFE, 0x00

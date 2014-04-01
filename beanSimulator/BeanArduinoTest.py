@@ -10,10 +10,12 @@ from time import sleep
 import os
 import BeanSerialTransport
 import logging
+import numpy
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
 transport = BeanSerialTransport.Bean_Serial_Transport()
+
 
 def print_to_gui(type, data):
     # line converts all numbers to chars and then
@@ -74,13 +76,10 @@ Label(text='           Bean Arduino Test Jig             ').grid(row=1)
 content_frame = Frame(app)
 content_frame.grid(row=3, sticky=W+E+N+S)
 
+
+
 serial_chooser_frame = Frame(content_frame, padx=10)
 serial_chooser_frame.grid(row=0)
-
-tests_frame = Frame(content_frame, padx=0)
-tests_frame.grid(row=1) 
-
-
 
 # Serial Picker
 Label(serial_chooser_frame, text='Serial Port:').grid(row=0, sticky=W)
@@ -106,13 +105,15 @@ Label(serial_chooser_frame,
       text='___________________________________________________________________________').grid(row=2)
 
 
-
+led_frame = Frame(content_frame, padx=10)
+led_frame.grid(sticky=W)
 # LED Viewer
 # draw a little circle
 # update the color of the circle whenever we get a message to write the LED
-Label(content_frame, text='LED Color').grid(row=4, sticky=W, padx=10  )
-led_canvas = Canvas(content_frame, width=200, height=50)
-led_canvas.grid(row=5, sticky=W)
+Label(led_frame, text='LED Color').grid(sticky=W, padx=10  )
+led_canvas = Canvas(led_frame, width=200, height=50)
+
+led_canvas.grid(sticky=W)
 led_shape = led_canvas.create_oval(20,10,50,40, outline="black", fill="black", width=2)
 led_color_text = led_canvas.create_text(100, 25, text= '0xFF00FF')
 
@@ -172,6 +173,32 @@ transport.add_handler(transport.MSG_ID_CC_LED_WRITE, handle_led_write_single)
 transport.add_handler(transport.MSG_ID_CC_LED_WRITE_ALL, handle_led_write_all)
 
 
+# Accelerometer View/Control
+accel_frame = Frame(content_frame, padx=10)
+accel_frame.grid(sticky=W)
+
+Label(accel_frame, text='Accelerometer').grid(sticky=W, padx=10  )
+
+accel_x_control = Scale(accel_frame, from_=(-1200), to=1200, label='X')
+accel_x_control.grid(row=1, sticky=W, padx=10)
+
+accel_y_control = Scale(accel_frame, from_=(-1200), to=1200, label='Y')
+accel_y_control.grid(row=1, column=1, sticky=W, padx=10)
+
+accel_z_control = Scale(accel_frame, from_=(-1200), to=1200, label='Z')
+accel_z_control.grid(row=1, column=2, sticky=W, padx=10)
+
+def handle_accel_read_all(type, data):
+    message = numpy.array([accel_x_control.get(),
+                           accel_y_control.get(),
+                           accel_z_control.get()], numpy.int16)
+    message.dtype = numpy.uint8
+#    print(message)
+    transport.send_message(transport.MSG_ID_CC_ACCEL_READ_RSP, message)
+
+transport.add_handler(transport.MSG_ID_CC_ACCEL_READ, handle_accel_read_all)
+
+
 # 'terminal' output
 terminal_frame = Frame(content_frame)
 terminal_frame.grid(row=100, sticky=S)
@@ -188,9 +215,9 @@ scrollbar.grid(row=1, column=1, sticky='ns')
 Button(terminal_frame, text='Clear Terminal', command=lambda: terminal_output.delete(1.0, END) ).grid(row=2, sticky=E) 
 
 
-app.after(1000, led_set_color, 0, 0xFF, 0x00)
-app.after(2000, led_set_color, 0, 0, 0xFF)
-app.after(3000, led_set_color, 0xFF, 0, 0)
+# app.after(1000, led_set_color, 0, 0xFF, 0x00)
+# app.after(2000, led_set_color, 0, 0, 0xFF)
+# app.after(3000, led_set_color, 0xFF, 0, 0)
 app.after(4000, led_set_color_to_current)
 
 app.after_idle(check_serial)

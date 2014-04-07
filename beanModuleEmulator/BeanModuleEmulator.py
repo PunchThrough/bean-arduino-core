@@ -233,7 +233,6 @@ def handle_accel_read_all(type, data):
                            accel_y_control.get(),
                            accel_z_control.get()], numpy.int16)
     message.dtype = numpy.uint8
-#    print(message)
     transport.send_message(transport.MSG_ID_CC_ACCEL_READ_RSP, message)
 
 transport.add_handler(transport.MSG_ID_CC_ACCEL_READ, handle_accel_read_all)

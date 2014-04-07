@@ -54,7 +54,7 @@ def check_serial():
 min_x = 500
 max_x = 600
 min_y = 600
-max_y = 900
+max_y = 1200
 
 app = Tk()
 app.wm_protocol ("WM_DELETE_WINDOW", quit_app)
@@ -179,13 +179,13 @@ accel_frame.grid(sticky=W)
 Label(accel_frame, text='Accelerometer').grid(sticky=W, padx=10  )
 
 accel_x_control = Scale(accel_frame, from_=(511), to=-511, label='X')
-accel_x_control.grid(row=1, sticky=W, padx=10)
+accel_x_control.grid(row=1, column=0, sticky=W)
 
 accel_y_control = Scale(accel_frame, from_=(511), to=-511, label='Y')
-accel_y_control.grid(row=1, column=1, sticky=W, padx=10)
+accel_y_control.grid(row=1, column=1, sticky=W)
 
 accel_z_control = Scale(accel_frame, from_=(511), to=-511, label='Z')
-accel_z_control.grid(row=1, column=2, sticky=W, padx=10)
+accel_z_control.grid(row=1, column=2, sticky=W)
 
 def handle_accel_read_all(type, data):
     message = numpy.array([accel_x_control.get(),
@@ -196,6 +196,19 @@ def handle_accel_read_all(type, data):
     transport.send_message(transport.MSG_ID_CC_ACCEL_READ_RSP, message)
 
 transport.add_handler(transport.MSG_ID_CC_ACCEL_READ, handle_accel_read_all)
+
+# Radio Settings
+radio_frame = Frame(content_frame, padx=10);
+radio_frame.grid(sticky=W)
+
+Label(accel_frame, text='Radio').grid(sticky=W, padx=10 )
+
+conn_int = Scale(radio_frame, from_=300, to=0, label='Conn Int')
+conn_int.grid(row=1, sticky=W)
+
+adv_int = Scale(radio_frame, from_=300, to=0, label='Adv Int');
+adv_int.grid(row=1, column=1, sticky=W)
+
 
 
 # 'terminal' output

@@ -300,7 +300,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   }
 
   HardwareSerial::write(BEAN_SOF);
-  // //body_length + "2" for message type.
+  //body_length + "2" for message type.
   insert_escaped_char(body_length + 2);
   insert_escaped_char((uint8_t)(messageId >> 8));
   insert_escaped_char((uint8_t)(messageId & 0xFF));
@@ -311,8 +311,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 
   HardwareSerial::write(BEAN_EOF);
 
-  // // TODO: Is this what we want to return?
-   return body_length;
+  return body_length;
 }
 
 

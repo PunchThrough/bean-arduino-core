@@ -3,15 +3,15 @@
   BeanClass Bean;
 
 
-  void BeanClass::setBleAdvertisingInterval(uint16_t interval_ms){
+  void BeanClass::bleAdvertisingIntervalWrite(uint16_t interval_ms){
     Serial.BTSetAdvertisingInterval(interval_ms);
   }
 
-  void BeanClass::setBleConnectionInterval(uint16_t interval_ms){
+  void BeanClass::bleConnectionIntervalWrite(uint16_t interval_ms){
     Serial.BTSetAdvertisingInterval(interval_ms);
   }
 
-  unsigned int BeanClass::bleAdvertisingInterval(void){
+  unsigned int BeanClass::bleAdvertisingIntervalRead(void){
     BT_RADIOCONFIG_T config;
 
     if(Serial.BTGetConfig(&config) == 0){
@@ -23,7 +23,7 @@
     return 0;
   }
 
-  unsigned int BeanClass::bleConnectionInterval(void){
+  unsigned int BeanClass::bleConnectionIntervalRead(void){
     BT_RADIOCONFIG_T config;
 
     if(Serial.BTGetConfig(&config) == 0){
@@ -35,11 +35,11 @@
     return 0;
   }
 
-  void BeanClass::setBleTxPower(BT_TXPOWER_DB_T power){
+  void BeanClass::bleTxPowerWrite(BT_TXPOWER_DB_T power){
     Serial.BTSetTxPower(power);
   }
 
-  BT_TXPOWER_DB_T BeanClass::bleTXPower(void){
+  BT_TXPOWER_DB_T BeanClass::bleTXPowerRead(void){
     BT_RADIOCONFIG_T config;
 
     if(Serial.BTGetConfig(&config) == 0){
@@ -51,7 +51,7 @@
     return TXPOWER_4DB;
   }
 
-  uint16_t BeanClass::accelerometerAxis(ACC_AXIS_T axis){
+  uint16_t BeanClass::accelerometerAxisRead(ACC_AXIS_T axis){
     ACC_READING_T reading;
     if(Serial.accelRead(&reading) == 0){
       switch(axis){
@@ -74,7 +74,7 @@
     return 0;
   }
 
-  ACC_READING_T BeanClass::accelerometerReading(void){
+  ACC_READING_T BeanClass::accelerometerRead(void){
     ACC_READING_T reading;
     if(Serial.accelRead(&reading) == 0){
       return reading;
@@ -86,7 +86,7 @@
     return reading;
   }
 
-  void BeanClass::setLedIndividualColor(LED_COLOR_T color, uint8_t intensity){
+  void BeanClass::ledIndividualColorWrite(LED_COLOR_T color, uint8_t intensity){
     LED_IND_SETTING_T setting;
     setting.color = (uint8_t) color;
     setting.intensity = intensity;
@@ -94,11 +94,11 @@
     Serial.ledSetSingle(setting);
   }
 
-  void BeanClass::setLedColor(LED_SETTING_T setting){
+  void BeanClass::ledColorWrite(LED_SETTING_T setting){
     Serial.ledSet(setting);
   }
   
-  uint8_t BeanClass::getLedIndividualColor(LED_COLOR_T color){
+  uint8_t BeanClass::ledIndividualColorRead(LED_COLOR_T color){
     LED_SETTING_T reading;
 
     if(Serial.ledRead(&reading) == 0){
@@ -120,7 +120,7 @@
     return 0;
   }
   
-  LED_SETTING_T BeanClass::ledColor(void){
+  LED_SETTING_T BeanClass::ledColorRead(void){
     LED_SETTING_T reading;
 
     if(Serial.ledRead(&reading) == 0){

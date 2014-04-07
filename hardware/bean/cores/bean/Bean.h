@@ -2,23 +2,30 @@
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
 
+typedef BT_TXPOWER_DB_T BluetoothTransmitPowerType;
+typedef ACC_AXIS_T AccelerometerAxisType;
+typedef ACC_READING_T AccelerometerReadingType;
+typedef LED_COLOR_T LedColorType;
+typedef LED_SETTING_T LedSettingType;
+
+
 class BeanClass {
 public:
-  void setBleAdvertisingInterval(uint16_t internval_ms);
-  void setBleConnectionInterval(uint16_t interval_ms);
-  unsigned int bleAdvertisingInterval(void);
-  unsigned int bleConnectionInterval(void);
+  void bleAdvertisingIntervalWrite(uint16_t internval_ms);
+  void bleConnectionIntervalWrite(uint16_t interval_ms);
+  unsigned int bleAdvertisingIntervalRead(void);
+  unsigned int bleConnectionIntervalRead(void);
 
-  void setBleTxPower(BT_TXPOWER_DB_T power);
-  BT_TXPOWER_DB_T bleTXPower(void);
+  void bleTxPowerWrite(BluetoothTransmitPowerType power);
+  BluetoothTransmitPowerType bleTXPowerRead(void);
 
-  uint16_t accelerometerAxis(ACC_AXIS_T axis);
-  ACC_READING_T accelerometerReading(void);
+  uint16_t accelerometerAxisRead(AccelerometerAxisType axis);
+  AccelerometerReadingType accelerometerRead(void);
 
-  void setLedIndividualColor(LED_COLOR_T color, uint8_t intensity);
-  void setLedColor(LED_SETTING_T setting);
-  uint8_t getLedIndividualColor(LED_COLOR_T color);
-  LED_SETTING_T ledColor(void);
+  void ledIndividualColorWrite(LedColorType color, uint8_t intensity);
+  void ledColorWrite(LedSettingType setting);
+  uint8_t ledIndividualColorRead(LedColorType color);
+  LedSettingType ledColorRead(void);
 
   BeanClass(){}
 };

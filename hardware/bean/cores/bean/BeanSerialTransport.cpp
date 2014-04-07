@@ -283,8 +283,8 @@ inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
     case BEAN_EOF:  // fallthrough
     case BEAN_ESCAPE:
       HardwareSerial::write(BEAN_ESCAPE);
-      HardwareSerial::write(input ^ BEAN_ESCAPE_XOR);
-    break;
+      HardwareSerial::write(uint8_t(input ^ BEAN_ESCAPE_XOR));
+      break;
     default:
       HardwareSerial::write(input);
   }

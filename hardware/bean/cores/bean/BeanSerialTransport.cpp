@@ -278,11 +278,17 @@ ISR(USART_UDRE_vect)
 
 
 inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
+  // It's crucial that HardwareSerial::write is only called
+  // with excplicit uint8_t types otherwise weird overloading
+  // happens, and things you don't expect result
   switch(input){
     case BEAN_SOF:  // fallthrough
     case BEAN_EOF:  // fallthrough
     case BEAN_ESCAPE:
       HardwareSerial::write(BEAN_ESCAPE);
+      // without the cast, the XOR is getting promoted
+      // to another type, probably an int, and causing unexpected
+      // results in the messages.
       HardwareSerial::write(uint8_t(input ^ BEAN_ESCAPE_XOR));
       break;
     default:

@@ -6,11 +6,12 @@ serial_active_color = '#1f4dbc'
 serial_inactive_color = '#ff0000'
 
 from Tkinter import *
-from time import sleep
+import time
 import os
 import BeanSerialTransport
 import logging
 import numpy
+import math
 
 logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)
 
@@ -186,6 +187,46 @@ accel_y_control.grid(row=1, column=1, sticky=W)
 
 accel_z_control = Scale(accel_frame, from_=(511), to=-511, label='Z')
 accel_z_control.grid(row=1, column=2, sticky=W)
+
+def z_sin_callback():
+    if(enable_z_sin.get()):
+        app.after(100, z_sin_callback)
+        accel_z_control.set(511 * math.sin(time.time()))
+
+    else:
+        pass
+
+enable_z_sin = IntVar()
+accel_enable_z_sin = Checkbutton(accel_frame, text="zSin", variable=enable_z_sin, command=z_sin_callback)
+accel_enable_z_sin.grid(row=1, column=3, sticky=W)
+
+
+def y_sin_callback():
+    if(enable_y_sin.get()):
+        app.after(100, y_sin_callback)
+        accel_y_control.set(511 * math.sin(time.time() * 2))
+
+    else:
+        pass
+
+enable_y_sin = IntVar()
+accel_enable_y_sin = Checkbutton(accel_frame, text="ySin", variable=enable_y_sin, command=y_sin_callback)
+accel_enable_y_sin.grid(row=1, column=4, sticky=W)
+
+
+def x_sin_callback():
+    if(enable_x_sin.get()):
+        app.after(100, x_sin_callback)
+        accel_x_control.set(511 * math.sin(time.time() * 3))
+
+    else:
+        pass
+
+enable_x_sin = IntVar()
+accel_enable_x_sin = Checkbutton(accel_frame, text="xSin", variable=enable_x_sin, command=x_sin_callback)
+accel_enable_x_sin.grid(row=1, column=5, sticky=W)
+
+
 
 def handle_accel_read_all(type, data):
     message = numpy.array([accel_x_control.get(),

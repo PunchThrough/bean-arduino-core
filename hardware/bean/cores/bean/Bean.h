@@ -11,6 +11,7 @@ typedef LED_SETTING_T LedSettingType;
 
 class BeanClass {
 public:
+  void sleep(uint32_t duration_ms);
   void bleAdvertisingIntervalWrite(uint16_t internval_ms);
   void bleConnectionIntervalWrite(uint16_t interval_ms);
   unsigned int bleAdvertisingIntervalRead(void);

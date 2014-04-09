@@ -2,31 +2,37 @@
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
 
-typedef BT_TXPOWER_DB_T BluetoothTransmitPowerType;
-typedef ACC_AXIS_T AccelerometerAxisType;
-typedef ACC_READING_T AccelerometerReadingType;
-typedef LED_COLOR_T LedColorType;
-typedef LED_SETTING_T LedSettingType;
+typedef ACC_READING_T AccelerationReading;
+typedef LED_SETTING_T LedReading;
 
+struct ScratchData {
+  uint8_t length;
+  uint8_t data[20];
+};
 
 class BeanClass {
 public:
+  uint16_t getAccelerationX (void);
+  uint16_t getAccelerationY (void);
+  uint16_t getAccelerationZ (void);
+  AccelerationReading getAcceleration (void);
+
+  void setLed(uint8_t red, uint8_t green, uint8_t blue);
+  LedReading getLed(void);
+  uint8_t getLedRed (void);
+  uint8_t getLedGreen (void);
+  uint8_t getLedBlue (void);
+  void setLedRed(uint8_t intensity);
+  void setLedGreen(uint8_t intensity);
+  void setLedBlue(uint8_t intensity);
+
+  // TODO: Not yet implemented
+  // bool setScratchData(uint8_t bank, const uint8_t[] data, uint8_t dataLength);
+  // bool setScratchNumber(uint8_t bank, uint32_t data);
+
+  // ScratchData readScratchData(uint8 bank);
+  // long readScratchNumber(uint8 bank);
   void sleep(uint32_t duration_ms);
-  void bleAdvertisingIntervalWrite(uint16_t internval_ms);
-  void bleConnectionIntervalWrite(uint16_t interval_ms);
-  unsigned int bleAdvertisingIntervalRead(void);
-  unsigned int bleConnectionIntervalRead(void);
-
-  void bleTxPowerWrite(BluetoothTransmitPowerType power);
-  BluetoothTransmitPowerType bleTXPowerRead(void);
-
-  uint16_t accelerometerAxisRead(AccelerometerAxisType axis);
-  AccelerometerReadingType accelerometerRead(void);
-
-  void ledIndividualColorWrite(LedColorType color, uint8_t intensity);
-  void ledColorWrite(LedSettingType setting);
-  uint8_t ledIndividualColorRead(LedColorType color);
-  LedSettingType ledColorRead(void);
 
   BeanClass(){}
 };

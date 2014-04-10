@@ -26,12 +26,11 @@ public:
   void setLedGreen(uint8_t intensity);
   void setLedBlue(uint8_t intensity);
 
-  // TODO: Not yet implemented
   // bool setScratchData(uint8_t bank, const uint8_t[] data, uint8_t dataLength);
   // bool setScratchNumber(uint8_t bank, uint32_t data);
-
   // ScratchData readScratchData(uint8 bank);
   // long readScratchNumber(uint8 bank);
+
   void sleep(uint32_t duration_ms);
 
   BeanClass(){}

@@ -1,6 +1,8 @@
 #include "Bean.h"
 #include "Arduino.h"
 #include <avr/sleep.h>
+#include <avr/wdt.h>
+#include "wiring_private.h"
 
   BeanClass Bean;
 
@@ -16,6 +18,10 @@
     // TODO send message asking to be woken up in duration_ms
     // set our interrupt pin to input:
     const int interruptNum = 1;
+
+    // disable ADC
+    cbi(ADCSRA, ADEN);
+
 
     /* Now is the time to set the sleep mode. In the Atmega8 datasheet
      * http://www.atmel.com/dyn/resources/prod_documents/doc2486.pdf on page 35
@@ -67,7 +73,10 @@
 
     sleep_disable();
     detachInterrupt(interruptNum);
-  }
+
+    //re-enable adc
+    sbi(ADCSRA, ADEN);
+}
 
   uint16_t BeanClass::getAccelerationX(void){
     ACC_READING_T reading;

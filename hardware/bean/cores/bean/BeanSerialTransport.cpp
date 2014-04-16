@@ -434,6 +434,13 @@ int BeanSerialTransport::accelRead(ACC_READING_T* reading){
 }
 
 
+////////
+// Sleep
+////////
+void BeanSerialTransport::sleep(uint32_t duration_ms){
+  write_message(MSG_ID_AR_SLEEP, (const uint8_t *)&duration_ms, sizeof(duration_ms));
+}
+
 //Debug
 bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
                                               const size_t size){

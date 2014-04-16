@@ -44,8 +44,9 @@ protected:
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
 
-  //Arduino
-  // Skip for Now as spec is a WIP
+  //Arduino Sleep
+  void sleep(uint32_t duration_ms);
+
 
 public:
   virtual size_t write(uint8_t);

@@ -15,7 +15,11 @@
 
   void BeanClass::sleep(uint32_t duration_ms){
 
-    // TODO send message asking to be woken up in duration_ms
+    // Send the sleep message to the TI and wait for it to
+    // finish sending.
+    Serial.sleep(duration_ms);
+    Serial.flush();
+
     // set our interrupt pin to input:
     const int interruptNum = 1;
 

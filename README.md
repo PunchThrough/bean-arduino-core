@@ -9,6 +9,7 @@ This repo contains the Arduino firmware and installation files used in the Light
 
 ### TODO:
 
+* Add note to this doc regarding FUSES (!! BOD)
 * Fix Serial.println so, like Serial.print, extra radio messages arn't sent for the newline
 * Add proper doxygen comments to relelvent parts, especially the API
 * Add features to emulator to provide better, more useful testing

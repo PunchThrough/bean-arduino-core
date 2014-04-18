@@ -133,7 +133,7 @@ static bool rx_char(uint8_t *c){
     if(!rx_char(&next)){
       return;
     }
-    
+
     // only handle escape char in message
     if(bean_transport_state != WAITING_FOR_SOF){
       if(escaping == true){
@@ -150,7 +150,7 @@ static bool rx_char(uint8_t *c){
         ( next == BEAN_EOF && bean_transport_state != GETTING_EOF)     ||
           next == BEAN_ESCAPE){
 
-        // TODO: How to Signal Error? 
+        // TODO: How to Signal Error?
         // assert(1);
 
         // RESET STATE
@@ -210,7 +210,7 @@ static bool rx_char(uint8_t *c){
           store_char(next, buffer);
           messageRemaining--;
         }
-        
+
         if(messageRemaining == 0){
           bean_transport_state = GETTING_EOF;
         }
@@ -263,7 +263,7 @@ ISR(USART_UDRE_vect)
     // There is more data in the output buffer. Send the next byte
     unsigned char c = tx_buffer.buffer[tx_buffer.tail];
     tx_buffer.tail = (tx_buffer.tail + 1) % SERIAL_BUFFER_SIZE;
-  
+
   #if defined(UDR0)
     UDR0 = c;
   #elif defined(UDR)
@@ -321,7 +321,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 }
 
 
-int BeanSerialTransport::call_and_response(MSG_ID_T messageId, 
+int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
                                            const uint8_t *body,
                                            size_t body_length,
                                            uint8_t * response,
@@ -481,6 +481,11 @@ int  BeanSerialTransport::debugGetDebugCounter(int* counter){
   size_t return_size;
   return call_and_response(MSG_ID_DB_COUNTER, NULL, 0, (uint8_t*)counter, &return_size);
 };
+
+void BeanSerialTransport::debugWritePtm( const uint8_t *message, const size_t size )
+{
+    write_message(MSG_ID_DB_PTM, message, size);
+}
 
 /////////////////////
 /////////////////////

@@ -63,6 +63,7 @@ public:
   int debugGetDebugCounter(int *counter);
   void debugWrite(const char c){ HardwareSerial::write((uint8_t)c);};
   void debugLoopBackFullSerialMessages(void);
+  void debugWritePtm(const uint8_t *message, const size_t size);
 
 
   // constructor
@@ -72,7 +73,7 @@ public:
                         volatile uint8_t *ucsrc, volatile uint8_t *udr,
                         uint8_t rxen, uint8_t txen, uint8_t rxcie,
                         uint8_t udrie, uint8_t u2x, ring_buffer* reply_buffer,
-                        volatile bool* message_complete) 
+                        volatile bool* message_complete)
                         : HardwareSerial(rx_buffer, tx_buffer, ubrrh, ubrrl,
                                          ucsra, ucsrb, ucsrc, udr, rxen, txen,
                                          rxcie, udrie, u2x)
@@ -88,7 +89,7 @@ public:
   extern BeanSerialTransport Serial;
 #elif defined(USBCON)
   #include "USBAPI.h"
-//  extern HardwareSerial Serial_;  
+//  extern HardwareSerial Serial_;
 #endif
 
-#endif 
+#endif

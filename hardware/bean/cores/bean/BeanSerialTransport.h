@@ -49,6 +49,20 @@ protected:
 
 
 public:
+  // To work on bean, the serial must be initialized
+  // at 57600 with standard settings.
+  // This virtual function just overides the parent function,
+  // and ensures we're using default settings at 57.6k
+  void begin(void){
+    HardwareSerial::begin(57600);
+  }
+  virtual void begin(unsigned long ignored){
+    HardwareSerial::begin(57600);
+  }
+  virtual void begin(unsigned long ignored, uint8_t also_ignored){
+    HardwareSerial::begin(57600);
+  }
+
   virtual size_t write(uint8_t);
   size_t write(const uint8_t *buffer, size_t size);
 

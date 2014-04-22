@@ -50,17 +50,23 @@ protected:
 
 public:
   // To work on bean, the serial must be initialized
-  // at 57600 with standard settings.
-  // This virtual function just overides the parent function,
-  // and ensures we're using default settings at 57.6k
+  // at 57600 with standard settings, and cannot be disabled
+  // or all control messaging will break.  We've overidden begin() and end()
+  // functions to not do a whole heck of a lot as a result.
   void begin(void){
     HardwareSerial::begin(57600);
   }
   virtual void begin(unsigned long ignored){
-    HardwareSerial::begin(57600);
+    // Do nothing.
+    // We're overiding what users can do here.
   }
   virtual void begin(unsigned long ignored, uint8_t also_ignored){
-    HardwareSerial::begin(57600);
+    // Do nothing.
+    // We're overiding what users can do here.
+  }
+  virtual void end(){
+    // Do nothing.  Users ending serial would break our control messaging
+    // so we're removing this ability.
   }
 
   virtual size_t write(uint8_t);

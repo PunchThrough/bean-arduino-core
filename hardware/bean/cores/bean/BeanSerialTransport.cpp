@@ -484,7 +484,7 @@ int  BeanSerialTransport::debugGetDebugCounter(int* counter){
 
 void BeanSerialTransport::debugWritePtm( const uint8_t *message, const size_t size )
 {
-    write_message(MSG_ID_DB_PTM, message, size);
+  write_message(MSG_ID_DB_PTM, message, size);
 }
 
 /////////////////////

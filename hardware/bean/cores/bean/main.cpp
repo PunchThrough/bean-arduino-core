@@ -7,9 +7,12 @@ int main(void)
 #if defined(USBCON)
 	USBDevice.attach();
 #endif
-	
+  // Ensure that BeanSerialTransport.begin() is called for control messages
+  // even if users are not using the serial port.
+  // A user calling this again shouldn't cause any harm.
+  Serial.begin();
 	setup();
-    
+
 	for (;;) {
 		loop();
 		if (serialEventRun) serialEventRun();

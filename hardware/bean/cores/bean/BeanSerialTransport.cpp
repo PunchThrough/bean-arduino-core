@@ -35,25 +35,16 @@ const uint8_t  BEAN_ESCAPE_XOR = HDLC_ESCAPE_XOR;
 // Some devices have uart1 but no uart0
 #define TXC0 TXC1
 #else
-#error TXC0 not definable in HardwareSerial.h
+#error TXC0 not definable in BeanSerialTransport.cpp
 #endif
 #endif
 
 
+ring_buffer rx_buffer = { { 0 }, 0, 0};
+ring_buffer tx_buffer = { { 0 }, 0, 0};
+ring_buffer reply_buffer = { { 0 }, 0, 0};
 
-
-#if defined(USBCON)
-  ring_buffer rx_buffer = { { 0 }, 0, 0};
-  ring_buffer tx_buffer = { { 0 }, 0, 0};
-  ring_buffer reply_buffer = { { 0 }, 0, 0};
-#endif
-#if defined(UBRRH) || defined(UBRR0H)
-  ring_buffer rx_buffer  =  { { 0 }, 0, 0 };
-  ring_buffer tx_buffer  =  { { 0 }, 0, 0 };
-  ring_buffer reply_buffer = { { 0 }, 0, 0};
-#endif
-
- static volatile bool serial_message_complete = false;
+static volatile bool serial_message_complete = false;
 
 static inline void store_char(unsigned char c, ring_buffer *buffer){
   unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;

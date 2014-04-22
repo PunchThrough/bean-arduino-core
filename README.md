@@ -14,7 +14,6 @@ This repo contains the Arduino firmware and installation files used in the Light
 * Add proper doxygen comments to relelvent parts, especially the API
 * Add features to emulator to provide better, more useful testing
 * Add more and better examples
-* Modify Serial.begin() to ignore it's input and always set to 57600.
 
 
 ### Key Files:

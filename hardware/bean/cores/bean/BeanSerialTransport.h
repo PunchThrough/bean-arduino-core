@@ -24,6 +24,7 @@ protected:
                          uint8_t * response,
                          size_t * response_length, unsigned long timeout_ms=100);
 
+
 // API Control
   //BT
   void BTSetAdvertisingOnOff(const bool setting);

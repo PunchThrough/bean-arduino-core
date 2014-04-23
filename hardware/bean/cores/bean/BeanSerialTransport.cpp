@@ -1,11 +1,9 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
 #include "Arduino.h"
 #include "wiring_private.h"
-
 
 #include "BeanSerialTransport.h"
 
@@ -21,8 +19,6 @@ const uint8_t  BEAN_ESCAPE  = UT_CHAR_ESC;
 const uint8_t  BEAN_ESCAPE_XOR = HDLC_ESCAPE_XOR;
 
 #define MAX_BODY_LENGTH (APP_MSG_MAX_LENGTH - 2)
-
-
 
 /*
  * on ATmega8, the uart and its bits are not numbered, so there is no "TXC0"
@@ -45,6 +41,7 @@ ring_buffer tx_buffer = { { 0 }, 0, 0};
 ring_buffer reply_buffer = { { 0 }, 0, 0};
 
 static volatile bool serial_message_complete = false;
+
 
 static inline void store_char(unsigned char c, ring_buffer *buffer){
   unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;

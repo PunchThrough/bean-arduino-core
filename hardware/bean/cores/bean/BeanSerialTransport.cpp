@@ -40,6 +40,7 @@ ring_buffer rx_buffer = { { 0 }, 0, 0};
 ring_buffer tx_buffer = { { 0 }, 0, 0};
 ring_buffer reply_buffer = { { 0 }, 0, 0};
 
+static volatile bool tx_buffer_flushed = true;
 static volatile bool serial_message_complete = false;
 
 
@@ -223,29 +224,41 @@ static bool rx_char(uint8_t *c){
 #endif
 
 
-#if !defined(USART0_UDRE_vect) && defined(USART1_UDRE_vect)
-// do nothing - on the 32u4 the first USART is USART1
-#else
-#if !defined(UART0_UDRE_vect) && !defined(UART_UDRE_vect) && !defined(USART0_UDRE_vect) && !defined(USART_UDRE_vect)
-  #error "Don't know what the Data Register Empty vector is called for the first UART"
-#else
-#if defined(UART0_UDRE_vect)
-ISR(UART0_UDRE_vect)
-#elif defined(UART_UDRE_vect)
-ISR(UART_UDRE_vect)
-#elif defined(USART0_UDRE_vect)
-ISR(USART0_UDRE_vect)
-#elif defined(USART_UDRE_vect)
+
+// The Original HWSerial version of this function
+// relies on the TX Vector flag to tell when tx_buffer_flushed.
+// we need that flag to fire the interrupt (auto-clears, and cannot be manually
+// set) pin for the CC, so for BeanSerial we use 'tx_buffer_flushed' bool instead.
+void BeanSerialTransport::flush()
+{
+  // logic is handled in writes and interrupts
+  while (tx_buffer_flushed == false);
+
+  // this is a holdover from HWSerial.
+  transmitting = false;
+}
+
+// This interrupt fires after the send has completed
+ISR(USART_TX_vect){
+  // lower interrupt line that wakes The CC
+  if (tx_buffer.head == tx_buffer.tail) {
+    digitalWrite(CC_INTERRUPT_PIN, LOW);
+    cbi(UCSR0B, TXCIE0);
+    tx_buffer_flushed = true;
+  }
+}
+
+// This interrupt fires after the send register as offloaded the data
+// to the send hardware.
 ISR(USART_UDRE_vect)
-#endif
 {
   if (tx_buffer.head == tx_buffer.tail) {
-  // Buffer empty, so disable interrupts
-#if defined(UCSR0B)
+    // Buffer empty, so disable interrupts
     cbi(UCSR0B, UDRIE0);
-#else
-    cbi(UCSRB, UDRIE);
-#endif
+
+    // enable the tx sent interrupt so we can disable the
+    // CC interrupt pin
+    sbi(UCSR0B, TXCIE0);
   }
   else {
     // There is more data in the output buffer. Send the next byte
@@ -261,9 +274,18 @@ ISR(USART_UDRE_vect)
   #endif
   }
 }
-#endif
-#endif
 
+// Called in main, before setup, to enable things such as setting the LED
+// color during setup.
+void BeanSerialTransport::begin(void){
+  HardwareSerial::begin(57600);
+  pinMode(CC_INTERRUPT_PIN, OUTPUT);
+
+  if (tx_buffer.head == tx_buffer.tail){
+    tx_buffer_flushed = true;
+    digitalWrite(CC_INTERRUPT_PIN, LOW);
+  }
+}
 
 inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
   // It's crucial that HardwareSerial::write is only called
@@ -291,6 +313,14 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
     // TODO: do we want to throw an error, or somehow
     // note why we were forced to drop the message?
     return -1;
+  }
+
+  // if the buffer is empty, raise the ccinterrupt
+  // and wait for the cc to wake before starting the transmit
+  tx_buffer_flushed = false;
+  digitalWrite(CC_INTERRUPT_PIN, HIGH);
+  if (tx_buffer.head == tx_buffer.tail) {
+    delay(1);
   }
 
   HardwareSerial::write(BEAN_SOF);

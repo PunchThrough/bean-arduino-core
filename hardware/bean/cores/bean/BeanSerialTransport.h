@@ -5,6 +5,8 @@
 #include "HardwareSerial.h"
 #include "applicationMessageHeaders/AppMessages.h"
 
+// Used for waking the CC out of deep sleep mode.
+#define CC_INTERRUPT_PIN (5)
 
 class BeanSerialTransport : public HardwareSerial
 {
@@ -54,9 +56,7 @@ public:
   // at 57600 with standard settings, and cannot be disabled
   // or all control messaging will break.  We've overidden begin() and end()
   // functions to not do a whole heck of a lot as a result.
-  void begin(void){
-    HardwareSerial::begin(57600);
-  }
+  void begin(void);
   virtual void begin(unsigned long ignored){
     // Do nothing.
     // We're overiding what users can do here.
@@ -69,6 +69,8 @@ public:
     // Do nothing.  Users ending serial would break our control messaging
     // so we're removing this ability.
   }
+
+  virtual void flush(void);
 
   virtual size_t write(uint8_t);
   size_t write(const uint8_t *buffer, size_t size);

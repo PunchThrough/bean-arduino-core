@@ -6,7 +6,7 @@
 #include "applicationMessageHeaders/AppMessages.h"
 
 // Used for waking the CC out of deep sleep mode.
-#define CC_INTERRUPT_PIN (5)
+#define CC_INTERRUPT_PIN (13)
 
 class BeanSerialTransport : public HardwareSerial
 {

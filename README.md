@@ -15,6 +15,25 @@ This repo contains the Arduino firmware and installation files used in the Light
 * Add features to emulator to provide better, more useful testing
 * Add more and better examples
 
+### Reading and Setting Atmega Fuses with avrdude
+
+We're going to need to set some fuses for our part in the factory.  The fuse settings we need are going to set our part to basically should
+match the Arduino Pro defaults with brownout disabled.
+
+At the time of writing, I don't have a programmer at my disposal.  However the steps taken should be the 
+We write the fuse settings here: XX XX XX
+
+Steps:
+
+
+1. Install avrdude.  I used [http://www.obdev.at/products/crosspack/index.html](CrossPack) to do this.
+1. Read the fuses from an off the shelf ArduinoPro.  Use this command after avrdude is in your path: `avrdude -p atmega328p -c usbtiny -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h`
+1. Go to [http://www.engbedded.com/fusecalc/](The Avr Fuse Calculator) and enter in the current state of the fuses
+1. Turn off Brown Out Detection (BOD).
+1. Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
+1. Use avrdude to write and test your new fuse settings.  The command line will look something like this (except, these are guessed values: `avrdude -p atmega328p -c usbtiny -U lfuse:w:0xee:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m`)
+
+
 
 ### Key Files:
 

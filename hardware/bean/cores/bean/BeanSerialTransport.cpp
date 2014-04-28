@@ -317,10 +317,11 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 
   // if the buffer is empty, raise the ccinterrupt
   // and wait for the cc to wake before starting the transmit
+  // testing has shown this to take up to 4ms.  adding 1 ms padding.
   tx_buffer_flushed = false;
   digitalWrite(CC_INTERRUPT_PIN, HIGH);
   if (tx_buffer.head == tx_buffer.tail) {
-    delay(1);
+    delay(5);
   }
 
   HardwareSerial::write(BEAN_SOF);

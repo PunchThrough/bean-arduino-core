@@ -1,14 +1,33 @@
 #include "Bean.h"
 #include "Arduino.h"
 #include <avr/sleep.h>
+#include <avr/interrupt.h>
+#include <avr/io.h>
 #include <avr/wdt.h>
 #include "wiring_private.h"
+
+#ifndef sleep_bod_disable() // not included in Arduino AVR toolset
+#define sleep_bod_disable() \
+do { \
+  uint8_t tempreg; \
+  __asm__ __volatile__("in %[tempreg], %[mcucr]" "\n\t" \
+                       "ori %[tempreg], %[bods_bodse]" "\n\t" \
+                       "out %[mcucr], %[tempreg]" "\n\t" \
+                       "andi %[tempreg], %[not_bodse]" "\n\t" \
+                       "out %[mcucr], %[tempreg]" \
+                       : [tempreg] "=&d" (tempreg) \
+                       : [mcucr] "I" _SFR_IO_ADDR(MCUCR), \
+                         [bods_bodse] "i" (_BV(BODS) | _BV(BODSE)), \
+                         [not_bodse] "i" (~_BV(BODSE))); \
+} while (0)
+#endif
+
 
   BeanClass Bean;
 
   static void wakeUp(void){
     // Do nothing.
-    // This function is called as an intterupt purely to wake
+    // This function is called as an interrupt purely to wake
     // us up.
     return;
   }
@@ -23,40 +42,88 @@
     // set our interrupt pin to input:
     const int interruptNum = 1;
 
-    // disable ADC
-    cbi(ADCSRA, ADEN);
+    bool adc_was_set = bit_is_set(ADCSRA, ADEN);
+    if(adc_was_set){
+      // disable ADC
+      ADCSRA &= ~(_BV(ADEN));
+    }
+
+    bool ac_was_set = bit_is_set(ACSR, ACD);
+    if(ac_was_set){
+      // disable ADC
+      ACSR &= ~(_BV(ACD));
+    }
 
 
-    /* Now is the time to set the sleep mode. In the Atmega8 datasheet
-     * http://www.atmel.com/dyn/resources/prod_documents/doc2486.pdf on page 35
-     * there is a list of sleep modes which explains which clocks and
-     * wake up sources are available in which sleep mode.
-     *
-     * In the avr/sleep.h file, the call names of these sleep modes are to be found:
-     *
-     * The 5 different modes are:
-     *     SLEEP_MODE_IDLE         -the least power savings
-     *     SLEEP_MODE_ADC
-     *     SLEEP_MODE_PWR_SAVE
-     *     SLEEP_MODE_STANDBY
-     *     SLEEP_MODE_PWR_DOWN     -the most power savings
-     *
-     * For now, we want as much power savings as possible, so we
-     * choose the according
-     * sleep mode: SLEEP_MODE_PWR_DOWN
-     *
-     */
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN);   // sleep mode is set here
-    sleep_enable();          // enables the sleep bit in the mcucr register
-                             // so sleep is possible. just a safety pin
+    // ensure that our interrupt line is an input
+    DDRD &= ~(_BV(3));
 
-    /* Now it is time to enable an interrupt. We do it here so an
-     * accidentally pushed interrupt button doesn't interrupt
-     * our running program. if you want to be able to run
-     * interrupt code besides the sleep function, place it in
-     * setup() for example.
-     *
-     * In the function call attachInterrupt(A, B, C)
+    // Details on how to manage sleep mode with AVR gotten from the avr-libc
+    // manual, found here: http://www.nongnu.org/avr-libc/user-manual/group__avr__sleep.html
+    // (block quote below)
+
+        // Note that unless your purpose is to completely lock the CPU (until a
+        // hardware reset), interrupts need to be enabled before going to sleep.
+
+        // As the sleep_mode() macro might cause race conditions in some situations,
+        // the individual steps of manipulating the sleep enable (SE) bit, and
+        // actually issuing the SLEEP instruction, are provided in the macros
+        // sleep_enable(), sleep_disable(), and sleep_cpu(). This also allows for
+        // test-and-sleep scenarios that take care of not missing the interrupt
+        // that will awake the device from sleep.
+
+        // Example:
+
+        //     #include <avr/interrupt.h>
+        //     #include <avr/sleep.h>
+
+        //     ...
+        //       set_sleep_mode(<mode>);
+        //       cli();
+        //       if (some_condition)
+        //       {
+        //         sleep_enable();
+        //         sei();
+        //         sleep_cpu();
+        //         sleep_disable();
+        //       }
+        //       sei();
+        // This sequence ensures an atomic test of some_condition with interrupts
+        // being disabled. If the condition is met, sleep mode will be prepared,
+        // and the SLEEP instruction will be scheduled immediately after an SEI
+        // instruction. As the intruction right after the SEI is guaranteed to be
+        // executed before an interrupt could trigger, it is sure the device will
+        // really be put to sleep.
+
+        // Some devices have the ability to disable the Brown Out Detector (BOD)
+        // before going to sleep. This will also reduce power while sleeping. 
+        // If the specific AVR device has this ability then an additional macro
+        // is defined: sleep_bod_disable(). This macro generates inlined assembly
+        // code that will correctly implement the timed sequence for disabling the
+        // BOD before sleeping. However, there is a limited number of cycles after
+        // the BOD has been disabled that the device can be put into sleep mode,
+        // otherwise the BOD will not truly be disabled. Recommended practice is
+        // to disable the BOD (sleep_bod_disable()), set the interrupts (sei()),
+        // and then put the device to sleep (sleep_cpu()), like so:
+
+        //     #include <avr/interrupt.h>
+        //     #include <avr/sleep.h>
+
+        //     ...
+        //       set_sleep_mode(<mode>);
+        //       cli();
+        //       if (some_condition)
+        //       {
+        //         sleep_enable();
+        //         sleep_bod_disable();
+        //         sei();
+        //         sleep_cpu();
+        //         sleep_disable();
+        //       }
+        //       sei();
+
+
+     /* In the function call attachInterrupt(A, B, C)
      * A   can be either 0 or 1 for interrupts on pin 2 or 3.
      *
      * B   Name of a function you want to execute at interrupt for A.
@@ -69,19 +136,31 @@
      *
      * In all but the IDLE sleep modes only LOW can be used.
      */
-
     attachInterrupt(interruptNum,wakeUp, LOW);
-    sleep_mode();            // here the device is actually put to sleep!!
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    cli();
+    if (bit_is_set(PIND, 3))
+    {
+      sleep_enable();
+      sleep_bod_disable();
+      sei();
+      sleep_cpu();
+      sleep_disable();
+    }
+    sei();
 
-    // THE PROGRAM CONTINUES FROM HERE AFTER WAKING UP
-
-    sleep_disable();
     detachInterrupt(interruptNum);
 
-    //re-enable adc
-    sbi(ADCSRA, ADEN);
-}
+    if(adc_was_set){
+      //re-enable adc
+      ADCSRA |= _BV(ADEN);
+    }
 
+    if(ac_was_set){
+      //re-enable analog compareter
+      ACSR |= _BV(ACD);
+    }
+}
   uint16_t BeanClass::getAccelerationX(void){
     ACC_READING_T reading;
     if(Serial.accelRead(&reading) == 0){

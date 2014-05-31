@@ -47,6 +47,9 @@ protected:
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
 
+  //temperature
+  int temperatureRead( int8_t* tempRead );
+
   //Arduino Sleep
   void sleep(uint32_t duration_ms);
 

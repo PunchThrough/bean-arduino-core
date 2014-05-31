@@ -452,6 +452,16 @@ int BeanSerialTransport::accelRead(ACC_READING_T* reading){
                         (size_t) 0, (uint8_t *) reading, &size);
 }
 
+/////////
+// Temperature
+/////////
+
+int BeanSerialTransport::temperatureRead( int8_t* tempRead )
+{
+  size_t size = 1;
+  return call_and_response( MSG_ID_CC_TEMP_READ, NULL,
+                        (size_t) 0, (uint8_t *) tempRead, &size);
+}
 
 ////////
 // Sleep

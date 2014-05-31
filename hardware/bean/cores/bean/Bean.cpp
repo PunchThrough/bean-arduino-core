@@ -96,7 +96,7 @@ do { \
         // really be put to sleep.
 
         // Some devices have the ability to disable the Brown Out Detector (BOD)
-        // before going to sleep. This will also reduce power while sleeping. 
+        // before going to sleep. This will also reduce power while sleeping.
         // If the specific AVR device has this ability then an additional macro
         // is defined: sleep_bod_disable(). This macro generates inlined assembly
         // code that will correctly implement the timed sequence for disabling the
@@ -171,6 +171,14 @@ do { \
     // this is an error state.  Is it worth a few retries?
     return 0;
   }
+
+int8_t BeanClass::getTemperature(void)
+{
+  int8_t temp = 0;
+  if ( Serial.temperatureRead(&temp) == 0) {
+    return temp;
+  }
+}
 
   uint16_t BeanClass::getAccelerationY(void){
     ACC_READING_T reading;

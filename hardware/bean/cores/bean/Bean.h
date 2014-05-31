@@ -17,6 +17,8 @@ public:
   uint16_t getAccelerationZ (void);
   AccelerationReading getAcceleration (void);
 
+  int8_t getTemperature (void);
+
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
   LedReading getLed(void);
   uint8_t getLedRed (void);

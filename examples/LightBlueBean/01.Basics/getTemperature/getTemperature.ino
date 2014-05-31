@@ -27,6 +27,6 @@ void loop()
    Serial.write( buffer, 1 );
  }
   
- // Sleep for a second before checking the pins again  
+ // Sleep for a second before reading the temperature again  
  Bean.sleep(1000);  
 }

@@ -321,7 +321,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   tx_buffer_flushed = false;
   digitalWrite(CC_INTERRUPT_PIN, HIGH);
   if (tx_buffer.head == tx_buffer.tail) {
-    delay(5);
+    delay(10);
   }
 
   HardwareSerial::write(BEAN_SOF);
@@ -407,14 +407,21 @@ void BeanSerialTransport::BTSetTxPower(const BT_TXPOWER_DB_T& power){
   write_message(MSG_ID_BT_SET_TX_PWR, (const uint8_t*)&power, sizeof(BT_TXPOWER_DB_T));
 }
 
-void BeanSerialTransport::BTSetScratchChar(BT_SCRATCH_T setting){
-  write_message(MSG_ID_BT_SET_SCRATCH, (uint8_t*)&setting, sizeof(setting));
+void BeanSerialTransport::BTSetScratchChar(BT_SCRATCH_T* setting, uint8_t length){
+  write_message(MSG_ID_BT_SET_SCRATCH, (uint8_t*)setting, (size_t)length);
 };
 
-int BeanSerialTransport::BTGetScratchChar(BT_SCRATCH_T* scratch){
-  size_t size = sizeof(BT_SCRATCH_T);
-  return call_and_response(MSG_ID_BT_GET_SCRATCH, NULL,
-                        0, (uint8_t *) scratch, &size);
+int BeanSerialTransport::BTGetScratchChar(uint8_t scratchNum, ScratchData * scratchData){
+  int rtnVal;
+  size_t lengthSt = sizeof(BT_SCRATCH_T);
+  uint8_t buffer[1] = {scratchNum};
+
+  rtnVal = call_and_response(MSG_ID_BT_GET_SCRATCH, buffer,
+                        (size_t)1, (uint8_t*)scratchData, &lengthSt);
+  // magic: -1 for length byte
+  scratchData->length = (uint8_t)lengthSt - 1;
+
+  return rtnVal;
 };
 
 int  BeanSerialTransport::BTGetConfig(BT_RADIOCONFIG_T *config){
@@ -462,6 +469,18 @@ int BeanSerialTransport::temperatureRead( int8_t* tempRead )
   return call_and_response( MSG_ID_CC_TEMP_READ, NULL,
                         (size_t) 0, (uint8_t *) tempRead, &size);
 }
+
+/////////
+// Battery Level
+/////////
+int BeanSerialTransport::batteryRead( uint8_t* level )
+{
+  size_t size = 1;
+  return call_and_response( MSG_ID_CC_BATT_READ, NULL,
+                      (size_t) 0, (uint8_t *)level, &size );
+
+}
+
 
 ////////
 // Sleep

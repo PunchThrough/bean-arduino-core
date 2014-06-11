@@ -5,11 +5,6 @@
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
-struct ScratchData {
-  uint8_t length;
-  uint8_t data[20];
-};
-
 class BeanClass {
 public:
   uint16_t getAccelerationX (void);
@@ -18,6 +13,7 @@ public:
   AccelerationReading getAcceleration (void);
 
   int8_t getTemperature (void);
+  uint8_t getBatteryLevel (void);
 
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
   LedReading getLed(void);
@@ -28,10 +24,10 @@ public:
   void setLedGreen(uint8_t intensity);
   void setLedBlue(uint8_t intensity);
 
-  // bool setScratchData(uint8_t bank, const uint8_t[] data, uint8_t dataLength);
-  // bool setScratchNumber(uint8_t bank, uint32_t data);
-  // ScratchData readScratchData(uint8 bank);
-  // long readScratchNumber(uint8 bank);
+  bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
+  bool setScratchNumber(uint8_t bank, uint32_t data);
+  ScratchData readScratchData(uint8_t bank);
+  long readScratchNumber(uint8_t bank);
 
   void sleep(uint32_t duration_ms);
 

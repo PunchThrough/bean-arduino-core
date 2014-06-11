@@ -23,6 +23,8 @@ do { \
 #endif
 
 
+#define MAX_SCRATCH_SIZE (20)
+
   BeanClass Bean;
 
   static void wakeUp(void){
@@ -175,9 +177,19 @@ do { \
 int8_t BeanClass::getTemperature(void)
 {
   int8_t temp = 0;
-  if ( Serial.temperatureRead(&temp) == 0) {
-    return temp;
-  }
+
+  Serial.temperatureRead(&temp);
+
+  return temp;
+}
+
+uint8_t BeanClass::getBatteryLevel(void)
+{
+  uint8_t level = 0;
+
+  Serial.batteryRead(&level);
+
+  return level;
 }
 
   uint16_t BeanClass::getAccelerationY(void){
@@ -290,4 +302,67 @@ int8_t BeanClass::getTemperature(void)
 
     memset(&reading, 0, sizeof(reading));
     return reading;
+  }
+
+  bool BeanClass::setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength)
+  {
+    bool errorRtn = true;
+
+    if ( dataLength <= MAX_SCRATCH_SIZE )
+    {
+      BT_SCRATCH_T scratch;
+      scratch.number = bank;
+      memcpy( (void*)scratch.scratch, (void*)data, dataLength);
+      // magic: +1 due to bank byte
+      Serial.BTSetScratchChar(&scratch, (uint8_t)(dataLength+1));
+    }
+    else
+    {
+      errorRtn = false;
+    }
+
+    return errorRtn;
+  }
+
+  bool BeanClass::setScratchNumber(uint8_t bank, uint32_t data)
+  {
+    bool errorRtn = true;
+    BT_SCRATCH_T scratch;
+    scratch.number = bank;
+
+    scratch.scratch[0] = data & 0xFF;
+    scratch.scratch[1] = data >> 8UL;
+    scratch.scratch[2] = data >> 16UL;
+    scratch.scratch[3] = data >> 24UL;
+
+    // magic: 4 for data, 1 for scratch bank
+    Serial.BTSetScratchChar(&scratch, 4+1);
+
+    return errorRtn;
+  }
+
+  ScratchData BeanClass::readScratchData(uint8_t bank)
+  {
+    ScratchData scratchTempBuffer;
+
+    memset( scratchTempBuffer.data, 0, 20);
+    Serial.BTGetScratchChar( bank, &scratchTempBuffer );
+
+    return scratchTempBuffer;
+  }
+
+  long BeanClass::readScratchNumber(uint8_t bank)
+  {
+    long returnNum = 0;
+    static ScratchData scratchNumBuffer;
+
+    memset( scratchNumBuffer.data, 0, 20);
+    Serial.BTGetScratchChar( bank, &scratchNumBuffer );
+
+    returnNum |= (long)scratchNumBuffer.data[0] & 0xFF;
+    returnNum |= (long)scratchNumBuffer.data[1] << 8UL;
+    returnNum |= (long)scratchNumBuffer.data[2] << 16UL;
+    returnNum |= (long)scratchNumBuffer.data[3] << 24UL;
+
+    return returnNum;
   }

@@ -5,6 +5,11 @@
 #include "HardwareSerial.h"
 #include "applicationMessageHeaders/AppMessages.h"
 
+struct ScratchData {
+  uint8_t length;
+  uint8_t data[20];
+};
+
 // Used for waking the CC out of deep sleep mode.
 #define CC_INTERRUPT_PIN (13)
 
@@ -35,8 +40,8 @@ protected:
   void BTSetLocalName(const char* name);
   void BTSetPairingPin(const uint16_t pin);
   void BTSetTxPower(const BT_TXPOWER_DB_T& power);
-  void BTSetScratchChar(BT_SCRATCH_T setting);
-  int  BTGetScratchChar(BT_SCRATCH_T *scratch);
+  void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
+  int  BTGetScratchChar(uint8_t scratchNum, ScratchData * scratchData);
   int  BTGetConfig(BT_RADIOCONFIG_T *config);
 
   //LED Control
@@ -49,6 +54,9 @@ protected:
 
   //temperature
   int temperatureRead( int8_t* tempRead );
+
+  //battery
+  int batteryRead( uint8_t* level );
 
   //Arduino Sleep
   void sleep(uint32_t duration_ms);

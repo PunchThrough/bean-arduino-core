@@ -192,6 +192,24 @@ uint8_t BeanClass::getBatteryLevel(void)
   return level;
 }
 
+uint16_t BeanClass::getBatteryVoltage(void)
+{
+  uint32_t actualVoltage = 0;
+  uint8_t level = 0;
+
+  Serial.batteryRead(&level);
+
+  // This may not return accurate readings.  Conversion is subject to change.
+  // The conversion function from voltage to level is as follows:
+  //  f(x) = x * (63.53) - 124.26
+  //
+  //  solve for voltage and you get the function below, including fixed-point scaling
+  //  with two decimal points of precision
+  actualVoltage = (((uint32_t)100 * (uint32_t)level + (uint32_t)12426 ) * (uint32_t)100 ) / 6353;
+
+  return (uint16_t)actualVoltage;
+}
+
   uint16_t BeanClass::getAccelerationY(void){
     ACC_READING_T reading;
     if(Serial.accelRead(&reading) == 0){

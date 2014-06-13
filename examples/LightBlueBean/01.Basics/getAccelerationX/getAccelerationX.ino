@@ -20,5 +20,5 @@ int16_t r = abs(accelX) / 4;
  
 Bean.setLed((uint8_t)r, 0, 0);
  
-delay(50);
+Bean.sleep(50);
 }

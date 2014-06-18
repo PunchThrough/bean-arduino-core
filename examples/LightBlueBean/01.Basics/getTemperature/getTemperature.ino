@@ -20,11 +20,8 @@ void loop()
  {
    temp = newTemp;
    
-   uint8_t buffer[1];
-   buffer[0] = temp;
-   
-   
-   Serial.write( buffer, 1 );
+   Serial.print("Temperature: ");
+   Serial.println(temp);
  }
   
  // Sleep for a second before reading the temperature again  

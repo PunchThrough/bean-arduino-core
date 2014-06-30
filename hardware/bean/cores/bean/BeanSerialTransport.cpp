@@ -321,7 +321,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   tx_buffer_flushed = false;
   digitalWrite(CC_INTERRUPT_PIN, HIGH);
   if (tx_buffer.head == tx_buffer.tail) {
-    delay(5);
+    delay(7);
   }
 
   HardwareSerial::write(BEAN_SOF);

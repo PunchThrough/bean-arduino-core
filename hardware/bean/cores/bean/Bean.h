@@ -33,6 +33,10 @@ public:
   void sleep(uint32_t duration_ms);
 
   BeanClass(){}
+
+private:
+  bool attemptSleep( uint32_t duration_ms);
+
 };
 
 extern BeanClass Bean;

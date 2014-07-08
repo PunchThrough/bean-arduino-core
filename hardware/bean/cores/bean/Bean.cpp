@@ -34,12 +34,74 @@ do { \
     return;
   }
 
-  void BeanClass::sleep(uint32_t duration_ms){
+  #define MAX_SLEEP_POLL (30)
+  #define MAX_DELAY (30000)
+  #define MIN_SLEEP_TIME (10)
+
+  bool BeanClass::attemptSleep( uint32_t duration_ms )
+  {
+    // ensure that our interrupt line is an input
+    DDRD &= ~(_BV(3));
+
+    bool sleepLineSet = false;
+    uint8_t pollCount = 0;
 
     // Send the sleep message to the TI and wait for it to
     // finish sending.
     Serial.sleep(duration_ms);
     Serial.flush();
+
+    while ( sleepLineSet == false && pollCount++ < MAX_SLEEP_POLL)
+    {
+      delay(1);
+      if ( ( PIND & _BV(3) ) > 0 )
+      {
+        sleepLineSet = true;
+      }
+    }
+
+    return sleepLineSet;
+  }
+
+  void BeanClass::sleep(uint32_t duration_ms){
+    // ensure that our interrupt line is an input
+    DDRD &= ~(_BV(3));
+
+    // There's no point in sleeping if the duration is <= 10ms
+    if ( duration_ms < MIN_SLEEP_TIME )
+    {
+      delay( duration_ms );
+      return;
+    }
+
+    // poll and wait for interrupt line to go HIGH (sleep)
+
+    // attempt sleep, if it fails, waited a total of 10ms
+    bool sleeping = false;
+
+    sleeping = attemptSleep( duration_ms );
+
+    if ( !sleeping && duration_ms > MAX_DELAY )
+    {
+      // keep trying until the end of delay period
+      while( duration_ms > 0 && false == sleeping )
+      {
+        duration_ms = ( duration_ms >= MAX_SLEEP_POLL ) ? duration_ms - MAX_SLEEP_POLL : 0;
+        sleeping = attemptSleep( duration_ms );
+      }
+    }
+    else if ( !sleeping && duration_ms > MAX_SLEEP_POLL )
+    {
+        // take out the time we've already delayed
+        delay( duration_ms - MAX_SLEEP_POLL );
+        sleeping = false;
+    }
+
+    // if we never slept, don't set interrupts
+    if ( sleeping == false )
+    {
+      return;
+    }
 
     // set our interrupt pin to input:
     const int interruptNum = 1;
@@ -56,9 +118,6 @@ do { \
       ACSR &= ~(_BV(ACD));
     }
 
-
-    // ensure that our interrupt line is an input
-    DDRD &= ~(_BV(3));
 
     // Details on how to manage sleep mode with AVR gotten from the avr-libc
     // manual, found here: http://www.nongnu.org/avr-libc/user-manual/group__avr__sleep.html

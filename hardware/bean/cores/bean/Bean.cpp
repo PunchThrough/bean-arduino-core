@@ -354,6 +354,16 @@ ISR(PCINT0_vect)
     Serial.accelRangeSet( range );
   }
 
+void BeanClass::enableAdvertising( bool enable, uint32_t timer )
+{
+  Serial.BTSetAdvertisingOnOff( enable, timer );
+}
+
+void BeanClass::enableAdvertising( bool enable )
+{
+  Serial.BTSetAdvertisingOnOff( enable, 0 );
+}
+
 int8_t BeanClass::getTemperature(void)
 {
   int8_t temp = 0;

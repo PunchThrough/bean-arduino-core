@@ -39,6 +39,8 @@ public:
 
   void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
   void detachChangeInterrupt(uint8_t pin);
+  void enableAdvertising(bool enable, uint32_t timer);
+  void enableAdvertising(bool enable);
 
   BeanClass(){}
 

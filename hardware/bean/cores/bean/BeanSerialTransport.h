@@ -34,7 +34,7 @@ protected:
 
 // API Control
   //BT
-  void BTSetAdvertisingOnOff(const bool setting);
+  void BTSetAdvertisingOnOff(const bool setting, uint32_t timer);
   void BTSetAdvertisingInterval(const int interval_ms);
   void BTSetConnectionInterval(const int interval_ms);
   void BTSetLocalName(const char* name);

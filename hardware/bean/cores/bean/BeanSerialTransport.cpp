@@ -379,8 +379,11 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
 /// Radio
 /////////
 
-  void BeanSerialTransport::BTSetAdvertisingOnOff(const bool setting){
-    write_message(MSG_ID_BT_ADV_ONOFF, (const uint8_t*)&setting, sizeof(setting));
+  void BeanSerialTransport::BTSetAdvertisingOnOff(const bool setting, uint32_t timer){
+    BT_ADV_ONOFF_T advOnOff;
+    advOnOff.adv_timer = setting;
+    advOnOff.adv_onOff = setting ? 1 : 0;
+    write_message(MSG_ID_BT_ADV_ONOFF, (const uint8_t*)&advOnOff, sizeof(advOnOff));
   };
 
   void BeanSerialTransport::BTSetLocalName(const char* name){

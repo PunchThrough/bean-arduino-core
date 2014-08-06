@@ -340,6 +340,20 @@ ISR(PCINT0_vect)
     return 0;
   }
 
+  uint8_t BeanClass::getAccelerationRange( void )
+  {
+    uint8_t range = 0;
+    if (Serial.accelRangeRead(&range) == 0)
+    {
+      return range;
+    }
+  }
+
+  void BeanClass::setAccelerationRange( uint8_t range )
+  {
+    Serial.accelRangeSet( range );
+  }
+
 int8_t BeanClass::getTemperature(void)
 {
   int8_t temp = 0;

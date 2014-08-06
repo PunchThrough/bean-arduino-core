@@ -51,6 +51,8 @@ protected:
 
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
+  int accelRangeRead( uint8_t *range);
+  void accelRangeSet( uint8_t range );
 
   //temperature
   int temperatureRead( int8_t* tempRead );

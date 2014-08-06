@@ -462,6 +462,17 @@ int BeanSerialTransport::accelRead(ACC_READING_T* reading){
                         (size_t) 0, (uint8_t *) reading, &size);
 }
 
+int BeanSerialTransport::accelRangeRead( uint8_t *range)
+{
+  size_t size = sizeof(uint8_t);
+  return call_and_response(MSG_ID_CC_ACCEL_GET_RANGE, NULL,
+                        (size_t) 0, (uint8_t *)range, &size);
+}
+
+void BeanSerialTransport::accelRangeSet( uint8_t range )
+{
+  write_message(MSG_ID_CC_ACCEL_SET_RANGE, (const uint8_t *)&range, sizeof(range));
+}
 /////////
 // Temperature
 /////////

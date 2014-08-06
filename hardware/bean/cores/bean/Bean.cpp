@@ -22,8 +22,40 @@ do { \
 } while (0)
 #endif
 
-
 #define MAX_SCRATCH_SIZE (20)
+#define NUM_BEAN_PINS 7
+
+static volatile voidFuncPtr intFunc;
+
+// Pin change interrupt vectors
+
+// D0
+ISR(PCINT2_vect)
+{
+  if(intFunc)
+  {
+    intFunc();
+  }
+}
+
+// Analog 0, Analog 1
+ISR(PCINT1_vect)
+{
+  if (intFunc)
+  {
+    intFunc();
+  }
+}
+
+// D1-D5
+ISR(PCINT0_vect)
+{
+  if (intFunc)
+  {
+    intFunc();
+  }
+}
+
 
   BeanClass Bean;
 
@@ -222,6 +254,81 @@ do { \
       ACSR |= _BV(ACD);
     }
 }
+
+
+  void BeanClass::attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) )
+  {
+
+      switch( pin )
+      {
+        case 0:
+          PCICR |= _BV(PCIE2);
+          PCMSK2 |= _BV(PCINT22);
+          break;
+        case 1:
+          PCICR |= _BV(PCIE0);
+          PCMSK0 |= _BV(PCINT1);
+          break;
+        case 2:
+          PCICR |= _BV(PCIE0);
+          PCMSK0 |= _BV(PCINT2);
+          break;
+        case 3:
+          PCICR |= _BV(PCIE0);
+          PCMSK0 |= _BV(PCINT3);
+          break;
+        case 4:
+          PCICR |= _BV(PCIE0);
+          PCMSK0 |= _BV(PCINT4);
+          break;
+        case 5:
+          PCICR |= _BV(PCIE0);
+          PCMSK0 |= _BV(PCINT5);
+          break;
+
+        default:
+          break;
+      }
+
+      intFunc = userFunc;
+  }
+
+  void BeanClass::detachChangeInterrupt(uint8_t pin)
+  {
+      switch( pin )
+      {
+        case 0:
+          PCICR &= ~_BV(PCIE2);
+          PCMSK2 &= ~_BV(PCINT22);
+          break;
+        case 1:
+          PCICR &= ~_BV(PCIE0);
+          PCMSK0 &= ~_BV(PCINT1);
+          break;
+        case 2:
+          PCICR &= ~_BV(PCIE0);
+          PCMSK0 &= ~_BV(PCINT2);
+          break;
+        case 3:
+          PCICR &= ~_BV(PCIE0);
+          PCMSK0 &= ~_BV(PCINT3);
+          break;
+        case 4:
+          PCICR &= ~_BV(PCIE0);
+          PCMSK0 &= ~_BV(PCINT4);
+          break;
+        case 5:
+          PCICR &= ~_BV(PCIE0);
+          PCMSK0 &= ~_BV(PCINT5);
+          break;
+
+        default:
+          break;
+      }
+
+      intFunc = NULL;
+  }
+
   uint16_t BeanClass::getAccelerationX(void){
     ACC_READING_T reading;
     if(Serial.accelRead(&reading) == 0){

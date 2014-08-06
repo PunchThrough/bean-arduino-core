@@ -5,6 +5,7 @@
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
+
 class BeanClass {
 public:
   uint16_t getAccelerationX (void);
@@ -31,6 +32,9 @@ public:
   long readScratchNumber(uint8_t bank);
 
   void sleep(uint32_t duration_ms);
+
+  void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
+  void detachChangeInterrupt(uint8_t pin);
 
   BeanClass(){}
 

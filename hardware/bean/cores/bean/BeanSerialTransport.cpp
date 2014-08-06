@@ -336,6 +336,9 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
 
   HardwareSerial::write(BEAN_EOF);
 
+  // throttle the transfer speed
+  delay(10);
+
   return body_length;
 }
 

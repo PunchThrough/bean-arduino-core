@@ -43,6 +43,10 @@ protected:
   void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
   int  BTGetScratchChar(uint8_t scratchNum, ScratchData * scratchData);
   int  BTGetConfig(BT_RADIOCONFIG_T *config);
+  int  BTGetStates(BT_STATES_T * btStates );
+  void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid );
+  void BTBeaconModeEnable( bool beaconEnable );
+
 
   //LED Control
   void ledSet(const LED_SETTING_T &setting);

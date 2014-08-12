@@ -41,6 +41,11 @@ public:
   void detachChangeInterrupt(uint8_t pin);
   void enableAdvertising(bool enable, uint32_t timer);
   void enableAdvertising(bool enable);
+  bool getConnectionState( void );
+  bool getAdvertisingState( void );
+  void setBeanName( const char* name );
+  void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
+  void setBeaconEnable( bool beaconEnable );
 
   BeanClass(){}
 

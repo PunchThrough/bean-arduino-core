@@ -364,6 +364,26 @@ void BeanClass::enableAdvertising( bool enable )
   Serial.BTSetAdvertisingOnOff( enable, 0 );
 }
 
+bool BeanClass::getConnectionState( void )
+{
+  BT_STATES_T btStates;
+    if(Serial.BTGetStates(&btStates)== 0)
+    {
+      return (bool)btStates.conn_state;
+    }
+  return 0;
+}
+
+bool BeanClass::getAdvertisingState( void )
+{
+  BT_STATES_T btStates;
+    if(Serial.BTGetStates(&btStates)== 0)
+    {
+      return (bool)btStates.adv_state;
+    }
+  return 0;
+}
+
 int8_t BeanClass::getTemperature(void)
 {
   int8_t temp = 0;
@@ -573,4 +593,19 @@ uint16_t BeanClass::getBatteryVoltage(void)
     returnNum |= (long)scratchNumBuffer.data[3] << 24UL;
 
     return returnNum;
+  }
+
+  void BeanClass::setBeanName( const char* name )
+  {
+    Serial.BTSetLocalName( name );
+  }
+
+  void BeanClass::setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id )
+  {
+    Serial.BTSetBeaconParams( uuid, major_id, minor_id );
+  }
+
+  void BeanClass::setBeaconEnable( bool beaconEnable )
+  {
+    Serial.BTBeaconModeEnable( beaconEnable );
   }

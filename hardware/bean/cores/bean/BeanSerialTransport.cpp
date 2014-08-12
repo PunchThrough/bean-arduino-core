@@ -389,9 +389,23 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
   void BeanSerialTransport::BTSetLocalName(const char* name){
     if(name == NULL)
       name = "";
+
+    size_t length = strlen(name);
+    if ( length > 20 )
+    {
+      length = 20;
+    }
+
     write_message(MSG_ID_BT_SET_LOCAL_NAME, (const uint8_t*)name,
-      strlen(name) + 1);
+      length);
   };
+
+  int BeanSerialTransport::BTGetStates(BT_STATES_T * btStates )
+  {
+    size_t length = sizeof(BT_STATES_T);
+    return call_and_response(MSG_ID_BT_GET_STATES, NULL,
+                        (size_t)0, (uint8_t*)btStates, &length);
+  }
 
   void BeanSerialTransport::BTSetPairingPin(const uint16_t pin){
     write_message(MSG_ID_BT_SET_PIN, (const uint8_t*)&pin, sizeof(pin));
@@ -436,6 +450,36 @@ int  BeanSerialTransport::BTGetConfig(BT_RADIOCONFIG_T *config){
                         0, (uint8_t *) config, &size);
 };
 
+void BeanSerialTransport::BTBeaconModeEnable( bool beaconEnable )
+{
+  BT_RADIOCONFIG_T radioConfig;
+  size_t size = sizeof(BT_RADIOCONFIG_T);
+  int response = call_and_response(MSG_ID_BT_GET_CONFIG, NULL, 0, (uint8_t *)&radioConfig, &size );
+
+  if ( 0 == response )
+  {
+    radioConfig.adv_mode = ( beaconEnable ? ADV_IBEACON : ADV_STANDARD);
+    write_message(MSG_ID_BT_SET_CONFIG, (const uint8_t*)&radioConfig,
+      size);
+  }
+}
+
+void BeanSerialTransport::BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid )
+{
+  BT_RADIOCONFIG_T radioConfig;
+  size_t size = sizeof(BT_RADIOCONFIG_T);
+  int response = call_and_response(MSG_ID_BT_GET_CONFIG, NULL, 0, (uint8_t *)&radioConfig, &size );
+
+  if ( 0 == response )
+  {
+    radioConfig.ibeacon_uuid = uuid;
+    radioConfig.ibeacon_major = majorid;
+    radioConfig.ibeacon_minor = minorid;
+    write_message(MSG_ID_BT_SET_CONFIG, (const uint8_t*)&radioConfig,
+      size);
+  }
+
+}
 
 ////////
 // LED

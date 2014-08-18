@@ -43,7 +43,7 @@ public:
   void enableAdvertising(bool enable);
   bool getConnectionState( void );
   bool getAdvertisingState( void );
-  void setBeanName( const char* name );
+  void setBeanName( const String &s );
   void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
   void setBeaconEnable( bool beaconEnable );
 

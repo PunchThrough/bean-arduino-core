@@ -595,9 +595,9 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return returnNum;
   }
 
-  void BeanClass::setBeanName( const char* name )
+  void BeanClass::setBeanName( const String &s )
   {
-    Serial.BTSetLocalName( name );
+    Serial.BTSetLocalName( (const char*)s.c_str() );
   }
 
   void BeanClass::setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id )

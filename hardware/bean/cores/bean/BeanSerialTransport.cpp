@@ -381,7 +381,7 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
 
   void BeanSerialTransport::BTSetAdvertisingOnOff(const bool setting, uint32_t timer){
     BT_ADV_ONOFF_T advOnOff;
-    advOnOff.adv_timer = setting;
+    advOnOff.adv_timer = timer;
     advOnOff.adv_onOff = setting ? 1 : 0;
     write_message(MSG_ID_BT_ADV_ONOFF, (const uint8_t*)&advOnOff, sizeof(advOnOff));
   };

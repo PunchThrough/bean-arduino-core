@@ -6,4 +6,4 @@ lightblue-bean.build.mcu=atmega328p
 lightblue-bean.build.f_cpu=8000000L
 lightblue-bean.build.core=bean
 lightblue-bean.build.variant=bean
-lightblue-bean.build.post_compile_script=Bean Loader.app/Contents/Resources/post_compile
+lightblue-bean.build.post_compile_script=../bean/post_compile

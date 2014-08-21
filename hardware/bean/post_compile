@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#
+#  post_compile
+#  Cortado
+#
+#  Created by Matt Bauer on 2/24/14.
+#  Copyright (c) 2014 Punch Through Design LLC. All rights reserved.
+#
+
+if [ -z "$BEAN_LOADER_APP" ]; then
+  BEAN_LOADER_APP=/Applications/Bean\ Loader.app
+fi
+
+open -g "$BEAN_LOADER_APP"

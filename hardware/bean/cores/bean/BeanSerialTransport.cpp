@@ -552,7 +552,7 @@ void BeanSerialTransport::sleep(uint32_t duration_ms){
 
 void BeanSerialTransport::enableWakeOnConnect( bool enable )
 {
-  uint8_t enableBuff = (enableBuff == true ) ? 1 : 0;
+  uint8_t enableBuff = (enable == true ) ? 1 : 0;
 
   write_message(MSG_ID_AR_WAKE_ON_CONNECT, (const uint8_t *)&enableBuff, sizeof(enableBuff));
 }

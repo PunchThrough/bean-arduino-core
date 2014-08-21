@@ -609,3 +609,8 @@ uint16_t BeanClass::getBatteryVoltage(void)
   {
     Serial.BTBeaconModeEnable( beaconEnable );
   }
+
+  void BeanClass::enableWakeOnConnect( bool enable )
+  {
+    Serial.enableWakeOnConnect( enable );
+  }

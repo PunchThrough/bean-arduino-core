@@ -46,6 +46,7 @@ public:
   void setBeanName( const String &s );
   void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
   void setBeaconEnable( bool beaconEnable );
+  void enableWakeOnConnect( bool enable );
 
   BeanClass(){}
 

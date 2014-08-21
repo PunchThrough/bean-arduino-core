@@ -66,6 +66,7 @@ protected:
 
   //Arduino Sleep
   void sleep(uint32_t duration_ms);
+  void enableWakeOnConnect( bool enable );
 
 
 public:

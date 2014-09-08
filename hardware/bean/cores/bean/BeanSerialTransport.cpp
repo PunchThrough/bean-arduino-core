@@ -405,7 +405,7 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
      memcpy( (void*)radioConfig.local_name, (void*)name, length );
      radioConfig.local_name_size = length;
 
-     uint16_t msgId = ( self.saveConfigEnable ? MSG_ID_BT_SET_CONFIG : MSG_ID_BT_SET_CONFIG_NOSAVE );
+     uint16_t msgId = MSG_ID_BT_SET_CONFIG;
 
      write_message(msgId, (const uint8_t*)&radioConfig, size);
     }

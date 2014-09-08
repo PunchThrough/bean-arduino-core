@@ -396,8 +396,20 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
       length = 20;
     }
 
-    write_message(MSG_ID_BT_SET_LOCAL_NAME, (const uint8_t*)name,
-      length);
+    BT_RADIOCONFIG_T radioConfig;
+    size_t size = sizeof(BT_RADIOCONFIG_T);
+    int response = call_and_response(MSG_ID_BT_GET_CONFIG, NULL, 0, (uint8_t *)&radioConfig, &size );
+
+    if ( 0 == response )
+    {
+     memcpy( (void*)radioConfig.local_name, (void*)name, length );
+     radioConfig.local_name_size = length;
+
+     uint16_t msgId = ( self.saveConfigEnable ? MSG_ID_BT_SET_CONFIG : MSG_ID_BT_SET_CONFIG_NOSAVE );
+
+     write_message(msgId, (const uint8_t*)&radioConfig, size);
+    }
+
   };
 
   int BeanSerialTransport::BTGetStates(BT_STATES_T * btStates )

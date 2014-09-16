@@ -281,6 +281,8 @@ void BeanSerialTransport::begin(void){
   HardwareSerial::begin(57600);
   pinMode(CC_INTERRUPT_PIN, OUTPUT);
 
+  m_enableSave = true;
+
   if (tx_buffer.head == tx_buffer.tail){
     tx_buffer_flushed = true;
     digitalWrite(CC_INTERRUPT_PIN, LOW);
@@ -405,7 +407,7 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
      memcpy( (void*)radioConfig.local_name, (void*)name, length );
      radioConfig.local_name_size = length;
 
-     uint16_t msgId = MSG_ID_BT_SET_CONFIG;
+     uint16_t msgId = ( m_enableSave ? MSG_ID_BT_SET_CONFIG: MSG_ID_BT_SET_CONFIG_NOSAVE );
 
      write_message(msgId, (const uint8_t*)&radioConfig, size);
     }
@@ -471,7 +473,9 @@ void BeanSerialTransport::BTBeaconModeEnable( bool beaconEnable )
   if ( 0 == response )
   {
     radioConfig.adv_mode = ( beaconEnable ? ADV_IBEACON : ADV_STANDARD);
-    write_message(MSG_ID_BT_SET_CONFIG, (const uint8_t*)&radioConfig,
+    uint16_t msgId = ( m_enableSave ? MSG_ID_BT_SET_CONFIG : MSG_ID_BT_SET_CONFIG_NOSAVE );
+
+    write_message(msgId, (const uint8_t*)&radioConfig,
       size);
   }
 }
@@ -487,7 +491,10 @@ void BeanSerialTransport::BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uin
     radioConfig.ibeacon_uuid = uuid;
     radioConfig.ibeacon_major = majorid;
     radioConfig.ibeacon_minor = minorid;
-    write_message(MSG_ID_BT_SET_CONFIG, (const uint8_t*)&radioConfig,
+
+    uint16_t msgId = ( m_enableSave ? MSG_ID_BT_SET_CONFIG : MSG_ID_BT_SET_CONFIG_NOSAVE );
+
+    write_message(msgId, (const uint8_t*)&radioConfig,
       size);
   }
 
@@ -694,6 +701,10 @@ void BeanSerialTransport::debugLoopBackFullSerialMessages(){
   }
 }
 
+void BeanSerialTransport::BTSetEnableConfigSave(bool enableSave)
+{
+  m_enableSave = enableSave;
+}
 
 
 //Preinstantiate Objects //////////////////////////////////////////////////////

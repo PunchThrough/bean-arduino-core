@@ -18,7 +18,7 @@ public:
   int8_t getTemperature (void);
   uint8_t getBatteryLevel (void);
   uint16_t getBatteryVoltage (void);
-
+  void enableConfigSave( bool enableSave );
 
 
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
@@ -52,6 +52,7 @@ public:
 
 private:
   bool attemptSleep( uint32_t duration_ms);
+
 
 };
 

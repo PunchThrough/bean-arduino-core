@@ -35,6 +35,7 @@ protected:
 // API Control
   //BT
   void BTSetAdvertisingOnOff(const bool setting, uint32_t timer);
+  void BTSetEnableConfigSave(bool enableSave);
   void BTSetAdvertisingInterval(const int interval_ms);
   void BTSetConnectionInterval(const int interval_ms);
   void BTSetLocalName(const char* name);
@@ -67,6 +68,9 @@ protected:
   //Arduino Sleep
   void sleep(uint32_t duration_ms);
   void enableWakeOnConnect( bool enable );
+
+  bool m_enableSave;
+
 
 
 public:

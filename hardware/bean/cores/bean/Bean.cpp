@@ -95,6 +95,11 @@ ISR(PCINT0_vect)
     return sleepLineSet;
   }
 
+  void BeanClass::enableConfigSave( bool enableSave )
+  {
+    Serial.BTSetEnableConfigSave( enableSave );
+  }
+
   void BeanClass::sleep(uint32_t duration_ms){
     // ensure that our interrupt line is an input
     DDRD &= ~(_BV(3));

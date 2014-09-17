@@ -37,6 +37,8 @@
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
 #endif
 
+  #define IS_BEAN (1)
+
 static const uint8_t SS   = 10;
 static const uint8_t MOSI = 11;
 static const uint8_t MISO = 12;
@@ -91,7 +93,7 @@ static const uint8_t A7 = 21;
 //
 // 0-7 PE0-PE7   works
 // 8-13 PB0-PB5  works
-// 14-21 PA0-PA7 works 
+// 14-21 PA0-PA7 works
 // 22-29 PH0-PH7 works
 // 30-35 PG5-PG0 works
 // 36-43 PC7-PC0 works
@@ -176,13 +178,13 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
-	TIMER0A, /* 0 - port D */ // Swapped With D6 
+	TIMER0A, /* 0 - port D */ // Swapped With D6
 	TIMER1A,      // Swapped with D9
 	TIMER1B,      // Swapped with D10
 	TIMER2A,      // Swapped with D11
 	NOT_ON_TIMER, // Swapped with D12
 	NOT_ON_TIMER, // Swapped with D13
-	NOT_ON_TIMER, // Swapped with D0 
+	NOT_ON_TIMER, // Swapped with D0
 	NOT_ON_TIMER,
 	NOT_ON_TIMER, /* 8 - port B */
 	NOT_ON_TIMER, // Swapped with D1
@@ -191,7 +193,7 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // Swapped with D4
 	TIMER0B,      // Swapped with D5
 	NOT_ON_TIMER, /* 14 - port C */
-	NOT_ON_TIMER, 
+	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,
 	NOT_ON_TIMER,

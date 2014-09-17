@@ -41,6 +41,13 @@ int analogRead(uint8_t pin)
 {
 	uint8_t low, high;
 
+#if defined(IS_BEAN)
+	if ( 0 == pin )
+		pin = 18;
+	if ( 1 == pin )
+		pin = 19;
+#endif
+
 #if defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 	if (pin >= 54) pin -= 54; // allow for channel or pin numbers
 #elif defined(__AVR_ATmega32U4__)
@@ -52,7 +59,7 @@ int analogRead(uint8_t pin)
 #else
 	if (pin >= 14) pin -= 14; // allow for channel or pin numbers
 #endif
-	
+
 #if defined(__AVR_ATmega32U4__)
 	pin = analogPinToChannel(pin);
 	ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((pin >> 3) & 0x01) << MUX5);
@@ -61,7 +68,7 @@ int analogRead(uint8_t pin)
 	// 0 to 7 (MUX5 low) or 8 to 15 (MUX5 high).
 	ADCSRB = (ADCSRB & ~(1 << MUX5)) | (((pin >> 3) & 0x01) << MUX5);
 #endif
-  
+
 	// set the analog reference (high two bits of ADMUX) and select the
 	// channel (low 4 bits).  this also sets ADLAR (left-adjust result)
 	// to 0 (the default).
@@ -218,7 +225,7 @@ void analogWrite(uint8_t pin, int val)
 				OCR4A = val;	// set pwm duty
 				break;
 			#endif
-			
+
 			#if defined(TCCR4A) && defined(COM4B1)
 			case TIMER4B:
 				// connect pwm to pin on timer 4, channel B
@@ -234,9 +241,9 @@ void analogWrite(uint8_t pin, int val)
 				OCR4C = val; // set pwm duty
 				break;
 			#endif
-				
+
 			#if defined(TCCR4C) && defined(COM4D1)
-			case TIMER4D:				
+			case TIMER4D:
 				// connect pwm to pin on timer 4, channel D
 				sbi(TCCR4C, COM4D1);
 				#if defined(COM4D0)		// only used on 32U4
@@ -246,7 +253,7 @@ void analogWrite(uint8_t pin, int val)
 				break;
 			#endif
 
-							
+
 			#if defined(TCCR5A) && defined(COM5A1)
 			case TIMER5A:
 				// connect pwm to pin on timer 5, channel A

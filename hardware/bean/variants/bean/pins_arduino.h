@@ -39,10 +39,10 @@
 
   #define IS_BEAN (1)
 
-static const uint8_t SS   = 10;
-static const uint8_t MOSI = 11;
-static const uint8_t MISO = 12;
-static const uint8_t SCK  = 13;
+static const uint8_t SS   = 2;
+static const uint8_t MOSI = 3;
+static const uint8_t MISO = 4;
+static const uint8_t SCK  = 5;
 
 static const uint8_t SDA = 18;
 static const uint8_t SCL = 19;

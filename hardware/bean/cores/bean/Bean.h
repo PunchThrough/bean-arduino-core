@@ -44,6 +44,7 @@ public:
   bool getConnectionState( void );
   bool getAdvertisingState( void );
   void setBeanName( const String &s );
+  const char* getBeanName(void);
   void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
   void setBeaconEnable( bool beaconEnable );
   void enableWakeOnConnect( bool enable );

@@ -605,6 +605,29 @@ uint16_t BeanClass::getBatteryVoltage(void)
     Serial.BTSetLocalName( (const char*)s.c_str() );
   }
 
+  const char * BeanClass::getBeanName(void)
+  {
+    BT_RADIOCONFIG_T config;
+    static char myChar[MAX_LOCAL_NAME_SIZE];
+
+    int nameSize = MAX_LOCAL_NAME_SIZE;
+
+    if ( -1 != Serial.BTGetConfig(&config) )
+    {
+      nameSize = ( config.local_name_size < MAX_LOCAL_NAME_SIZE ) ? config.local_name_size : MAX_LOCAL_NAME_SIZE;
+
+      memcpy( (void*)myChar, (void*)config.local_name, nameSize );
+    }
+
+    // Null-terminate
+    for ( int i = nameSize; i < MAX_LOCAL_NAME_SIZE; i++ )
+    {
+      myChar[i] = 0;
+    }
+
+    return myChar;
+  }
+
   void BeanClass::setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id )
   {
     Serial.BTSetBeaconParams( uuid, major_id, minor_id );

@@ -59,3 +59,28 @@ The emulator has been tested with python 2.7.6 installed by Homebrew on OSX
 
 ### Development:
 During development, it is recommended to use soft links from inside your Arduino IDE resources to your repository.  It will make it easier to test your work.
+
+#### Cloning the Git Repository
+The initial clone of the git repository requires extra steps to clone the applicationMessageHeaders submodule. After the initial clone of the firmware repository, the hardware/bean/cores/bean/applicationMessageHeaders/ directory is seen to be empty:
+
+`[PunchThrough-BEAN-Arduino-Firmware 587]$ ls hardware/bean/cores/bean/applicationMessageHeaders/`
+
+You need to initialize and update the applicationMessageHeaders submodule as follows:
+
+`[PunchThrough-BEAN-Arduino-Firmware 588]$ git submodule init
+Submodule 'hardware/bean/cores/bean/applicationMessageHeaders' (https://bitbucket.org/punchthroughdesign/bean-application-message-definitions.git) registered for path 'hardware/bean/cores/bean/applicationMessageHeaders'
+[PunchThrough-BEAN-Arduino-Firmware 589]$ git submodule update
+Cloning into 'hardware/bean/cores/bean/applicationMessageHeaders'...
+remote: Counting objects: 169, done.
+remote: Compressing objects: 100% (168/168), done.
+remote: Total 169 (delta 56), reused 0 (delta 0)
+Receiving objects: 100% (169/169), 23.07 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (56/56), done.
+Checking connectivity... done.
+Submodule path 'hardware/bean/cores/bean/applicationMessageHeaders': checked out '018dfb7e1d4973faa8fc11f303090ab56d4c661b'`
+
+Afterwhich, the applicationMessageHeaders directory contains the required header files:
+
+`[PunchThrough-BEAN-Arduino-Firmware 590]$ ls hardware/bean/cores/bean/applicationMessageHeaders/
+AppMessageTypes.h	AppMessages.h
+`

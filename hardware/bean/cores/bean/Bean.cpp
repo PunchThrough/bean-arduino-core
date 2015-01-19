@@ -30,6 +30,7 @@ static volatile voidFuncPtr intFunc;
 // Pin change interrupt vectors
 
 // D0
+#ifndef PCINT2_vect
 ISR(PCINT2_vect)
 {
   if(intFunc)
@@ -37,7 +38,9 @@ ISR(PCINT2_vect)
     intFunc();
   }
 }
+#endif
 
+#ifndef PCINT1_vect
 // Analog 0, Analog 1
 ISR(PCINT1_vect)
 {
@@ -46,7 +49,9 @@ ISR(PCINT1_vect)
     intFunc();
   }
 }
+#endif
 
+#ifndef PCINT0_vect
 // D1-D5
 ISR(PCINT0_vect)
 {
@@ -55,6 +60,7 @@ ISR(PCINT0_vect)
     intFunc();
   }
 }
+#endif
 
 
   BeanClass Bean;

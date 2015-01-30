@@ -47,6 +47,7 @@ protected:
   int  BTGetStates(BT_STATES_T * btStates );
   void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid );
   void BTBeaconModeEnable( bool beaconEnable );
+  void BTDisconnect(void);
 
 
   //LED Control

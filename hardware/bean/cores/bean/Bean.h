@@ -49,6 +49,8 @@ public:
   void setBeaconEnable( bool beaconEnable );
   void enableWakeOnConnect( bool enable );
 
+  void disconnect (void);
+
   BeanClass(){}
 
 private:

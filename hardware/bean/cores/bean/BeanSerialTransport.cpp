@@ -502,7 +502,7 @@ void BeanSerialTransport::BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uin
 
 void BeanSerialTransport::BTDisconnect(void)
 {
-  write_message(MSG_ID_BT_DISCONNECT, null, 0);
+  write_message(MSG_ID_BT_DISCONNECT, NULL, 0);
 }
 
 ////////

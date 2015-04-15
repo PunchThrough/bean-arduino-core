@@ -40,7 +40,7 @@ Steps:
 The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install.  This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board allow users to program it.
 
 #### Everything in the `examples` directory
-The contents of the examples directory should be copied separately on install to the exaples resources in the Arduino IDE.
+The contents of the examples directory should be copied separately on install to the examples resources in the Arduino IDE.
 
 #### Everything in the `beanModuleEmulator` directory
 This directory contains an Emulator of the 'non-Arduino' parts of the bean.  This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.  You can run `python BeanModuleEmulator.py` from within the beanModuleEmulator directory.

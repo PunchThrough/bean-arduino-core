@@ -648,3 +648,8 @@ uint16_t BeanClass::getBatteryVoltage(void)
   {
     Serial.enableWakeOnConnect( enable );
   }
+
+void BeanClass::disconnect(void)
+{
+  Serial.BTDisconnect();
+}

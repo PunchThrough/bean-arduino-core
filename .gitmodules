@@ -1,3 +1,0 @@
-[submodule "hardware/bean/cores/bean/applicationMessageHeaders"]
-	path = hardware/bean/cores/bean/applicationMessageHeaders
-	url = https://bitbucket.org/punchthroughdesign/bean-application-message-definitions.git

@@ -1,0 +1,11 @@
+lightblue-bean.name=LightBlue Bean
+lightblue-bean.upload.tool=beanupload
+lightblue-bean.upload.protocol=ptdble
+lightblue-bean.upload.maximum_size=32256
+lightblue-bean.upload.speed=57600
+lightblue-bean.upload.params.verbose=
+lightblue-bean.build.mcu=atmega328p
+lightblue-bean.build.f_cpu=8000000L
+lightblue-bean.build.core=bean
+lightblue-bean.build.variant=bean
+lightblue-bean.build.board=AVR_UNO

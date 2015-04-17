@@ -1,0 +1,4 @@
+beanloader.name=Bean Loader
+beanloader.protocol=usbtiny
+beanloader.program.tool=beanupload
+beanloader.program.extra_params=

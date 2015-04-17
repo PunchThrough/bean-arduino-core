@@ -4,19 +4,33 @@
 
 #include "HardwareSerial.h"
 #include "applicationMessageHeaders/AppMessages.h"
+#include "Arduino.h"
 
 struct ScratchData {
   uint8_t length;
   uint8_t data[20];
 };
 
+typedef enum
+{
+    UART_SLEEP_NORMAL,
+    UART_SLEEP_NEVER
+} UART_SLEEP_MODE_T;
+
 // Used for waking the CC out of deep sleep mode.
 #define CC_INTERRUPT_PIN (13)
+#define UART_DEFAULT_WAKE_WAIT (7)
+#define UART_DEFAULT_SEND_WAIT (13)
+
 
 class BeanSerialTransport : public HardwareSerial
 {
   friend class BeanClass;
 
+private:
+    uint32_t m_wakeDelay;
+    uint32_t m_enforcedDelay;
+    
 protected:
   ring_buffer *_reply_buffer;
   void insert_escaped_char(uint8_t input);
@@ -47,7 +61,9 @@ protected:
   int  BTGetStates(BT_STATES_T * btStates );
   void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid );
   void BTBeaconModeEnable( bool beaconEnable );
-
+  void BTConfigUartSleep(UART_SLEEP_MODE_T mode);
+  void BTDisconnect(void);
+    
 
   //LED Control
   void ledSet(const LED_SETTING_T &setting);
@@ -126,6 +142,8 @@ public:
     _reply_buffer = reply_buffer;
     _message_complete = message_complete;
     *message_complete = false;
+    m_wakeDelay = UART_DEFAULT_WAKE_WAIT;
+    m_enforcedDelay = UART_DEFAULT_SEND_WAIT;
   }; // End constructor
 
 }; // End BeanSerialTransport

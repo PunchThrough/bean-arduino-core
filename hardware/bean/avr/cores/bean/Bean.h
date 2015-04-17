@@ -36,6 +36,7 @@ public:
   long readScratchNumber(uint8_t bank);
 
   void sleep(uint32_t duration_ms);
+  void keepAwake(bool enable);
 
   void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
   void detachChangeInterrupt(uint8_t pin);
@@ -48,12 +49,12 @@ public:
   void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
   void setBeaconEnable( bool beaconEnable );
   void enableWakeOnConnect( bool enable );
+  void disconnect(void);
 
   BeanClass(){}
 
 private:
   bool attemptSleep( uint32_t duration_ms);
-
 
 };
 

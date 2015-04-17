@@ -40,8 +40,8 @@ ISR(PCINT2_vect)
 }
 #endif
 
-#ifndef PCINT1_vect
 // Analog 0, Analog 1
+#ifndef PCINT1_vect
 ISR(PCINT1_vect)
 {
   if (intFunc)
@@ -51,8 +51,8 @@ ISR(PCINT1_vect)
 }
 #endif
 
-#ifndef PCINT0_vect
 // D1-D5
+#ifndef PCINT0_vect
 ISR(PCINT0_vect)
 {
   if (intFunc)
@@ -61,7 +61,6 @@ ISR(PCINT0_vect)
   }
 }
 #endif
-
 
   BeanClass Bean;
 
@@ -75,6 +74,19 @@ ISR(PCINT0_vect)
   #define MAX_SLEEP_POLL (30)
   #define MAX_DELAY (30000)
   #define MIN_SLEEP_TIME (10)
+
+
+  void BeanClass::keepAwake(bool enable)
+  {
+    if ( enable )
+    {
+      Serial.BTConfigUartSleep(UART_SLEEP_NEVER);
+    }
+    else
+    {
+      Serial.BTConfigUartSleep(UART_SLEEP_NORMAL);
+    }
+  }
 
   bool BeanClass::attemptSleep( uint32_t duration_ms )
   {
@@ -109,6 +121,8 @@ ISR(PCINT0_vect)
   void BeanClass::sleep(uint32_t duration_ms){
     // ensure that our interrupt line is an input
     DDRD &= ~(_BV(3));
+
+    Serial.BTConfigUartSleep(UART_SLEEP_NORMAL);
 
     // There's no point in sleeping if the duration is <= 10ms
     if ( duration_ms < MIN_SLEEP_TIME )
@@ -647,4 +661,9 @@ uint16_t BeanClass::getBatteryVoltage(void)
   void BeanClass::enableWakeOnConnect( bool enable )
   {
     Serial.enableWakeOnConnect( enable );
+  }
+
+  void BeanClass::disconnect(void)
+  {
+    Serial.BTDisconnect();
   }

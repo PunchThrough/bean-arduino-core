@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <inttypes.h>
-#include "Arduino.h"
 #include "wiring_private.h"
 
 #include "BeanSerialTransport.h"
@@ -17,6 +16,7 @@ const uint8_t  BEAN_SOF     = UT_CHAR_START;
 const uint8_t  BEAN_EOF     = UT_CHAR_END;
 const uint8_t  BEAN_ESCAPE  = UT_CHAR_ESC;
 const uint8_t  BEAN_ESCAPE_XOR = HDLC_ESCAPE_XOR;
+static uint8_t m_ccSleepPinVal = LOW;
 
 #define MAX_BODY_LENGTH (APP_MSG_MAX_LENGTH - 2)
 
@@ -242,7 +242,7 @@ void BeanSerialTransport::flush()
 ISR(USART_TX_vect){
   // lower interrupt line that wakes The CC
   if (tx_buffer.head == tx_buffer.tail) {
-    digitalWrite(CC_INTERRUPT_PIN, LOW);
+    digitalWrite(CC_INTERRUPT_PIN, m_ccSleepPinVal);
     cbi(UCSR0B, TXCIE0);
     tx_buffer_flushed = true;
   }
@@ -278,14 +278,14 @@ ISR(USART_UDRE_vect)
 // Called in main, before setup, to enable things such as setting the LED
 // color during setup.
 void BeanSerialTransport::begin(void){
-  HardwareSerial::begin(57600);
+  HardwareSerial::begin(38400);
   pinMode(CC_INTERRUPT_PIN, OUTPUT);
 
   m_enableSave = true;
 
   if (tx_buffer.head == tx_buffer.tail){
     tx_buffer_flushed = true;
-    digitalWrite(CC_INTERRUPT_PIN, LOW);
+    digitalWrite(CC_INTERRUPT_PIN, m_ccSleepPinVal);
   }
 }
 
@@ -308,6 +308,23 @@ inline void BeanSerialTransport::insert_escaped_char(uint8_t input){
   }
 }
 
+void BeanSerialTransport::BTConfigUartSleep(UART_SLEEP_MODE_T mode)
+{
+    if ( UART_SLEEP_NORMAL == mode )
+    {
+        m_wakeDelay = UART_DEFAULT_WAKE_WAIT;
+        m_enforcedDelay = UART_DEFAULT_SEND_WAIT;
+        m_ccSleepPinVal = LOW;
+    }
+    else if ( UART_SLEEP_NEVER == mode )
+    {
+        m_wakeDelay = 0;
+        m_enforcedDelay = 0;
+        m_ccSleepPinVal = HIGH;
+        digitalWrite(CC_INTERRUPT_PIN, HIGH);
+    }
+}
+
 size_t BeanSerialTransport::write_message(uint16_t messageId,
                                           const uint8_t *body,
                                           size_t body_length){
@@ -322,8 +339,8 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   // testing has shown this to take up to 4ms.  adding 1 ms padding.
   tx_buffer_flushed = false;
   digitalWrite(CC_INTERRUPT_PIN, HIGH);
-  if (tx_buffer.head == tx_buffer.tail) {
-    delay(7);
+  if (tx_buffer.head == tx_buffer.tail && m_wakeDelay > 0) {
+    delay(m_wakeDelay);
   }
 
   HardwareSerial::write(BEAN_SOF);
@@ -339,7 +356,10 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   HardwareSerial::write(BEAN_EOF);
 
   // throttle the transfer speed
-  delay(13);
+  if ( m_enforcedDelay > 0 )
+  {
+    delay(m_enforcedDelay);
+  }
 
   return body_length;
 }
@@ -706,6 +726,10 @@ void BeanSerialTransport::BTSetEnableConfigSave(bool enableSave)
   m_enableSave = enableSave;
 }
 
+void BeanSerialTransport::BTDisconnect(void)
+{
+    write_message(MSG_ID_BT_DISCONNECT, NULL, 0);
+}
 
 //Preinstantiate Objects //////////////////////////////////////////////////////
 #if defined(UBRRH) && defined(UBRRL)

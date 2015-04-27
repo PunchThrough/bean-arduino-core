@@ -18,6 +18,9 @@ const uint8_t  BEAN_ESCAPE  = UT_CHAR_ESC;
 const uint8_t  BEAN_ESCAPE_XOR = HDLC_ESCAPE_XOR;
 static uint8_t m_ccSleepPinVal = LOW;
 
+static const uint16_t BEAN_MIN_ADVERTISING_INT_MS = 20; // ms
+static const uint16_t BEAN_MAX_ADVERTISING_INT_MS = 1285; // ms
+
 #define MAX_BODY_LENGTH (APP_MSG_MAX_LENGTH - 2)
 
 /*
@@ -448,10 +451,14 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
 
 
 void BeanSerialTransport::BTSetAdvertisingInterval( uint16_t interval_ms){
-  if(interval_ms < 20)
-    interval_ms = 20;
-  if(interval_ms > 1285)
-    interval_ms = 1285;
+  if(interval_ms < BEAN_MIN_ADVERTISING_INT_MS)
+  {
+    interval_ms = BEAN_MIN_ADVERTISING_INT_MS;
+  }
+  else if(interval_ms > BEAN_MAX_ADVERTISING_INT_MS)
+  {
+    interval_ms = BEAN_MAX_ADVERTISING_INT_MS;
+  }
 
     BT_RADIOCONFIG_T radioConfig;
     size_t size = sizeof(BT_RADIOCONFIG_T);

@@ -40,6 +40,7 @@ public:
 
   void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
   void detachChangeInterrupt(uint8_t pin);
+  void setAdvertisingInterval( uint16_t interval_ms );
   void enableAdvertising(bool enable, uint32_t timer);
   void enableAdvertising(bool enable);
   bool getConnectionState( void );

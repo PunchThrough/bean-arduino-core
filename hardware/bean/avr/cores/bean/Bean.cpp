@@ -379,6 +379,11 @@ ISR(PCINT0_vect)
     Serial.accelRangeSet( range );
   }
 
+void BeanClass::setAdvertisingInterval( uint16_t interval_ms )
+{
+  Serial.BTSetAdvertisingInterval( interval_ms );
+}
+
 void BeanClass::enableAdvertising( bool enable, uint32_t timer )
 {
   Serial.BTSetAdvertisingOnOff( enable, timer );

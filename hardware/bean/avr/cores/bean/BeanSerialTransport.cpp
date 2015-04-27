@@ -447,8 +447,24 @@ int BeanSerialTransport::call_and_response(MSG_ID_T messageId,
 
 
 
-void BeanSerialTransport::BTSetAdvertisingInterval(const int interval_ms){
-  write_message(MSG_ID_BT_SET_ADV, (const uint8_t*)&interval_ms, sizeof(int));
+void BeanSerialTransport::BTSetAdvertisingInterval( uint16_t interval_ms){
+  if(interval_ms < 20)
+    interval_ms = 20;
+  if(interval_ms > 1285)
+    interval_ms = 1285;
+
+    BT_RADIOCONFIG_T radioConfig;
+    size_t size = sizeof(BT_RADIOCONFIG_T);
+    int response = call_and_response(MSG_ID_BT_GET_CONFIG, NULL, 0, (uint8_t *)&radioConfig, &size );
+
+    if ( 0 == response )
+    {
+      radioConfig.adv_int = (uint16_t)interval_ms;
+
+      uint16_t msgId = ( m_enableSave ? MSG_ID_BT_SET_CONFIG: MSG_ID_BT_SET_CONFIG_NOSAVE );
+
+     write_message(msgId, (const uint8_t*)&radioConfig, size);
+    }
 }
 
 

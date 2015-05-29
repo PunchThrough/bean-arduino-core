@@ -4,7 +4,7 @@
 
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
-
+typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 
 class BeanClass {
 public:
@@ -29,6 +29,17 @@ public:
   void setLedRed(uint8_t intensity);
   void setLedGreen(uint8_t intensity);
   void setLedBlue(uint8_t intensity);
+
+  BluetoothServices getServices(void);
+  void setServices(BluetoothServices services);
+  void enableHID(void);
+  void enableMidi(void);
+
+  int  midiPacketSend();
+  int  midiSend(uint8_t *buff,uint8_t numBytes);
+  int  midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
+  int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
+
 
   bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
   bool setScratchNumber(uint8_t bank, uint32_t data);
@@ -56,6 +67,10 @@ public:
 
 private:
   bool attemptSleep( uint32_t duration_ms);
+
+  uint8_t lastStatus;
+  long midiTimeStampDiff;
+  bool midiPacketBegin;
 
 };
 

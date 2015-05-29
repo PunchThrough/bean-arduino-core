@@ -70,6 +70,16 @@ protected:
   void ledSetSingle(const LED_IND_SETTING_T &setting);
   int ledRead(LED_SETTING_T *reading);
 
+  //GATT Control
+  int readGATT(ADV_SWITCH_ENABLED_T *reading);
+  int writeGATT(ADV_SWITCH_ENABLED_T services);
+
+  //Midi
+  char   peekMidi();
+  size_t midiAvailable();
+  size_t readMidi(uint8_t *buffer,size_t max_length);
+  void midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
+
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
   int accelRangeRead( uint8_t *range);

@@ -38,7 +38,7 @@ static const uint16_t BEAN_MAX_ADVERTISING_INT_MS = 1285; // ms
 #endif
 #endif
 
-
+ring_buffer midi_buffer = { { 0 }, 0, 0};
 ring_buffer rx_buffer = { { 0 }, 0, 0};
 ring_buffer tx_buffer = { { 0 }, 0, 0};
 ring_buffer reply_buffer = { { 0 }, 0, 0};
@@ -185,7 +185,12 @@ static bool rx_char(uint8_t *c){
         messageType |= next;
         messageRemaining--;
 
-        buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
+        if (messageType == MSG_ID_CC_MIDI_READ) {
+          buffer = &midi_buffer;
+        }
+        else {
+          buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
+        }
 
         if(messageRemaining > 0){
           bean_transport_state = GETTING_MESSAGE_BODY;
@@ -214,6 +219,10 @@ static bool rx_char(uint8_t *c){
         //   assert(1);
         // }
         // RESET STATE
+        if (messageType == MSG_ID_CC_MIDI_READ) {
+            for (int i=0;i<3;i++)
+               store_char(0,buffer); //null message to specify the end of a btle packet
+        }
         serial_message_complete = true;
         bean_transport_state = WAITING_FOR_SOF;
         messageType = MSG_ID_SERIAL_DATA;
@@ -558,6 +567,62 @@ int BeanSerialTransport::ledRead(LED_SETTING_T* reading){
   size_t size = sizeof(LED_SETTING_T);
   return call_and_response(MSG_ID_CC_LED_READ_ALL, NULL,
                         0, (uint8_t *) reading, &size);
+}
+
+
+//////
+/// GATT manager
+//////
+
+int BeanSerialTransport::readGATT(ADV_SWITCH_ENABLED_T *reading){
+  size_t size = sizeof(ADV_SWITCH_ENABLED_T);
+  return call_and_response(MSG_ID_CC_GET_GATT, NULL,
+                        0, (uint8_t *) reading, &size);
+}
+
+int BeanSerialTransport::writeGATT(ADV_SWITCH_ENABLED_T services){
+  write_message(MSG_ID_CC_SET_GATT, (const uint8_t *)&services, sizeof(services));
+}
+
+
+////////
+/// MIDI
+////////
+
+char BeanSerialTransport::peekMidi()
+{
+   return midi_buffer.buffer[midi_buffer.tail]; 
+}
+size_t BeanSerialTransport::midiAvailable()
+{
+   if (midi_buffer.head == midi_buffer.tail)
+      return 0;
+   if (midi_buffer.head>midi_buffer.tail)
+      return midi_buffer.head-midi_buffer.tail;
+   else
+      return midi_buffer.head+(SERIAL_BUFFER_SIZE-midi_buffer.tail); 
+}
+size_t BeanSerialTransport::readMidi(uint8_t *buffer,size_t max_length)
+{
+  size_t bytes_written = 0;
+  while (midi_buffer.tail != midi_buffer.head)
+  {
+     if (bytes_written>=max_length)
+         break;
+     buffer[bytes_written] = midi_buffer.buffer[midi_buffer.tail];
+     midi_buffer.tail ++;
+     midi_buffer.tail %= SERIAL_BUFFER_SIZE;
+     bytes_written ++; 
+  }
+  return bytes_written;
+}
+
+void BeanSerialTransport::midiSend(uint8_t status,uint8_t byte1, uint8_t byte2) {
+  uint8_t midi[3];
+  midi[0] = status;
+  midi[1] = byte1;
+  midi[2] = byte2;
+  write_message(MSG_ID_CC_MIDI_WRITE,(const uint8_t*)midi,3);
 }
 
 

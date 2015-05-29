@@ -27,6 +27,24 @@ do { \
 
 static volatile voidFuncPtr intFunc;
 
+// midi access definitions
+#define midiBufferSize 20 
+#define blePacketSize 20
+
+typedef struct
+{
+  uint32_t  timestamp;
+  uint8_t status;
+  uint8_t byte1;
+  uint8_t byte2;
+} midiMessage; 
+
+static midiMessage midiMessages[midiBufferSize];
+uint8_t midiPacket[blePacketSize];
+uint8_t midiWriteOffset = 0;
+uint8_t midiReadOffset = 0;
+
+
 // Pin change interrupt vectors
 
 // D0
@@ -78,6 +96,11 @@ ISR(PCINT0_vect)
 
   void BeanClass::keepAwake(bool enable)
   {
+
+    lastStatus = 0;
+    midiTimeStampDiff = 0;
+    midiPacketBegin = true; 
+
     if ( enable )
     {
       Serial.BTConfigUartSleep(UART_SLEEP_NEVER);
@@ -562,6 +585,149 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return reading;
   }
 
+  ADV_SWITCH_ENABLED_T BeanClass::getServices(void)
+  {
+    ADV_SWITCH_ENABLED_T services;
+    if(Serial.readGATT(&services) == 0)
+    {
+      return services;
+    }
+
+    memset(&services, 0, sizeof(ADV_SWITCH_ENABLED_T));
+    return services;
+  }
+
+  void BeanClass::setServices(ADV_SWITCH_ENABLED_T services)
+  {
+    Serial.writeGATT(services);
+  }
+
+  void BeanClass::enableHID(void)
+  {
+    ADV_SWITCH_ENABLED_T curServices = getServices();
+    curServices.hid = 1;
+    setServices(curServices);
+  }
+
+  void BeanClass::enableMidi(void)
+  {
+    ADV_SWITCH_ENABLED_T curServices = getServices();
+    curServices.midi = 1;
+    setServices(curServices);
+  }
+
+  int BeanClass::midiSend(uint8_t status,uint8_t byte1, uint8_t byte2)
+  {
+     if ((midiWriteOffset+1)%midiBufferSize == midiReadOffset)
+        return 1;
+     uint32_t millisec = millis();
+     midiMessages[midiWriteOffset].status = status;
+     midiMessages[midiWriteOffset].byte1 = byte1;
+     midiMessages[midiWriteOffset].byte2 = byte2;
+     midiMessages[midiWriteOffset].timestamp = millisec;
+     midiWriteOffset++;
+     midiWriteOffset = midiWriteOffset % midiBufferSize;
+     return 0;
+  }
+  
+  int BeanClass::midiPacketSend()
+  {
+     if (midiReadOffset==midiWriteOffset)
+       return 0;
+     uint8_t byteOffset = 0;
+     //send a 20 byte message
+     uint32_t millisec = midiMessages[midiReadOffset].timestamp;
+     //first the header
+     uint8_t head_ts = millisec>>7; 
+     head_ts |= 1 << 7; //set the 7th bit to 1
+     head_ts &= ~(1 << 6); //set the 6th bit to zero
+     midiPacket[byteOffset++] = head_ts;
+     //now some messages
+     int lastStatus = -1;
+     int lastTime = -1;
+     while (midiReadOffset!=midiWriteOffset)
+     {
+         if (lastStatus == midiMessages[midiReadOffset].status && lastTime == midiMessages[midiReadOffset].timestamp)
+         {
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte1;
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
+         }  
+         else
+         {
+             uint8_t msg_ts = midiMessages[midiReadOffset].timestamp;
+             msg_ts |= 1 << 7; //set the 7th bit to 1.
+             midiPacket[byteOffset++] = msg_ts;
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].status;
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte1;
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
+        }
+        midiReadOffset++;
+        midiReadOffset = midiReadOffset % midiBufferSize;
+        if (byteOffset+4>blePacketSize) //can we handle another midi message in this packet
+           break;
+     }
+     Serial.write_message(MSG_ID_CC_MIDI_WRITE,midiPacket,byteOffset);
+     return byteOffset;
+  }
+
+  int BeanClass::midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2)
+  {
+    uint8_t buffer[8];
+    if (midiPacketBegin)
+    {
+       if (Serial.midiAvailable()>4)
+       {
+          Serial.readMidi(buffer,1); //header
+          midiPacketBegin = false; //we are now in the body
+       }
+    }
+    if (!midiPacketBegin)
+    {
+       //read the first byte, check if its a status byte
+       if (Serial.midiAvailable()>0)
+       {
+           uint8_t peek = 0;
+           peek = Serial.peekMidi();
+           if (peek & 1<<7) //is status/timestamp byte. we are looking at a 4 byte message
+           {
+              if (Serial.midiAvailable()>=4)
+              {
+                 Serial.readMidi(buffer,4);
+                 uint8_t timestamp = buffer[0];
+                 status = buffer[1];
+                 lastStatus = status;
+                 byte1 = buffer[2];
+                 byte2 = buffer[3]; 
+                 if (timestamp==0xFF && status==0xFF && byte1==0xFF && byte2==0xFF) //end of packet
+                 {
+                     midiPacketBegin = true;
+                     return 0;
+                 } 
+                 else
+                 {
+                     return peek;
+                 }
+              }
+           }
+           else //running status
+           {
+              if (Serial.midiAvailable()>=2)
+              {
+                 Serial.readMidi(buffer,2);
+                 status = lastStatus;
+                 byte1 = buffer[0];
+                 byte2 = buffer[1];
+                 return peek;
+              }
+           }
+       }
+          
+    } 
+    return 0;
+  }
+
+
+
   bool BeanClass::setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength)
   {
     bool errorRtn = true;
@@ -624,6 +790,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
 
     return returnNum;
   }
+
 
   void BeanClass::setBeanName( const String &s )
   {

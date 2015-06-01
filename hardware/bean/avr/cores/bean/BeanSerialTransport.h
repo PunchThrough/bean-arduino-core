@@ -26,6 +26,9 @@ typedef enum
 class BeanSerialTransport : public HardwareSerial
 {
   friend class BeanClass;
+  friend class BeanKeyboard_;
+  friend class BeanMouse_;
+
 
 private:
     uint32_t m_wakeDelay;

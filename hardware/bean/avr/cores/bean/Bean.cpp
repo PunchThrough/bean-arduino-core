@@ -1,4 +1,5 @@
 #include "Bean.h"
+#include "BeanHID.h"
 #include "Arduino.h"
 #include <avr/sleep.h>
 #include <avr/interrupt.h>
@@ -724,6 +725,28 @@ uint16_t BeanClass::getBatteryVoltage(void)
           
     } 
     return 0;
+  }
+
+  int BeanClass::HIDWriteKey(uint8_t k)
+  {
+    return BeanKeyboard.write(k);
+  }
+
+  int BeanClass::HIDWrite(String s)
+  {
+    int status = 0;
+    int maxIndex = s.length()-1;
+    for(int i = 0; i < maxIndex; i ++)
+    {
+      status |= BeanKeyboard.write(s.charAt(i));
+    }
+    
+    return status;
+  }
+
+  void BeanClass::HIDMoveMouse(signed char x, signed char y, signed char wheel)
+  {
+    BeanMouse.move(x, y, wheel);
   }
 
 

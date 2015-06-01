@@ -1,6 +1,7 @@
 #ifndef BEAN_BEAN_BEAN_H
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
+#include "BeanHID.h"
 
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
@@ -39,6 +40,10 @@ public:
   int  midiSend(uint8_t *buff,uint8_t numBytes);
   int  midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
   int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
+
+  int  HIDWriteKey(uint8_t k);
+  int HIDWrite(String s);
+  void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
 
 
   bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);

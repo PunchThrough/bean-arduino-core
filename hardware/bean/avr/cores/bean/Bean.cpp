@@ -598,6 +598,14 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return services;
   }
 
+  void BeanClass::resetServices(void)
+  {
+    ADV_SWITCH_ENABLED_T services;
+    memset(&services, 0, sizeof(ADV_SWITCH_ENABLED_T));
+    services.standard = 1;
+    setServices(services);
+  }
+
   void BeanClass::setServices(ADV_SWITCH_ENABLED_T services)
   {
     Serial.writeGATT(services);
@@ -614,6 +622,13 @@ uint16_t BeanClass::getBatteryVoltage(void)
   {
     ADV_SWITCH_ENABLED_T curServices = getServices();
     curServices.midi = 1;
+    setServices(curServices);
+  }
+
+  void BeanClass::enableANCS(void)
+  {
+    ADV_SWITCH_ENABLED_T curServices = getServices();
+    curServices.ancs = 1;
     setServices(curServices);
   }
 
@@ -740,13 +755,18 @@ uint16_t BeanClass::getBatteryVoltage(void)
     {
       status |= BeanKeyboard.write(s.charAt(i));
     }
-    
+
     return status;
   }
 
   void BeanClass::HIDMoveMouse(signed char x, signed char y, signed char wheel)
   {
     BeanMouse.move(x, y, wheel);
+  }
+
+  void BeanClass::HIDClickMouse(uint8_t b)
+  {
+    BeanMouse.click(b);
   }
 
 

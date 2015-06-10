@@ -33,8 +33,10 @@ public:
 
   BluetoothServices getServices(void);
   void setServices(BluetoothServices services);
+  void resetServices(void);
   void enableHID(void);
   void enableMidi(void);
+  void enableANCS(void);
 
   int  midiPacketSend();
   int  midiSend(uint8_t *buff,uint8_t numBytes);
@@ -42,8 +44,9 @@ public:
   int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
 
   int  HIDWriteKey(uint8_t k);
-  int HIDWrite(String s);
+  int  HIDWrite(String s);
   void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
+  void HIDClickMouse(uint8_t b = MOUSE_LEFT);
 
 
   bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);

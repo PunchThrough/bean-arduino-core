@@ -576,12 +576,12 @@ int BeanSerialTransport::ledRead(LED_SETTING_T* reading){
 
 int BeanSerialTransport::readGATT(ADV_SWITCH_ENABLED_T *reading){
   size_t size = sizeof(ADV_SWITCH_ENABLED_T);
-  return call_and_response(MSG_ID_CC_GET_GATT, NULL,
+  return call_and_response(MSG_ID_GATT_GET_GATT, NULL,
                         0, (uint8_t *) reading, &size);
 }
 
 int BeanSerialTransport::writeGATT(ADV_SWITCH_ENABLED_T services){
-  write_message(MSG_ID_CC_SET_GATT, (const uint8_t *)&services, sizeof(services));
+  write_message(MSG_ID_GATT_SET_GATT, (const uint8_t *)&services, sizeof(services));
 }
 
 

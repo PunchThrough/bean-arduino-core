@@ -6,6 +6,8 @@
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 typedef ADV_SWITCH_ENABLED_T BluetoothServices;
+typedef ANCS_SOURCE_MSG_T AncsNotification;
+typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
 
 class BeanClass {
 public:
@@ -48,6 +50,11 @@ public:
   void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
   void HIDClickMouse(uint8_t b = MOUSE_LEFT);
 
+  int ancsAvailable();
+  int readAncs(uint8_t *buffer, size_t max_length);
+  int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
+  int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
+  int readAncsNotiDetails(uint8_t *buf, size_t max_length);
 
   bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
   bool setScratchNumber(uint8_t bank, uint32_t data);

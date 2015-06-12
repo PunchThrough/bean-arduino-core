@@ -39,6 +39,8 @@ static const uint16_t BEAN_MAX_ADVERTISING_INT_MS = 1285; // ms
 #endif
 
 ring_buffer midi_buffer = { { 0 }, 0, 0};
+ring_buffer ancs_buffer = { { 0 }, 0, 0};
+ring_buffer ancs_message_buffer = { { 0 }, 0, 0};
 ring_buffer rx_buffer = { { 0 }, 0, 0};
 ring_buffer tx_buffer = { { 0 }, 0, 0};
 ring_buffer reply_buffer = { { 0 }, 0, 0};
@@ -187,6 +189,13 @@ static bool rx_char(uint8_t *c){
 
         if (messageType == MSG_ID_CC_MIDI_READ) {
           buffer = &midi_buffer;
+        }
+        else if(messageType == MSG_ID_ANCS_READ){
+          buffer = &ancs_buffer;
+        }
+        else if(messageType == MSG_ID_ANCS_GET_NOTI)
+        {
+          buffer = &ancs_message_buffer;
         }
         else {
           buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
@@ -624,6 +633,67 @@ void BeanSerialTransport::midiSend(uint8_t status,uint8_t byte1, uint8_t byte2) 
   midi[2] = byte2;
   write_message(MSG_ID_CC_MIDI_WRITE,(const uint8_t*)midi,3);
 }
+
+
+////////
+// ANCS
+////////
+
+int BeanSerialTransport::ancsAvailable( )
+{
+  if (ancs_buffer.head == ancs_buffer.tail)
+      return 0;
+   if (ancs_buffer.head>ancs_buffer.tail)
+      return (ancs_buffer.head-ancs_buffer.tail) / 8;
+   else
+      return (ancs_buffer.head+(SERIAL_BUFFER_SIZE-ancs_buffer.tail)) / 8; 
+}
+
+int BeanSerialTransport::readAncs(uint8_t *buffer, size_t max_length)
+{
+  size_t bytes_written = 0;
+  while (ancs_buffer.tail != ancs_buffer.head)
+  {
+     if (bytes_written>=max_length)
+         break;
+     buffer[bytes_written] = ancs_buffer.buffer[ancs_buffer.tail];
+     ancs_buffer.tail ++;
+     ancs_buffer.tail %= SERIAL_BUFFER_SIZE;
+     bytes_written ++; 
+  }
+  return bytes_written;
+}
+
+int BeanSerialTransport::getAncsNotiDetails(uint8_t *buffer, size_t length)
+{
+  write_message(MSG_ID_ANCS_GET_NOTI, (const uint8_t*)buffer, length);
+}
+
+int BeanSerialTransport::ancsNotiDetailsAvailable( )
+{
+  if (ancs_message_buffer.head == ancs_message_buffer.tail)
+      return 0;
+  if (ancs_message_buffer.head>ancs_message_buffer.tail)
+      return (ancs_message_buffer.head-ancs_message_buffer.tail) / 8;
+  else
+      return (ancs_message_buffer.head+(SERIAL_BUFFER_SIZE-ancs_message_buffer.tail)) / 8; 
+}
+
+int BeanSerialTransport::readAncsMessage(uint8_t *buffer, size_t max_length)
+{
+  size_t bytes_written = 0;
+  while (ancs_message_buffer.tail != ancs_message_buffer.head)
+  {
+     if (bytes_written>=max_length)
+         break;
+     buffer[bytes_written] = ancs_message_buffer.buffer[ancs_message_buffer.tail];
+     ancs_message_buffer.tail ++;
+     ancs_message_buffer.tail %= SERIAL_BUFFER_SIZE;
+     bytes_written ++; 
+  }
+  return bytes_written;
+}
+
 
 
 ////////

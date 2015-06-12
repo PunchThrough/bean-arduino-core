@@ -83,6 +83,13 @@ protected:
   size_t readMidi(uint8_t *buffer,size_t max_length);
   void midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
 
+  //ANCS
+  int ancsAvailable();
+  int readAncs(uint8_t *buffer, size_t max_length);
+  int getAncsNotiDetails(uint8_t *buffer, size_t length);
+  int ancsNotiDetailsAvailable( );
+  int readAncsMessage(uint8_t *buffer, size_t max_length);
+
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
   int accelRangeRead( uint8_t *range);

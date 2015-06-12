@@ -675,7 +675,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
              midiPacket[byteOffset++] = msg_ts;
              midiPacket[byteOffset++] = midiMessages[midiReadOffset].status;
              midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte1;
-             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
+             midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2; 
         }
         midiReadOffset++;
         midiReadOffset = midiReadOffset % midiBufferSize;
@@ -769,6 +769,44 @@ uint16_t BeanClass::getBatteryVoltage(void)
     BeanMouse.click(b);
   }
 
+
+  int BeanClass::ancsAvailable()
+  {
+    return Serial.ancsAvailable();
+  }
+
+  int BeanClass::readAncs(uint8_t *buffer, size_t max_length)
+  {
+    return Serial.readAncs(buffer, max_length);
+  }
+
+  int BeanClass::parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length)
+  {
+    int numMsgs = Serial.ancsAvailable();
+    Serial.readAncs((uint8_t*)buffer, max_length*8);
+
+    return numMsgs;
+  }
+
+  int BeanClass::requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID)
+  {
+    if(8 + len > SERIAL_BUFFER_SIZE)
+    {
+      len = SERIAL_BUFFER_SIZE - 8;
+    }
+    uint8_t reqBuf[8];
+    reqBuf[0] = 0;
+    memcpy((void*)&reqBuf[1], &ID, 4);
+    reqBuf[5] = type;
+    reqBuf[6] = len;
+    reqBuf[7] = 0;
+    Serial.getAncsNotiDetails(reqBuf, 8);
+  }
+
+  int BeanClass::readAncsNotiDetails(uint8_t *buf, size_t max_length)
+  {
+    return Serial.readAncsMessage(buf, max_length);
+  }
 
 
   bool BeanClass::setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength)

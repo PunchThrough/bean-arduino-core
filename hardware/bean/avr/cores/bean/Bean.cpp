@@ -632,6 +632,14 @@ uint16_t BeanClass::getBatteryVoltage(void)
     setServices(curServices);
   }
 
+  void BeanClass::enableiBeacon(void)
+  {
+    ADV_SWITCH_ENABLED_T curServices = getServices();
+    curServices.ibeacon = 1;
+    setServices(curServices);
+  }
+
+
   int BeanClass::midiSend(uint8_t status,uint8_t byte1, uint8_t byte2)
   {
      if ((midiWriteOffset+1)%midiBufferSize == midiReadOffset)
@@ -682,7 +690,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
         if (byteOffset+4>blePacketSize) //can we handle another midi message in this packet
            break;
      }
-     Serial.write_message(MSG_ID_CC_MIDI_WRITE,midiPacket,byteOffset);
+     Serial.write_message(MSG_ID_MIDI_WRITE,midiPacket,byteOffset);
      return byteOffset;
   }
 

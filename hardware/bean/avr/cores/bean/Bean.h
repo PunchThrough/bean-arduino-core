@@ -39,6 +39,7 @@ public:
   void enableHID(void);
   void enableMidi(void);
   void enableANCS(void);
+  void enableiBeacon(void);
 
   int  midiPacketSend();
   int  midiSend(uint8_t *buff,uint8_t numBytes);

@@ -187,7 +187,7 @@ static bool rx_char(uint8_t *c){
         messageType |= next;
         messageRemaining--;
 
-        if (messageType == MSG_ID_CC_MIDI_READ) {
+        if (messageType == MSG_ID_MIDI_READ) {
           buffer = &midi_buffer;
         }
         else if(messageType == MSG_ID_ANCS_READ){
@@ -228,7 +228,7 @@ static bool rx_char(uint8_t *c){
         //   assert(1);
         // }
         // RESET STATE
-        if (messageType == MSG_ID_CC_MIDI_READ) {
+        if (messageType == MSG_ID_MIDI_READ) {
             for (int i=0;i<3;i++)
                store_char(0,buffer); //null message to specify the end of a btle packet
         }
@@ -631,7 +631,7 @@ void BeanSerialTransport::midiSend(uint8_t status,uint8_t byte1, uint8_t byte2) 
   midi[0] = status;
   midi[1] = byte1;
   midi[2] = byte2;
-  write_message(MSG_ID_CC_MIDI_WRITE,(const uint8_t*)midi,3);
+  write_message(MSG_ID_MIDI_WRITE,(const uint8_t*)midi,3);
 }
 
 

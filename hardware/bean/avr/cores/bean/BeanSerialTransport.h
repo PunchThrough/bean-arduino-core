@@ -90,6 +90,12 @@ protected:
   int ancsNotiDetailsAvailable( );
   int readAncsMessage(uint8_t *buffer, size_t max_length);
 
+  //Observer
+  int startObserver( void );
+  int stopObserver( void );
+  int getObserverMessage(OBSERVER_INFO_MESSAGE_T *message, unsigned long timeout);
+
+
   //Accelerometer
   int accelRead(ACC_READING_T* reading);
   int accelRangeRead( uint8_t *range);

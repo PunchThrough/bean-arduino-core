@@ -632,6 +632,22 @@ uint16_t BeanClass::getBatteryVoltage(void)
     setServices(curServices);
   }
 
+  void BeanClass::startObserver(void)
+  {
+    Serial.startObserver();
+  }
+
+  void BeanClass::stopObserver(void)
+  {
+    Serial.stopObserver();
+  }
+
+  int BeanClass::getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout)
+  {
+    return Serial.getObserverMessage(message, timeout);
+  }
+
+  
   void BeanClass::enableiBeacon(void)
   {
     ADV_SWITCH_ENABLED_T curServices = getServices();

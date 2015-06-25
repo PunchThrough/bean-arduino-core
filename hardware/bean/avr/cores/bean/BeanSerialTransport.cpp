@@ -41,12 +41,16 @@ static const uint16_t BEAN_MAX_ADVERTISING_INT_MS = 1285; // ms
 ring_buffer midi_buffer = { { 0 }, 0, 0};
 ring_buffer ancs_buffer = { { 0 }, 0, 0};
 ring_buffer ancs_message_buffer = { { 0 }, 0, 0};
+ring_buffer observer_message = { { 0 }, 0, 0};
 ring_buffer rx_buffer = { { 0 }, 0, 0};
 ring_buffer tx_buffer = { { 0 }, 0, 0};
 ring_buffer reply_buffer = { { 0 }, 0, 0};
 
 static volatile bool tx_buffer_flushed = true;
 static volatile bool serial_message_complete = false;
+
+static volatile bool observer_message_sending = false;
+static volatile int observer_msg_len = 0;
 
 
 static inline void store_char(unsigned char c, ring_buffer *buffer){
@@ -174,6 +178,7 @@ static bool rx_char(uint8_t *c){
       case GETTING_LENGTH:
         messageRemaining = next;
         bean_transport_state = GETTING_MESSAGE_ID_1;
+        observer_msg_len = next; //we don't have message type yet, but save the length for later
         break;
 
 
@@ -196,6 +201,12 @@ static bool rx_char(uint8_t *c){
         else if(messageType == MSG_ID_ANCS_GET_NOTI)
         {
           buffer = &ancs_message_buffer;
+        }
+        else if(messageType == MSG_ID_OBSERVER_READ)
+        {
+          buffer = &observer_message;
+          observer_message_sending = true;
+          observer_message.head = observer_message.tail = 0; //if the user missed a previous message drop it
         }
         else {
           buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
@@ -231,6 +242,10 @@ static bool rx_char(uint8_t *c){
         if (messageType == MSG_ID_MIDI_READ) {
             for (int i=0;i<3;i++)
                store_char(0,buffer); //null message to specify the end of a btle packet
+        }
+        if(messageType == MSG_ID_OBSERVER_READ)
+        {
+          observer_message_sending = false;
         }
         serial_message_complete = true;
         bean_transport_state = WAITING_FOR_SOF;
@@ -695,6 +710,37 @@ int BeanSerialTransport::readAncsMessage(uint8_t *buffer, size_t max_length)
 }
 
 
+///////
+// Observer
+///////
+int BeanSerialTransport::startObserver()
+{
+  write_message(MSG_ID_OBSERVER_START, NULL,0);
+}
+
+int BeanSerialTransport::stopObserver()
+{
+  write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
+}
+
+
+int BeanSerialTransport::getObserverMessage(OBSERVER_INFO_MESSAGE_T *message, unsigned long timeout)
+{
+  memset(message, 0, sizeof(OBSERVER_INFO_MESSAGE_T));
+
+  unsigned long startMillis = millis();
+  do { if((millis() - startMillis > timeout)) return -1; } while (observer_message_sending == false && abs(observer_message.head - observer_message.tail) == 0);  //block until advertisement is observed
+  do { if((millis() - startMillis > timeout)) return -1; } while (observer_message_sending == true);  //block until data is sent
+
+  observer_message.head = observer_message.tail = 0;
+
+    // copy the message body into out
+    memcpy(message, observer_message.buffer,
+           min(observer_msg_len, sizeof(OBSERVER_INFO_MESSAGE_T)));
+    //*response_length = _reply_buffer->head;
+    return 0;
+
+}
 
 ////////
 // Accelerometer

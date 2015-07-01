@@ -29,6 +29,7 @@ BeanMouse_ BeanMouse;
 // HID keyboard input report length
 #define HID_KEYBOARD_IN_RPT_LEN     8
 #define HID_MOUSE_IN_RPT_LEN   4
+#define HID_CC_IN_RPT_LEN 2
 
 typedef struct
 {
@@ -138,6 +139,8 @@ const uint8_t _hidReportDescriptor[] = {
 
 #define HID_RPT_ID_KEY_IN        2  // Keyboard input report ID
 #define HID_RPT_ID_MOUSE_IN      1  // Mouse input report ID
+#define HID_RPT_ID_CC_IN         3  // Consumer Control input report ID
+
 #define HID_RPT_ID_LED_OUT       0  // LED output report ID
 #define HID_RPT_ID_FEATURE       0  // Feature report ID
 
@@ -237,6 +240,113 @@ BeanKeyboard_::BeanKeyboard_(void)
 
 void BeanKeyboard_::begin(void)
 {
+}
+
+// Macros for the HID Consumer Control 2-byte report
+#define HID_CC_RPT_SET_NUMERIC(s, x)    (s)[0] &= HID_CC_RPT_NUMERIC_BITS;   \
+                                        (s)[0] = (x)
+#define HID_CC_RPT_SET_CHANNEL(s, x)    (s)[0] &= HID_CC_RPT_CHANNEL_BITS;   \
+                                        (s)[0] |= ((x) & 0x03) << 4
+#define HID_CC_RPT_SET_VOLUME_UP(s)     (s)[0] &= HID_CC_RPT_VOLUME_BITS;    \
+                                        (s)[0] |= 0x40
+#define HID_CC_RPT_SET_VOLUME_DOWN(s)   (s)[0] &= HID_CC_RPT_VOLUME_BITS;    \
+                                        (s)[0] |= 0x80
+#define HID_CC_RPT_SET_BUTTON(s, x)     (s)[1] &= HID_CC_RPT_BUTTON_BITS;    \
+                                        (s)[1] |= (x)
+#define HID_CC_RPT_SET_SELECTION(s, x)  (s)[1] &= HID_CC_RPT_SELECTION_BITS; \
+                                        (s)[1] |= ((x) & 0x03) << 4
+
+
+static void hidCCBuildReport( uint8_t *pBuf, uint8_t cmd )
+{
+  switch ( cmd )
+  {
+    case HID_CONSUMER_CHANNEL_UP:
+      HID_CC_RPT_SET_CHANNEL( pBuf, HID_CC_RPT_CHANNEL_UP );
+      break;
+
+    case HID_CONSUMER_CHANNEL_DOWN:
+      HID_CC_RPT_SET_CHANNEL( pBuf, HID_CC_RPT_CHANNEL_DOWN );
+      break;
+
+    case HID_CONSUMER_VOLUME_UP:
+      HID_CC_RPT_SET_VOLUME_UP( pBuf );
+      break;
+
+    case HID_CONSUMER_VOLUME_DOWN:
+      HID_CC_RPT_SET_VOLUME_DOWN( pBuf );
+      break;
+
+    case HID_CONSUMER_MUTE:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_MUTE );
+      break;
+
+    case HID_CONSUMER_POWER:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_POWER );
+      break;
+
+    case HID_CONSUMER_RECALL_LAST:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_LAST );
+      break;
+
+    case HID_CONSUMER_ASSIGN_SEL:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_ASSIGN_SEL );
+      break;
+
+    case HID_CONSUMER_PLAY:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_PLAY );
+      break;
+
+    case HID_CONSUMER_PAUSE:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_PAUSE );
+      break;
+
+    case HID_CONSUMER_RECORD:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_RECORD );
+      break;
+
+    case HID_CONSUMER_FAST_FORWARD:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_FAST_FWD );
+      break;
+
+    case HID_CONSUMER_REWIND:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_REWIND );
+      break;
+
+    case HID_CONSUMER_SCAN_NEXT_TRK:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_SCAN_NEXT_TRK );
+      break;
+
+    case HID_CONSUMER_SCAN_PREV_TRK:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_SCAN_PREV_TRK );
+      break;
+
+    case HID_CONSUMER_STOP:
+      HID_CC_RPT_SET_BUTTON( pBuf, HID_CC_RPT_STOP );
+      break;
+
+    default:
+      if ( ( cmd >= HID_KEYBOARD_1 ) && ( cmd <= HID_KEYBOARD_0 ) )
+      {
+        HID_CC_RPT_SET_BUTTON( pBuf, (cmd - HID_KEYBOARD_1 + 1) % 10 );
+      }
+      break;
+  }
+}
+
+void BeanKeyboard_::sendCC(uint8_t command)
+{
+	hidDevReport_t report;
+	report.type = HID_REPORT_TYPE_INPUT;
+	report.id = HID_RPT_ID_CC_IN;
+	report.len = HID_CC_IN_RPT_LEN;
+
+	uint8_t buf[HID_CC_IN_RPT_LEN] = {0, 0};
+
+	hidCCBuildReport(buf, command);
+
+	memcpy((void*)report.data, buf, HID_CC_IN_RPT_LEN);
+	Serial.write_message( MSG_ID_HID_SEND_REPORT, (uint8_t*)&report, sizeof(hidDevReport_t)  );
 }
 
 void BeanKeyboard_::end(void)

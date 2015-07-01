@@ -608,6 +608,19 @@ int BeanSerialTransport::writeGATT(ADV_SWITCH_ENABLED_T services){
   write_message(MSG_ID_GATT_SET_GATT, (const uint8_t *)&services, sizeof(services));
 }
 
+int BeanSerialTransport::setCustomAdvertisement(uint8_t *buf, int len)
+{
+  if(len > 31)
+  {
+    return -1;
+  }
+  uint8_t sendBuf[32];
+  sendBuf[0] = len;
+  memcpy((void*)&sendBuf[1], buf, len);
+  write_message(MSG_ID_GATT_SET_CUSTOM, sendBuf, len + 1);
+  return 0;
+}
+
 
 ////////
 /// MIDI

@@ -41,6 +41,8 @@ public:
   void enableMidi(void);
   void enableANCS(void);
   void enableiBeacon(void);
+  void enableCustom(void);
+  void setCustomAdvertisement(uint8_t *buf, int len);
 
   int  midiPacketSend();
   int  midiSend(uint8_t *buff,uint8_t numBytes);
@@ -51,6 +53,7 @@ public:
   int  HIDWrite(String s);
   void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
   void HIDClickMouse(uint8_t b = MOUSE_LEFT);
+  void HIDSendConsumerControl(unsigned char command);
 
   int ancsAvailable();
   int readAncs(uint8_t *buffer, size_t max_length);

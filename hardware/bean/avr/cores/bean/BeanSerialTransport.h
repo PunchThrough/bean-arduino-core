@@ -76,6 +76,7 @@ protected:
   //GATT Control
   int readGATT(ADV_SWITCH_ENABLED_T *reading);
   int writeGATT(ADV_SWITCH_ENABLED_T services);
+  int setCustomAdvertisement(uint8_t *buf, int len);
 
   //Midi
   char   peekMidi();

@@ -632,6 +632,18 @@ uint16_t BeanClass::getBatteryVoltage(void)
     setServices(curServices);
   }
 
+  void BeanClass::enableCustom(void)
+  {
+    ADV_SWITCH_ENABLED_T curServices = getServices();
+    curServices.custom = 1;
+    setServices(curServices);
+  }
+
+  void BeanClass::setCustomAdvertisement(uint8_t *buf, int len)
+  {
+    Serial.setCustomAdvertisement(buf, len);
+  }
+
   void BeanClass::startObserver(void)
   {
     Serial.startObserver();
@@ -791,6 +803,11 @@ uint16_t BeanClass::getBatteryVoltage(void)
   void BeanClass::HIDClickMouse(uint8_t b)
   {
     BeanMouse.click(b);
+  }
+
+  void BeanClass::HIDSendConsumerControl(unsigned char command)
+  {
+    BeanKeyboard.sendCC(command);
   }
 
 

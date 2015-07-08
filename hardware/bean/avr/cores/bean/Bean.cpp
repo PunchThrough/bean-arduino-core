@@ -844,6 +844,15 @@ uint16_t BeanClass::getBatteryVoltage(void)
     Serial.getAncsNotiDetails(reqBuf, 8);
   }
 
+  void BeanClass::performAncsAction(uint32_t ID, uint8_t actionID)
+  {
+    uint8_t reqBuf[6];
+    reqBuf[0] = 2; //command ID perform notifcation action
+    memcpy((void*)&reqBuf[1], &ID, sizeof(uint32_t));
+    reqBuf[5] = actionID;
+    Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf));
+  }
+
   int BeanClass::readAncsNotiDetails(uint8_t *buf, size_t max_length)
   {
     return Serial.readAncsMessage(buf, max_length);

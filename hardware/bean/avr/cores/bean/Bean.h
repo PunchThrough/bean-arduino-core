@@ -60,6 +60,8 @@ public:
   int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
   int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
   int readAncsNotiDetails(uint8_t *buf, size_t max_length);
+  void performAncsAction(uint32_t ID, uint8_t actionID);
+
 
   void startObserver(void);
   void stopObserver(void);

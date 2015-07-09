@@ -5,6 +5,7 @@
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include "wiring_private.h"
+#include "bma250.h"
 
 #ifndef sleep_bod_disable() // not included in Arduino AVR toolset
 #define sleep_bod_disable() \
@@ -354,31 +355,6 @@ ISR(PCINT0_vect)
       intFunc = NULL;
   }
 
-  uint16_t BeanClass::getAccelerationX(void){
-    ACC_READING_T reading;
-    if(Serial.accelRead(&reading) == 0){
-      return reading.xAxis;
-    }
-
-    // TODO
-    // this is an error state.  Is it worth a few retries?
-    return 0;
-  }
-
-  uint8_t BeanClass::getAccelerationRange( void )
-  {
-    uint8_t range = 0;
-    if (Serial.accelRangeRead(&range) == 0)
-    {
-      return range;
-    }
-  }
-
-  void BeanClass::setAccelerationRange( uint8_t range )
-  {
-    Serial.accelRangeSet( range );
-  }
-
 void BeanClass::setAdvertisingInterval( uint16_t interval_ms )
 {
   Serial.BTSetAdvertisingInterval( interval_ms );
@@ -450,40 +426,104 @@ uint16_t BeanClass::getBatteryVoltage(void)
   return (uint16_t)actualVoltage;
 }
 
-  uint16_t BeanClass::getAccelerationY(void){
-    ACC_READING_T reading;
-    if(Serial.accelRead(&reading) == 0){
-      return reading.yAxis;
-    }
-
-    // TODO
-    // this is an error state.  Is it worth a few retries?
-    return 0;
+  void BeanClass::setAccelerometerPowerMode(uint8_t mode) {
+    Serial.accelRegisterWrite(REG_POWER_MODE_X11, mode);
   }
 
-
-  uint16_t BeanClass::getAccelerationZ(void){
-    ACC_READING_T reading;
-    if(Serial.accelRead(&reading) == 0){
-      return reading.zAxis;
-    }
-
-    // TODO
-    // this is an error state.  Is it worth a few retries?
-    return 0;
+  uint8_t BeanClass::getAccelerometerPowerMode() {
+    uint8_t value;
+    Serial.accelRegisterRead(REG_POWER_MODE_X11, 1, &value);
+    return value;
   }
 
+  uint8_t BeanClass::getAccelerationRange( void )
+  {
+    uint8_t value;
+    Serial.accelRegisterRead(REG_G_SETTING, 1, &value);
+    return value;
+  }
+
+  void BeanClass::setAccelerationRange( uint8_t range )
+  {
+    Serial.accelRegisterWrite(REG_G_SETTING, range);
+  }
+
+  int16_t BeanClass::convertAcceleration(uint8_t high_byte, uint8_t low_byte) {
+      int16_t value = high_byte;
+      value = value << 6;
+      value |= (low_byte >> 6);
+      if (value & 0x0200) {  // Manually sign extend
+          value |= 0xFC00;
+      }
+      return value;
+  }
+
+  int16_t BeanClass::getAccelerationX(void){
+    uint8_t value[2];
+    Serial.accelRegisterRead(REG_X_ACCEL_LSB, sizeof(value), value);
+    return convertAcceleration(value[1], value[0]);
+  }
+
+  int16_t BeanClass::getAccelerationY(void){
+    uint8_t value[2];
+    Serial.accelRegisterRead(REG_Y_ACCEL_LSB, sizeof(value), value);
+    return convertAcceleration(value[1], value[0]);
+  }
+
+  int16_t BeanClass::getAccelerationZ(void){
+    uint8_t value[2];
+    Serial.accelRegisterRead(REG_Z_ACCEL_LSB, sizeof(value), value);
+    return convertAcceleration(value[1], value[0]);
+  }
 
   ACC_READING_T BeanClass::getAcceleration(void){
     ACC_READING_T reading;
-    if(Serial.accelRead(&reading) == 0){
-      return reading;
-    }
-
-    // TODO
-    // this is an error state.  Is it worth a few retries?
-    memset(&reading, 0, sizeof(reading));
+    uint8_t reg = REG_X_ACCEL_LSB; // Start of acceleration readings (X first, Z last)
+    uint8_t values[6];
+    Serial.accelRegisterRead(reg, sizeof(values), values);
+    reading.xAxis = convertAcceleration(values[1], values[0]);
+    reading.yAxis = convertAcceleration(values[3], values[2]);
+    reading.zAxis = convertAcceleration(values[5], values[4]);
     return reading;
+  }
+
+  void BeanClass::accelerometerConfig(uint16_t interrupts, uint8_t power_mode) {
+    Serial.accelRegisterWrite(REG_POWER_MODE_X11, power_mode);
+    Serial.accelRegisterWrite(REG_LATCH_CFG_X21, VALUE_LATCHED);
+    Serial.accelRegisterWrite(REG_INT_MAPPING_X19, MASK_X19_ALL_INT1);
+    Serial.accelRegisterWrite(REG_INT_MAPPING_X1A, MASK_X1A_ALL_INT1);
+    Serial.accelRegisterWrite(REG_INT_SETTING_X16, (uint8_t) (interrupts >> 8));
+    Serial.accelRegisterWrite(REG_INT_SETTING_X17, (uint8_t) (interrupts & 0xFF));
+  }
+
+  void BeanClass::enableAccelSingleTapInt() {
+      accelerometerConfig(MASK_SINGLE_TAP_INT, VALUE_LOW_POWER_10MS);
+  }
+
+  void BeanClass::enableAccelDoubleTapInt() {
+      accelerometerConfig(MASK_DOUBLE_TAP_INT, VALUE_LOW_POWER_10MS);
+  }
+
+  void BeanClass::enableLowGravityInt() {
+      accelerometerConfig(MASK_LOW_G_INT, VALUE_LOW_POWER_10MS);
+  }
+
+  void BeanClass::enableAnyMotionInts() {
+      accelerometerConfig(MASK_SLOPE_INTS, VALUE_LOW_POWER_10MS);
+  }
+
+  void BeanClass::disableAccelInterrupts() {
+      accelerometerConfig(0, VALUE_LOW_POWER_1S);
+  }
+
+  uint16_t BeanClass::checkAccelInterrupts() {
+    uint8_t value[2];
+    uint8_t latch_cfg;
+    Serial.accelRegisterRead(REG_INT_STATUS_X09, 2, value);
+    Serial.accelRegisterRead(REG_LATCH_CFG_X21, 1, &latch_cfg);
+    latch_cfg |= MASK_RESET_INT_LATCH;
+    Serial.accelRegisterWrite(REG_LATCH_CFG_X21, latch_cfg);
+    return ((uint16_t) value[0] << 8) | ((uint16_t) value[1]);
   }
 
   void BeanClass::setLedRed(uint8_t intensity){
@@ -501,7 +541,8 @@ uint16_t BeanClass::getBatteryVoltage(void)
 
     Serial.ledSetSingle(setting);
   }
-    void BeanClass::setLedBlue(uint8_t intensity){
+
+  void BeanClass::setLedBlue(uint8_t intensity){
     LED_IND_SETTING_T setting;
     setting.color = (uint8_t) LED_BLUE;
     setting.intensity = intensity;

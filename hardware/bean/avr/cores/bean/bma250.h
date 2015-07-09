@@ -1,7 +1,3 @@
-//
-// Created by Michael Brown on 7/6/15.
-//
-
 #ifndef BEAN_BMA250_H
 #define BEAN_BMA250_H
 

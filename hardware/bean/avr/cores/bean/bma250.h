@@ -28,22 +28,30 @@
 #define VALUE_LOW_POWER_1S      0x5E
 
 #define REG_INT_STATUS_X09      0x09
+#define CHECK_FLAT_INT          0x80
+#define CHECK_ORIENT_INT        0x40
+#define CHECK_SINGLE_TAP_INT    0x20
+#define CHECK_DOUBLE_TAP_INT    0x10
+#define CHECK_ANY_MOTION_INT    0x04
+#define CHECK_HIGH_G_INT        0x02
+#define CHECK_LOW_G_INT         0x01
+
 #define REG_INT_SETTING_X16     0x16
-#define MASK_FLAT_INT           0x8000
-#define MASK_ORIENT_INT         0x4000
-#define MASK_SINGLE_TAP_INT     0x2000
-#define MASK_DOUBLE_TAP_INT     0x1000
-#define MASK_SLOPE_Z_INT        0x0400
-#define MASK_SLOPE_Y_INT        0x0200
-#define MASK_SLOPE_X_INT        0x0100
-#define MASK_SLOPE_INTS         0x0700
+#define ENABLE_FLAT_INT         0x8000
+#define ENABLE_ORIENT_INT       0x4000
+#define ENABLE_SINGLE_TAP_INT   0x2000
+#define ENABLE_DOUBLE_TAP_INT   0x1000
+#define ENABLE_SLOPE_Z_INT      0x0400
+#define ENABLE_SLOPE_Y_INT      0x0200
+#define ENABLE_SLOPE_X_INT      0x0100
+#define ENABLE_ANY_MOTION_INT   0x0700
 
 #define REG_INT_SETTING_X17     0x17
-#define MASK_NEW_DATA_INT       0x0010
-#define MASK_LOW_G_INT          0x0008
-#define MASK_HIGH_G_Z_INT       0x0004
-#define MASK_HIGH_G_Y_INT       0x0002
-#define MASK_HIGH_G_X_INT       0x0001
+#define ENABLE_NEW_DATA_INT     0x0010
+#define ENABLE_LOW_G_INT        0x0008
+#define ENABLE_HIGH_G_Z_INT     0x0004
+#define ENABLE_HIGH_G_Y_INT     0x0002
+#define ENABLE_HIGH_G_X_INT     0x0001
 
 #define REG_INT_MAPPING_X19     0x19
 #define MASK_X19_ALL_INT1       0xF7

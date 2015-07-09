@@ -21,7 +21,7 @@ public:
   void enableLowGravityInt();
   void enableAnyMotionInts();
   void disableAccelInterrupts();
-  uint16_t checkAccelInterrupts();
+  uint8_t checkAccelInterrupts();
 
   int8_t getTemperature (void);
   uint8_t getBatteryLevel (void);

@@ -497,33 +497,33 @@ uint16_t BeanClass::getBatteryVoltage(void)
   }
 
   void BeanClass::enableAccelSingleTapInt() {
-      accelerometerConfig(MASK_SINGLE_TAP_INT, VALUE_LOW_POWER_10MS);
+      accelerometerConfig(ENABLE_SINGLE_TAP_INT, VALUE_LOW_POWER_10MS);
   }
 
   void BeanClass::enableAccelDoubleTapInt() {
-      accelerometerConfig(MASK_DOUBLE_TAP_INT, VALUE_LOW_POWER_10MS);
+      accelerometerConfig(ENABLE_DOUBLE_TAP_INT, VALUE_LOW_POWER_10MS);
   }
 
   void BeanClass::enableLowGravityInt() {
-      accelerometerConfig(MASK_LOW_G_INT, VALUE_LOW_POWER_10MS);
+      accelerometerConfig(ENABLE_LOW_G_INT, VALUE_LOW_POWER_10MS);
   }
 
   void BeanClass::enableAnyMotionInts() {
-      accelerometerConfig(MASK_SLOPE_INTS, VALUE_LOW_POWER_10MS);
+      accelerometerConfig(ENABLE_ANY_MOTION_INT, VALUE_LOW_POWER_10MS);
   }
 
   void BeanClass::disableAccelInterrupts() {
       accelerometerConfig(0, VALUE_LOW_POWER_1S);
   }
 
-  uint16_t BeanClass::checkAccelInterrupts() {
-    uint8_t value[2];
+  uint8_t BeanClass::checkAccelInterrupts() {
+    uint8_t value;
     uint8_t latch_cfg;
-    Serial.accelRegisterRead(REG_INT_STATUS_X09, 2, value);
+    Serial.accelRegisterRead(REG_INT_STATUS_X09, 2, &value);
     Serial.accelRegisterRead(REG_LATCH_CFG_X21, 1, &latch_cfg);
     latch_cfg |= MASK_RESET_INT_LATCH;
     Serial.accelRegisterWrite(REG_LATCH_CFG_X21, latch_cfg);
-    return ((uint16_t) value[0] << 8) | ((uint16_t) value[1]);
+    return value;
   }
 
   void BeanClass::setLedRed(uint8_t intensity){

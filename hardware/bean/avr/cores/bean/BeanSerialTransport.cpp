@@ -46,6 +46,7 @@ ring_buffer reply_buffer = { { 0 }, 0, 0};
 static volatile bool tx_buffer_flushed = true;
 static volatile bool serial_message_complete = false;
 
+static bool serial_initilized = false;
 
 static inline void store_char(unsigned char c, ring_buffer *buffer){
   unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;
@@ -331,6 +332,11 @@ void BeanSerialTransport::BTConfigUartSleep(UART_SLEEP_MODE_T mode)
 size_t BeanSerialTransport::write_message(uint16_t messageId,
                                           const uint8_t *body,
                                           size_t body_length){
+  if(!serial_initilized) {
+    Serial.begin();
+    serial_initilized = true;
+  }
+
   if(body_length > MAX_BODY_LENGTH){
     // TODO: do we want to throw an error, or somehow
     // note why we were forced to drop the message?

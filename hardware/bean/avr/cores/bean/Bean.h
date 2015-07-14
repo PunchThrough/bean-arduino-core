@@ -5,15 +5,23 @@
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
-
 class BeanClass {
 public:
-  uint16_t getAccelerationX (void);
-  uint16_t getAccelerationY (void);
-  uint16_t getAccelerationZ (void);
+  int16_t getAccelerationX (void);
+  int16_t getAccelerationY (void);
+  int16_t getAccelerationZ (void);
   AccelerationReading getAcceleration (void);
   uint8_t getAccelerationRange (void);
   void setAccelerationRange (uint8_t range);
+  void setAccelerometerPowerMode(uint8_t mode);
+  uint8_t getAccelerometerPowerMode();
+  void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
+  void enableAccelSingleTapInt();
+  void enableAccelDoubleTapInt();
+  void enableLowGravityInt();
+  void enableAnyMotionInts();
+  void disableAccelInterrupts();
+  uint8_t checkAccelInterrupts();
 
   int8_t getTemperature (void);
   uint8_t getBatteryLevel (void);
@@ -56,6 +64,8 @@ public:
 
 private:
   bool attemptSleep( uint32_t duration_ms);
+  int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
+
 
 };
 

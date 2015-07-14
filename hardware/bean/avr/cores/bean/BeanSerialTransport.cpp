@@ -345,7 +345,6 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   if (tx_buffer.head == tx_buffer.tail && m_wakeDelay > 0) {
     delay(m_wakeDelay);
   }
-
   HardwareSerial::write(BEAN_SOF);
   //body_length + "2" for message type.
   insert_escaped_char(body_length + 2);
@@ -357,7 +356,6 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   }
 
   HardwareSerial::write(BEAN_EOF);
-
   // throttle the transfer speed
   if ( m_enforcedDelay > 0 )
   {
@@ -582,6 +580,32 @@ void BeanSerialTransport::accelRangeSet( uint8_t range )
 {
   write_message(MSG_ID_CC_ACCEL_SET_RANGE, (const uint8_t *)&range, sizeof(range));
 }
+
+int BeanSerialTransport::accelRegisterRead( uint8_t reg, uint8_t length, uint8_t * value )
+{
+    size_t size = sizeof(uint8_t);
+    uint8_t payload[2];
+    payload[0] = reg;
+    payload[1] = length;
+    return call_and_response(MSG_ID_CC_ACCEL_READ_REG, payload, sizeof(payload), value, &size);
+}
+
+void BeanSerialTransport::accelRegisterWrite( uint8_t reg, uint8_t value)
+{
+    uint8_t payload[2];
+    payload[0] = reg;
+    payload[1] = value;
+    write_message(MSG_ID_CC_ACCEL_WRITE_REG, (const uint8_t *)&payload, sizeof(payload));
+}
+
+// Bit zero is INT1 pin from Accelerometer, Bit one is INT2 pin from Accelerometer (if available)
+void BeanSerialTransport::wakeOnAccel( uint8_t int_enable )
+{
+    uint8_t payload;
+    payload = int_enable;
+    write_message(MSG_ID_CC_WAKE_ON_ACCEL, (const uint8_t *)&payload, sizeof(payload));
+}
+
 /////////
 // Temperature
 /////////

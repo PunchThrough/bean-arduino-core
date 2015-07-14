@@ -25,21 +25,21 @@ typedef enum
 
 class BeanSerialTransport : public HardwareSerial
 {
-  friend class BeanClass;
+    friend class BeanClass;
 
 private:
     uint32_t m_wakeDelay;
     uint32_t m_enforcedDelay;
     
 protected:
-  ring_buffer *_reply_buffer;
-  void insert_escaped_char(uint8_t input);
-  volatile bool* _message_complete;
+    ring_buffer *_reply_buffer;
+    void insert_escaped_char(uint8_t input);
+    volatile bool* _message_complete;
 
 
-  size_t write_message(uint16_t messageId, const uint8_t* body, size_t body_length);
+    size_t write_message(uint16_t messageId, const uint8_t* body, size_t body_length);
 
-  int call_and_response(MSG_ID_T messageId,
+    int call_and_response(MSG_ID_T messageId,
                          const uint8_t *body,
                          size_t body_length,
                          uint8_t * response,
@@ -48,44 +48,47 @@ protected:
 
 // API Control
   //BT
-  void BTSetAdvertisingOnOff(const bool setting, uint32_t timer);
-  void BTSetEnableConfigSave(bool enableSave);
-  void BTSetAdvertisingInterval(uint16_t interval_ms);
-  void BTSetConnectionInterval(const int interval_ms);
-  void BTSetLocalName(const char* name);
-  void BTSetPairingPin(const uint16_t pin);
-  void BTSetTxPower(const BT_TXPOWER_DB_T& power);
-  void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
-  int  BTGetScratchChar(uint8_t scratchNum, ScratchData * scratchData);
-  int  BTGetConfig(BT_RADIOCONFIG_T *config);
-  int  BTGetStates(BT_STATES_T * btStates );
-  void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid );
-  void BTBeaconModeEnable( bool beaconEnable );
-  void BTConfigUartSleep(UART_SLEEP_MODE_T mode);
-  void BTDisconnect(void);
-    
+    void BTSetAdvertisingOnOff(const bool setting, uint32_t timer);
+    void BTSetEnableConfigSave(bool enableSave);
+    void BTSetAdvertisingInterval(uint16_t interval_ms);
+    void BTSetConnectionInterval(const int interval_ms);
+    void BTSetLocalName(const char* name);
+    void BTSetPairingPin(const uint16_t pin);
+    void BTSetTxPower(const BT_TXPOWER_DB_T& power);
+    void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
+    int  BTGetScratchChar(uint8_t scratchNum, ScratchData * scratchData);
+    int  BTGetConfig(BT_RADIOCONFIG_T *config);
+    int  BTGetStates(BT_STATES_T * btStates );
+    void BTSetBeaconParams(uint16_t uuid, uint16_t majorid, uint16_t minorid );
+    void BTBeaconModeEnable( bool beaconEnable );
+    void BTConfigUartSleep(UART_SLEEP_MODE_T mode);
+    void BTDisconnect(void);
 
-  //LED Control
-  void ledSet(const LED_SETTING_T &setting);
-  void ledSetSingle(const LED_IND_SETTING_T &setting);
-  int ledRead(LED_SETTING_T *reading);
 
-  //Accelerometer
-  int accelRead(ACC_READING_T* reading);
-  int accelRangeRead( uint8_t *range);
-  void accelRangeSet( uint8_t range );
+    //LED Control
+    void ledSet(const LED_SETTING_T &setting);
+    void ledSetSingle(const LED_IND_SETTING_T &setting);
+    int ledRead(LED_SETTING_T *reading);
 
-  //temperature
-  int temperatureRead( int8_t* tempRead );
+    //Accelerometer
+    int accelRead(ACC_READING_T* reading);
+    int accelRangeRead( uint8_t *range);
+    void accelRangeSet( uint8_t range );
+    int accelRegisterRead( uint8_t reg, uint8_t length, uint8_t * value );
+    void accelRegisterWrite( uint8_t reg, uint8_t value);
+    void wakeOnAccel( uint8_t int_enable );
 
-  //battery
-  int batteryRead( uint8_t* level );
+    //temperature
+    int temperatureRead( int8_t* tempRead );
 
-  //Arduino Sleep
-  void sleep(uint32_t duration_ms);
-  void enableWakeOnConnect( bool enable );
+    //battery
+    int batteryRead( uint8_t* level );
 
-  bool m_enableSave;
+    //Arduino Sleep
+    void sleep(uint32_t duration_ms);
+    void enableWakeOnConnect( bool enable );
+
+    bool m_enableSave;
 
 
 

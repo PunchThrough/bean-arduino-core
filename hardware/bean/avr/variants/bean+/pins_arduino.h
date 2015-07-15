@@ -33,15 +33,13 @@
 
 #define digitalPinHasPWM(p)         ((p) == 2 || (p) == 5 || (p) == 6 || (p) == 7)
 
-#define IS_BEAN (1)
-
 static const uint8_t SS   = 6;
 static const uint8_t MOSI = 7;
 static const uint8_t MISO = 8;
 static const uint8_t SCK  = 9;
 
-static const uint8_t SDA = 18;
-static const uint8_t SCL = 19;
+static const uint8_t SDA = 14;
+static const uint8_t SCL = 15;
 //static const uint8_t LED_BUILTIN = 13;
 
 static const uint8_t A0 = 10;

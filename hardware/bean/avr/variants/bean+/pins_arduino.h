@@ -29,7 +29,7 @@
 
 #define NUM_DIGITAL_PINS            10
 #define NUM_ANALOG_INPUTS           6
-#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
+#define analogInputToDigitalPin(p)  ((p < NUM_DIGITAL_PINS) ? (p) + NUM_DIGITAL_PINS : -1)
 
 #define digitalPinHasPWM(p)         ((p) == 2 || (p) == 5 || (p) == 6 || (p) == 7)
 

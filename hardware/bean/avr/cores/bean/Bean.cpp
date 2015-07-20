@@ -436,6 +436,10 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return value;
   }
 
+  void BeanClass::enableWakeOnAccelerometer() {
+    Serial.wakeOnAccel(1);
+  }
+
   uint8_t BeanClass::getAccelerationRange( void )
   {
     uint8_t value;

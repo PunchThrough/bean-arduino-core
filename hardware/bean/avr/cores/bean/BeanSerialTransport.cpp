@@ -283,6 +283,7 @@ ISR(USART_UDRE_vect)
 void BeanSerialTransport::begin(void){
   HardwareSerial::begin(38400);
   pinMode(CC_INTERRUPT_PIN, OUTPUT);
+  digitalWrite(CC_INTERRUPT_PIN, LOW);
 
   m_enableSave = true;
 

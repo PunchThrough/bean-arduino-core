@@ -18,7 +18,6 @@ typedef enum
 } UART_SLEEP_MODE_T;
 
 // Used for waking the CC out of deep sleep mode.
-#define CC_INTERRUPT_PIN (13)
 #define UART_DEFAULT_WAKE_WAIT (7)
 #define UART_DEFAULT_SEND_WAIT (13)
 

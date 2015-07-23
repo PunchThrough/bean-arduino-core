@@ -49,6 +49,8 @@ static const uint8_t A3 = 13;
 static const uint8_t A4 = 14;
 static const uint8_t A5 = 15;
 
+static const uint8_t CC_INTERRUPT_PIN = 16;
+
 // TODO - I don't know what this stuff is
 #define digitalPinToPCICR(p)    (((p) >= 0 && (p) <= 21) ? (&PCICR) : ((uint8_t *)0))
 #define digitalPinToPCICRbit(p) (((p) <= 7) ? 2 : (((p) <= 13) ? 0 : 1))
@@ -132,15 +134,16 @@ const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PB,     // D4    
 	PB,     // D5	PWM
 	PB,     // D6   PWM 
-	PB,	// D7	PWM
-	PB,	// D8
+	PB,	    // D7	PWM
+	PB,	    // D8
 	PB, 	// D9
 	PC,     // A0
-	PC,	// A1     
+	PC,	    // A1
 	PC,     // A2
 	PC, 	// A3    
-	PC,	// A4
-	PC,	// A5
+	PC,	    // A4
+	PC,	    // A5
+	PD,     // CC_INTERRUPT
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
@@ -160,6 +163,7 @@ const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
 	_BV(3),	// A3
 	_BV(4),	// A4
 	_BV(5),	// A5
+	_BV(5), // D5
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
@@ -179,6 +183,7 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 	NOT_ON_TIMER, // A3
 	NOT_ON_TIMER, // A4
 	NOT_ON_TIMER, // A5
+	NOT_ON_TIMER, // CC_INTERRUPT
 };
 
 #endif  // ARDUINO_MAIN

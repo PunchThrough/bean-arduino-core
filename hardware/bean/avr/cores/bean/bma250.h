@@ -51,12 +51,18 @@
 
 #define REG_INT_MAPPING_X19     0x19
 #define MASK_X19_ALL_INT1       0xF7
+#define WAKE_SINGLE_TAP_INT     0x20
+#define WAKE_DOUBLE_TAP_INT     0x10
+#define WAKE_ANY_MOTION_INT     0x04
+#define WAKE_LOW_G_INT          0x01
+
 
 #define REG_INT_MAPPING_X1A     0x1A
 #define MASK_X1A_ALL_INT1       0x81
 
 #define REG_LATCH_CFG_X21       0x21
 #define VALUE_LATCHED           0x07
+#define VALUE_TEMPORARY_250MS   0x01
 #define MASK_RESET_INT_LATCH    0x80
 
 #endif //BEAN_BMA250_H

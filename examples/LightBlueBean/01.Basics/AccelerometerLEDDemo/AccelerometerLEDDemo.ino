@@ -1,13 +1,13 @@
 #include "bma250.h"
 
-#define POLL_RATE   100
+#define POLL_RATE   3000
 uint16_t count;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin();
   Bean.accelerometerConfig(ENABLE_DOUBLE_TAP_INT | ENABLE_LOW_G_INT | ENABLE_ANY_MOTION_INT, VALUE_LOW_POWER_10MS);
-  Bean.enableWakeOnAccelerometer();
+  Bean.enableWakeOnAccelerometer(WAKE_LOW_G_INT | WAKE_DOUBLE_TAP_INT);
   count = 0;
 }
 

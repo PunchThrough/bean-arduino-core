@@ -16,7 +16,7 @@ public:
   void setAccelerometerPowerMode(uint8_t mode);
   uint8_t getAccelerometerPowerMode();
   void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
-  void enableWakeOnAccelerometer();
+  void enableWakeOnAccelerometer(uint8_t sources);
   void enableAccelSingleTapInt();
   void enableAccelDoubleTapInt();
   void enableLowGravityInt();

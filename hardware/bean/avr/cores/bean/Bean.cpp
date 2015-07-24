@@ -4,6 +4,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <avr/wdt.h>
+#include <applicationMessageHeaders/AppMessages.h>
 #include "wiring_private.h"
 #include "bma250.h"
 
@@ -436,8 +437,10 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return value;
   }
 
-  void BeanClass::enableWakeOnAccelerometer() {
-    Serial.wakeOnAccel(1);
+  void BeanClass::enableWakeOnAccelerometer(uint8_t sources) {
+      Serial.accelRegisterWrite(REG_LATCH_CFG_X21, VALUE_TEMPORARY_250MS);
+      Serial.accelRegisterWrite(REG_INT_MAPPING_X19, sources);
+      Serial.wakeOnAccel(1);
   }
 
   uint8_t BeanClass::getAccelerationRange( void )
@@ -452,50 +455,33 @@ uint16_t BeanClass::getBatteryVoltage(void)
     Serial.accelRegisterWrite(REG_G_SETTING, range);
   }
 
-  int16_t BeanClass::convertAcceleration(uint8_t high_byte, uint8_t low_byte) {
-      int16_t value = high_byte;
-      value = value << 6;
-      value |= (low_byte >> 6);
-      if (value & 0x0200) {  // Manually sign extend
-          value |= 0xFC00;
-      }
-      return value;
-  }
-
   int16_t BeanClass::getAccelerationX(void){
-    uint8_t value[2];
-    Serial.accelRegisterRead(REG_X_ACCEL_LSB, sizeof(value), value);
-    return convertAcceleration(value[1], value[0]);
+    ACC_READING_T reading;
+    Serial.accelRead(&reading);
+    return reading.xAxis;
   }
 
   int16_t BeanClass::getAccelerationY(void){
-    uint8_t value[2];
-    Serial.accelRegisterRead(REG_Y_ACCEL_LSB, sizeof(value), value);
-    return convertAcceleration(value[1], value[0]);
+    ACC_READING_T reading;
+    Serial.accelRead(&reading);
+    return reading.yAxis;
   }
 
   int16_t BeanClass::getAccelerationZ(void){
-    uint8_t value[2];
-    Serial.accelRegisterRead(REG_Z_ACCEL_LSB, sizeof(value), value);
-    return convertAcceleration(value[1], value[0]);
+    ACC_READING_T reading;
+    Serial.accelRead(&reading);
+    return reading.zAxis;
   }
 
   ACC_READING_T BeanClass::getAcceleration(void){
     ACC_READING_T reading;
-    uint8_t reg = REG_X_ACCEL_LSB; // Start of acceleration readings (X first, Z last)
-    uint8_t values[6];
-    Serial.accelRegisterRead(reg, sizeof(values), values);
-    reading.xAxis = convertAcceleration(values[1], values[0]);
-    reading.yAxis = convertAcceleration(values[3], values[2]);
-    reading.zAxis = convertAcceleration(values[5], values[4]);
+    Serial.accelRead(&reading);
     return reading;
   }
 
   void BeanClass::accelerometerConfig(uint16_t interrupts, uint8_t power_mode) {
     Serial.accelRegisterWrite(REG_POWER_MODE_X11, power_mode);
     Serial.accelRegisterWrite(REG_LATCH_CFG_X21, VALUE_LATCHED);
-    Serial.accelRegisterWrite(REG_INT_MAPPING_X19, MASK_X19_ALL_INT1);
-    Serial.accelRegisterWrite(REG_INT_MAPPING_X1A, MASK_X1A_ALL_INT1);
     Serial.accelRegisterWrite(REG_INT_SETTING_X16, (uint8_t) (interrupts >> 8));
     Serial.accelRegisterWrite(REG_INT_SETTING_X17, (uint8_t) (interrupts & 0xFF));
   }

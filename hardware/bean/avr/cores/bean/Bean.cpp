@@ -27,42 +27,42 @@ do { \
 #define MAX_SCRATCH_SIZE (20)
 #define NUM_BEAN_PINS 7
 
-static volatile voidFuncPtr intFunc;
+static volatile voidFuncPtr intFuncs[6];
+static volatile uint8_t     pinStates[6];
 
 // Pin change interrupt vectors
 
 // D0
-#ifndef PCINT2_vect
 ISR(PCINT2_vect)
 {
-  if(intFunc)
+  pinStates[0] = digitalRead(0);
+  if(intFuncs[0])
   {
-    intFunc();
+    intFuncs[0]();
   }
 }
-#endif
 
 // Analog 0, Analog 1
-#ifndef PCINT1_vect
 ISR(PCINT1_vect)
 {
-  if (intFunc)
-  {
-    intFunc();
-  }
+  // Nobody loves me
 }
-#endif
 
 // D1-D5
-#ifndef PCINT0_vect
 ISR(PCINT0_vect)
 {
-  if (intFunc)
+  for (uint8_t i = 1; i < 6; i++)
   {
-    intFunc();
+    if (pinStates[i] != digitalRead(i))
+    {
+      pinStates[i] = digitalRead(i);
+      if (intFuncs[i] != NULL)
+      {
+        intFuncs[i]();
+      }
+    }
   }
 }
-#endif
 
   BeanClass Bean;
 
@@ -285,7 +285,9 @@ ISR(PCINT0_vect)
 
   void BeanClass::attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) )
   {
-
+      PCIFR = 0x07;  // Clear any pending interrupts
+      pinStates[pin] = digitalRead(pin);
+      intFuncs[pin] = userFunc;
       switch( pin )
       {
         case 0:
@@ -317,11 +319,11 @@ ISR(PCINT0_vect)
           break;
       }
 
-      intFunc = userFunc;
   }
 
   void BeanClass::detachChangeInterrupt(uint8_t pin)
   {
+      intFuncs[pin] = NULL;
       switch( pin )
       {
         case 0:
@@ -352,8 +354,6 @@ ISR(PCINT0_vect)
         default:
           break;
       }
-
-      intFunc = NULL;
   }
 
 void BeanClass::setAdvertisingInterval( uint16_t interval_ms )

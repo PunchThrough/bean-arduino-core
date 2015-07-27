@@ -1,3 +1,5 @@
+#include <PinChangeInt.h>
+
 /* 
   This sketch uses the Bean library to trigger interrupts when changes are detected on pins 0, 1, and 2. 
   
@@ -33,9 +35,9 @@ void setup() {
   pinMode(0, INPUT);
   pinMode(1, INPUT);
   pinMode(2, INPUT);
-  Bean.attachChangeInterrupt(0, zeroChangeDetected);
-  Bean.attachChangeInterrupt(1, oneChangeDetected);
-  Bean.attachChangeInterrupt(2, twoChangeDetected);
+  PCintPort::attachInterrupt(0, zeroChangeDetected, CHANGE);
+  PCintPort::attachInterrupt(1, oneChangeDetected, CHANGE);
+  PCintPort::attachInterrupt(2, twoChangeDetected, CHANGE);
   Bean.setLed(0xFF, 0xFF, 0xFF);  // Flash to show the sketch is running
   Bean.sleep(250);
 }

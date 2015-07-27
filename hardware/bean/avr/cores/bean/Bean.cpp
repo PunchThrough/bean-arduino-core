@@ -27,43 +27,6 @@ do { \
 #define MAX_SCRATCH_SIZE (20)
 #define NUM_BEAN_PINS 7
 
-static volatile voidFuncPtr intFuncs[6];
-static volatile uint8_t     pinStates[6];
-
-// Pin change interrupt vectors
-
-// D0
-ISR(PCINT2_vect)
-{
-  pinStates[0] = digitalRead(0);
-  if(intFuncs[0])
-  {
-    intFuncs[0]();
-  }
-}
-
-// Analog 0, Analog 1
-ISR(PCINT1_vect)
-{
-  // Nobody loves me
-}
-
-// D1-D5
-ISR(PCINT0_vect)
-{
-  for (uint8_t i = 1; i < 6; i++)
-  {
-    if (pinStates[i] != digitalRead(i))
-    {
-      pinStates[i] = digitalRead(i);
-      if (intFuncs[i] != NULL)
-      {
-        intFuncs[i]();
-      }
-    }
-  }
-}
-
   BeanClass Bean;
 
   static void wakeUp(void){
@@ -282,79 +245,6 @@ ISR(PCINT0_vect)
     }
 }
 
-
-  void BeanClass::attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) )
-  {
-      PCIFR = 0x07;  // Clear any pending interrupts
-      pinStates[pin] = digitalRead(pin);
-      intFuncs[pin] = userFunc;
-      switch( pin )
-      {
-        case 0:
-          PCICR |= _BV(PCIE2);
-          PCMSK2 |= _BV(PCINT22);
-          break;
-        case 1:
-          PCICR |= _BV(PCIE0);
-          PCMSK0 |= _BV(PCINT1);
-          break;
-        case 2:
-          PCICR |= _BV(PCIE0);
-          PCMSK0 |= _BV(PCINT2);
-          break;
-        case 3:
-          PCICR |= _BV(PCIE0);
-          PCMSK0 |= _BV(PCINT3);
-          break;
-        case 4:
-          PCICR |= _BV(PCIE0);
-          PCMSK0 |= _BV(PCINT4);
-          break;
-        case 5:
-          PCICR |= _BV(PCIE0);
-          PCMSK0 |= _BV(PCINT5);
-          break;
-
-        default:
-          break;
-      }
-
-  }
-
-  void BeanClass::detachChangeInterrupt(uint8_t pin)
-  {
-      intFuncs[pin] = NULL;
-      switch( pin )
-      {
-        case 0:
-          PCICR &= ~_BV(PCIE2);
-          PCMSK2 &= ~_BV(PCINT22);
-          break;
-        case 1:
-          PCICR &= ~_BV(PCIE0);
-          PCMSK0 &= ~_BV(PCINT1);
-          break;
-        case 2:
-          PCICR &= ~_BV(PCIE0);
-          PCMSK0 &= ~_BV(PCINT2);
-          break;
-        case 3:
-          PCICR &= ~_BV(PCIE0);
-          PCMSK0 &= ~_BV(PCINT3);
-          break;
-        case 4:
-          PCICR &= ~_BV(PCIE0);
-          PCMSK0 &= ~_BV(PCINT4);
-          break;
-        case 5:
-          PCICR &= ~_BV(PCIE0);
-          PCMSK0 &= ~_BV(PCINT5);
-          break;
-
-        default:
-          break;
-      }
-  }
 
 void BeanClass::setAdvertisingInterval( uint16_t interval_ms )
 {

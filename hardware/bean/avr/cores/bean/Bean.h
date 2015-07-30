@@ -47,8 +47,6 @@ public:
   void sleep(uint32_t duration_ms);
   void keepAwake(bool enable);
 
-  void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
-  void detachChangeInterrupt(uint8_t pin);
   void setAdvertisingInterval( uint16_t interval_ms );
   void enableAdvertising(bool enable, uint32_t timer);
   void enableAdvertising(bool enable);
@@ -65,7 +63,6 @@ public:
 
 private:
   bool attemptSleep( uint32_t duration_ms);
-  int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
 
 
 };

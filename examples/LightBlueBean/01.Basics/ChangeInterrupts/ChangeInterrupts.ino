@@ -31,13 +31,34 @@ void twoChangeDetected( void )
   blue += 16;
 }
 
+void threeChangeDetected( void )
+{
+  red = 0;
+}
+
+void fourChangeDetected( void )
+{
+  green = 0;
+}
+
+void fiveChangeDetected( void )
+{
+  blue = 0;
+}
+
 void setup() {
   pinMode(0, INPUT);
   pinMode(1, INPUT);
   pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, INPUT);
   PCintPort::attachInterrupt(0, zeroChangeDetected, CHANGE);
   PCintPort::attachInterrupt(1, oneChangeDetected, CHANGE);
   PCintPort::attachInterrupt(2, twoChangeDetected, CHANGE);
+  PCintPort::attachInterrupt(3, threeChangeDetected, CHANGE);
+  PCintPort::attachInterrupt(4, fourChangeDetected, CHANGE);
+  PCintPort::attachInterrupt(5, fiveChangeDetected, CHANGE);
   Bean.setLed(0xFF, 0xFF, 0xFF);  // Flash to show the sketch is running
   Bean.sleep(250);
 }

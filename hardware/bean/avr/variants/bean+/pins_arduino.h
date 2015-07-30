@@ -54,8 +54,8 @@ static const uint8_t CC_INTERRUPT_PIN = 16;
 // TODO - I don't know what this stuff is
 #define digitalPinToPCICR(p)    (((p) >= 0 && (p) <= 21) ? (&PCICR) : ((uint8_t *)0))
 #define digitalPinToPCICRbit(p) (((p) <= 7) ? 2 : (((p) <= 13) ? 0 : 1))
-#define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK2) : (((p) <= 13) ? (&PCMSK0) : (((p) <= 21) ? (&PCMSK1) : ((uint8_t *)0))))
-#define digitalPinToPCMSKbit(p) (((p) <= 7) ? (p) : (((p) <= 13) ? ((p) - 8) : ((p) - 14)))
+#define digitalPinToPCMSK(p)    (((p) <= 3) ? (&PCMSK2) : (&PCMSK0))
+#define digitalPinToPCMSKbit(p) (((p) >= 4) ? (p - 4) : (((p) <= 2) ? (2*p+2) : (7)))
 
 #ifdef ARDUINO_MAIN
 

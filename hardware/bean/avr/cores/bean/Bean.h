@@ -1,9 +1,15 @@
 #ifndef BEAN_BEAN_BEAN_H
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
+#include "BeanHID.h"
 
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
+
+typedef ADV_SWITCH_ENABLED_T BluetoothServices;
+typedef ANCS_SOURCE_MSG_T AncsNotification;
+typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
+typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
 public:
@@ -39,6 +45,40 @@ public:
   void setLedGreen(uint8_t intensity);
   void setLedBlue(uint8_t intensity);
 
+  BluetoothServices getServices(void);
+  void setServices(BluetoothServices services);
+  void resetServices(void);
+  void enableHID(void);
+  void enableMidi(void);
+  void enableANCS(void);
+  void enableiBeacon(void);
+  void enableCustom(void);
+  void setCustomAdvertisement(uint8_t *buf, int len);
+
+  int  midiPacketSend();
+  int  midiSend(uint8_t *buff,uint8_t numBytes);
+  int  midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
+  int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
+
+  int  HIDWriteKey(uint8_t k);
+  int  HIDWrite(String s);
+  void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
+  void HIDClickMouse(uint8_t b = MOUSE_LEFT);
+  void HIDSendConsumerControl(unsigned char command);
+
+  int ancsAvailable();
+  int readAncs(uint8_t *buffer, size_t max_length);
+  int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
+  int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
+  int readAncsNotiDetails(uint8_t *buf, size_t max_length);
+  void performAncsAction(uint32_t ID, uint8_t actionID);
+
+
+  void startObserver(void);
+  void stopObserver(void);
+  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+
+
   bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
   bool setScratchNumber(uint8_t bank, uint32_t data);
   ScratchData readScratchData(uint8_t bank);
@@ -67,6 +107,10 @@ private:
   bool attemptSleep( uint32_t duration_ms);
   int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
 
+
+  uint8_t lastStatus;
+  long midiTimeStampDiff;
+  bool midiPacketBegin;
 
 };
 

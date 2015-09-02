@@ -809,6 +809,16 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return 0;
   }
 
+  int BeanClass::HIDPressKey(uint8_t k)
+  {
+    return BeanKeyboard.press(k);
+  }
+
+  int BeanClass::HIDReleaseKey(uint8_t k)
+  {
+    return BeanKeyboard.release(k);
+  }
+
   int BeanClass::HIDWriteKey(uint8_t k)
   {
     return BeanKeyboard.write(k);

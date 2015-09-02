@@ -60,6 +60,8 @@ public:
   int  midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
   int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
 
+  int  HIDPressKey(uint8_t k);
+  int  HIDReleaseKey(uint8_t k);
   int  HIDWriteKey(uint8_t k);
   int  HIDWrite(String s);
   void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);

@@ -576,8 +576,6 @@ uint16_t BeanClass::getBatteryVoltage(void)
       return reading.red;
     }
 
-    // TODO: This is an error state.
-    // Should we retry?
     return 0;
   }
 
@@ -588,8 +586,6 @@ uint16_t BeanClass::getBatteryVoltage(void)
       return reading.green;
     }
 
-    // TODO: This is an error state.
-    // Should we retry?
     return 0;
   }
 
@@ -600,8 +596,6 @@ uint16_t BeanClass::getBatteryVoltage(void)
       return reading.blue;
     }
 
-    // TODO: This is an error state.
-    // Should we retry?
     return 0;
   }
 

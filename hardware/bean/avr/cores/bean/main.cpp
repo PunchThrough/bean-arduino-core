@@ -1,7 +1,6 @@
 #include <Arduino.h>
 
-int main(void)
-{
+int main(void) {
   init();
 
 #if defined(USBCON)
@@ -24,4 +23,3 @@ int main(void)
 
   return 0;
 }
-

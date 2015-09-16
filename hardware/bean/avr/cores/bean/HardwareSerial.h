@@ -23,76 +23,67 @@
 #ifndef HardwareSerial_h
 #define HardwareSerial_h
 
-
 #include <inttypes.h>
 
 #include "Stream.h"
 #include "applicationMessageHeaders/AppMessages.h"
-
-
 
 // Define constants and variables for buffering incoming serial data.  We're
 // using a ring buffer (I think), in which head is the index of the location
 // to which to write the next incoming character and tail is the index of the
 // location from which to read.
 #if (RAMEND < 1000)
-  #define SERIAL_BUFFER_SIZE 16
+#define SERIAL_BUFFER_SIZE 16
 #else
-  // Probably overkill here, but just ensureing that there is room
-  // for a max message + length, + SOF and EOF
-  #define SERIAL_BUFFER_SIZE (APP_MSG_MAX_LENGTH + 3)
+// Probably overkill here, but just ensureing that there is room
+// for a max message + length, + SOF and EOF
+#define SERIAL_BUFFER_SIZE (APP_MSG_MAX_LENGTH + 3)
 #endif
 
-struct ring_buffer
-{
+struct ring_buffer {
   unsigned char buffer[SERIAL_BUFFER_SIZE];
   volatile unsigned int head;
   volatile unsigned int tail;
 };
 
+class HardwareSerial : public Stream {
+ protected:
+  ring_buffer *_rx_buffer;
+  ring_buffer *_tx_buffer;
+  volatile uint8_t *_ubrrh;
+  volatile uint8_t *_ubrrl;
+  volatile uint8_t *_ucsra;
+  volatile uint8_t *_ucsrb;
+  volatile uint8_t *_ucsrc;
+  volatile uint8_t *_udr;
+  uint8_t _rxen;
+  uint8_t _txen;
+  uint8_t _rxcie;
+  uint8_t _udrie;
+  uint8_t _u2x;
+  bool transmitting;
 
-class HardwareSerial : public Stream
-{
-  protected:
-    ring_buffer *_rx_buffer;
-    ring_buffer *_tx_buffer;
-    volatile uint8_t *_ubrrh;
-    volatile uint8_t *_ubrrl;
-    volatile uint8_t *_ucsra;
-    volatile uint8_t *_ucsrb;
-    volatile uint8_t *_ucsrc;
-    volatile uint8_t *_udr;
-    uint8_t _rxen;
-    uint8_t _txen;
-    uint8_t _rxcie;
-    uint8_t _udrie;
-    uint8_t _u2x;
-    bool transmitting;
-
-
-
-  public:
-    HardwareSerial(ring_buffer *rx_buffer, ring_buffer *tx_buffer,
-      volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
-      volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
-      volatile uint8_t *ucsrc, volatile uint8_t *udr,
-      uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t udrie, uint8_t u2x);
-    virtual void begin(unsigned long);
-    virtual void begin(unsigned long, uint8_t);
-    virtual void end();
-    virtual int available(void);
-    virtual int peek(void);
-    virtual int read(void);
-    virtual void flush(void);
-    virtual size_t write(uint8_t);
-    inline size_t write(unsigned long n) { return write((uint8_t)n); }
-    inline size_t write(long n) { return write((uint8_t)n); }
-    inline size_t write(unsigned int n) { return write((uint8_t)n); }
-    inline size_t write(int n) { return write((uint8_t)n); }
-    using Print::write; // pull in write(str) and write(buf, size) from Print
-    operator bool();
+ public:
+  HardwareSerial(ring_buffer *rx_buffer, ring_buffer *tx_buffer,
+                 volatile uint8_t *ubrrh, volatile uint8_t *ubrrl,
+                 volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+                 volatile uint8_t *ucsrc, volatile uint8_t *udr, uint8_t rxen,
+                 uint8_t txen, uint8_t rxcie, uint8_t udrie, uint8_t u2x);
+  virtual void begin(unsigned long);
+  virtual void begin(unsigned long, uint8_t);
+  virtual void end();
+  virtual int available(void);
+  virtual int peek(void);
+  virtual int read(void);
+  virtual void flush(void);
+  virtual size_t write(uint8_t);
+  inline size_t write(unsigned long n) { return write((uint8_t)n); }
+  inline size_t write(long n) { return write((uint8_t)n); }
+  inline size_t write(unsigned int n) { return write((uint8_t)n); }
+  inline size_t write(int n) { return write((uint8_t)n); }
+  using Print::write;  // pull in write(str) and write(buf, size) from Print
+  operator bool();
 };
-
 
 // Define config for Serial.begin(baud, config);
 #define SERIAL_5N1 0x00
@@ -120,15 +111,14 @@ class HardwareSerial : public Stream
 #define SERIAL_7O2 0x3C
 #define SERIAL_8O2 0x3E
 
-
 #if defined(UBRR1H)
-  extern HardwareSerial Serial1;
+extern HardwareSerial Serial1;
 #endif
 #if defined(UBRR2H)
-  extern HardwareSerial Serial2;
+extern HardwareSerial Serial2;
 #endif
 #if defined(UBRR3H)
-  extern HardwareSerial Serial3;
+extern HardwareSerial Serial3;
 #endif
 
 extern void serialEventRun(void) __attribute__((weak));

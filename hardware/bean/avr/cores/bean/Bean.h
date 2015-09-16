@@ -12,13 +12,13 @@ typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
-public:
-  int16_t getAccelerationX (void);
-  int16_t getAccelerationY (void);
-  int16_t getAccelerationZ (void);
-  AccelerationReading getAcceleration (void);
-  uint8_t getAccelerationRange (void);
-  void setAccelerationRange (uint8_t range);
+ public:
+  int16_t getAccelerationX(void);
+  int16_t getAccelerationY(void);
+  int16_t getAccelerationZ(void);
+  AccelerationReading getAcceleration(void);
+  uint8_t getAccelerationRange(void);
+  void setAccelerationRange(uint8_t range);
   void setAccelerometerPowerMode(uint8_t mode);
   uint8_t getAccelerometerPowerMode();
   void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
@@ -30,17 +30,16 @@ public:
   void disableAccelInterrupts();
   uint8_t checkAccelInterrupts();
 
-  int8_t getTemperature (void);
-  uint8_t getBatteryLevel (void);
-  uint16_t getBatteryVoltage (void);
-  void enableConfigSave( bool enableSave );
-
+  int8_t getTemperature(void);
+  uint8_t getBatteryLevel(void);
+  uint16_t getBatteryVoltage(void);
+  void enableConfigSave(bool enableSave);
 
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
   LedReading getLed(void);
-  uint8_t getLedRed (void);
-  uint8_t getLedGreen (void);
-  uint8_t getLedBlue (void);
+  uint8_t getLedRed(void);
+  uint8_t getLedGreen(void);
+  uint8_t getLedBlue(void);
   void setLedRed(uint8_t intensity);
   void setLedGreen(uint8_t intensity);
   void setLedBlue(uint8_t intensity);
@@ -55,16 +54,16 @@ public:
   void enableCustom(void);
   void setCustomAdvertisement(uint8_t *buf, int len);
 
-  int  midiPacketSend();
-  int  midiSend(uint8_t *buff,uint8_t numBytes);
-  int  midiSend(uint8_t status,uint8_t byte1, uint8_t byte2);
-  int  midiRead(uint8_t &status,uint8_t &byte1, uint8_t &byte2);
+  int midiPacketSend();
+  int midiSend(uint8_t *buff, uint8_t numBytes);
+  int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
+  int midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2);
 
-  int  HIDPressKey(uint8_t k);
-  int  HIDReleaseKey(uint8_t k);
-  int  HIDWriteKey(uint8_t k);
-  int  HIDWrite(String s);
-  void  HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
+  int HIDPressKey(uint8_t k);
+  int HIDReleaseKey(uint8_t k);
+  int HIDWriteKey(uint8_t k);
+  int HIDWrite(String s);
+  void HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
   void HIDClickMouse(uint8_t b = MOUSE_LEFT);
   void HIDSendConsumerControl(unsigned char command);
 
@@ -75,13 +74,12 @@ public:
   int readAncsNotiDetails(uint8_t *buf, size_t max_length);
   void performAncsAction(uint32_t ID, uint8_t actionID);
 
-
   void startObserver(void);
   void stopObserver(void);
-  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int getObserverMessage(ObseverAdvertisementInfo *message,
+                         unsigned long timeout);
 
-
-  bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
+  bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
   bool setScratchNumber(uint8_t bank, uint32_t data);
   ScratchData readScratchData(uint8_t bank);
   long readScratchNumber(uint8_t bank);
@@ -89,34 +87,31 @@ public:
   void sleep(uint32_t duration_ms);
   void keepAwake(bool enable);
 
-  void attachChangeInterrupt(uint8_t pin, void(*userFunc)(void) );
+  void attachChangeInterrupt(uint8_t pin, void (*userFunc)(void));
   void detachChangeInterrupt(uint8_t pin);
-  void setAdvertisingInterval( uint16_t interval_ms );
+  void setAdvertisingInterval(uint16_t interval_ms);
   void enableAdvertising(bool enable, uint32_t timer);
   void enableAdvertising(bool enable);
-  bool getConnectionState( void );
-  bool getAdvertisingState( void );
-  void setBeanName( const String &s );
-  const char* getBeanName(void);
-  void setBeaconParameters( uint16_t uuid, uint16_t major_id, uint16_t minor_id );
-  void setBeaconEnable( bool beaconEnable );
-  void enableWakeOnConnect( bool enable );
+  bool getConnectionState(void);
+  bool getAdvertisingState(void);
+  void setBeanName(const String &s);
+  const char *getBeanName(void);
+  void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
+  void setBeaconEnable(bool beaconEnable);
+  void enableWakeOnConnect(bool enable);
   void disconnect(void);
 
-  BeanClass(){}
+  BeanClass() {}
 
-private:
-  bool attemptSleep( uint32_t duration_ms);
+ private:
+  bool attemptSleep(uint32_t duration_ms);
   int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
-
 
   uint8_t lastStatus;
   long midiTimeStampDiff;
   bool midiPacketBegin;
-
 };
 
 extern BeanClass Bean;
-
 
 #endif

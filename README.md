@@ -24,7 +24,6 @@ We write the fuse settings here: XX XX XX
 
 Steps:
 
-
 1. Install avrdude.  I used [http://www.obdev.at/products/crosspack/index.html](CrossPack) to do this.
 1. Read the fuses from an off the shelf ArduinoPro.  Use this command after avrdude is in your path: `avrdude -p atmega328p -c usbtiny -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h`
 1. Go to [http://www.engbedded.com/fusecalc/](The Avr Fuse Calculator) and enter in the current state of the fuses
@@ -32,17 +31,18 @@ Steps:
 1. Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
 1. Use avrdude to write and test your new fuse settings.  The command line will look something like this (except, these are guessed values: `avrdude -p atmega328p -c usbtiny -U lfuse:w:0xee:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m`)
 
-
-
 ### Key Files:
 
 #### Everything in the `hardware` directory
+
 The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install.  This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board allow users to program it.
 
 #### Everything in the `examples` directory
+
 The contents of the examples directory should be copied separately on install to the examples resources in the Arduino IDE.
 
 #### Everything in the `beanModuleEmulator` directory
+
 This directory contains an Emulator of the 'non-Arduino' parts of the bean.  This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.  You can run `python BeanModuleEmulator.py` from within the beanModuleEmulator directory.
 
 ##### Dependencies
@@ -57,18 +57,43 @@ There are a few python library dependencies you'll need to make the emulator wor
 The emulator has been tested with python 2.7.6 installed by Homebrew on OSX
 
 ### Development:
+
 During development, it is recommended to use soft links from inside your Arduino IDE resources to your repository.  It will make it easier to test your work.
 
 ### Repo Setup:
-This repository uses git submodules and requires a few extra steps for cloning and pulling. 
-#### Clone
-		git clone REPO_URL --recursive
 
+This repository uses git submodules and requires a few extra steps for cloning and pulling.
+
+#### Clone
+
+```
+$ git clone REPO_URL --recursive
+```
 #### Initialize Submodules 
-######(This is unnecessary if the recursive clone works)
-		git submodule update --init --recursive
+
+(This is unnecessary if the recursive clone works)
+
+```		
+$ git submodule update --init --recursive
+```
 
 #### Pull
-		git pull
-		git submodule update --recursive
-		
+	
+```
+$ git pull
+$ git submodule update --recursive
+```
+
+### Code Format
+
+Use `clang-format` to format your code before you check it in... there is already a config file `.clang-format` checked in so just run:
+
+```
+$ clang-format -i <file>
+```
+
+Or to run it on an entire directory:
+
+```
+$ find hardware/bean/ | xargs clang-format -i
+```

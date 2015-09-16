@@ -75,32 +75,42 @@ clang-format and cpplint are two tools that can help insure your code follows th
 
 ## Installing Tools
 
-```
+```sh
 brew install clang-format
 pip install cpplint
 ```
 
 ## Auto-Formatting
 
-To reformat `Bean.h` and `Bean.cpp` before committing:
+To reformat one or more files before committing:
 
+```sh
+clang-format -i FILE [FILE ...]
 ```
-clang-format -i hardware/bean/avr/cores/bean/Bean.h hardware/bean/avr/cores/bean/Bean.cpp
-```
 
-`-i`: reformat code in-place
+`-i`: reformat code in-place. Default behavior without this flag is to reformat the file and dump the formatted output to stdout.
 
-clang-format uses the `.clang-format` file to set formatting style. See the [clang-format docs] for more info.
+clang-format uses the `.clang-format` file to set formatting style. See the [clang-format docs](http://clang.llvm.org/docs/ClangFormat.html) for more info.
 
 ## Linting
 
-To check `Bean.h` and `Bean.cpp` for errors before committing:
+To lint one or more files for errors before committing:
 
-```
-cpplint hardware/bean/avr/cores/bean/Bean.h hardware/bean/avr/cores/bean/Bean.cpp
+```sh
+cpplint FILE [FILE ...]
 ```
 
 cpplint is configured in `CPPLINT.cfg`. That file needs to be in your working directory or one of its parents for cpplint to find it. See the [cpplint.py source](https://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py) for more info on configuration options and linter filters.
+
+## Entire Directories
+
+To process an entire directory of files, searching recursively for nested files:
+
+```sh
+find <DIR_PATH> | xargs <SOME_COMMAND>
+```
+
+Be careful of reformatting or linting library files that you don't actually want to modify.
 
 # TODO
 

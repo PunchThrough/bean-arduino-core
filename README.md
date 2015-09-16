@@ -1,7 +1,5 @@
 # [LightBlue Bean](https://punchthrough.com/bean) Arduino Library
 
-# Repo Overview
-
 This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.
 
 # Reading and Setting Atmega Fuses with avrdude

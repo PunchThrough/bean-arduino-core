@@ -1,17 +1,8 @@
-Bean - A BLE Arduino By Punch Through Design
-=============================================
+# [LightBlue Bean](https://punchthrough.com/bean) Arduino Library
 
-Repo Overview
--------------
+# Repo Overview
 
 This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.
-
-# TODO
-
-* Fix Serial.println so, like Serial.print, extra radio messages aren't sent for the newline
-* Add proper doxygen comments to relelvent parts, especially the API
-* Add features to emulator to provide better, more useful testing
-* Add more and better examples
 
 # Reading and Setting Atmega Fuses with avrdude
 
@@ -112,3 +103,10 @@ cpplint hardware/bean/avr/cores/bean/Bean.h hardware/bean/avr/cores/bean/Bean.cp
 ```
 
 cpplint is configured in `CPPLINT.cfg`. That file needs to be in your working directory or one of its parents for cpplint to find it. See the [cpplint.py source](https://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py) for more info on configuration options and linter filters.
+
+# TODO
+
+* Fix Serial.println so, like Serial.print, extra radio messages aren't sent for the newline
+* Add proper doxygen comments to relelvent parts, especially the API
+* Add features to emulator to provide better, more useful testing
+* Add more and better examples

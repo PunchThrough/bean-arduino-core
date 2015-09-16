@@ -36,15 +36,15 @@
 #if !defined(__DOXYGEN__)
 
 struct __freelist {
-	size_t sz;
-	struct __freelist *nx;
+  size_t sz;
+  struct __freelist *nx;
 };
 
 #endif
 
-extern char *__brkval;		/* first location not yet allocated */
+extern char *__brkval;           /* first location not yet allocated */
 extern struct __freelist *__flp; /* freelist pointer (head of freelist) */
-extern size_t __malloc_margin;	/* user-changeable before the first malloc() */
+extern size_t __malloc_margin;   /* user-changeable before the first malloc() */
 extern char *__malloc_heap_start;
 extern char *__malloc_heap_end;
 
@@ -55,4 +55,3 @@ extern char __heap_end;
 #include <avr/io.h>
 
 #define STACK_POINTER() ((char *)AVR_STACK_POINTER_REG)
-

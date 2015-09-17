@@ -700,9 +700,8 @@ int BeanClass::midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2) {
     if (Serial.midiAvailable() > 0) {
       uint8_t peek = 0;
       peek = Serial.peekMidi();
-      if (peek & 1 << 7)  // is status/timestamp byte. we are looking at a 4
-                          // byte message
-      {
+      if (peek & 1 << 7) {
+        // is status/timestamp byte. we are looking at a 4 byte message
         if (Serial.midiAvailable() >= 4) {
           Serial.readMidi(buffer, 4);
           uint8_t timestamp = buffer[0];
@@ -710,17 +709,18 @@ int BeanClass::midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2) {
           lastStatus = status;
           byte1 = buffer[2];
           byte2 = buffer[3];
-          if (timestamp == 0xFF && status == 0xFF && byte1 == 0xFF &&
-              byte2 == 0xFF)  // end of packet
-          {
+          if (timestamp == 0xFF &&
+              status == 0xFF &&
+              byte1 == 0xFF &&
+              byte2 == 0xFF) {
+            // end of packet
             midiPacketBegin = true;
             return 0;
           } else {
             return peek;
           }
         }
-      } else  // running status
-      {
+      } else {  // running status
         if (Serial.midiAvailable() >= 2) {
           Serial.readMidi(buffer, 2);
           status = lastStatus;

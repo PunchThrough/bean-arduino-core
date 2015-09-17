@@ -36,8 +36,8 @@
 static volatile voidFuncPtr intFunc;
 
 // midi access definitions
-#define midiBufferSize 20
-#define blePacketSize 20
+#define MIDI_BUFFER_SIZE 20
+#define BLE_PACKET_SIZE 20
 
 typedef struct {
   uint32_t timestamp;
@@ -46,8 +46,8 @@ typedef struct {
   uint8_t byte2;
 } midiMessage;
 
-static midiMessage midiMessages[midiBufferSize];
-uint8_t midiPacket[blePacketSize];
+static midiMessage midiMessages[MIDI_BUFFER_SIZE];
+uint8_t midiPacket[BLE_PACKET_SIZE];
 uint8_t midiWriteOffset = 0;
 uint8_t midiReadOffset = 0;
 
@@ -640,14 +640,14 @@ void BeanClass::enableiBeacon(void) {
 }
 
 int BeanClass::midiSend(uint8_t status, uint8_t byte1, uint8_t byte2) {
-  if ((midiWriteOffset + 1) % midiBufferSize == midiReadOffset) return 1;
+  if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) return 1;
   uint32_t millisec = millis();
   midiMessages[midiWriteOffset].status = status;
   midiMessages[midiWriteOffset].byte1 = byte1;
   midiMessages[midiWriteOffset].byte2 = byte2;
   midiMessages[midiWriteOffset].timestamp = millisec;
   midiWriteOffset++;
-  midiWriteOffset = midiWriteOffset % midiBufferSize;
+  midiWriteOffset = midiWriteOffset % MIDI_BUFFER_SIZE;
   return 0;
 }
 
@@ -678,9 +678,9 @@ int BeanClass::midiPacketSend() {
       midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
     }
     midiReadOffset++;
-    midiReadOffset = midiReadOffset % midiBufferSize;
+    midiReadOffset = midiReadOffset % MIDI_BUFFER_SIZE;
     if (byteOffset + 4 >
-        blePacketSize)  // can we handle another midi message in this packet
+        BLE_PACKET_SIZE)  // can we handle another midi message in this packet
       break;
   }
   Serial.write_message(MSG_ID_MIDI_WRITE, midiPacket, byteOffset);

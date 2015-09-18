@@ -72,7 +72,7 @@ static bool rx_char(uint8_t *c) {
   } else {
     *c = UDR0;
     return false;
-  };
+  }
 #elif defined(UDR)
   if (bit_is_clear(UCSRA, PE)) {
     *c = UDR;
@@ -80,7 +80,7 @@ static bool rx_char(uint8_t *c) {
   } else {
     *c = UDR;
     return false;
-  };
+  }
 #else
 #error UDR not defined
 #endif
@@ -104,7 +104,6 @@ ISR(USART0_RX_vect)
 ISR(USART_RXC_vect)  // ATmega8
 #endif
 {
-
   // DECLARATIONS
   static enum {
     WAITING_FOR_SOF,
@@ -254,7 +253,7 @@ ISR(USART_RXC_vect)  // ATmega8
 void BeanSerialTransport::flush() {
   // logic is handled in writes and interrupts
   while (tx_buffer_flushed == false)
-    ;
+    {}
 
   // this is a holdover from HWSerial.
   transmitting = false;
@@ -419,7 +418,7 @@ void BeanSerialTransport::BTSetAdvertisingOnOff(const bool setting,
   advOnOff.adv_onOff = setting ? 1 : 0;
   write_message(MSG_ID_BT_ADV_ONOFF, (const uint8_t *)&advOnOff,
                 sizeof(advOnOff));
-};
+}
 
 void BeanSerialTransport::BTSetLocalName(const char *name) {
   if (name == NULL) name = "";
@@ -443,7 +442,7 @@ void BeanSerialTransport::BTSetLocalName(const char *name) {
 
     write_message(msgId, (const uint8_t *)&radioConfig, size);
   }
-};
+}
 
 int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
   size_t length = sizeof(BT_STATES_T);
@@ -453,7 +452,7 @@ int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
 
 void BeanSerialTransport::BTSetPairingPin(const uint16_t pin) {
   write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)&pin, sizeof(pin));
-};
+}
 
 void BeanSerialTransport::BTSetAdvertisingInterval(uint16_t interval_ms) {
   if (interval_ms < BEAN_MIN_ADVERTISING_INT_MS) {
@@ -489,7 +488,7 @@ void BeanSerialTransport::BTSetTxPower(const BT_TXPOWER_DB_T &power) {
 void BeanSerialTransport::BTSetScratchChar(BT_SCRATCH_T *setting,
                                            uint8_t length) {
   write_message(MSG_ID_BT_SET_SCRATCH, (uint8_t *)setting, (size_t)length);
-};
+}
 
 int BeanSerialTransport::BTGetScratchChar(uint8_t scratchNum,
                                           ScratchData *scratchData) {
@@ -503,13 +502,13 @@ int BeanSerialTransport::BTGetScratchChar(uint8_t scratchNum,
   scratchData->length = (uint8_t)lengthSt - 1;
 
   return rtnVal;
-};
+}
 
 int BeanSerialTransport::BTGetConfig(BT_RADIOCONFIG_T *config) {
   size_t size = sizeof(BT_RADIOCONFIG_T);
   return call_and_response(MSG_ID_BT_GET_CONFIG, NULL, 0, (uint8_t *)config,
                            &size);
-};
+}
 
 void BeanSerialTransport::BTBeaconModeEnable(bool beaconEnable) {
   BT_RADIOCONFIG_T radioConfig;
@@ -706,7 +705,6 @@ int BeanSerialTransport::getObserverMessage(OBSERVER_INFO_MESSAGE_T *message,
   // copy the message body into out
   memcpy(message, observer_message.buffer,
          min(observer_msg_len, sizeof(OBSERVER_INFO_MESSAGE_T)));
-  //*response_length = _reply_buffer->head;
   return 0;
 }
 
@@ -807,7 +805,7 @@ bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
   }
 
   return true;
-};
+}
 
 bool BeanSerialTransport::debugEndToEndLoopbackVerify(const uint8_t *message,
                                                       const size_t size) {
@@ -825,13 +823,13 @@ bool BeanSerialTransport::debugEndToEndLoopbackVerify(const uint8_t *message,
   }
 
   return true;
-};
+}
 
 int BeanSerialTransport::debugGetDebugCounter(int *counter) {
   size_t return_size;
   return call_and_response(MSG_ID_DB_COUNTER, NULL, 0, (uint8_t *)counter,
                            &return_size);
-};
+}
 
 void BeanSerialTransport::debugWritePtm(const uint8_t *message,
                                         const size_t size) {
@@ -860,8 +858,9 @@ size_t BeanSerialTransport::write(const uint8_t *buffer, size_t size) {
       end = min(end + MAX_BODY_LENGTH, size);
     }
     return size;
-  } else
+  } else {
     return write_message(MSG_ID_SERIAL_DATA, buffer, size);
+  }
 }
 
 size_t BeanSerialTransport::print(const String &s) {
@@ -929,5 +928,5 @@ BeanSerialTransport Serial(&rx_buffer, &tx_buffer, &UBRR0H, &UBRR0L, &UCSR0A,
 #elif defined(USBCON)
 // do nothing - Serial object and buffers are initialized in CDC code
 #else
-#error no serial port defined (port 0)
+#error no serial port defined, port 0
 #endif

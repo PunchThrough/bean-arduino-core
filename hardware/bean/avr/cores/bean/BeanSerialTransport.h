@@ -140,7 +140,7 @@ class BeanSerialTransport : public HardwareSerial {
   bool debugLoopbackVerify(const uint8_t *message, const size_t size);
   bool debugEndToEndLoopbackVerify(const uint8_t *message, const size_t size);
   int debugGetDebugCounter(int *counter);
-  void debugWrite(const char c) { HardwareSerial::write((uint8_t)c); };
+  void debugWrite(const char c) { HardwareSerial::write((uint8_t)c); }
   void debugLoopBackFullSerialMessages(void);
   void debugWritePtm(const uint8_t *message, const size_t size);
 
@@ -159,15 +159,13 @@ class BeanSerialTransport : public HardwareSerial {
     *message_complete = false;
     m_wakeDelay = UART_DEFAULT_WAKE_WAIT;
     m_enforcedDelay = UART_DEFAULT_SEND_WAIT;
-  };  // End constructor
-
+  }  // End constructor
 };  // End BeanSerialTransport
 
 #if defined(UBRRH) || defined(UBRR0H)
 extern BeanSerialTransport Serial;
 #elif defined(USBCON)
 #include "USBAPI.h"
-//  extern HardwareSerial Serial_;
 #endif
 
 #endif

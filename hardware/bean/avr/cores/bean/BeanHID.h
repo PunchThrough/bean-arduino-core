@@ -5,7 +5,7 @@
 
 //================================================================================
 //================================================================================
-//	Mouse
+// Mouse
 
 #define MOUSE_LEFT 1
 #define MOUSE_RIGHT 2
@@ -34,7 +34,7 @@ extern BeanMouse_ BeanMouse;
 
 //================================================================================
 //================================================================================
-//	Keyboard
+// Keyboard
 
 #define KEY_LEFT_CTRL 0x80
 #define KEY_LEFT_SHIFT 0x81
@@ -143,7 +143,7 @@ extern BeanMouse_ BeanMouse;
 #define HID_KEYBOARD_1 30  // 0x1E - Keyboard 1 and !
 #define HID_KEYBOARD_0 39  // 0x27 - Keyboard 0 and )
 
-//	Low level key report: up to 6 keys and shift, ctrl etc at once
+// Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct {
   uint8_t modifiers;
   uint8_t reserved;
@@ -170,7 +170,7 @@ extern BeanKeyboard_ BeanKeyboard;
 
 //================================================================================
 //================================================================================
-//	Low level API
+// Low level API
 
 typedef struct {
   uint8_t bmRequestType;

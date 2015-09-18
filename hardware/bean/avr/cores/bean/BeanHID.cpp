@@ -19,7 +19,7 @@
 #include <Arduino.h>
 #include "BeanHID.h"
 
-//	Singletons for BeanKeyboard and BeanMouse
+// Singletons for BeanKeyboard and BeanMouse
 
 BeanKeyboard_ BeanKeyboard;
 BeanMouse_ BeanMouse;
@@ -41,7 +41,7 @@ typedef struct {
 //================================================================================
 //================================================================================
 
-//	HID report descriptor
+// HID report descriptor
 
 #define LSB(_x) ((_x)&0xFF)
 #define MSB(_x) ((_x) >> 8)
@@ -54,8 +54,8 @@ typedef struct {
 extern const uint8_t _hidReportDescriptor[] PROGMEM;
 const uint8_t _hidReportDescriptor[] = {
 
-    //	BeanMouse
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop)	// 54
+    // BeanMouse
+    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 54
     0x09, 0x02,  // USAGE (BeanMouse)
     0xa1, 0x01,  // COLLECTION (Application)
     0x09, 0x01,  //   USAGE (Pointer)
@@ -84,8 +84,8 @@ const uint8_t _hidReportDescriptor[] = {
     0xc0,        //   END_COLLECTION
     0xc0,        // END_COLLECTION
 
-    //	Keyboard
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop)	// 47
+    // Keyboard
+    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 47
     0x09, 0x06,  // USAGE (Keyboard)
     0xa1, 0x01,  // COLLECTION (Application)
     0x85, 0x02,  //   REPORT_ID (2)
@@ -115,7 +115,7 @@ const uint8_t _hidReportDescriptor[] = {
     0xc0,        // END_COLLECTION
 
 #if RAWHID_ENABLED
-    //	RAW HID
+    // RAW HID
     0x06, LSB(RAWHID_USAGE_PAGE), MSB(RAWHID_USAGE_PAGE),  // 30
     0x0A, LSB(RAWHID_USAGE), MSB(RAWHID_USAGE),
 
@@ -149,13 +149,13 @@ const uint8_t _hidReportDescriptor[] = {
 
 //================================================================================
 //================================================================================
-//	Driver
+// Driver
 
 uint8_t _hid_idle = 1;
 
 //================================================================================
 //================================================================================
-//	BeanMouse
+// BeanMouse
 
 BeanMouse_::BeanMouse_(void) : _buttons(0) {}
 
@@ -210,7 +210,7 @@ void BeanMouse_::sendReport(BeanMouseReport *commands) {
 
 //================================================================================
 //================================================================================
-//	Keyboard
+// Keyboard
 
 BeanKeyboard_::BeanKeyboard_(void) {}
 
@@ -352,9 +352,9 @@ const uint8_t _asciimap[128] = {
     0x00,  // ENQ
     0x00,  // ACK
     0x00,  // BEL
-    0x2a,  // BS	Backspace
-    0x2b,  // TAB	Tab
-    0x28,  // LF	Enter
+    0x2a,  // BS Backspace
+    0x2b,  // TAB Tab
+    0x28,  // LF Enter
     0x00,  // VT
     0x00,  // FF
     0x00,  // CR

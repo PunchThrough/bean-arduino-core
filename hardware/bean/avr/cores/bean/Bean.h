@@ -2,11 +2,27 @@
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
 
+
+// Accel Events. 
+#define FLAT_EVENT              0x80
+#define ORIENT_EVENT            0x40
+#define SINGLE_TAP_EVENT        0x20
+#define DOUBLE_TAP_EVENT        0x10
+#define ANY_MOTION_EVENT        0x04
+#define HIGH_G_EVENT            0x02
+#define LOW_G_EVENT             0x01
+
+
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
 class BeanClass {
 public:
+
+  void enableAccelEvent (uint8_t events);
+  void disableAccelEvents ();
+  bool checkAccelEvent (uint8_t events);
+
   int16_t getAccelerationX (void);
   int16_t getAccelerationY (void);
   int16_t getAccelerationZ (void);

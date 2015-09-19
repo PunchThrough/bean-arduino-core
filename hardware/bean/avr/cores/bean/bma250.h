@@ -51,9 +51,12 @@
 
 #define REG_INT_MAPPING_X19     0x19
 #define MASK_X19_ALL_INT1       0xF7
+#define WAKE_FLAT_INT  	    	0x80
+#define WAKE_ORIENT_INT      	0x40
 #define WAKE_SINGLE_TAP_INT     0x20
 #define WAKE_DOUBLE_TAP_INT     0x10
 #define WAKE_ANY_MOTION_INT     0x04
+#define WAKE_HIGH_G_INT         0x02
 #define WAKE_LOW_G_INT          0x01
 
 

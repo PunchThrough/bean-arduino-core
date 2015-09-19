@@ -479,6 +479,81 @@ uint16_t BeanClass::getBatteryVoltage(void)
     return reading;
   }
 
+
+  static uint8_t enabledEvents = 0x00;
+  void BeanClass::enableAccelEvent (uint8_t events)
+  {
+    uint16_t enableRegister = 0x0000;
+    uint8_t wakeRegister = 0x00;
+
+    enabledEvents |= events;
+
+    if( enabledEvents & FLAT_EVENT )
+    {
+      enableRegister |= ENABLE_FLAT_INT; 
+      wakeRegister |= WAKE_FLAT_INT;
+    }
+
+    if( enabledEvents & ORIENT_EVENT )
+    {
+      enableRegister |= ENABLE_ORIENT_INT; 
+      wakeRegister |= WAKE_ORIENT_INT;
+    }
+
+    if( enabledEvents & SINGLE_TAP_EVENT )
+    {
+      enableRegister |= ENABLE_SINGLE_TAP_INT; 
+      wakeRegister |= WAKE_SINGLE_TAP_INT;
+    }
+
+    if( enabledEvents & DOUBLE_TAP_EVENT )
+    {
+      enableRegister |= ENABLE_DOUBLE_TAP_INT; 
+      wakeRegister |= WAKE_DOUBLE_TAP_INT;
+    }
+
+    if( enabledEvents & ANY_MOTION_EVENT )
+    {
+      enableRegister |= ENABLE_ANY_MOTION_INT; 
+      wakeRegister |= WAKE_ANY_MOTION_INT;
+    }
+
+    if( enabledEvents & HIGH_G_EVENT )
+    {
+      enableRegister |= (ENABLE_HIGH_G_Z_INT | ENABLE_HIGH_G_Y_INT | ENABLE_HIGH_G_X_INT); 
+      wakeRegister |= WAKE_HIGH_G_INT;
+    }
+
+    if( enabledEvents & LOW_G_EVENT )
+    {
+      enableRegister |= ENABLE_LOW_G_INT; 
+      wakeRegister |= WAKE_LOW_G_INT;
+    }
+
+    accelerometerConfig(enableRegister, VALUE_LOW_POWER_10MS);
+    enableWakeOnAccelerometer(wakeRegister);
+  }
+
+  void BeanClass::disableAccelEvents ()
+  {
+    enabledEvents = 0;
+    accelerometerConfig(0, VALUE_LOW_POWER_1S);
+  }
+
+  // This function returns true if any one of the "events" param had been triggered
+  // It clears all corresponding "events" flags
+  bool BeanClass::checkAccelEvent (uint8_t events)
+  {
+    static uint8_t triggeredEvents = 0x00;
+    triggeredEvents |= checkAccelInterrupts();
+
+    bool eventOccurred =  (triggeredEvents & events) ? true : false;
+    triggeredEvents &= ~events;
+
+    return eventOccurred; 
+  }
+
+
   void BeanClass::accelerometerConfig(uint16_t interrupts, uint8_t power_mode) {
     Serial.accelRegisterWrite(REG_POWER_MODE_X11, power_mode);
     Serial.accelRegisterWrite(REG_LATCH_CFG_X21, VALUE_LATCHED);

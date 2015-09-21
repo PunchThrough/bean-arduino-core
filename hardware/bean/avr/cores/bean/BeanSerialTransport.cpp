@@ -141,9 +141,6 @@ ISR(USART_RXC_vect)  // ATmega8
     if ((next == BEAN_SOF && bean_transport_state != WAITING_FOR_SOF) ||
         (next == BEAN_EOF && bean_transport_state != GETTING_EOF) ||
         next == BEAN_ESCAPE) {
-      // TODO: How to Signal Error?
-      // assert(1);
-
       // RESET STATE
       escaping = false;
       messageType = WAITING_FOR_SOF;
@@ -151,7 +148,6 @@ ISR(USART_RXC_vect)  // ATmega8
       messageCur = 0;
       buffer = NULL;
       serial_message_complete = false;
-
       return;
     }
   }
@@ -220,10 +216,6 @@ ISR(USART_RXC_vect)  // ATmega8
       break;
 
     case GETTING_EOF:
-      // TODO: How to Signal Error?
-      // if(next != BEAN_EOF){
-      //   assert(1);
-      // }
       // RESET STATE
       if (messageType == MSG_ID_MIDI_READ) {
         for (int i = 0; i < 3; i++)
@@ -345,8 +337,6 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
                                           const uint8_t *body,
                                           size_t body_length) {
   if (body_length > MAX_BODY_LENGTH) {
-    // TODO: do we want to throw an error, or somehow
-    // note why we were forced to drop the message?
     return -1;
   }
 
@@ -793,7 +783,7 @@ void BeanSerialTransport::enableWakeOnConnect(bool enable) {
 // Debug
 bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
                                               const size_t size) {
-  uint8_t res[size];
+  uint8_t res[size];  // NOLINT(runtime/arrays)
   size_t res_size = size;
   if (call_and_response(MSG_ID_DB_LOOPBACK, message, size, res, &res_size) !=
       0) {
@@ -809,7 +799,7 @@ bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
 
 bool BeanSerialTransport::debugEndToEndLoopbackVerify(const uint8_t *message,
                                                       const size_t size) {
-  uint8_t res[size];
+  uint8_t res[size];  // NOLINT(runtime/arrays)
   size_t res_size = size;
   // note that we've set the timeout to 250 here and not the default 100ms as
   // this is going to the phone and back.
@@ -899,7 +889,6 @@ void BeanSerialTransport::debugLoopBackFullSerialMessages() {
     // wait for RX to hold an EOF, and then return the data
     while (*_message_complete == false) {
       // BLOCK UNTIL WE GET THE ENTIRE RESPONSE
-      // TODO -- Timeout this?
     }
     size_t length = APP_MSG_MAX_LENGTH + 1;
     length = readBytes(buffer, length);

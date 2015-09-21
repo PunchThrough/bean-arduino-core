@@ -141,7 +141,6 @@ ISR(USART_RXC_vect)  // ATmega8
     if ((next == BEAN_SOF && bean_transport_state != WAITING_FOR_SOF) ||
         (next == BEAN_EOF && bean_transport_state != GETTING_EOF) ||
         next == BEAN_ESCAPE) {
-
       // RESET STATE
       escaping = false;
       messageType = WAITING_FOR_SOF;
@@ -149,7 +148,6 @@ ISR(USART_RXC_vect)  // ATmega8
       messageCur = 0;
       buffer = NULL;
       serial_message_complete = false;
-
       return;
     }
   }

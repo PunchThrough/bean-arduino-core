@@ -687,7 +687,7 @@ int BeanClass::midiPacketSend() {
   return byteOffset;
 }
 
-int BeanClass::midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2) {
+int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
   uint8_t buffer[8];
   if (midiPacketBegin) {
     if (Serial.midiAvailable() > 4) {
@@ -705,14 +705,14 @@ int BeanClass::midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2) {
         if (Serial.midiAvailable() >= 4) {
           Serial.readMidi(buffer, 4);
           uint8_t timestamp = buffer[0];
-          status = buffer[1];
-          lastStatus = status;
-          byte1 = buffer[2];
-          byte2 = buffer[3];
+          *status = buffer[1];
+          lastStatus = *status;
+          *byte1 = buffer[2];
+          *byte2 = buffer[3];
           if (timestamp == 0xFF &&
-              status == 0xFF &&
-              byte1 == 0xFF &&
-              byte2 == 0xFF) {
+              *status == 0xFF &&
+              *byte1 == 0xFF &&
+              *byte2 == 0xFF) {
             // end of packet
             midiPacketBegin = true;
             return 0;
@@ -723,9 +723,9 @@ int BeanClass::midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2) {
       } else {  // running status
         if (Serial.midiAvailable() >= 2) {
           Serial.readMidi(buffer, 2);
-          status = lastStatus;
-          byte1 = buffer[0];
-          byte2 = buffer[1];
+          *status = lastStatus;
+          *byte1 = buffer[0];
+          *byte2 = buffer[1];
           return peek;
         }
       }

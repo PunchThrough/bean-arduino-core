@@ -1,0 +1,151 @@
+This repo contains the Arduino firmware and installation files used in the Light\+Blue Bean project. The firmware files are based off of the Arduino firmware release version 1.\+0.\+5 and have been modified to work on the Light\+Blue Bean, a system that has on it a few other features, a B\+L\+E radio an accelerometer and a multicolor L\+E\+D.
+
+\section*{Reading and Setting Atmega Fuses with avrdude}
+
+We\textquotesingle{}re going to need to set some fuses for our part in the factory. The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.
+
+
+\begin{DoxyEnumerate}
+\item Install avrdude. I used \mbox{[}\href{http://www.obdev.at/products/crosspack/index.html}{\tt http\+://www.\+obdev.\+at/products/crosspack/index.\+html}\mbox{]}(Cross\+Pack) to do this.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Read the fuses from an off the shelf Arduino\+Pro. Use this command after avrdude is in your path\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/\+U lfuse\+:r\+:-\/\+:h -\/\+U hfuse\+:r\+:-\/\+:h -\/\+U efuse\+:r\+:-\/\+:h -\/\+U lock\+:r\+:-\/\+:h}
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Go to \mbox{[}\href{http://www.engbedded.com/fusecalc/}{\tt http\+://www.\+engbedded.\+com/fusecalc/}\mbox{]}(The Avr Fuse Calculator) and enter in the current state of the fuses
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Turn off Brown Out Detection (B\+O\+D).
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/\+U lfuse\+:w\+:0xee\+:m -\/\+U hfuse\+:w\+:0xdc\+:m -\/\+U efuse\+:w\+:0xff\+:m})
+\end{DoxyEnumerate}
+
+\section*{Key Files}
+
+\subsection*{Everything in the {\ttfamily hardware} directory}
+
+The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the Light\+Blue Bean, as well as the files needed for the Arduino I\+D\+E to recognize the board allow users to program it.
+
+\subsection*{Everything in the {\ttfamily examples} directory}
+
+The contents of the examples directory should be copied separately on install to the examples resources in the Arduino I\+D\+E.
+
+\subsection*{Everything in the {\ttfamily bean\+Module\+Emulator} directory}
+
+This directory contains an Emulator of the \textquotesingle{}non-\/\+Arduino\textquotesingle{} parts of the bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected. You can run {\ttfamily python Bean\+Module\+Emulator.\+py} from within the bean\+Module\+Emulator directory.
+
+\section*{Dependencies}
+
+There are a few python library dependencies you\textquotesingle{}ll need to make the emulator work\+:
+
+
+\begin{DoxyItemize}
+\item Tk\+Inter
+\item numpy
+\item pyserial
+\item enum
+\end{DoxyItemize}
+
+The emulator has been tested with python 2.\+7.\+6 installed by Homebrew on O\+S\+X
+
+\section*{Development}
+
+During development, it is recommended to use soft links from inside your Arduino I\+D\+E resources to your repository. It will make it easier to test your work.
+
+\section*{Repo Setup}
+
+This repository uses git submodules and requires a few extra steps for cloning and pulling.
+
+\subsection*{Clone}
+
+
+\begin{DoxyCode}
+1 $ git clone REPO\_URL --recursive
+\end{DoxyCode}
+
+
+\subsection*{Initialize Submodules}
+
+(This is unnecessary if the recursive clone works)
+
+
+\begin{DoxyCode}
+1 $ git submodule update --init --recursive
+\end{DoxyCode}
+
+
+\subsection*{Pull}
+
+
+\begin{DoxyCode}
+1 $ git pull
+2 $ git submodule update --recursive
+\end{DoxyCode}
+
+
+\section*{Code Style}
+
+Code in this repo should adhere to the \href{https://google-styleguide.googlecode.com/svn/trunk/cppguide.html}{\tt Google C++ Style Guide}.
+
+clang-\/format and cpplint are two tools that can help insure your code follows this standard.
+
+\subsection*{Installing Tools}
+
+
+\begin{DoxyCode}
+1 brew install clang-format
+2 pip install cpplint
+\end{DoxyCode}
+
+
+\subsection*{Auto-\/\+Formatting}
+
+To reformat one or more files before committing\+:
+
+
+\begin{DoxyCode}
+1 clang-format -i FILE [FILE ...]
+\end{DoxyCode}
+
+
+{\ttfamily -\/i}\+: reformat code in-\/place. Default behavior without this flag is to reformat the file and dump the formatted output to stdout.
+
+clang-\/format uses the {\ttfamily .clang-\/format} file to set formatting style. See the \href{http://clang.llvm.org/docs/ClangFormat.html}{\tt clang-\/format docs} for more info.
+
+\subsection*{Linting}
+
+To lint one or more files for errors before committing\+:
+
+
+\begin{DoxyCode}
+1 cpplint FILE [FILE ...]
+\end{DoxyCode}
+
+
+cpplint is configured in {\ttfamily C\+P\+P\+L\+I\+N\+T.\+cfg}. That file needs to be in your working directory or one of its parents for cpplint to find it. See the \href{https://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py}{\tt cpplint.\+py source} for more info on configuration options and linter filters.
+
+\subsection*{Entire Directories}
+
+To process an entire directory of files, searching recursively for nested files\+:
+
+
+\begin{DoxyCode}
+1 find <DIR\_PATH> | xargs <SOME\_COMMAND>
+\end{DoxyCode}
+
+
+Be careful of reformatting or linting library files that you don\textquotesingle{}t actually want to modify.
+
+\section*{T\+O\+D\+O}
+
+
+\begin{DoxyItemize}
+\item Fix Serial.\+println so, like Serial.\+print, extra radio messages aren\textquotesingle{}t sent for the newline
+\item Add proper doxygen comments to relelvent parts, especially the A\+P\+I
+\item Add features to emulator to provide better, more useful testing
+\item Add more and better examples 
+\end{DoxyItemize}

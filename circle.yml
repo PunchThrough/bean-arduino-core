@@ -1,0 +1,11 @@
+machine:
+  python:
+    version: 2.7.10
+
+dependencies:
+  override:
+    - pip install cpplint
+
+test:
+  override:
+    - lint_all.py

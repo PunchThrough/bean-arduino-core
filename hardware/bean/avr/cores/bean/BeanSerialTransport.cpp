@@ -783,7 +783,7 @@ void BeanSerialTransport::enableWakeOnConnect(bool enable) {
 // Debug
 bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
                                               const size_t size) {
-  uint8_t res[size];
+  uint8_t res[size];  // NOLINT(runtime/arrays)
   size_t res_size = size;
   if (call_and_response(MSG_ID_DB_LOOPBACK, message, size, res, &res_size) !=
       0) {
@@ -799,7 +799,7 @@ bool BeanSerialTransport::debugLoopbackVerify(const uint8_t *message,
 
 bool BeanSerialTransport::debugEndToEndLoopbackVerify(const uint8_t *message,
                                                       const size_t size) {
-  uint8_t res[size];
+  uint8_t res[size];  // NOLINT(runtime/arrays)
   size_t res_size = size;
   // note that we've set the timeout to 250 here and not the default 100ms as
   // this is going to the phone and back.

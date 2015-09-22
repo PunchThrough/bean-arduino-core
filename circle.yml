@@ -8,7 +8,7 @@ dependencies:
   override:
     - pip install cpplint
     - python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
-    - platformio platform install atmelavr
+    - platformio platforms install atmelavr
 
 test:
   override:

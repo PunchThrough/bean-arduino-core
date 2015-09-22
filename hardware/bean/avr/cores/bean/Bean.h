@@ -19,9 +19,9 @@ typedef LED_SETTING_T LedReading;
 class BeanClass {
 public:
 
-  void enableAccelEvent (uint8_t events);
-  void disableAccelEvents ();
-  bool checkAccelEvent (uint8_t events);
+  void enableMotionEvent (uint8_t events);
+  void disableMotionEvents ();
+  bool checkMotionEvent (uint8_t events);
 
   int16_t getAccelerationX (void);
   int16_t getAccelerationY (void);

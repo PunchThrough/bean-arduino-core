@@ -481,8 +481,8 @@ uint16_t BeanClass::getBatteryVoltage(void)
 
 
   static uint8_t enabledEvents = 0x00;
-  void BeanClass::enableAccelEvent (uint8_t events)
   static uint8_t triggeredEvents = 0x00;
+  void BeanClass::enableMotionEvent (uint8_t events)
   {
     uint16_t enableRegister = 0x0000;
     uint8_t wakeRegister = 0x00;
@@ -537,7 +537,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
     enableWakeOnAccelerometer(wakeRegister);
   }
 
-  void BeanClass::disableAccelEvents ()
+  void BeanClass::disableMotionEvents ()
   {
     enabledEvents = 0;
     accelerometerConfig(0, VALUE_LOW_POWER_1S);
@@ -545,7 +545,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
 
   // This function returns true if any one of the "events" param had been triggered
   // It clears all corresponding "events" flags
-  bool BeanClass::checkAccelEvent (uint8_t events)
+  bool BeanClass::checkMotionEvent (uint8_t events)
   {
     triggeredEvents |= checkAccelInterrupts();
 

@@ -4,6 +4,11 @@ machine:
   environment:
     PLATFORMIO_CI_SRC: tests/resources/to_compile.ino
 
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
 dependencies:
   cache_directories:
     - ~/.platformio

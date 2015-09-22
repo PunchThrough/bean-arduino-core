@@ -427,6 +427,14 @@ uint16_t BeanClass::getBatteryVoltage(void)
   return (uint16_t)actualVoltage;
 }
 
+  void BeanClass::accelRegisterWrite(uint8_t reg, uint8_t value) {
+    Serial.accelRegisterWrite(reg, value);
+  }
+  
+  int BeanClass::accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value) {
+    return Serial.accelRegisterRead( reg, length, value);
+  }
+
   void BeanClass::setAccelerometerPowerMode(uint8_t mode) {
     Serial.accelRegisterWrite(REG_POWER_MODE_X11, mode);
   }

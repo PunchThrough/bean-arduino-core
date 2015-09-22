@@ -27,6 +27,8 @@ public:
   int16_t getAccelerationY (void);
   int16_t getAccelerationZ (void);
   AccelerationReading getAcceleration (void);
+  void accelRegisterWrite(uint8_t reg, uint8_t value);
+  int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
   uint8_t getAccelerationRange (void);
   void setAccelerationRange (uint8_t range);
   void setAccelerometerPowerMode(uint8_t mode);

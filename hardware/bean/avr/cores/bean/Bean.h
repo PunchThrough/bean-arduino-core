@@ -57,7 +57,7 @@ class BeanClass {
   int midiPacketSend();
   int midiSend(uint8_t *buff, uint8_t numBytes);
   int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
-  int midiRead(uint8_t &status, uint8_t &byte1, uint8_t &byte2);
+  int midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
 
   int HIDPressKey(uint8_t k);
   int HIDReleaseKey(uint8_t k);

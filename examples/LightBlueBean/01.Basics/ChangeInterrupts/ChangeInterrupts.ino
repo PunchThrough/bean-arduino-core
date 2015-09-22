@@ -47,12 +47,12 @@ void fiveChangeDetected( void )
 }
 
 void setup() {
-  pinMode(0, INPUT);
-  pinMode(1, INPUT);
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT);
+  pinMode(0, INPUT_PULLUP);
+  pinMode(1, INPUT_PULLUP);
+  pinMode(2, INPUT_PULLUP);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(5, INPUT_PULLUP);
   attachPinChangeInterrupt(0, zeroChangeDetected, CHANGE);
   attachPinChangeInterrupt(1, oneChangeDetected, CHANGE);
   attachPinChangeInterrupt(2, twoChangeDetected, CHANGE);

@@ -6,10 +6,9 @@ machine:
 
 dependencies:
   override:
-    - pip install cpplint
-    - python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+    - pip install cpplint platformio
     - platformio platforms install atmelavr
-    - cp tests/resourecs/platformio/boards/punchthrough.json ~/.platformio/boards
+    - cp tests/resources/platformio/boards/punchthrough.json ~/.platformio/boards
     - cp -rvf hardware/bean/avr/* ~/.platformio/packages/framework-arduinoavr/
     - ls -la ~/.platformio/packages/framework-arduinoavr
 

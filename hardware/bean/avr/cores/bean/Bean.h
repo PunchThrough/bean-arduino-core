@@ -36,9 +36,6 @@ class BeanClass {
   void setAccelerationRange(uint8_t range);
   void setAccelerometerPowerMode(uint8_t mode);
   uint8_t getAccelerometerPowerMode();
-  void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
-  void enableWakeOnAccelerometer(uint8_t sources);
-  uint8_t checkAccelInterrupts();
 
   int8_t getTemperature(void);
   uint8_t getBatteryLevel(void);
@@ -116,6 +113,9 @@ class BeanClass {
  private:
   bool attemptSleep(uint32_t duration_ms);
   int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
+  void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
+  void enableWakeOnAccelerometer(uint8_t sources);
+  uint8_t checkAccelInterrupts();
 
   uint8_t lastStatus;
   long midiTimeStampDiff;

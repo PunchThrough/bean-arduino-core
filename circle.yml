@@ -2,7 +2,7 @@ machine:
   python:
     version: 2.7.10
   environment:
-    PLATFORMIO_CI_SRC: tests/resources/to_compile.ino
+    PLATFORMIO_CI_SRC: tests/resources/test_sketches
 
 checkout:
   post:

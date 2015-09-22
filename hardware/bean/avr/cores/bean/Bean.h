@@ -35,11 +35,6 @@ public:
   uint8_t getAccelerometerPowerMode();
   void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
   void enableWakeOnAccelerometer(uint8_t sources);
-  void enableAccelSingleTapInt();
-  void enableAccelDoubleTapInt();
-  void enableLowGravityInt();
-  void enableAnyMotionInts();
-  void disableAccelInterrupts();
   uint8_t checkAccelInterrupts();
 
   int8_t getTemperature (void);

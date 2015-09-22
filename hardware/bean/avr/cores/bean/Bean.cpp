@@ -430,7 +430,7 @@ uint16_t BeanClass::getBatteryVoltage(void)
   void BeanClass::accelRegisterWrite(uint8_t reg, uint8_t value) {
     Serial.accelRegisterWrite(reg, value);
   }
-  
+
   int BeanClass::accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value) {
     return Serial.accelRegisterRead( reg, length, value);
   }
@@ -569,26 +569,6 @@ uint16_t BeanClass::getBatteryVoltage(void)
     Serial.accelRegisterWrite(REG_LATCH_CFG_X21, VALUE_LATCHED);
     Serial.accelRegisterWrite(REG_INT_SETTING_X16, (uint8_t) (interrupts >> 8));
     Serial.accelRegisterWrite(REG_INT_SETTING_X17, (uint8_t) (interrupts & 0xFF));
-  }
-
-  void BeanClass::enableAccelSingleTapInt() {
-      accelerometerConfig(ENABLE_SINGLE_TAP_INT, VALUE_LOW_POWER_10MS);
-  }
-
-  void BeanClass::enableAccelDoubleTapInt() {
-      accelerometerConfig(ENABLE_DOUBLE_TAP_INT, VALUE_LOW_POWER_10MS);
-  }
-
-  void BeanClass::enableLowGravityInt() {
-      accelerometerConfig(ENABLE_LOW_G_INT, VALUE_LOW_POWER_10MS);
-  }
-
-  void BeanClass::enableAnyMotionInts() {
-      accelerometerConfig(ENABLE_ANY_MOTION_INT, VALUE_LOW_POWER_10MS);
-  }
-
-  void BeanClass::disableAccelInterrupts() {
-      accelerometerConfig(0, VALUE_LOW_POWER_1S);
   }
 
   uint8_t BeanClass::checkAccelInterrupts() {

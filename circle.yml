@@ -8,4 +8,4 @@ dependencies:
 
 test:
   override:
-    - tests/lint_all.py
+    - tests/lint_all.py --lint

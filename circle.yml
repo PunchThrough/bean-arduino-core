@@ -16,4 +16,4 @@ dependencies:
 test:
   override:
     - tests/lint_all.py --lint
-    - platformio ci --board=uno
+    - platformio ci --board=bean

@@ -1,9 +1,9 @@
 /* 
   This sketch demonstrates the Bean's ability to detect motion events.
 
-  In this demo we assign motions with corresponding LED colors.
-  The Bean's LED color shows what motion event it's waiting to detect. 
-  After detecting the event, it will cycle to the next color and wait for the next event. 
+  In this demo we assign a unique LED color with each motion event.
+  The Bean's active LED color indicates what motion event it's waiting to detect. 
+  After detecting the event, the sketch will cycle to the next color and wait for the next event. 
   
   We start by waiting for "double tap" indicated by a red LED color
   

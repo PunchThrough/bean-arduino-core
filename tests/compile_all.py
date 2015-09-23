@@ -5,6 +5,11 @@ from sys import exit
 from os import environ
 import subprocess
 
+# http://stackoverflow.com/a/29723536/254187
+RED = '\033[91m'
+YELLOW = '\033[93m'
+END = '\033[0m'
+
 compiler_configs = [
     # Adding more boards? Add them to this array:
     # ['platformio', 'ci', '--board=your-board-here'],
@@ -35,12 +40,12 @@ for sketch_path in test_sketch_paths:
             print 'PASS:', sketch_path
         except subprocess.CalledProcessError as e:
             return_code = 1
-            print 'FAIL:', sketch_path
+            print RED + 'FAIL:', sketch_path + END
             bad_sketch_output.append((sketch_path, e.output))
 
 print
 for sketch_path, error_output in bad_sketch_output:
-    print('Compile output for {}:'.format(sketch_path))
+    print('{}Compile output for {}:{}'.format(YELLOW, sketch_path, END))
     print
     print(error_output)
     print

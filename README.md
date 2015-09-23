@@ -83,6 +83,12 @@ If you're running the reformatter or linter for the first time, run this first t
 make install
 ```
 
+Are you getting the following error?
+
+> Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
+
+This is an Xcode problem. Run `sudo xcodebuild` to agree with the Xcode license agreement, then run `make install` again.
+
 ## Auto-Reformat
 
 clang-format is set up to use the Google style guide. Reformatting your code will clean up many of the lint errors you might make.

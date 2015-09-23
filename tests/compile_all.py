@@ -11,15 +11,22 @@ compiler_configs = [
     ['platformio', 'ci', '--board=lightblue-bean'],
 ]
 
-test_sketches = glob('tests/resources/test_sketches/*.ino')
+test_sketches = [
+    'tests/resources/test_sketches/*.ino',
+    'examples/LightBlueBean/01.Basics/*/*.ino',
+]
+
+test_sketch_paths = []
+for pattern in test_sketches:
+    test_sketch_paths.extend(glob(pattern))
 
 return_code = 0
-for sketch in test_sketches:
+for sketch_path in test_sketch_paths:
     for compiler in compiler_configs:
         # Add this variable on top of the existing env to preserve
         # the virtualenv which contains the PlatformIO executable
         env = environ.copy()
-        env['PLATFORMIO_CI_SRC'] = sketch
+        env['PLATFORMIO_CI_SRC'] = sketch_path
         try:
             subprocess.check_call(compiler, env=env)
         except subprocess.CalledProcessError:

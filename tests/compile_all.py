@@ -30,12 +30,13 @@ for sketch_path in test_sketch_paths:
         env['PLATFORMIO_CI_SRC'] = sketch_path
         try:
             # if it succeeds, we don't care about the compile output
-            subprocess.check_output(compiler, env=env)
-            print('PASS:', sketch_path)
+            subprocess.check_output(compiler, env=env,
+                                    stderr=subprocess.STDOUT)
+            print 'PASS:', sketch_path
         except subprocess.CalledProcessError as e:
             return_code = 1
-            print('FAIL:', sketch_path)
-            bad_sketch_output.append(sketch_path, e.output)
+            print 'FAIL:', sketch_path
+            bad_sketch_output.append((sketch_path, e.output))
 
 for sketch_path, error_output in bad_sketch_output:
     print('Compile output for {}:'.format(sketch_path))

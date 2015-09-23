@@ -38,10 +38,11 @@ for sketch_path in test_sketch_paths:
             print 'FAIL:', sketch_path
             bad_sketch_output.append((sketch_path, e.output))
 
+print
 for sketch_path, error_output in bad_sketch_output:
     print('Compile output for {}:'.format(sketch_path))
-    print()
+    print
     print(error_output)
-    print()
+    print
 
 exit(return_code)

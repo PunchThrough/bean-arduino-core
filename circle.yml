@@ -1,8 +1,6 @@
 machine:
   python:
     version: 2.7.10
-  environment:
-    PLATFORMIO_CI_SRC: tests/resources/test_sketches
 
 checkout:
   post:
@@ -24,4 +22,4 @@ dependencies:
 test:
   override:
     - tests/lint_all.py --lint
-    - platformio ci --board=lightblue-bean
+    - tests/compile_all.py

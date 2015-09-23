@@ -42,7 +42,11 @@ The emulator has been tested with python 2.7.6 installed by Homebrew on OSX
 
 During development, it is recommended to use soft links from inside your Arduino IDE resources to your repository.  It will make it easier to test your work.
 
-# Repo Setup
+## Pull Requests
+
+All pull requests should be against the `develop` branch.
+
+## Repo Setup
 
 This repository uses git submodules and requires a few extra steps for cloning and pulling.
 

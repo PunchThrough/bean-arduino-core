@@ -1,6 +1,6 @@
 install:
 	brew install clang-format
-	pip install cpplint
+	sudo pip install cpplint
 
 show:
 	tests/lint_all.py --show

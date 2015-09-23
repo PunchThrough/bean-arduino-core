@@ -1,10 +1,13 @@
 #include <PinChangeInt.h>
 
 /* 
-  This sketch uses the Bean library to trigger interrupts when changes are detected on pins 0, 1, and 2. 
+  This sketch shows how to use low-power interrupts to detect when the Bean's digital inputs have changed. 
+  
+  To use the sketch, conect a wire between the Bean's ground pin and one of it's 6 digital pins. 
+  Pins 0, 1, and 2 will enabled colors in the LED, while the other pins disable colors. 
   
   Notes:
-    - This is not a low-power sketch 
+    - This is not a low-power sketch because of LED use
     - A Bean with a low battery might show a faint blue and green LED color
   
   This example code is in the public domain.
@@ -18,17 +21,17 @@ volatile uint8_t blue = 0;
 //   Set a flag and perform the desired operation within the superloop
 void zeroChangeDetected( void )
 {
-  red += 16;
+  red = 128;
 }
 
 void oneChangeDetected( void )
 {
-  green += 16;
+  green = 128;
 }
 
 void twoChangeDetected( void )
 {
-  blue += 16;
+  blue = 128;
 }
 
 void threeChangeDetected( void )
@@ -59,12 +62,11 @@ void setup() {
   attachPinChangeInterrupt(3, threeChangeDetected, CHANGE);
   attachPinChangeInterrupt(4, fourChangeDetected, CHANGE);
   attachPinChangeInterrupt(5, fiveChangeDetected, CHANGE);
-  Bean.setLed(0xFF, 0xFF, 0xFF);  // Flash to show the sketch is running
-  Bean.sleep(250);
 }
 
 void loop() {
   // Set the Bean's LED based upon RGBs changed by interrupts
   Bean.setLed(red, green, blue);
-  Bean.sleep(100);
+  Bean.sleep(1000);
 }
+

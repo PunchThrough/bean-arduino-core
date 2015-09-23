@@ -20,7 +20,6 @@ typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
-
  public:
   //************************************************************
   //  Accelerometer

@@ -14,7 +14,6 @@
 
 typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
-
 typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 typedef ANCS_SOURCE_MSG_T AncsNotification;
 typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
@@ -22,91 +21,498 @@ typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
  public:
+  /****************************************************************************
+  /** @name Accelerometer
+   *  Functions related to the Accelerometer
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void enableMotionEvent(uint8_t events);
+
+  /**
+   * Needs docs
+   */
   void disableMotionEvents();
+
+  /**
+   * Needs docs
+   */
   bool checkMotionEvent(uint8_t events);
 
+  /**
+   * Needs docs
+   */
   int16_t getAccelerationX(void);
+
+  /**
+   * Needs docs
+   */
   int16_t getAccelerationY(void);
+
+  /**
+   * Needs docs
+   */
   int16_t getAccelerationZ(void);
+
+  /**
+   * Needs docs
+   */
   AccelerationReading getAcceleration(void);
+
+  /**
+   * Needs docs
+   */
   void accelRegisterWrite(uint8_t reg, uint8_t value);
-  int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t* value);
+
+  /**
+   * Needs docs
+   */
+  int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
+
+  /**
+   * Needs docs
+   */
   uint8_t getAccelerationRange(void);
+
+  /**
+   * Needs docs
+   */
   void setAccelerationRange(uint8_t range);
+
+  /**
+   * Needs docs
+   */
   void setAccelerometerPowerMode(uint8_t mode);
+
+  /**
+   * Needs docs
+   */
   uint8_t getAccelerometerPowerMode();
+  ///@}
 
-  int8_t getTemperature(void);
-  uint8_t getBatteryLevel(void);
-  uint16_t getBatteryVoltage(void);
-  void enableConfigSave(bool enableSave);
 
+  /****************************************************************************
+  /** @name LED
+   *  Functions related to LED controls
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
+
+  /**
+   * Needs docs
+   */
   LedReading getLed(void);
+
+  /**
+   * Needs docs
+   */
   uint8_t getLedRed(void);
+
+  /**
+   * Needs docs
+   */
   uint8_t getLedGreen(void);
+
+  /**
+   * Needs docs
+   */
   uint8_t getLedBlue(void);
+
+  /**
+   * Needs docs
+   */
   void setLedRed(uint8_t intensity);
+
+  /**
+   * Needs docs
+   */
   void setLedGreen(uint8_t intensity);
+
+  /**
+   * Needs docs
+   */
   void setLedBlue(uint8_t intensity);
+  ///@}
 
-  BluetoothServices getServices(void);
-  void setServices(BluetoothServices services);
-  void resetServices(void);
-  void enableHID(void);
+
+  /****************************************************************************
+  /** @name MIDI
+   *  Functions related to MIDI
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void enableMidi(void);
-  void enableANCS(void);
-  void enableiBeacon(void);
-  void enableCustom(void);
-  void setCustomAdvertisement(uint8_t *buf, int len);
 
+  /**
+   * Needs docs
+   */
   int midiPacketSend();
+
+  /**
+   * Needs docs
+   */
   int midiSend(uint8_t *buff, uint8_t numBytes);
+
+  /**
+   * Needs docs
+   */
   int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
+
+  /**
+   * Needs docs
+   */
   int midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
+  ///@}
 
+
+  /****************************************************************************
+  /** @name HID
+   *  Functions related to HID
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void enableHID(void);
+
+  /**
+   * Needs docs
+   */
   int HIDPressKey(uint8_t k);
+
+  /**
+   * Needs docs
+   */
   int HIDReleaseKey(uint8_t k);
+
+  /**
+   * Needs docs
+   */
   int HIDWriteKey(uint8_t k);
+
+  /**
+   * Needs docs
+   */
   int HIDWrite(String s);
+
+  /**
+   * Needs docs
+   */
   void HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
+
+  /**
+   * Needs docs
+   */
   void HIDClickMouse(uint8_t b = MOUSE_LEFT);
+
+  /**
+   * Needs docs
+   */
   void HIDSendConsumerControl(unsigned char command);
+  ///@}
 
+
+  /****************************************************************************
+  /** @name ANCS
+   *  Functions related to ANCS
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void enableANCS(void);
+
+  /**
+   * Needs docs
+   */
   int ancsAvailable();
+
+  /**
+   * Needs docs
+   */
   int readAncs(uint8_t *buffer, size_t max_length);
+
+  /**
+   * Needs docs
+   */
   int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
+
+  /**
+   * Needs docs
+   */
   int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
+
+  /**
+   * Needs docs
+   */
   int readAncsNotiDetails(uint8_t *buf, size_t max_length);
+
+  /**
+   * Needs docs
+   */
   void performAncsAction(uint32_t ID, uint8_t actionID);
+  ///@}
 
+
+  /****************************************************************************
+  /** @name Observer
+   *  Functions related to Observer mode
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void startObserver(void);
+
+  /**
+   * Needs docs
+   */
   void stopObserver(void);
-  int getObserverMessage(ObseverAdvertisementInfo *message,
-                         unsigned long timeout);
 
-  bool setScratchData(uint8_t bank, const uint8_t* data, uint8_t dataLength);
+  /**
+   * Needs docs
+   */
+  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Scratch
+   *  Functions related to scratch characteristics
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
+
+  /**
+   * Needs docs
+   */
   bool setScratchNumber(uint8_t bank, uint32_t data);
-  ScratchData readScratchData(uint8_t bank);
-  long readScratchNumber(uint8_t bank);
 
+  /**
+   * Needs docs
+   */
+  ScratchData readScratchData(uint8_t bank);
+
+  /**
+   * Needs docs
+   */
+  long readScratchNumber(uint8_t bank);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Sleep
+   *  Functions related to sleeping and waking
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void sleep(uint32_t duration_ms);
+
+  /**
+   * Needs docs
+   */
   void keepAwake(bool enable);
 
-  void attachChangeInterrupt(uint8_t pin, void (*userFunc)(void));
-  void detachChangeInterrupt(uint8_t pin);
-  void setAdvertisingInterval(uint16_t interval_ms);
-  void enableAdvertising(bool enable, uint32_t timer);
-  void enableAdvertising(bool enable);
-  bool getConnectionState(void);
-  bool getAdvertisingState(void);
-  void setBeanName(const String& s);
-  const char* getBeanName(void);
-  void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
-  void setBeaconEnable(bool beaconEnable);
+  /**
+   * Needs docs
+   */
   void enableWakeOnConnect(bool enable);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Interrupts
+   *  Functions related to interrupts
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void attachChangeInterrupt(uint8_t pin, void (*userFunc)(void));
+
+  /**
+   * Needs docs
+   */
+  void detachChangeInterrupt(uint8_t pin);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Advertising
+   *  Functions related to advertising
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void setAdvertisingInterval(uint16_t interval_ms);
+
+  /**
+   * Needs docs
+   */
+  void enableAdvertising(bool enable, uint32_t timer);
+
+  /**
+   * Needs docs
+   */
+  void enableAdvertising(bool enable);
+
+  /**
+   * Needs docs
+   */
+  bool getAdvertisingState(void);
+
+  /**
+   * Needs docs
+   */
+  void enableCustom(void);
+
+  /**
+   * Needs docs
+   */
+  void setCustomAdvertisement(uint8_t *buf, int len);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name iBeacon
+   *  Functions related to iBeacon
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void enableiBeacon(void);
+
+  /**
+   * Needs docs
+   */
+  void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
+
+  /**
+   * Needs docs
+   */
+  void setBeaconEnable(bool beaconEnable);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Battery
+   *  Functions related to the battery
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  uint8_t getBatteryLevel(void);
+
+  /**
+   * Needs docs
+   */
+  uint16_t getBatteryVoltage(void);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Temperature
+   *  Functions related to temperature
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  int8_t getTemperature(void);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Connection
+   *  Functions related to connection state
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
   void disconnect(void);
+
+  /**
+   * Needs docs
+   */
+  bool getConnectionState(void);
+  ///@}
+
+
+  /****************************************************************************
+  /** @name Name
+   *  Functions related to naming the Bean
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  void setBeanName(const String &s);
+
+  /**
+   * Needs docs
+   */
+  const char *getBeanName(void);
+  //@}
+
+
+  /****************************************************************************
+  /** @name Other
+   *  Functions that don't have a home
+   */
+  ///@{
+
+  /**
+   * Needs docs
+   */
+  BluetoothServices getServices(void);
+
+  /**
+   * Needs docs
+   */
+  void setServices(BluetoothServices services);
+
+  /**
+   * Needs docs
+   */
+  void resetServices(void);
+
+  /**
+   * Needs docs
+   */
+  void enableConfigSave(bool enableSave);
+  ///@}
+
 
   BeanClass() {}
 

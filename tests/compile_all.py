@@ -2,6 +2,7 @@
 """Run all combinations of boards and test sketches."""
 from glob import glob
 from sys import exit
+from os import environ
 import subprocess
 
 compiler_configs = [
@@ -15,7 +16,10 @@ test_sketches = glob('tests/resources/test_sketches/*.ino')
 return_code = 0
 for sketch in test_sketches:
     for compiler in compiler_configs:
-        env = {'PLATFORMIO_CI_SRC': sketch}
+        # Add this variable on top of the existing env to preserve
+        # the virtualenv which contains the PlatformIO executable
+        env = environ.copy()
+        env['PLATFORMIO_CI_SRC'] = sketch
         try:
             subprocess.check_call(compiler, env=env)
         except subprocess.CalledProcessError:

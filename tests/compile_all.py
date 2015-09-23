@@ -21,6 +21,7 @@ for pattern in test_sketches:
     test_sketch_paths.extend(glob(pattern))
 
 return_code = 0
+bad_sketch_output = []
 for sketch_path in test_sketch_paths:
     for compiler in compiler_configs:
         # Add this variable on top of the existing env to preserve
@@ -28,8 +29,18 @@ for sketch_path in test_sketch_paths:
         env = environ.copy()
         env['PLATFORMIO_CI_SRC'] = sketch_path
         try:
-            subprocess.check_call(compiler, env=env)
-        except subprocess.CalledProcessError:
+            # if it succeeds, we don't care about the compile output
+            subprocess.check_output(compiler, env=env)
+            print('PASS:', sketch_path)
+        except subprocess.CalledProcessError as e:
             return_code = 1
+            print('FAIL:', sketch_path)
+            bad_sketch_output.append(sketch_path, e.output)
+
+for sketch_path, error_output in bad_sketch_output:
+    print('Compile output for {}:'.format(sketch_path))
+    print()
+    print(error_output)
+    print()
 
 exit(return_code)

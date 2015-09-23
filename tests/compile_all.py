@@ -7,7 +7,6 @@ import subprocess
 
 # http://stackoverflow.com/a/29723536/254187
 RED = '\033[91m'
-YELLOW = '\033[93m'
 END = '\033[0m'
 
 compiler_configs = [
@@ -40,12 +39,12 @@ for sketch_path in test_sketch_paths:
             print 'PASS:', sketch_path
         except subprocess.CalledProcessError as e:
             return_code = 1
-            print RED + 'FAIL:', sketch_path + END
+            print '{}FAIL: {}{}'.format(RED, sketch_path, END)
             bad_sketch_output.append((sketch_path, e.output))
 
 print
 for sketch_path, error_output in bad_sketch_output:
-    print('{}Compile output for {}:{}'.format(YELLOW, sketch_path, END))
+    print('{}Compile output for {}:{}'.format(RED, sketch_path, END))
     print
     print(error_output)
     print

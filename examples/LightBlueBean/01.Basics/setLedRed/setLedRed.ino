@@ -1,17 +1,3 @@
-Description
-
-Sets the red LED to an intensity between off (0) and fully ON (255).
-
-Syntax
-
-void setLedRed(uint8 red);
-
-Returns
-
-Nothing. Absolutely nothing.
-
-Example
-
 /*
 Turn red LED up to 11.
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""List, reformat, or lint Bean project files."""
 from os import walk
 from os.path import join
 from sys import argv, exit

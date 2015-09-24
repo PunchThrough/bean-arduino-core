@@ -189,22 +189,22 @@ class BeanClass {
   /**
    * Needs docs
    */
-  int HIDPressKey(uint8_t k);
+  int HIDPressKey(uint8_t key);
 
   /**
    * Needs docs
    */
-  int HIDReleaseKey(uint8_t k);
+  int HIDReleaseKey(uint8_t key);
 
   /**
    * Needs docs
    */
-  int HIDWriteKey(uint8_t k);
+  int HIDWriteKey(uint8_t key);
 
   /**
    * Needs docs
    */
-  int HIDWrite(String s);
+  int HIDWrite(String charsToType);
 
   /**
    * Needs docs
@@ -477,7 +477,7 @@ class BeanClass {
   /**
    * Needs docs
    */
-  void setBeanName(const String &s);
+  void setBeanName(const String &name);
 
   /**
    * Needs docs

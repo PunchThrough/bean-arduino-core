@@ -50,9 +50,9 @@ typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
  public:
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Accelerometer
-   *  Functions related to the Accelerometer
+   *  Read acceleration values and configure the accelerometer's sensitivity.
    */
   ///@{
 
@@ -135,9 +135,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name LED
-   *  Functions related to LED controls
+   *  Set the RGB LED color and check what it's currently showing.
    */
   ///@{
 
@@ -183,9 +183,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name MIDI
-   *  Functions related to MIDI
+   *  Read and write MIDI packets via Bluetooth Low Energy.
    */
   ///@{
 
@@ -216,9 +216,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name HID
-   *  Functions related to HID
+   *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
    */
   ///@{
 
@@ -264,9 +264,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name ANCS
-   *  Functions related to ANCS
+   *  Use the <a href="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</a> to read notifications from your iOS device.
    */
   ///@{
 
@@ -307,7 +307,7 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Observer
    *  Functions related to Observer mode
    */
@@ -330,9 +330,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Scratch
-   *  Functions related to scratch characteristics
+   *  Read and write arbitrary data using fixed BLE characteristics available on Bean.
    */
   ///@{
 
@@ -358,9 +358,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Sleep
-   *  Functions related to sleeping and waking
+   *  Bean power management functions to help save battery life.
    */
   ///@{
 
@@ -381,9 +381,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Interrupts
-   *  Functions related to interrupts
+   *  Call functions when events occur using pin change interrupts.
    */
   ///@{
 
@@ -399,11 +399,25 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Advertising
-   *  Functions related to advertising
+   *  Set and verify the Bean BLE advertising configuration.
    */
   ///@{
+
+  /**
+   *  Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.
+   *
+   *  @param s The name to be advertised
+   */
+  void setBeanName(const String &s);
+
+  /**
+   *  Read the currently-advertised name of the Bean.
+   *
+   *  @return The Bean name as a char array, null-terminated
+   */
+  const char *getBeanName(void);
 
   /**
    *  Needs docs
@@ -437,9 +451,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name iBeacon
-   *  Functions related to iBeacon
+   *  Let your Bean act as an <a href="https://developer.apple.com/ibeacon/">iBeacon</a>, a way to convey real-world location to iOS devices.
    */
   ///@{
 
@@ -460,9 +474,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Battery
-   *  Functions related to the battery
+   *  Read the Bean's battery level.
    */
   ///@{
 
@@ -484,9 +498,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Temperature
-   *  Functions related to temperature
+   *  Read the ambient temperature of the Bean.
    */
   ///@{
 
@@ -499,9 +513,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
+  /****************************************************************************/
   /** @name Connection
-   *  Functions related to connection state
+   *  Work with active BLE Central devices that connect to Bean.
    */
   ///@{
 
@@ -520,31 +534,9 @@ class BeanClass {
   ///@}
 
 
-  /****************************************************************************
-  /** @name Name
-   *  Functions related to naming the Bean
-   */
-  ///@{
-
-  /**
-   *  Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.
-   *
-   *  @param s The name to be advertised
-   */
-  void setBeanName(const String &name);
-
-  /**
-   *  Read the currently-advertised name of the Bean.
-   *
-   *  @return The Bean name as a char array, null-terminated
-   */
-  const char *getBeanName(void);
-  //@}
-
-
-  /****************************************************************************
-  /** @name Other
-   *  Functions that don't have a home
+  /***************************************************************************/
+  /** @name Bluetooth Services
+   *  Needs description
    */
   ///@{
 
@@ -562,6 +554,14 @@ class BeanClass {
    *  Needs docs
    */
   void resetServices(void);
+  ///@}
+
+
+  /***************************************************************************/
+  /** @name Other
+   *  Functions that don't belong in any of the other categories.
+   */
+  ///@{
 
   /**
    *  Allows temporary storage of BLE configuration settings, as opposed to permanent storage in non-volatile memory (NVRAM).

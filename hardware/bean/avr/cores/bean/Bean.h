@@ -204,7 +204,7 @@ class BeanClass {
   /**
    * Needs docs
    */
-  int HIDWrite(String str);
+  int HIDWrite(String charsToType);
 
   /**
    * Needs docs

@@ -795,7 +795,7 @@ int BeanClass::HIDReleaseKey(uint8_t key) { return BeanKeyboard.release(key); }
 
 int BeanClass::HIDWriteKey(uint8_t key) { return BeanKeyboard.write(key); }
 
-int BeanClass::HIDWrite(String str) {
+int BeanClass::HIDWrite(String charsToType) {
   int status = 0;
   int maxIndex = str.length() - 1;
   for (int i = 0; i < maxIndex; i++) {

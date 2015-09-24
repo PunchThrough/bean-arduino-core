@@ -520,7 +520,6 @@ class BeanClass {
   BeanClass() {}
 
  private:
-
   /**
    *  Needs docs
    */

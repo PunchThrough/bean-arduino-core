@@ -520,17 +520,52 @@ class BeanClass {
   BeanClass() {}
 
  private:
+
+  /**
+   *  Needs docs
+   */
   bool attemptSleep(uint32_t duration_ms);
+
+  /**
+   *  Needs docs
+   */
   int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
+
+  /**
+   *  Needs docs
+   */
   void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
+
+  /**
+   *  Needs docs
+   */
   void enableWakeOnAccelerometer(uint8_t sources);
+
+  /**
+   *  Needs docs
+   */
   uint8_t checkAccelInterrupts();
 
+  /**
+   *  Needs docs
+   */
+
   uint8_t lastStatus;
+
+  /**
+   *  Needs docs
+   */
   long midiTimeStampDiff;
+
+  /**
+   *  Needs docs
+   */
   bool midiPacketBegin;
 };
 
+/**
+ *  Needs docs
+ */
 extern BeanClass Bean;
 
 #endif

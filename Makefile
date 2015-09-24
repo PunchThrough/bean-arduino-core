@@ -1,5 +1,5 @@
 install:
-	brew install clang-format
+	brew install clang-format doxygen
 	sudo pip install cpplint
 
 show:
@@ -10,3 +10,8 @@ reformat:
 
 lint:
 	tests/lint_all.py --lint
+
+docs:
+	doxygen doxygen.cfg
+
+.PHONY: docs

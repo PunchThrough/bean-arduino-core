@@ -28,67 +28,67 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableMotionEvent(uint8_t events);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void disableMotionEvents();
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   bool checkMotionEvent(uint8_t events);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int16_t getAccelerationX(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int16_t getAccelerationY(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int16_t getAccelerationZ(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   AccelerationReading getAcceleration(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void accelRegisterWrite(uint8_t reg, uint8_t value);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getAccelerationRange(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setAccelerationRange(uint8_t range);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setAccelerometerPowerMode(uint8_t mode);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getAccelerometerPowerMode();
   ///@}
@@ -101,42 +101,42 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   LedReading getLed(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getLedRed(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getLedGreen(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getLedBlue(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setLedRed(uint8_t intensity);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setLedGreen(uint8_t intensity);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setLedBlue(uint8_t intensity);
   ///@}
@@ -149,27 +149,27 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableMidi(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int midiPacketSend();
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int midiSend(uint8_t *buff, uint8_t numBytes);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
   ///@}
@@ -182,42 +182,42 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableHID(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int HIDPressKey(uint8_t key);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int HIDReleaseKey(uint8_t key);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int HIDWriteKey(uint8_t key);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int HIDWrite(String charsToType);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void HIDClickMouse(uint8_t b = MOUSE_LEFT);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void HIDSendConsumerControl(unsigned char command);
   ///@}
@@ -230,37 +230,37 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableANCS(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int ancsAvailable();
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int readAncs(uint8_t *buffer, size_t max_length);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int readAncsNotiDetails(uint8_t *buf, size_t max_length);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void performAncsAction(uint32_t ID, uint8_t actionID);
   ///@}
@@ -273,17 +273,17 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void startObserver(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void stopObserver(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
@@ -296,22 +296,22 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   bool setScratchNumber(uint8_t bank, uint32_t data);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   ScratchData readScratchData(uint8_t bank);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   long readScratchNumber(uint8_t bank);
   ///@}
@@ -324,17 +324,17 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void sleep(uint32_t duration_ms);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void keepAwake(bool enable);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableWakeOnConnect(bool enable);
   ///@}
@@ -347,12 +347,12 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void attachChangeInterrupt(uint8_t pin, void (*userFunc)(void));
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void detachChangeInterrupt(uint8_t pin);
   ///@}
@@ -365,32 +365,32 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setAdvertisingInterval(uint16_t interval_ms);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableAdvertising(bool enable, uint32_t timer);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableAdvertising(bool enable);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   bool getAdvertisingState(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableCustom(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}
@@ -403,17 +403,17 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableiBeacon(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setBeaconEnable(bool beaconEnable);
   ///@}
@@ -426,12 +426,12 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint8_t getBatteryLevel(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   uint16_t getBatteryVoltage(void);
   ///@}
@@ -444,7 +444,7 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   int8_t getTemperature(void);
   ///@}
@@ -457,13 +457,13 @@ class BeanClass {
   ///@{
 
   /**
-   * Terminate the connection between Bean and the connected BLE Central device.
-   * If no Central device is connected, this method does nothing.
+   *  Terminate the connection between Bean and the connected BLE Central
+   *  device. If no Central device is connected, this method does nothing.
    */
   void disconnect(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   bool getConnectionState(void);
   ///@}
@@ -476,12 +476,12 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setBeanName(const String &name);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   const char *getBeanName(void);
   //@}
@@ -494,22 +494,22 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   BluetoothServices getServices(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void setServices(BluetoothServices services);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void resetServices(void);
 
   /**
-   * Needs docs
+   *  Needs docs
    */
   void enableConfigSave(bool enableSave);
   ///@}

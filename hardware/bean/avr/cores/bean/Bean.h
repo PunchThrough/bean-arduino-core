@@ -463,7 +463,9 @@ class BeanClass {
   void disconnect(void);
 
   /**
-   *  Needs docs
+   *  Check if any BLE Central devices are currently connected to Bean.
+   *
+   *  @return true if a device is connected, false otherwise
    */
   bool getConnectionState(void);
   ///@}

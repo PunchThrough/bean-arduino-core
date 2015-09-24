@@ -12,11 +12,40 @@
 #define HIGH_G_EVENT 0x02
 #define LOW_G_EVENT 0x01
 
+/**
+ *  An acceleration reading from the Bean accelerometer, the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>). Also includes the current sensitivity setting.
+ *
+ *  The accelerometer has 10-bit resolution. Readings are returned raw in the range of -512 to 511. These readings need to be converted to g (<a href="https://en.wikipedia.org/wiki/G-force">g-force</a>).
+ *
+ *  The accelerometer has configurable sensitivity. When using the accelerometer at the default sensitivity of ±2g, a value of +1 corresponds to +3.91 mg.
+ *
+ *  The accelerometer sensitivity is ±2g, ±4g, ±8g, or ±16g. These are represented by the values 2, 4, 8, or 16.
+ */
 typedef ACC_READING_T AccelerationReading;
+
+/**
+ *  Intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.
+ */
 typedef LED_SETTING_T LedReading;
+
+/**
+ *  Needs docs
+ */
 typedef ADV_SWITCH_ENABLED_T BluetoothServices;
+
+/**
+ *  Needs docs
+ */
 typedef ANCS_SOURCE_MSG_T AncsNotification;
+
+/**
+ *  Needs docs
+ */
 typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
+
+/**
+ *  Needs docs
+ */
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
@@ -43,22 +72,30 @@ class BeanClass {
   bool checkMotionEvent(uint8_t events);
 
   /**
-   *  Needs docs
+   *  Get the current value of the Bean accelerometer X axis.
+   *
+   *  @return a 10-bit value corresponding to the current X axis acceleration
    */
   int16_t getAccelerationX(void);
 
   /**
-   *  Needs docs
+   *  Get the current value of the Bean accelerometer Y axis.
+   *
+   *  @return a 10-bit value corresponding to the current Y axis acceleration
    */
   int16_t getAccelerationY(void);
 
   /**
-   *  Needs docs
+   *  Get the current value of the Bean accelerometer Z axis.
+   *
+   *  @return a 10-bit value corresponding to the current Z axis acceleration
    */
   int16_t getAccelerationZ(void);
 
   /**
-   *  Needs docs
+   *  Get the current value of all axes and the current sensitivity setting from the Bean accelerometer.
+   *
+   *  @return an AccelerationReading object containing current acceleration and sensitivity
    */
   AccelerationReading getAcceleration(void);
 
@@ -73,12 +110,16 @@ class BeanClass {
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
 
   /**
-   *  Needs docs
+   *  Get the current sensitivity setting of the Bean accelerometer.
+   *
+   *  @return 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g
    */
   uint8_t getAccelerationRange(void);
 
   /**
-   *  Needs docs
+   *  Configure the sensitivity of the Bean accelerometer.
+   *
+   *  @param range 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g
    */
   void setAccelerationRange(uint8_t range);
 
@@ -101,42 +142,42 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.
    */
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
 
   /**
-   *  Needs docs
+   *  Get current intensity values for the color channels of the Bean RGB LED.
    */
   LedReading getLed(void);
 
   /**
-   *  Needs docs
+   *  Get intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   uint8_t getLedRed(void);
 
   /**
-   *  Needs docs
+   *  Get intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   uint8_t getLedGreen(void);
 
   /**
-   *  Needs docs
+   *  Get intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   uint8_t getLedBlue(void);
 
   /**
-   *  Needs docs
+   *  Set intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   void setLedRed(uint8_t intensity);
 
   /**
-   *  Needs docs
+   *  Set intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   void setLedGreen(uint8_t intensity);
 
   /**
-   *  Needs docs
+   *  Set intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.
    */
   void setLedBlue(uint8_t intensity);
   ///@}
@@ -426,12 +467,18 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Get the current battery level, in percent.
+   *
+   *  @return a value in the range 0 to 100: 0 = 1.95 V, 100 = 3.53 V
    */
   uint8_t getBatteryLevel(void);
 
   /**
-   *  Needs docs
+   *  Get the current battery voltage, in volts.
+   *
+   *  Accuracy is ±0.01 V.
+   *
+   *  @return a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V
    */
   uint16_t getBatteryVoltage(void);
   ///@}
@@ -444,7 +491,9 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Get the current temperature of the Bean, in degrees Celsius. The Bean uses the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>) for temperature readings.
+   *
+   *  @return temperature, between -40 and 88 degrees Celsius
    */
   int8_t getTemperature(void);
   ///@}
@@ -478,12 +527,16 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.
+   *
+   *  @param s The name to be advertised
    */
   void setBeanName(const String &name);
 
   /**
-   *  Needs docs
+   *  Read the currently-advertised name of the Bean.
+   *
+   *  @return The Bean name as a char array, null-terminated
    */
   const char *getBeanName(void);
   //@}
@@ -511,7 +564,15 @@ class BeanClass {
   void resetServices(void);
 
   /**
-   *  Needs docs
+   *  Allows temporary storage of BLE configuration settings, as opposed to permanent storage in non-volatile memory (NVRAM).
+   *
+   *  Bean can only write to NVRAM a maximum of 20,000 times. If your sketch changes its advertising configuration frequently, it will quickly use up all of your Bean NVRAM's writes. To prevent this, disable saving to NVRAM first.
+   *
+   *  Configurations written while NVRAM saving is disabled will persist until the Bean is power cycled.
+   *
+   *  When the Bean is power cycled, saving to NVRAM is re-enabled.
+   *
+   *  @param enableSave true to disable saving to NVRAM, false to enable
    */
   void enableConfigSave(bool enableSave);
   ///@}

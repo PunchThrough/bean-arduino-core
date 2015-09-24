@@ -609,7 +609,6 @@ class BeanClass {
   /**
    *  Needs docs
    */
-
   uint8_t lastStatus;
 
   /**

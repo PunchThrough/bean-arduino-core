@@ -457,7 +457,8 @@ class BeanClass {
   ///@{
 
   /**
-   * Needs docs
+   * Terminate the connection between Bean and the connected BLE Central device.
+   * If no Central device is connected, this method does nothing.
    */
   void disconnect(void);
 

@@ -789,17 +789,17 @@ int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
   return 0;
 }
 
-int BeanClass::HIDPressKey(uint8_t k) { return BeanKeyboard.press(k); }
+int BeanClass::HIDPressKey(uint8_t key) { return BeanKeyboard.press(key); }
 
-int BeanClass::HIDReleaseKey(uint8_t k) { return BeanKeyboard.release(k); }
+int BeanClass::HIDReleaseKey(uint8_t key) { return BeanKeyboard.release(key); }
 
-int BeanClass::HIDWriteKey(uint8_t k) { return BeanKeyboard.write(k); }
+int BeanClass::HIDWriteKey(uint8_t key) { return BeanKeyboard.write(key); }
 
-int BeanClass::HIDWrite(String s) {
+int BeanClass::HIDWrite(String str) {
   int status = 0;
-  int maxIndex = s.length() - 1;
+  int maxIndex = str.length() - 1;
   for (int i = 0; i < maxIndex; i++) {
-    status |= BeanKeyboard.write(s.charAt(i));
+    status |= BeanKeyboard.write(str.charAt(i));
   }
 
   return status;
@@ -911,8 +911,8 @@ long BeanClass::readScratchNumber(uint8_t bank) {
   return returnNum;
 }
 
-void BeanClass::setBeanName(const String &s) {
-  Serial.BTSetLocalName((const char *)s.c_str());
+void BeanClass::setBeanName(const String &name) {
+  Serial.BTSetLocalName((const char *)name.c_str());
 }
 
 const char *BeanClass::getBeanName(void) {

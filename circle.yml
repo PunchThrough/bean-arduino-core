@@ -17,6 +17,7 @@ dependencies:
     - ~/.platformio
   override:
     - pip install cpplint
+    - npm install  # Used for deployment
     # Installing PlatformIO with pip is kind of broken. Just use their install script.
     - python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
     - platformio platforms install atmelavr
@@ -28,3 +29,9 @@ test:
   override:
     - tests/lint_all.py --lint
     - tests/compile_all.py
+
+deployment:
+  testing:  # just to make sure it works
+    branch: make-docs
+    commands:
+      - npm run gulp deploy

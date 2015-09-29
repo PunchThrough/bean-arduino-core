@@ -33,7 +33,7 @@ test:
 
 deployment:
   testing:  # just to make sure it works
-    branch: make-docs
+    branch: master
     commands:
       - git config --global user.email 'circleci@punchthrough.com'
       - git config --global user.name 'CircleCI Automated Build'

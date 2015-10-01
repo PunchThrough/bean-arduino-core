@@ -23,12 +23,8 @@ dependencies:
     - sudo apt-get update
     - sudo apt-get install doxygen
     - npm install
-    # Installing PlatformIO with pip is kind of broken. Just use their install script.
-    - python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
-    - platformio platforms install atmelavr
-    - mkdir -p ~/.platformio/boards  # -p: no error if cached /boards already exists
-    - cp tests/resources/platformio/boards/punchthrough.json ~/.platformio/boards/
-    - cp -rvf hardware/bean/avr/* ~/.platformio/packages/framework-arduinoavr/
+    # Don't install PlatformIO if it's already been set up; it takes forever
+    - if [ -f "~/.platformio/appstate.json" ]; then tests/setup_platformio.sh; fi
 
 test:
   override:
@@ -37,7 +33,7 @@ test:
 
 deployment:
   testing:  # just to make sure it works
-    branch: make-docs
+    branch: master
     commands:
       - git config --global user.email 'circleci@punchthrough.com'
       - git config --global user.name 'CircleCI Automated Build'

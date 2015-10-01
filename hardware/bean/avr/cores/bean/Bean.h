@@ -143,6 +143,11 @@ class BeanClass {
 
   /**
    *  Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  # Examples
+   *
+   *  This example sets the LED to white (all channels on, full intensity):
+   *  @include led/setLed.ino
    */
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
 

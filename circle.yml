@@ -32,7 +32,7 @@ test:
     - tests/compile_all.py
 
 deployment:
-  testing:  # just to make sure it works
+  release:  # docs are released when master is updated
     branch: master
     commands:
       - git config --global user.email 'circleci@punchthrough.com'

@@ -64,6 +64,30 @@ static inline void store_char(unsigned char c, ring_buffer *buffer) {
   }
 }
 
+static uint32_t calc_crc32(uint32_t crc, uint8_t *buf, uint16_t len)
+{
+  uint16_t k;
+
+  crc = ~crc;
+  while (len--) {
+    crc ^= *buf++;
+    for (k = 0; k < 8; k++)
+      crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+  }
+  return ~crc;
+}
+
+void toUint8Array(uint32_t value, uint8_t * target, uint8_t target_bytes)
+{
+  int i;
+  uint8_t shift = target_bytes * 8;
+  for (i = 0; i < target_bytes; i++)
+  {
+    shift -= 8;
+    target[i] = (uint8_t)((value >> shift) & 0xFF);
+  }
+}
+
 static bool rx_char(uint8_t *c) {
 #if defined(UDR0)
   if (bit_is_clear(UCSR0A, UPE0)) {
@@ -111,6 +135,7 @@ ISR(USART_RXC_vect)  // ATmega8
     GETTING_MESSAGE_ID_1,
     GETTING_MESSAGE_ID_2,
     GETTING_MESSAGE_BODY,
+    GETTING_CRC32,
     GETTING_EOF
   } bean_transport_state = WAITING_FOR_SOF;
 
@@ -118,6 +143,10 @@ ISR(USART_RXC_vect)  // ATmega8
   static uint16_t messageType = MSG_ID_SERIAL_DATA;
   static uint8_t messageRemaining = 0;
   static uint8_t messageCur = 0;
+  static uint8_t temp_var[4];
+  static uint8_t rx_crc32[4];
+  static uint32_t calculated_crc32;
+  uint8_t bytes_ok;
 
   // buffer
   static ring_buffer *buffer = NULL;
@@ -168,12 +197,14 @@ ISR(USART_RXC_vect)  // ATmega8
       bean_transport_state = GETTING_MESSAGE_ID_1;
       observer_msg_len = next;  // we don't have message type yet, but save the
                                 // length for later
+      calculated_crc32 = calc_crc32(0, &next, 1);
       break;
 
     case GETTING_MESSAGE_ID_1:
       messageType = ((unsigned int)next) << 8;
       messageRemaining--;
       bean_transport_state = GETTING_MESSAGE_ID_2;
+      calculated_crc32 = calc_crc32(calculated_crc32, &next, 1);
       break;
 
     case GETTING_MESSAGE_ID_2:
@@ -192,15 +223,16 @@ ISR(USART_RXC_vect)  // ATmega8
         observer_message.head = observer_message.tail =
             0;  // if the user missed a previous message drop it
       } else {
-        buffer =
-            (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
+        buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
       }
 
       if (messageRemaining > 0) {
         bean_transport_state = GETTING_MESSAGE_BODY;
       } else {
-        bean_transport_state = GETTING_EOF;
+        bean_transport_state = GETTING_CRC32;
+        messageRemaining = 4;
       }
+      calculated_crc32 = calc_crc32(calculated_crc32, &next, 1);
 
       break;
 
@@ -208,24 +240,44 @@ ISR(USART_RXC_vect)  // ATmega8
       if (buffer) {
         store_char(next, buffer);
         messageRemaining--;
+        calculated_crc32 = calc_crc32(calculated_crc32, &next, 1);
       }
 
       if (messageRemaining == 0) {
+        bean_transport_state = GETTING_CRC32;
+        messageRemaining = 4;
+      }
+      break;
+    case GETTING_CRC32:
+      messageRemaining--;
+      rx_crc32[3-messageRemaining] = next;
+      if (messageRemaining == 0) {
+        toUint8Array(calculated_crc32, temp_var, 4);
+        //store_char(rx_crc32[0], buffer);
         bean_transport_state = GETTING_EOF;
       }
       break;
-
     case GETTING_EOF:
       // RESET STATE
       if (messageType == MSG_ID_MIDI_READ) {
         for (int i = 0; i < 3; i++)
-          store_char(
-              0, buffer);  // null message to specify the end of a btle packet
+          store_char(0, buffer);  // null message to specify the end of a btle packet
       }
       if (messageType == MSG_ID_OBSERVER_READ) {
         observer_message_sending = false;
       }
-      serial_message_complete = true;
+      bytes_ok = 0;
+      for (int i = 0; i < 4; i++) {
+        if (temp_var[i] == rx_crc32[i]) {
+          bytes_ok += 1;
+        }
+      }
+      if (bytes_ok == 4)
+      {
+        serial_message_complete = true;
+      } else {
+        
+      }
       bean_transport_state = WAITING_FOR_SOF;
       messageType = MSG_ID_SERIAL_DATA;
       messageRemaining = 0;
@@ -336,6 +388,9 @@ void BeanSerialTransport::BTConfigUartSleep(UART_SLEEP_MODE_T mode) {
 size_t BeanSerialTransport::write_message(uint16_t messageId,
                                           const uint8_t *body,
                                           size_t body_length) {
+  uint32_t crc32 = 0;
+  uint8_t temp_var[4];
+
   if (body_length > MAX_BODY_LENGTH) {
     return -1;
   }
@@ -348,16 +403,29 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   if (tx_buffer.head == tx_buffer.tail && m_wakeDelay > 0) {
     delay(m_wakeDelay);
   }
+
+
   HardwareSerial::write(BEAN_SOF);
   // body_length + "2" for message type.
-  insert_escaped_char(body_length + 2);
-  insert_escaped_char((uint8_t)(messageId >> 8));
-  insert_escaped_char((uint8_t)(messageId & 0xFF));
+  temp_var[0] = body_length + 2;
+  temp_var[1] = (uint8_t)(messageId >> 8);
+  temp_var[2] = (uint8_t)(messageId & 0xFF);
+  crc32 = calc_crc32(crc32, temp_var, 3);
+  for (int i = 0; i < 3; i++)
+  {
+    insert_escaped_char(temp_var[i]);
+  }
 
+  crc32 = calc_crc32(crc32, (uint8_t *) body, body_length);
   for (uint8_t i = 0; i < body_length; i++) {
     insert_escaped_char(body[i]);
   }
 
+  toUint8Array(crc32, temp_var, sizeof(uint32_t));
+  for (uint8_t i = 0; i < sizeof(uint32_t); i++)
+  {
+    insert_escaped_char(temp_var[i]);
+  }
   HardwareSerial::write(BEAN_EOF);
   // throttle the transfer speed
   if (m_enforcedDelay > 0) {

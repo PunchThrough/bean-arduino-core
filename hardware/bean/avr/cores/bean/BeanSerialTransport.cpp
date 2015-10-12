@@ -64,25 +64,25 @@ static inline void store_char(unsigned char c, ring_buffer *buffer) {
   }
 }
 
-static uint32_t calc_crc32(uint32_t crc, uint8_t *buf, uint16_t len)
-{
+static uint32_t calc_crc32(uint32_t crc, uint8_t *buf, uint16_t len) {
   uint16_t k;
 
   crc = ~crc;
   while (len--) {
     crc ^= *buf++;
-    for (k = 0; k < 8; k++)
+    for (k = 0; k < 8; k++) {
+      // If CRC LSB is 1, right shift CRC, then XOR CRC with 0xEDB88320
+      // Otherwise, just right shift CRC
       crc = crc & 1 ? (crc >> 1) ^ 0xedb88320 : crc >> 1;
+    }
   }
   return ~crc;
 }
 
-void toUint8Array(uint32_t value, uint8_t * target, uint8_t target_bytes)
-{
+void toUint8Array(uint32_t value, uint8_t *target, uint8_t target_bytes) {
   int i;
   uint8_t shift = target_bytes * 8;
-  for (i = 0; i < target_bytes; i++)
-  {
+  for (i = 0; i < target_bytes; i++) {
     shift -= 8;
     target[i] = (uint8_t)((value >> shift) & 0xFF);
   }
@@ -223,7 +223,8 @@ ISR(USART_RXC_vect)  // ATmega8
         observer_message.head = observer_message.tail =
             0;  // if the user missed a previous message drop it
       } else {
-        buffer = (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
+        buffer =
+            (messageType == MSG_ID_SERIAL_DATA) ? &rx_buffer : &reply_buffer;
       }
 
       if (messageRemaining > 0) {
@@ -250,10 +251,9 @@ ISR(USART_RXC_vect)  // ATmega8
       break;
     case GETTING_CRC32:
       messageRemaining--;
-      rx_crc32[3-messageRemaining] = next;
+      rx_crc32[3 - messageRemaining] = next;
       if (messageRemaining == 0) {
         toUint8Array(calculated_crc32, temp_var, 4);
-        //store_char(rx_crc32[0], buffer);
         bean_transport_state = GETTING_EOF;
       }
       break;
@@ -261,7 +261,8 @@ ISR(USART_RXC_vect)  // ATmega8
       // RESET STATE
       if (messageType == MSG_ID_MIDI_READ) {
         for (int i = 0; i < 3; i++)
-          store_char(0, buffer);  // null message to specify the end of a btle packet
+          // null message to specify the end of a BLE packet
+          store_char(0, buffer);
       }
       if (messageType == MSG_ID_OBSERVER_READ) {
         observer_message_sending = false;
@@ -272,11 +273,8 @@ ISR(USART_RXC_vect)  // ATmega8
           bytes_ok += 1;
         }
       }
-      if (bytes_ok == 4)
-      {
+      if (bytes_ok == 4) {
         serial_message_complete = true;
-      } else {
-        
       }
       bean_transport_state = WAITING_FOR_SOF;
       messageType = MSG_ID_SERIAL_DATA;
@@ -296,8 +294,7 @@ ISR(USART_RXC_vect)  // ATmega8
 // instead.
 void BeanSerialTransport::flush() {
   // logic is handled in writes and interrupts
-  while (tx_buffer_flushed == false)
-    {}
+  while (tx_buffer_flushed == false) {}
 
   // this is a holdover from HWSerial.
   transmitting = false;
@@ -404,26 +401,23 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
     delay(m_wakeDelay);
   }
 
-
   HardwareSerial::write(BEAN_SOF);
   // body_length + "2" for message type.
   temp_var[0] = body_length + 2;
   temp_var[1] = (uint8_t)(messageId >> 8);
   temp_var[2] = (uint8_t)(messageId & 0xFF);
   crc32 = calc_crc32(crc32, temp_var, 3);
-  for (int i = 0; i < 3; i++)
-  {
+  for (int i = 0; i < 3; i++) {
     insert_escaped_char(temp_var[i]);
   }
 
-  crc32 = calc_crc32(crc32, (uint8_t *) body, body_length);
+  crc32 = calc_crc32(crc32, (uint8_t *)body, body_length);
   for (uint8_t i = 0; i < body_length; i++) {
     insert_escaped_char(body[i]);
   }
 
   toUint8Array(crc32, temp_var, sizeof(uint32_t));
-  for (uint8_t i = 0; i < sizeof(uint32_t); i++)
-  {
+  for (uint8_t i = 0; i < sizeof(uint32_t); i++) {
     insert_escaped_char(temp_var[i]);
   }
   HardwareSerial::write(BEAN_EOF);

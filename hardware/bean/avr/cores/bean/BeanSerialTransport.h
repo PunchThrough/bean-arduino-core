@@ -160,7 +160,7 @@ class BeanSerialTransport : public HardwareSerial {
     m_wakeDelay = UART_DEFAULT_WAKE_WAIT;
     m_enforcedDelay = UART_DEFAULT_SEND_WAIT;
   }  // End constructor
-};  // End BeanSerialTransport
+};   // End BeanSerialTransport
 
 #if defined(UBRRH) || defined(UBRR0H)
 extern BeanSerialTransport Serial;

@@ -337,12 +337,39 @@ class BeanClass {
 
   /****************************************************************************/
   /** @name Scratch
-   *  Read and write arbitrary data using fixed BLE characteristics available on Bean.
+   *  Read and write arbitrary data using pre-defined BLE characteristics.
+   *
+   *  Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for developer use. Each characteristic holds 20 bytes and acts as a bucket for arbitrary data.
+   *
+   *  Bean and Bean+ have five scratch characteristics. All scratch chars are contained in a single BLE service.
+   *
+   *  Scratch characteristics will trigger Notify events on BLE Central clients when they are changed by Bean's Arduino sketch. Bean sketches must poll to find out when a client changes scratch characteristic data.
+   *
+   *  Scratch characteristics can hold up to 20 bytes due to BLE restrictions.
+   *
+   *  * **Scratch Service UUID:** `a495ff20-c5b1-4b44-b512-1370f02d74de`
+   *  * **Scratch Characteristic UUIDs:**
+   *    1. `a495ff21-c5b1-4b44-b512-1370f02d74de`
+   *    2. `a495ff22-c5b1-4b44-b512-1370f02d74de`
+   *    3. `a495ff23-c5b1-4b44-b512-1370f02d74de`
+   *    4. `a495ff24-c5b1-4b44-b512-1370f02d74de`
+   *    5. `a495ff25-c5b1-4b44-b512-1370f02d74de`
    */
   ///@{
 
   /**
-   *  Needs docs
+   *  Set the data in a scratch characteristic. Triggers a BLE Notify event for connected clients.
+   *
+   *  @param bank         The index of the destination scratch char: `1`, `2`, `3`, `4`, or `5`
+   *  @param data         An array of `byte`s or `uint8_t`s to be copied into the scratch char
+   *  @param dataLength   The number of bytes to copy from `data`
+   *
+   *  @return             Success: false if `dataLength` is greater than 20, true otherwise
+   *
+   *  # Examples
+   *
+   *  This example reads two of Bean's analog pins and writes the values to two scratch characteristics:
+   *  @include scratchChars/setScratchData.ino
    */
   bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
 

@@ -424,7 +424,30 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Sleep for a period of time.
+   *
+   *  This method puts the ATmega chip to sleep until it is woken by the LBM313 at the requested time.
+   *
+   *  Bean can be woken from sleep by the following:
+   *
+   *  * The requested sleep time elapses
+   *  * A serial message is received from a connected client
+   *  * A client connects to Bean while wake on connect is enabled
+   *  * A pin change interrupt occurs
+   *
+   *  `Bean.sleep()` is more power-efficient than Arduino `sleep()` because it puts the ATmega into a low-power mode known as "power-down". This disables the ATmega's internal timers, so functions like `millis()` will not track time elapsed during `Bean.sleep()`.
+   *
+   *  The ATmega can take up to 7 ms to wake from `Bean.sleep()`. If you are looking for more precise timings, please consider using [delay()](https://www.arduino.cc/en/Reference/Delay) or [delayMicroseconds()](https://www.arduino.cc/en/Reference/DelayMicroseconds).
+   *
+   *  For more information on low-power mode on the ATmega328, check out this [Sparkfun tutorial](https://www.sparkfun.com/tutorials/309).
+   *
+   *  @param duration_ms The duration to sleep for, in milliseconds
+   *
+   *  # Examples
+   *
+   *  This example turns on Bean's LED, sleeps for one second, turns off Bean's LED and sleeps for four more seconds, then repeats:
+   *
+   *  @include sleep/sleep.ino
    */
   void sleep(uint32_t duration_ms);
 
@@ -434,7 +457,15 @@ class BeanClass {
   void keepAwake(bool enable);
 
   /**
-   *  Needs docs
+   *  Enable or disable wake on connect. By default, Bean does not wake up when a BLE client connects.
+   *
+   *  @param enable true to enable wake on connect, false to disable
+   *
+   *  # Examples
+   *
+   *  This example wakes Bean when a client connects, waits for the client to disconnect, and sleeps on disconnect:
+   *
+   *  @include sleep/enableWakeOnConnect.ino
    */
   void enableWakeOnConnect(bool enable);
   ///@}

@@ -153,6 +153,13 @@ class BeanClass {
 
   /**
    *  Get current intensity values for the color channels of the Bean RGB LED.
+   * 
+   *  @return `LedReading` struct that contains an integer representation of each color.
+   *
+   *  # Examples
+   *  
+   *  This example shows the usage of the getLed() function and how to interperet the return value.
+   *  @include led/getLed.ino
    */
   LedReading getLed(void);
 

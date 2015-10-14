@@ -461,6 +461,10 @@ class BeanClass {
   /****************************************************************************/
   /** @name Advertising
    *  Set and verify the Bean BLE advertising configuration.
+   *
+   *  Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see [this guide (TODO: ADD GUIDE + LINK)](#) to clear the sketch stored on Bean.
    */
   ///@{
 
@@ -468,6 +472,12 @@ class BeanClass {
    *  Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.
    *
    *  @param s The name to be advertised
+   *
+   *  # Examples
+   *
+   *  This example TODO FIGURE OUT AN EXAMPLE
+   *
+   *  TODO include example
    */
   void setBeanName(const String &s);
 
@@ -475,6 +485,12 @@ class BeanClass {
    *  Read the currently-advertised name of the Bean.
    *
    *  @return The Bean name as a char array, null-terminated
+   *
+   *  # Examples
+   *
+   *  This example TODO FIGURE OUT AN EXAMPLE
+   *
+   *  TODO include example
    */
   const char *getBeanName(void);
 
@@ -484,17 +500,47 @@ class BeanClass {
   void setAdvertisingInterval(uint16_t interval_ms);
 
   /**
-   *  Needs docs
+   *  Enable or disable BLE advertising for a specific duration.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are **not** stored in non-volatile memory.
+   *
+   *  @param enable true to enable advertising, false to disable
+   *  @param timer the duration to enable/disable advertising, in milliseconds
+   *
+   *  # Examples
+   *
+   *  This example disables advertising for 10 seconds when digital pin 0 is pulled low:
+   *
+   *  TODO include example
    */
   void enableAdvertising(bool enable, uint32_t timer);
 
   /**
-   *  Needs docs
+   *  Enable or disable BLE advertising.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are **not** stored in non-volatile memory.
+   *
+   *  @param enable true to enable advertising, false to disable
+   *
+   *  # Examples
+   *
+   *  This example disables advertising when digital pin 0 is pulled low and enables it otherwise:
+   *
+   *  TODO include example
    */
   void enableAdvertising(bool enable);
 
   /**
-   *  Needs docs
+   *  Check whether the Bean is currently advertising.
+   *
+   *  @return true if Bean is advertising, false if Bean is not advertising
+   *
+   *  # Examples
+   *
+   *  This example toggles Bean's advertising every 15 seconds and indicates the current advertising status with the LED:
+   *
+   *  @include advertising/getAdvertisingState.ino
+   *
    */
   bool getAdvertisingState(void);
 

@@ -153,6 +153,13 @@ class BeanClass {
 
   /**
    *  Get current intensity values for the color channels of the Bean RGB LED.
+   * 
+   *  @return `LedReading` struct that contains an integer representation of each color.
+   *
+   *  # Examples
+   *  
+   *  This example shows the usage of the getLed() function and how to interperet the return value.
+   *  @include led/getLed.ino
    */
   LedReading getLed(void);
 
@@ -337,27 +344,81 @@ class BeanClass {
 
   /****************************************************************************/
   /** @name Scratch
-   *  Read and write arbitrary data using fixed BLE characteristics available on Bean.
+   *  Read and write arbitrary data using pre-defined BLE characteristics.
+   *
+   *  Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for arbitrary use by developers. Each characteristic can hold up to 20 bytes due to BLE restrictions.
+   *
+   *  Scratch characteristics will trigger Notify events on BLE Central clients when they are changed by Bean's Arduino sketch. Bean sketches must poll to find out when a client changes scratch characteristic data.
+   *
+   *  Bean and Bean+ have five scratch characteristics. All scratch chars are contained in a single BLE service.
+   *
+   *  * **Scratch Service UUID:** `a495ff20-c5b1-4b44-b512-1370f02d74de`
+   *  * **Scratch Characteristic UUIDs:**
+   *    1. `a495ff21-c5b1-4b44-b512-1370f02d74de`
+   *    2. `a495ff22-c5b1-4b44-b512-1370f02d74de`
+   *    3. `a495ff23-c5b1-4b44-b512-1370f02d74de`
+   *    4. `a495ff24-c5b1-4b44-b512-1370f02d74de`
+   *    5. `a495ff25-c5b1-4b44-b512-1370f02d74de`
+   *
+   *  In the below methods, behavior is undefined when the `bank` parameter is not `1`, `2`, `3`, `4`, or `5`.
+   *
    */
   ///@{
 
   /**
-   *  Needs docs
+   *  Set the data in a scratch characteristic. Triggers a BLE Notify event for connected clients.
+   *
+   *  @param bank         The index of the destination scratch char: `1`, `2`, `3`, `4`, or `5`
+   *  @param data         An array of `byte`s or `uint8_t`s to be copied into the scratch char
+   *  @param dataLength   The number of bytes to copy from `data`
+   *
+   *  @return             Success: false if `dataLength` is greater than 20, true otherwise
+   *
+   *  # Examples
+   *
+   *  This example reads two of Bean's analog pins and writes the values to two scratch characteristics:
+   *  @include scratchChars/setScratchData.ino
    */
   bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
 
   /**
-   *  Needs docs
+   *  Write a 32-bit (four-byte) value into a scratch characteristic. Triggers a BLE Notify event for connected clients.
+   *
+   *  @param bank         The index of the destination scratch char: `1`, `2`, `3`, `4`, or `5`
+   *  @param data         The 32-bit value to be written into the scratch char
+   *
+   *  @return             Success: always returns true, since all 32-bit numbers are under 20 bytes in length
+   *
+   *  # Examples
+   *
+   *  This example writes a value to and reads a value from a scratch characteristic:
+   *  @include scratchChars/setScratchNumber.ino
    */
   bool setScratchNumber(uint8_t bank, uint32_t data);
 
   /**
-   *  Needs docs
+   *  Read the data from a scratch characteristic.
+   *
+   *  @param bank         The index of the source scratch char: `1`, `2`, `3`, `4`, or `5`
+   *
+   *  @return             The contents of the scratch characteristic
+   *
+   *  # Examples
+   *
+   *  This example polls a scratch characteristic and blinks Bean's LED if the value changes:
+   *  @include scratchChars/readScratchData.ino
    */
   ScratchData readScratchData(uint8_t bank);
 
   /**
-   *  Needs docs
+   *  Read a 32-bit (four-byte) value from a scratch characteristic.
+   *
+   *  @param bank         The index of the source scratch char: `1`, `2`, `3`, `4`, or `5`
+   *
+   *  # Examples
+   *
+   *  This example writes a value to and reads a value from a scratch characteristic:
+   *  @include scratchChars/setScratchNumber.ino
    */
   long readScratchNumber(uint8_t bank);
   ///@}

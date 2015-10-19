@@ -3,6 +3,7 @@
 from os import walk
 from os.path import join
 from sys import argv, exit
+from glob import glob
 import re
 import subprocess
 
@@ -14,16 +15,33 @@ usage = """Usage:
 formatter = ['clang-format', '-i']
 linter = ['cpplint']
 
-bean_files = r"Bean.*\.(h|cpp)"
+file_regexes = [
+    r"Bean.*\.(h|cpp)"
+]
+file_globs = [
+    'examples/**/*.ino'
+]
+valid_extensions = [
+    'h',
+    'cpp',
+    'ino'
+]
 
-bean_files_regex = re.compile(bean_files)
+valid_extensions_arg = '--extensions={}'.format(','.join(valid_extensions))
+linter.append(valid_extensions_arg)
+
+file_regexes_compiled = [re.compile(rx) for rx in file_regexes]
 
 to_process = []
 for root, dirnames, filenames in walk('.'):
     for filename in filenames:
-        if bean_files_regex.match(filename):
-            path = join(root, filename)
-            to_process.append(path)
+        for file_regex in file_regexes_compiled:
+            if file_regex.match(filename):
+                path = join(root, filename)
+                to_process.append(path)
+
+for g in file_globs:
+    to_process.extend(glob(g))
 
 show = False
 reformat = False

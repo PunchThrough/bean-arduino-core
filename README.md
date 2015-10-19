@@ -2,6 +2,8 @@
 
 This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.
 
+* [Reference Docs](http://punchthrough.github.io/PunchThrough-BEAN-Arduino-Firmware/)
+
 # Reading and Setting Atmega Fuses with avrdude
 
 We're going to need to set some fuses for our part in the factory.  The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.

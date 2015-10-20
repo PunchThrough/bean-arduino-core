@@ -448,24 +448,6 @@ class BeanClass {
 
 
   /****************************************************************************/
-  /** @name Interrupts
-   *  Call functions when events occur using pin change interrupts.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void attachChangeInterrupt(uint8_t pin, void (*userFunc)(void));
-
-  /**
-   *  Needs docs
-   */
-  void detachChangeInterrupt(uint8_t pin);
-  ///@}
-
-
-  /****************************************************************************/
   /** @name Advertising
    *  Set and verify the Bean BLE advertising configuration.
    */

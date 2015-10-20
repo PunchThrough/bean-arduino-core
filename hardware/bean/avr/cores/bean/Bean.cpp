@@ -33,7 +33,6 @@
 #define MAX_SCRATCH_SIZE (20)
 #define NUM_BEAN_PINS 7
 
-static volatile voidFuncPtr intFunc;
 
 // midi access definitions
 #define MIDI_BUFFER_SIZE 20
@@ -51,34 +50,6 @@ uint8_t midiPacket[BLE_PACKET_SIZE];
 uint8_t midiWriteOffset = 0;
 uint8_t midiReadOffset = 0;
 
-// Pin change interrupt vectors
-
-// D0
-#ifndef PCINT2_vect
-ISR(PCINT2_vect) {
-  if (intFunc) {
-    intFunc();
-  }
-}
-#endif
-
-// Analog 0, Analog 1
-#ifndef PCINT1_vect
-ISR(PCINT1_vect) {
-  if (intFunc) {
-    intFunc();
-  }
-}
-#endif
-
-// D1-D5
-#ifndef PCINT0_vect
-ISR(PCINT0_vect) {
-  if (intFunc) {
-    intFunc();
-  }
-}
-#endif
 
 BeanClass Bean;
 
@@ -284,74 +255,6 @@ void BeanClass::sleep(uint32_t duration_ms) {
     // re-enable analog compareter
     ACSR |= _BV(ACD);
   }
-}
-
-void BeanClass::attachChangeInterrupt(uint8_t pin, void (*userFunc)(void)) {
-  switch (pin) {
-    case 0:
-      PCICR |= _BV(PCIE2);
-      PCMSK2 |= _BV(PCINT22);
-      break;
-    case 1:
-      PCICR |= _BV(PCIE0);
-      PCMSK0 |= _BV(PCINT1);
-      break;
-    case 2:
-      PCICR |= _BV(PCIE0);
-      PCMSK0 |= _BV(PCINT2);
-      break;
-    case 3:
-      PCICR |= _BV(PCIE0);
-      PCMSK0 |= _BV(PCINT3);
-      break;
-    case 4:
-      PCICR |= _BV(PCIE0);
-      PCMSK0 |= _BV(PCINT4);
-      break;
-    case 5:
-      PCICR |= _BV(PCIE0);
-      PCMSK0 |= _BV(PCINT5);
-      break;
-
-    default:
-      break;
-  }
-
-  intFunc = userFunc;
-}
-
-void BeanClass::detachChangeInterrupt(uint8_t pin) {
-  switch (pin) {
-    case 0:
-      PCICR &= ~_BV(PCIE2);
-      PCMSK2 &= ~_BV(PCINT22);
-      break;
-    case 1:
-      PCICR &= ~_BV(PCIE0);
-      PCMSK0 &= ~_BV(PCINT1);
-      break;
-    case 2:
-      PCICR &= ~_BV(PCIE0);
-      PCMSK0 &= ~_BV(PCINT2);
-      break;
-    case 3:
-      PCICR &= ~_BV(PCIE0);
-      PCMSK0 &= ~_BV(PCINT3);
-      break;
-    case 4:
-      PCICR &= ~_BV(PCIE0);
-      PCMSK0 &= ~_BV(PCINT4);
-      break;
-    case 5:
-      PCICR &= ~_BV(PCIE0);
-      PCMSK0 &= ~_BV(PCINT5);
-      break;
-
-    default:
-      break;
-  }
-
-  intFunc = NULL;
 }
 
 void BeanClass::setAdvertisingInterval(uint16_t interval_ms) {

@@ -554,7 +554,7 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
   Serial.writeGATT(services);
 }
 
-void BeanClass::enableHID(void) {
+void BeanClass::hid_enable(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.hid = 1;
   setServices(curServices);
@@ -692,13 +692,13 @@ int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
   return 0;
 }
 
-int BeanClass::HIDPressKey(uint8_t key) { return BeanKeyboard.press(key); }
+int BeanClass::hid_holdKey(uint8_t key) { return BeanKeyboard.press(key); }
 
-int BeanClass::HIDReleaseKey(uint8_t key) { return BeanKeyboard.release(key); }
+int BeanClass::hid_releaseKey(uint8_t key) { return BeanKeyboard.release(key); }
 
-int BeanClass::HIDWriteKey(uint8_t key) { return BeanKeyboard.write(key); }
+int BeanClass::hid_pressKey(uint8_t key) { return BeanKeyboard.write(key); }
 
-int BeanClass::HIDWrite(String charsToType) {
+int BeanClass::hid_write(String charsToType) {
   int status = 0;
   int maxIndex = charsToType.length() - 1;
   for (int i = 0; i < maxIndex; i++) {
@@ -708,14 +708,15 @@ int BeanClass::HIDWrite(String charsToType) {
   return status;
 }
 
-void BeanClass::HIDMoveMouse(signed char x, signed char y, signed char wheel) {
-  BeanMouse.move(x, y, wheel);
+void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel) {
+  BeanMouse.move(delta_x, delta_y, delta_wheel);
 }
 
-void BeanClass::HIDClickMouse(uint8_t b) { BeanMouse.click(b); }
+void BeanClass::hid_clickMouse(uint8_t button) { BeanMouse.click(button); }
 
-void BeanClass::HIDSendConsumerControl(unsigned char command) {
+void BeanClass::hid_sendMediaControl(unsigned char command) {
   BeanKeyboard.sendCC(command);
+  BeanKeyboard.sendCC(0);
 }
 
 int BeanClass::ancsAvailable() { return Serial.ancsAvailable(); }

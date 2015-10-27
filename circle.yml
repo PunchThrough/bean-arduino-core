@@ -30,6 +30,9 @@ test:
   override:
     - tests/lint_all.py --lint
     - tests/compile_all.py
+  post:
+    - make docs
+    - mv docs $CIRCLE_ARTIFACTS
 
 deployment:
   release:  # docs are released when master is updated

@@ -8,7 +8,7 @@ void loop() {
 
   // Build a new name for Bean using the temperature
   String name = "Temp is ";
-  name += temp;
+  name += temperature;
   name += " C";
 
   // Set Bean's new name

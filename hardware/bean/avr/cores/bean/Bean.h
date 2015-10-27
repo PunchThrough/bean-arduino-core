@@ -475,9 +475,9 @@ class BeanClass {
    *
    *  # Examples
    *
-   *  This example TODO FIGURE OUT AN EXAMPLE
+   *  This example changes Bean's name based on its temperature:
    *
-   *  TODO include example
+   *  @include advertising/setBeanName.ino
    */
   void setBeanName(const String &s);
 
@@ -488,9 +488,9 @@ class BeanClass {
    *
    *  # Examples
    *
-   *  This example TODO FIGURE OUT AN EXAMPLE
+   *  This example prints Bean's name to Virtual Serial every two seconds:
    *
-   *  TODO include example
+   *  @include examples/getBeanName.ino
    */
   const char *getBeanName(void);
 
@@ -511,7 +511,7 @@ class BeanClass {
    *
    *  This example disables advertising for 10 seconds when digital pin 0 is pulled low:
    *
-   *  TODO include example
+   *  @include advertising/enableAdvertisingInterval.ino
    */
   void enableAdvertising(bool enable, uint32_t timer);
 
@@ -526,7 +526,7 @@ class BeanClass {
    *
    *  This example disables advertising when digital pin 0 is pulled low and enables it otherwise:
    *
-   *  TODO include example
+   *  @include advertising/enableAdvertising.ino
    */
   void enableAdvertising(bool enable);
 

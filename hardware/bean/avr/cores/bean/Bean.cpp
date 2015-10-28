@@ -712,11 +712,19 @@ void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed c
   BeanMouse.move(delta_x, delta_y, delta_wheel);
 }
 
-void BeanClass::hid_clickMouse(uint8_t button) { BeanMouse.click(button); }
+void BeanClass::hid_clickMouse(mouseButtons button) { BeanMouse.click(button); }
 
-void BeanClass::hid_sendMediaControl(unsigned char command) {
+void BeanClass::hid_sendMediaControl(mediaControl command) {
   BeanKeyboard.sendCC(command);
   BeanKeyboard.sendCC(0);
+}
+
+void BeanClass::hid_holdMediaControl(mediaControl command) {
+  BeanKeyboard.holdCC(command);
+}
+
+void BeanClass::hid_releaseMediaControl(mediaControl command) {
+  BeanKeyboard.releaseCC(command);
 }
 
 int BeanClass::ancsAvailable() { return Serial.ancsAvailable(); }

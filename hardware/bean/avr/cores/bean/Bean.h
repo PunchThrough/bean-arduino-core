@@ -267,12 +267,22 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void hid_clickMouse(uint8_t button = MOUSE_LEFT);
+  void hid_clickMouse(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Needs docs
    */
-  void hid_sendMediaControl(unsigned char command);
+  void hid_sendMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+   void hid_holdMediaControl(mediaControl command);
+
+   /**
+   * Needs docs
+   */
+   void hid_releaseMediaControl(mediaControl command);
   ///@}
 
 

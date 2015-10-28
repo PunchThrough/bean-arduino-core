@@ -7,8 +7,7 @@
 //==============================================================================
 // Mouse
 
-typedef enum
-{
+typedef enum {
   MOUSE_LEFT = 1,
   MOUSE_RIGHT = 2,
   MOUSE_MIDDLE = 4,
@@ -41,65 +40,64 @@ extern BeanMouse_ BeanMouse;
 //==============================================================================
 //==============================================================================
 // Keyboard
-typedef enum 
-{
-  KEY_LEFT_CTRL=0x80,
-  KEY_LEFT_SHIFT=0x81,
-  KEY_LEFT_ALT=0x82,
-  KEY_LEFT_GUI=0x83,
-  KEY_RIGHT_CTRL=0x84,
-  KEY_RIGHT_SHIFT=0x85,
-  KEY_RIGHT_ALT=0x86,
-  KEY_RIGHT_GUI=0x87,
+typedef enum {
+  KEY_LEFT_CTRL = 0x80,
+  KEY_LEFT_SHIFT = 0x81,
+  KEY_LEFT_ALT = 0x82,
+  KEY_LEFT_GUI = 0x83,
+  KEY_RIGHT_CTRL = 0x84,
+  KEY_RIGHT_SHIFT = 0x85,
+  KEY_RIGHT_ALT = 0x86,
+  KEY_RIGHT_GUI = 0x87,
 
-  KEY_UP_ARROW=0xDA,
-  KEY_DOWN_ARROW=0xD9,
-  KEY_LEFT_ARROW=0xD8,
-  KEY_RIGHT_ARROW=0xD7,
-  KEY_BACKSPACE=0xB2,
-  KEY_TAB=0xB3,
-  KEY_RETURN=0xB0,
-  KEY_ESC=0xB1,
-  KEY_INSERT=0xD1,
-  KEY_DELETE=0xD4,
-  KEY_PAGE_UP=0xD3,
-  KEY_PAGE_DOWN=0xD6,
-  KEY_HOME=0xD2,
-  KEY_END=0xD5,
-  KEY_CAPS_LOC=0xC1,
-  KEY_F1=0xC2,
-  KEY_F2=0xC3,
-  KEY_F3=0xC4,
-  KEY_F4=0xC5,
-  KEY_F5=0xC6,
-  KEY_F6=0xC7,
-  KEY_F7=0xC8,
-  KEY_F8=0xC9,
-  KEY_F9=0xCA,
-  KEY_F10=0xCB,
-  KEY_F11=0xCC,
-  KEY_F12=0xCD
+  KEY_UP_ARROW = 0xDA,
+  KEY_DOWN_ARROW = 0xD9,
+  KEY_LEFT_ARROW = 0xD8,
+  KEY_RIGHT_ARROW = 0xD7,
+  KEY_BACKSPACE = 0xB2,
+  KEY_TAB = 0xB3,
+  KEY_RETURN = 0xB0,
+  KEY_ESC = 0xB1,
+  KEY_INSERT = 0xD1,
+  KEY_DELETE = 0xD4,
+  KEY_PAGE_UP = 0xD3,
+  KEY_PAGE_DOWN = 0xD6,
+  KEY_HOME = 0xD2,
+  KEY_END = 0xD5,
+  KEY_CAPS_LOC = 0xC1,
+  KEY_F1 = 0xC2,
+  KEY_F2 = 0xC3,
+  KEY_F3 = 0xC4,
+  KEY_F4 = 0xC5,
+  KEY_F5 = 0xC6,
+  KEY_F6 = 0xC7,
+  KEY_F7 = 0xC8,
+  KEY_F8 = 0xC9,
+  KEY_F9 = 0xCA,
+  KEY_F10 = 0xCB,
+  KEY_F11 = 0xCC,
+  KEY_F12 = 0xCD
 } modifierKey;
 
 // HID Consumer Usage IDs (subset of the codes available in the USB HID Usage
 // Tables spec)
 typedef enum {
-   HID_CONSUMER_POWER = 48,  // 0x30 - Power THIS
-   HID_CONSUMER_ASSIGN_SEL = 129,    // 0x81 - Assign Selection THIS
-   HID_CONSUMER_CHANNEL_UP = 156,    // 0x9C - Channel Increment THIS
-   HID_CONSUMER_CHANNEL_DOWN = 157,  // 0x9D - Channel Decrement THIS
-   HID_CONSUMER_RECALL_LAST = 131,   // 0x83 - Recall Last THIS
-   HID_CONSUMER_PLAY = 176,           // 0xB0 - Play THIS
-   HID_CONSUMER_PAUSE = 177,          // 0xB1 - Pause THIS
-   HID_CONSUMER_RECORD = 178,         // 0xB2 - Record THIS
-   HID_CONSUMER_FAST_FORWARD = 179,   // 0xB3 - Fast Forward THIS
-   HID_CONSUMER_REWIND = 180,         // 0xB4 - Rewind THIS
-   HID_CONSUMER_SCAN_NEXT_TRK = 181,  // 0xB5 - Scan Next Track THIS
-   HID_CONSUMER_SCAN_PREV_TRK = 182,  // 0xB6 - Scan Previous Track THIS
-   HID_CONSUMER_STOP = 183,           // 0xB7 - Stop THIS
-   HID_CONSUMER_VOLUME_UP = 233,    // 0xE9 - Volume Increment THIS
-   HID_CONSUMER_VOLUME_DOWN = 234,  // 0xEA - Volume Decrement THIS
-   HID_CONSUMER_MUTE = 226         // 0xE2 - Mute THIS
+  HID_CONSUMER_POWER = 48,  // 0x30 - Power
+  HID_CONSUMER_ASSIGN_SEL = 129,    // 0x81 - Assign Selection
+  HID_CONSUMER_CHANNEL_UP = 156,    // 0x9C - Channel Increment
+  HID_CONSUMER_CHANNEL_DOWN = 157,  // 0x9D - Channel Decrement
+  HID_CONSUMER_RECALL_LAST = 131,   // 0x83 - Recall Last
+  HID_CONSUMER_PLAY = 176,           // 0xB0 - Play
+  HID_CONSUMER_PAUSE = 177,          // 0xB1 - Pause
+  HID_CONSUMER_RECORD = 178,         // 0xB2 - Record
+  HID_CONSUMER_FAST_FORWARD = 179,   // 0xB3 - Fast Forward
+  HID_CONSUMER_REWIND = 180,         // 0xB4 - Rewind
+  HID_CONSUMER_SCAN_NEXT_TRK = 181,  // 0xB5 - Scan Next Track
+  HID_CONSUMER_SCAN_PREV_TRK = 182,  // 0xB6 - Scan Previous Track
+  HID_CONSUMER_STOP = 183,           // 0xB7 - Stop
+  HID_CONSUMER_VOLUME_UP = 233,    // 0xE9 - Volume Increment
+  HID_CONSUMER_VOLUME_DOWN = 234,  // 0xEA - Volume Decrement
+  HID_CONSUMER_MUTE = 226         // 0xE2 - Mute
 } mediaControl;
 
 

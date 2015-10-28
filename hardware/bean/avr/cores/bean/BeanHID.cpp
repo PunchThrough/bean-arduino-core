@@ -359,8 +359,7 @@ void BeanKeyboard_::releaseCC(uint8_t command) {
   uint8_t disableBuf[HID_CC_IN_RPT_LEN] = {0};
   hidCCBuildReport(disableBuf, command);
 
-  for(int i = 0; i < HID_CC_IN_RPT_LEN; i++)
-  {
+  for (int i = 0; i < HID_CC_IN_RPT_LEN; i++) {
     ccHoldBuffer[i] &= ~disableBuf[i];
   }
 

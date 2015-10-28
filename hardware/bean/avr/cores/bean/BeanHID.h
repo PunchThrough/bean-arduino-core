@@ -64,7 +64,7 @@ typedef enum {
   KEY_PAGE_DOWN = 0xD6,
   KEY_HOME = 0xD2,
   KEY_END = 0xD5,
-  KEY_CAPS_LOC = 0xC1,
+  KEY_CAPS_LOCK = 0xC1,
   KEY_F1 = 0xC2,
   KEY_F2 = 0xC3,
   KEY_F3 = 0xC4,

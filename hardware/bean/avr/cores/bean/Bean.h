@@ -277,12 +277,12 @@ class BeanClass {
   /**
    * Needs docs
    */
-   void hid_holdMediaControl(mediaControl command);
+  void hid_holdMediaControl(mediaControl command);
 
-   /**
+  /**
    * Needs docs
    */
-   void hid_releaseMediaControl(mediaControl command);
+  void hid_releaseMediaControl(mediaControl command);
   ///@}
 
 

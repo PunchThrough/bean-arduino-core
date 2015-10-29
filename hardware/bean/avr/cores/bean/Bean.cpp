@@ -696,9 +696,9 @@ int BeanClass::hid_holdKey(uint8_t key) { return BeanKeyboard.press(key); }
 
 int BeanClass::hid_releaseKey(uint8_t key) { return BeanKeyboard.release(key); }
 
-int BeanClass::hid_pressKey(uint8_t key) { return BeanKeyboard.write(key); }
+int BeanClass::hid_sendKey(uint8_t key) { return BeanKeyboard.write(key); }
 
-int BeanClass::hid_write(String charsToType) {
+int BeanClass::hid_sendKeys(String charsToType) {
   int status = 0;
   int maxIndex = charsToType.length() - 1;
   for (int i = 0; i < maxIndex; i++) {
@@ -712,7 +712,11 @@ void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed c
   BeanMouse.move(delta_x, delta_y, delta_wheel);
 }
 
-void BeanClass::hid_clickMouse(mouseButtons button) { BeanMouse.click(button); }
+void BeanClass::hid_sendMouse(mouseButtons button) { BeanMouse.click(button); }
+
+void BeanClass::hid_holdMouse(mouseButtons button) { BeanMouse.press(button); }
+
+void BeanClass::hid_releaseMouse(mouseButtons button) { BeanMouse.release(button); }
 
 void BeanClass::hid_sendMediaControl(mediaControl command) {
   BeanKeyboard.sendCC(command);

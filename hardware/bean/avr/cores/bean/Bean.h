@@ -252,12 +252,12 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  int hid_pressKey(uint8_t key);
+  int hid_sendKey(uint8_t key);
 
   /**
    *  Needs docs
    */
-  int hid_write(String charsToType);
+  int hid_sendKeys(String charsToType);
 
   /**
    *  Needs docs
@@ -267,7 +267,17 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void hid_clickMouse(mouseButtons button = MOUSE_LEFT);
+  void hid_releaseMouse(mouseButtons button);
+
+  /**
+   *  Needs docs
+   */
+  void hid_holdMouse(mouseButtons button);
+
+  /**
+   *  Needs docs
+   */
+  void hid_sendMouse(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Needs docs

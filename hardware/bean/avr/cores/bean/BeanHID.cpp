@@ -162,10 +162,8 @@ void BeanMouse_::begin(void) {}
 void BeanMouse_::end(void) {}
 
 void BeanMouse_::click(uint8_t b) {
-  _buttons = b;
-  move(0, 0, 0);
-  _buttons = 0;
-  move(0, 0, 0);
+  press(b);
+  release(b);
 }
 
 void BeanMouse_::move(signed char x, signed char y, signed char wheel) {

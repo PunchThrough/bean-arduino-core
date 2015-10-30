@@ -554,7 +554,7 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
   Serial.writeGATT(services);
 }
 
-void BeanClass::enableHID(void) {
+void BeanClass::hid_enable(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.hid = 1;
   setServices(curServices);
@@ -692,13 +692,13 @@ int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
   return 0;
 }
 
-int BeanClass::HIDPressKey(uint8_t key) { return BeanKeyboard.press(key); }
+int BeanClass::hid_holdKey(uint8_t key) { return BeanKeyboard.press(key); }
 
-int BeanClass::HIDReleaseKey(uint8_t key) { return BeanKeyboard.release(key); }
+int BeanClass::hid_releaseKey(uint8_t key) { return BeanKeyboard.release(key); }
 
-int BeanClass::HIDWriteKey(uint8_t key) { return BeanKeyboard.write(key); }
+int BeanClass::hid_sendKey(uint8_t key) { return BeanKeyboard.write(key); }
 
-int BeanClass::HIDWrite(String charsToType) {
+int BeanClass::hid_sendKeys(String charsToType) {
   int status = 0;
   int maxIndex = charsToType.length() - 1;
   for (int i = 0; i < maxIndex; i++) {
@@ -708,14 +708,27 @@ int BeanClass::HIDWrite(String charsToType) {
   return status;
 }
 
-void BeanClass::HIDMoveMouse(signed char x, signed char y, signed char wheel) {
-  BeanMouse.move(x, y, wheel);
+void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel) {
+  BeanMouse.move(delta_x, delta_y, delta_wheel);
 }
 
-void BeanClass::HIDClickMouse(uint8_t b) { BeanMouse.click(b); }
+void BeanClass::hid_sendMouse(mouseButtons button) { BeanMouse.click(button); }
 
-void BeanClass::HIDSendConsumerControl(unsigned char command) {
+void BeanClass::hid_holdMouse(mouseButtons button) { BeanMouse.press(button); }
+
+void BeanClass::hid_releaseMouse(mouseButtons button) { BeanMouse.release(button); }
+
+void BeanClass::hid_sendMediaControl(mediaControl command) {
   BeanKeyboard.sendCC(command);
+  BeanKeyboard.sendCC(0);
+}
+
+void BeanClass::hid_holdMediaControl(mediaControl command) {
+  BeanKeyboard.holdCC(command);
+}
+
+void BeanClass::hid_releaseMediaControl(mediaControl command) {
+  BeanKeyboard.releaseCC(command);
 }
 
 int BeanClass::ancsAvailable() { return Serial.ancsAvailable(); }

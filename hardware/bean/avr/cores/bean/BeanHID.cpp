@@ -29,7 +29,6 @@ BeanMouse_ BeanMouse;
 // HID keyboard input report length
 #define HID_KEYBOARD_IN_RPT_LEN 8
 #define HID_MOUSE_IN_RPT_LEN 4
-#define HID_CC_IN_RPT_LEN 2
 
 typedef struct {
   uint8_t id;
@@ -163,10 +162,8 @@ void BeanMouse_::begin(void) {}
 void BeanMouse_::end(void) {}
 
 void BeanMouse_::click(uint8_t b) {
-  _buttons = b;
-  move(0, 0, 0);
-  _buttons = 0;
-  move(0, 0, 0);
+  press(b);
+  release(b);
 }
 
 void BeanMouse_::move(signed char x, signed char y, signed char wheel) {
@@ -236,6 +233,20 @@ void BeanKeyboard_::begin(void) {}
   (s)[1] |= ((x)&0x03) << 4
 
 static void hidCCBuildReport(uint8_t *pBuf, uint8_t cmd) {
+  /*
+    Byte 0 - 4 LSB(bits 0,1,2,3) are used by Keypad
+
+    Byte 0 - bits 4 & 5 are used for Channel Up/Down
+
+    Byte 0 - bits 6 & 7 are used for Volume Up/Down
+
+    Byte 1 - 4 LSB(bits 0,1,2,3) are used for Media keys(Play,Pause, mute etc..)
+
+    Byte 1 - bits 4 & 5 are used for Button state information.
+
+    Byte 1 - bits 6 & 7 are not defined in report map and hence ignored by host.
+  */
+
   switch (cmd) {
     case HID_CONSUMER_CHANNEL_UP:
       HID_CC_RPT_SET_CHANNEL(pBuf, HID_CC_RPT_CHANNEL_UP);
@@ -315,11 +326,42 @@ void BeanKeyboard_::sendCC(uint8_t command) {
   report.id = HID_RPT_ID_CC_IN;
   report.len = HID_CC_IN_RPT_LEN;
 
-  uint8_t buf[HID_CC_IN_RPT_LEN] = {0, 0};
+  uint8_t buf[HID_CC_IN_RPT_LEN] = {0};
 
   hidCCBuildReport(buf, command);
 
   memcpy((void *)report.data, buf, HID_CC_IN_RPT_LEN);
+  Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
+                       sizeof(hidDevReport_t));
+}
+
+void BeanKeyboard_::holdCC(uint8_t command) {
+  hidDevReport_t report;
+  report.type = HID_REPORT_TYPE_INPUT;
+  report.id = HID_RPT_ID_CC_IN;
+  report.len = HID_CC_IN_RPT_LEN;
+
+  hidCCBuildReport(ccHoldBuffer, command);
+
+  memcpy((void *)report.data, ccHoldBuffer, HID_CC_IN_RPT_LEN);
+  Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
+                       sizeof(hidDevReport_t));
+}
+
+void BeanKeyboard_::releaseCC(uint8_t command) {
+  hidDevReport_t report;
+  report.type = HID_REPORT_TYPE_INPUT;
+  report.id = HID_RPT_ID_CC_IN;
+  report.len = HID_CC_IN_RPT_LEN;
+
+  uint8_t disableBuf[HID_CC_IN_RPT_LEN] = {0};
+  hidCCBuildReport(disableBuf, command);
+
+  for (int i = 0; i < HID_CC_IN_RPT_LEN; i++) {
+    ccHoldBuffer[i] &= ~disableBuf[i];
+  }
+
+  memcpy((void *)report.data, ccHoldBuffer, HID_CC_IN_RPT_LEN);
   Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
                        sizeof(hidDevReport_t));
 }

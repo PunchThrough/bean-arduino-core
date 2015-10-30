@@ -237,42 +237,62 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void enableHID(void);
+  void hid_enable(void);
 
   /**
    *  Needs docs
    */
-  int HIDPressKey(uint8_t key);
+  int hid_holdKey(uint8_t key);
 
   /**
    *  Needs docs
    */
-  int HIDReleaseKey(uint8_t key);
+  int hid_releaseKey(uint8_t key);
 
   /**
    *  Needs docs
    */
-  int HIDWriteKey(uint8_t key);
+  int hid_sendKey(uint8_t key);
 
   /**
    *  Needs docs
    */
-  int HIDWrite(String charsToType);
+  int hid_sendKeys(String charsToType);
 
   /**
    *  Needs docs
    */
-  void HIDMoveMouse(signed char x, signed char y, signed char wheel = 0);
+  void hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel = 0);
 
   /**
    *  Needs docs
    */
-  void HIDClickMouse(uint8_t b = MOUSE_LEFT);
+  void hid_releaseMouse(mouseButtons button);
 
   /**
    *  Needs docs
    */
-  void HIDSendConsumerControl(unsigned char command);
+  void hid_holdMouse(mouseButtons button);
+
+  /**
+   *  Needs docs
+   */
+  void hid_sendMouse(mouseButtons button = MOUSE_LEFT);
+
+  /**
+   *  Needs docs
+   */
+  void hid_sendMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void hid_holdMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void hid_releaseMediaControl(mediaControl command);
   ///@}
 
 

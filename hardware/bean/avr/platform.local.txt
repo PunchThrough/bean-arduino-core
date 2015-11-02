@@ -83,12 +83,12 @@ tools.beanupload.cmd.path={path}/hardware/tools/bean
 tools.beanupload.upload.params.verbose=-v
 tools.beanupload.upload.params.quiet=-q
 tools.beanupload.upload.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}"
-tools.beanupload.upload.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-variant_number={build.variant_number}"
+tools.beanupload.upload.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
 
 tools.beanupload.program.params.verbose=-v
 tools.beanupload.program.params.quiet=-q
 tools.beanupload.program.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}"
-tools.beanupload.program.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-variant_number={build.variant_number}"
+tools.beanupload.program.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
 
 # USB Default Flags
 # Default blank usb manufacturer will be filled it at compile time

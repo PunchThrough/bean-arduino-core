@@ -8,6 +8,7 @@ bean.build.mcu=atmega328p
 bean.build.f_cpu=8000000L
 bean.build.core=bean
 bean.build.variant=bean
+bean.build.bean_variant=1
 bean.build.board=AVR_UNO
 
 beanplus.name=LightBlue Bean+
@@ -20,4 +21,5 @@ beanplus.build.mcu=atmega328p
 beanplus.build.f_cpu=16000000L
 beanplus.build.core=bean
 beanplus.build.variant=bean+
+beanplus.build.bean_variant=2
 beanplus.build.board=AVR_UNO

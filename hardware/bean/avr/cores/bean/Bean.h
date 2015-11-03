@@ -236,6 +236,27 @@ class BeanClass {
    */
   int midi_loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 
+  /**
+   *  Needs docs
+   */
+  void midi_noteOn(uint8_t channel, uint8_t note, uint8_t volume);
+
+  /**
+   *  Needs docs
+   */
+  void midi_noteOff(uint8_t channel, uint8_t note, uint8_t volume);
+
+  /**
+   *  Needs docs
+   */
+  void midi_pitchBend(uint8_t channel, uint16_t value);
+
+  /**
+   *  Needs docs
+   */
+  void midi_sustain(bool isOn);
+
+
   ///@}
 
 

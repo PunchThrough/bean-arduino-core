@@ -204,27 +204,38 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void enableMidi(void);
+  void midi_enable(void);
 
   /**
    *  Needs docs
    */
-  int midiPacketSend();
+  int midi_sendMessage(uint8_t *buff, uint8_t numBytes);
 
   /**
    *  Needs docs
    */
-  int midiSend(uint8_t *buff, uint8_t numBytes);
+  int midi_sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 
   /**
    *  Needs docs
    */
-  int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
+  int midi_readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
 
   /**
    *  Needs docs
    */
-  int midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
+  int midi_sendMessages();
+
+  /**
+   *  Needs docs
+   */
+  int midi_loadMessage(uint8_t *buff, uint8_t numBytes);
+
+  /**
+   *  Needs docs
+   */
+  int midi_loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
+
   ///@}
 
 
@@ -292,7 +303,7 @@ class BeanClass {
   /**
    * Needs docs
    */
-  void hid_releaseMediaControl(mediaControl command);
+  void hid_ReleaseMediaControl(mediaControl command);
   ///@}
 
 
@@ -305,37 +316,37 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void enableANCS(void);
+  void ancs_enable(void);
 
   /**
    *  Needs docs
    */
-  int ancsAvailable();
+  int ancs_available();
 
   /**
    *  Needs docs
    */
-  int readAncs(uint8_t *buffer, size_t max_length);
+  int ancs_read(uint8_t *buffer, size_t max_length);
 
   /**
    *  Needs docs
    */
-  int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
+  int ancs_parse(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
 
   /**
    *  Needs docs
    */
-  int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
+  int ancs_requestNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
 
   /**
    *  Needs docs
    */
-  int readAncsNotiDetails(uint8_t *buf, size_t max_length);
+  int ancs_readNotiDetails(uint8_t *buf, size_t max_length);
 
   /**
    *  Needs docs
    */
-  void performAncsAction(uint32_t ID, uint8_t actionID);
+  void ancs_performAction(uint32_t ID, uint8_t actionID);
   ///@}
 
 
@@ -348,17 +359,17 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void startObserver(void);
+  void observer_start(void);
 
   /**
    *  Needs docs
    */
-  void stopObserver(void);
+  void observer_stop(void);
 
   /**
    *  Needs docs
    */
-  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int observer_getMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
 
 

@@ -303,7 +303,7 @@ class BeanClass {
   /**
    * Needs docs
    */
-  void hid_ReleaseMediaControl(mediaControl command);
+  void hid_releaseMediaControl(mediaControl command);
   ///@}
 
 

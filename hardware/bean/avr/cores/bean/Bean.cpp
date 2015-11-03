@@ -560,13 +560,13 @@ void BeanClass::hid_enable(void) {
   setServices(curServices);
 }
 
-void BeanClass::enableMidi(void) {
+void BeanClass::midi_enable(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.midi = 1;
   setServices(curServices);
 }
 
-void BeanClass::enableANCS(void) {
+void BeanClass::ancs_enable(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.ancs = 1;
   setServices(curServices);
@@ -582,11 +582,11 @@ void BeanClass::setCustomAdvertisement(uint8_t *buf, int len) {
   Serial.setCustomAdvertisement(buf, len);
 }
 
-void BeanClass::startObserver(void) { Serial.startObserver(); }
+void BeanClass::observer_start(void) { Serial.startObserver(); }
 
-void BeanClass::stopObserver(void) { Serial.stopObserver(); }
+void BeanClass::observer_stop(void) { Serial.stopObserver(); }
 
-int BeanClass::getObserverMessage(ObseverAdvertisementInfo *message,
+int BeanClass::observer_getMessage(ObseverAdvertisementInfo *message,
                                   unsigned long timeout) {
   return Serial.getObserverMessage(message, timeout);
 }
@@ -597,7 +597,7 @@ void BeanClass::enableiBeacon(void) {
   setServices(curServices);
 }
 
-int BeanClass::midiSend(uint8_t status, uint8_t byte1, uint8_t byte2) {
+int BeanClass::midi_loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2) {
   if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) return 1;
   uint32_t millisec = millis();
   midiMessages[midiWriteOffset].status = status;
@@ -609,7 +609,7 @@ int BeanClass::midiSend(uint8_t status, uint8_t byte1, uint8_t byte2) {
   return 0;
 }
 
-int BeanClass::midiPacketSend() {
+int BeanClass::midi_sendMessages() {
   if (midiReadOffset == midiWriteOffset) return 0;
   uint8_t byteOffset = 0;
   // send a 20 byte message
@@ -645,7 +645,7 @@ int BeanClass::midiPacketSend() {
   return byteOffset;
 }
 
-int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
+int BeanClass::midi_readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
   uint8_t buffer[8];
   if (midiPacketBegin) {
     if (Serial.midiAvailable() > 4) {
@@ -731,20 +731,20 @@ void BeanClass::hid_releaseMediaControl(mediaControl command) {
   BeanKeyboard.releaseCC(command);
 }
 
-int BeanClass::ancsAvailable() { return Serial.ancsAvailable(); }
+int BeanClass::ancs_available() { return Serial.ancsAvailable(); }
 
-int BeanClass::readAncs(uint8_t *buffer, size_t max_length) {
+int BeanClass::ancs_read(uint8_t *buffer, size_t max_length) {
   return Serial.readAncs(buffer, max_length);
 }
 
-int BeanClass::parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length) {
+int BeanClass::ancs_parse(ANCS_SOURCE_MSG_T *buffer, size_t max_length) {
   int numMsgs = Serial.ancsAvailable();
   Serial.readAncs((uint8_t *)buffer, max_length * 8);
 
   return numMsgs;
 }
 
-int BeanClass::requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len,
+int BeanClass::ancs_requestNotiDetails(NOTI_ATTR_ID_T type, size_t len,
                                       uint32_t ID) {
   if (8 + len > SERIAL_BUFFER_SIZE) {
     len = SERIAL_BUFFER_SIZE - 8;
@@ -758,7 +758,7 @@ int BeanClass::requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len,
   Serial.getAncsNotiDetails(reqBuf, 8);
 }
 
-void BeanClass::performAncsAction(uint32_t ID, uint8_t actionID) {
+void BeanClass::ancs_performAction(uint32_t ID, uint8_t actionID) {
   uint8_t reqBuf[6];
   reqBuf[0] = 2;  // command ID perform notifcation action
   memcpy((void *)&reqBuf[1], &ID, sizeof(uint32_t));
@@ -766,7 +766,7 @@ void BeanClass::performAncsAction(uint32_t ID, uint8_t actionID) {
   Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf));
 }
 
-int BeanClass::readAncsNotiDetails(uint8_t *buf, size_t max_length) {
+int BeanClass::ancs_readNotiDetails(uint8_t *buf, size_t max_length) {
   return Serial.readAncsMessage(buf, max_length);
 }
 

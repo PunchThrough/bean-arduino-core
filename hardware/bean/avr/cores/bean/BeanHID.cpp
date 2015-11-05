@@ -45,95 +45,6 @@ typedef struct {
 #define LSB(_x) ((_x)&0xFF)
 #define MSB(_x) ((_x) >> 8)
 
-#define RAWHID_USAGE_PAGE 0xFFC0
-#define RAWHID_USAGE 0x0C00
-#define RAWHID_TX_SIZE 64
-#define RAWHID_RX_SIZE 64
-
-extern const uint8_t _hidReportDescriptor[] PROGMEM;
-const uint8_t _hidReportDescriptor[] = {
-    // BeanMouse
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 54
-    0x09, 0x02,  // USAGE (BeanMouse)
-    0xa1, 0x01,  // COLLECTION (Application)
-    0x09, 0x01,  //   USAGE (Pointer)
-    0xa1, 0x00,  //   COLLECTION (Physical)
-    0x85, 0x01,  //     REPORT_ID (1)
-    0x05, 0x09,  //     USAGE_PAGE (Button)
-    0x19, 0x01,  //     USAGE_MINIMUM (Button 1)
-    0x29, 0x03,  //     USAGE_MAXIMUM (Button 3)
-    0x15, 0x00,  //     LOGICAL_MINIMUM (0)
-    0x25, 0x01,  //     LOGICAL_MAXIMUM (1)
-    0x95, 0x03,  //     REPORT_COUNT (3)
-    0x75, 0x01,  //     REPORT_SIZE (1)
-    0x81, 0x02,  //     INPUT (Data,Var,Abs)
-    0x95, 0x01,  //     REPORT_COUNT (1)
-    0x75, 0x05,  //     REPORT_SIZE (5)
-    0x81, 0x03,  //     INPUT (Cnst,Var,Abs)
-    0x05, 0x01,  //     USAGE_PAGE (Generic Desktop)
-    0x09, 0x30,  //     USAGE (X)
-    0x09, 0x31,  //     USAGE (Y)
-    0x09, 0x38,  //     USAGE (Wheel)
-    0x15, 0x81,  //     LOGICAL_MINIMUM (-127)
-    0x25, 0x7f,  //     LOGICAL_MAXIMUM (127)
-    0x75, 0x08,  //     REPORT_SIZE (8)
-    0x95, 0x03,  //     REPORT_COUNT (3)
-    0x81, 0x06,  //     INPUT (Data,Var,Rel)
-    0xc0,        //   END_COLLECTION
-    0xc0,        // END_COLLECTION
-
-    // Keyboard
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 47
-    0x09, 0x06,  // USAGE (Keyboard)
-    0xa1, 0x01,  // COLLECTION (Application)
-    0x85, 0x02,  //   REPORT_ID (2)
-    0x05, 0x07,  //   USAGE_PAGE (Keyboard)
-
-    0x19, 0xe0,  //   USAGE_MINIMUM (Keyboard LeftControl)
-    0x29, 0xe7,  //   USAGE_MAXIMUM (Keyboard Right GUI)
-    0x15, 0x00,  //   LOGICAL_MINIMUM (0)
-    0x25, 0x01,  //   LOGICAL_MAXIMUM (1)
-    0x75, 0x01,  //   REPORT_SIZE (1)
-
-    0x95, 0x08,  //   REPORT_COUNT (8)
-    0x81, 0x02,  //   INPUT (Data,Var,Abs)
-    0x95, 0x01,  //   REPORT_COUNT (1)
-    0x75, 0x08,  //   REPORT_SIZE (8)
-    0x81, 0x03,  //   INPUT (Cnst,Var,Abs)
-
-    0x95, 0x06,  //   REPORT_COUNT (6)
-    0x75, 0x08,  //   REPORT_SIZE (8)
-    0x15, 0x00,  //   LOGICAL_MINIMUM (0)
-    0x25, 0x65,  //   LOGICAL_MAXIMUM (101)
-    0x05, 0x07,  //   USAGE_PAGE (Keyboard)
-
-    0x19, 0x00,  //   USAGE_MINIMUM (Reserved (no event indicated))
-    0x29, 0x65,  //   USAGE_MAXIMUM (Keyboard Application)
-    0x81, 0x00,  //   INPUT (Data,Ary,Abs)
-    0xc0,        // END_COLLECTION
-
-#if RAWHID_ENABLED
-    // RAW HID
-    0x06, LSB(RAWHID_USAGE_PAGE), MSB(RAWHID_USAGE_PAGE),  // 30
-    0x0A, LSB(RAWHID_USAGE), MSB(RAWHID_USAGE),
-
-    0xA1, 0x01,        // Collection 0x01
-    0x85, 0x03,        // REPORT_ID (3)
-    0x75, 0x08,        // report size = 8 bits
-    0x15, 0x00,        // logical minimum = 0
-    0x26, 0xFF, 0x00,  // logical maximum = 255
-
-    0x95, 64,    // report count TX
-    0x09, 0x01,  // usage
-    0x81, 0x02,  // Input (array)
-
-    0x95, 64,    // report count RX
-    0x09, 0x02,  // usage
-    0x91, 0x02,  // Output (array)
-    0xC0         // end collection
-#endif
-};
-
 #define HID_RPT_ID_KEY_IN 2    // Keyboard input report ID
 #define HID_RPT_ID_MOUSE_IN 1  // Mouse input report ID
 #define HID_RPT_ID_CC_IN 3     // Consumer Control input report ID
@@ -207,6 +118,39 @@ void BeanMouse_::sendReport(BeanMouseReport *commands) {
 //==============================================================================
 //==============================================================================
 // Keyboard
+
+// HID Consumer Control keycodes (based on the HID Report Map characteristic
+// value)
+#define HID_CC_RPT_MUTE 1
+#define HID_CC_RPT_POWER 2
+#define HID_CC_RPT_LAST 3
+#define HID_CC_RPT_ASSIGN_SEL 4
+#define HID_CC_RPT_PLAY 5
+#define HID_CC_RPT_PAUSE 6
+#define HID_CC_RPT_RECORD 7
+#define HID_CC_RPT_FAST_FWD 8
+#define HID_CC_RPT_REWIND 9
+#define HID_CC_RPT_SCAN_NEXT_TRK 10
+#define HID_CC_RPT_SCAN_PREV_TRK 11
+#define HID_CC_RPT_STOP 12
+
+#define HID_CC_RPT_CHANNEL_UP 0x01
+#define HID_CC_RPT_CHANNEL_DOWN 0x03
+#define HID_CC_RPT_VOLUME_UP 0x40
+#define HID_CC_RPT_VOLUME_DOWN 0x80
+
+// HID Consumer Control report bitmasks
+#define HID_CC_RPT_NUMERIC_BITS 0xF0
+#define HID_CC_RPT_CHANNEL_BITS 0xCF
+#define HID_CC_RPT_VOLUME_BITS 0x3F
+#define HID_CC_RPT_BUTTON_BITS 0xF0
+#define HID_CC_RPT_SELECTION_BITS 0xCF
+
+// Num pad
+#define HID_CC_RPT_KEYBOARD_1 30  // 0x1E - Keyboard 1 and !
+// Other keys are mapped between these two...
+#define HID_CC_RPT_KEYBOARD_0 39  // 0x27 - Keyboard 0 and )
+
 
 BeanKeyboard_::BeanKeyboard_(void) {}
 
@@ -313,8 +257,8 @@ static void hidCCBuildReport(uint8_t *pBuf, uint8_t cmd) {
       break;
 
     default:
-      if ((cmd >= HID_KEYBOARD_1) && (cmd <= HID_KEYBOARD_0)) {
-        HID_CC_RPT_SET_BUTTON(pBuf, (cmd - HID_KEYBOARD_1 + 1) % 10);
+      if ((cmd >= HID_CC_RPT_KEYBOARD_1) && (cmd <= HID_CC_RPT_KEYBOARD_0)) {
+        HID_CC_RPT_SET_BUTTON(pBuf, (cmd - HID_CC_RPT_KEYBOARD_1 + 1) % 10);
       }
       break;
   }

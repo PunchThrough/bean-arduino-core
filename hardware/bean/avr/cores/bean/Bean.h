@@ -194,72 +194,6 @@ class BeanClass {
   void setLedBlue(uint8_t intensity);
   ///@}
 
-
-  /****************************************************************************/
-  /** @name MIDI
-   *  Read and write MIDI packets via Bluetooth Low Energy.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void midi_enable(void);
-
-  /**
-   *  Needs docs
-   */
-  int midi_sendMessage(uint8_t *buff, uint8_t numBytes);
-
-  /**
-   *  Needs docs
-   */
-  int midi_sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
-
-  /**
-   *  Needs docs
-   */
-  int midi_readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
-
-  /**
-   *  Needs docs
-   */
-  int midi_sendMessages();
-
-  /**
-   *  Needs docs
-   */
-  int midi_loadMessage(uint8_t *buff, uint8_t numBytes);
-
-  /**
-   *  Needs docs
-   */
-  int midi_loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
-
-  /**
-   *  Needs docs
-   */
-  void midi_noteOn(uint8_t channel, uint8_t note, uint8_t volume);
-
-  /**
-   *  Needs docs
-   */
-  void midi_noteOff(uint8_t channel, uint8_t note, uint8_t volume);
-
-  /**
-   *  Needs docs
-   */
-  void midi_pitchBend(uint8_t channel, uint16_t value);
-
-  /**
-   *  Needs docs
-   */
-  void midi_sustain(bool isOn);
-
-
-  ///@}
-
-
   /****************************************************************************/
   /** @name HID
    *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
@@ -736,21 +670,6 @@ class BeanClass {
    *  Needs docs
    */
   uint8_t checkAccelInterrupts();
-
-  /**
-   *  Needs docs
-   */
-  uint8_t lastStatus;
-
-  /**
-   *  Needs docs
-   */
-  long midiTimeStampDiff;
-
-  /**
-   *  Needs docs
-   */
-  bool midiPacketBegin;
 };
 
 /**

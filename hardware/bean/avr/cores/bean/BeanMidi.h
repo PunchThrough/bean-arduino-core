@@ -1,6 +1,8 @@
 #ifndef BEAN_MIDI_H
 #define BEAN_MIDI_H
 
+#include "Arduino.h"
+
 typedef enum 
 {
 	CHANNEL0 = 0x00,
@@ -283,5 +285,85 @@ typedef enum
 	OPEN_TRIANGLE	=	81
 }midiDrums;
 
+
+class BeanMidiClass {
+public:
+  /****************************************************************************/
+  /** @name MIDI
+   *  Read and write MIDI packets via Bluetooth Low Energy.
+   */
+  ///@{
+
+  /**
+   *  Needs docs
+   */
+  void enable(void);
+
+  /**
+   *  Needs docs
+   */
+  bool isEnabled(void);
+
+  /**
+   *  Needs docs
+   */
+  void disable(void);
+
+  /**
+   *  Needs docs
+   */
+  int sendMessage(uint8_t *buff, uint8_t numBytes);
+
+  /**
+   *  Needs docs
+   */
+  int sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
+
+  /**
+   *  Needs docs
+   */
+  int readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
+
+  /**
+   *  Needs docs
+   */
+  int sendMessages();
+
+  /**
+   *  Needs docs
+   */
+  int loadMessage(uint8_t *buff, uint8_t numBytes);
+
+  /**
+   *  Needs docs
+   */
+  int loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
+
+  /**
+   *  Needs docs
+   */
+  void noteOn(midiChannels channel, uint8_t note, uint8_t volume);
+
+  /**
+   *  Needs docs
+   */
+  void noteOff(midiChannels channel, uint8_t note, uint8_t volume);
+
+  /**
+   *  Needs docs
+   */
+  void pitchBend(midiChannels channel, uint16_t value);
+
+  /**
+   *  Needs docs
+   */
+  void sustain(midiChannels channel, bool isOn);
+
+  ///@}
+};
+
+
+
+extern BeanMidiClass BeanMidi;
 
 #endif

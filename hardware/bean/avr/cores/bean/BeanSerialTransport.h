@@ -19,6 +19,7 @@ typedef enum { UART_SLEEP_NORMAL, UART_SLEEP_NEVER } UART_SLEEP_MODE_T;
 
 class BeanSerialTransport : public HardwareSerial {
   friend class BeanClass;
+  friend class BeanMidiClass;
   friend class BeanKeyboard_;
   friend class BeanMouse_;
 

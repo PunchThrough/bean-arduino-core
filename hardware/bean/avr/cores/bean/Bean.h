@@ -553,6 +553,12 @@ class BeanClass {
   /****************************************************************************/
   /** @name iBeacon
    *  Let your Bean act as an <a href="https://developer.apple.com/ibeacon/">iBeacon</a>, a way to convey real-world location to iOS devices.
+   *
+   *  Bean supports a limited subset of UUIDs available to iBeacon devices. A Bean iBeacon UUID is made up of 16 user-configurable bits and 112 preconfigured bits, where `xx` represents a user-configurable byte:
+   *
+   *  `A495xxxx-C5B1-4B44-B512-1370F02D74DE`
+   *
+   *  Using iBeacon features will, by default, write to Bean's NVRAM. The NVRAM has a limited number of writes. Use `enableConfigSave` to store settings temporarily and conserve NVRAM writes.
    */
   ///@{
 
@@ -562,12 +568,18 @@ class BeanClass {
   void enableiBeacon(void);
 
   /**
-   *  Needs docs
+   *  Configure Bean's iBeacon UUID, major ID, and minor ID. Each of these parameters, **including UUID**, takes 16-bit unsigned values. For more information on UUID, major, and minor values, see [this iBeacon FAQ](https://support.kontakt.io/hc/en-gb/articles/201620741-iBeacon-Parameters-UUID-Major-and-Minor).
+   *
+   *  @param uuid The 16-bit value used to set part of the iBeacon UUID. For example: Passing `0xABCD` to `uuid` will set the Bean's UUID to `A495ABCD-C5B1-4B44-B512-1370F02D74DE`.
+   *  @param major_id The major ID of the iBeacon
+   *  @param major_id The minor ID of the iBeacon
    */
   void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
 
   /**
-   *  Needs docs
+   *  Enable or disable iBeacon functionality.
+   *
+   *  @param beaconEnable true to enable iBeacon, false to disable
    */
   void setBeaconEnable(bool beaconEnable);
   ///@}

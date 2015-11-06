@@ -479,7 +479,10 @@ class BeanClass {
   void sleep(uint32_t duration_ms);
 
   /**
-   *  Needs docs
+   *  Enable or disable keep awake. By default, the Bean radio sleeps frequently to conserve power. Enabling keep awake may decrease radio communication latency and signficantly decrease battery life. Use with caution.
+   *
+   * @param enable true to enable keep awake, false to disable
+   *
    */
   void keepAwake(bool enable);
 

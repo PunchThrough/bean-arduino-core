@@ -1,5 +1,7 @@
 void setup() {
-  // We don't need to set anything up here
+  // Disable writing to NVRAM to preserve its lifespan,
+  // since we are setting a new Bean name every 15 seconds
+  Bean.enableConfigSave(false);
 }
 
 void loop() {

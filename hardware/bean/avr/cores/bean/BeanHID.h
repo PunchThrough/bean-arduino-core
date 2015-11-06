@@ -111,6 +111,11 @@ class BeanHid_ {
   /**
    *  Needs docs
    */
+  int releaseAllKeys();
+
+  /**
+   *  Needs docs
+   */
   int sendKey(char key);
   int sendKey(modifierKey key);
 
@@ -127,12 +132,12 @@ class BeanHid_ {
   /**
    *  Needs docs
    */
-  void holdMouseClick(mouseButtons button);
+  void holdMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Needs docs
    */
-  void releaseMouseClick(mouseButtons button);
+  void releaseMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Needs docs
@@ -161,25 +166,17 @@ extern BeanHid_ BeanHid;
 // Mouse
 
 
-#define HID_CC_IN_RPT_LEN 2
-
-typedef struct { uint8_t mouse[5]; } BeanMouseReport;
 
 class BeanMouse_ {
- private:
-  uint8_t _buttons;
-  void buttons(uint8_t b);
-  void sendReport(BeanMouseReport* commands);
 
  public:
   BeanMouse_(void);
-  void begin(void);
-  void end(void);
+
   void click(uint8_t b = MOUSE_LEFT);
   void release(uint8_t b = MOUSE_LEFT);
   void move(signed char x, signed char y, signed char wheel = 0);
   void press(uint8_t b = MOUSE_LEFT);      // press LEFT by default
-  bool isPressed(uint8_t b = MOUSE_LEFT);  // check LEFT by default
+
 };
 extern BeanMouse_ BeanMouse;
 
@@ -187,23 +184,13 @@ extern BeanMouse_ BeanMouse;
 //==============================================================================
 // Keyboard
 
-// Low level key report: up to 6 keys and shift, ctrl etc at once
-typedef struct {
-  uint8_t modifiers;
-  uint8_t reserved;
-  uint8_t keys[6];
-} BeanKeyReport;
+
 
 class BeanKeyboard_ : public Print {
- private:
-  BeanKeyReport _keyReport;
-  uint8_t ccHoldBuffer[HID_CC_IN_RPT_LEN] = {0, 0};
-  void sendReport(BeanKeyReport* keys);
 
  public:
   BeanKeyboard_(void);
-  void begin(void);
-  void end(void);
+
   void sendCC(uint8_t command);
   void holdCC(uint8_t command);
   void releaseCC(uint8_t command);

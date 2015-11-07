@@ -158,6 +158,11 @@ class BeanHid_ {
    * Needs docs
    */
   void releaseMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void releaseAllMediaControls();
   ///@}
 };
 extern BeanHid_ BeanHid;

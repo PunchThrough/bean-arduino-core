@@ -50,7 +50,7 @@ static volatile bool serial_message_complete = false;
 
 static volatile bool observer_message_sending = false;
 static volatile int observer_msg_len = 0;
-static bool serial_initilized = false;
+static bool serial_initialized = false;
 
 static inline void store_char(unsigned char c, ring_buffer *buffer) {
   unsigned int i = (buffer->head + 1) % SERIAL_BUFFER_SIZE;
@@ -389,7 +389,7 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   uint32_t crc32 = 0;
   uint8_t temp_var[4];
 
-  if (!serial_initilized) {
+  if (!serial_initialized) {
     Serial.begin();
     serial_initilized = true;
   }

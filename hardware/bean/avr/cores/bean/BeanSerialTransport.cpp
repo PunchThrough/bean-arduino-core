@@ -389,12 +389,12 @@ size_t BeanSerialTransport::write_message(uint16_t messageId,
   uint32_t crc32 = 0;
   uint8_t temp_var[4];
 
-  if(!serial_initilized) {
+  if (!serial_initilized) {
     Serial.begin();
     serial_initilized = true;
   }
 
-  if(body_length > MAX_BODY_LENGTH){
+  if (body_length > MAX_BODY_LENGTH) {
     return -1;
   }
 

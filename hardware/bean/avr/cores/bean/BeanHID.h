@@ -3,6 +3,8 @@
 #ifndef __BEANHID__
 #define __BEANHID__
 
+#include "BeanSerialTransport.h"
+
 
 typedef enum {
   MOUSE_LEFT = 1,
@@ -73,13 +75,42 @@ typedef enum {
 } mediaControl;
 
 
+// Low level key report: up to 6 keys and shift, ctrl etc at once
+typedef struct {
+  uint8_t modifiers;
+  uint8_t reserved;
+  uint8_t keys[6];
+} KeyReport;
+
+typedef struct { 
+  uint8_t mouse[4]; 
+} MouseReport;
+
+typedef struct { 
+  uint8_t bytes[2]; 
+} CcReport;
+
+
 class BeanHid_ {
+
+  private:
+  void buttons(uint8_t b);
+  void _genericSendReport(uint8_t id, uint8_t *buffer, size_t length);
+  void sendReport(MouseReport *pReport);
+  void sendReport(KeyReport *pReport);
+  void sendReport(CcReport *pReport);
+
+
 
   /****************************************************************************/
   /** @name HID
    *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
    */
   ///@{
+
+  public:
+
+  BeanHid_(void);
 
   /**
    *  Needs docs
@@ -94,7 +125,7 @@ class BeanHid_ {
   /**
    *  Needs docs
    */
-  bool disable(void);
+  void disable(void);
 
   /**
    *  Needs docs
@@ -111,7 +142,7 @@ class BeanHid_ {
   /**
    *  Needs docs
    */
-  int releaseAllKeys();
+  void releaseAllKeys();
 
   /**
    *  Needs docs
@@ -166,46 +197,6 @@ class BeanHid_ {
   ///@}
 };
 extern BeanHid_ BeanHid;
-//==============================================================================
-//==============================================================================
-// Mouse
-
-
-
-class BeanMouse_ {
-
- public:
-  BeanMouse_(void);
-
-  void click(uint8_t b = MOUSE_LEFT);
-  void release(uint8_t b = MOUSE_LEFT);
-  void move(signed char x, signed char y, signed char wheel = 0);
-  void press(uint8_t b = MOUSE_LEFT);      // press LEFT by default
-
-};
-extern BeanMouse_ BeanMouse;
-
-//==============================================================================
-//==============================================================================
-// Keyboard
-
-
-
-class BeanKeyboard_ : public Print {
-
- public:
-  BeanKeyboard_(void);
-
-  void sendCC(uint8_t command);
-  void holdCC(uint8_t command);
-  void releaseCC(uint8_t command);
-
-  virtual size_t write(uint8_t k);
-  virtual size_t press(uint8_t k);
-  virtual size_t release(uint8_t k);
-  virtual void releaseAll(void);
-};
-extern BeanKeyboard_ BeanKeyboard;
 
 
 #endif /* if defined(BeanHID) */

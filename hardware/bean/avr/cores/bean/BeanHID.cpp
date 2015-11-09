@@ -480,7 +480,7 @@ void BeanHid_::releaseAllMediaControls() {
 // to the persistent key report and sends the report.  Because of the way
 // USB HID works, the host acts like the key remains pressed until we
 // call release(), releaseAll(), or otherwise clear the report and resend.
-size_t _holdKey(uint8_t k) {
+size_t BeanHid_::_holdKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -523,7 +523,7 @@ size_t _holdKey(uint8_t k) {
 // _release() takes the specified key out of the persistent key report and
 // sends the report.  This tells the OS the key is no longer pressed and that
 // it shouldn't be repeated any more.
-size_t _releaseKey(uint8_t k) {
+size_t BeanHid_::_releaseKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -555,7 +555,7 @@ size_t _releaseKey(uint8_t k) {
   return 1;
 }
 
-size_t _sendKey(uint8_t c) {
+size_t BeanHid_::_sendKey(uint8_t c) {
   uint8_t p = _holdKey(c);    // Keydown
   uint8_t r = _releaseKey(c);  // Keyup
   return (p);  // just return the result of press() since release() almost

@@ -99,6 +99,9 @@ class BeanHid_ {
   void sendReport(MouseReport *pReport);
   void sendReport(KeyReport *pReport);
   void sendReport(CcReport *pReport);
+  size_t _holdKey(uint8_t c);
+  size_t _releaseKey(uint8_t c);
+  size_t _sendKey(uint8_t c);
 
 
 

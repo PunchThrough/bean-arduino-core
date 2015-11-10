@@ -5,14 +5,12 @@
 
 #include "BeanSerialTransport.h"
 
-
 typedef enum {
   MOUSE_LEFT = 1,
   MOUSE_RIGHT = 2,
   MOUSE_MIDDLE = 4,
   MOUSE_ALL = (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)
 } mouseButtons;
-
 
 typedef enum {
   KEY_LEFT_CTRL = 0x80,
@@ -58,22 +56,21 @@ typedef enum {
 typedef enum {
   POWER = 0x30,
   ASSIGN_SEL = 0x81,
-  CHANNEL_UP = 0x9C, 
+  CHANNEL_UP = 0x9C,
   CHANNEL_DOWN = 0x9D,
-  RECALL_LAST = 0x83, 
-  PLAY = 0xB0,        // Apple's Play/Pause button
-  PAUSE = 0xB1, 
-  RECORD = 0xB2, 
+  RECALL_LAST = 0x83,
+  PLAY = 0xB0,  // Apple's Play/Pause button
+  PAUSE = 0xB1,
+  RECORD = 0xB2,
   FAST_FORWARD = 0xB3,
-  REWIND = 0xB4,         
-  SCAN_NEXT_TRK = 0xB5, 
-  SCAN_PREV_TRK = 0xB6,  
-  STOP = 0xB7,           
-  VOLUME_UP = 0xE9,    
-  VOLUME_DOWN = 0xEA,  
-  MUTE = 0xE2         
+  REWIND = 0xB4,
+  SCAN_NEXT_TRK = 0xB5,
+  SCAN_PREV_TRK = 0xB6,
+  STOP = 0xB7,
+  VOLUME_UP = 0xE9,
+  VOLUME_DOWN = 0xEA,
+  MUTE = 0xE2
 } mediaControl;
-
 
 // Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct {
@@ -82,18 +79,12 @@ typedef struct {
   uint8_t keys[6];
 } KeyReport;
 
-typedef struct { 
-  uint8_t mouse[4]; 
-} MouseReport;
+typedef struct { uint8_t mouse[4]; } MouseReport;
 
-typedef struct { 
-  uint8_t bytes[2]; 
-} CcReport;
-
+typedef struct { uint8_t bytes[2]; } CcReport;
 
 class BeanHid_ {
-
-  private:
+ private:
   void buttons(uint8_t b);
   void _genericSendReport(uint8_t id, uint8_t *buffer, size_t length);
   void sendReport(MouseReport *pReport);
@@ -103,16 +94,13 @@ class BeanHid_ {
   size_t _releaseKey(uint8_t c);
   size_t _sendKey(uint8_t c);
 
-
-
   /****************************************************************************/
   /** @name HID
    *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
    */
   ///@{
 
-  public:
-
+ public:
   BeanHid_(void);
 
   /**
@@ -120,9 +108,9 @@ class BeanHid_ {
    */
   void enable(void);
 
-   /**
-   *  Needs docs
-   */
+  /**
+  *  Needs docs
+  */
   bool isEnabled(void);
 
   /**
@@ -161,7 +149,8 @@ class BeanHid_ {
   /**
    *  Needs docs
    */
-  void moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel = 0);
+  void moveMouse(signed char delta_x, signed char delta_y,
+                 signed char delta_wheel = 0);
 
   /**
    *  Needs docs
@@ -200,6 +189,5 @@ class BeanHid_ {
   ///@}
 };
 extern BeanHid_ BeanHid;
-
 
 #endif /* if defined(BeanHID) */

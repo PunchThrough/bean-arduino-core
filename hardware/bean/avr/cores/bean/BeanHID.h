@@ -61,7 +61,7 @@ typedef enum {
   CHANNEL_UP = 0x9C, 
   CHANNEL_DOWN = 0x9D,
   RECALL_LAST = 0x83, 
-  PLAY = 0xB0,
+  PLAY = 0xB0,        // Apple's Play/Pause button
   PAUSE = 0xB1, 
   RECORD = 0xB2, 
   FAST_FORWARD = 0xB3,

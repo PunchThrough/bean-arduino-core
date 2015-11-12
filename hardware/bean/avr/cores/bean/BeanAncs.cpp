@@ -60,7 +60,7 @@ void BeanAncsClass::notificationAction(uint32_t ID, uint8_t actionID) {
   reqBuf[0] = 2;  // command ID perform notifcation action
   memcpy((void *)&reqBuf[1], &ID, sizeof(uint32_t));
   reqBuf[5] = actionID;
-  //Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf));
+  Serial.write_message(MSG_ID_ANCS_GET_NOTI, reqBuf, sizeof(reqBuf));
 }
 
 

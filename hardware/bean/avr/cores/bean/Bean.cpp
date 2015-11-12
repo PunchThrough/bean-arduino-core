@@ -538,12 +538,6 @@ void BeanClass::hid_enable(void) {
   setServices(curServices);
 }
 
-void BeanClass::ancs_enable(void) {
-  ADV_SWITCH_ENABLED_T curServices = getServices();
-  curServices.ancs = 1;
-  setServices(curServices);
-}
-
 void BeanClass::enableCustom(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.custom = 1;
@@ -606,45 +600,6 @@ void BeanClass::hid_holdMediaControl(mediaControl command) {
 
 void BeanClass::hid_releaseMediaControl(mediaControl command) {
   BeanKeyboard.releaseCC(command);
-}
-
-int BeanClass::ancs_available() { return Serial.ancsAvailable(); }
-
-int BeanClass::ancs_read(uint8_t *buffer, size_t max_length) {
-  return Serial.readAncs(buffer, max_length);
-}
-
-int BeanClass::ancs_parse(ANCS_SOURCE_MSG_T *buffer, size_t max_length) {
-  int numMsgs = Serial.ancsAvailable();
-  Serial.readAncs((uint8_t *)buffer, max_length * 8);
-
-  return numMsgs;
-}
-
-int BeanClass::ancs_requestNotiDetails(NOTI_ATTR_ID_T type, size_t len,
-                                      uint32_t ID) {
-  if (8 + len > SERIAL_BUFFER_SIZE) {
-    len = SERIAL_BUFFER_SIZE - 8;
-  }
-  uint8_t reqBuf[8];
-  reqBuf[0] = 0;
-  memcpy((void *)&reqBuf[1], &ID, 4);
-  reqBuf[5] = type;
-  reqBuf[6] = len;
-  reqBuf[7] = 0;
-  Serial.getAncsNotiDetails(reqBuf, 8);
-}
-
-void BeanClass::ancs_performAction(uint32_t ID, uint8_t actionID) {
-  uint8_t reqBuf[6];
-  reqBuf[0] = 2;  // command ID perform notifcation action
-  memcpy((void *)&reqBuf[1], &ID, sizeof(uint32_t));
-  reqBuf[5] = actionID;
-  Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf));
-}
-
-int BeanClass::ancs_readNotiDetails(uint8_t *buf, size_t max_length) {
-  return Serial.readAncsMessage(buf, max_length);
 }
 
 bool BeanClass::setScratchData(uint8_t bank, const uint8_t *data,

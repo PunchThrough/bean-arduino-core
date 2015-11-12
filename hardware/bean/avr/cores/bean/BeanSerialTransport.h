@@ -20,6 +20,7 @@ typedef enum { UART_SLEEP_NORMAL, UART_SLEEP_NEVER } UART_SLEEP_MODE_T;
 class BeanSerialTransport : public HardwareSerial {
   friend class BeanClass;
   friend class BeanMidiClass;
+  friend class BeanAncsClass;
   friend class BeanKeyboard_;
   friend class BeanMouse_;
 
@@ -77,7 +78,7 @@ class BeanSerialTransport : public HardwareSerial {
   // ANCS
   int ancsAvailable();
   int readAncs(uint8_t *buffer, size_t max_length);
-  int getAncsNotiDetails(uint8_t *buffer, size_t length);
+  int getAncsNotiDetails(uint8_t *buffer, size_t length, uint8_t *data, uint32_t timeout);
   int ancsNotiDetailsAvailable();
   int readAncsMessage(uint8_t *buffer, size_t max_length);
 

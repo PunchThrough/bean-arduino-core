@@ -700,18 +700,35 @@ int BeanSerialTransport::readAncs(uint8_t *buffer, size_t max_length) {
   return bytes_written;
 }
 
-int BeanSerialTransport::getAncsNotiDetails(uint8_t *buffer, size_t length) {
+int BeanSerialTransport::getAncsNotiDetails(uint8_t *buffer, size_t length, 
+                                                  uint8_t *data, uint32_t timeout) {
+  ancs_message_buffer.head = ancs_message_buffer.tail; //clear buffer
   write_message(MSG_ID_ANCS_GET_NOTI, (const uint8_t *)buffer, length);
+  uint32_t startMillis = millis();
+
+  do {
+    if ((millis() - startMillis > timeout)) return 0;
+  } while (ancsNotiDetailsAvailable() < 8);  // block until we have length bytes
+  uint8_t buf[8];
+  readAncsMessage(buf, 8);
+  uint16_t incomingMsgLen = buf[6] | (buf[7] << 8);
+    
+  uint16_t bytesRead = 0;
+  do {
+    bytesRead += readAncsMessage((uint8_t *)&data[bytesRead], incomingMsgLen); //add bytes to buffer as they come in
+    if ((millis() - startMillis > timeout)) return bytesRead;
+  } while (bytesRead < incomingMsgLen);
+
+  return bytesRead;
 }
 
 int BeanSerialTransport::ancsNotiDetailsAvailable() {
   if (ancs_message_buffer.head == ancs_message_buffer.tail) return 0;
   if (ancs_message_buffer.head > ancs_message_buffer.tail)
-    return (ancs_message_buffer.head - ancs_message_buffer.tail) / 8;
+    return (ancs_message_buffer.head - ancs_message_buffer.tail);
   else
     return (ancs_message_buffer.head +
-            (SERIAL_BUFFER_SIZE - ancs_message_buffer.tail)) /
-           8;
+            (SERIAL_BUFFER_SIZE - ancs_message_buffer.tail));
 }
 
 int BeanSerialTransport::readAncsMessage(uint8_t *buffer, size_t max_length) {

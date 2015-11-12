@@ -36,16 +36,6 @@ typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 /**
  *  Needs docs
  */
-typedef ANCS_SOURCE_MSG_T AncsNotification;
-
-/**
- *  Needs docs
- */
-typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
-
-/**
- *  Needs docs
- */
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
@@ -259,49 +249,6 @@ class BeanClass {
    * Needs docs
    */
   void hid_releaseMediaControl(mediaControl command);
-  ///@}
-
-
-  /****************************************************************************/
-  /** @name ANCS
-   *  Use the <a href="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</a> to read notifications from your iOS device.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void ancs_enable(void);
-
-  /**
-   *  Needs docs
-   */
-  int ancs_available();
-
-  /**
-   *  Needs docs
-   */
-  int ancs_read(uint8_t *buffer, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  int ancs_parse(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  int ancs_requestNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
-
-  /**
-   *  Needs docs
-   */
-  int ancs_readNotiDetails(uint8_t *buf, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  void ancs_performAction(uint32_t ID, uint8_t actionID);
   ///@}
 
 

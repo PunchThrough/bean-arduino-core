@@ -35,14 +35,7 @@ void BeanMidiClass::enable(void) {
 
 bool BeanMidiClass::isEnabled(void) {
   ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
-  if(curServices.midi == 1)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (curServices.midi == 1);
 }
 
 void BeanMidiClass::disable(void) {
@@ -150,18 +143,15 @@ int BeanMidiClass::readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2) 
 /**
  *  Needs docs
  */
-int BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes)
-{
+int BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes) {
   int idx = 0;
-  while (numBytes >= 3)
-  {
+  while (numBytes >= 3) {
     if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) sendMessages();
     loadMessage(buff[idx], buff[idx + 1], buff[idx + 2]);
     idx += 3;
     numBytes -= 3;
   }
-  if (midiReadOffset != midiWriteOffset) //if we still have unsent messages
-  {
+  if (midiReadOffset != midiWriteOffset) {  // if we still have unsent messages
     sendMessages();
   }
   return idx;
@@ -170,8 +160,7 @@ int BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes)
 /**
  *  Needs docs
  */
-int BeanMidiClass::sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2)
-{
+int BeanMidiClass::sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2) {
   loadMessage(status, byte1, byte2);
   sendMessages();
 }
@@ -179,14 +168,12 @@ int BeanMidiClass::sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2)
 /**
  *  Needs docs
  */
-int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes)
-{
+int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes) {
   int idx = 0;
-  while (numBytes >= 3)
-  {
+  while (numBytes >= 3) {
     int isFull = loadMessage(buff[idx], buff[idx + 1], buff[idx + 2]);
     idx += 3;
-    if(isFull) return idx;
+    if (isFull) return idx;
     numBytes -= 3;
   }
 }
@@ -194,39 +181,34 @@ int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes)
 /**
  *  Needs docs
  */
-void BeanMidiClass::noteOn(midiChannels channel, uint8_t note, uint8_t volume)
-{
-  sendMessage(channel | NOTEON, (note & 0x7F), (volume & 0x7F)); //highest bit must be 0
+void BeanMidiClass::noteOn(midiChannels channel, uint8_t note, uint8_t volume) {
+  sendMessage(channel | NOTEON, (note & 0x7F), (volume & 0x7F));  // highest bit must be 0
 }
 
 /**
  *  Needs docs
  */
-void BeanMidiClass::noteOff(midiChannels channel, uint8_t note, uint8_t volume)
-{
-  sendMessage(channel | NOTEOFF, (note & 0x7F), (volume & 0x7F)); //highest bit must be 0
+void BeanMidiClass::noteOff(midiChannels channel, uint8_t note, uint8_t volume) {
+  sendMessage(channel | NOTEOFF, (note & 0x7F), (volume & 0x7F));  // highest bit must be 0
 }
 
 /**
  *  Needs docs
  */
-void BeanMidiClass::pitchBend(midiChannels channel, uint16_t value)
-{
-  if(value > 0x3FFF) //pitch bend has a max of 14 bits 
-  {
+void BeanMidiClass::pitchBend(midiChannels channel, uint16_t value) {
+  if (value > 0x3FFF) { // pitch bend has a max of 14 bits 
     value = 0x3FFF;
   }
   uint8_t lsb, msb = 0;
-  lsb = value & 0x7F; //the highest bit must be 0
-  msb = (value >> 7) & 0x7F; //the highest bit must be 0
+  lsb = value & 0x7F;  // the highest bit must be 0
+  msb = (value >> 7) & 0x7F;  // the highest bit must be 0
   sendMessage(channel | PITCHBENDCHANGE, lsb, msb);
 }
 
 /**
  *  Needs docs
  */
-void BeanMidiClass::sustain(midiChannels channel, bool isOn)
-{
+void BeanMidiClass::sustain(midiChannels channel, bool isOn) {
   sendMessage(channel | CONTROLCHANGE, SUSTAIN, isOn ? 64 : 0); // ≤63 off, ≥64 on for sustain
 }
 

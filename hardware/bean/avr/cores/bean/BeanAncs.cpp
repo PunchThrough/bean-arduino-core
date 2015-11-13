@@ -30,18 +30,17 @@ int BeanAncsClass::getNotificationHeaders(ANCS_SOURCE_MSG_T *buffer, size_t max_
   return numMsgs;
 }
 
- ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader()
- {
-    ANCS_SOURCE_MSG_T msg = {0};
-    Serial.readAncs((uint8_t *)&msg, 8);
-    return msg;
- }
+ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader() {
+  ANCS_SOURCE_MSG_T msg = {0};
+  Serial.readAncs((uint8_t *)&msg, 8);
+  return msg;
+}
 
-int BeanAncsClass::getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID, 
-                                                uint16_t len, uint8_t* data, 
+int BeanAncsClass::getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
+                                                uint16_t len, uint8_t* data,
                                                     uint32_t timeout) {
   uint8_t reqBuf[8];
-  reqBuf[0] = 0; //get notification attributes command ID == 0
+  reqBuf[0] = 0;  // get notification attributes command ID == 0
   memcpy((void *)&reqBuf[1], &ID, 4);
   reqBuf[5] = type;
   reqBuf[6] = len & 0xFF;
@@ -49,10 +48,9 @@ int BeanAncsClass::getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
   return Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf), data, timeout);
 }
 
-int BeanAncsClass::getAppAttributes(NOTI_ATTR_ID_T type, uint32_t ID, 
+int BeanAncsClass::getAppAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
                                                 size_t len, uint8_t* data,
                                                     uint32_t timeout) {
-
 }
 
 void BeanAncsClass::notificationAction(uint32_t ID, uint8_t actionID) {

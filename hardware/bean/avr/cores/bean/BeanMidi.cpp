@@ -196,12 +196,12 @@ void BeanMidiClass::noteOff(midiChannels channel, uint8_t note, uint8_t volume) 
  *  Needs docs
  */
 void BeanMidiClass::pitchBend(midiChannels channel, uint16_t value) {
-  if (value > 0x3FFF) { // pitch bend has a max of 14 bits 
+  if (value > 0x3FFF) {  //  pitch bend has a max of 14 bits
     value = 0x3FFF;
   }
   uint8_t lsb, msb = 0;
-  lsb = value & 0x7F;  // the highest bit must be 0
-  msb = (value >> 7) & 0x7F;  // the highest bit must be 0
+  lsb = value & 0x7F;         //  the highest bit must be 0
+  msb = (value >> 7) & 0x7F;  //  the highest bit must be 0
   sendMessage(channel | PITCHBENDCHANGE, lsb, msb);
 }
 
@@ -209,6 +209,6 @@ void BeanMidiClass::pitchBend(midiChannels channel, uint16_t value) {
  *  Needs docs
  */
 void BeanMidiClass::sustain(midiChannels channel, bool isOn) {
-  sendMessage(channel | CONTROLCHANGE, SUSTAIN, isOn ? 64 : 0); // ≤63 off, ≥64 on for sustain
+  sendMessage(channel | CONTROLCHANGE, SUSTAIN, isOn ? 64 : 0);  //  ≤63 off, ≥64 on for sustain
 }
 

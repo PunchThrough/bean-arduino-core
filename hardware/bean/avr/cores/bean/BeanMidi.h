@@ -3,8 +3,7 @@
 
 #include "Arduino.h"
 
-typedef enum 
-{
+typedef enum {
     CHANNEL0 = 0x00,
     CHANNEL1 = 0x01,
     CHANNEL2 = 0x02,
@@ -23,8 +22,7 @@ typedef enum
     CHANNEL15 = 0x0F
 }midiChannels;
 
-typedef enum
-{
+typedef enum {
     NOTE_Cn1    =   0,
     NOTE_Csn1   =   1,
     NOTE_Dn1    =   2,
@@ -159,8 +157,7 @@ typedef enum
     NOTE_B9     =   131,
 }midiNotes;
 
-typedef enum 
-{
+typedef enum {
     // High resolution Continuous Controllers MSB (+32 for LSB) ----------------
     BANKSELECT                  = 0,
     MODULATIONWHEEL             = 1,
@@ -221,8 +218,7 @@ typedef enum
     POLYMODEON                  = 127
 }midiControlChange;
 
-typedef enum 
-{
+typedef enum {
     NOTEOFF             = 0x80,
     NOTEON              = 0x90,
     POLYPHONICPRESSURE  = 0xA0,
@@ -234,8 +230,7 @@ typedef enum
     SYSTEMREALTIME      = 0xF8
 }midiMessageTypes;
 
-typedef enum 
-{
+typedef enum  {
     BASS_DRUM_2     =   35,
     BASS_DRUM_1     =   36,
     SIDE_STICK      =   37,
@@ -287,7 +282,7 @@ typedef enum
 
 
 class BeanMidiClass {
-public:
+ public:
   /****************************************************************************/
   /** @name MIDI
    *  Read and write MIDI packets via Bluetooth Low Energy.

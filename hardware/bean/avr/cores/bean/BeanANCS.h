@@ -16,8 +16,7 @@ typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
 
 
 class BeanAncsClass {
-
-public:
+ public:
   /****************************************************************************/
   /** @name ANCS
    *  Use the <a href="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</a> to read notifications from your iOS device.
@@ -57,14 +56,14 @@ public:
   /**
    *  Needs docs
    */
-  int getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID, 
-												uint16_t len, uint8_t* data, 
-													uint32_t timeout);
+  int getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
+                        uint16_t len, uint8_t* data,
+                          uint32_t timeout);
 
   /**
    *  Needs docs
    */
-  int getAppAttributes(NOTI_ATTR_ID_T type, uint32_t ID, 
+  int getAppAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
                                                 size_t len, uint8_t* data,
                                                     uint32_t timeout);
 

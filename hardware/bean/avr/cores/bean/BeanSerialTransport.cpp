@@ -385,8 +385,14 @@ void BeanSerialTransport::BTConfigUartSleep(UART_SLEEP_MODE_T mode) {
 size_t BeanSerialTransport::write_message(uint16_t messageId,
                                           const uint8_t *body,
                                           size_t body_length) {
+  static bool serial_initialized = false;
   uint32_t crc32 = 0;
   uint8_t temp_var[4];
+
+  if (!serial_initialized) {
+    Serial.begin();
+    serial_initialized = true;
+  }
 
   if (body_length > MAX_BODY_LENGTH) {
     return -1;

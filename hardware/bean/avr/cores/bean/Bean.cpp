@@ -555,7 +555,7 @@ void BeanClass::enableiBeacon(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.ibeacon = 1;
   setServices(curServices);
-} 
+}
 
 bool BeanClass::setScratchData(uint8_t bank, const uint8_t *data,
                                uint8_t dataLength) {

@@ -3,9 +3,7 @@
 #ifndef __BEANHID__
 #define __BEANHID__
 
-//==============================================================================
-//==============================================================================
-// Mouse
+#include "BeanSerialTransport.h"
 
 typedef enum {
   MOUSE_LEFT = 1,
@@ -14,32 +12,6 @@ typedef enum {
   MOUSE_ALL = (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)
 } mouseButtons;
 
-
-#define HID_CC_IN_RPT_LEN 2
-
-typedef struct { uint8_t mouse[5]; } BeanMouseReport;
-
-class BeanMouse_ {
- private:
-  uint8_t _buttons;
-  void buttons(uint8_t b);
-  void sendReport(BeanMouseReport* commands);
-
- public:
-  BeanMouse_(void);
-  void begin(void);
-  void end(void);
-  void click(uint8_t b = MOUSE_LEFT);
-  void release(uint8_t b = MOUSE_LEFT);
-  void move(signed char x, signed char y, signed char wheel = 0);
-  void press(uint8_t b = MOUSE_LEFT);      // press LEFT by default
-  bool isPressed(uint8_t b = MOUSE_LEFT);  // check LEFT by default
-};
-extern BeanMouse_ BeanMouse;
-
-//==============================================================================
-//==============================================================================
-// Keyboard
 typedef enum {
   KEY_LEFT_CTRL = 0x80,
   KEY_LEFT_SHIFT = 0x81,
@@ -82,117 +54,140 @@ typedef enum {
 // HID Consumer Usage IDs (subset of the codes available in the USB HID Usage
 // Tables spec)
 typedef enum {
-  HID_CONSUMER_POWER = 48,  // 0x30 - Power
-  HID_CONSUMER_ASSIGN_SEL = 129,    // 0x81 - Assign Selection
-  HID_CONSUMER_CHANNEL_UP = 156,    // 0x9C - Channel Increment
-  HID_CONSUMER_CHANNEL_DOWN = 157,  // 0x9D - Channel Decrement
-  HID_CONSUMER_RECALL_LAST = 131,   // 0x83 - Recall Last
-  HID_CONSUMER_PLAY = 176,           // 0xB0 - Play
-  HID_CONSUMER_PAUSE = 177,          // 0xB1 - Pause
-  HID_CONSUMER_RECORD = 178,         // 0xB2 - Record
-  HID_CONSUMER_FAST_FORWARD = 179,   // 0xB3 - Fast Forward
-  HID_CONSUMER_REWIND = 180,         // 0xB4 - Rewind
-  HID_CONSUMER_SCAN_NEXT_TRK = 181,  // 0xB5 - Scan Next Track
-  HID_CONSUMER_SCAN_PREV_TRK = 182,  // 0xB6 - Scan Previous Track
-  HID_CONSUMER_STOP = 183,           // 0xB7 - Stop
-  HID_CONSUMER_VOLUME_UP = 233,    // 0xE9 - Volume Increment
-  HID_CONSUMER_VOLUME_DOWN = 234,  // 0xEA - Volume Decrement
-  HID_CONSUMER_MUTE = 226         // 0xE2 - Mute
+  POWER = 0x30,
+  ASSIGN_SEL = 0x81,
+  CHANNEL_UP = 0x9C,
+  CHANNEL_DOWN = 0x9D,
+  RECALL_LAST = 0x83,
+  PLAY = 0xB0,  // Apple's Play/Pause button
+  PAUSE = 0xB1,
+  RECORD = 0xB2,
+  FAST_FORWARD = 0xB3,
+  REWIND = 0xB4,
+  SCAN_NEXT_TRK = 0xB5,
+  SCAN_PREV_TRK = 0xB6,
+  STOP = 0xB7,
+  VOLUME_UP = 0xE9,
+  VOLUME_DOWN = 0xEA,
+  MUTE = 0xE2
 } mediaControl;
-
-
-#define HID_CONSUMER_RESET 49  // 0x31 - Reset
-#define HID_CONSUMER_SLEEP 50  // 0x32 - Sleep
-
-#define HID_CONSUMER_MENU 64           // 0x40 - Menu
-#define HID_CONSUMER_SELECTION 128     // 0x80 - Selection
-#define HID_CONSUMER_MODE_STEP 130     // 0x82 - Mode Step
-#define HID_CONSUMER_QUIT 148          // 0x94 - Quit
-#define HID_CONSUMER_HELP 149          // 0x95 - Help
-
-#define HID_CONSUMER_EJECT 184          // 0xB8 - Eject
-#define HID_CONSUMER_RANDOM_PLAY 185    // 0xB9 - Random Play
-#define HID_CONSUMER_SELECT_DISC 186    // 0xBA - Select Disk
-#define HID_CONSUMER_ENTER_DISC 187     // 0xBB - Enter Disc
-#define HID_CONSUMER_REPEAT 188         // 0xBC - Repeat
-#define HID_CONSUMER_STOP_EJECT 204     // 0xCC - Stop/Eject
-#define HID_CONSUMER_PLAY_PAUSE 205     // 0xCD - Play/Pause
-#define HID_CONSUMER_PLAY_SKIP 206      // 0xCE - Play/Skip
-
-#define HID_CONSUMER_VOLUME 224       // 0xE0 - Volume
-#define HID_CONSUMER_BALANCE 225      // 0xE1 - Balance
-#define HID_CONSUMER_BASS 227         // 0xE3 - Bass
-
-
-// HID Consumer Control keycodes (based on the HID Report Map characteristic
-// value)
-#define HID_CC_RPT_MUTE 1
-#define HID_CC_RPT_POWER 2
-#define HID_CC_RPT_LAST 3
-#define HID_CC_RPT_ASSIGN_SEL 4
-#define HID_CC_RPT_PLAY 5
-#define HID_CC_RPT_PAUSE 6
-#define HID_CC_RPT_RECORD 7
-#define HID_CC_RPT_FAST_FWD 8
-#define HID_CC_RPT_REWIND 9
-#define HID_CC_RPT_SCAN_NEXT_TRK 10
-#define HID_CC_RPT_SCAN_PREV_TRK 11
-#define HID_CC_RPT_STOP 12
-
-#define HID_CC_RPT_CHANNEL_UP 0x01
-#define HID_CC_RPT_CHANNEL_DOWN 0x03
-#define HID_CC_RPT_VOLUME_UP 0x40
-#define HID_CC_RPT_VOLUME_DOWN 0x80
-
-// HID Consumer Control report bitmasks
-#define HID_CC_RPT_NUMERIC_BITS 0xF0
-#define HID_CC_RPT_CHANNEL_BITS 0xCF
-#define HID_CC_RPT_VOLUME_BITS 0x3F
-#define HID_CC_RPT_BUTTON_BITS 0xF0
-#define HID_CC_RPT_SELECTION_BITS 0xCF
-
-#define HID_KEYBOARD_1 30  // 0x1E - Keyboard 1 and !
-#define HID_KEYBOARD_0 39  // 0x27 - Keyboard 0 and )
 
 // Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct {
   uint8_t modifiers;
   uint8_t reserved;
   uint8_t keys[6];
-} BeanKeyReport;
+} KeyReport;
 
-class BeanKeyboard_ : public Print {
+typedef struct { uint8_t mouse[4]; } MouseReport;
+
+typedef struct { uint8_t bytes[2]; } CcReport;
+
+class BeanHid_ {
  private:
-  BeanKeyReport _keyReport;
-  uint8_t ccHoldBuffer[HID_CC_IN_RPT_LEN] = {0, 0};
-  void sendReport(BeanKeyReport* keys);
+  void buttons(uint8_t b);
+  void _genericSendReport(uint8_t id, uint8_t *buffer, size_t length);
+  void sendReport(MouseReport *pReport);
+  void sendReport(KeyReport *pReport);
+  void sendReport(CcReport *pReport);
+  size_t _holdKey(uint8_t c);
+  size_t _releaseKey(uint8_t c);
+  size_t _sendKey(uint8_t c);
+
+  /****************************************************************************/
+  /** @name HID
+   *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
+   */
+  ///@{
 
  public:
-  BeanKeyboard_(void);
-  void begin(void);
-  void end(void);
-  void sendCC(uint8_t command);
-  void holdCC(uint8_t command);
-  void releaseCC(uint8_t command);
+  BeanHid_(void);
 
-  virtual size_t write(uint8_t k);
-  virtual size_t press(uint8_t k);
-  virtual size_t release(uint8_t k);
-  virtual void releaseAll(void);
+  /**
+   *  Needs docs
+   */
+  void enable(void);
+
+  /**
+  *  Needs docs
+  */
+  bool isEnabled(void);
+
+  /**
+   *  Needs docs
+   */
+  void disable(void);
+
+  /**
+   *  Needs docs
+   */
+  int holdKey(char key);
+  int holdKey(modifierKey key);
+
+  /**
+   *  Needs docs
+   */
+  int releaseKey(char key);
+  int releaseKey(modifierKey key);
+
+  /**
+   *  Needs docs
+   */
+  void releaseAllKeys();
+
+  /**
+   *  Needs docs
+   */
+  int sendKey(char key);
+  int sendKey(modifierKey key);
+
+  /**
+   *  Needs docs
+   */
+  int sendKeys(String charsToType);
+
+  /**
+   *  Needs docs
+   */
+  void moveMouse(signed char delta_x, signed char delta_y,
+                 signed char delta_wheel = 0);
+
+  /**
+   *  Needs docs
+   */
+  void holdMouseClick(mouseButtons button = MOUSE_LEFT);
+
+  /**
+   *  Needs docs
+   */
+  void releaseMouseClick(mouseButtons button = MOUSE_LEFT);
+
+  /**
+   *  Needs docs
+   */
+  void sendMouseClick(mouseButtons button = MOUSE_LEFT);
+
+  /**
+   *  Needs docs
+   */
+  void sendMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void holdMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void releaseMediaControl(mediaControl command);
+
+  /**
+   * Needs docs
+   */
+  void releaseAllMediaControls();
+  ///@}
 };
-extern BeanKeyboard_ BeanKeyboard;
-
-//==============================================================================
-//==============================================================================
-// Low level API
-
-typedef struct {
-  uint8_t bmRequestType;
-  uint8_t bRequest;
-  uint8_t wValueL;
-  uint8_t wValueH;
-  uint16_t wIndex;
-  uint16_t wLength;
-} Setup;
+extern BeanHid_ BeanHid;
 
 #endif /* if defined(BeanHID) */

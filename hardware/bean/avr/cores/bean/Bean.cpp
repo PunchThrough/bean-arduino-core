@@ -532,12 +532,6 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
   Serial.writeGATT(services);
 }
 
-void BeanClass::hid_enable(void) {
-  ADV_SWITCH_ENABLED_T curServices = getServices();
-  curServices.hid = 1;
-  setServices(curServices);
-}
-
 void BeanClass::enableCustom(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.custom = 1;
@@ -561,46 +555,7 @@ void BeanClass::enableiBeacon(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.ibeacon = 1;
   setServices(curServices);
-}
-
-int BeanClass::hid_holdKey(uint8_t key) { return BeanKeyboard.press(key); }
-
-int BeanClass::hid_releaseKey(uint8_t key) { return BeanKeyboard.release(key); }
-
-int BeanClass::hid_sendKey(uint8_t key) { return BeanKeyboard.write(key); }
-
-int BeanClass::hid_sendKeys(String charsToType) {
-  int status = 0;
-  int maxIndex = charsToType.length() - 1;
-  for (int i = 0; i < maxIndex; i++) {
-    status |= BeanKeyboard.write(charsToType.charAt(i));
-  }
-
-  return status;
-}
-
-void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel) {
-  BeanMouse.move(delta_x, delta_y, delta_wheel);
-}
-
-void BeanClass::hid_sendMouse(mouseButtons button) { BeanMouse.click(button); }
-
-void BeanClass::hid_holdMouse(mouseButtons button) { BeanMouse.press(button); }
-
-void BeanClass::hid_releaseMouse(mouseButtons button) { BeanMouse.release(button); }
-
-void BeanClass::hid_sendMediaControl(mediaControl command) {
-  BeanKeyboard.sendCC(command);
-  BeanKeyboard.sendCC(0);
-}
-
-void BeanClass::hid_holdMediaControl(mediaControl command) {
-  BeanKeyboard.holdCC(command);
-}
-
-void BeanClass::hid_releaseMediaControl(mediaControl command) {
-  BeanKeyboard.releaseCC(command);
-}
+} 
 
 bool BeanClass::setScratchData(uint8_t bank, const uint8_t *data,
                                uint8_t dataLength) {

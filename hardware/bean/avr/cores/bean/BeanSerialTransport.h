@@ -21,8 +21,7 @@ class BeanSerialTransport : public HardwareSerial {
   friend class BeanClass;
   friend class BeanMidiClass;
   friend class BeanAncsClass;
-  friend class BeanKeyboard_;
-  friend class BeanMouse_;
+  friend class BeanHid_;
 
  private:
   uint32_t m_wakeDelay;

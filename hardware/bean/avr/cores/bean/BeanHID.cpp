@@ -19,23 +19,10 @@
 #include <Arduino.h>
 #include "BeanHID.h"
 
-// Singletons for BeanKeyboard and BeanMouse
-
-BeanKeyboard_ BeanKeyboard;
-BeanMouse_ BeanMouse;
+// Singleton
+BeanHid_ BeanHid;
 
 #define HID_DEV_DATA_LEN 8
-
-// HID keyboard input report length
-#define HID_KEYBOARD_IN_RPT_LEN 8
-#define HID_MOUSE_IN_RPT_LEN 4
-
-typedef struct {
-  uint8_t id;
-  uint8_t type;
-  uint8_t len;
-  uint8_t data[HID_DEV_DATA_LEN];
-} hidDevReport_t;
 
 //==============================================================================
 //==============================================================================
@@ -44,95 +31,6 @@ typedef struct {
 
 #define LSB(_x) ((_x)&0xFF)
 #define MSB(_x) ((_x) >> 8)
-
-#define RAWHID_USAGE_PAGE 0xFFC0
-#define RAWHID_USAGE 0x0C00
-#define RAWHID_TX_SIZE 64
-#define RAWHID_RX_SIZE 64
-
-extern const uint8_t _hidReportDescriptor[] PROGMEM;
-const uint8_t _hidReportDescriptor[] = {
-    // BeanMouse
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 54
-    0x09, 0x02,  // USAGE (BeanMouse)
-    0xa1, 0x01,  // COLLECTION (Application)
-    0x09, 0x01,  //   USAGE (Pointer)
-    0xa1, 0x00,  //   COLLECTION (Physical)
-    0x85, 0x01,  //     REPORT_ID (1)
-    0x05, 0x09,  //     USAGE_PAGE (Button)
-    0x19, 0x01,  //     USAGE_MINIMUM (Button 1)
-    0x29, 0x03,  //     USAGE_MAXIMUM (Button 3)
-    0x15, 0x00,  //     LOGICAL_MINIMUM (0)
-    0x25, 0x01,  //     LOGICAL_MAXIMUM (1)
-    0x95, 0x03,  //     REPORT_COUNT (3)
-    0x75, 0x01,  //     REPORT_SIZE (1)
-    0x81, 0x02,  //     INPUT (Data,Var,Abs)
-    0x95, 0x01,  //     REPORT_COUNT (1)
-    0x75, 0x05,  //     REPORT_SIZE (5)
-    0x81, 0x03,  //     INPUT (Cnst,Var,Abs)
-    0x05, 0x01,  //     USAGE_PAGE (Generic Desktop)
-    0x09, 0x30,  //     USAGE (X)
-    0x09, 0x31,  //     USAGE (Y)
-    0x09, 0x38,  //     USAGE (Wheel)
-    0x15, 0x81,  //     LOGICAL_MINIMUM (-127)
-    0x25, 0x7f,  //     LOGICAL_MAXIMUM (127)
-    0x75, 0x08,  //     REPORT_SIZE (8)
-    0x95, 0x03,  //     REPORT_COUNT (3)
-    0x81, 0x06,  //     INPUT (Data,Var,Rel)
-    0xc0,        //   END_COLLECTION
-    0xc0,        // END_COLLECTION
-
-    // Keyboard
-    0x05, 0x01,  // USAGE_PAGE (Generic Desktop) // 47
-    0x09, 0x06,  // USAGE (Keyboard)
-    0xa1, 0x01,  // COLLECTION (Application)
-    0x85, 0x02,  //   REPORT_ID (2)
-    0x05, 0x07,  //   USAGE_PAGE (Keyboard)
-
-    0x19, 0xe0,  //   USAGE_MINIMUM (Keyboard LeftControl)
-    0x29, 0xe7,  //   USAGE_MAXIMUM (Keyboard Right GUI)
-    0x15, 0x00,  //   LOGICAL_MINIMUM (0)
-    0x25, 0x01,  //   LOGICAL_MAXIMUM (1)
-    0x75, 0x01,  //   REPORT_SIZE (1)
-
-    0x95, 0x08,  //   REPORT_COUNT (8)
-    0x81, 0x02,  //   INPUT (Data,Var,Abs)
-    0x95, 0x01,  //   REPORT_COUNT (1)
-    0x75, 0x08,  //   REPORT_SIZE (8)
-    0x81, 0x03,  //   INPUT (Cnst,Var,Abs)
-
-    0x95, 0x06,  //   REPORT_COUNT (6)
-    0x75, 0x08,  //   REPORT_SIZE (8)
-    0x15, 0x00,  //   LOGICAL_MINIMUM (0)
-    0x25, 0x65,  //   LOGICAL_MAXIMUM (101)
-    0x05, 0x07,  //   USAGE_PAGE (Keyboard)
-
-    0x19, 0x00,  //   USAGE_MINIMUM (Reserved (no event indicated))
-    0x29, 0x65,  //   USAGE_MAXIMUM (Keyboard Application)
-    0x81, 0x00,  //   INPUT (Data,Ary,Abs)
-    0xc0,        // END_COLLECTION
-
-#if RAWHID_ENABLED
-    // RAW HID
-    0x06, LSB(RAWHID_USAGE_PAGE), MSB(RAWHID_USAGE_PAGE),  // 30
-    0x0A, LSB(RAWHID_USAGE), MSB(RAWHID_USAGE),
-
-    0xA1, 0x01,        // Collection 0x01
-    0x85, 0x03,        // REPORT_ID (3)
-    0x75, 0x08,        // report size = 8 bits
-    0x15, 0x00,        // logical minimum = 0
-    0x26, 0xFF, 0x00,  // logical maximum = 255
-
-    0x95, 64,    // report count TX
-    0x09, 0x01,  // usage
-    0x81, 0x02,  // Input (array)
-
-    0x95, 64,    // report count RX
-    0x09, 0x02,  // usage
-    0x91, 0x02,  // Output (array)
-    0xC0         // end collection
-#endif
-};
 
 #define HID_RPT_ID_KEY_IN 2    // Keyboard input report ID
 #define HID_RPT_ID_MOUSE_IN 1  // Mouse input report ID
@@ -145,72 +43,44 @@ const uint8_t _hidReportDescriptor[] = {
 #define HID_REPORT_TYPE_OUTPUT 2
 #define HID_REPORT_TYPE_FEATURE 3
 
-//==============================================================================
-//==============================================================================
-// Driver
+typedef struct {
+  uint8_t id;
+  uint8_t type;
+  uint8_t len;
+  uint8_t data[HID_DEV_DATA_LEN];
+} hidDevReport_t;
 
-uint8_t _hid_idle = 1;
+// HID Consumer Control keycodes (based on the HID Report Map characteristic
+// value)
+#define HID_CC_RPT_MUTE 1
+#define HID_CC_RPT_POWER 2
+#define HID_CC_RPT_LAST 3
+#define HID_CC_RPT_ASSIGN_SEL 4
+#define HID_CC_RPT_PLAY 5
+#define HID_CC_RPT_PAUSE 6
+#define HID_CC_RPT_RECORD 7
+#define HID_CC_RPT_FAST_FWD 8
+#define HID_CC_RPT_REWIND 9
+#define HID_CC_RPT_SCAN_NEXT_TRK 10
+#define HID_CC_RPT_SCAN_PREV_TRK 11
+#define HID_CC_RPT_STOP 12
 
-//==============================================================================
-//==============================================================================
-// BeanMouse
+#define HID_CC_RPT_CHANNEL_UP 0x01
+#define HID_CC_RPT_CHANNEL_DOWN 0x03
+#define HID_CC_RPT_VOLUME_UP 0x40
+#define HID_CC_RPT_VOLUME_DOWN 0x80
 
-BeanMouse_::BeanMouse_(void) : _buttons(0) {}
+// HID Consumer Control report bitmasks
+#define HID_CC_RPT_NUMERIC_BITS 0xF0
+#define HID_CC_RPT_CHANNEL_BITS 0xCF
+#define HID_CC_RPT_VOLUME_BITS 0x3F
+#define HID_CC_RPT_BUTTON_BITS 0xF0
+#define HID_CC_RPT_SELECTION_BITS 0xCF
 
-void BeanMouse_::begin(void) {}
-
-void BeanMouse_::end(void) {}
-
-void BeanMouse_::click(uint8_t b) {
-  press(b);
-  release(b);
-}
-
-void BeanMouse_::move(signed char x, signed char y, signed char wheel) {
-  BeanMouseReport m;
-  m.mouse[0] = _buttons;
-  m.mouse[1] = x;
-  m.mouse[2] = y;
-  m.mouse[3] = wheel;
-  sendReport(&m);
-}
-
-void BeanMouse_::buttons(uint8_t b) {
-  if (b != _buttons) {
-    _buttons = b;
-    move(0, 0, 0);
-  }
-}
-
-void BeanMouse_::press(uint8_t b) { buttons(_buttons | b); }
-
-void BeanMouse_::release(uint8_t b) { buttons(_buttons & ~b); }
-
-bool BeanMouse_::isPressed(uint8_t b) {
-  if ((b & _buttons) > 0) return true;
-  return false;
-}
-
-void BeanMouse_::sendReport(BeanMouseReport *commands) {
-  hidDevReport_t report;
-  report.type = HID_REPORT_TYPE_INPUT;
-  report.id = HID_RPT_ID_MOUSE_IN;
-  report.len = HID_MOUSE_IN_RPT_LEN;
-
-  if (report.len <= HID_DEV_DATA_LEN) {
-    memcpy((void *)report.data, (void *)commands, sizeof(BeanMouseReport));
-    Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
-                         sizeof(hidDevReport_t));
-  }
-}
-
-//==============================================================================
-//==============================================================================
-// Keyboard
-
-BeanKeyboard_::BeanKeyboard_(void) {}
-
-void BeanKeyboard_::begin(void) {}
+// Num pad
+#define HID_CC_RPT_KEYBOARD_1 30  // 0x1E - Keyboard 1 and !
+// Other keys are mapped between these two...
+#define HID_CC_RPT_KEYBOARD_0 39  // 0x27 - Keyboard 0 and )
 
 // Macros for the HID Consumer Control 2-byte report
 #define HID_CC_RPT_SET_NUMERIC(s, x) \
@@ -231,155 +101,6 @@ void BeanKeyboard_::begin(void) {}
 #define HID_CC_RPT_SET_SELECTION(s, x) \
   (s)[1] &= HID_CC_RPT_SELECTION_BITS; \
   (s)[1] |= ((x)&0x03) << 4
-
-static void hidCCBuildReport(uint8_t *pBuf, uint8_t cmd) {
-  /*
-    Byte 0 - 4 LSB(bits 0,1,2,3) are used by Keypad
-
-    Byte 0 - bits 4 & 5 are used for Channel Up/Down
-
-    Byte 0 - bits 6 & 7 are used for Volume Up/Down
-
-    Byte 1 - 4 LSB(bits 0,1,2,3) are used for Media keys(Play,Pause, mute etc..)
-
-    Byte 1 - bits 4 & 5 are used for Button state information.
-
-    Byte 1 - bits 6 & 7 are not defined in report map and hence ignored by host.
-  */
-
-  switch (cmd) {
-    case HID_CONSUMER_CHANNEL_UP:
-      HID_CC_RPT_SET_CHANNEL(pBuf, HID_CC_RPT_CHANNEL_UP);
-      break;
-
-    case HID_CONSUMER_CHANNEL_DOWN:
-      HID_CC_RPT_SET_CHANNEL(pBuf, HID_CC_RPT_CHANNEL_DOWN);
-      break;
-
-    case HID_CONSUMER_VOLUME_UP:
-      HID_CC_RPT_SET_VOLUME_UP(pBuf);
-      break;
-
-    case HID_CONSUMER_VOLUME_DOWN:
-      HID_CC_RPT_SET_VOLUME_DOWN(pBuf);
-      break;
-
-    case HID_CONSUMER_MUTE:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_MUTE);
-      break;
-
-    case HID_CONSUMER_POWER:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_POWER);
-      break;
-
-    case HID_CONSUMER_RECALL_LAST:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_LAST);
-      break;
-
-    case HID_CONSUMER_ASSIGN_SEL:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_ASSIGN_SEL);
-      break;
-
-    case HID_CONSUMER_PLAY:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_PLAY);
-      break;
-
-    case HID_CONSUMER_PAUSE:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_PAUSE);
-      break;
-
-    case HID_CONSUMER_RECORD:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_RECORD);
-      break;
-
-    case HID_CONSUMER_FAST_FORWARD:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_FAST_FWD);
-      break;
-
-    case HID_CONSUMER_REWIND:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_REWIND);
-      break;
-
-    case HID_CONSUMER_SCAN_NEXT_TRK:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_SCAN_NEXT_TRK);
-      break;
-
-    case HID_CONSUMER_SCAN_PREV_TRK:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_SCAN_PREV_TRK);
-      break;
-
-    case HID_CONSUMER_STOP:
-      HID_CC_RPT_SET_BUTTON(pBuf, HID_CC_RPT_STOP);
-      break;
-
-    default:
-      if ((cmd >= HID_KEYBOARD_1) && (cmd <= HID_KEYBOARD_0)) {
-        HID_CC_RPT_SET_BUTTON(pBuf, (cmd - HID_KEYBOARD_1 + 1) % 10);
-      }
-      break;
-  }
-}
-
-void BeanKeyboard_::sendCC(uint8_t command) {
-  hidDevReport_t report;
-  report.type = HID_REPORT_TYPE_INPUT;
-  report.id = HID_RPT_ID_CC_IN;
-  report.len = HID_CC_IN_RPT_LEN;
-
-  uint8_t buf[HID_CC_IN_RPT_LEN] = {0};
-
-  hidCCBuildReport(buf, command);
-
-  memcpy((void *)report.data, buf, HID_CC_IN_RPT_LEN);
-  Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
-                       sizeof(hidDevReport_t));
-}
-
-void BeanKeyboard_::holdCC(uint8_t command) {
-  hidDevReport_t report;
-  report.type = HID_REPORT_TYPE_INPUT;
-  report.id = HID_RPT_ID_CC_IN;
-  report.len = HID_CC_IN_RPT_LEN;
-
-  hidCCBuildReport(ccHoldBuffer, command);
-
-  memcpy((void *)report.data, ccHoldBuffer, HID_CC_IN_RPT_LEN);
-  Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
-                       sizeof(hidDevReport_t));
-}
-
-void BeanKeyboard_::releaseCC(uint8_t command) {
-  hidDevReport_t report;
-  report.type = HID_REPORT_TYPE_INPUT;
-  report.id = HID_RPT_ID_CC_IN;
-  report.len = HID_CC_IN_RPT_LEN;
-
-  uint8_t disableBuf[HID_CC_IN_RPT_LEN] = {0};
-  hidCCBuildReport(disableBuf, command);
-
-  for (int i = 0; i < HID_CC_IN_RPT_LEN; i++) {
-    ccHoldBuffer[i] &= ~disableBuf[i];
-  }
-
-  memcpy((void *)report.data, ccHoldBuffer, HID_CC_IN_RPT_LEN);
-  Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
-                       sizeof(hidDevReport_t));
-}
-
-void BeanKeyboard_::end(void) {}
-
-void BeanKeyboard_::sendReport(BeanKeyReport *keys) {
-  hidDevReport_t report;
-  report.type = HID_REPORT_TYPE_INPUT;
-  report.id = HID_RPT_ID_KEY_IN;
-  report.len = HID_KEYBOARD_IN_RPT_LEN;
-
-  if (report.len <= HID_DEV_DATA_LEN) {
-    memcpy((void *)report.data, (void *)keys, sizeof(BeanKeyReport));
-    Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
-                         sizeof(hidDevReport_t));
-  }
-}
 
 extern const uint8_t _asciimap[128] PROGMEM;
 
@@ -516,11 +237,239 @@ const uint8_t _asciimap[128] = {
     0              // DEL
 };
 
-// press() adds the specified key (printing, non-printing, or modifier)
+// Mouse
+
+uint8_t _buttons;
+void buttons(uint8_t b);
+void sendReport(MouseReport *commands);
+
+// Keyboard
+
+KeyReport _keyReport;
+CcReport ccReportForHeldCommands = {0, 0};
+void sendReport(KeyReport *keys);
+
+//==============================================================================
+//==============================================================================
+// Driver
+
+uint8_t _hid_idle = 1;
+
+//==============================================================================
+//==============================================================================
+// BeanHid
+
+// Private functions
+// void addCommandToCcReport(CcReport * pReport, uint8_t cmd);
+// void _genericSendReport(uint8_t id, uint8_t *buffer, size_t length);
+// void sendReport(MouseReport *pReport);
+// void sendReport(KeyReport *pReport);
+// void sendReport(CcReport *pReport);
+// void buttons(uint8_t b);
+
+BeanHid_::BeanHid_(void) { _buttons = 0; }
+
+// Private functions
+
+static void addCommandToCcReport(CcReport *pReport, uint8_t cmd) {
+  /*
+    Byte 0 - 4 LSB(bits 0,1,2,3) are used by Keypad
+
+    Byte 0 - bits 4 & 5 are used for Channel Up/Down
+
+    Byte 0 - bits 6 & 7 are used for Volume Up/Down
+
+    Byte 1 - 4 LSB(bits 0,1,2,3) are used for Media keys(Play,Pause, mute etc..)
+
+    Byte 1 - bits 4 & 5 are used for Button state information.
+
+    Byte 1 - bits 6 & 7 are not defined in report map and hence ignored by host.
+  */
+
+  switch (cmd) {
+    case CHANNEL_UP:
+      HID_CC_RPT_SET_CHANNEL(pReport->bytes, HID_CC_RPT_CHANNEL_UP);
+      break;
+
+    case CHANNEL_DOWN:
+      HID_CC_RPT_SET_CHANNEL(pReport->bytes, HID_CC_RPT_CHANNEL_DOWN);
+      break;
+
+    case VOLUME_UP:
+      HID_CC_RPT_SET_VOLUME_UP(pReport->bytes);
+      break;
+
+    case VOLUME_DOWN:
+      HID_CC_RPT_SET_VOLUME_DOWN(pReport->bytes);
+      break;
+
+    case MUTE:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_MUTE);
+      break;
+
+    case POWER:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_POWER);
+      break;
+
+    case RECALL_LAST:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_LAST);
+      break;
+
+    case ASSIGN_SEL:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_ASSIGN_SEL);
+      break;
+
+    case PLAY:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_PLAY);
+      break;
+
+    case PAUSE:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_PAUSE);
+      break;
+
+    case RECORD:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_RECORD);
+      break;
+
+    case FAST_FORWARD:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_FAST_FWD);
+      break;
+
+    case REWIND:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_REWIND);
+      break;
+
+    case SCAN_NEXT_TRK:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_SCAN_NEXT_TRK);
+      break;
+
+    case SCAN_PREV_TRK:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_SCAN_PREV_TRK);
+      break;
+
+    case STOP:
+      HID_CC_RPT_SET_BUTTON(pReport->bytes, HID_CC_RPT_STOP);
+      break;
+
+    default:
+      if ((cmd >= HID_CC_RPT_KEYBOARD_1) && (cmd <= HID_CC_RPT_KEYBOARD_0)) {
+        HID_CC_RPT_SET_BUTTON(pReport->bytes,
+                              (cmd - HID_CC_RPT_KEYBOARD_1 + 1) % 10);
+      }
+      break;
+  }
+}
+
+void BeanHid_::_genericSendReport(uint8_t id, uint8_t *buffer, size_t length) {
+  hidDevReport_t report;
+  report.type = HID_REPORT_TYPE_INPUT;
+  report.id = id;
+  report.len = length;
+
+  if (report.len <= HID_DEV_DATA_LEN) {
+    memcpy((void *)report.data, (void *)buffer, length);
+    Serial.write_message(MSG_ID_HID_SEND_REPORT, (uint8_t *)&report,
+                         sizeof(hidDevReport_t));
+  }
+}
+
+void BeanHid_::sendReport(MouseReport *pReport) {
+  _genericSendReport(HID_RPT_ID_MOUSE_IN, (uint8_t *)pReport,
+                     sizeof(MouseReport));
+}
+
+void BeanHid_::sendReport(KeyReport *pReport) {
+  _genericSendReport(HID_RPT_ID_KEY_IN, (uint8_t *)pReport, sizeof(KeyReport));
+}
+
+void BeanHid_::sendReport(CcReport *pReport) {
+  _genericSendReport(HID_RPT_ID_CC_IN, (uint8_t *)pReport, sizeof(CcReport));
+}
+
+void BeanHid_::buttons(uint8_t b) {
+  if (b != _buttons) {
+    _buttons = b;
+    moveMouse(0, 0, 0);
+  }
+}
+
+// Public functions
+
+void BeanHid_::enable(void) {
+  ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
+  curServices.hid = 1;
+  Bean.setServices(curServices);
+}
+
+bool BeanHid_::isEnabled(void) {
+  ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
+  return (curServices.hid == 1) ? true : false;
+}
+
+void BeanHid_::disable(void) {
+  ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
+  curServices.hid = 0;
+  Bean.setServices(curServices);
+}
+
+// Mouse
+void BeanHid_::moveMouse(signed char delta_x, signed char delta_y,
+                         signed char delta_wheel) {
+  MouseReport m;
+  m.mouse[0] = _buttons;
+  m.mouse[1] = delta_x;
+  m.mouse[2] = delta_y;
+  m.mouse[3] = delta_wheel;
+  sendReport(&m);
+}
+
+void BeanHid_::holdMouseClick(mouseButtons button) {
+  buttons(_buttons | button);
+}
+
+void BeanHid_::releaseMouseClick(mouseButtons button) {
+  buttons(_buttons & ~button);
+}
+
+void BeanHid_::sendMouseClick(mouseButtons button) {
+  holdMouseClick(button);
+  releaseMouseClick(button);
+}
+
+// Consumer Control
+void BeanHid_::sendMediaControl(mediaControl command) {
+  holdMediaControl(command);
+  releaseMediaControl(command);
+}
+
+void BeanHid_::holdMediaControl(mediaControl command) {
+  addCommandToCcReport(&ccReportForHeldCommands, command);
+  sendReport(&ccReportForHeldCommands);
+}
+
+void BeanHid_::releaseMediaControl(mediaControl command) {
+  CcReport report = {0, 0};
+  addCommandToCcReport(&report, command);
+
+  // subtract "report" from our "held" report
+  (ccReportForHeldCommands.bytes)[0] &= ~((report.bytes)[0]);
+  (ccReportForHeldCommands.bytes)[1] &= ~((report.bytes)[1]);
+
+  sendReport(&ccReportForHeldCommands);
+}
+
+void BeanHid_::releaseAllMediaControls() {
+  ccReportForHeldCommands = {0, 0};
+  sendReport(&ccReportForHeldCommands);
+}
+
+// Keyboard
+
+// _holdKey() adds the specified key (printing, non-printing, or modifier)
 // to the persistent key report and sends the report.  Because of the way
 // USB HID works, the host acts like the key remains pressed until we
 // call release(), releaseAll(), or otherwise clear the report and resend.
-size_t BeanKeyboard_::press(uint8_t k) {
+size_t BeanHid_::_holdKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -530,7 +479,7 @@ size_t BeanKeyboard_::press(uint8_t k) {
   } else {  // it's a printing key
     k = pgm_read_byte(_asciimap + k);
     if (!k) {
-      setWriteError();
+      // setWriteError();
       return 0;
     }
     if (k &
@@ -552,7 +501,7 @@ size_t BeanKeyboard_::press(uint8_t k) {
       }
     }
     if (i == 6) {
-      setWriteError();
+      // setWriteError();
       return 0;
     }
   }
@@ -560,10 +509,10 @@ size_t BeanKeyboard_::press(uint8_t k) {
   return 1;
 }
 
-// release() takes the specified key out of the persistent key report and
+// _release() takes the specified key out of the persistent key report and
 // sends the report.  This tells the OS the key is no longer pressed and that
 // it shouldn't be repeated any more.
-size_t BeanKeyboard_::release(uint8_t k) {
+size_t BeanHid_::_releaseKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -595,7 +544,28 @@ size_t BeanKeyboard_::release(uint8_t k) {
   return 1;
 }
 
-void BeanKeyboard_::releaseAll(void) {
+size_t BeanHid_::_sendKey(uint8_t c) {
+  uint8_t p = _holdKey(c);     // Keydown
+  uint8_t r = _releaseKey(c);  // Keyup
+  return (p);  // just return the result of press() since release() almost
+               // always returns 1
+}
+
+int BeanHid_::holdKey(char key) { return (int)_holdKey((uint8_t)key); }
+int BeanHid_::holdKey(modifierKey key) { return (int)_holdKey((uint8_t)key); }
+
+/**
+ *  Needs docs
+ */
+int BeanHid_::releaseKey(char key) { return (int)_releaseKey((uint8_t)key); }
+int BeanHid_::releaseKey(modifierKey key) {
+  return (int)_releaseKey((uint8_t)key);
+}
+
+/**
+ *  Needs docs
+ */
+void BeanHid_::releaseAllKeys(void) {
   _keyReport.keys[0] = 0;
   _keyReport.keys[1] = 0;
   _keyReport.keys[2] = 0;
@@ -606,9 +576,21 @@ void BeanKeyboard_::releaseAll(void) {
   sendReport(&_keyReport);
 }
 
-size_t BeanKeyboard_::write(uint8_t c) {
-  uint8_t p = press(c);    // Keydown
-  uint8_t r = release(c);  // Keyup
-  return (p);  // just return the result of press() since release() almost
-               // always returns 1
+/**
+ *  Needs docs
+ */
+int BeanHid_::sendKey(char key) { return (int)_sendKey((uint8_t)key); }
+int BeanHid_::sendKey(modifierKey key) { return (int)_sendKey((uint8_t)key); }
+
+/**
+ *  Needs docs
+ */
+int BeanHid_::sendKeys(String charsToType) {
+  int status = 0;
+  int maxIndex = charsToType.length() - 1;
+  for (int i = 0; i < maxIndex; i++) {
+    status |= _sendKey(charsToType.charAt(i));
+  }
+
+  return status;
 }

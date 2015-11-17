@@ -36,16 +36,6 @@ typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 /**
  *  Needs docs
  */
-typedef ANCS_SOURCE_MSG_T AncsNotification;
-
-/**
- *  Needs docs
- */
-typedef NOTI_ATTR_ID_T AncsNotificationAttribute;
-
-/**
- *  Needs docs
- */
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
 class BeanClass {
@@ -194,151 +184,6 @@ class BeanClass {
   void setLedBlue(uint8_t intensity);
   ///@}
 
-
-  /****************************************************************************/
-  /** @name MIDI
-   *  Read and write MIDI packets via Bluetooth Low Energy.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void enableMidi(void);
-
-  /**
-   *  Needs docs
-   */
-  int midiPacketSend();
-
-  /**
-   *  Needs docs
-   */
-  int midiSend(uint8_t *buff, uint8_t numBytes);
-
-  /**
-   *  Needs docs
-   */
-  int midiSend(uint8_t status, uint8_t byte1, uint8_t byte2);
-
-  /**
-   *  Needs docs
-   */
-  int midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
-  ///@}
-
-
-  /****************************************************************************/
-  /** @name HID
-   *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void hid_enable(void);
-
-  /**
-   *  Needs docs
-   */
-  int hid_holdKey(uint8_t key);
-
-  /**
-   *  Needs docs
-   */
-  int hid_releaseKey(uint8_t key);
-
-  /**
-   *  Needs docs
-   */
-  int hid_sendKey(uint8_t key);
-
-  /**
-   *  Needs docs
-   */
-  int hid_sendKeys(String charsToType);
-
-  /**
-   *  Needs docs
-   */
-  void hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel = 0);
-
-  /**
-   *  Needs docs
-   */
-  void hid_releaseMouse(mouseButtons button);
-
-  /**
-   *  Needs docs
-   */
-  void hid_holdMouse(mouseButtons button);
-
-  /**
-   *  Needs docs
-   */
-  void hid_sendMouse(mouseButtons button = MOUSE_LEFT);
-
-  /**
-   *  Needs docs
-   */
-  void hid_sendMediaControl(mediaControl command);
-
-  /**
-   * Needs docs
-   */
-  void hid_holdMediaControl(mediaControl command);
-
-  /**
-   * Needs docs
-   */
-  void hid_releaseMediaControl(mediaControl command);
-  ///@}
-
-
-  /****************************************************************************/
-  /** @name ANCS
-   *  Use the <a href="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</a> to read notifications from your iOS device.
-   */
-  ///@{
-
-  /**
-   *  Needs docs
-   */
-  void enableANCS(void);
-
-  /**
-   *  Needs docs
-   */
-  int ancsAvailable();
-
-  /**
-   *  Needs docs
-   */
-  int readAncs(uint8_t *buffer, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  int parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  int requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len, uint32_t ID);
-
-  /**
-   *  Needs docs
-   */
-  int readAncsNotiDetails(uint8_t *buf, size_t max_length);
-
-  /**
-   *  Needs docs
-   */
-  void performAncsAction(uint32_t ID, uint8_t actionID);
-  ///@}
-
-
   /****************************************************************************/
   /** @name Observer
    *  Functions related to Observer mode
@@ -348,17 +193,17 @@ class BeanClass {
   /**
    *  Needs docs
    */
-  void startObserver(void);
+  void observer_start(void);
 
   /**
    *  Needs docs
    */
-  void stopObserver(void);
+  void observer_stop(void);
 
   /**
    *  Needs docs
    */
-  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int observer_getMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
 
 
@@ -762,21 +607,6 @@ class BeanClass {
    *  Needs docs
    */
   uint8_t checkAccelInterrupts();
-
-  /**
-   *  Needs docs
-   */
-  uint8_t lastStatus;
-
-  /**
-   *  Needs docs
-   */
-  long midiTimeStampDiff;
-
-  /**
-   *  Needs docs
-   */
-  bool midiPacketBegin;
 };
 
 /**

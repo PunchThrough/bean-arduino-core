@@ -33,24 +33,6 @@
 #define MAX_SCRATCH_SIZE (20)
 #define NUM_BEAN_PINS 7
 
-
-// midi access definitions
-#define MIDI_BUFFER_SIZE 20
-#define BLE_PACKET_SIZE 20
-
-typedef struct {
-  uint32_t timestamp;
-  uint8_t status;
-  uint8_t byte1;
-  uint8_t byte2;
-} midiMessage;
-
-static midiMessage midiMessages[MIDI_BUFFER_SIZE];
-uint8_t midiPacket[BLE_PACKET_SIZE];
-uint8_t midiWriteOffset = 0;
-uint8_t midiReadOffset = 0;
-
-
 BeanClass Bean;
 
 static void wakeUp(void) {
@@ -65,10 +47,6 @@ static void wakeUp(void) {
 #define MIN_SLEEP_TIME (10)
 
 void BeanClass::keepAwake(bool enable) {
-  lastStatus = 0;
-  midiTimeStampDiff = 0;
-  midiPacketBegin = true;
-
   if (enable) {
     Serial.BTConfigUartSleep(UART_SLEEP_NEVER);
   } else {
@@ -554,24 +532,6 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
   Serial.writeGATT(services);
 }
 
-void BeanClass::hid_enable(void) {
-  ADV_SWITCH_ENABLED_T curServices = getServices();
-  curServices.hid = 1;
-  setServices(curServices);
-}
-
-void BeanClass::enableMidi(void) {
-  ADV_SWITCH_ENABLED_T curServices = getServices();
-  curServices.midi = 1;
-  setServices(curServices);
-}
-
-void BeanClass::enableANCS(void) {
-  ADV_SWITCH_ENABLED_T curServices = getServices();
-  curServices.ancs = 1;
-  setServices(curServices);
-}
-
 void BeanClass::enableCustom(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.custom = 1;
@@ -582,11 +542,11 @@ void BeanClass::setCustomAdvertisement(uint8_t *buf, int len) {
   Serial.setCustomAdvertisement(buf, len);
 }
 
-void BeanClass::startObserver(void) { Serial.startObserver(); }
+void BeanClass::observer_start(void) { Serial.startObserver(); }
 
-void BeanClass::stopObserver(void) { Serial.stopObserver(); }
+void BeanClass::observer_stop(void) { Serial.stopObserver(); }
 
-int BeanClass::getObserverMessage(ObseverAdvertisementInfo *message,
+int BeanClass::observer_getMessage(ObseverAdvertisementInfo *message,
                                   unsigned long timeout) {
   return Serial.getObserverMessage(message, timeout);
 }
@@ -595,179 +555,6 @@ void BeanClass::enableiBeacon(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.ibeacon = 1;
   setServices(curServices);
-}
-
-int BeanClass::midiSend(uint8_t status, uint8_t byte1, uint8_t byte2) {
-  if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) return 1;
-  uint32_t millisec = millis();
-  midiMessages[midiWriteOffset].status = status;
-  midiMessages[midiWriteOffset].byte1 = byte1;
-  midiMessages[midiWriteOffset].byte2 = byte2;
-  midiMessages[midiWriteOffset].timestamp = millisec;
-  midiWriteOffset++;
-  midiWriteOffset = midiWriteOffset % MIDI_BUFFER_SIZE;
-  return 0;
-}
-
-int BeanClass::midiPacketSend() {
-  if (midiReadOffset == midiWriteOffset) return 0;
-  uint8_t byteOffset = 0;
-  // send a 20 byte message
-  uint32_t millisec = midiMessages[midiReadOffset].timestamp;
-  // first the header
-  uint8_t head_ts = millisec >> 7;
-  head_ts |= 1 << 7;  // set the 7th bit to 1
-  head_ts &= ~(1 << 6);  // set the 6th bit to zero
-  midiPacket[byteOffset++] = head_ts;
-  // now some messages
-  int lastStatus = -1;
-  int lastTime = -1;
-  while (midiReadOffset != midiWriteOffset) {
-    if (lastStatus == midiMessages[midiReadOffset].status &&
-        lastTime == midiMessages[midiReadOffset].timestamp) {
-      midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte1;
-      midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
-    } else {
-      uint8_t msg_ts = midiMessages[midiReadOffset].timestamp;
-      msg_ts |= 1 << 7;  // set the 7th bit to 1.
-      midiPacket[byteOffset++] = msg_ts;
-      midiPacket[byteOffset++] = midiMessages[midiReadOffset].status;
-      midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte1;
-      midiPacket[byteOffset++] = midiMessages[midiReadOffset].byte2;
-    }
-    midiReadOffset++;
-    midiReadOffset = midiReadOffset % MIDI_BUFFER_SIZE;
-    if (byteOffset + 4 >
-        BLE_PACKET_SIZE)  // can we handle another midi message in this packet
-      break;
-  }
-  Serial.write_message(MSG_ID_MIDI_WRITE, midiPacket, byteOffset);
-  return byteOffset;
-}
-
-int BeanClass::midiRead(uint8_t *status, uint8_t *byte1, uint8_t *byte2) {
-  uint8_t buffer[8];
-  if (midiPacketBegin) {
-    if (Serial.midiAvailable() > 4) {
-      Serial.readMidi(buffer, 1);  // header
-      midiPacketBegin = false;  // we are now in the body
-    }
-  }
-  if (!midiPacketBegin) {
-    // read the first byte, check if its a status byte
-    if (Serial.midiAvailable() > 0) {
-      uint8_t peek = 0;
-      peek = Serial.peekMidi();
-      if (peek & 1 << 7) {
-        // is status/timestamp byte. we are looking at a 4 byte message
-        if (Serial.midiAvailable() >= 4) {
-          Serial.readMidi(buffer, 4);
-          uint8_t timestamp = buffer[0];
-          *status = buffer[1];
-          lastStatus = *status;
-          *byte1 = buffer[2];
-          *byte2 = buffer[3];
-          if (timestamp == 0xFF &&
-              *status == 0xFF &&
-              *byte1 == 0xFF &&
-              *byte2 == 0xFF) {
-            // end of packet
-            midiPacketBegin = true;
-            return 0;
-          } else {
-            return peek;
-          }
-        }
-      } else {  // running status
-        if (Serial.midiAvailable() >= 2) {
-          Serial.readMidi(buffer, 2);
-          *status = lastStatus;
-          *byte1 = buffer[0];
-          *byte2 = buffer[1];
-          return peek;
-        }
-      }
-    }
-  }
-  return 0;
-}
-
-int BeanClass::hid_holdKey(uint8_t key) { return BeanKeyboard.press(key); }
-
-int BeanClass::hid_releaseKey(uint8_t key) { return BeanKeyboard.release(key); }
-
-int BeanClass::hid_sendKey(uint8_t key) { return BeanKeyboard.write(key); }
-
-int BeanClass::hid_sendKeys(String charsToType) {
-  int status = 0;
-  int maxIndex = charsToType.length() - 1;
-  for (int i = 0; i < maxIndex; i++) {
-    status |= BeanKeyboard.write(charsToType.charAt(i));
-  }
-
-  return status;
-}
-
-void BeanClass::hid_moveMouse(signed char delta_x, signed char delta_y, signed char delta_wheel) {
-  BeanMouse.move(delta_x, delta_y, delta_wheel);
-}
-
-void BeanClass::hid_sendMouse(mouseButtons button) { BeanMouse.click(button); }
-
-void BeanClass::hid_holdMouse(mouseButtons button) { BeanMouse.press(button); }
-
-void BeanClass::hid_releaseMouse(mouseButtons button) { BeanMouse.release(button); }
-
-void BeanClass::hid_sendMediaControl(mediaControl command) {
-  BeanKeyboard.sendCC(command);
-  BeanKeyboard.sendCC(0);
-}
-
-void BeanClass::hid_holdMediaControl(mediaControl command) {
-  BeanKeyboard.holdCC(command);
-}
-
-void BeanClass::hid_releaseMediaControl(mediaControl command) {
-  BeanKeyboard.releaseCC(command);
-}
-
-int BeanClass::ancsAvailable() { return Serial.ancsAvailable(); }
-
-int BeanClass::readAncs(uint8_t *buffer, size_t max_length) {
-  return Serial.readAncs(buffer, max_length);
-}
-
-int BeanClass::parseAncs(ANCS_SOURCE_MSG_T *buffer, size_t max_length) {
-  int numMsgs = Serial.ancsAvailable();
-  Serial.readAncs((uint8_t *)buffer, max_length * 8);
-
-  return numMsgs;
-}
-
-int BeanClass::requestAncsNotiDetails(NOTI_ATTR_ID_T type, size_t len,
-                                      uint32_t ID) {
-  if (8 + len > SERIAL_BUFFER_SIZE) {
-    len = SERIAL_BUFFER_SIZE - 8;
-  }
-  uint8_t reqBuf[8];
-  reqBuf[0] = 0;
-  memcpy((void *)&reqBuf[1], &ID, 4);
-  reqBuf[5] = type;
-  reqBuf[6] = len;
-  reqBuf[7] = 0;
-  Serial.getAncsNotiDetails(reqBuf, 8);
-}
-
-void BeanClass::performAncsAction(uint32_t ID, uint8_t actionID) {
-  uint8_t reqBuf[6];
-  reqBuf[0] = 2;  // command ID perform notifcation action
-  memcpy((void *)&reqBuf[1], &ID, sizeof(uint32_t));
-  reqBuf[5] = actionID;
-  Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf));
-}
-
-int BeanClass::readAncsNotiDetails(uint8_t *buf, size_t max_length) {
-  return Serial.readAncsMessage(buf, max_length);
 }
 
 bool BeanClass::setScratchData(uint8_t bank, const uint8_t *data,

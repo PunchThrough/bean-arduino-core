@@ -14,7 +14,6 @@ int main(void)
   // Need to turn off SPI as it's on at boot for some reason
   SPCR &= ~_BV(SPE);
 
-  Serial.begin();
   setup();
 
   for (;;) {

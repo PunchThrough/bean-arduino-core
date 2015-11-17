@@ -464,6 +464,10 @@ class BeanClass {
   /****************************************************************************/
   /** @name Advertising
    *  Set and verify the Bean BLE advertising configuration.
+   *
+   *  Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see [this guide (TODO: ADD GUIDE + LINK)](#) to clear the sketch stored on Bean.
    */
   ///@{
 
@@ -471,6 +475,12 @@ class BeanClass {
    *  Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.
    *
    *  @param s The name to be advertised
+   *
+   *  # Examples
+   *
+   *  This example changes Bean's name based on its temperature:
+   *
+   *  @include advertising/setBeanName.ino
    */
   void setBeanName(const String &s);
 
@@ -478,6 +488,12 @@ class BeanClass {
    *  Read the currently-advertised name of the Bean.
    *
    *  @return The Bean name as a char array, null-terminated
+   *
+   *  # Examples
+   *
+   *  This example prints Bean's name to Virtual Serial every two seconds:
+   *
+   *  @include examples/getBeanName.ino
    */
   const char *getBeanName(void);
 
@@ -487,17 +503,47 @@ class BeanClass {
   void setAdvertisingInterval(uint16_t interval_ms);
 
   /**
-   *  Needs docs
+   *  Enable or disable BLE advertising for a specific duration.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are **not** stored in non-volatile memory.
+   *
+   *  @param enable true to enable advertising, false to disable
+   *  @param timer the duration to enable/disable advertising, in milliseconds
+   *
+   *  # Examples
+   *
+   *  This example disables advertising for 10 seconds when digital pin 0 is pulled low:
+   *
+   *  @include advertising/enableAdvertisingInterval.ino
    */
   void enableAdvertising(bool enable, uint32_t timer);
 
   /**
-   *  Needs docs
+   *  Enable or disable BLE advertising.
+   *
+   *  Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are **not** stored in non-volatile memory.
+   *
+   *  @param enable true to enable advertising, false to disable
+   *
+   *  # Examples
+   *
+   *  This example disables advertising when digital pin 0 is pulled low and enables it otherwise:
+   *
+   *  @include advertising/enableAdvertising.ino
    */
   void enableAdvertising(bool enable);
 
   /**
-   *  Needs docs
+   *  Check whether the Bean is currently advertising.
+   *
+   *  @return true if Bean is advertising, false if Bean is not advertising
+   *
+   *  # Examples
+   *
+   *  This example toggles Bean's advertising every 15 seconds and indicates the current advertising status with the LED:
+   *
+   *  @include advertising/getAdvertisingState.ino
+   *
    */
   bool getAdvertisingState(void);
 
@@ -516,6 +562,12 @@ class BeanClass {
   /****************************************************************************/
   /** @name iBeacon
    *  Let your Bean act as an <a href="https://developer.apple.com/ibeacon/">iBeacon</a>, a way to convey real-world location to iOS devices.
+   *
+   *  Bean supports a limited subset of UUIDs available to iBeacon devices. A Bean iBeacon UUID is made up of 16 user-configurable bits and 112 preconfigured bits, where `xx` represents a user-configurable byte:
+   *
+   *  `A495xxxx-C5B1-4B44-B512-1370F02D74DE`
+   *
+   *  Using iBeacon features will, by default, write to Bean's NVRAM. The NVRAM has a limited number of writes. Use `enableConfigSave` to store settings temporarily and conserve NVRAM writes.
    */
   ///@{
 
@@ -525,12 +577,18 @@ class BeanClass {
   void enableiBeacon(void);
 
   /**
-   *  Needs docs
+   *  Configure Bean's iBeacon UUID, major ID, and minor ID. Each of these parameters, **including UUID**, takes 16-bit unsigned values. For more information on UUID, major, and minor values, see [this iBeacon FAQ](https://support.kontakt.io/hc/en-gb/articles/201620741-iBeacon-Parameters-UUID-Major-and-Minor).
+   *
+   *  @param uuid The 16-bit value used to set part of the iBeacon UUID. For example: Passing `0xABCD` to `uuid` will set the Bean's UUID to `A495ABCD-C5B1-4B44-B512-1370F02D74DE`.
+   *  @param major_id The major ID of the iBeacon
+   *  @param major_id The minor ID of the iBeacon
    */
   void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
 
   /**
-   *  Needs docs
+   *  Enable or disable iBeacon functionality.
+   *
+   *  @param beaconEnable true to enable iBeacon, false to disable
    */
   void setBeaconEnable(bool beaconEnable);
   ///@}

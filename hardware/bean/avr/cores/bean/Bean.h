@@ -2,6 +2,8 @@
 #define BEAN_BEAN_BEAN_H
 #include "BeanSerialTransport.h"
 #include "BeanHID.h"
+#include "BeanMidi.h"
+#include "BeanAncs.h"
 
 // Accel Events.
 #define FLAT_EVENT 0x80

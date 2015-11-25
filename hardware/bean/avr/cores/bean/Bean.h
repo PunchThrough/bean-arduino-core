@@ -586,7 +586,11 @@ class BeanClass {
 
  private:
   /**
-   *  Needs docs
+   *  Send a message from the ATmega to the CC2540 asking it to wake up the ATmega at a given time. The CC2540 might not receive the message, so it's important to check the return value of this method.
+   *
+   *  @param duration_ms The duration to sleep for, in milliseconds
+   *
+   *  @return true if the message was acknowledged by the CC2540 successfully, false if the message was not acknowledged and should be sent again
    */
   bool attemptSleep(uint32_t duration_ms);
 

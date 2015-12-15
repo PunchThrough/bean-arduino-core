@@ -247,7 +247,15 @@ class BeanClass {
   void sleep(uint32_t duration_ms);
 
   /**
-   *  Needs docs
+   *  Enable or disable keep-awake mode.
+   *
+   *  By default, the Bean radio sleeps frequently to conserve power. Enabling keep-awake forces the LBM into wake mode and decreases latency between the LBM313 and the ATmega.
+   *
+   *  This may be useful if you are having trouble with latency between an event and a Bluetooth transmission: for example, to decrease the time between Bean reading a pin change event and sending a Bluetooth message.
+   *
+   *  Enabling keep-awake may signficantly decrease battery life. Use with caution.
+   *
+   *  @param true to enable keep-awake, false to disable
    */
   void keepAwake(bool enable);
 

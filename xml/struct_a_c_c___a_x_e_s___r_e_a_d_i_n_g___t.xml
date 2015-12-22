@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>ACC_AXES_READING_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1ae69a9b056f681d3f3822fa9abd829334" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ACC_AXES_READING_T::axis</definition>
+        <argsstring></argsstring>
+        <name>axis</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="260" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a66d4a402c79f1769dd23c6e91600862e" prot="public" static="no" mutable="no">
+        <type>PTD_INT16</type>
+        <definition>PTD_INT16 ACC_AXES_READING_T::reading</definition>
+        <argsstring></argsstring>
+        <name>reading</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="261" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a726d2fb3bec4083a4c3abfeaae5f4f11" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ACC_AXES_READING_T::sensitivity</definition>
+        <argsstring></argsstring>
+        <name>sensitivity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="262" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="259" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="257" bodyend="263"/>
+    <listofallmembers>
+      <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1ae69a9b056f681d3f3822fa9abd829334" prot="public" virt="non-virtual"><scope>ACC_AXES_READING_T</scope><name>axis</name></member>
+      <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a66d4a402c79f1769dd23c6e91600862e" prot="public" virt="non-virtual"><scope>ACC_AXES_READING_T</scope><name>reading</name></member>
+      <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a726d2fb3bec4083a4c3abfeaae5f4f11" prot="public" virt="non-virtual"><scope>ACC_AXES_READING_T</scope><name>sensitivity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

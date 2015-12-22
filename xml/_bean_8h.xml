@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="_bean_8h" kind="file" language="C++">
+    <compoundname>Bean.h</compoundname>
+    <includes local="yes">BeanSerialTransport.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/HardwareSerial.h</includes>
+    <includes local="no">inttypes.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Stream.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Print.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/WString.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Printable.h</includes>
+    <includes local="no">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/new.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Arduino.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">math.h</includes>
+    <includes local="no">avr/pgmspace.h</includes>
+    <includes local="no">avr/io.h</includes>
+    <includes local="no">avr/interrupt.h</includes>
+    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/binary.h</includes>
+    <includes local="yes">pins_arduino.h</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>BeanSerialTransport.h</label>
+      </node>
+      <node id="22">
+        <label>pins_arduino.h</label>
+      </node>
+      <node id="11">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Printable.h</label>
+      </node>
+      <node id="20">
+        <label>avr/interrupt.h</label>
+      </node>
+      <node id="15">
+        <label>stdlib.h</label>
+      </node>
+      <node id="7">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Stream.h</label>
+      </node>
+      <node id="3">
+        <label>hardware/bean/avr/cores/bean/Bean.h</label>
+        <link refid="Bean.h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Print.h</label>
+      </node>
+      <node id="5">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/HardwareSerial.h</label>
+      </node>
+      <node id="19">
+        <label>avr/io.h</label>
+      </node>
+      <node id="16">
+        <label>string.h</label>
+      </node>
+      <node id="14">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Arduino.h</label>
+      </node>
+      <node id="18">
+        <label>avr/pgmspace.h</label>
+      </node>
+      <node id="13">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</label>
+      </node>
+      <node id="21">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/binary.h</label>
+      </node>
+      <node id="17">
+        <label>math.h</label>
+      </node>
+      <node id="10">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/WString.h</label>
+      </node>
+      <node id="12">
+        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/new.h</label>
+      </node>
+      <node id="9">
+        <label>stdio.h</label>
+      </node>
+      <node id="6">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_bean_class" prot="public">BeanClass</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_bean_8h_1abe3d58d06eff3046a29f245172e62427" prot="public" static="no">
+        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref></type>
+        <definition>typedef ACC_READING_T AccelerationReading</definition>
+        <argsstring></argsstring>
+        <name>AccelerationReading</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An acceleration reading from the Bean accelerometer, the BMA250 (<ulink url="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</ulink>). Also includes the current sensitivity setting.</para><para>The accelerometer has 10-bit resolution. Readings are returned raw in the range of -512 to 511. These readings need to be converted to g (<ulink url="https://en.wikipedia.org/wiki/G-force">g-force</ulink>).</para><para>The accelerometer has configurable sensitivity. When using the accelerometer at the default sensitivity of ±2g, a value of +1 corresponds to +3.91 mg.</para><para>The accelerometer sensitivity is ±2g, ±4g, ±8g, or ±16g. These are represented by the values 2, 4, 8, or 16. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="14" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_bean_8h_1a4303280f79143dd66eb5af27976ea880" prot="public" static="no">
+        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref></type>
+        <definition>typedef LED_SETTING_T LedReading</definition>
+        <argsstring></argsstring>
+        <name>LedReading</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="19" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_bean_8h_1a895a61920490883fbdec3ba5423e8fa8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_bean_class" kindref="compound">BeanClass</ref></type>
+        <definition>BeanClass Bean</definition>
+        <argsstring></argsstring>
+        <name>Bean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Needs docs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="492" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>BEAN_BEAN_BEAN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BEAN_BEAN_BEAN_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanSerialTransport.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="class_bean_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="27"></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" kindref="member">getAccelerationX</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" kindref="member">getAccelerationY</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a681df15a2b6952547d536f8faebce802" kindref="member">getAccelerationZ</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref><sp/><ref refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" kindref="member">getAcceleration</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" kindref="member">getAccelerationRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" kindref="member">setAccelerationRange</ref>(uint8_t<sp/>range);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="77"></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" kindref="member">setLed</ref>(uint8_t<sp/>red,<sp/>uint8_t<sp/>green,<sp/>uint8_t<sp/>blue);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref><sp/><ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" kindref="member">getLedRed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a5619292a562731e94f97e93432ab3639" kindref="member">getLedGreen</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" kindref="member">getLedBlue</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" kindref="member">setLedRed</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" kindref="member">setLedGreen</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" kindref="member">setLedBlue</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="154"></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" kindref="member">setScratchData</ref>(uint8_t<sp/>bank,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint8_t<sp/>dataLength);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" kindref="member">setScratchNumber</ref>(uint8_t<sp/>bank,<sp/>uint32_t<sp/>data);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>ScratchData<sp/><ref refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" kindref="member">readScratchData</ref>(uint8_t<sp/>bank);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" kindref="member">readScratchNumber</ref>(uint8_t<sp/>bank);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="219"></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" kindref="member">sleep</ref>(uint32_t<sp/>duration_ms);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" kindref="member">keepAwake</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a639e425394c820a99025d136dddd3369" kindref="member">enableWakeOnConnect</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="285"></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" kindref="member">setBeanName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;s);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" kindref="member">getBeanName</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" kindref="member">setAdvertisingInterval</ref>(uint16_t<sp/>interval_ms);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable,<sp/>uint32_t<sp/>timer);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" kindref="member">getAdvertisingState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="375"></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" kindref="member">setBeaconParameters</ref>(uint16_t<sp/>uuid,<sp/>uint16_t<sp/>major_id,<sp/>uint16_t<sp/>minor_id);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" kindref="member">setBeaconEnable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>beaconEnable);</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="399"></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" kindref="member">getBatteryLevel</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a862784d57eca8dd368172612e5e792de" kindref="member">getBatteryVoltage</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="423"></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" kindref="member">getTemperature</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="438"></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" kindref="member">disconnect</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ab426b11e8bee60de92707254c0501c20" kindref="member">getConnectionState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
+<codeline lineno="459"></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" kindref="member">enableConfigSave</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableSave);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>attemptSleep(uint32_t<sp/>duration_ms);</highlight></codeline>
+<codeline lineno="487"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>Bean;</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="hardware/bean/avr/cores/bean/Bean.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,932 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="class_bean_class" kind="class" language="C++" prot="public">
+    <compoundname>BeanClass</compoundname>
+      <sectiondef kind="user-defined">
+      <header>Accelerometer</header>
+      <description><para>Read acceleration values and configure the accelerometer&apos;s sensitivity. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t BeanClass::getAccelerationX</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAccelerationX</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current value of the Bean accelerometer X axis.</para><para><simplesect kind="return"><para>a 10-bit value corresponding to the current X axis acceleration </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t BeanClass::getAccelerationY</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAccelerationY</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current value of the Bean accelerometer Y axis.</para><para><simplesect kind="return"><para>a 10-bit value corresponding to the current Y axis acceleration </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a681df15a2b6952547d536f8faebce802" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t BeanClass::getAccelerationZ</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAccelerationZ</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current value of the Bean accelerometer Z axis.</para><para><simplesect kind="return"><para>a 10-bit value corresponding to the current Z axis acceleration </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref></type>
+        <definition>AccelerationReading BeanClass::getAcceleration</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAcceleration</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current value of all axes and the current sensitivity setting from the Bean accelerometer.</para><para><simplesect kind="return"><para>an AccelerationReading object containing current acceleration and sensitivity </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="55" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getAccelerationRange</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAccelerationRange</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current sensitivity setting of the Bean accelerometer.</para><para><simplesect kind="return"><para>2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setAccelerationRange</definition>
+        <argsstring>(uint8_t range)</argsstring>
+        <name>setAccelerationRange</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure the sensitivity of the Bean accelerometer.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="69" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>LED</header>
+      <description><para>Set the RGB LED color and check what it&apos;s currently showing. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setLed</definition>
+        <argsstring>(uint8_t red, uint8_t green, uint8_t blue)</argsstring>
+        <name>setLed</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>red</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>green</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>blue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.</para><para><heading level="1">Examples</heading>
+</para><para>This example sets the LED to white (all channels on, full intensity): <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref></type>
+        <definition>LedReading BeanClass::getLed</definition>
+        <argsstring>(void)</argsstring>
+        <name>getLed</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get current intensity values for the color channels of the Bean RGB LED.</para><para><simplesect kind="return"><para><computeroutput>LedReading</computeroutput> struct that contains an integer representation of each color.</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interperet the return value. <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getLedRed</definition>
+        <argsstring>(void)</argsstring>
+        <name>getLedRed</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="104" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a5619292a562731e94f97e93432ab3639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getLedGreen</definition>
+        <argsstring>(void)</argsstring>
+        <name>getLedGreen</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="109" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getLedBlue</definition>
+        <argsstring>(void)</argsstring>
+        <name>getLedBlue</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="114" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setLedRed</definition>
+        <argsstring>(uint8_t intensity)</argsstring>
+        <name>setLedRed</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>intensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="119" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setLedGreen</definition>
+        <argsstring>(uint8_t intensity)</argsstring>
+        <name>setLedGreen</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>intensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="124" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setLedBlue</definition>
+        <argsstring>(uint8_t intensity)</argsstring>
+        <name>setLedBlue</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>intensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="129" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Scratch</header>
+      <description><para>Read and write arbitrary data using pre-defined BLE characteristics.</para><para>Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for arbitrary use by developers. Each characteristic can hold up to 20 bytes due to BLE restrictions.</para><para>Scratch characteristics will trigger Notify events on BLE Central clients when they are changed by Bean&apos;s Arduino sketch. Bean sketches must poll to find out when a client changes scratch characteristic data.</para><para>Bean and Bean+ have five scratch characteristics. All scratch chars are contained in a single BLE service.</para><para><itemizedlist>
+<listitem><para><bold>Scratch Service UUID:</bold> <computeroutput>a495ff20-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem><listitem><para><bold>Scratch Characteristic UUIDs:</bold><orderedlist>
+<listitem><para><computeroutput>a495ff21-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem><listitem><para><computeroutput>a495ff22-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem><listitem><para><computeroutput>a495ff23-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem><listitem><para><computeroutput>a495ff24-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem><listitem><para><computeroutput>a495ff25-c5b1-4b44-b512-1370f02d74de</computeroutput></para></listitem></orderedlist>
+</para></listitem></itemizedlist>
+</para><para>In the below methods, behavior is undefined when the <computeroutput>bank</computeroutput> parameter is not <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput>. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::setScratchData</definition>
+        <argsstring>(uint8_t bank, const uint8_t *data, uint8_t dataLength)</argsstring>
+        <name>setScratchData</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>bank</declname>
+        </param>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>dataLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the data in a scratch characteristic. Triggers a BLE Notify event for connected clients.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bank</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the destination scratch char: <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An array of <computeroutput>byte</computeroutput>s or <computeroutput>uint8_t</computeroutput>s to be copied into the scratch char </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of bytes to copy from <computeroutput>data</computeroutput></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success: false if <computeroutput>dataLength</computeroutput> is greater than 20, true otherwise</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example reads two of Bean&apos;s analog pins and writes the values to two scratch characteristics: <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="170" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::setScratchNumber</definition>
+        <argsstring>(uint8_t bank, uint32_t data)</argsstring>
+        <name>setScratchNumber</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>bank</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Write a 32-bit (four-byte) value into a scratch characteristic. Triggers a BLE Notify event for connected clients.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bank</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the destination scratch char: <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput> </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 32-bit value to be written into the scratch char</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success: always returns true, since all 32-bit numbers are under 20 bytes in length</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="185" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ScratchData</type>
+        <definition>ScratchData BeanClass::readScratchData</definition>
+        <argsstring>(uint8_t bank)</argsstring>
+        <name>readScratchData</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>bank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read the data from a scratch characteristic.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bank</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the source scratch char: <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The contents of the scratch characteristic</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example polls a scratch characteristic and blinks Bean&apos;s LED if the value changes: <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="199" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long BeanClass::readScratchNumber</definition>
+        <argsstring>(uint8_t bank)</argsstring>
+        <name>readScratchNumber</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>bank</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read a 32-bit (four-byte) value from a scratch characteristic.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bank</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the source scratch char: <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="211" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Sleep</header>
+      <description><para>Bean power management functions to help save battery life. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::sleep</definition>
+        <argsstring>(uint32_t duration_ms)</argsstring>
+        <name>sleep</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>duration_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sleep for a period of time.</para><para>This method puts the ATmega chip to sleep until it is woken by the LBM313 at the requested time.</para><para>Bean can be woken from sleep by the following:</para><para><itemizedlist>
+<listitem><para>The requested sleep time elapses</para></listitem><listitem><para>A serial message is received from a connected client</para></listitem><listitem><para>A client connects to Bean while wake on connect is enabled</para></listitem><listitem><para>A pin change interrupt occurs</para></listitem></itemizedlist>
+</para><para><computeroutput>Bean.sleep()</computeroutput> is more power-efficient than Arduino <computeroutput><ref refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" kindref="member">sleep()</ref></computeroutput> because it puts the ATmega into a low-power mode known as &quot;power-down&quot;. This disables the ATmega&apos;s internal timers, so functions like <computeroutput>millis()</computeroutput> will not track time elapsed during <computeroutput>Bean.sleep()</computeroutput>.</para><para>The ATmega can take up to 7 ms to wake from <computeroutput>Bean.sleep()</computeroutput>. If you are looking for more precise timings, please consider using <ulink url="https://www.arduino.cc/en/Reference/Delay">delay()</ulink> or <ulink url="https://www.arduino.cc/en/Reference/DelayMicroseconds">delayMicroseconds()</ulink>.</para><para>For more information on low-power mode on the ATmega328, check out this <ulink url="https://www.sparkfun.com/tutorials/309">Sparkfun tutorial</ulink>.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The duration to sleep for, in milliseconds</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example turns on Bean&apos;s LED, sleeps for one second, turns off Bean&apos;s LED and sleeps for four more seconds, then repeats:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="247" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::keepAwake</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>keepAwake</name>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable keep-awake mode.</para><para>By default, the Bean radio sleeps frequently to conserve power. Enabling keep-awake forces the LBM into wake mode and decreases latency between the LBM313 and the ATmega.</para><para>This may be useful if you are having trouble with latency between an event and a Bluetooth transmission: for example, to decrease the time between Bean reading a pin change event and sending a Bluetooth message.</para><para>Enabling keep-awake may signficantly decrease battery life. Use with caution.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to enable keep-awake, false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="260" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a639e425394c820a99025d136dddd3369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableWakeOnConnect</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>enableWakeOnConnect</name>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable wake on connect. By default, Bean does not wake up when a BLE client connects.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable wake on connect, false to disable</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example wakes Bean when a client connects, waits for the client to disconnect, and sleeps on disconnect:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="273" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Advertising</header>
+      <description><para>Set and verify the Bean BLE advertising configuration.</para><para>Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.</para><para>Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see <ulink url="#">this guide (TODO: ADD GUIDE + LINK)</ulink> to clear the sketch stored on Bean. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setBeanName</definition>
+        <argsstring>(const String &amp;s)</argsstring>
+        <name>setBeanName</name>
+        <param>
+          <type>const String &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the advertising name of the Bean. BLE advertising names are truncated at 20 bytes.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name to be advertised</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example changes Bean&apos;s name based on its temperature:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="298" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* BeanClass::getBeanName</definition>
+        <argsstring>(void)</argsstring>
+        <name>getBeanName</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Read the currently-advertised name of the Bean.</para><para><simplesect kind="return"><para>The Bean name as a char array, null-terminated</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example prints Bean&apos;s name to Virtual Serial every two seconds:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="311" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setAdvertisingInterval</definition>
+        <argsstring>(uint16_t interval_ms)</argsstring>
+        <name>setAdvertisingInterval</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>interval_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Needs docs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="316" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableAdvertising</definition>
+        <argsstring>(bool enable, uint32_t timer)</argsstring>
+        <name>enableAdvertising</name>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable BLE advertising for a specific duration.</para><para>Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are <bold>not</bold> stored in non-volatile memory.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable advertising, false to disable </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the duration to enable/disable advertising, in milliseconds</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example disables advertising for 10 seconds when digital pin 0 is pulled low:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="332" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ade5d4c6a061eeb6d7897ef4c3b2c26d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableAdvertising</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>enableAdvertising</name>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable BLE advertising.</para><para>Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are <bold>not</bold> stored in non-volatile memory.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable advertising, false to disable</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example disables advertising when digital pin 0 is pulled low and enables it otherwise:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="347" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::getAdvertisingState</definition>
+        <argsstring>(void)</argsstring>
+        <name>getAdvertisingState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check whether the Bean is currently advertising.</para><para><simplesect kind="return"><para>true if Bean is advertising, false if Bean is not advertising</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example toggles Bean&apos;s advertising every 15 seconds and indicates the current advertising status with the LED:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="361" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>iBeacon</header>
+      <description><para>Let your Bean act as an <ulink url="https://developer.apple.com/ibeacon/">iBeacon</ulink>, a way to convey real-world location to iOS devices.</para><para>Bean supports a limited subset of UUIDs available to iBeacon devices. A Bean iBeacon UUID is made up of 16 user-configurable bits and 112 preconfigured bits, where <computeroutput>xx</computeroutput> represents a user-configurable byte:</para><para><computeroutput>A495xxxx-C5B1-4B44-B512-1370F02D74DE</computeroutput></para><para>Using iBeacon features will, by default, write to Bean&apos;s NVRAM. The NVRAM has a limited number of writes. Use <computeroutput>enableConfigSave</computeroutput> to store settings temporarily and conserve NVRAM writes. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setBeaconParameters</definition>
+        <argsstring>(uint16_t uuid, uint16_t major_id, uint16_t minor_id)</argsstring>
+        <name>setBeaconParameters</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>major_id</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>minor_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure Bean&apos;s iBeacon UUID, major ID, and minor ID. Each of these parameters, <bold>including UUID</bold>, takes 16-bit unsigned values. For more information on UUID, major, and minor values, see <ulink url="https://support.kontakt.io/hc/en-gb/articles/201620741-iBeacon-Parameters-UUID-Major-and-Minor">this iBeacon FAQ</ulink>.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 16-bit value used to set part of the iBeacon UUID. For example: Passing <computeroutput>0xABCD</computeroutput> to <computeroutput>uuid</computeroutput> will set the Bean&apos;s UUID to <computeroutput>A495ABCD-C5B1-4B44-B512-1370F02D74DE</computeroutput>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>major_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The major ID of the iBeacon </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>major_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The minor ID of the iBeacon </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="384" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setBeaconEnable</definition>
+        <argsstring>(bool beaconEnable)</argsstring>
+        <name>setBeaconEnable</name>
+        <param>
+          <type>bool</type>
+          <declname>beaconEnable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable or disable iBeacon functionality.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>beaconEnable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable iBeacon, false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="391" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Battery</header>
+      <description><para>Read the Bean&apos;s battery level. </para></description>
+      <memberdef kind="function" id="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getBatteryLevel</definition>
+        <argsstring>(void)</argsstring>
+        <name>getBatteryLevel</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current battery level, in percent.</para><para><simplesect kind="return"><para>a value in the range 0 to 100: 0 = 1.95 V, 100 = 3.53 V </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="406" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a862784d57eca8dd368172612e5e792de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t BeanClass::getBatteryVoltage</definition>
+        <argsstring>(void)</argsstring>
+        <name>getBatteryVoltage</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current battery voltage, in volts.</para><para>Accuracy is ±0.01 V.</para><para><simplesect kind="return"><para>a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="415" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Temperature</header>
+      <description><para>Read the ambient temperature of the Bean. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int8_t</type>
+        <definition>int8_t BeanClass::getTemperature</definition>
+        <argsstring>(void)</argsstring>
+        <name>getTemperature</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current temperature of the Bean, in degrees Celsius. The Bean uses the BMA250 (<ulink url="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</ulink>) for temperature readings.</para><para><simplesect kind="return"><para>temperature, between -40 and 88 degrees Celsius </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="430" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Connection</header>
+      <description><para>Work with active BLE Central devices that connect to Bean. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::disconnect</definition>
+        <argsstring>(void)</argsstring>
+        <name>disconnect</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Terminate the connection between Bean and the connected BLE Central device. If no Central device is connected, this method does nothing. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="444" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1ab426b11e8bee60de92707254c0501c20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::getConnectionState</definition>
+        <argsstring>(void)</argsstring>
+        <name>getConnectionState</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if any BLE Central devices are currently connected to Bean.</para><para><simplesect kind="return"><para>true if a device is connected, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="451" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Other</header>
+      <description><para>Functions that don&apos;t belong in any of the other categories. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableConfigSave</definition>
+        <argsstring>(bool enableSave)</argsstring>
+        <name>enableConfigSave</name>
+        <param>
+          <type>bool</type>
+          <declname>enableSave</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows temporary storage of BLE configuration settings, as opposed to permanent storage in non-volatile memory (NVRAM).</para><para>Bean can only write to NVRAM a maximum of 20,000 times. If your sketch changes its advertising configuration frequently, it will quickly use up all of your Bean NVRAM&apos;s writes. To prevent this, disable saving to NVRAM first.</para><para>Configurations written while NVRAM saving is disabled will persist until the Bean is power cycled.</para><para>When the Bean is power cycled, saving to NVRAM is re-enabled.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enableSave</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to disable saving to NVRAM, false to enable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="472" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_bean_class_1a235666c4a2138d1178f11edb1504fa7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BeanClass::BeanClass</definition>
+        <argsstring>()</argsstring>
+        <name>BeanClass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="476" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="476" bodyend="476"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_bean_class_1a10616ad423d48bafbcc72164b0df525d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::attemptSleep</definition>
+        <argsstring>(uint32_t duration_ms)</argsstring>
+        <name>attemptSleep</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>duration_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a message from the ATmega to the CC2540 asking it to wake up the ATmega at a given time. The CC2540 might not receive the message, so it&apos;s important to check the return value of this method.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The duration to sleep for, in milliseconds</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the message was acknowledged by the CC2540 successfully, false if the message was not acknowledged and should be sent again </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="486" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/Bean.h" line="21" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="21" bodyend="487"/>
+    <listofallmembers>
+      <member refid="class_bean_class_1a10616ad423d48bafbcc72164b0df525d" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>attemptSleep</name></member>
+      <member refid="class_bean_class_1a235666c4a2138d1178f11edb1504fa7a" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>BeanClass</name></member>
+      <member refid="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>disconnect</name></member>
+      <member refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableAdvertising</name></member>
+      <member refid="class_bean_class_1ade5d4c6a061eeb6d7897ef4c3b2c26d3" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableAdvertising</name></member>
+      <member refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableConfigSave</name></member>
+      <member refid="class_bean_class_1a639e425394c820a99025d136dddd3369" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableWakeOnConnect</name></member>
+      <member refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAcceleration</name></member>
+      <member refid="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationRange</name></member>
+      <member refid="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationX</name></member>
+      <member refid="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationY</name></member>
+      <member refid="class_bean_class_1a681df15a2b6952547d536f8faebce802" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationZ</name></member>
+      <member refid="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAdvertisingState</name></member>
+      <member refid="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getBatteryLevel</name></member>
+      <member refid="class_bean_class_1a862784d57eca8dd368172612e5e792de" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getBatteryVoltage</name></member>
+      <member refid="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getBeanName</name></member>
+      <member refid="class_bean_class_1ab426b11e8bee60de92707254c0501c20" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getConnectionState</name></member>
+      <member refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLed</name></member>
+      <member refid="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedBlue</name></member>
+      <member refid="class_bean_class_1a5619292a562731e94f97e93432ab3639" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedGreen</name></member>
+      <member refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedRed</name></member>
+      <member refid="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getTemperature</name></member>
+      <member refid="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>keepAwake</name></member>
+      <member refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>readScratchData</name></member>
+      <member refid="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>readScratchNumber</name></member>
+      <member refid="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setAccelerationRange</name></member>
+      <member refid="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setAdvertisingInterval</name></member>
+      <member refid="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeaconEnable</name></member>
+      <member refid="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeaconParameters</name></member>
+      <member refid="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeanName</name></member>
+      <member refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLed</name></member>
+      <member refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedBlue</name></member>
+      <member refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedGreen</name></member>
+      <member refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedRed</name></member>
+      <member refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setScratchData</name></member>
+      <member refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setScratchNumber</name></member>
+      <member refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>sleep</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

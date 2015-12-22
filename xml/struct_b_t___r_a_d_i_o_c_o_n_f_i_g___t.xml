@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>BT_RADIOCONFIG_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad33001fb2788fb7f7ee708d19501411d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BT_RADIOCONFIG_T::adv_int</definition>
+        <argsstring></argsstring>
+        <name>adv_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="208" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a22d62d1efb45a3c59d1fabd7bf06a12d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BT_RADIOCONFIG_T::conn_int</definition>
+        <argsstring></argsstring>
+        <name>conn_int</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="209" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a5f380703f2fdc83686b02f7195a79454" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_RADIOCONFIG_T::power</definition>
+        <argsstring></argsstring>
+        <name>power</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="210" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1acf7c07be6fbdc7a3e98a80c4d7f4ffdc" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_RADIOCONFIG_T::adv_mode</definition>
+        <argsstring></argsstring>
+        <name>adv_mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="211" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad6dfca1289e15f0724b9bae23fe859c3" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BT_RADIOCONFIG_T::ibeacon_uuid</definition>
+        <argsstring></argsstring>
+        <name>ibeacon_uuid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="212" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1aeb5cc04ec74670d4285fb2e75b718b88" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BT_RADIOCONFIG_T::ibeacon_major</definition>
+        <argsstring></argsstring>
+        <name>ibeacon_major</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="213" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a7fa1e31f642afc5ce4e2021ca9d9a426" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BT_RADIOCONFIG_T::ibeacon_minor</definition>
+        <argsstring></argsstring>
+        <name>ibeacon_minor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="214" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a07432b46b98c8f527882134e6a9c6299" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_RADIOCONFIG_T::local_name[MAX_LOCAL_NAME_SIZE]</definition>
+        <argsstring>[MAX_LOCAL_NAME_SIZE]</argsstring>
+        <name>local_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="215" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a1028444b2f941f543f3e63f2f1b7d531" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_RADIOCONFIG_T::local_name_size</definition>
+        <argsstring></argsstring>
+        <name>local_name_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="216" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="207" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="205" bodyend="217"/>
+    <listofallmembers>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad33001fb2788fb7f7ee708d19501411d" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>adv_int</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1acf7c07be6fbdc7a3e98a80c4d7f4ffdc" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>adv_mode</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a22d62d1efb45a3c59d1fabd7bf06a12d" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>conn_int</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1aeb5cc04ec74670d4285fb2e75b718b88" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>ibeacon_major</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a7fa1e31f642afc5ce4e2021ca9d9a426" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>ibeacon_minor</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad6dfca1289e15f0724b9bae23fe859c3" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>ibeacon_uuid</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a07432b46b98c8f527882134e6a9c6299" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>local_name</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a1028444b2f941f543f3e63f2f1b7d531" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>local_name_size</name></member>
+      <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a5f380703f2fdc83686b02f7195a79454" prot="public" virt="non-virtual"><scope>BT_RADIOCONFIG_T</scope><name>power</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

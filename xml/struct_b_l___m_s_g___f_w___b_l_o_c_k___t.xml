@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_l___m_s_g___f_w___b_l_o_c_k___t" kind="struct" language="C++" prot="public">
+    <compoundname>BL_MSG_FW_BLOCK_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1a95eebace63ad93ca6385a32410a589ce" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BL_MSG_FW_BLOCK_T::fwAddress</definition>
+        <argsstring></argsstring>
+        <name>fwAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="390" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1ae0a2a8428f4091045c5cb0702cf805e5" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8 *</type>
+        <definition>PTD_UINT8* BL_MSG_FW_BLOCK_T::fwBlock</definition>
+        <argsstring></argsstring>
+        <name>fwBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="391" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="391" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="389" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="387" bodyend="392"/>
+    <listofallmembers>
+      <member refid="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1a95eebace63ad93ca6385a32410a589ce" prot="public" virt="non-virtual"><scope>BL_MSG_FW_BLOCK_T</scope><name>fwAddress</name></member>
+      <member refid="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1ae0a2a8428f4091045c5cb0702cf805e5" prot="public" virt="non-virtual"><scope>BL_MSG_FW_BLOCK_T</scope><name>fwBlock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

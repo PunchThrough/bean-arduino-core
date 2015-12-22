@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="dir_ad2bbd4e1331d4da8fe7d99c39b7e315" kind="dir">
+    <compoundname>hardware/bean</compoundname>
+    <innerdir refid="dir_0b8a3016777eb0b36d111dddfd77e2bd">hardware/bean/avr</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/"/>
+  </compounddef>
+</doxygen>

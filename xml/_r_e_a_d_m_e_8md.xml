@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">Bean<sp/>-<sp/>A<sp/>BLE<sp/>Arduino<sp/>By<sp/>Punch<sp/>Through<sp/>Design</highlight></codeline>
+<codeline><highlight class="normal">=============================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Repo<sp/>Overview</highlight></codeline>
+<codeline><highlight class="normal">-------------</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>repo<sp/>contains<sp/>the<sp/>Arduino<sp/>firmware<sp/>and<sp/>installation<sp/>files<sp/>used<sp/>in<sp/>the<sp/>LightBlue<sp/>Bean<sp/>project.<sp/>The<sp/>firmware<sp/>files<sp/>are<sp/>based<sp/>off<sp/>of<sp/>the<sp/>Arduino<sp/>firmware<sp/>release<sp/>version<sp/>1.0.5<sp/>and<sp/>have<sp/>been<sp/>modified<sp/>to<sp/>work<sp/>on<sp/>the<sp/>LightBlue<sp/>Bean,<sp/>a<sp/>system<sp/>that<sp/>has<sp/>on<sp/>it<sp/>a<sp/>few<sp/>other<sp/>features,<sp/>a<sp/>BLE<sp/>radio<sp/>an<sp/>accelerometer<sp/>and<sp/>a<sp/>multicolor<sp/>LED.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>TODO:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>note<sp/>to<sp/>this<sp/>doc<sp/>regarding<sp/>FUSES<sp/>(!!<sp/>BOD)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Fix<sp/>Serial.println<sp/>so,<sp/>like<sp/>Serial.print,<sp/>extra<sp/>radio<sp/>messages<sp/>arn&apos;t<sp/>sent<sp/>for<sp/>the<sp/>newline</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>proper<sp/>doxygen<sp/>comments<sp/>to<sp/>relelvent<sp/>parts,<sp/>especially<sp/>the<sp/>API</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>features<sp/>to<sp/>emulator<sp/>to<sp/>provide<sp/>better,<sp/>more<sp/>useful<sp/>testing</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Add<sp/>more<sp/>and<sp/>better<sp/>examples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Reading<sp/>and<sp/>Setting<sp/>Atmega<sp/>Fuses<sp/>with<sp/>avrdude</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We&apos;re<sp/>going<sp/>to<sp/>need<sp/>to<sp/>set<sp/>some<sp/>fuses<sp/>for<sp/>our<sp/>part<sp/>in<sp/>the<sp/>factory.<sp/><sp/>The<sp/>fuse<sp/>settings<sp/>we<sp/>need<sp/>are<sp/>going<sp/>to<sp/>set<sp/>our<sp/>part<sp/>to<sp/>basically<sp/>should</highlight></codeline>
+<codeline><highlight class="normal">match<sp/>the<sp/>Arduino<sp/>Pro<sp/>defaults<sp/>with<sp/>brownout<sp/>disabled.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">At<sp/>the<sp/>time<sp/>of<sp/>writing,<sp/>I<sp/>don&apos;t<sp/>have<sp/>a<sp/>programmer<sp/>at<sp/>my<sp/>disposal.<sp/><sp/>However<sp/>the<sp/>steps<sp/>taken<sp/>should<sp/>be<sp/>the<sp/></highlight></codeline>
+<codeline><highlight class="normal">We<sp/>write<sp/>the<sp/>fuse<sp/>settings<sp/>here:<sp/>XX<sp/>XX<sp/>XX</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Steps:</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Install<sp/>avrdude.<sp/><sp/>I<sp/>used<sp/>[http://www.obdev.at/products/crosspack/index.html](CrossPack)<sp/>to<sp/>do<sp/>this.</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Read<sp/>the<sp/>fuses<sp/>from<sp/>an<sp/>off<sp/>the<sp/>shelf<sp/>ArduinoPro.<sp/><sp/>Use<sp/>this<sp/>command<sp/>after<sp/>avrdude<sp/>is<sp/>in<sp/>your<sp/>path:<sp/>`avrdude<sp/>-p<sp/>atmega328p<sp/>-c<sp/>usbtiny<sp/>-U<sp/>lfuse:r:-:h<sp/>-U<sp/>hfuse:r:-:h<sp/>-U<sp/>efuse:r:-:h<sp/>-U<sp/>lock:r:-:h`</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Go<sp/>to<sp/>[http://www.engbedded.com/fusecalc/](The<sp/>Avr<sp/>Fuse<sp/>Calculator)<sp/>and<sp/>enter<sp/>in<sp/>the<sp/>current<sp/>state<sp/>of<sp/>the<sp/>fuses</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Turn<sp/>off<sp/>Brown<sp/>Out<sp/>Detection<sp/>(BOD).</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Calculate<sp/>the<sp/>new<sp/>state<sp/>of<sp/>the<sp/>fuses<sp/>using<sp/>the<sp/>website,<sp/>note<sp/>for<sp/>future<sp/>(so<sp/>no<sp/>one<sp/>else<sp/>has<sp/>to<sp/>do<sp/>these<sp/>silly<sp/>instructions)</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>Use<sp/>avrdude<sp/>to<sp/>write<sp/>and<sp/>test<sp/>your<sp/>new<sp/>fuse<sp/>settings.<sp/><sp/>The<sp/>command<sp/>line<sp/>will<sp/>look<sp/>something<sp/>like<sp/>this<sp/>(except,<sp/>these<sp/>are<sp/>guessed<sp/>values:<sp/>`avrdude<sp/>-p<sp/>atmega328p<sp/>-c<sp/>usbtiny<sp/>-U<sp/>lfuse:w:0xee:m<sp/>-U<sp/>hfuse:w:0xdc:m<sp/>-U<sp/>efuse:w:0xff:m`)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Key<sp/>Files:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Everything<sp/>in<sp/>the<sp/>`hardware`<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>contents<sp/>of<sp/>the<sp/>hardware<sp/>directory<sp/>should<sp/>be<sp/>copied<sp/>into<sp/>the<sp/>Arduino<sp/>program<sp/>resources<sp/>hardware<sp/>directory<sp/>on<sp/>install.<sp/><sp/>This<sp/>directory<sp/>contains<sp/>the<sp/>firmware<sp/>for<sp/>the<sp/>LightBlue<sp/>Bean,<sp/>as<sp/>well<sp/>as<sp/>the<sp/>files<sp/>needed<sp/>for<sp/>the<sp/>Arduino<sp/>IDE<sp/>to<sp/>recognize<sp/>the<sp/>board<sp/>allow<sp/>users<sp/>to<sp/>program<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Everything<sp/>in<sp/>the<sp/>`examples`<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>contents<sp/>of<sp/>the<sp/>examples<sp/>directory<sp/>should<sp/>be<sp/>copied<sp/>separately<sp/>on<sp/>install<sp/>to<sp/>the<sp/>examples<sp/>resources<sp/>in<sp/>the<sp/>Arduino<sp/>IDE.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Everything<sp/>in<sp/>the<sp/>`beanModuleEmulator`<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>directory<sp/>contains<sp/>an<sp/>Emulator<sp/>of<sp/>the<sp/>&apos;non-Arduino&apos;<sp/>parts<sp/>of<sp/>the<sp/>bean.<sp/><sp/>This<sp/>acts<sp/>as<sp/>a<sp/>test<sp/>jig<sp/>for<sp/>the<sp/>Arduino<sp/>code,<sp/>and<sp/>allows<sp/>us<sp/>to<sp/>verify<sp/>that<sp/>things<sp/>operate<sp/>as<sp/>expected.<sp/><sp/>You<sp/>can<sp/>run<sp/>`python<sp/>BeanModuleEmulator.py`<sp/>from<sp/>within<sp/>the<sp/>beanModuleEmulator<sp/>directory.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#####<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>a<sp/>few<sp/>python<sp/>library<sp/>dependencies<sp/>you&apos;ll<sp/>need<sp/>to<sp/>make<sp/>the<sp/>emulator<sp/>work:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>TkInter</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>numpy</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>pyserial</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>enum</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>emulator<sp/>has<sp/>been<sp/>tested<sp/>with<sp/>python<sp/>2.7.6<sp/>installed<sp/>by<sp/>Homebrew<sp/>on<sp/>OSX</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Development:</highlight></codeline>
+<codeline><highlight class="normal">During<sp/>development,<sp/>it<sp/>is<sp/>recommended<sp/>to<sp/>use<sp/>soft<sp/>links<sp/>from<sp/>inside<sp/>your<sp/>Arduino<sp/>IDE<sp/>resources<sp/>to<sp/>your<sp/>repository.<sp/><sp/>It<sp/>will<sp/>make<sp/>it<sp/>easier<sp/>to<sp/>test<sp/>your<sp/>work.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Repo<sp/>Setup:</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>repository<sp/>uses<sp/>git<sp/>submodules<sp/>and<sp/>requires<sp/>a<sp/>few<sp/>extra<sp/>steps<sp/>for<sp/>cloning<sp/>and<sp/>pulling.<sp/></highlight></codeline>
+<codeline><highlight class="normal">####<sp/>Clone</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git<sp/>clone<sp/>REPO_URL<sp/>--recursive</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Initialize<sp/>Submodules<sp/></highlight></codeline>
+<codeline><highlight class="normal">######(This<sp/>is<sp/>unnecessary<sp/>if<sp/>the<sp/>recursive<sp/>clone<sp/>works)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git<sp/>submodule<sp/>update<sp/>--init<sp/>--recursive</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>Pull</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git<sp/>pull</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git<sp/>submodule<sp/>update<sp/>--recursive</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

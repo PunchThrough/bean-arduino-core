@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_t___s_c_r_a_t_c_h___t" kind="struct" language="C++" prot="public">
+    <compoundname>BT_SCRATCH_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_t___s_c_r_a_t_c_h___t_1afa931e12cf31f7ba824213e012492c36" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_SCRATCH_T::number</definition>
+        <argsstring></argsstring>
+        <name>number</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="231" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___s_c_r_a_t_c_h___t_1a7a33ff73c781026808bc6bd7d27fa45d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_SCRATCH_T::scratch[20]</definition>
+        <argsstring>[20]</argsstring>
+        <name>scratch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="232" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="230" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="230" bodyend="233"/>
+    <listofallmembers>
+      <member refid="struct_b_t___s_c_r_a_t_c_h___t_1afa931e12cf31f7ba824213e012492c36" prot="public" virt="non-virtual"><scope>BT_SCRATCH_T</scope><name>number</name></member>
+      <member refid="struct_b_t___s_c_r_a_t_c_h___t_1a7a33ff73c781026808bc6bd7d27fa45d" prot="public" virt="non-virtual"><scope>BT_SCRATCH_T</scope><name>scratch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

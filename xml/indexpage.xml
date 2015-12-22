@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Bean Arduino Firmware</title>
+    <detaileddescription>
+<para><heading level="2">Repo Overview </heading>
+</para><para>This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.</para><para><heading level="3">TODO:</heading>
+</para><para><itemizedlist>
+<listitem><para>Add note to this doc regarding FUSES (!! BOD)</para></listitem><listitem><para>Fix Serial.println so, like Serial.print, extra radio messages arn&apos;t sent for the newline</para></listitem><listitem><para>Add proper doxygen comments to relelvent parts, especially the API</para></listitem><listitem><para>Add features to emulator to provide better, more useful testing</para></listitem><listitem><para>Add more and better examples</para></listitem></itemizedlist>
+</para><para><heading level="3">Reading and Setting Atmega Fuses with avrdude</heading>
+</para><para>We&apos;re going to need to set some fuses for our part in the factory. The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.</para><para>At the time of writing, I don&apos;t have a programmer at my disposal. However the steps taken should be the We write the fuse settings here: XX XX XX</para><para>Steps:</para><para><orderedlist>
+<listitem><para>Install avrdude. I used [<ulink url="http://www.obdev.at/products/crosspack/index.html">http://www.obdev.at/products/crosspack/index.html</ulink>](CrossPack) to do this.</para></listitem></orderedlist>
+<orderedlist>
+<listitem><para>Read the fuses from an off the shelf ArduinoPro. Use this command after avrdude is in your path: <computeroutput>avrdude -p atmega328p -c usbtiny -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h</computeroutput></para></listitem></orderedlist>
+<orderedlist>
+<listitem><para>Go to [<ulink url="http://www.engbedded.com/fusecalc/">http://www.engbedded.com/fusecalc/</ulink>](The Avr Fuse Calculator) and enter in the current state of the fuses</para></listitem></orderedlist>
+<orderedlist>
+<listitem><para>Turn off Brown Out Detection (BOD).</para></listitem></orderedlist>
+<orderedlist>
+<listitem><para>Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)</para></listitem></orderedlist>
+<orderedlist>
+<listitem><para>Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values: <computeroutput>avrdude -p atmega328p -c usbtiny -U lfuse:w:0xee:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m</computeroutput>)</para></listitem></orderedlist>
+</para><para><heading level="3">Key Files:</heading>
+</para><para><heading level="4">Everything in the <computeroutput>hardware</computeroutput> directory</heading>
+</para><para>The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board allow users to program it.</para><para><heading level="4">Everything in the <computeroutput>examples</computeroutput> directory</heading>
+</para><para>The contents of the examples directory should be copied separately on install to the examples resources in the Arduino IDE.</para><para><heading level="4">Everything in the <computeroutput>beanModuleEmulator</computeroutput> directory</heading>
+</para><para>This directory contains an Emulator of the &apos;non-Arduino&apos; parts of the bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected. You can run <computeroutput>python BeanModuleEmulator.py</computeroutput> from within the beanModuleEmulator directory.</para><para><heading level="5">Dependencies</heading>
+</para><para>There are a few python library dependencies you&apos;ll need to make the emulator work:</para><para><itemizedlist>
+<listitem><para>TkInter</para></listitem><listitem><para>numpy</para></listitem><listitem><para>pyserial</para></listitem><listitem><para>enum</para></listitem></itemizedlist>
+</para><para>The emulator has been tested with python 2.7.6 installed by Homebrew on OSX</para><para><heading level="3">Development:</heading>
+</para><para>During development, it is recommended to use soft links from inside your Arduino IDE resources to your repository. It will make it easier to test your work.</para><para><heading level="3">Repo Setup:</heading>
+</para><para>This repository uses git submodules and requires a few extra steps for cloning and pulling. <heading level="4">Clone</heading>
+</para><para>git clone REPO_URL <ndash/>recursive</para><para><heading level="4">Initialize Submodules</heading>
+</para><para><heading level="6">(This is unnecessary if the recursive clone works)</heading>
+</para><para>git submodule update <ndash/>init <ndash/>recursive</para><para><heading level="4">Pull</heading>
+</para><para>git pull git submodule update <ndash/>recursive </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

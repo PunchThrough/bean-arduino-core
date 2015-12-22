@@ -140,7 +140,14 @@
         </briefdescription>
         <detaileddescription>
 <para>Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.</para><para><heading level="1">Examples</heading>
-</para><para>This example sets the LED to white (all channels on, full intensity): <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example sets the LED to white (all channels on, full intensity): <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setLed(255,<sp/>255,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="87" column="1"/>
@@ -158,7 +165,21 @@
         <detaileddescription>
 <para>Get current intensity values for the color channels of the Bean RGB LED.</para><para><simplesect kind="return"><para><computeroutput>LedReading</computeroutput> struct that contains an integer representation of each color.</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interperet the return value. <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interperet the return value. <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);<sp/><sp/>//<sp/>Initialize<sp/>serial<sp/>port</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LedReading<sp/>rgbSetting<sp/>=<sp/>Bean.getLed();;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;<sp/><sp/>Red:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(rgbSetting.red);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Green:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(rgbSetting.green);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;<sp/>Blue:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(rgbSetting.blue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(2000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1"/>
@@ -314,7 +335,39 @@
 </parameterlist>
 <simplesect kind="return"><para>Success: false if <computeroutput>dataLength</computeroutput> is greater than 20, true otherwise</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example reads two of Bean&apos;s analog pins and writes the values to two scratch characteristics: <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example reads two of Bean&apos;s analog pins and writes the values to two scratch characteristics: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>need<sp/>to<sp/>set<sp/>anything<sp/>up<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Create<sp/>a<sp/>2-byte<sp/>buffer<sp/>to<sp/>hold<sp/>our<sp/>analog<sp/>value<sp/>when<sp/>we<sp/>split<sp/>it<sp/>into<sp/>bytes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>buffer[2];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>10-bit<sp/>values<sp/>from<sp/>A0<sp/>and<sp/>A1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint16_t<sp/>an0<sp/>=<sp/>analogRead(A0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint16_t<sp/>an1<sp/>=<sp/>analogRead(A1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Split<sp/>A0&apos;s<sp/>10-bit<sp/>value<sp/>into<sp/>two<sp/>bytes<sp/>and<sp/>store<sp/>in<sp/>the<sp/>buffer:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>[&lt;least<sp/>significant<sp/>8<sp/>bits&gt;,<sp/>&lt;most<sp/>significant<sp/>two<sp/>bits&gt;]</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>buffer[0]<sp/>=<sp/>an0<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>buffer[1]<sp/>=<sp/>an0<sp/>&gt;&gt;<sp/>8;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Store<sp/>those<sp/>two<sp/>bytes<sp/>in<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setScratchData(1,<sp/>buffer,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>the<sp/>same<sp/>as<sp/>above:<sp/>split<sp/>A1...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>buffer[0]<sp/>=<sp/>an1<sp/>&amp;<sp/>0xFF;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>buffer[1]<sp/>=<sp/>an1<sp/>&gt;&gt;<sp/>8;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...and<sp/>store<sp/>in<sp/>scratch<sp/>characteristic<sp/>2</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setScratchData(2,<sp/>buffer,<sp/>2);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Sleep<sp/>for<sp/>3<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>If<sp/>you&apos;re<sp/>connected<sp/>to<sp/>this<sp/>Bean<sp/>in<sp/>LightBlue,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>you<sp/>should<sp/>see<sp/>Notify<sp/>events<sp/>firing<sp/>every<sp/>3<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(10000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="170" column="1"/>
@@ -352,7 +405,26 @@
 </parameterlist>
 <simplesect kind="return"><para>Success: always returns true, since all 32-bit numbers are under 20 bytes in length</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Write<sp/>a<sp/>32-bit<sp/>number<sp/>to<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Connect<sp/>to<sp/>Bean<sp/>with<sp/>LightBlue<sp/>to<sp/>view<sp/>the<sp/>hex<sp/>bytes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setScratchNumber(1,<sp/>millis());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Then<sp/>wait<sp/>a<sp/>bit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(250);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>the<sp/>number<sp/>back<sp/>and<sp/>print<sp/>it<sp/>via<sp/>serial</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>number<sp/>=<sp/>Bean.readScratchNumber(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Number:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(number);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Then<sp/>wait<sp/>a<sp/>bit<sp/>and<sp/>try<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(750);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="185" column="1"/>
@@ -379,7 +451,54 @@
 </parameterlist>
 <simplesect kind="return"><para>The contents of the scratch characteristic</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example polls a scratch characteristic and blinks Bean&apos;s LED if the value changes: <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example polls a scratch characteristic and blinks Bean&apos;s LED if the value changes: <programlisting><codeline><highlight class="normal">//<sp/>Holds<sp/>the<sp/>last<sp/>data<sp/>we<sp/>read<sp/>from<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">ScratchData<sp/>lastScratch;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Compare<sp/>two<sp/>ScratchData<sp/>objects.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Return<sp/>true<sp/>if<sp/>they<sp/>contain<sp/>the<sp/>same<sp/>bytes<sp/>in<sp/>the<sp/>same<sp/>order.</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>compareScratch(ScratchData<sp/>*scratch1,<sp/>ScratchData<sp/>*scratch2)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>If<sp/>they<sp/>contain<sp/>different<sp/>numbers<sp/>of<sp/>bytes,<sp/>they<sp/>can&apos;t<sp/>be<sp/>equal,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>so<sp/>return<sp/>false</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(scratch1-&gt;length<sp/>!=<sp/>scratch2-&gt;length)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Compare<sp/>each<sp/>byte<sp/>in<sp/>order<sp/>and<sp/>return<sp/>false<sp/>if<sp/>two<sp/>bytes<sp/>don&apos;t<sp/>match</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>scratch1-&gt;length;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(scratch1-&gt;data[i]<sp/>!=<sp/>scratch2-&gt;data[i])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>If<sp/>we&apos;ve<sp/>gotten<sp/>this<sp/>far,<sp/>every<sp/>byte<sp/>in<sp/>both<sp/>ScratchData<sp/>objects<sp/>matches</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>return<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>need<sp/>to<sp/>set<sp/>anything<sp/>up<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>data<sp/>from<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ScratchData<sp/>thisScratch<sp/>=<sp/>Bean.readScratchData(1);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Compare<sp/>the<sp/>data<sp/>we<sp/>just<sp/>read<sp/>with<sp/>the<sp/>data<sp/>we<sp/>saw<sp/>last<sp/>time</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>matched<sp/>=<sp/>compareScratch(&amp;thisScratch,<sp/>&amp;lastScratch);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Save<sp/>the<sp/>data<sp/>we<sp/>just<sp/>read<sp/>for<sp/>our<sp/>next<sp/>comparison</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lastScratch<sp/>=<sp/>thisScratch;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!matched)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>LED<sp/>to<sp/>green<sp/>for<sp/>1<sp/>second<sp/>if<sp/>the<sp/>data<sp/>has<sp/>changed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Otherwise,<sp/>just<sp/>sleep<sp/>for<sp/>one<sp/>second<sp/>and<sp/>check<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="199" column="1"/>
@@ -405,7 +524,26 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Write<sp/>a<sp/>32-bit<sp/>number<sp/>to<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Connect<sp/>to<sp/>Bean<sp/>with<sp/>LightBlue<sp/>to<sp/>view<sp/>the<sp/>hex<sp/>bytes</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setScratchNumber(1,<sp/>millis());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Then<sp/>wait<sp/>a<sp/>bit</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(250);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>the<sp/>number<sp/>back<sp/>and<sp/>print<sp/>it<sp/>via<sp/>serial</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>number<sp/>=<sp/>Bean.readScratchNumber(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Number:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(number);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Then<sp/>wait<sp/>a<sp/>bit<sp/>and<sp/>try<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(750);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="211" column="1"/>
@@ -437,7 +575,23 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example turns on Bean&apos;s LED, sleeps for one second, turns off Bean&apos;s LED and sleeps for four more seconds, then repeats:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example turns on Bean&apos;s LED, sleeps for one second, turns off Bean&apos;s LED and sleeps for four more seconds, then repeats:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>need<sp/>to<sp/>set<sp/>anything<sp/>up<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Check<sp/>if<sp/>LED<sp/>is<sp/>on</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.getLedGreen()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>LED<sp/>is<sp/>off.<sp/>Turn<sp/>LED<sp/>on<sp/>and<sp/>sleep<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>LED<sp/>is<sp/>on.<sp/>Turn<sp/>LED<sp/>off<sp/>and<sp/>sleep<sp/>for<sp/>4<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(4000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="247" column="1"/>
@@ -488,7 +642,37 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example wakes Bean when a client connects, waits for the client to disconnect, and sleeps on disconnect:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example wakes Bean when a client connects, waits for the client to disconnect, and sleeps on disconnect:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Configure<sp/>Bean<sp/>to<sp/>wake<sp/>up<sp/>when<sp/>a<sp/>client<sp/>connects</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableWakeOnConnect(true);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Loop<sp/>runs<sp/>once<sp/>at<sp/>program<sp/>start.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>When<sp/>a<sp/>client<sp/>connects,<sp/>Bean<sp/>wakes<sp/>up<sp/>and<sp/>runs<sp/>loop<sp/>again.</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Loop<sp/>continues<sp/>to<sp/>run<sp/>as<sp/>long<sp/>as<sp/>a<sp/>client<sp/>is<sp/>connected.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Check<sp/>if<sp/>client<sp/>has<sp/>disconnected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>connected<sp/>=<sp/>Bean.getConnectionState();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(connected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Client<sp/>connected:<sp/>set<sp/>LED<sp/>to<sp/>green</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Client<sp/>disconnected:<sp/>turn<sp/>off<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>sketch<sp/>runs<sp/>only<sp/>when<sp/>a<sp/>client<sp/>is<sp/>connected.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>might<sp/>be<sp/>useful<sp/>for<sp/>interactive<sp/>installations,<sp/>where<sp/>you<sp/>don&apos;t<sp/>want</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Bean<sp/>to<sp/>spend<sp/>any<sp/>power<sp/>unless<sp/>someone<sp/>is<sp/>actively<sp/>connected.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Sleep<sp/>for<sp/>a<sp/>long<sp/>time<sp/>to<sp/>conserve<sp/>power.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>0xFFFFFFFF<sp/>=<sp/>4,294,967,295<sp/>milliseconds<sp/>=<sp/>49<sp/>days</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(0xFFFFFFFF);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="273" column="1"/>
@@ -518,7 +702,28 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example changes Bean&apos;s name based on its temperature:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example changes Bean&apos;s name based on its temperature:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Disable<sp/>writing<sp/>to<sp/>NVRAM<sp/>to<sp/>preserve<sp/>its<sp/>lifespan,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>since<sp/>we<sp/>are<sp/>setting<sp/>a<sp/>new<sp/>Bean<sp/>name<sp/>every<sp/>15<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableConfigSave(false);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Get<sp/>the<sp/>temperature</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>temperature<sp/>=<sp/>Bean.getTemperature();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Build<sp/>a<sp/>new<sp/>name<sp/>for<sp/>Bean<sp/>using<sp/>the<sp/>temperature</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>String<sp/>name<sp/>=<sp/>&quot;Temp<sp/>is<sp/>&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>name<sp/>+=<sp/>temperature;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>name<sp/>+=<sp/>&quot;<sp/>C&quot;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>Bean&apos;s<sp/>new<sp/>name</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setBeanName(name);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Sleep<sp/>for<sp/>15<sp/>seconds,<sp/>then<sp/>read<sp/>the<sp/>temperature<sp/>again</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(15000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="298" column="1"/>
@@ -590,7 +795,21 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example disables advertising for 10 seconds when digital pin 0 is pulled low:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example disables advertising for 10 seconds when digital pin 0 is pulled low:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Configure<sp/>digital<sp/>pin<sp/>0<sp/>as<sp/>an<sp/>input<sp/>in<sp/>pullup<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pinMode(0,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>digital<sp/>pin<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!digitalRead(0))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>D0<sp/>is<sp/>LOW;<sp/>disable<sp/>advertising<sp/>for<sp/>10<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.enableAdvertising(false,<sp/>10000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(1000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="332" column="1"/>
@@ -616,7 +835,24 @@
 </parameteritem>
 </parameterlist>
 <heading level="1">Examples</heading>
-</para><para>This example disables advertising when digital pin 0 is pulled low and enables it otherwise:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example disables advertising when digital pin 0 is pulled low and enables it otherwise:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Configure<sp/>digital<sp/>pin<sp/>0<sp/>as<sp/>an<sp/>input<sp/>in<sp/>pullup<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pinMode(0,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>digital<sp/>pin<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(digitalRead(0))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>D0<sp/>is<sp/>HIGH;<sp/>enable<sp/>advertising</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.enableAdvertising(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>D0<sp/>is<sp/>LOW;<sp/>disable<sp/>advertising</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.enableAdvertising(false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(1000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="347" column="1"/>
@@ -634,7 +870,26 @@
         <detaileddescription>
 <para>Check whether the Bean is currently advertising.</para><para><simplesect kind="return"><para>true if Bean is advertising, false if Bean is not advertising</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example toggles Bean&apos;s advertising every 15 seconds and indicates the current advertising status with the LED:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example toggles Bean&apos;s advertising every 15 seconds and indicates the current advertising status with the LED:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>need<sp/>to<sp/>set<sp/>anything<sp/>up<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>advertising<sp/>=<sp/>Bean.getAdvertisingState();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(advertising)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Bean<sp/>is<sp/>currently<sp/>advertising.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Disable<sp/>advertising<sp/>and<sp/>set<sp/>the<sp/>LED<sp/>to<sp/>red.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Bean<sp/>is<sp/>not<sp/>advertising.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Enable<sp/>advertising<sp/>and<sp/>set<sp/>the<sp/>LED<sp/>to<sp/>green.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(15000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>15<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="361" column="1"/>

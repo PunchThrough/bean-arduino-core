@@ -9,6 +9,9 @@ platformio platforms install atmelavr
 mkdir -p ~/.platformio/boards
 cp tests/resources/platformio/boards/* ~/.platformio/boards/
 
+# Compile once to initialize framework-arduinoavr and ignore errors
+platformio ci --board=uno || true
+
 # Add Punch Through core files
 # packages/framework-arduinoavr may not exist until the first compile happens,
 # so create the directory right away

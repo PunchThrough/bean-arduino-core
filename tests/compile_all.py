@@ -12,7 +12,7 @@ END = '\033[0m'
 compiler_configs = [
     # Adding more boards? Add them to this array:
     # ['platformio', 'ci', '--board=your-board-here'],
-    ['platformio', 'ci', '--board=lightblue-bean'],
+    ['platformio', 'ci', '--board=test-bean'],
 ]
 
 test_sketches = [

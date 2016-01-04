@@ -7,7 +7,7 @@ platformio platforms install atmelavr
 # Add Punch Through boards definition
 # -p: no error if cached /boards already exists
 mkdir -p ~/.platformio/boards
-cp tests/resources/platformio/boards/punchthrough.json ~/.platformio/boards/
+cp tests/resources/platformio/boards/* ~/.platformio/boards/
 
 # Add Punch Through core files
 # packages/framework-arduinoavr may not exist until the first compile happens,

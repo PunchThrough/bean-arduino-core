@@ -467,7 +467,7 @@ class BeanClass {
    *
    *  When the Bean is power cycled, saving to NVRAM is re-enabled.
    *
-   *  @param enableSave true to disable saving to NVRAM, false to enable
+   *  @param enableSave true to enable saving to NVRAM, false to disable
    */
   void enableConfigSave(bool enableSave);
   ///@}

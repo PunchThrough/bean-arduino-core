@@ -93,7 +93,7 @@ class BeanClass {
    *
    *  # Examples
    *  
-   *  This example shows the usage of the getLed() function and how to interperet the return value.
+   *  This example shows the usage of the getLed() function and how to interpret the return value.
    *  @include led/getLed.ino
    */
   LedReading getLed(void);
@@ -280,7 +280,7 @@ class BeanClass {
    *
    *  Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.
    *
-   *  Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see [this guide (TODO: ADD GUIDE + LINK)](#) to clear the sketch stored on Bean.
+   *  Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see [this guide](https://punchthrough.com/bean/guides/help/troubleshooting/#reset-your-bean-s-memory) to clear the sketch stored on Bean.
    */
   ///@{
 

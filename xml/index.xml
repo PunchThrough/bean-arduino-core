@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.10">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
   <compound refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t" kind="struct"><name>ACC_AXES_READING_T</name>
     <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1ae69a9b056f681d3f3822fa9abd829334" kind="variable"><name>axis</name></member>
     <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a66d4a402c79f1769dd23c6e91600862e" kind="variable"><name>reading</name></member>
@@ -289,17 +289,17 @@
   </compound>
   <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
   </compound>
-  <compound refid="dir_cdbddb966737958f18de5b9429ec8e8c" kind="dir"><name>hardware/bean/avr/cores/bean/applicationMessageHeaders</name>
+  <compound refid="dir_f3f581691bd9930acab3f95d022913ff" kind="dir"><name>hardware/bean/avr/cores/bean/applicationMessageHeaders</name>
   </compound>
-  <compound refid="dir_0b8a3016777eb0b36d111dddfd77e2bd" kind="dir"><name>hardware/bean/avr</name>
+  <compound refid="dir_1f61126cded4d41a9b56d2556f5ebe64" kind="dir"><name>hardware/bean/avr</name>
   </compound>
-  <compound refid="dir_872bb8dafa211f18e9a5c66361c0d979" kind="dir"><name>hardware/bean/avr/cores/bean</name>
+  <compound refid="dir_2b1dd4caef0fbc241f52df5abc8b1c90" kind="dir"><name>hardware/bean/avr/cores/bean</name>
   </compound>
-  <compound refid="dir_ad2bbd4e1331d4da8fe7d99c39b7e315" kind="dir"><name>hardware/bean</name>
+  <compound refid="dir_75b9d17f541d2cec944f118512d24c27" kind="dir"><name>hardware/bean</name>
   </compound>
-  <compound refid="dir_7c0989e94326365d72cab52eef71c54c" kind="dir"><name>hardware/bean/avr/cores</name>
+  <compound refid="dir_9013e5660f5083e8da0bdd20b010def7" kind="dir"><name>hardware/bean/avr/cores</name>
   </compound>
-  <compound refid="dir_6b2497a4426993f465e8444ab1a1d969" kind="dir"><name>hardware</name>
+  <compound refid="dir_f4316de2dfb04db90651672103de31d6" kind="dir"><name>hardware</name>
   </compound>
   <compound refid="indexpage" kind="page"><name>index</name>
   </compound>

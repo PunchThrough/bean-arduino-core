@@ -4,11 +4,11 @@
 \begin{Indent}{\bf Accelerometer}\par
 {\em Read acceleration values and configure the accelerometer\textquotesingle{}s sensitivity. }\begin{DoxyCompactItemize}
 \item 
-uint16\+\_\+t \hyperlink{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}{get\+Acceleration\+X} (void)
+uint16\+\_\+t \hyperlink{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}{get\+AccelerationX} (void)
 \item 
-uint16\+\_\+t \hyperlink{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}{get\+Acceleration\+Y} (void)
+uint16\+\_\+t \hyperlink{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}{get\+AccelerationY} (void)
 \item 
-uint16\+\_\+t \hyperlink{class_bean_class_a681df15a2b6952547d536f8faebce802}{get\+Acceleration\+Z} (void)
+uint16\+\_\+t \hyperlink{class_bean_class_a681df15a2b6952547d536f8faebce802}{get\+AccelerationZ} (void)
 \item 
 \hyperlink{struct_a_c_c___r_e_a_d_i_n_g___t}{Acceleration\+Reading} \hyperlink{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{get\+Acceleration} (void)
 \item 
@@ -17,8 +17,8 @@ uint8\+\_\+t \hyperlink{class_bean_class_ad08dec6f240de8a53f110ddf066f6ab2}{get\
 void \hyperlink{class_bean_class_acb8e9a741e2538393256f95d27c4571d}{set\+Acceleration\+Range} (uint8\+\_\+t range)
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}{\bf L\+E\+D}\par
-{\em Set the R\+G\+B L\+E\+D color and check what it\textquotesingle{}s currently showing. }\begin{DoxyCompactItemize}
+\begin{Indent}{\bf L\+ED}\par
+{\em Set the R\+GB L\+ED color and check what it\textquotesingle{}s currently showing. }\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}{set\+Led} (uint8\+\_\+t red, uint8\+\_\+t green, uint8\+\_\+t blue)
 \item 
@@ -38,17 +38,17 @@ void \hyperlink{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}{set\+Led\+Bl
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Scratch}\par
-{\em Read and write arbitrary data using pre-\/defined B\+L\+E characteristics.
+{\em Read and write arbitrary data using pre-\/defined B\+LE characteristics.
 
-Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for arbitrary use by developers. Each characteristic can hold up to 20 bytes due to B\+L\+E restrictions.
+Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for arbitrary use by developers. Each characteristic can hold up to 20 bytes due to B\+LE restrictions.
 
-Scratch characteristics will trigger Notify events on B\+L\+E Central clients when they are changed by Bean\textquotesingle{}s Arduino sketch. Bean sketches must poll to find out when a client changes scratch characteristic data.
+Scratch characteristics will trigger Notify events on B\+LE Central clients when they are changed by Bean\textquotesingle{}s Arduino sketch. Bean sketches must poll to find out when a client changes scratch characteristic data.
 
-Bean and Bean+ have five scratch characteristics. All scratch chars are contained in a single B\+L\+E service.
+Bean and Bean+ have five scratch characteristics. All scratch chars are contained in a single B\+LE service.
 
 
 \begin{DoxyItemize}
-\item {\bfseries Scratch Service U\+U\+I\+D\+:} {\ttfamily a495ff20-\/c5b1-\/4b44-\/b512-\/1370f02d74de}
+\item {\bfseries Scratch Service U\+U\+ID\+:} {\ttfamily a495ff20-\/c5b1-\/4b44-\/b512-\/1370f02d74de}
 \item {\bfseries Scratch Characteristic U\+U\+I\+Ds\+:}
 \begin{DoxyEnumerate}
 \item {\ttfamily a495ff21-\/c5b1-\/4b44-\/b512-\/1370f02d74de}
@@ -81,11 +81,11 @@ void \hyperlink{class_bean_class_a639e425394c820a99025d136dddd3369}{enable\+Wake
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Advertising}\par
-{\em Set and verify the Bean B\+L\+E advertising configuration.
+{\em Set and verify the Bean B\+LE advertising configuration.
 
-Bean makes itself visible to B\+L\+E Central devices by broadcasting B\+L\+E advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.
+Bean makes itself visible to B\+LE Central devices by broadcasting B\+LE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.
 
-Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see \href{#}{\tt this guide (T\+O\+D\+O\+: A\+D\+D G\+U\+I\+D\+E + L\+I\+N\+K)} to clear the sketch stored on Bean. }\begin{DoxyCompactItemize}
+Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see \href{https://punchthrough.com/bean/guides/help/troubleshooting/#reset-your-bean-s-memory}{\tt this guide} to clear the sketch stored on Bean. }\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_bean_class_a32c0dc702c367caf274b72ba4a4cb8a2}{set\+Bean\+Name} (const String \&s)
 \item 
@@ -101,13 +101,13 @@ bool \hyperlink{class_bean_class_a099bbffcf98e71f533f8277ec5274785}{get\+Adverti
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf i\+Beacon}\par
-{\em Let your Bean act as an \href{https://developer.apple.com/ibeacon/}{\tt i\+Beacon}, a way to convey real-\/world location to i\+O\+S devices.
+{\em Let your Bean act as an \href{https://developer.apple.com/ibeacon/}{\tt i\+Beacon}, a way to convey real-\/world location to i\+OS devices.
 
-Bean supports a limited subset of U\+U\+I\+Ds available to i\+Beacon devices. A Bean i\+Beacon U\+U\+I\+D is made up of 16 user-\/configurable bits and 112 preconfigured bits, where {\ttfamily xx} represents a user-\/configurable byte\+:
+Bean supports a limited subset of U\+U\+I\+Ds available to i\+Beacon devices. A Bean i\+Beacon U\+U\+ID is made up of 16 user-\/configurable bits and 112 preconfigured bits, where {\ttfamily xx} represents a user-\/configurable byte\+:
 
-{\ttfamily A495xxxx-\/\+C5\+B1-\/4\+B44-\/\+B512-\/1370\+F02\+D74\+D\+E}
+{\ttfamily A495xxxx-\/\+C5\+B1-\/4\+B44-\/\+B512-\/1370\+F02\+D74\+DE}
 
-Using i\+Beacon features will, by default, write to Bean\textquotesingle{}s N\+V\+R\+A\+M. The N\+V\+R\+A\+M has a limited number of writes. Use {\ttfamily enable\+Config\+Save} to store settings temporarily and conserve N\+V\+R\+A\+M writes. }\begin{DoxyCompactItemize}
+Using i\+Beacon features will, by default, write to Bean\textquotesingle{}s N\+V\+R\+AM. The N\+V\+R\+AM has a limited number of writes. Use {\ttfamily enable\+Config\+Save} to store settings temporarily and conserve N\+V\+R\+AM writes. }\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_bean_class_a3b78a7b755cda9f066104f339638d69c}{set\+Beacon\+Parameters} (uint16\+\_\+t uuid, uint16\+\_\+t major\+\_\+id, uint16\+\_\+t minor\+\_\+id)
 \item 
@@ -129,7 +129,7 @@ int8\+\_\+t \hyperlink{class_bean_class_a711e837c145b51a8e95aa22a3fc9bcf9}{get\+
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Connection}\par
-{\em Work with active B\+L\+E Central devices that connect to Bean. }\begin{DoxyCompactItemize}
+{\em Work with active B\+LE Central devices that connect to Bean. }\begin{DoxyCompactItemize}
 \item 
 void \hyperlink{class_bean_class_a1509dbbc3ddbd08725e2cb65a9289e90}{disconnect} (void)
 \item 
@@ -145,22 +145,22 @@ void \hyperlink{class_bean_class_a2ae5aa1b912ca67715670f1dea865431}{enable\+Conf
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_bean_class_a1509dbbc3ddbd08725e2cb65a9289e90}{}\index{Bean\+Class@{Bean\+Class}!disconnect@{disconnect}}
+\index{Bean\+Class@{Bean\+Class}!disconnect@{disconnect}}
 \index{disconnect@{disconnect}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{disconnect(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::disconnect (
+\subsubsection[{\texorpdfstring{disconnect(void)}{disconnect(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::disconnect (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a1509dbbc3ddbd08725e2cb65a9289e90}
-Terminate the connection between Bean and the connected B\+L\+E Central device. If no Central device is connected, this method does nothing. \hypertarget{class_bean_class_a9bff2d903c4a543ba48f0ac1b392c7cc}{}\index{Bean\+Class@{Bean\+Class}!enable\+Advertising@{enable\+Advertising}}
+)}\hypertarget{class_bean_class_a1509dbbc3ddbd08725e2cb65a9289e90}{}\label{class_bean_class_a1509dbbc3ddbd08725e2cb65a9289e90}
+Terminate the connection between Bean and the connected B\+LE Central device. If no Central device is connected, this method does nothing. \index{Bean\+Class@{Bean\+Class}!enable\+Advertising@{enable\+Advertising}}
 \index{enable\+Advertising@{enable\+Advertising}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{enable\+Advertising(bool enable, uint32\+\_\+t timer)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Advertising (
+\subsubsection[{\texorpdfstring{enable\+Advertising(bool enable, uint32\+\_\+t timer)}{enableAdvertising(bool enable, uint32_t timer)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Advertising (
 \begin{DoxyParamCaption}
 \item[{bool}]{enable, }
 \item[{uint32\+\_\+t}]{timer}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a9bff2d903c4a543ba48f0ac1b392c7cc}
-Enable or disable B\+L\+E advertising for a specific duration.
+)}\hypertarget{class_bean_class_a9bff2d903c4a543ba48f0ac1b392c7cc}{}\label{class_bean_class_a9bff2d903c4a543ba48f0ac1b392c7cc}
+Enable or disable B\+LE advertising for a specific duration.
 
 Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are {\bfseries not} stored in non-\/volatile memory.
 
@@ -192,14 +192,14 @@ This example disables advertising for 10 seconds when digital pin 0 is pulled lo
 13   Bean.sleep(1000);  // Sleep for 1 second
 14 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_ade5d4c6a061eeb6d7897ef4c3b2c26d3}{}\index{Bean\+Class@{Bean\+Class}!enable\+Advertising@{enable\+Advertising}}
+ \index{Bean\+Class@{Bean\+Class}!enable\+Advertising@{enable\+Advertising}}
 \index{enable\+Advertising@{enable\+Advertising}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{enable\+Advertising(bool enable)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Advertising (
+\subsubsection[{\texorpdfstring{enable\+Advertising(bool enable)}{enableAdvertising(bool enable)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Advertising (
 \begin{DoxyParamCaption}
 \item[{bool}]{enable}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ade5d4c6a061eeb6d7897ef4c3b2c26d3}
-Enable or disable B\+L\+E advertising.
+)}\hypertarget{class_bean_class_ade5d4c6a061eeb6d7897ef4c3b2c26d3}{}\label{class_bean_class_ade5d4c6a061eeb6d7897ef4c3b2c26d3}
+Enable or disable B\+LE advertising.
 
 Advertising is automatically enabled when Bean is powered on or resets. Configuration changes made by calling this method are {\bfseries not} stored in non-\/volatile memory.
 
@@ -232,34 +232,34 @@ This example disables advertising when digital pin 0 is pulled low and enables i
 16   Bean.sleep(1000);  // Sleep for 1 second
 17 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a2ae5aa1b912ca67715670f1dea865431}{}\index{Bean\+Class@{Bean\+Class}!enable\+Config\+Save@{enable\+Config\+Save}}
+ \index{Bean\+Class@{Bean\+Class}!enable\+Config\+Save@{enable\+Config\+Save}}
 \index{enable\+Config\+Save@{enable\+Config\+Save}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{enable\+Config\+Save(bool enable\+Save)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Config\+Save (
+\subsubsection[{\texorpdfstring{enable\+Config\+Save(bool enable\+Save)}{enableConfigSave(bool enableSave)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Config\+Save (
 \begin{DoxyParamCaption}
 \item[{bool}]{enable\+Save}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a2ae5aa1b912ca67715670f1dea865431}
-Allows temporary storage of B\+L\+E configuration settings, as opposed to permanent storage in non-\/volatile memory (N\+V\+R\+A\+M).
+)}\hypertarget{class_bean_class_a2ae5aa1b912ca67715670f1dea865431}{}\label{class_bean_class_a2ae5aa1b912ca67715670f1dea865431}
+Allows temporary storage of B\+LE configuration settings, as opposed to permanent storage in non-\/volatile memory (N\+V\+R\+AM).
 
-Bean can only write to N\+V\+R\+A\+M a maximum of 20,000 times. If your sketch changes its advertising configuration frequently, it will quickly use up all of your Bean N\+V\+R\+A\+M\textquotesingle{}s writes. To prevent this, disable saving to N\+V\+R\+A\+M first.
+Bean can only write to N\+V\+R\+AM a maximum of 20,000 times. If your sketch changes its advertising configuration frequently, it will quickly use up all of your Bean N\+V\+R\+AM\textquotesingle{}s writes. To prevent this, disable saving to N\+V\+R\+AM first.
 
-Configurations written while N\+V\+R\+A\+M saving is disabled will persist until the Bean is power cycled.
+Configurations written while N\+V\+R\+AM saving is disabled will persist until the Bean is power cycled.
 
-When the Bean is power cycled, saving to N\+V\+R\+A\+M is re-\/enabled.
+When the Bean is power cycled, saving to N\+V\+R\+AM is re-\/enabled.
 
 
 \begin{DoxyParams}{Parameters}
-{\em enable\+Save} & true to disable saving to N\+V\+R\+A\+M, false to enable \\
+{\em enable\+Save} & true to enable saving to N\+V\+R\+AM, false to disable \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_bean_class_a639e425394c820a99025d136dddd3369}{}\index{Bean\+Class@{Bean\+Class}!enable\+Wake\+On\+Connect@{enable\+Wake\+On\+Connect}}
+\index{Bean\+Class@{Bean\+Class}!enable\+Wake\+On\+Connect@{enable\+Wake\+On\+Connect}}
 \index{enable\+Wake\+On\+Connect@{enable\+Wake\+On\+Connect}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{enable\+Wake\+On\+Connect(bool enable)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Wake\+On\+Connect (
+\subsubsection[{\texorpdfstring{enable\+Wake\+On\+Connect(bool enable)}{enableWakeOnConnect(bool enable)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::enable\+Wake\+On\+Connect (
 \begin{DoxyParamCaption}
 \item[{bool}]{enable}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a639e425394c820a99025d136dddd3369}
-Enable or disable wake on connect. By default, Bean does not wake up when a B\+L\+E client connects.
+)}\hypertarget{class_bean_class_a639e425394c820a99025d136dddd3369}{}\label{class_bean_class_a639e425394c820a99025d136dddd3369}
+Enable or disable wake on connect. By default, Bean does not wake up when a B\+LE client connects.
 
 
 \begin{DoxyParams}{Parameters}
@@ -303,73 +303,73 @@ This example wakes Bean when a client connects, waits for the client to disconne
 29   \}
 30 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration@{get\+Acceleration}}
+ \index{Bean\+Class@{Bean\+Class}!get\+Acceleration@{get\+Acceleration}}
 \index{get\+Acceleration@{get\+Acceleration}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Acceleration\+Reading} Bean\+Class\+::get\+Acceleration (
+\subsubsection[{\texorpdfstring{get\+Acceleration(void)}{getAcceleration(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Acceleration\+Reading} Bean\+Class\+::get\+Acceleration (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}
+)}\hypertarget{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{}\label{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}
 Get the current value of all axes and the current sensitivity setting from the Bean accelerometer.
 
 \begin{DoxyReturn}{Returns}
 an Acceleration\+Reading object containing current acceleration and sensitivity 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_ad08dec6f240de8a53f110ddf066f6ab2}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration\+Range@{get\+Acceleration\+Range}}
+\index{Bean\+Class@{Bean\+Class}!get\+Acceleration\+Range@{get\+Acceleration\+Range}}
 \index{get\+Acceleration\+Range@{get\+Acceleration\+Range}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration\+Range(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Acceleration\+Range (
+\subsubsection[{\texorpdfstring{get\+Acceleration\+Range(void)}{getAccelerationRange(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Acceleration\+Range (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ad08dec6f240de8a53f110ddf066f6ab2}
+)}\hypertarget{class_bean_class_ad08dec6f240de8a53f110ddf066f6ab2}{}\label{class_bean_class_ad08dec6f240de8a53f110ddf066f6ab2}
 Get the current sensitivity setting of the Bean accelerometer.
 
 \begin{DoxyReturn}{Returns}
 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration\+X@{get\+Acceleration\+X}}
-\index{get\+Acceleration\+X@{get\+Acceleration\+X}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration\+X(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+Acceleration\+X (
+\index{Bean\+Class@{Bean\+Class}!get\+AccelerationX@{get\+AccelerationX}}
+\index{get\+AccelerationX@{get\+AccelerationX}!Bean\+Class@{Bean\+Class}}
+\subsubsection[{\texorpdfstring{get\+Acceleration\+X(void)}{getAccelerationX(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+AccelerationX (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}
+)}\hypertarget{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}{}\label{class_bean_class_a00e0acb00c41d234b533a7b41ad047cd}
 Get the current value of the Bean accelerometer X axis.
 
 \begin{DoxyReturn}{Returns}
 a 10-\/bit value corresponding to the current X axis acceleration 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration\+Y@{get\+Acceleration\+Y}}
-\index{get\+Acceleration\+Y@{get\+Acceleration\+Y}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration\+Y(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+Acceleration\+Y (
+\index{Bean\+Class@{Bean\+Class}!get\+AccelerationY@{get\+AccelerationY}}
+\index{get\+AccelerationY@{get\+AccelerationY}!Bean\+Class@{Bean\+Class}}
+\subsubsection[{\texorpdfstring{get\+Acceleration\+Y(void)}{getAccelerationY(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+AccelerationY (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}
+)}\hypertarget{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}{}\label{class_bean_class_a6f10d22cc2d3ed4fcc6a63c19858168f}
 Get the current value of the Bean accelerometer Y axis.
 
 \begin{DoxyReturn}{Returns}
 a 10-\/bit value corresponding to the current Y axis acceleration 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a681df15a2b6952547d536f8faebce802}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration\+Z@{get\+Acceleration\+Z}}
-\index{get\+Acceleration\+Z@{get\+Acceleration\+Z}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration\+Z(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+Acceleration\+Z (
+\index{Bean\+Class@{Bean\+Class}!get\+AccelerationZ@{get\+AccelerationZ}}
+\index{get\+AccelerationZ@{get\+AccelerationZ}!Bean\+Class@{Bean\+Class}}
+\subsubsection[{\texorpdfstring{get\+Acceleration\+Z(void)}{getAccelerationZ(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+AccelerationZ (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a681df15a2b6952547d536f8faebce802}
+)}\hypertarget{class_bean_class_a681df15a2b6952547d536f8faebce802}{}\label{class_bean_class_a681df15a2b6952547d536f8faebce802}
 Get the current value of the Bean accelerometer Z axis.
 
 \begin{DoxyReturn}{Returns}
 a 10-\/bit value corresponding to the current Z axis acceleration 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a099bbffcf98e71f533f8277ec5274785}{}\index{Bean\+Class@{Bean\+Class}!get\+Advertising\+State@{get\+Advertising\+State}}
+\index{Bean\+Class@{Bean\+Class}!get\+Advertising\+State@{get\+Advertising\+State}}
 \index{get\+Advertising\+State@{get\+Advertising\+State}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Advertising\+State(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::get\+Advertising\+State (
+\subsubsection[{\texorpdfstring{get\+Advertising\+State(void)}{getAdvertisingState(void)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::get\+Advertising\+State (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a099bbffcf98e71f533f8277ec5274785}
+)}\hypertarget{class_bean_class_a099bbffcf98e71f533f8277ec5274785}{}\label{class_bean_class_a099bbffcf98e71f533f8277ec5274785}
 Check whether the Bean is currently advertising.
 
 \begin{DoxyReturn}{Returns}
@@ -377,7 +377,7 @@ true if Bean is advertising, false if Bean is not advertising
 \end{DoxyReturn}
 \subsection*{Examples}
 
-This example toggles Bean\textquotesingle{}s advertising every 15 seconds and indicates the current advertising status with the L\+E\+D\+:
+This example toggles Bean\textquotesingle{}s advertising every 15 seconds and indicates the current advertising status with the L\+ED\+:
 
 
 \begin{DoxyCodeInclude}
@@ -401,25 +401,25 @@ This example toggles Bean\textquotesingle{}s advertising every 15 seconds and in
 18   Bean.sleep(15000);  // Sleep for 15 seconds
 19 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_ac21fd79279f5e25c37609ff15e53cea1}{}\index{Bean\+Class@{Bean\+Class}!get\+Battery\+Level@{get\+Battery\+Level}}
+ \index{Bean\+Class@{Bean\+Class}!get\+Battery\+Level@{get\+Battery\+Level}}
 \index{get\+Battery\+Level@{get\+Battery\+Level}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Battery\+Level(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Battery\+Level (
+\subsubsection[{\texorpdfstring{get\+Battery\+Level(void)}{getBatteryLevel(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Battery\+Level (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ac21fd79279f5e25c37609ff15e53cea1}
+)}\hypertarget{class_bean_class_ac21fd79279f5e25c37609ff15e53cea1}{}\label{class_bean_class_ac21fd79279f5e25c37609ff15e53cea1}
 Get the current battery level, in percent.
 
 \begin{DoxyReturn}{Returns}
 a value in the range 0 to 100\+: 0 = 1.\+95 V, 100 = 3.\+53 V 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a862784d57eca8dd368172612e5e792de}{}\index{Bean\+Class@{Bean\+Class}!get\+Battery\+Voltage@{get\+Battery\+Voltage}}
+\index{Bean\+Class@{Bean\+Class}!get\+Battery\+Voltage@{get\+Battery\+Voltage}}
 \index{get\+Battery\+Voltage@{get\+Battery\+Voltage}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Battery\+Voltage(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+Battery\+Voltage (
+\subsubsection[{\texorpdfstring{get\+Battery\+Voltage(void)}{getBatteryVoltage(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Bean\+Class\+::get\+Battery\+Voltage (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a862784d57eca8dd368172612e5e792de}
+)}\hypertarget{class_bean_class_a862784d57eca8dd368172612e5e792de}{}\label{class_bean_class_a862784d57eca8dd368172612e5e792de}
 Get the current battery voltage, in volts.
 
 Accuracy is ±0.01 V.
@@ -427,13 +427,13 @@ Accuracy is ±0.01 V.
 \begin{DoxyReturn}{Returns}
 a value in the range 195 to 353\+: 195 = 1.\+95 V, 353 = 3.\+53 V 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a5b50d48ce0b6ccb3f267d1d7ba660dd3}{}\index{Bean\+Class@{Bean\+Class}!get\+Bean\+Name@{get\+Bean\+Name}}
+\index{Bean\+Class@{Bean\+Class}!get\+Bean\+Name@{get\+Bean\+Name}}
 \index{get\+Bean\+Name@{get\+Bean\+Name}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Bean\+Name(void)}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Bean\+Class\+::get\+Bean\+Name (
+\subsubsection[{\texorpdfstring{get\+Bean\+Name(void)}{getBeanName(void)}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Bean\+Class\+::get\+Bean\+Name (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a5b50d48ce0b6ccb3f267d1d7ba660dd3}
+)}\hypertarget{class_bean_class_a5b50d48ce0b6ccb3f267d1d7ba660dd3}{}\label{class_bean_class_a5b50d48ce0b6ccb3f267d1d7ba660dd3}
 Read the currently-\/advertised name of the Bean.
 
 \begin{DoxyReturn}{Returns}
@@ -446,33 +446,33 @@ This example prints Bean\textquotesingle{}s name to Virtual Serial every two sec
 
 \begin{DoxyCodeInclude}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_ab426b11e8bee60de92707254c0501c20}{}\index{Bean\+Class@{Bean\+Class}!get\+Connection\+State@{get\+Connection\+State}}
+ \index{Bean\+Class@{Bean\+Class}!get\+Connection\+State@{get\+Connection\+State}}
 \index{get\+Connection\+State@{get\+Connection\+State}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Connection\+State(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::get\+Connection\+State (
+\subsubsection[{\texorpdfstring{get\+Connection\+State(void)}{getConnectionState(void)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::get\+Connection\+State (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ab426b11e8bee60de92707254c0501c20}
-Check if any B\+L\+E Central devices are currently connected to Bean.
+)}\hypertarget{class_bean_class_ab426b11e8bee60de92707254c0501c20}{}\label{class_bean_class_ab426b11e8bee60de92707254c0501c20}
+Check if any B\+LE Central devices are currently connected to Bean.
 
 \begin{DoxyReturn}{Returns}
 true if a device is connected, false otherwise 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{}\index{Bean\+Class@{Bean\+Class}!get\+Led@{get\+Led}}
+\index{Bean\+Class@{Bean\+Class}!get\+Led@{get\+Led}}
 \index{get\+Led@{get\+Led}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Led(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Led\+Reading} Bean\+Class\+::get\+Led (
+\subsubsection[{\texorpdfstring{get\+Led(void)}{getLed(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Led\+Reading} Bean\+Class\+::get\+Led (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}
-Get current intensity values for the color channels of the Bean R\+G\+B L\+E\+D.
+)}\hypertarget{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{}\label{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}
+Get current intensity values for the color channels of the Bean R\+GB L\+ED.
 
 \begin{DoxyReturn}{Returns}
 {\ttfamily Led\+Reading} struct that contains an integer representation of each color.
 \end{DoxyReturn}
 \subsection*{Examples}
 
-This example shows the usage of the \hyperlink{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{get\+Led()} function and how to interperet the return value. 
+This example shows the usage of the \hyperlink{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{get\+Led()} function and how to interpret the return value. 
 \begin{DoxyCodeInclude}
 1 void setup() \{
 2   Serial.begin(57600);  // Initialize serial port
@@ -489,49 +489,49 @@ This example shows the usage of the \hyperlink{class_bean_class_ab73794fbf27d029
 13   Bean.sleep(2000);
 14 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a8dcd68a87dc75dd0fe912483cc05fa43}{}\index{Bean\+Class@{Bean\+Class}!get\+Led\+Blue@{get\+Led\+Blue}}
+ \index{Bean\+Class@{Bean\+Class}!get\+Led\+Blue@{get\+Led\+Blue}}
 \index{get\+Led\+Blue@{get\+Led\+Blue}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Led\+Blue(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Blue (
+\subsubsection[{\texorpdfstring{get\+Led\+Blue(void)}{getLedBlue(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Blue (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a8dcd68a87dc75dd0fe912483cc05fa43}
-Get intensity of the blue channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_a5619292a562731e94f97e93432ab3639}{}\index{Bean\+Class@{Bean\+Class}!get\+Led\+Green@{get\+Led\+Green}}
+)}\hypertarget{class_bean_class_a8dcd68a87dc75dd0fe912483cc05fa43}{}\label{class_bean_class_a8dcd68a87dc75dd0fe912483cc05fa43}
+Get intensity of the blue channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!get\+Led\+Green@{get\+Led\+Green}}
 \index{get\+Led\+Green@{get\+Led\+Green}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Led\+Green(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Green (
+\subsubsection[{\texorpdfstring{get\+Led\+Green(void)}{getLedGreen(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Green (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a5619292a562731e94f97e93432ab3639}
-Get intensity of the green channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_aea8736bf91c03de609233ddb270fb77d}{}\index{Bean\+Class@{Bean\+Class}!get\+Led\+Red@{get\+Led\+Red}}
+)}\hypertarget{class_bean_class_a5619292a562731e94f97e93432ab3639}{}\label{class_bean_class_a5619292a562731e94f97e93432ab3639}
+Get intensity of the green channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!get\+Led\+Red@{get\+Led\+Red}}
 \index{get\+Led\+Red@{get\+Led\+Red}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Led\+Red(void)}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Red (
+\subsubsection[{\texorpdfstring{get\+Led\+Red(void)}{getLedRed(void)}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Bean\+Class\+::get\+Led\+Red (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_aea8736bf91c03de609233ddb270fb77d}
-Get intensity of the red channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_a711e837c145b51a8e95aa22a3fc9bcf9}{}\index{Bean\+Class@{Bean\+Class}!get\+Temperature@{get\+Temperature}}
+)}\hypertarget{class_bean_class_aea8736bf91c03de609233ddb270fb77d}{}\label{class_bean_class_aea8736bf91c03de609233ddb270fb77d}
+Get intensity of the red channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!get\+Temperature@{get\+Temperature}}
 \index{get\+Temperature@{get\+Temperature}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Temperature(void)}]{\setlength{\rightskip}{0pt plus 5cm}int8\+\_\+t Bean\+Class\+::get\+Temperature (
+\subsubsection[{\texorpdfstring{get\+Temperature(void)}{getTemperature(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int8\+\_\+t Bean\+Class\+::get\+Temperature (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a711e837c145b51a8e95aa22a3fc9bcf9}
+)}\hypertarget{class_bean_class_a711e837c145b51a8e95aa22a3fc9bcf9}{}\label{class_bean_class_a711e837c145b51a8e95aa22a3fc9bcf9}
 Get the current temperature of the Bean, in degrees Celsius. The Bean uses the B\+M\+A250 (\href{http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf}{\tt datasheet}) for temperature readings.
 
 \begin{DoxyReturn}{Returns}
 temperature, between -\/40 and 88 degrees Celsius 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_abbd5ae43b98270dfc94b98b2ecd66281}{}\index{Bean\+Class@{Bean\+Class}!keep\+Awake@{keep\+Awake}}
+\index{Bean\+Class@{Bean\+Class}!keep\+Awake@{keep\+Awake}}
 \index{keep\+Awake@{keep\+Awake}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{keep\+Awake(bool enable)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::keep\+Awake (
+\subsubsection[{\texorpdfstring{keep\+Awake(bool enable)}{keepAwake(bool enable)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::keep\+Awake (
 \begin{DoxyParamCaption}
 \item[{bool}]{enable}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_abbd5ae43b98270dfc94b98b2ecd66281}
+)}\hypertarget{class_bean_class_abbd5ae43b98270dfc94b98b2ecd66281}{}\label{class_bean_class_abbd5ae43b98270dfc94b98b2ecd66281}
 Enable or disable keep-\/awake mode.
 
-By default, the Bean radio sleeps frequently to conserve power. Enabling keep-\/awake forces the L\+B\+M into wake mode and decreases latency between the L\+B\+M313 and the A\+Tmega.
+By default, the Bean radio sleeps frequently to conserve power. Enabling keep-\/awake forces the L\+BM into wake mode and decreases latency between the L\+B\+M313 and the A\+Tmega.
 
 This may be useful if you are having trouble with latency between an event and a Bluetooth transmission\+: for example, to decrease the time between Bean reading a pin change event and sending a Bluetooth message.
 
@@ -542,13 +542,13 @@ Enabling keep-\/awake may signficantly decrease battery life. Use with caution.
 {\em true} & to enable keep-\/awake, false to disable \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_bean_class_af5b9029cc816e5ce21263be975aa6050}{}\index{Bean\+Class@{Bean\+Class}!read\+Scratch\+Data@{read\+Scratch\+Data}}
+\index{Bean\+Class@{Bean\+Class}!read\+Scratch\+Data@{read\+Scratch\+Data}}
 \index{read\+Scratch\+Data@{read\+Scratch\+Data}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{read\+Scratch\+Data(uint8\+\_\+t bank)}]{\setlength{\rightskip}{0pt plus 5cm}Scratch\+Data Bean\+Class\+::read\+Scratch\+Data (
+\subsubsection[{\texorpdfstring{read\+Scratch\+Data(uint8\+\_\+t bank)}{readScratchData(uint8_t bank)}}]{\setlength{\rightskip}{0pt plus 5cm}Scratch\+Data Bean\+Class\+::read\+Scratch\+Data (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{bank}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_af5b9029cc816e5ce21263be975aa6050}
+)}\hypertarget{class_bean_class_af5b9029cc816e5ce21263be975aa6050}{}\label{class_bean_class_af5b9029cc816e5ce21263be975aa6050}
 Read the data from a scratch characteristic.
 
 
@@ -561,7 +561,7 @@ The contents of the scratch characteristic
 \end{DoxyReturn}
 \subsection*{Examples}
 
-This example polls a scratch characteristic and blinks Bean\textquotesingle{}s L\+E\+D if the value changes\+: 
+This example polls a scratch characteristic and blinks Bean\textquotesingle{}s L\+ED if the value changes\+: 
 \begin{DoxyCodeInclude}
 1 // Holds the last data we read from scratch characteristic 1
 2 ScratchData lastScratch;
@@ -611,13 +611,13 @@ This example polls a scratch characteristic and blinks Bean\textquotesingle{}s L
 46   \}
 47 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a4c835abe680607ce956af4f7fa965a20}{}\index{Bean\+Class@{Bean\+Class}!read\+Scratch\+Number@{read\+Scratch\+Number}}
+ \index{Bean\+Class@{Bean\+Class}!read\+Scratch\+Number@{read\+Scratch\+Number}}
 \index{read\+Scratch\+Number@{read\+Scratch\+Number}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{read\+Scratch\+Number(uint8\+\_\+t bank)}]{\setlength{\rightskip}{0pt plus 5cm}long Bean\+Class\+::read\+Scratch\+Number (
+\subsubsection[{\texorpdfstring{read\+Scratch\+Number(uint8\+\_\+t bank)}{readScratchNumber(uint8_t bank)}}]{\setlength{\rightskip}{0pt plus 5cm}long Bean\+Class\+::read\+Scratch\+Number (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{bank}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a4c835abe680607ce956af4f7fa965a20}
+)}\hypertarget{class_bean_class_a4c835abe680607ce956af4f7fa965a20}{}\label{class_bean_class_a4c835abe680607ce956af4f7fa965a20}
 Read a 32-\/bit (four-\/byte) value from a scratch characteristic.
 
 
@@ -649,13 +649,13 @@ This example writes a value to and reads a value from a scratch characteristic\+
 18   Bean.sleep(750);
 19 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_acb8e9a741e2538393256f95d27c4571d}{}\index{Bean\+Class@{Bean\+Class}!set\+Acceleration\+Range@{set\+Acceleration\+Range}}
+ \index{Bean\+Class@{Bean\+Class}!set\+Acceleration\+Range@{set\+Acceleration\+Range}}
 \index{set\+Acceleration\+Range@{set\+Acceleration\+Range}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Acceleration\+Range(uint8\+\_\+t range)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Acceleration\+Range (
+\subsubsection[{\texorpdfstring{set\+Acceleration\+Range(uint8\+\_\+t range)}{setAccelerationRange(uint8_t range)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Acceleration\+Range (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{range}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_acb8e9a741e2538393256f95d27c4571d}
+)}\hypertarget{class_bean_class_acb8e9a741e2538393256f95d27c4571d}{}\label{class_bean_class_acb8e9a741e2538393256f95d27c4571d}
 Configure the sensitivity of the Bean accelerometer.
 
 
@@ -663,20 +663,20 @@ Configure the sensitivity of the Bean accelerometer.
 {\em range} & 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_bean_class_a41412684c0f01f06f260fb1e724475d9}{}\index{Bean\+Class@{Bean\+Class}!set\+Advertising\+Interval@{set\+Advertising\+Interval}}
+\index{Bean\+Class@{Bean\+Class}!set\+Advertising\+Interval@{set\+Advertising\+Interval}}
 \index{set\+Advertising\+Interval@{set\+Advertising\+Interval}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Advertising\+Interval(uint16\+\_\+t interval\+\_\+ms)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Advertising\+Interval (
+\subsubsection[{\texorpdfstring{set\+Advertising\+Interval(uint16\+\_\+t interval\+\_\+ms)}{setAdvertisingInterval(uint16_t interval_ms)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Advertising\+Interval (
 \begin{DoxyParamCaption}
 \item[{uint16\+\_\+t}]{interval\+\_\+ms}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a41412684c0f01f06f260fb1e724475d9}
-Needs docs \hypertarget{class_bean_class_a354e2ff36d0e101b35255bae0a5e33ca}{}\index{Bean\+Class@{Bean\+Class}!set\+Beacon\+Enable@{set\+Beacon\+Enable}}
+)}\hypertarget{class_bean_class_a41412684c0f01f06f260fb1e724475d9}{}\label{class_bean_class_a41412684c0f01f06f260fb1e724475d9}
+Needs docs \index{Bean\+Class@{Bean\+Class}!set\+Beacon\+Enable@{set\+Beacon\+Enable}}
 \index{set\+Beacon\+Enable@{set\+Beacon\+Enable}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Beacon\+Enable(bool beacon\+Enable)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Beacon\+Enable (
+\subsubsection[{\texorpdfstring{set\+Beacon\+Enable(bool beacon\+Enable)}{setBeaconEnable(bool beaconEnable)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Beacon\+Enable (
 \begin{DoxyParamCaption}
 \item[{bool}]{beacon\+Enable}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a354e2ff36d0e101b35255bae0a5e33ca}
+)}\hypertarget{class_bean_class_a354e2ff36d0e101b35255bae0a5e33ca}{}\label{class_bean_class_a354e2ff36d0e101b35255bae0a5e33ca}
 Enable or disable i\+Beacon functionality.
 
 
@@ -684,34 +684,34 @@ Enable or disable i\+Beacon functionality.
 {\em beacon\+Enable} & true to enable i\+Beacon, false to disable \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_bean_class_a3b78a7b755cda9f066104f339638d69c}{}\index{Bean\+Class@{Bean\+Class}!set\+Beacon\+Parameters@{set\+Beacon\+Parameters}}
+\index{Bean\+Class@{Bean\+Class}!set\+Beacon\+Parameters@{set\+Beacon\+Parameters}}
 \index{set\+Beacon\+Parameters@{set\+Beacon\+Parameters}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Beacon\+Parameters(uint16\+\_\+t uuid, uint16\+\_\+t major\+\_\+id, uint16\+\_\+t minor\+\_\+id)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Beacon\+Parameters (
+\subsubsection[{\texorpdfstring{set\+Beacon\+Parameters(uint16\+\_\+t uuid, uint16\+\_\+t major\+\_\+id, uint16\+\_\+t minor\+\_\+id)}{setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Beacon\+Parameters (
 \begin{DoxyParamCaption}
 \item[{uint16\+\_\+t}]{uuid, }
 \item[{uint16\+\_\+t}]{major\+\_\+id, }
 \item[{uint16\+\_\+t}]{minor\+\_\+id}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a3b78a7b755cda9f066104f339638d69c}
-Configure Bean\textquotesingle{}s i\+Beacon U\+U\+I\+D, major I\+D, and minor I\+D. Each of these parameters, {\bfseries including U\+U\+I\+D}, takes 16-\/bit unsigned values. For more information on U\+U\+I\+D, major, and minor values, see \href{https://support.kontakt.io/hc/en-gb/articles/201620741-iBeacon-Parameters-UUID-Major-and-Minor}{\tt this i\+Beacon F\+A\+Q}.
+)}\hypertarget{class_bean_class_a3b78a7b755cda9f066104f339638d69c}{}\label{class_bean_class_a3b78a7b755cda9f066104f339638d69c}
+Configure Bean\textquotesingle{}s i\+Beacon U\+U\+ID, major ID, and minor ID. Each of these parameters, {\bfseries including U\+U\+ID}, takes 16-\/bit unsigned values. For more information on U\+U\+ID, major, and minor values, see \href{https://support.kontakt.io/hc/en-gb/articles/201620741-iBeacon-Parameters-UUID-Major-and-Minor}{\tt this i\+Beacon F\+AQ}.
 
 
 \begin{DoxyParams}{Parameters}
-{\em uuid} & The 16-\/bit value used to set part of the i\+Beacon U\+U\+I\+D. For example\+: Passing {\ttfamily 0x\+A\+B\+C\+D} to {\ttfamily uuid} will set the Bean\textquotesingle{}s U\+U\+I\+D to {\ttfamily A495\+A\+B\+C\+D-\/\+C5\+B1-\/4\+B44-\/\+B512-\/1370\+F02\+D74\+D\+E}. \\
+{\em uuid} & The 16-\/bit value used to set part of the i\+Beacon U\+U\+ID. For example\+: Passing {\ttfamily 0x\+A\+B\+CD} to {\ttfamily uuid} will set the Bean\textquotesingle{}s U\+U\+ID to {\ttfamily A495\+A\+B\+C\+D-\/\+C5\+B1-\/4\+B44-\/\+B512-\/1370\+F02\+D74\+DE}. \\
 \hline
-{\em major\+\_\+id} & The major I\+D of the i\+Beacon \\
+{\em major\+\_\+id} & The major ID of the i\+Beacon \\
 \hline
-{\em major\+\_\+id} & The minor I\+D of the i\+Beacon \\
+{\em major\+\_\+id} & The minor ID of the i\+Beacon \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_bean_class_a32c0dc702c367caf274b72ba4a4cb8a2}{}\index{Bean\+Class@{Bean\+Class}!set\+Bean\+Name@{set\+Bean\+Name}}
+\index{Bean\+Class@{Bean\+Class}!set\+Bean\+Name@{set\+Bean\+Name}}
 \index{set\+Bean\+Name@{set\+Bean\+Name}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Bean\+Name(const String \&s)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Bean\+Name (
+\subsubsection[{\texorpdfstring{set\+Bean\+Name(const String \&s)}{setBeanName(const String &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Bean\+Name (
 \begin{DoxyParamCaption}
 \item[{const String \&}]{s}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a32c0dc702c367caf274b72ba4a4cb8a2}
-Set the advertising name of the Bean. B\+L\+E advertising names are truncated at 20 bytes.
+)}\hypertarget{class_bean_class_a32c0dc702c367caf274b72ba4a4cb8a2}{}\label{class_bean_class_a32c0dc702c367caf274b72ba4a4cb8a2}
+Set the advertising name of the Bean. B\+LE advertising names are truncated at 20 bytes.
 
 
 \begin{DoxyParams}{Parameters}
@@ -746,20 +746,20 @@ This example changes Bean\textquotesingle{}s name based on its temperature\+:
 20   Bean.sleep(15000);
 21 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}{}\index{Bean\+Class@{Bean\+Class}!set\+Led@{set\+Led}}
+ \index{Bean\+Class@{Bean\+Class}!set\+Led@{set\+Led}}
 \index{set\+Led@{set\+Led}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Led(uint8\+\_\+t red, uint8\+\_\+t green, uint8\+\_\+t blue)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led (
+\subsubsection[{\texorpdfstring{set\+Led(uint8\+\_\+t red, uint8\+\_\+t green, uint8\+\_\+t blue)}{setLed(uint8_t red, uint8_t green, uint8_t blue)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{red, }
 \item[{uint8\+\_\+t}]{green, }
 \item[{uint8\+\_\+t}]{blue}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}
-Set intensity values for the color channels of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on.
+)}\hypertarget{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}{}\label{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}
+Set intensity values for the color channels of the Bean R\+GB L\+ED. 0 is off and 255 is on.
 
 \subsection*{Examples}
 
-This example sets the L\+E\+D to white (all channels on, full intensity)\+: 
+This example sets the L\+ED to white (all channels on, full intensity)\+: 
 \begin{DoxyCodeInclude}
 1 void setup() \{
 2   Bean.setLed(255, 255, 255);
@@ -769,37 +769,37 @@ This example sets the L\+E\+D to white (all channels on, full intensity)\+:
 6   Bean.sleep(1000);
 7 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}{}\index{Bean\+Class@{Bean\+Class}!set\+Led\+Blue@{set\+Led\+Blue}}
+ \index{Bean\+Class@{Bean\+Class}!set\+Led\+Blue@{set\+Led\+Blue}}
 \index{set\+Led\+Blue@{set\+Led\+Blue}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Led\+Blue(uint8\+\_\+t intensity)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Blue (
+\subsubsection[{\texorpdfstring{set\+Led\+Blue(uint8\+\_\+t intensity)}{setLedBlue(uint8_t intensity)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Blue (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{intensity}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}
-Set intensity of the blue channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_ae1955c0312d1fa90bfeb847dada48c8c}{}\index{Bean\+Class@{Bean\+Class}!set\+Led\+Green@{set\+Led\+Green}}
+)}\hypertarget{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}{}\label{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}
+Set intensity of the blue channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!set\+Led\+Green@{set\+Led\+Green}}
 \index{set\+Led\+Green@{set\+Led\+Green}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Led\+Green(uint8\+\_\+t intensity)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Green (
+\subsubsection[{\texorpdfstring{set\+Led\+Green(uint8\+\_\+t intensity)}{setLedGreen(uint8_t intensity)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Green (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{intensity}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_ae1955c0312d1fa90bfeb847dada48c8c}
-Set intensity of the green channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_adfc2642320c53819c83bbaa59bbcef9b}{}\index{Bean\+Class@{Bean\+Class}!set\+Led\+Red@{set\+Led\+Red}}
+)}\hypertarget{class_bean_class_ae1955c0312d1fa90bfeb847dada48c8c}{}\label{class_bean_class_ae1955c0312d1fa90bfeb847dada48c8c}
+Set intensity of the green channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!set\+Led\+Red@{set\+Led\+Red}}
 \index{set\+Led\+Red@{set\+Led\+Red}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Led\+Red(uint8\+\_\+t intensity)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Red (
+\subsubsection[{\texorpdfstring{set\+Led\+Red(uint8\+\_\+t intensity)}{setLedRed(uint8_t intensity)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Led\+Red (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{intensity}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_adfc2642320c53819c83bbaa59bbcef9b}
-Set intensity of the red channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 is on. \hypertarget{class_bean_class_a6a8c9b33ada6cc7da1d9229dd0d7849e}{}\index{Bean\+Class@{Bean\+Class}!set\+Scratch\+Data@{set\+Scratch\+Data}}
+)}\hypertarget{class_bean_class_adfc2642320c53819c83bbaa59bbcef9b}{}\label{class_bean_class_adfc2642320c53819c83bbaa59bbcef9b}
+Set intensity of the red channel of the Bean R\+GB L\+ED. 0 is off and 255 is on. \index{Bean\+Class@{Bean\+Class}!set\+Scratch\+Data@{set\+Scratch\+Data}}
 \index{set\+Scratch\+Data@{set\+Scratch\+Data}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Scratch\+Data(uint8\+\_\+t bank, const uint8\+\_\+t $\ast$data, uint8\+\_\+t data\+Length)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::set\+Scratch\+Data (
+\subsubsection[{\texorpdfstring{set\+Scratch\+Data(uint8\+\_\+t bank, const uint8\+\_\+t $\ast$data, uint8\+\_\+t data\+Length)}{setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::set\+Scratch\+Data (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{bank, }
 \item[{const uint8\+\_\+t $\ast$}]{data, }
 \item[{uint8\+\_\+t}]{data\+Length}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a6a8c9b33ada6cc7da1d9229dd0d7849e}
-Set the data in a scratch characteristic. Triggers a B\+L\+E Notify event for connected clients.
+)}\hypertarget{class_bean_class_a6a8c9b33ada6cc7da1d9229dd0d7849e}{}\label{class_bean_class_a6a8c9b33ada6cc7da1d9229dd0d7849e}
+Set the data in a scratch characteristic. Triggers a B\+LE Notify event for connected clients.
 
 
 \begin{DoxyParams}{Parameters}
@@ -850,15 +850,15 @@ This example reads two of Bean\textquotesingle{}s analog pins and writes the val
 31   Bean.sleep(10000);
 32 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a74e7107c64bec91d676cdd534ac6bb4d}{}\index{Bean\+Class@{Bean\+Class}!set\+Scratch\+Number@{set\+Scratch\+Number}}
+ \index{Bean\+Class@{Bean\+Class}!set\+Scratch\+Number@{set\+Scratch\+Number}}
 \index{set\+Scratch\+Number@{set\+Scratch\+Number}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{set\+Scratch\+Number(uint8\+\_\+t bank, uint32\+\_\+t data)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::set\+Scratch\+Number (
+\subsubsection[{\texorpdfstring{set\+Scratch\+Number(uint8\+\_\+t bank, uint32\+\_\+t data)}{setScratchNumber(uint8_t bank, uint32_t data)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Class\+::set\+Scratch\+Number (
 \begin{DoxyParamCaption}
 \item[{uint8\+\_\+t}]{bank, }
 \item[{uint32\+\_\+t}]{data}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a74e7107c64bec91d676cdd534ac6bb4d}
-Write a 32-\/bit (four-\/byte) value into a scratch characteristic. Triggers a B\+L\+E Notify event for connected clients.
+)}\hypertarget{class_bean_class_a74e7107c64bec91d676cdd534ac6bb4d}{}\label{class_bean_class_a74e7107c64bec91d676cdd534ac6bb4d}
+Write a 32-\/bit (four-\/byte) value into a scratch characteristic. Triggers a B\+LE Notify event for connected clients.
 
 
 \begin{DoxyParams}{Parameters}
@@ -894,13 +894,13 @@ This example writes a value to and reads a value from a scratch characteristic\+
 18   Bean.sleep(750);
 19 \}
 \end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}{}\index{Bean\+Class@{Bean\+Class}!sleep@{sleep}}
+ \index{Bean\+Class@{Bean\+Class}!sleep@{sleep}}
 \index{sleep@{sleep}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{sleep(uint32\+\_\+t duration\+\_\+ms)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::sleep (
+\subsubsection[{\texorpdfstring{sleep(uint32\+\_\+t duration\+\_\+ms)}{sleep(uint32_t duration_ms)}}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::sleep (
 \begin{DoxyParamCaption}
 \item[{uint32\+\_\+t}]{duration\+\_\+ms}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}
+)}\hypertarget{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}{}\label{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}
 Sleep for a period of time.
 
 This method puts the A\+Tmega chip to sleep until it is woken by the L\+B\+M313 at the requested time.
@@ -928,7 +928,7 @@ For more information on low-\/power mode on the A\+Tmega328, check out this \hre
 \end{DoxyParams}
 \subsection*{Examples}
 
-This example turns on Bean\textquotesingle{}s L\+E\+D, sleeps for one second, turns off Bean\textquotesingle{}s L\+E\+D and sleeps for four more seconds, then repeats\+:
+This example turns on Bean\textquotesingle{}s L\+ED, sleeps for one second, turns off Bean\textquotesingle{}s L\+ED and sleeps for four more seconds, then repeats\+:
 
 
 \begin{DoxyCodeInclude}

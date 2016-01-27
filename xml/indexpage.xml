@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
-    <title>Bean Arduino Firmware</title>
+    <title>Bean - A BLE Arduino By Punch Through Design</title>
     <detaileddescription>
 <para><heading level="2">Repo Overview </heading>
 </para><para>This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.</para><para><heading level="3">TODO:</heading>

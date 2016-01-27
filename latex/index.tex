@@ -1,14 +1,14 @@
 \subsection*{Repo Overview }
 
-This repo contains the Arduino firmware and installation files used in the Light\+Blue Bean project. The firmware files are based off of the Arduino firmware release version 1.\+0.\+5 and have been modified to work on the Light\+Blue Bean, a system that has on it a few other features, a B\+L\+E radio an accelerometer and a multicolor L\+E\+D.
+This repo contains the Arduino firmware and installation files used in the Light\+Blue Bean project. The firmware files are based off of the Arduino firmware release version 1.\+0.\+5 and have been modified to work on the Light\+Blue Bean, a system that has on it a few other features, a B\+LE radio an accelerometer and a multicolor L\+ED.
 
-\subsubsection*{T\+O\+D\+O\+:}
+\subsubsection*{T\+O\+DO\+:}
 
 
 \begin{DoxyItemize}
-\item Add note to this doc regarding F\+U\+S\+E\+S (!! B\+O\+D)
+\item Add note to this doc regarding F\+U\+S\+ES (!! B\+OD)
 \item Fix Serial.\+println so, like Serial.\+print, extra radio messages arn\textquotesingle{}t sent for the newline
-\item Add proper doxygen comments to relelvent parts, especially the A\+P\+I
+\item Add proper doxygen comments to relelvent parts, especially the A\+PI
 \item Add features to emulator to provide better, more useful testing
 \item Add more and better examples
 \end{DoxyItemize}
@@ -17,7 +17,7 @@ This repo contains the Arduino firmware and installation files used in the Light
 
 We\textquotesingle{}re going to need to set some fuses for our part in the factory. The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.
 
-At the time of writing, I don\textquotesingle{}t have a programmer at my disposal. However the steps taken should be the We write the fuse settings here\+: X\+X X\+X X\+X
+At the time of writing, I don\textquotesingle{}t have a programmer at my disposal. However the steps taken should be the We write the fuse settings here\+: XX XX XX
 
 Steps\+:
 
@@ -26,30 +26,30 @@ Steps\+:
 \item Install avrdude. I used \mbox{[}\href{http://www.obdev.at/products/crosspack/index.html}{\tt http\+://www.\+obdev.\+at/products/crosspack/index.\+html}\mbox{]}(Cross\+Pack) to do this.
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
-\item Read the fuses from an off the shelf Arduino\+Pro. Use this command after avrdude is in your path\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/\+U lfuse\+:r\+:-\/\+:h -\/\+U hfuse\+:r\+:-\/\+:h -\/\+U efuse\+:r\+:-\/\+:h -\/\+U lock\+:r\+:-\/\+:h}
+\item Read the fuses from an off the shelf Arduino\+Pro. Use this command after avrdude is in your path\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/U lfuse\+:r\+:-\/\+:h -\/U hfuse\+:r\+:-\/\+:h -\/U efuse\+:r\+:-\/\+:h -\/U lock\+:r\+:-\/\+:h}
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
 \item Go to \mbox{[}\href{http://www.engbedded.com/fusecalc/}{\tt http\+://www.\+engbedded.\+com/fusecalc/}\mbox{]}(The Avr Fuse Calculator) and enter in the current state of the fuses
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
-\item Turn off Brown Out Detection (B\+O\+D).
+\item Turn off Brown Out Detection (B\+OD).
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
 \item Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
-\item Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/\+U lfuse\+:w\+:0xee\+:m -\/\+U hfuse\+:w\+:0xdc\+:m -\/\+U efuse\+:w\+:0xff\+:m})
+\item Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/U lfuse\+:w\+:0xee\+:m -\/U hfuse\+:w\+:0xdc\+:m -\/U efuse\+:w\+:0xff\+:m})
 \end{DoxyEnumerate}
 
 \subsubsection*{Key Files\+:}
 
 \paragraph*{Everything in the {\ttfamily hardware} directory}
 
-The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the Light\+Blue Bean, as well as the files needed for the Arduino I\+D\+E to recognize the board allow users to program it.
+The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the Light\+Blue Bean, as well as the files needed for the Arduino I\+DE to recognize the board allow users to program it.
 
 \paragraph*{Everything in the {\ttfamily examples} directory}
 
-The contents of the examples directory should be copied separately on install to the examples resources in the Arduino I\+D\+E.
+The contents of the examples directory should be copied separately on install to the examples resources in the Arduino I\+DE.
 
 \paragraph*{Everything in the {\ttfamily bean\+Module\+Emulator} directory}
 
@@ -67,17 +67,17 @@ There are a few python library dependencies you\textquotesingle{}ll need to make
 \item enum
 \end{DoxyItemize}
 
-The emulator has been tested with python 2.\+7.\+6 installed by Homebrew on O\+S\+X
+The emulator has been tested with python 2.\+7.\+6 installed by Homebrew on O\+SX
 
 \subsubsection*{Development\+:}
 
-During development, it is recommended to use soft links from inside your Arduino I\+D\+E resources to your repository. It will make it easier to test your work.
+During development, it is recommended to use soft links from inside your Arduino I\+DE resources to your repository. It will make it easier to test your work.
 
 \subsubsection*{Repo Setup\+:}
 
 This repository uses git submodules and requires a few extra steps for cloning and pulling. \paragraph*{Clone}
 
-git clone R\+E\+P\+O\+\_\+\+U\+R\+L --recursive
+git clone R\+E\+P\+O\+\_\+\+U\+RL --recursive
 
 \paragraph*{Initialize Submodules}
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="class_bean_class" kind="class" language="C++" prot="public">
     <compoundname>BeanClass</compoundname>
       <sectiondef kind="user-defined">
@@ -165,7 +165,7 @@
         <detaileddescription>
 <para>Get current intensity values for the color channels of the Bean RGB LED.</para><para><simplesect kind="return"><para><computeroutput>LedReading</computeroutput> struct that contains an integer representation of each color.</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interperet the return value. <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interpret the return value. <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);<sp/><sp/>//<sp/>Initialize<sp/>serial<sp/>port</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
@@ -680,7 +680,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Advertising</header>
-      <description><para>Set and verify the Bean BLE advertising configuration.</para><para>Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.</para><para>Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see <ulink url="#">this guide (TODO: ADD GUIDE + LINK)</ulink> to clear the sketch stored on Bean. </para></description>
+      <description><para>Set and verify the Bean BLE advertising configuration.</para><para>Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.</para><para>Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see <ulink url="https://punchthrough.com/bean/guides/help/troubleshooting/#reset-your-bean-s-memory">this guide</ulink> to clear the sketch stored on Bean. </para></description>
       <memberdef kind="function" id="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void BeanClass::setBeanName</definition>
@@ -1087,7 +1087,7 @@
 <parametername>enableSave</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true to disable saving to NVRAM, false to enable </para></parameterdescription>
+<para>true to enable saving to NVRAM, false to disable </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>

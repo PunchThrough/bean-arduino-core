@@ -1,24 +1,22 @@
-# [Bean](https://punchthrough.com/bean) Arduino Core
+# LightBlue Bean Arduino Core
 
-This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.
+This repo contains the Arduino firmware and installation files used in the [LightBlue Bean](https://punchthrough.com/bean) project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean. Bean has components that include a BLE radio, an accelerometer, and a multicolor LED.
 
-# Docs
-
-[Reference docs for the latest release are available at punchthrough.com.](https://punchthrough.com/bean/reference)
+[Reference Docs](https://punchthrough.com/bean/reference)
 
 # Project Layout
 
 ## /hardware
 
-The contents of the hardware directory should be copied into the Arduino IDE app's `hardware` directory, inside the .app resources, on install. This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board and allow users to program it.
+This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board and allow users to program it. Its contents are copied to Arduino IDE's `hardware` directory when Bean Loader is installed on OS X or Windows.
 
 ## /examples
 
-The contents of the examples directory should be copied separately on install to the examples resources in the Arduino IDE.
+This directory contains example Arduino sketches for use with Bean. Its contents are copied to Arduino IDE's `examples` directory when Bean Loader is installed.
 
 ## /beanModuleEmulator
 
-This directory contains an emulator for the "non-Arduino" parts of the bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.
+This directory contains an emulator for the "non-Arduino" parts of Bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.
 
 You can run `python BeanModuleEmulator.py` from within the beanModuleEmulator directory. There are a few Python library dependencies you'll need to make the emulator work:
 
@@ -57,7 +55,7 @@ This repository uses git submodules and requires a few extra steps for cloning a
 $ git clone REPO_URL --recursive
 ```
 
-## Initialize Submodules 
+## Initialize Submodules
 
 (This is unnecessary if the recursive clone works)
 

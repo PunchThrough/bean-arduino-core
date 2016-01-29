@@ -6,13 +6,16 @@
 #include "BeanAncs.h"
 
 // Accel Events.
-#define FLAT_EVENT 0x80
-#define ORIENT_EVENT 0x40
-#define SINGLE_TAP_EVENT 0x20
-#define DOUBLE_TAP_EVENT 0x10
-#define ANY_MOTION_EVENT 0x04
-#define HIGH_G_EVENT 0x02
-#define LOW_G_EVENT 0x01
+typedef enum AccelEventTypes {
+  FLAT_EVENT = 0x80,
+  ORIENT_EVENT = 0x40,
+  SINGLE_TAP_EVENT = 0x20,
+  DOUBLE_TAP_EVENT = 0x10,
+  ANY_MOTION_EVENT = 0x04,
+  HIGH_G_EVENT = 0x02,
+  LOW_G_EVENT = 0x01
+};
+
 
 /**
  *  An acceleration reading from the Bean accelerometer, the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>). Also includes the current sensitivity setting.
@@ -49,19 +52,21 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Enable accelerometer interrupts
+   *  @param accepts an event of type ::AccelEventTypes
    */
-  void enableMotionEvent(uint8_t events);
+  void enableMotionEvent(AccelEventTypes events);
 
   /**
-   *  Needs docs
+   *  Disables all currently enabled accelerometer interrupts
    */
   void disableMotionEvents();
 
   /**
-   *  Needs docs
+   *  Checks to see if a particular acclerometer interrupt has occured.  If the event occurs it sets a flag that can only be cleared by reading this function.
+   *  @param accepts an event of type ::AccelEventTypes
    */
-  bool checkMotionEvent(uint8_t events);
+  bool checkMotionEvent(AccelEventTypes events);
 
   /**
    *  Get the current value of the Bean accelerometer X axis.

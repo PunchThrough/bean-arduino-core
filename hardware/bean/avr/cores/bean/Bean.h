@@ -5,7 +5,16 @@
 #include "BeanMidi.h"
 #include "BeanAncs.h"
 
-// Accel Events.
+/*
+ *  An accelerometer interrupt type, they are as follows:
+ *  FLAT_EVENT - triggers when the accelerometer is lying flat on a surface
+ *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted in any direction
+ *  SINGLE_TAP_EVENT - triggers when the accelerometer is tapped once
+ *  DOUBLE_TAP_EVENT - triggers when the accelerometer is tapped twice
+ *  ANY_MOTION_EVENT - triggers when the accelerometer experiences any change in motion
+ *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's sensitivity
+ *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational pull
+ */
 typedef enum AccelEventTypes {
   FLAT_EVENT = 0x80,
   ORIENT_EVENT = 0x40,
@@ -53,7 +62,7 @@ class BeanClass {
 
   /**
    *  Enable accelerometer interrupts
-   *  @param accepts an event of type ::AccelEventTypes
+   *  @param accepts an event of type AccelEventTypes
    */
   void enableMotionEvent(AccelEventTypes events);
 
@@ -64,7 +73,7 @@ class BeanClass {
 
   /**
    *  Checks to see if a particular acclerometer interrupt has occured.  If the event occurs it sets a flag that can only be cleared by reading this function.
-   *  @param accepts an event of type ::AccelEventTypes
+   *  @param accepts an event of type AccelEventTypes
    */
   bool checkMotionEvent(AccelEventTypes events);
 

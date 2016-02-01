@@ -152,9 +152,9 @@ int BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes) {
     numBytes -= 3;
   }
   if (midiReadOffset != midiWriteOffset) {  // if we still have unsent messages
-    sendMessages();
+    return sendMessages();
   }
-  return idx;
+  return 0;
 }
 
 /**
@@ -173,9 +173,10 @@ int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes) {
   while (numBytes >= 3) {
     int isFull = loadMessage(buff[idx], buff[idx + 1], buff[idx + 2]);
     idx += 3;
-    if (isFull) return idx;
+    if (isFull == 0) return idx;
     numBytes -= 3;
   }
+  return idx;
 }
 
 /**

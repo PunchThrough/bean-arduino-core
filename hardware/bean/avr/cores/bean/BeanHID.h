@@ -104,86 +104,123 @@ class BeanHid_ {
   BeanHid_(void);
 
   /**
-   *  Needs docs
+   *  This function turns on the Bean's HID functionality.  There are many caveats that come with HID.  It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.
+   *
+   *  HID may not work well with other profiles such as ANCS or Midi.  Use multiple at your own risk.  Enabling may require power cycle for proper functionality.
    */
   void enable(void);
 
   /**
-  *  Needs docs
+  *  @return True if HID is enabled
   */
   bool isEnabled(void);
 
   /**
-   *  Needs docs
+   *  Disables the HID functionality.  May require power cycle and if the Bean has been paired with another device it must manually be removed again.
    */
   void disable(void);
 
   /**
-   *  Needs docs
+   *  Holds a key down.  Takes any ascii character.  Can hold a max of 6 character keys.
+   *  @param key single character key
+   *  @return 1 if success 0 if failure
    */
   int holdKey(char key);
+
+  /**
+   *  Holds a key down. takes any modifier key specified by modifierKey.  
+   *  Does not affect a users keyboard (sending hold shift won't type capital letters when you press them on your keyboard)
+   *  @param key takes a modifier key to hold down.  Can hold down all 8 of the first 8 modifier keys.  The keys that come after the first 8 are counted as standard keys and therefore part of the 6 character keys.
+   *  
+   */
   int holdKey(modifierKey key);
 
   /**
-   *  Needs docs
+   *  Releases a key.  
+   *  @param key the key to release in character form
    */
   int releaseKey(char key);
+
+  /**
+   *  Releases a key.  
+   *  @param key the key to release of type modifierKey
+   *  @return 1 if success 0 if failure
+   */
   int releaseKey(modifierKey key);
 
   /**
-   *  Needs docs
+   *  Releases all currently held keys
    */
   void releaseAllKeys();
 
   /**
-   *  Needs docs
+   *  Sends a full keypress event.  Like calling holdKey then releaseKey
+   *  @param key the key to send in character form
+   *  @return 1 if success 0 if failure
    */
   int sendKey(char key);
+
+  /**
+   *  Sends a full keypress event.  Like calling holdKey then releaseKey
+   *  @param key the key to send of type modifierKey
+   *  @return 1 if success 0 if failure
+   */
   int sendKey(modifierKey key);
 
   /**
-   *  Needs docs
+   *  Sends a string of characters as keyboard events
+   *  @param charsToType a String of characters for the keyboard to emulate
+   *  @return 1 if success 0 if failure
    */
   int sendKeys(String charsToType);
 
   /**
-   *  Needs docs
+   *  Sends a mouse move command
+   *  @param delta_x a signed 8 bit value for how many pixels to move the mouse in the x direction
+   *  @param delta_y a signed 8 bit value for how many pixels to move the mouse in the y direction
+   *  @param delta_wheel an optional signed 8 bit balue for how many clicks to move the mouse wheel
    */
   void moveMouse(signed char delta_x, signed char delta_y,
                  signed char delta_wheel = 0);
 
   /**
-   *  Needs docs
+   *  Holds a mouse button down
+   *  @param button the button to hold of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void holdMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
-   *  Needs docs
+   *  Releases a mouse button.
+   *  @param button the button to release of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void releaseMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
-   *  Needs docs
+   *  Sends a mouse hold then a mouse release command.
+   *  @param button the button to click of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void sendMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
-   *  Needs docs
+   *  Sends a media control command command of type mediaControl.  
+   *  @param command takes a media control command of type mediaControl
    */
   void sendMediaControl(mediaControl command);
 
   /**
-   * Needs docs
+   *  Holds a media control command command of type mediaControl.
+   *  @param command takes a media control command of type mediaControl
    */
   void holdMediaControl(mediaControl command);
 
   /**
-   * Needs docs
+   *  Releases a media control command command of type mediaControl.  
+   *  @param command takes a media control command of type mediaControl
    */
   void releaseMediaControl(mediaControl command);
 
   /**
-   * Needs docs
+   *  Releases all currently held media control commands
    */
   void releaseAllMediaControls();
   ///@}

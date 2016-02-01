@@ -359,7 +359,7 @@ ACC_READING_T BeanClass::getAcceleration(void) {
 
 static uint8_t enabledEvents = 0x00;
 static uint8_t triggeredEvents = 0x00;
-void BeanClass::enableMotionEvent(uint8_t events) {
+void BeanClass::enableMotionEvent(AccelEventTypes events) {
   uint16_t enableRegister = 0x0000;
   uint8_t wakeRegister = 0x00;
 
@@ -415,7 +415,7 @@ void BeanClass::disableMotionEvents() {
 // This function returns true if any one of the "events" param had been
 // triggered
 // It clears all corresponding "events" flags
-bool BeanClass::checkMotionEvent(uint8_t events) {
+bool BeanClass::checkMotionEvent(AccelEventTypes events) {
   triggeredEvents |= checkAccelInterrupts();
 
   bool eventOccurred = (triggeredEvents & events) ? true : false;

@@ -308,6 +308,7 @@ class BeanMidiClass {
    *  Loads and sends a buffer of Midi messages.
    *  @param buff a buffer of Midi messages.  Will only send Midi messages in groups of 3.  Must conform to the [Midi spec](https://www.midi.org/specifications/item/table-1-summary-of-midi-message).
    *  @param numBytes length of buffer
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessage(uint8_t *buff, uint8_t numBytes);
 
@@ -316,6 +317,7 @@ class BeanMidiClass {
    *  @param status the status byte signifying the type of message
    *  @param byte1 the first data byte of the midi message
    *  @param byte2 the second data byte of the midi message
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 
@@ -324,6 +326,7 @@ class BeanMidiClass {
    *  @param pointer to the status the status byte signifying the type of message
    *  @param pointer to the byte1 the first data byte of the midi message
    *  @param pointer to the byte2 the second data byte of the midi message
+   *  @return Midi status/timestamp byte
    */
   int readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
 
@@ -331,6 +334,8 @@ class BeanMidiClass {
    *  Sends Midi messages after they have been loaded to the midi buffer using loadMessage() commands.  
    *
    *  The buffer has a maximum size of 20 messages before it must be dumped or sent using this function.
+   *
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessages();
 
@@ -338,6 +343,7 @@ class BeanMidiClass {
    *  Loads a message into the Midi buffer for sending using the sendMessages() function
    *  @param buff a buffer of Midi messages.  Will only send Midi messages in groups of 3.  Must conform to the [Midi spec](https://www.midi.org/specifications/item/table-1-summary-of-midi-message).
    *  @param numBytes length of buffer
+   *  @return number of bytes successfully loaded
    */
   int loadMessage(uint8_t *buff, uint8_t numBytes);
 
@@ -346,6 +352,7 @@ class BeanMidiClass {
    *  @param status the status byte signifying the type of message
    *  @param byte1 the first data byte of the midi message
    *  @param byte2 the second data byte of the midi message
+   *  @return 1 if bytes successfully loaded 0 if unsuccessful
    */
   int loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 

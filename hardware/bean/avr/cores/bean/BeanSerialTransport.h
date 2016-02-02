@@ -57,6 +57,7 @@ class BeanSerialTransport : public HardwareSerial {
   void BTBeaconModeEnable(bool beaconEnable);
   void BTConfigUartSleep(UART_SLEEP_MODE_T mode);
   void BTDisconnect(void);
+  void BTRestart(void);
 
   // LED Control
   void ledSet(const LED_SETTING_T &setting);

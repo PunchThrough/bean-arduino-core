@@ -601,6 +601,13 @@ class BeanClass {
    *  @param enableSave true to disable saving to NVRAM, false to enable
    */
   void enableConfigSave(bool enableSave);
+
+
+  /**
+   *  Performs a hard reset on the bluetooth module.
+   */
+  void restartBluetooth(void);
+
   ///@}
 
 

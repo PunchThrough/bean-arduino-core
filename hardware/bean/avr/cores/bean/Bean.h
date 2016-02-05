@@ -25,6 +25,37 @@ typedef enum AccelEventTypes {
   LOW_G_EVENT = 0x01
 };
 
+typedef enum AdvertisementDataTypes {
+  GAP_ADTYPE_FLAGS                        =  0x01 //!< Discovery Mode: @ref GAP_ADTYPE_FLAGS_MODES
+  GAP_ADTYPE_16BIT_MORE                   =  0x02 //!< Service: More 16-bit UUIDs available
+  GAP_ADTYPE_16BIT_COMPLETE               =  0x03 //!< Service: Complete list of 16-bit UUIDs
+  GAP_ADTYPE_32BIT_MORE                   =  0x04 //!< Service: More 32-bit UUIDs available
+  GAP_ADTYPE_32BIT_COMPLETE               =  0x05 //!< Service: Complete list of 32-bit UUIDs
+  GAP_ADTYPE_128BIT_MORE                  =  0x06 //!< Service: More 128-bit UUIDs available
+  GAP_ADTYPE_128BIT_COMPLETE              =  0x07 //!< Service: Complete list of 128-bit UUIDs
+  GAP_ADTYPE_LOCAL_NAME_SHORT             =  0x08 //!< Shortened local name
+  GAP_ADTYPE_LOCAL_NAME_COMPLETE          =  0x09 //!< Complete local name
+  GAP_ADTYPE_POWER_LEVEL                  =  0x0A //!< TX Power Level: 0xXX: -127 to +127 dBm
+  GAP_ADTYPE_OOB_CLASS_OF_DEVICE          =  0x0D //!< Simple Pairing OOB Tag: Class of device (3 octets)
+  GAP_ADTYPE_OOB_SIMPLE_PAIRING_HASHC     =  0x0E //!< Simple Pairing OOB Tag: Simple Pairing Hash C (16 octets)
+  GAP_ADTYPE_OOB_SIMPLE_PAIRING_RANDR     =  0x0F //!< Simple Pairing OOB Tag: Simple Pairing Randomizer R (16 octets)
+  GAP_ADTYPE_SM_TK                        =  0x10 //!< Security Manager TK Value
+  GAP_ADTYPE_SM_OOB_FLAG                  =  0x11 //!< Secutiry Manager OOB Flags
+  GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE    =  0x12 //!< Min and Max values of the connection interval (2 octets Min, 2 octets Max) (0xFFFF indicates no conn interval min or max)
+  GAP_ADTYPE_SIGNED_DATA                  =  0x13 //!< Signed Data field
+  GAP_ADTYPE_SERVICES_LIST_16BIT          =  0x14 //!< Service Solicitation: list of 16-bit Service UUIDs
+  GAP_ADTYPE_SERVICES_LIST_128BIT         =  0x15 //!< Service Solicitation: list of 128-bit Service UUIDs
+  GAP_ADTYPE_SERVICE_DATA                 =  0x16 //!< Service Data
+  GAP_ADTYPE_APPEARANCE                   =  0x19 //!< Appearance
+  GAP_ADTYPE_MANUFACTURER_SPECIFIC        =  0xFF //!< Manufacturer Specific Data: first 2 octets contain the Company Identifier Code followed by the additional manufacturer specific data
+};
+
+typedef enum AdvertisementType {
+  GAP_ADTYPE_FLAGS_LIMITED                =  0x01 //!< Discovery Mode: LE Limited Discoverable Mode
+  GAP_ADTYPE_FLAGS_GENERAL                =  0x02 //!< Discovery Mode: LE General Discoverable Mode
+  GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED    =  0x04 //!< Discovery Mode: BR/EDR Not Supported
+};
+
 
 /**
  *  An acceleration reading from the Bean accelerometer, the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>). Also includes the current sensitivity setting.
@@ -454,12 +485,24 @@ class BeanClass {
   bool getAdvertisingState(void);
 
   /**
-   *  Needs docs
+   *  Enables custom advertisement.  The Bean will enter a rotating advertisement mode where it will advertise as a bean for a few moments then advertise whatever is in the custom advertisement packet and back again
    */
   void enableCustom(void);
 
   /**
-   *  Needs docs
+   *  Disables custom advertisement
+   */
+  void disableCustom(void);
+
+  /**
+   *  Sets the custom advertisement packet.  The max length is 31 bytes.
+   *  The first 3 bytes specify the advertisement mode.  They take the form 0x2, GAP_ADTYPE_FLAGS, any sum of advertisement types (as defined by AdvertisementType)
+   *  All following data are up to the user to define and follow the pattern of [length, AdvertisementDataTypes, data1, data2, ...] where length includes the number of data plus 1 (for the AdvertisementDataTypes)
+   *  The data can be chained together into the single buffer up to the maxiumum length.
+   *  For example:
+   *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
+   *  @param buf a buffer full of data to advertise
+   *  @param len the length of the buffer
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}

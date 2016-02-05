@@ -542,6 +542,12 @@ void BeanClass::enableCustom(void) {
   setServices(curServices);
 }
 
+void BeanClass::disableCustom(void) {
+  ADV_SWITCH_ENABLED_T curServices = getServices();
+  curServices.custom = 0;
+  setServices(curServices);
+}
+
 void BeanClass::setCustomAdvertisement(uint8_t *buf, int len) {
   Serial.setCustomAdvertisement(buf, len);
 }

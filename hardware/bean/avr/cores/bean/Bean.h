@@ -86,12 +86,12 @@ typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
 /**
- *  Needs docs
+ *  Currently enabled advertisements in the rotating advertisement controller.
  */
 typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 
 /**
- *  Needs docs
+ *  Data returned by the observer role.
  */
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
@@ -149,12 +149,18 @@ class BeanClass {
   AccelerationReading getAcceleration(void);
 
   /**
-   *  Needs docs
+   *  Low level function for writing directly to the accelerometers registers.
+   *  @param reg the register to write to
+   *  @param value the value to write to the register
    */
   void accelRegisterWrite(uint8_t reg, uint8_t value);
 
   /**
-   *  Needs docs
+   *  Low level function for reading the accelerometers register directly
+   *  @param reg the register to read
+   *  @param length the number of bytes to read starting at that register
+   *  @param value a pointer to a user supplied array to fill with values
+   *  @return the number of bytes actually read
    */
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
 
@@ -447,7 +453,9 @@ class BeanClass {
   const char *getBeanName(void);
 
   /**
-   *  Needs docs
+   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates
+   and can also be useful for increasing beacon advertisement rates.
+   *  @param interval_ms length of advertisement interval in milliseconds.  Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS
    */
   void setAdvertisingInterval(uint16_t interval_ms);
 
@@ -533,7 +541,7 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Works very similarly to setBeaconEnable.   The primary difference being that enableiBeacon adds the beacon advertisement to a rotating adverisement instead of overrwriting the current standard Bean advertisement.  Parameters are still set with the setBeaconParameters function.
    */
   void enableiBeacon(void);
 
@@ -622,17 +630,18 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Returns a struct of all of the currently services and whether or not they are enabled.
    */
   BluetoothServices getServices(void);
 
   /**
-   *  Needs docs
+   *  Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)
+   *  @param services the services to change
    */
   void setServices(BluetoothServices services);
 
   /**
-   *  Needs docs
+   *  Resets services leaving only the primary standard Bean service advertising.
    */
   void resetServices(void);
   ///@}

@@ -547,8 +547,7 @@ size_t BeanHid_::_releaseKey(uint8_t k) {
 size_t BeanHid_::_sendKey(uint8_t c) {
   uint8_t p = _holdKey(c);     // Keydown
   uint8_t r = _releaseKey(c);  // Keyup
-  return (p);  // just return the result of press() since release() almost
-               // always returns 1
+  return (p & r);
 }
 
 int BeanHid_::holdKey(char key) { return (int)_holdKey((uint8_t)key); }
@@ -589,7 +588,7 @@ int BeanHid_::sendKeys(String charsToType) {
   int status = 0;
   int maxIndex = charsToType.length() - 1;
   for (int i = 0; i < maxIndex; i++) {
-    status |= _sendKey(charsToType.charAt(i));
+    status &= _sendKey(charsToType.charAt(i));
   }
 
   return status;

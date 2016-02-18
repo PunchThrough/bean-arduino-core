@@ -542,10 +542,6 @@ void BeanClass::setCustomAdvertisement(uint8_t *buf, int len) {
   Serial.setCustomAdvertisement(buf, len);
 }
 
-void BeanClass::observer_start(void) { Serial.startObserver(); }
-
-void BeanClass::observer_stop(void) { Serial.stopObserver(); }
-
 int BeanClass::observer_getMessage(ObseverAdvertisementInfo *message,
                                   unsigned long timeout) {
   return Serial.getObserverMessage(message, timeout);

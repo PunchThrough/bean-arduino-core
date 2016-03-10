@@ -758,26 +758,24 @@ int BeanSerialTransport::getObserverMessage(OBSERVER_INFO_MESSAGE_T *message,
                                             unsigned long timeout) {
   // Begin observing
   write_message(MSG_ID_OBSERVER_START, NULL, 0);
-	
+
   // Wait for Observed ADV if Any
   memset(message, 0, sizeof(OBSERVER_INFO_MESSAGE_T));
 
   unsigned long startMillis = millis();
   do {
-    if ((millis() - startMillis > timeout))
-	{
-		write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
-		return -1;
-	}
+    if ((millis() - startMillis > timeout)) {
+      write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
+      return -1;
+    }
   } while (observer_message_sending == false &&
            abs(observer_message.head - observer_message.tail) ==
                0);  // block until advertisement is observed
   do {
-    if ((millis() - startMillis > timeout))
-	{
-		write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
-		return -1;
-	}
+    if ((millis() - startMillis > timeout)) {
+      write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
+      return -1;
+    }
   } while (observer_message_sending == true);  // block until data is sent
 
   observer_message.head = observer_message.tail = 0;

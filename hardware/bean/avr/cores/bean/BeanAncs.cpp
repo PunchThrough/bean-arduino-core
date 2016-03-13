@@ -25,9 +25,9 @@ int BeanAncsClass::notificationsAvailable() { return Serial.ancsAvailable(); }
 
 int BeanAncsClass::getNotificationHeaders(ANCS_SOURCE_MSG_T *buffer, size_t max_length) {
   int numMsgs = Serial.ancsAvailable();
-  Serial.readAncs((uint8_t *)buffer, max_length * 8);
+  int bytes_written = Serial.readAncs((uint8_t *)buffer, min(max_length, numMsgs) * 8);
 
-  return numMsgs;
+  return bytes_written/8;
 }
 
 ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader() {
@@ -46,11 +46,6 @@ int BeanAncsClass::getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
   reqBuf[6] = len & 0xFF;
   reqBuf[7] = (len >> 8) & 0xFF;
   return Serial.getAncsNotiDetails(reqBuf, sizeof(reqBuf), data, timeout);
-}
-
-int BeanAncsClass::getAppAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
-                                                size_t len, uint8_t* data,
-                                                    uint32_t timeout) {
 }
 
 void BeanAncsClass::notificationAction(uint32_t ID, uint8_t actionID) {

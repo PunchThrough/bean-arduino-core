@@ -24,7 +24,7 @@ dependencies:
     - sudo apt-get install doxygen
     - npm install
     # Don't install PlatformIO if it's already been set up; it takes forever
-    - if [ -f "~/.platformio/appstate.json" ]; then tests/setup_platformio.sh; fi
+    - if [ ! -f "~/.platformio/appstate.json" ]; then tests/setup_platformio.sh; fi
 
 test:
   override:

@@ -80,6 +80,10 @@ void BeanClass::enableConfigSave(bool enableSave) {
   Serial.BTSetEnableConfigSave(enableSave);
 }
 
+void BeanClass::restartBluetooth(void) {
+  Serial.BTRestart();
+}
+
 void BeanClass::sleep(uint32_t duration_ms) {
   // ensure that our interrupt line is an input
   DDRD &= ~(_BV(3));
@@ -359,7 +363,7 @@ ACC_READING_T BeanClass::getAcceleration(void) {
 
 static uint8_t enabledEvents = 0x00;
 static uint8_t triggeredEvents = 0x00;
-void BeanClass::enableMotionEvent(uint8_t events) {
+void BeanClass::enableMotionEvent(AccelEventTypes events) {
   uint16_t enableRegister = 0x0000;
   uint8_t wakeRegister = 0x00;
 
@@ -415,7 +419,7 @@ void BeanClass::disableMotionEvents() {
 // This function returns true if any one of the "events" param had been
 // triggered
 // It clears all corresponding "events" flags
-bool BeanClass::checkMotionEvent(uint8_t events) {
+bool BeanClass::checkMotionEvent(AccelEventTypes events) {
   triggeredEvents |= checkAccelInterrupts();
 
   bool eventOccurred = (triggeredEvents & events) ? true : false;
@@ -535,6 +539,12 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
 void BeanClass::enableCustom(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.custom = 1;
+  setServices(curServices);
+}
+
+void BeanClass::disableCustom(void) {
+  ADV_SWITCH_ENABLED_T curServices = getServices();
+  curServices.custom = 0;
   setServices(curServices);
 }
 

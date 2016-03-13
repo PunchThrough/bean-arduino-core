@@ -290,67 +290,99 @@ class BeanMidiClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Enables core Midi functionality on the Bean.
    */
   void enable(void);
 
   /**
-   *  Needs docs
+   *  @return true if Midi is currently enabled
    */
   bool isEnabled(void);
 
   /**
-   *  Needs docs
+   *  Disables core Midi functionality on the Bean.
    */
   void disable(void);
 
   /**
-   *  Needs docs
+   *  Loads and sends a buffer of Midi messages.
+   *  @param buff a buffer of Midi messages.  Will only send Midi messages in groups of 3.  Must conform to the [Midi spec](https://www.midi.org/specifications/item/table-1-summary-of-midi-message).
+   *  @param numBytes length of buffer
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessage(uint8_t *buff, uint8_t numBytes);
 
   /**
-   *  Needs docs
+   *  Loads and sends a single Midi message.
+   *  @param status the status byte signifying the type of message
+   *  @param byte1 the first data byte of the midi message
+   *  @param byte2 the second data byte of the midi message
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 
   /**
-   *  Needs docs
+   *  Reads a single incoming Midi message.
+   *  @param pointer to the status the status byte signifying the type of message
+   *  @param pointer to the byte1 the first data byte of the midi message
+   *  @param pointer to the byte2 the second data byte of the midi message
+   *  @return Midi status/timestamp byte
    */
   int readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
 
   /**
-   *  Needs docs
+   *  Sends Midi messages after they have been loaded to the midi buffer using loadMessage() commands.  
+   *
+   *  The buffer has a maximum size of 20 messages before it must be dumped or sent using this function.
+   *
+   *  @return number of Midi bytes sent, 0 if there are none to be sent
    */
   int sendMessages();
 
   /**
-   *  Needs docs
+   *  Loads a message into the Midi buffer for sending using the sendMessages() function
+   *  @param buff a buffer of Midi messages.  Will only send Midi messages in groups of 3.  Must conform to the [Midi spec](https://www.midi.org/specifications/item/table-1-summary-of-midi-message).
+   *  @param numBytes length of buffer
+   *  @return number of bytes successfully loaded
    */
   int loadMessage(uint8_t *buff, uint8_t numBytes);
 
   /**
-   *  Needs docs
+   *  Loads a message into the Midi buffer for sending using the sendMessages() function
+   *  @param status the status byte signifying the type of message
+   *  @param byte1 the first data byte of the midi message
+   *  @param byte2 the second data byte of the midi message
+   *  @return 1 if bytes successfully loaded 0 if unsuccessful
    */
   int loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2);
 
   /**
-   *  Needs docs
+   *  Turns a specific note on for a specified midi channel.  The note will ring out until silenced via noteOff.
+   *  @param channel takes a channel 0-15 or specified by midiChannels
+   *  @param note takes a note from 0-127, can also take types midiNotes and midiDrums
+   *  @param volume takes a volume values of 0-127
    */
   void noteOn(midiChannels channel, uint8_t note, uint8_t volume);
 
   /**
-   *  Needs docs
+   *  Turns a specific note off for a specified midi channel.
+   *  @param channel takes a channel 0-15 or specified by midiChannels
+   *  @param note takes a note from 0-127, can also take types midiNotes and midiDrums
+   *  @param volume takes a volume values of 0-127
    */
   void noteOff(midiChannels channel, uint8_t note, uint8_t volume);
 
   /**
-   *  Needs docs
+   *  Bends the pitch of a note up or down
+   *  @param channel takes a channel 0-15 or specified by midiChannels
+   *  @value takes a pitch bend value from 0-16383 where 0x2000 is the middle or the true value of the note.
    */
   void pitchBend(midiChannels channel, uint16_t value);
 
   /**
-   *  Needs docs
+   *  Enables or disables sustain for the midi channel
+   *  @param channel takes a channel 0-15 or specified by midiChannels
+   *  @param isOn set to true to enable sustain and false to disable
    */
   void sustain(midiChannels channel, bool isOn);
 

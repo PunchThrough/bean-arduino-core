@@ -45,7 +45,7 @@ void BeanMidiClass::disable(void) {
 }
 
 int BeanMidiClass::loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2) {
-  if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) return 1;
+  if ((midiWriteOffset + 1) % MIDI_BUFFER_SIZE == midiReadOffset) return 0;
   uint32_t millisec = millis();
   midiMessages[midiWriteOffset].status = status;
   midiMessages[midiWriteOffset].byte1 = byte1;
@@ -53,7 +53,7 @@ int BeanMidiClass::loadMessage(uint8_t status, uint8_t byte1, uint8_t byte2) {
   midiMessages[midiWriteOffset].timestamp = millisec;
   midiWriteOffset++;
   midiWriteOffset = midiWriteOffset % MIDI_BUFFER_SIZE;
-  return 0;
+  return 1;
 }
 
 int BeanMidiClass::sendMessages() {
@@ -152,9 +152,9 @@ int BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes) {
     numBytes -= 3;
   }
   if (midiReadOffset != midiWriteOffset) {  // if we still have unsent messages
-    sendMessages();
+    return sendMessages();
   }
-  return idx;
+  return 0;
 }
 
 /**
@@ -173,9 +173,10 @@ int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes) {
   while (numBytes >= 3) {
     int isFull = loadMessage(buff[idx], buff[idx + 1], buff[idx + 2]);
     idx += 3;
-    if (isFull) return idx;
+    if (isFull == 0) return idx;
     numBytes -= 3;
   }
+  return idx;
 }
 
 /**

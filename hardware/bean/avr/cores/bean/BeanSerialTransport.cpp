@@ -994,6 +994,10 @@ void BeanSerialTransport::BTDisconnect(void) {
   write_message(MSG_ID_BT_DISCONNECT, NULL, 0);
 }
 
+void BeanSerialTransport::BTRestart(void) {
+  write_message(MSG_ID_BT_RESTART, NULL, 0);
+}
+
 // Preinstantiate Objects //////////////////////////////////////////////////////
 #if defined(UBRRH) && defined(UBRRL)
 BeanSerialTransport Serial(&rx_buffer, &tx_buffer, &UBRRH, &UBRRL, &UCSRA,

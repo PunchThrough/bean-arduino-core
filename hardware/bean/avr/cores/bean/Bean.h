@@ -5,14 +5,69 @@
 #include "BeanMidi.h"
 #include "BeanAncs.h"
 
-// Accel Events.
-#define FLAT_EVENT 0x80
-#define ORIENT_EVENT 0x40
-#define SINGLE_TAP_EVENT 0x20
-#define DOUBLE_TAP_EVENT 0x10
-#define ANY_MOTION_EVENT 0x04
-#define HIGH_G_EVENT 0x02
-#define LOW_G_EVENT 0x01
+/*
+ *  An accelerometer interrupt type, they are as follows:
+ *  FLAT_EVENT - triggers when the accelerometer is lying flat on a surface
+ *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted in any direction
+ *  SINGLE_TAP_EVENT - triggers when the accelerometer is tapped once
+ *  DOUBLE_TAP_EVENT - triggers when the accelerometer is tapped twice
+ *  ANY_MOTION_EVENT - triggers when the accelerometer experiences any change in motion
+ *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's sensitivity
+ *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational pull
+ */
+typedef enum AccelEventTypes {
+  FLAT_EVENT = 0x80,
+  ORIENT_EVENT = 0x40,
+  SINGLE_TAP_EVENT = 0x20,
+  DOUBLE_TAP_EVENT = 0x10,
+  ANY_MOTION_EVENT = 0x04,
+  HIGH_G_EVENT = 0x02,
+  LOW_G_EVENT = 0x01
+};
+
+typedef enum AdvertisementDataTypes {
+  GAP_ADTYPE_FLAGS                        =  0x01,  //  Discovery Mode: @ref GAP_ADTYPE_FLAGS_MODES
+  GAP_ADTYPE_16BIT_MORE                   =  0x02,  //  Service: More 16-bit UUIDs available
+  GAP_ADTYPE_16BIT_COMPLETE               =  0x03,  //  Service: Complete list of 16-bit UUIDs
+  GAP_ADTYPE_32BIT_MORE                   =  0x04,  //  Service: More 32-bit UUIDs available
+  GAP_ADTYPE_32BIT_COMPLETE               =  0x05,  //  Service: Complete list of 32-bit UUIDs
+  GAP_ADTYPE_128BIT_MORE                  =  0x06,  //  Service: More 128-bit UUIDs available
+  GAP_ADTYPE_128BIT_COMPLETE              =  0x07,  //  Service: Complete list of 128-bit UUIDs
+  GAP_ADTYPE_LOCAL_NAME_SHORT             =  0x08,  //  Shortened local name
+  GAP_ADTYPE_LOCAL_NAME_COMPLETE          =  0x09,  //  Complete local name
+  GAP_ADTYPE_POWER_LEVEL                  =  0x0A,  //  TX Power Level: 0xXX: -127 to +127 dBm
+  GAP_ADTYPE_OOB_CLASS_OF_DEVICE          =  0x0D,  //  Simple Pairing OOB Tag: Class
+                                                    //  of device (3 octets)
+  GAP_ADTYPE_OOB_SIMPLE_PAIRING_HASHC     =  0x0E,  //  Simple Pairing OOB Tag: Simple Pairing
+                                                    //  Hash C (16 octets)
+  GAP_ADTYPE_OOB_SIMPLE_PAIRING_RANDR     =  0x0F,  //  Simple Pairing OOB Tag: Simple Pairing
+                                                    //  Randomizer R (16 octets)
+  GAP_ADTYPE_SM_TK                        =  0x10,  //  Security Manager TK Value
+  GAP_ADTYPE_SM_OOB_FLAG                  =  0x11,  //  Secutiry Manager OOB Flags
+  GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE    =  0x12,  //  Min and Max values of the connection
+                                                    //  interval
+                                                    //  (2 octets Min, 2 octets Max) (0xFFFF
+                                                    //  indicates no conn interval min or max)
+  GAP_ADTYPE_SIGNED_DATA                  =  0x13,  //  Signed Data field
+  GAP_ADTYPE_SERVICES_LIST_16BIT          =  0x14,  //  Service Solicitation:
+                                                    //  list of 16-bit Service UUIDs
+  GAP_ADTYPE_SERVICES_LIST_128BIT         =  0x15,  //  Service Solicitation:
+                                                    //  list of 128-bit Service UUIDs
+  GAP_ADTYPE_SERVICE_DATA                 =  0x16,  //  Service Data
+  GAP_ADTYPE_APPEARANCE                   =  0x19,  //  Appearance
+  GAP_ADTYPE_MANUFACTURER_SPECIFIC        =  0xFF,  //  Manufacturer Specific Data:
+                                                    //  first 2 octets contain
+                                                    //  the Company Identifier Code
+                                                    //  followed by the additional
+                                                    //  manufacturer specific data
+};
+
+typedef enum AdvertisementType {
+  GAP_ADTYPE_FLAGS_LIMITED                =  0x01,  //  Discovery Mode: LE Limited Discoverable Mode
+  GAP_ADTYPE_FLAGS_GENERAL                =  0x02,  //  Discovery Mode: LE General Discoverable Mode
+  GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED    =  0x04,  //  Discovery Mode: BR/EDR Not Supported
+};
+
 
 /**
  *  An acceleration reading from the Bean accelerometer, the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>). Also includes the current sensitivity setting.
@@ -31,12 +86,12 @@ typedef ACC_READING_T AccelerationReading;
 typedef LED_SETTING_T LedReading;
 
 /**
- *  Needs docs
+ *  Currently enabled advertisements in the rotating advertisement controller.
  */
 typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 
 /**
- *  Needs docs
+ *  Data returned by the observer role.
  */
 typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
 
@@ -49,19 +104,21 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Enable accelerometer interrupts
+   *  @param accepts an event of type AccelEventTypes
    */
-  void enableMotionEvent(uint8_t events);
+  void enableMotionEvent(AccelEventTypes events);
 
   /**
-   *  Needs docs
+   *  Disables all currently enabled accelerometer interrupts
    */
   void disableMotionEvents();
 
   /**
-   *  Needs docs
+   *  Checks to see if a particular acclerometer interrupt has occured.  If the event occurs it sets a flag that can only be cleared by reading this function.
+   *  @param accepts an event of type AccelEventTypes
    */
-  bool checkMotionEvent(uint8_t events);
+  bool checkMotionEvent(AccelEventTypes events);
 
   /**
    *  Get the current value of the Bean accelerometer X axis.
@@ -92,12 +149,18 @@ class BeanClass {
   AccelerationReading getAcceleration(void);
 
   /**
-   *  Needs docs
+   *  Low level function for writing directly to the accelerometers registers.
+   *  @param reg the register to write to
+   *  @param value the value to write to the register
    */
   void accelRegisterWrite(uint8_t reg, uint8_t value);
 
   /**
-   *  Needs docs
+   *  Low level function for reading the accelerometers register directly
+   *  @param reg the register to read
+   *  @param length the number of bytes to read starting at that register
+   *  @param value a pointer to a user supplied array to fill with values
+   *  @return the number of bytes actually read
    */
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
 
@@ -326,7 +389,15 @@ class BeanClass {
   void sleep(uint32_t duration_ms);
 
   /**
-   *  Needs docs
+   *  Enable or disable keep-awake mode.
+   *
+   *  By default, the Bean radio sleeps frequently to conserve power. Enabling keep-awake forces the LBM into wake mode and decreases latency between the LBM313 and the ATmega.
+   *
+   *  This may be useful if you are having trouble with latency between an event and a Bluetooth transmission: for example, to decrease the time between Bean reading a pin change event and sending a Bluetooth message.
+   *
+   *  Enabling keep-awake may signficantly decrease battery life. Use with caution.
+   *
+   *  @param true to enable keep-awake, false to disable
    */
   void keepAwake(bool enable);
 
@@ -382,7 +453,9 @@ class BeanClass {
   const char *getBeanName(void);
 
   /**
-   *  Needs docs
+   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates
+   and can also be useful for increasing beacon advertisement rates.
+   *  @param interval_ms length of advertisement interval in milliseconds.  Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS
    */
   void setAdvertisingInterval(uint16_t interval_ms);
 
@@ -432,12 +505,24 @@ class BeanClass {
   bool getAdvertisingState(void);
 
   /**
-   *  Needs docs
+   *  Enables custom advertisement.  The Bean will enter a rotating advertisement mode where it will advertise as a bean for a few moments then advertise whatever is in the custom advertisement packet and back again
    */
   void enableCustom(void);
 
   /**
-   *  Needs docs
+   *  Disables custom advertisement
+   */
+  void disableCustom(void);
+
+  /**
+   *  Sets the custom advertisement packet.  The max length is 31 bytes.
+   *  The first 3 bytes specify the advertisement mode.  They take the form 0x2, GAP_ADTYPE_FLAGS, any sum of advertisement types (as defined by AdvertisementType)
+   *  All following data are up to the user to define and follow the pattern of [length, AdvertisementDataTypes, data1, data2, ...] where length includes the number of data plus 1 (for the AdvertisementDataTypes)
+   *  The data can be chained together into the single buffer up to the maxiumum length.
+   *  For example:
+   *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
+   *  @param buf a buffer full of data to advertise
+   *  @param len the length of the buffer
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}
@@ -456,7 +541,7 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Works very similarly to setBeaconEnable.   The primary difference being that enableiBeacon adds the beacon advertisement to a rotating adverisement instead of overrwriting the current standard Bean advertisement.  Parameters are still set with the setBeaconParameters function.
    */
   void enableiBeacon(void);
 
@@ -545,17 +630,18 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Returns a struct of all of the currently services and whether or not they are enabled.
    */
   BluetoothServices getServices(void);
 
   /**
-   *  Needs docs
+   *  Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)
+   *  @param services the services to change
    */
   void setServices(BluetoothServices services);
 
   /**
-   *  Needs docs
+   *  Resets services leaving only the primary standard Bean service advertising.
    */
   void resetServices(void);
   ///@}
@@ -579,6 +665,13 @@ class BeanClass {
    *  @param enableSave true to disable saving to NVRAM, false to enable
    */
   void enableConfigSave(bool enableSave);
+
+
+  /**
+   *  Performs a hard reset on the bluetooth module.
+   */
+  void restartBluetooth(void);
+
   ///@}
 
 

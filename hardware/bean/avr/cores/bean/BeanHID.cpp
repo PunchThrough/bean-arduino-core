@@ -267,7 +267,10 @@ uint8_t _hid_idle = 1;
 // void sendReport(CcReport *pReport);
 // void buttons(uint8_t b);
 
-BeanHid_::BeanHid_(void) { _buttons = 0; }
+BeanHid_::BeanHid_(void) { 
+  _buttons = 0;
+  isShiftHeld = false; 
+}
 
 // Private functions
 
@@ -475,6 +478,7 @@ size_t BeanHid_::_holdKey(uint8_t k) {
     k = k - 136;
   } else if (k >= 128) {  // it's a modifier key
     _keyReport.modifiers |= (1 << (k - 128));
+    if(k == KEY_LEFT_SHIFT) { isShiftHeld = true; }
     k = 0;
   } else {  // it's a printing key
     k = pgm_read_byte(_asciimap + k);
@@ -518,6 +522,7 @@ size_t BeanHid_::_releaseKey(uint8_t k) {
     k = k - 136;
   } else if (k >= 128) {  // it's a modifier key
     _keyReport.modifiers &= ~(1 << (k - 128));
+    if(k == KEY_LEFT_SHIFT) { isShiftHeld = false; }
     k = 0;
   } else {  // it's a printing key
     k = pgm_read_byte(_asciimap + k);
@@ -526,7 +531,7 @@ size_t BeanHid_::_releaseKey(uint8_t k) {
     }
     if (k &
         0x80) {  // it's a capital letter or other character reached with shift
-      _keyReport.modifiers &= ~(0x02);  // the left shift modifier
+      if(!isShiftHeld) { _keyReport.modifiers &= ~(0x02); } // the left shift modifier
       k &= 0x7F;
     }
   }
@@ -586,9 +591,10 @@ int BeanHid_::sendKey(modifierKey key) { return (int)_sendKey((uint8_t)key); }
  */
 int BeanHid_::sendKeys(String charsToType) {
   int status = 0;
-  int maxIndex = charsToType.length() - 1;
+  int maxIndex = charsToType.length();
   for (int i = 0; i < maxIndex; i++) {
-    status &= _sendKey(charsToType.charAt(i));
+    status |= _sendKey(charsToType.charAt(i));
+    delay(5);
   }
 
   return status;

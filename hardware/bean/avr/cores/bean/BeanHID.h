@@ -225,7 +225,7 @@ class BeanHid_ {
   void releaseAllMediaControls();
   ///@}
 
-private:
+ private:
   bool isShiftHeld;
 };
 extern BeanHid_ BeanHid;

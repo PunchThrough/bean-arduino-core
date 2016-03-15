@@ -594,7 +594,7 @@ int BeanHid_::sendKeys(String charsToType) {
   int maxIndex = charsToType.length();
   for (int i = 0; i < maxIndex; i++) {
     status |= _sendKey(charsToType.charAt(i));
-    delay(5);
+    delay(5);  // Characters tend to drop if there's no delay between them
   }
 
   return status;

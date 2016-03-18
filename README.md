@@ -72,7 +72,7 @@ $ git submodule update --recursive
 
 # Code Style and Quality
 
-Code in this repo should adhere to the [Punch Through C++ Style Guide](http://punchthrough.github.io/styleguide/cpp.html).
+Code in this repo should adhere to the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html).
 
 This repo comes with tools to ensure your code meets style guidelines. If code you submit for review does not fit our style guide, your pull request will fail our automated tests. Lint your code before submitting it to avoid this.
 
@@ -89,16 +89,6 @@ Are you getting the following error?
 > Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
 
 This is an Xcode problem. Run `sudo xcodebuild` to agree with the Xcode license agreement, then run `make install` again.
-
-## Auto-Reformat
-
-clang-format is set up to use the Google style guide. Reformatting your code will clean up many of the lint errors you might make.
-
-To reformat Bean files in this project:
-
-```sh
-make reformat
-```
 
 clang-format uses the `.clang-format` file to set formatting style. See the [clang-format docs](http://clang.llvm.org/docs/ClangFormat.html) for more info.
 
@@ -122,18 +112,12 @@ To see which files will be linted or reformatted:
 make show
 ```
 
-# Reading and Setting ATmega Fuses with avrdude
+## Auto-Reformatting
 
-We're going to need to set some fuses for our part in the factory. The fuse settings should match the Arduino Pro defaults, with the exception of disabling brownout protection.
+clang-format is set up to use the Google style guide. Reformatting your code will clean up many of the lint errors you might make.
 
-1. Install avrdude. I used [http://www.obdev.at/products/crosspack/index.html](CrossPack) to do this.
-1. Read the fuses from an off-the-shelf Arduino Pro. Use this command after avrdude is in your path: `avrdude -p atmega328p -c usbtiny -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h`
-1. Go to [http://www.engbedded.com/fusecalc/](The Avr Fuse Calculator) and enter in the current state of the fuses
-1. Turn off Brown Out Detection (BOD).
-1. Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
-1. Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values): `avrdude -p atmega328p -c usbtiny -U lfuse:w:0xee:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m`
+To reformat Bean files in this project:
 
-# TODO
-
-* Fix Serial.println so, like Serial.print, extra radio messages aren't sent for the newline
-* Add features to emulator to provide better, more useful testing
+```sh
+make reformat
+```

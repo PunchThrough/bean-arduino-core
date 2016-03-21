@@ -40,7 +40,8 @@ void loop() {
          info.advData[1] == GAP_ADTYPE_FLAGS &&
          info.advData[2] == (GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED) &&
          info.advData[3] == 0x03 && 
-         info.advData[4] == GAP_ADTYPE_MANUFACTURER_SPECIFIC)
+         info.advData[4] == GAP_ADTYPE_MANUFACTURER_SPECIFIC) &&
+         info.advData[5] == 0xAC
       {
          if(info.advData[6] == 0)
          {

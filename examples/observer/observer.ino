@@ -1,3 +1,10 @@
+/*
+ * This is an example sketch for use with the observer role functionality in the Bean.
+ * The Bean will listen for undirected advertisements and print them out to the serial terminal.
+ * When used in conjunction with a sketch like customAdvert.ino, the Bean will change it's LED to match the LED
+ * Of the custom advert Bean.
+ */
+
 void setup() {
   Serial.begin();
   
@@ -30,10 +37,10 @@ void loop() {
       
       
       if(info.advData[0] == 0x02 &&
-         info.advData[1] == 0x01 &&
-         info.advData[2] == 0x06 &&
+         info.advData[1] == GAP_ADTYPE_FLAGS &&
+         info.advData[2] == (GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED) &&
          info.advData[3] == 0x03 && 
-         info.advData[4] == 0xff)
+         info.advData[4] == GAP_ADTYPE_MANUFACTURER_SPECIFIC)
       {
          if(info.advData[6] == 0)
          {

@@ -256,19 +256,13 @@ class BeanClass {
   ///@{
 
   /**
-   *  Needs docs
+   *  Listens for advertisements and fills an ObserverAdvertisementInfo message with the first advertisement it sees
+   *  This function blocks until it receives a message or times out.
+   *  @param message a pointer to a message object supplied by the user
+   *  @param timeout how long in milliseconds to listen for an advertisement
+   *  @return -1 if there was a failure, 1 if there was a success
    */
-  void observer_start(void);
-
-  /**
-   *  Needs docs
-   */
-  void observer_stop(void);
-
-  /**
-   *  Needs docs
-   */
-  int observer_getMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
 
 

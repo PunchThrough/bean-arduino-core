@@ -644,6 +644,12 @@ class BeanClass {
    *  Resets services leaving only the primary standard Bean service advertising.
    */
   void resetServices(void);
+
+  /**
+   *  Sets the pairing pin for secure modes like HID and ANCS.  The default is 0. 
+   *  @param pin the pin to set from 0-65535
+   */
+  void setPairingPin(uint16_t pin);
   ///@}
 
 

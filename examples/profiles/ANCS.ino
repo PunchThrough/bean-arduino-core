@@ -54,8 +54,7 @@ void loop() {
         notifications[i].notiUID,
         39,
         (uint8_t *)data,
-        5000
-      );
+        5000);
 
       Serial.print("l: ");
       Serial.print(len);

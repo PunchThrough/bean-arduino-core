@@ -208,11 +208,11 @@ class BeanClass {
 
   /**
    *  Get current intensity values for the color channels of the Bean RGB LED.
-   * 
+   *
    *  @return `LedReading` struct that contains an integer representation of each color.
    *
    *  # Examples
-   *  
+   *
    *  This example shows the usage of the getLed() function and how to interperet the return value.
    *  @include led/getLed.ino
    */
@@ -455,7 +455,7 @@ class BeanClass {
    *
    *  This example prints Bean's name to Virtual Serial every two seconds:
    *
-   *  @include examples/getBeanName.ino
+   *  @include advertising/getBeanName.ino
    */
   const char *getBeanName(void);
 
@@ -536,7 +536,7 @@ class BeanClass {
    *  When a button is connected to pin 0 and pressed, the Bean will toggle the Green LED.  It will also write the last byte in the advertisement packet accordingly.
    *  When used in conjunction with observer.ino, the observer Bean will be able to view this packet and will turn it's light on accordingly
    *
-   *  @include observer/customAdvert.ino
+   *  @include observer/advertiser.ino
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}

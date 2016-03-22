@@ -1,5 +1,5 @@
 void setup() {
-  Serial.begin(57600);
+  // Serial port is initialized automatically; we don't have to do anything
 }
 
 void loop() {

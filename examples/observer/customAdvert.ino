@@ -10,8 +10,7 @@ int lastButtonState = LOW;   // the previous read input
 long lastDebounceTime = 0;   // the last time we flipped the output pin
 long debounceDelay = 50;     // how long to debounce for
 
-static uint8_t customAdvertData[] =
-{
+static uint8_t customAdvertData[] = {
   // general discoverable mode advertises indefinitely
   0x02,   // length of this data
   GAP_ADTYPE_FLAGS,
@@ -38,19 +37,15 @@ void setup() {
 void loop() {
   
   int reading = digitalRead(0);  
-  if(reading != lastButtonState)
-  {
+  if(reading != lastButtonState) {
     lastDebounceTime = millis();
   }
   
-  if((millis() - lastDebounceTime) > debounceDelay)
-  {
-      if (reading != buttonState) 
-      {
+  if((millis() - lastDebounceTime) > debounceDelay) {
+      if (reading != buttonState) {
         buttonState = reading;
 
-        if (buttonState == LOW)
-        {
+        if (buttonState == LOW) {
           enabled = !enabled;
           Bean.setLedGreen(enabled ? 0 : 255);
           customAdvertData[6] = enabled ? 1 : 0;

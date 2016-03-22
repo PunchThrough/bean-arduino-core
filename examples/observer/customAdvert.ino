@@ -1,9 +1,3 @@
-/*
- * This creates a custom advertisement for the Bean.  The bean will continue to advertise as itself, but will switch
- * back and forth with the custom advertisement.  Use this in conjunction with another Bean running observer.ino to share data.
- */
-
-
 // debounce code
 int buttonState;             // the current input
 int lastButtonState = LOW;   // the previous read input

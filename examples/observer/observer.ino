@@ -1,13 +1,3 @@
-/*
- * This is an example sketch for use with the observer role functionality in the Bean.
- * The Bean will listen for undirected advertisements and print them out to the serial terminal.
- * When used in conjunction with a sketch like customAdvert.ino, the Bean will change it's LED to match the LED
- * Of the custom advert Bean.
- * 
- * Note that the heavy use of the print and println functionality slows the search down.  Removing all instances
- * Of print and println will speed up the process
- */
-
 void setup() {
     Serial.begin();
 }

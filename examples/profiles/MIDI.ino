@@ -1,10 +1,3 @@
-/* 
- * This profile uses Apple's core midi to act as a musical instrument
- * In this mode the Bean can connect to a Mac or iOS device and use an app that has coremidi enabled such as garageband
- * The Bean will play a scale, chord, and bend a note.  
- *
- */
-
 void setup() {
     BeanMidi.enable();
 }

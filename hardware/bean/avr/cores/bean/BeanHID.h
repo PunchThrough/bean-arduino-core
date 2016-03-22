@@ -96,7 +96,14 @@ class BeanHid_ {
 
   /****************************************************************************/
   /** @name HID
-   *  Use your Bean as a Human Interface Device to emulate a keyboard or mouse.
+   * The user must enter a pairing code (default of 00000) to connect.
+   * HID allows the bean to act as a mouse, keyboard, or media control device.
+   * NOTE: Mouse clicks may not work on OSX at the moment (March 21, 2016)
+   *
+   *
+   * Important, when disconnecting from a device, you must manually forget the Bean in the system 
+   * bluetooth menu as well as the loader
+   * After enabling HID for the first time, power cycle the Bean.
    */
   ///@{
 
@@ -107,6 +114,14 @@ class BeanHid_ {
    *  This function turns on the Bean's HID functionality.  It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.
    *
    *  HID may not work well with other profiles such as ANCS or Midi.  Use multiple at your own risk.  Enabling may require power cycle for proper functionality.
+   *
+   *  # Examples
+   *  This is an example sketch for how to use HID.
+   *  The bean will move a mouse pointer around the screen according to how it is tilted.
+   *  The user can send commands over the serial terminal to see a demonstration of different actions.
+   *  NOTE: mouse clicks may not work on OSX 10 as of March 22, 2016
+   *
+   *  @include profiles/HID.ino
    */
   void enable(void);
 

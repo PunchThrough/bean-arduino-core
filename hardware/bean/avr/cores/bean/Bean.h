@@ -251,7 +251,9 @@ class BeanClass {
 
   /****************************************************************************/
   /** @name Observer
-   *  Functions related to Observer mode
+   *  Functions related to Observer mode.  Observer role allows the Bean to listen for advertisements.  
+   *  As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements.
+   *  Paired with the custom advertising role, you can have two Beans interact with each other.  This role works even when the Bean is connected.
    */
   ///@{
 
@@ -261,6 +263,17 @@ class BeanClass {
    *  @param message a pointer to a message object supplied by the user
    *  @param timeout how long in milliseconds to listen for an advertisement
    *  @return -1 if there was a failure, 1 if there was a success
+   *  
+   *  # Examples
+   * This is an example sketch for use with the observer role functionality in the Bean.
+   * The Bean will listen for undirected advertisements and print them out to the serial terminal.
+   * When used in conjunction with a sketch like customAdvert.ino, the Bean will change it's LED to match the LED
+   * Of the custom advert Bean.
+   * 
+   * Note that the heavy use of the print and println functionality slows the search down.  Removing all instances
+   * Of print and println will speed up the process
+   * 
+   * @include observer/observer.ino
    */
   int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
@@ -517,6 +530,13 @@ class BeanClass {
    *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
    *  @param buf a buffer full of data to advertise
    *  @param len the length of the buffer
+   * 
+   *  # Examples
+   *  This will enable a custom advertisement for the Bean.  It will broadcast the following packet: {0x02, GAP_ADTYPE_FLAGS (0x01), GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED (0x06), 0x03, GAP_ADTYPE_MANUFACTURER_SPECIFIC (0xFF), 0xAC, 0x0n}
+   *  When a button is connected to pin 0 and pressed, the Bean will toggle the Green LED.  It will also write the last byte in the advertisement packet accordingly.
+   *  When used in conjunction with observer.ino, the observer Bean will be able to view this packet and will turn it's light on accordingly
+   *
+   *  @include observer/customAdvert.ino
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}

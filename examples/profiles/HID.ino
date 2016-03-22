@@ -1,16 +1,3 @@
-/*
- * This is an example sketch for how to use HID.  The user must enter a pairing code of 00000 to connect.
- * HID allows the bean to act as a mouse, keyboard, or media control device.
- * The bean will move a mouse pointer around the screen according to how it is tilted.
- * The user can send commands over the serial terminal to see a demonstration of different actions.
- * NOTE: Mouse clicks may not work on OSX at the moment (March 21, 2016)
- *
- *
- * Important, when disconnecting from a device, you must manually forget the Bean in the system 
- * bluetooth menu as well as the loader
- * After enabling HID for the first time, power cycle the Bean.
- */
-
 void setup() {
     Serial.begin();
     BeanHid.enable();

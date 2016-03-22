@@ -1,22 +1,3 @@
-/*
- * This allows the Bean to act as an ANCS device.
- * ANCS is the Apple Notification Center Service. This allows a connected
- * Bluetooth device to receive information about iOS nofications. Bean can view
- * details about these notifications, e.g. email and SMS previews, or an
- * incoming phone call's number.
- *
- * For details on what different elements mean, please see the official
- * Apple ANCS documentation:
- * https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Appendix/Appendix.html#//apple_ref/doc/uid/TP40013460-CH3-SW2
- *
- * Upload this sketch to Bean, power cycle your Bean, then connect to an iOS
- * device. Pair with Bean using pairing code 000000. Once you're connected, use
- * Bean Console for iOS to view data from your iOS device live as it arrives.
- *
- * When you disconnect from an Bean in ANCS mode, you'll need to manually forget
- * it from the iOS Bluetooth Settings menu.
- */
-
 int latestID = 0;
 AncsNotification notifications[8];
 

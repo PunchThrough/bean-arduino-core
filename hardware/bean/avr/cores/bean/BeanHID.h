@@ -114,10 +114,9 @@ class BeanHid_ {
    *  You may need to power cycle Bean after enabling HID.
    *
    *  # Examples
-   *  This is an example sketch for how to use HID.
-   *  The bean will move a mouse pointer around the screen according to how it is tilted.
-   *  The user can send commands over the serial terminal to see a demonstration of different actions.
-   *  NOTE: mouse clicks may not work on OSX 10 as of March 22, 2016
+   *  This sketch demonstrates how to use Bean as a HID peripheral.
+   *  Bean will move a mouse pointer around the screen when it's tilted side to side, forward, and back.
+   *  Sending ASCII '1' via Virtual Serial will cause Bean to type "Hello, world!", and sending '2' will cause Bean to send the Play media key.
    *
    *  @include profiles/HID.ino
    */
@@ -202,21 +201,18 @@ class BeanHid_ {
 
   /**
    *  Holds a mouse button down
-   *  NOTE: There are currently some issues with mouse clicks on OSX 10
    *  @param button the button to hold of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void holdMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Releases a mouse button.
-   *  NOTE: There are currently some issues with mouse clicks on OSX 10
    *  @param button the button to release of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void releaseMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
    *  Sends a mouse hold then a mouse release command.
-   *  NOTE: There are currently some issues with mouse clicks on OSX 10
    *  @param button the button to click of type mouseButtons.  Defaults to MOUSE_LEFT.
    */
   void sendMouseClick(mouseButtons button = MOUSE_LEFT);

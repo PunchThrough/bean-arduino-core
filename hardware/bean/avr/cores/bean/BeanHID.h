@@ -96,14 +96,10 @@ class BeanHid_ {
 
   /****************************************************************************/
   /** @name HID
-   * The user must enter a pairing code (default of 00000) to connect.
+   * The user must enter a pairing code (default of 000000) to connect.
    * HID allows the bean to act as a mouse, keyboard, or media control device.
-   * NOTE: Mouse clicks may not work on OSX at the moment (March 21, 2016)
    *
-   *
-   * Important, when disconnecting from a device, you must manually forget the Bean in the system 
-   * bluetooth menu as well as the loader
-   * After enabling HID for the first time, power cycle the Bean.
+   * Important: When disconnecting from a device, you must manually forget Bean in the system's Bluetooth settings as well as Bean Loader.
    */
   ///@{
 
@@ -113,7 +109,9 @@ class BeanHid_ {
   /**
    *  This function turns on the Bean's HID functionality.  It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.
    *
-   *  HID may not work well with other profiles such as ANCS or Midi.  Use multiple at your own risk.  Enabling may require power cycle for proper functionality.
+   *  HID may not work well with other profiles such as ANCS or MIDI. Use multiple profiles simultaneously at your own risk.
+   *
+   *  You may need to power cycle Bean after enabling HID.
    *
    *  # Examples
    *  This is an example sketch for how to use HID.
@@ -131,7 +129,11 @@ class BeanHid_ {
   bool isEnabled(void);
 
   /**
-   *  Disables the HID functionality.  May require power cycle and if the Bean has been paired with another device it must manually be removed again.
+   *  Disables the HID functionality.
+   *
+   *  If Bean has been paired with another device, you must un-pair Bean from that device manually.
+   *
+   *  You may need to power cycle Bean after disabling HID.
    */
   void disable(void);
 
@@ -143,21 +145,21 @@ class BeanHid_ {
   int holdKey(char key);
 
   /**
-   *  Holds a key down. takes any modifier key specified by modifierKey.  
+   *  Holds a key down. takes any modifier key specified by modifierKey.
    *  Does not affect a users keyboard (sending hold shift won't type capital letters when you press them on your keyboard)
    *  @param key takes a modifier key to hold down.  Can hold down all 8 of the first 8 modifier keys.  The keys that come after the first 8 are counted as standard keys and therefore part of the 6 character keys.
-   *  
+   *
    */
   int holdKey(modifierKey key);
 
   /**
-   *  Releases a key.  
+   *  Releases a key.
    *  @param key the key to release in character form
    */
   int releaseKey(char key);
 
   /**
-   *  Releases a key.  
+   *  Releases a key.
    *  @param key the key to release of type modifierKey
    *  @return 1 if success 0 if failure
    */
@@ -220,7 +222,7 @@ class BeanHid_ {
   void sendMouseClick(mouseButtons button = MOUSE_LEFT);
 
   /**
-   *  Sends a media control command command of type mediaControl.  
+   *  Sends a media control command command of type mediaControl.
    *  @param command takes a media control command of type mediaControl
    */
   void sendMediaControl(mediaControl command);
@@ -232,7 +234,7 @@ class BeanHid_ {
   void holdMediaControl(mediaControl command);
 
   /**
-   *  Releases a media control command command of type mediaControl.  
+   *  Releases a media control command command of type mediaControl.
    *  @param command takes a media control command of type mediaControl
    */
   void releaseMediaControl(mediaControl command);

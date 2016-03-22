@@ -20,12 +20,21 @@ class BeanAncsClass {
   /****************************************************************************/
   /** @name ANCS
    *  Use the <a href="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</a> to read notifications from your iOS device.
-   *  ANCS allows a bluetooth device connected to an iOS device to receive notifications about new incoming notifications including text messages, phone calls, and push notifications (and more)
+   *  This allows a connected Bluetooth device to receive information about
+   *  iOS nofications. Bean can view details about these notifications, e.g.
+   *  push notifications, SMS previews, or an incoming phone call's number.
+   *
+   *  To use ANCS, upload an ANCS sketch to Bean, power cycle Bean, and pair
+   *  with Bean from your iOS device using pairing code 000000.
+   *
+   *  When you disconnect from an Bean in ANCS mode, you'll need to manually
+   *  forget it from the iOS Bluetooth Settings menu.
    */
   ///@{
 
   /**
-   *  Enables ANCS functionality.  
+   *  Enables ANCS functionality. After uploading an ANCS sketch, make sure to
+   *  power cycle Bean.
    */
   void enable(void);
 
@@ -58,13 +67,22 @@ class BeanAncsClass {
   ANCS_SOURCE_MSG_T getNotificationHeader();
 
   /**
-   *  This function can be used to request details about a particular notification.  It can only be used to access one type of notification at a time and will block the thread until it receives a message.  
+   *  This function can be used to request details about a particular notification.  It can only be used to access one type of notification at a time and will block the thread until it receives a message.
    *  @param type is the type of data the user wishes to receive of type NOTI_ATTR_ID_T
-   *  @param ID is the UUID of the notification as contained in ANCS_SOURCE_MSG_T.  
+   *  @param ID is the UUID of the notification as contained in ANCS_SOURCE_MSG_T.
    *  @param len is the max number of bytes to receive into data.  The maximum possible is 65535 bytes.
    *  @param data is the user defined buffer to fill incoming data with.
    *  @param timeout is the length of time in milliseconds before the function will return if it does not receive data or only receives partial data
    *  @param return the number of bytes actually read to data
+   *
+   *  # Examples
+   *
+   *  This example sketch reads ANCS messages and prints them to Virtual Serial.
+   *  Pair with your iOS device, then use
+   *  <a href="https://itunes.apple.com/us/app/bean-console/id982751969?mt=8">Bean Console for iOS</a>
+   *  to view data live from your iOS device.
+   *
+   *  @include profiles/ANCS.ino
    */
   int getNotificationAttributes(NOTI_ATTR_ID_T type, uint32_t ID,
                         uint16_t len, uint8_t* data,

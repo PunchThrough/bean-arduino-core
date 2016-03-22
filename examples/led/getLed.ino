@@ -1,9 +1,9 @@
 void setup() {
-  Serial.begin(57600);  // Initialize serial port
+  // Serial port is initialized automatically; we don't have to do anything
 }
 
 void loop() {
-  LedReading rgbSetting = Bean.getLed();;
+  LedReading rgbSetting = Bean.getLed();
   Serial.print("  Red: ");
   Serial.println(rgbSetting.red);
   Serial.print("Green: ");

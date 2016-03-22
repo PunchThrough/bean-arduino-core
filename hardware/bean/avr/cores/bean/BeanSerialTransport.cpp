@@ -785,7 +785,7 @@ int BeanSerialTransport::getObserverMessage(OBSERVER_INFO_MESSAGE_T *message,
          min(observer_msg_len, sizeof(OBSERVER_INFO_MESSAGE_T)));
   // Stop Observing
   write_message(MSG_ID_OBSERVER_STOP, NULL, 0);
-  return 0;
+  return 1;
 }
 
 ////////

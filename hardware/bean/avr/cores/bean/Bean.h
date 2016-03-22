@@ -208,11 +208,11 @@ class BeanClass {
 
   /**
    *  Get current intensity values for the color channels of the Bean RGB LED.
-   * 
+   *
    *  @return `LedReading` struct that contains an integer representation of each color.
    *
    *  # Examples
-   *  
+   *
    *  This example shows the usage of the getLed() function and how to interperet the return value.
    *  @include led/getLed.ino
    */
@@ -251,24 +251,28 @@ class BeanClass {
 
   /****************************************************************************/
   /** @name Observer
-   *  Functions related to Observer mode
+   *  Functions related to Observer mode.  Observer role allows the Bean to listen for advertisements.
+   *  As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements.
+   *  Paired with the custom advertising role, you can have two Beans interact with each other.  This role works even when the Bean is connected.
    */
   ///@{
 
   /**
-   *  Needs docs
+   *  Listens for advertisements and fills an ObserverAdvertisementInfo message with the first advertisement it sees
+   *  This function blocks until it receives a message or times out.
+   *  @param message a pointer to a message object supplied by the user
+   *  @param timeout how long in milliseconds to listen for an advertisement
+   *  @return -1 if there was a failure, 1 if there was a success
+   *
+   *  # Examples
+   *
+   *  This sketch (observer.ino) demonstrates Bean's observer role functionality.
+   *
+   *  When a Bean running this sketch is near a Bean running advertiser.ino, it will change its LED to reflect the state of the LED on the advertising Bean.
+   *
+   *  @include observer/observer.ino
    */
-  void observer_start(void);
-
-  /**
-   *  Needs docs
-   */
-  void observer_stop(void);
-
-  /**
-   *  Needs docs
-   */
-  int observer_getMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
   ///@}
 
 
@@ -448,7 +452,7 @@ class BeanClass {
    *
    *  This example prints Bean's name to Virtual Serial every two seconds:
    *
-   *  @include examples/getBeanName.ino
+   *  @include advertising/getBeanName.ino
    */
   const char *getBeanName(void);
 
@@ -523,6 +527,16 @@ class BeanClass {
    *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
    *  @param buf a buffer full of data to advertise
    *  @param len the length of the buffer
+   *
+   *  # Examples
+   *  This sketch (advertiser.ino) will enable a custom advertisement for the Bean. It will broadcast the following packet:
+   *
+   *  `{0x02, GAP_ADTYPE_FLAGS (0x01), GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED (0x06), 0x03, GAP_ADTYPE_MANUFACTURER_SPECIFIC (0xFF), 0xAC, 0x0n}`
+   *
+   *  When pin 0 is pulled to ground, Bean will toggle the green LED.  It will also set the last byte in the advertisement packet to reflect the LED's on state.
+   *  When used in conjunction with observer.ino, the observer Bean will see this packet and will turn its light on.
+   *
+   *  @include observer/advertiser.ino
    */
   void setCustomAdvertisement(uint8_t *buf, int len);
   ///@}

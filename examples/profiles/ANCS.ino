@@ -72,7 +72,7 @@ void loop() {
 
     // send a number through serial (with newline at end) to perform a negative action
     if (Serial.available() > 0) {
-        byte idin[8] = {0};
+        char idin[8] = {0};
         int index = 0;
         byte read = Serial.read();
         while (read != '\n' && index < 7) {

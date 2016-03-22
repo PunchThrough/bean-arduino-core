@@ -36,7 +36,7 @@ void loop() {
     int16_t mousex = map(x, -60, 60, -20, 20);
     int16_t mousey = map(y, -60, 60, 20, -20);
 
-    Bean.HIDMoveMouse(mousex, mousey);
+    BeanHid.moveMouse(mousex, mousey);
 
 
     if (Serial.available()) {

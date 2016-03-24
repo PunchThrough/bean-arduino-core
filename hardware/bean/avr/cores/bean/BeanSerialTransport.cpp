@@ -508,7 +508,7 @@ int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
                            (uint8_t *)btStates, &length);
 }
 
-void BeanSerialTransport::BTSetPairingPin(const uint16_t pin) {
+void BeanSerialTransport::BTSetPairingPin(const uint32_t pin) {
   write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)&pin, sizeof(pin));
 }
 

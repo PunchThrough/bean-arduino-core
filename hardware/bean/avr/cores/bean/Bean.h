@@ -647,7 +647,7 @@ class BeanClass {
 
   /**
    *  Sets the pairing pin for secure modes like HID and ANCS.  The default is 0. 
-   *  @param pin the pin to set from 0-65535
+   *  @param pin the pin to set from 0-999999
    */
   void setPairingPin(uint32_t pin);
   ///@}

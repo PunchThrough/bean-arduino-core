@@ -646,10 +646,21 @@ class BeanClass {
   void resetServices(void);
 
   /**
-   *  Sets the pairing pin for secure modes like HID and ANCS.  The default is 0. 
+   *  Sets the pairing pin for a secure pin based connection.  The default is 0.
+   *  If you wish to use this with HID or ANCS, set it after enabling either of the profiles
+   *  After pairing, the device will be bonded.  In order to un-bond you will have to manually disconnect from
+   *  your device menu.  The value will be saved in nonvolatile memory unless enableConfigSave(false) is called.
+   *  
    *  @param pin the pin to set from 0-999999
    */
   void setPairingPin(uint32_t pin);
+
+  /**
+   * Enables or disables pairing pin functionality.  If this is enabled it will use the current pin stored in the Beans memory.
+   * This default is 000000. If a user changes the pin using setPairingPin this will be the pin that is used.
+   * 
+   */
+  void enablePairingPin(bool enable);
   ///@}
 
 

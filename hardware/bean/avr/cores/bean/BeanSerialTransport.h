@@ -48,6 +48,7 @@ class BeanSerialTransport : public HardwareSerial {
   void BTSetConnectionInterval(const int interval_ms);
   void BTSetLocalName(const char *name);
   void BTSetPairingPin(const uint32_t pin);
+  void BTEnablePairingPin(bool enable);
   void BTSetTxPower(const BT_TXPOWER_DB_T &power);
   void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
   int BTGetScratchChar(uint8_t scratchNum, ScratchData *scratchData);

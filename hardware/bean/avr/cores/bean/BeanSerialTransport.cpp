@@ -509,7 +509,17 @@ int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
 }
 
 void BeanSerialTransport::BTSetPairingPin(const uint32_t pin) {
-  write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)&pin, sizeof(pin));
+  uint8_t msg[5] = {0};
+  memcpy((void *)msg, (void *)pin, sizeof(pin));
+  //4th byte is the enable/disable for the pairing pin
+  msg[4] = 0x01;
+  msg[5] = m_enableSave ? 1 : 0; //5th byte is for persistent memory
+
+  write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)&msg, sizeof(msg));
+}
+
+void BeanSerialTransport::BTEnablePairingPin(bool enable) {
+  write_message(MSG_ID_BT_ENABLE_PAIRING_PIN, (const uint8_t *)(enable ? 0x01 : 0x00), sizeof(uint8_t));
 }
 
 void BeanSerialTransport::BTSetAdvertisingInterval(uint16_t interval_ms) {

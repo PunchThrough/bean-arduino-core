@@ -208,11 +208,11 @@ class BeanClass {
 
   /**
    *  Get current intensity values for the color channels of the Bean RGB LED.
-   * 
+   *
    *  @return `LedReading` struct that contains an integer representation of each color.
    *
    *  # Examples
-   *  
+   *
    *  This example shows the usage of the getLed() function and how to interperet the return value.
    *  @include led/getLed.ino
    */
@@ -646,20 +646,26 @@ class BeanClass {
   void resetServices(void);
 
   /**
-   *  Sets the pairing pin for a secure pin based connection.  The default is 0.
-   *  If you wish to use this with HID or ANCS, set it after enabling either of the profiles
-   *  After pairing, the device will be bonded.  In order to un-bond you will have to manually disconnect from
-   *  your device menu.  The value will be saved in nonvolatile memory unless enableConfigSave(false) is called.
-   *  Calling this function enables the pairing pin mode.  Disable it with enablePairingPin(false)
-   *  
-   *  @param pin the pin to set from 0-999999
+   *  Sets the pairing PIN for a secure PIN-based connection. The default PIN is 000000.
+   *
+   *  Calling this function enables the pairing PIN mode.  Disable it with `enablePairingPin(false)`.
+   *
+   *  If you wish to use this with HID or ANCS, set the PIN after enabling either of the profiles.
+   *
+   *  After pairing, your device and Bean will be bonded. In order to un-bond, you will have to manually disconnect from Bean in your device's settings.
+   *
+   *  The PIN will be saved to nonvolatile memory unless `enableConfigSave(false)` is called.
+   *
+   *  @param pin the pairing PIN to set, from 000000 to 999999
    */
   void setPairingPin(uint32_t pin);
 
   /**
-   * Enables or disables pairing pin functionality.  If this is enabled it will use the current pin stored in the Beans memory.
-   * This default is 000000. If a user changes the pin using setPairingPin this will be the pin that is used.
-   * 
+   * Enables or disables pairing PIN functionality.
+   *
+   * The default PIN is 000000. This chan be changed using `setPairingPin`.
+   *
+   * @param true to enable, false to disable
    */
   void enablePairingPin(bool enable);
   ///@}

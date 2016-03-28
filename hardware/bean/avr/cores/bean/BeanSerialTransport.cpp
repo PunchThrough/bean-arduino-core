@@ -341,9 +341,7 @@ void BeanSerialTransport::begin(void) {
   HardwareSerial::begin(38400);
   pinMode(CC_INTERRUPT_PIN, OUTPUT);
   digitalWrite(CC_INTERRUPT_PIN, LOW);
-
-  m_enableSave = true;
-
+  
   if (tx_buffer.head == tx_buffer.tail) {
     tx_buffer_flushed = true;
     digitalWrite(CC_INTERRUPT_PIN, m_ccSleepPinVal);
@@ -509,17 +507,18 @@ int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
 }
 
 void BeanSerialTransport::BTSetPairingPin(const uint32_t pin) {
-  uint8_t msg[5] = {0};
-  memcpy((void *)msg, (void *)pin, sizeof(pin));
-  //4th byte is the enable/disable for the pairing pin
-  msg[4] = 0x01;
-  msg[5] = m_enableSave ? 1 : 0; //5th byte is for persistent memory
-
-  write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)&msg, sizeof(msg));
+  uint8_t msg[6] = {0};
+  memcpy(msg, (void *)&pin, sizeof(pin));
+  msg[4] = 0x01;    //4th byte is the enable/disable for the pairing pin
+  msg[5] = m_enableSave ? 1 : 0;  //5th byte is for persistent memory
+  write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)msg, sizeof(msg));
 }
 
 void BeanSerialTransport::BTEnablePairingPin(bool enable) {
-  write_message(MSG_ID_BT_ENABLE_PAIRING_PIN, (const uint8_t *)(enable ? 0x01 : 0x00), sizeof(uint8_t));
+  uint8_t msg[2] = {0};
+  msg[0] = enable ? 0x01 : 0x00;  // enable/disable
+  msg[1] = m_enableSave ? 0x01 : 0x00;  // configsave
+  write_message(MSG_ID_BT_ENABLE_PAIRING_PIN, (const uint8_t *)msg, sizeof(msg));
 }
 
 void BeanSerialTransport::BTSetAdvertisingInterval(uint16_t interval_ms) {

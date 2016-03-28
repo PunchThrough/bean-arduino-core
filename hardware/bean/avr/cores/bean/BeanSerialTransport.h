@@ -105,7 +105,7 @@ class BeanSerialTransport : public HardwareSerial {
   void sleep(uint32_t duration_ms);
   void enableWakeOnConnect(bool enable);
 
-  bool m_enableSave;
+  bool m_enableSave = true;
 
  public:
   // To work on bean, the serial must be initialized

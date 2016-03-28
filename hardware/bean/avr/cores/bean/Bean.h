@@ -650,6 +650,7 @@ class BeanClass {
    *  If you wish to use this with HID or ANCS, set it after enabling either of the profiles
    *  After pairing, the device will be bonded.  In order to un-bond you will have to manually disconnect from
    *  your device menu.  The value will be saved in nonvolatile memory unless enableConfigSave(false) is called.
+   *  Calling this function enables the pairing pin mode.  Disable it with enablePairingPin(false)
    *  
    *  @param pin the pin to set from 0-999999
    */

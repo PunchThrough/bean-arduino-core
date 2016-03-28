@@ -341,7 +341,7 @@ void BeanSerialTransport::begin(void) {
   HardwareSerial::begin(38400);
   pinMode(CC_INTERRUPT_PIN, OUTPUT);
   digitalWrite(CC_INTERRUPT_PIN, LOW);
-  
+
   if (tx_buffer.head == tx_buffer.tail) {
     tx_buffer_flushed = true;
     digitalWrite(CC_INTERRUPT_PIN, m_ccSleepPinVal);
@@ -509,8 +509,8 @@ int BeanSerialTransport::BTGetStates(BT_STATES_T *btStates) {
 void BeanSerialTransport::BTSetPairingPin(const uint32_t pin) {
   uint8_t msg[6] = {0};
   memcpy(msg, (void *)&pin, sizeof(pin));
-  msg[4] = 0x01;    //4th byte is the enable/disable for the pairing pin
-  msg[5] = m_enableSave ? 1 : 0;  //5th byte is for persistent memory
+  msg[4] = 0x01;    // 4th byte is the enable/disable for the pairing pin
+  msg[5] = m_enableSave ? 1 : 0;  // 5th byte is for persistent memory
   write_message(MSG_ID_BT_SET_PIN, (const uint8_t *)msg, sizeof(msg));
 }
 

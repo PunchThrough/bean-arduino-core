@@ -536,6 +536,16 @@ void BeanClass::setServices(ADV_SWITCH_ENABLED_T services) {
   Serial.writeGATT(services);
 }
 
+void BeanClass::setPairingPin(uint32_t pin) {
+  if (pin <= 999999) {
+    Serial.BTSetPairingPin(pin);
+  }
+}
+
+void BeanClass::enablePairingPin(bool enable) {
+  Serial.BTEnablePairingPin(enable);
+}
+
 void BeanClass::enableCustom(void) {
   ADV_SWITCH_ENABLED_T curServices = getServices();
   curServices.custom = 1;

@@ -658,6 +658,30 @@ class BeanClass {
    *  Resets services leaving only the primary standard Bean service advertising.
    */
   void resetServices(void);
+
+  /**
+   *  Sets the pairing PIN for a secure PIN-based connection. The default PIN is 000000.
+   *
+   *  Calling this function enables the pairing PIN mode.  Disable it with `enablePairingPin(false)`.
+   *
+   *  If you wish to use this with HID or ANCS, set the PIN after enabling either of the profiles.
+   *
+   *  After pairing, your device and Bean will be bonded. In order to un-bond, you will have to manually disconnect from Bean in your device's settings.
+   *
+   *  The PIN will be saved to nonvolatile memory unless `enableConfigSave(false)` is called.
+   *
+   *  @param pin the pairing PIN to set, from 000000 to 999999
+   */
+  void setPairingPin(uint32_t pin);
+
+  /**
+   * Enables or disables pairing PIN functionality.
+   *
+   * The default PIN is 000000. This chan be changed using `setPairingPin`.
+   *
+   * @param true to enable, false to disable
+   */
+  void enablePairingPin(bool enable);
   ///@}
 
 

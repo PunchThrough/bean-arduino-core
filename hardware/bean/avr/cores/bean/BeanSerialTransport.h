@@ -47,7 +47,8 @@ class BeanSerialTransport : public HardwareSerial {
   void BTSetAdvertisingInterval(uint16_t interval_ms);
   void BTSetConnectionInterval(const int interval_ms);
   void BTSetLocalName(const char *name);
-  void BTSetPairingPin(const uint16_t pin);
+  void BTSetPairingPin(const uint32_t pin);
+  void BTEnablePairingPin(bool enable);
   void BTSetTxPower(const BT_TXPOWER_DB_T &power);
   void BTSetScratchChar(BT_SCRATCH_T *setting, uint8_t length);
   int BTGetScratchChar(uint8_t scratchNum, ScratchData *scratchData);
@@ -104,7 +105,7 @@ class BeanSerialTransport : public HardwareSerial {
   void sleep(uint32_t duration_ms);
   void enableWakeOnConnect(bool enable);
 
-  bool m_enableSave;
+  bool m_enableSave = true;
 
  public:
   // To work on bean, the serial must be initialized

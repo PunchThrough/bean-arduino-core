@@ -286,11 +286,20 @@ class BeanMidiClass {
   /****************************************************************************/
   /** @name MIDI
    *  Read and write MIDI packets via Bluetooth Low Energy.
+   *  This profile uses Apple's <a href="https://developer.apple.com/library/ios/documentation/MusicAudio/Reference/CACoreMIDIRef/index.html">Core Midi Framework</a> to act as a musical instrument.  
+   *  The Bean can send midi messages to an app like garage band to emulate diferent instruments.
+   *  A list of different types of MIDI messages can be found <a href="https://www.midi.org/specifications/item/table-1-summary-of-midi-message">here</a>
    */
   ///@{
 
   /**
    *  Enables core Midi functionality on the Bean.
+   *  
+   *  # Examples
+   *  When connected to iOS's or OSX's garage band this bean will play through the C Major scale, play a C Major chord, and then bend a note up.
+   *  The Bean will also listen for incoming Core Midi messages.  If you have an app that can send core midi messages to BLE peripherals, the Bean's green LED will blink.
+   *  
+   *  @include profiles/MIDI.ino
    */
   void enable(void);
 

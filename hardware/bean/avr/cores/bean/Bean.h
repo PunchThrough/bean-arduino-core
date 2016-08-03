@@ -728,7 +728,7 @@ class BeanClass {
    *
    *  # Examples
    *  
-   *  This example disconnects a Bean from any currently-connected devices, then sleeps until reconnected:
+   *  This example blinks the LED on the Bean green if connected, red if disconnected:
    *
    *  @include getConnectionState.ino
    */

@@ -11,13 +11,22 @@ void loop() {
   // Sleep forever while transmitting iBeacon location data
   if (Bean.checkMotionEvent(HIGH_G_EVENT)){
     Serial.print("High-g event detected: ");
-    printAcceleration(getAcceleration());
+    printAcceleration(Bean.getAcceleration());
+    // Blink green LED
+    Bean.setLed(0, 255, 0);
+    Bean.sleep(1000);
   } else if (Bean.checkMotionEvent(LOW_G_EVENT)){
     Serial.print("Low-g event detected: ");
-    printAcceleration(getAcceleration());
+    printAcceleration(Bean.getAcceleration());
+    // Blink yellow LED
+    Bean.setLed(255, 255, 0);
+    Bean.sleep(1000);
   } else {
     Serial.print("No movement detected: ");
-    printAcceleration(getAcceleration());
+    printAcceleration(Bean.getAcceleration());
+    // Blink red LED
+    Bean.setLed(255, 0, 0);
+    Bean.sleep(1000);
   }
   Bean.sleep(1000);  // Sleep and recheck every second
 }

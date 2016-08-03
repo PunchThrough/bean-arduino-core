@@ -1,42 +1,42 @@
+#define REG_POWER_MODE_X11    0x11
+#define VALUE_NORMAL_MODE     0x00
+// Create boolean to run loop persistently
+bool motionDetected = false;
 void setup() {
   // Enable low-g motion events to be detected
-  Bean.enableMotionEvent(LOW_G_EVENT);
-  // Create boolean to run loop persistently
-  bool motionDetected = false;
-  bool motionFlag;
+  Bean.enableMotionEvent(ANY_MOTION_EVENT);
   // Make sure accelerometer is in low power mode to save battery
   // (The next two lines are equivalent to "uint8_t value = Bean.getAccelerometerPowerMode()")
   uint8_t value;
-  Serial.accelRegisterRead(REG_POWER_MODE_X11, 1, &value);
-  if (value != VALUE_LOW_POWER_1S){
+  Bean.accelRegisterRead(REG_POWER_MODE_X11, 1, &value);
+  if (value != VALUE_NORMAL_MODE){
   	// Set accelerometer power mode to low power consumption 
-    // (This is the same as "Bean.setAccelerometerPowerMode(VALUE_LOW_POWER_1S)")
-  	Bean.accelRegisterWrite(REG_POWER_MODE_X11, VALUE_LOW_POWER_1S);
+    // (This is the same as "Bean.setAccelerometerPowerMode(VALUE_NORMAL_MODE)")
+  	Bean.accelRegisterWrite(REG_POWER_MODE_X11, VALUE_NORMAL_MODE);
   }
 }
 void loop() {
+  // Check for low-g movement
+  if (Bean.checkMotionEvent(ANY_MOTION_EVENT) && !motionDetected){
+    motionDetected = true;
+  } else if (!Bean.checkMotionEvent(ANY_MOTION_EVENT) && !motionDetected){
+    Bean.sleep(2000);  // Sleep for 2 seconds before rechecking
+  }
   if (motionDetected){
     // If motion is detected, blue/red lights will flash continuously
   	Bean.setLed(255, 0, 0);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Bean.setLed(0, 0, 255);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Bean.setLed(255, 0, 0);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Bean.setLed(0, 0, 255);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Bean.setLed(255, 0, 0);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Bean.setLed(0, 0, 255);
-    Bean.sleep(500)
+    Bean.sleep(500);
     Serial.print("Motion has been detected; ");
     Serial.println();
-  }
-  // Check for low-g movement
-  if (Bean.checkMotionEvent(LOW_G_EVENT) && !motionDetected){
-    motionDetected = true;
-  } else if (!Bean.checkMotionEvent(LOW_G_EVENT) && !motionDetected){
-    Bean.sleep(2000);  // Sleep for 2 seconds before rechecking
-  }
-  
+  }  
 }

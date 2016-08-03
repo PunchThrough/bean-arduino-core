@@ -1,6 +1,6 @@
 void setup() {
   // Set enableConfigSave to true to save settings temporarily
-  Bean.enableConfigSave(true);
+  Bean.enableConfigSave(false);
   // Enable some settings which will be temporary now
   Bean.enableAdvertising(true);
   Bean.enableCustom();

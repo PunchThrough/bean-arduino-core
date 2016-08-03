@@ -1,12 +1,18 @@
-wakevoid setup() {
-  // If Bean is already connected to a device, disconnect it
-  if (Bean.getConnectionState() == true){
-    Bean.disconnect();
-  }
-  // Set Bean to wake up when a new connection is established
-  Bean.enableWakeOnConnect(true);
+void setup() {
+  // Nothing to initialize up here
 }
 void loop() {
-  // Sleep forever until new connection
-  Bean.sleep(0xffffffff);
+  // If Bean is connected to a device, blink green LED
+  if (Bean.getConnectionState() == true){
+    Bean.setLed(0, 255, 0);
+    Bean.sleep(250);
+    Bean.setLed(0, 0, 0);
+  // If Bean is not connected, blink red LED
+  } else if (Bean.getConnectionState() == false) {
+    Bean.setLed(255, 0, 0);
+    Bean.sleep(250);
+    Bean.setLed(0, 0, 0);
+  }
+  // Sleep for 2 seconds
+  Bean.sleep(2000);
 }

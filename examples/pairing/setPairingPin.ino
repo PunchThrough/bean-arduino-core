@@ -6,6 +6,6 @@ void setup() {
   // Pairing PIN will be required when future connections are established
 }
 void loop() {
-  // Code for something secretive
-  Bean.sleep(10000);  // Sleep for 10 seconds
+  // Sleep forever
+  Bean.sleep(0xffffffff);
 }

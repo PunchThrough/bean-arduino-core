@@ -19,7 +19,7 @@ void setup() {
 void loop() {
   // Do anything here
 }
-void printServices(BluetoothServices services){
+void printServices(BluetoothServices services) {
   Serial.println("Bluetooth services:");
   Serial.print("Standard: ");
   Serial.println(services.standard);

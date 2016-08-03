@@ -3,7 +3,7 @@ void setup() {
 }
 void loop() {
   int batteryPercentage = Bean.getBatteryLevel();  // Between 0 and 100
-  int batteryVoltage = Bean.getBatteryVoltage();  // Between 191 and 353 (1.91V-3.53V)
+  int batteryVoltage = Bean.getBatteryVoltage();   // Between 191 and 353 (1.91V-3.53V)
   Serial.print("The remaining battery life is: %");
   Serial.println(batteryPercentage);
   blinkLedBasedOnBatteryLevel(batteryPercentage);
@@ -27,4 +27,3 @@ void blinkLedBasedOnBatteryLevel(int batteryPercentage) {
   Bean.sleep(100);
   Bean.setLed(0, 0, 0);
 }
-

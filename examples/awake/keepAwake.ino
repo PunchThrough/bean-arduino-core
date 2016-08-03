@@ -8,7 +8,7 @@ void loop() {
   if (!digitalRead(0)) {
     // D0 is LOW; check to see if BLE connected to any devices
     bool connectionState = Bean.getConnectionState();
-    Serial.println(connectionState); // True if connected to a device, false if not
+    Serial.println(connectionState);  // True if connected to a device, false if not
   }
   Bean.sleep(1000);  // Sleep for 1 second
 }

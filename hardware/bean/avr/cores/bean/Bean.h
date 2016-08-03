@@ -8,12 +8,12 @@
 /*
  *  An accelerometer interrupt type, they are as follows:
  *  FLAT_EVENT - triggers when the accelerometer is lying flat on a surface
- *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted in any direction
+ *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted *  in any direction
  *  SINGLE_TAP_EVENT - triggers when the accelerometer is tapped once
  *  DOUBLE_TAP_EVENT - triggers when the accelerometer is tapped twice
  *  ANY_MOTION_EVENT - triggers when the accelerometer experiences any change in motion
- *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's sensitivity
- *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational pull
+ *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's *  sensitivity
+ *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational *  pull
  */
 typedef enum AccelEventTypes {
   FLAT_EVENT = 0x80,
@@ -528,8 +528,8 @@ class BeanClass {
   const char *getBeanName(void);
 
   /**
-   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates
-   and can also be useful for increasing beacon advertisement rates.
+   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates 
+   *  and can also be useful for increasing beacon advertisement rates.
    *  @param interval_ms length of advertisement interval in milliseconds.  Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS
    */
   void setAdvertisingInterval(uint16_t interval_ms);

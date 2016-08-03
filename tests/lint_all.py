@@ -121,7 +121,7 @@ if show:
 
 if reformat or reformat_all:
     format_cmd = formatter + to_reformat
-    print(format_cmd)
+    print('Reformatting {} files!'.format(len(to_reformat)))
     reformat_code = subprocess.call(format_cmd)
     if lint:
         if reformat_code:  # We only get one exit code, use it for the linter
@@ -131,5 +131,6 @@ if reformat or reformat_all:
 
 if lint:
     lint_cmd = linter + to_lint
+    print('Linting {} files!'.format(len(to_lint)))
     lint_code = subprocess.call(lint_cmd)
     exit(lint_code)

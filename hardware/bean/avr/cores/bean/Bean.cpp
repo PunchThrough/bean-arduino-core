@@ -7,7 +7,6 @@
 #include <avr/wdt.h>
 #include <applicationMessageHeaders/AppMessages.h>
 #include "wiring_private.h"
-#include "bma250.h"
 
 #ifndef sleep_bod_disable()  // not included in Arduino AVR toolset
 #define sleep_bod_disable()                         \

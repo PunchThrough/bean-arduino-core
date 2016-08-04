@@ -4,6 +4,7 @@
 #include "BeanHID.h"
 #include "BeanMidi.h"
 #include "BeanAncs.h"
+#include "bma250.h"
 
 /*
  *  An accelerometer interrupt type, they are as follows:

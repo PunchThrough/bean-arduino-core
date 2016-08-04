@@ -4,10 +4,9 @@ bool motionDetected = false;
 void setup() {
   // Enable low-g motion events to be detected
   Bean.enableMotionEvent(ANY_MOTION_EVENT);
-  // Make sure accelerometer is in low power mode to save battery
+  // Make sure accelerometer is in normal power mode
   if (Bean.getAccelerometerPowerMode() != VALUE_NORMAL_MODE) {
-    // Set accelerometer power mode to low power consumption (accelerometer will use ~%0.005 power
-    // of normal mode)
+    // Set accelerometer power mode to normal
     Bean.setAccelerometerPowerMode(VALUE_NORMAL_MODE);
   }
   // Initially set LED to blank

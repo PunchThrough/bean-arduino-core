@@ -1,4 +1,3 @@
-#define VALUE_NORMAL_MODE 0x00
 // Create boolean to run loop persistently
 bool motionDetected = false;
 void setup() {

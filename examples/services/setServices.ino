@@ -8,10 +8,9 @@ void setup() {
   Bean.resetBluetooth();
   // Wait for a few moments for Bluetooth to come back up...
   Bean.sleep(5000);
-  // Set services to include standard advertising as well as HID
+  // Set services to include standard advertising (default)
   BluetoothServices newServices;
   newServices.standard = 1;
-  newServices.hid = 1;
   Bean.setServices(newServices);
   // Print out new service configuration
   printServices(newServices);

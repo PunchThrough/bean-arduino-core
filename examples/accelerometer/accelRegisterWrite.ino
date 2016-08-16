@@ -1,5 +1,3 @@
-#define REG_POWER_MODE_X11    0x11
-#define VALUE_NORMAL_MODE     0x00
 // Create boolean to run loop persistently
 bool motionDetected = false;
 void setup() {

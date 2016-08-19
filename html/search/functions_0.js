@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['disconnect',['disconnect',['../class_bean_class.html#a1509dbbc3ddbd08725e2cb65a9289e90',1,'BeanClass']]]
+  ['accelregisterread',['accelRegisterRead',['../class_bean_class.html#a3e743eb8cc8e5e04364f53801b8fe83e',1,'BeanClass']]],
+  ['accelregisterwrite',['accelRegisterWrite',['../class_bean_class.html#a47244506c985ef7aead3695811002ad2',1,'BeanClass']]]
 ];

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="_bean_ancs_8h" kind="file" language="C++">
+    <compoundname>BeanAncs.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includes local="yes">applicationMessageHeaders/AppMessages.h</includes>
+    <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
+    <incdepgraph>
+      <node id="28">
+        <label>applicationMessageHeaders/AppMessages.h</label>
+      </node>
+      <node id="27">
+        <label>Arduino.h</label>
+      </node>
+      <node id="26">
+        <label>hardware/bean/avr/cores/bean/BeanAncs.h</label>
+        <link refid="BeanAncs.h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30">
+        <label>hardware/bean/avr/cores/bean/Bean.h</label>
+        <link refid="_bean_8h_source"/>
+      </node>
+      <node id="29">
+        <label>hardware/bean/avr/cores/bean/BeanAncs.h</label>
+        <link refid="BeanAncs.h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_bean_ancs_class" prot="public">BeanAncsClass</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_bean_ancs_8h_1a6a538590858196ec28a49c979f21fb04" prot="public" static="no">
+        <type>ANCS_SOURCE_MSG_T</type>
+        <definition>typedef ANCS_SOURCE_MSG_T AncsNotification</definition>
+        <argsstring></argsstring>
+        <name>AncsNotification</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Needs docs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="10" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanAncs.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_bean_ancs_8h_1a6816d7103fc1f46dac1292faa9b1e557" prot="public" static="no">
+        <type>NOTI_ATTR_ID_T</type>
+        <definition>typedef NOTI_ATTR_ID_T AncsNotificationAttribute</definition>
+        <argsstring></argsstring>
+        <name>AncsNotificationAttribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Needs docs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="15" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanAncs.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_bean_ancs_8h_1ae6908852e27a71535746f1027177ef8f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_bean_ancs_class" kindref="compound">BeanAncsClass</ref></type>
+        <definition>BeanAncsClass BeanAncs</definition>
+        <argsstring></argsstring>
+        <name>BeanAncs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="100" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>BEAN_ANCS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BEAN_ANCS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;applicationMessageHeaders/AppMessages.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ANCS_SOURCE_MSG_T<sp/>AncsNotification;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>NOTI_ATTR_ID_T<sp/>AncsNotificationAttribute;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_bean_ancs_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_ancs_class" kindref="compound">BeanAncsClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="33"></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1aa3d157f0b796947032a27e6185be895a" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1a13833644884b8cc61e8d70ac850a500c" kindref="member">isEnabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1a5eff3ac01fb4248dace32c7a18d9d68e" kindref="member">disable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1a29b6dc1d900b8c1dc93f40beaf29c8d9" kindref="member">notificationsAvailable</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1affaf3691b746468f5e11f78c9b74a755" kindref="member">getNotificationHeaders</ref>(ANCS_SOURCE_MSG_T<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_length);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>ANCS_SOURCE_MSG_T<sp/><ref refid="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" kindref="member">getNotificationHeader</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1ae0dc33b6e27d0ed37a345462ad58ba01" kindref="member">getNotificationAttributes</ref>(NOTI_ATTR_ID_T<sp/>type,<sp/>uint32_t<sp/>ID,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/>uint8_t*<sp/>data,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1aa9ac67079e02d7fffc198d27854226c0" kindref="member">notificationAction</ref>(uint32_t<sp/>ID,<sp/>uint8_t<sp/>actionID);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class" kindref="compound">BeanAncsClass</ref><sp/>BeanAncs;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="hardware/bean/avr/cores/bean/BeanAncs.h"/>
+  </compounddef>
+</doxygen>

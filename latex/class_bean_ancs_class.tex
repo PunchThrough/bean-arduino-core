@@ -1,0 +1,211 @@
+\hypertarget{class_bean_ancs_class}{}\section{Bean\+Ancs\+Class Class Reference}
+\label{class_bean_ancs_class}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf A\+N\+C\+S}\par
+{\em Use the \href{https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html}{\tt Apple Notification Center Service} to read notifications from your i\+O\+S device. This allows a connected Bluetooth device to receive information about i\+O\+S nofications. Bean can view details about these notifications, e.\+g. push notifications, S\+M\+S previews, or an incoming phone call\textquotesingle{}s number.
+
+To use A\+N\+C\+S, upload an A\+N\+C\+S sketch to Bean, power cycle Bean, and pair with Bean from your i\+O\+S device using pairing code 000000.
+
+When you disconnect from an Bean in A\+N\+C\+S mode, you\textquotesingle{}ll need to manually forget it from the i\+O\+S Bluetooth Settings menu. }\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_bean_ancs_class_aa3d157f0b796947032a27e6185be895a}{enable} (void)
+\item 
+bool \hyperlink{class_bean_ancs_class_a13833644884b8cc61e8d70ac850a500c}{is\+Enabled} (void)
+\item 
+void \hyperlink{class_bean_ancs_class_a5eff3ac01fb4248dace32c7a18d9d68e}{disable} (void)
+\item 
+int \hyperlink{class_bean_ancs_class_a29b6dc1d900b8c1dc93f40beaf29c8d9}{notifications\+Available} ()
+\item 
+int \hyperlink{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}{get\+Notification\+Headers} (A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$buffer, size\+\_\+t max\+\_\+length)
+\item 
+A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T \hyperlink{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}{get\+Notification\+Header} ()
+\item 
+int \hyperlink{class_bean_ancs_class_ae0dc33b6e27d0ed37a345462ad58ba01}{get\+Notification\+Attributes} (N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T type, uint32\+\_\+t I\+D, uint16\+\_\+t len, uint8\+\_\+t $\ast$data, uint32\+\_\+t timeout)
+\item 
+void \hyperlink{class_bean_ancs_class_aa9ac67079e02d7fffc198d27854226c0}{notification\+Action} (uint32\+\_\+t I\+D, uint8\+\_\+t action\+I\+D)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bean_ancs_class_a5eff3ac01fb4248dace32c7a18d9d68e}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!disable@{disable}}
+\index{disable@{disable}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{disable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Ancs\+Class\+::disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_a5eff3ac01fb4248dace32c7a18d9d68e}
+Disables A\+N\+C\+S functionality \hypertarget{class_bean_ancs_class_aa3d157f0b796947032a27e6185be895a}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!enable@{enable}}
+\index{enable@{enable}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{enable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Ancs\+Class\+::enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_aa3d157f0b796947032a27e6185be895a}
+Enables A\+N\+C\+S functionality. After uploading an A\+N\+C\+S sketch, make sure to power cycle Bean. \hypertarget{class_bean_ancs_class_ae0dc33b6e27d0ed37a345462ad58ba01}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!get\+Notification\+Attributes@{get\+Notification\+Attributes}}
+\index{get\+Notification\+Attributes@{get\+Notification\+Attributes}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{get\+Notification\+Attributes(\+N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T type, uint32\+\_\+t I\+D, uint16\+\_\+t len, uint8\+\_\+t $\ast$data, uint32\+\_\+t timeout)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Ancs\+Class\+::get\+Notification\+Attributes (
+\begin{DoxyParamCaption}
+\item[{N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T}]{type, }
+\item[{uint32\+\_\+t}]{I\+D, }
+\item[{uint16\+\_\+t}]{len, }
+\item[{uint8\+\_\+t $\ast$}]{data, }
+\item[{uint32\+\_\+t}]{timeout}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_ae0dc33b6e27d0ed37a345462ad58ba01}
+This function can be used to request details about a particular notification. It can only be used to access one type of notification at a time and will block the thread until it receives a message. 
+\begin{DoxyParams}{Parameters}
+{\em type} & is the type of data the user wishes to receive of type N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T \\
+\hline
+{\em I\+D} & is the U\+U\+I\+D of the notification as contained in A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T. \\
+\hline
+{\em len} & is the max number of bytes to receive into data. The maximum possible is 65535 bytes. \\
+\hline
+{\em data} & is the user defined buffer to fill incoming data with. \\
+\hline
+{\em timeout} & is the length of time in milliseconds before the function will return if it does not receive data or only receives partial data \\
+\hline
+{\em return} & the number of bytes actually read to data\\
+\hline
+\end{DoxyParams}
+\subsection*{Examples}
+
+This example sketch reads A\+N\+C\+S messages and prints them to Virtual Serial. Pair with your i\+O\+S device, then use \href{https://itunes.apple.com/us/app/bean-console/id982751969?mt=8}{\tt Bean Console for i\+O\+S} to view data live from your i\+O\+S device.
+
+
+\begin{DoxyCodeInclude}
+1 int latestID = 0;
+2 AncsNotification notifications[8];
+3 
+4 void setup() \{
+5   // Serial port is initialized automatically; we don't have to do anything
+6   BeanAncs.enable();
+7 \}
+8 
+9 void loop() \{
+10   int msgAvail = BeanAncs.notificationsAvailable();
+11   if (msgAvail) \{
+12     // blink red every time we have a new message
+13     Bean.setLedGreen(0);
+14     Bean.setLedRed(130);
+15 
+16     // fills the notifications array with message header info
+17     BeanAncs.getNotificationHeaders(notifications, 8);
+18 
+19     for (int i = 0; i < msgAvail; i++) \{
+20       Serial.print("cat:");
+21       Serial.println(notifications[i].catID);
+22       Serial.print("flg:");
+23       Serial.println(notifications[i].flags);
+24       Serial.print("evt:");
+25       Serial.println(notifications[i].eventID);
+26       Serial.print("cnt:");
+27       Serial.println(notifications[i].catCount);
+28       Serial.print("id: ");
+29       Serial.println(notifications[i].notiUID);
+30 
+31       // get some information about each message
+32       char data[64] = \{0\};
+33       int len = BeanAncs.getNotificationAttributes(
+34         NOTI\_ATTR\_ID\_MESSAGE,
+35         notifications[i].notiUID,
+36         39,
+37         (uint8\_t *)data,
+38         5000);
+39 
+40       Serial.print("l: ");
+41       Serial.print(len);
+42       Serial.print(" ");
+43       for (int j = 0; j < len; j++) \{
+44         Serial.print(data[j]);
+45       \}
+46       Serial.println();
+47       delay(5000);
+48     \}
+49     Bean.setLedRed(0);
+50   \}
+51 
+52   // send a number through serial (with newline at end) to perform a negative
+53   // action on a message with the given ID
+54   if (Serial.available() > 0) \{
+55     char idin[8] = \{0\};
+56     int index = 0;
+57     byte read = Serial.read();
+58     while (read != '\(\backslash\)n' && index < 7) \{
+59       idin[index] = read;
+60       index++;
+61       read = Serial.read();
+62     \}
+63 
+64     int id = atoi(idin);
+65     Serial.print("Performing negative action on ID: ");
+66     Serial.println(id);
+67     BeanAncs.notificationAction(id, 0x01);
+68   \}
+69 \}
+\end{DoxyCodeInclude}
+ \hypertarget{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!get\+Notification\+Header@{get\+Notification\+Header}}
+\index{get\+Notification\+Header@{get\+Notification\+Header}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{get\+Notification\+Header()}]{\setlength{\rightskip}{0pt plus 5cm}A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T Bean\+Ancs\+Class\+::get\+Notification\+Header (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}
+Gets a single notification Header. If there are no messages available all values will be set to 0. It is up to the user to check using \hyperlink{class_bean_ancs_class_a29b6dc1d900b8c1dc93f40beaf29c8d9}{notifications\+Available()} if there are messages to read. \hypertarget{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!get\+Notification\+Headers@{get\+Notification\+Headers}}
+\index{get\+Notification\+Headers@{get\+Notification\+Headers}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{get\+Notification\+Headers(\+A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$buffer, size\+\_\+t max\+\_\+length)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Ancs\+Class\+::get\+Notification\+Headers (
+\begin{DoxyParamCaption}
+\item[{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$}]{buffer, }
+\item[{size\+\_\+t}]{max\+\_\+length}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}
+Gets all available notification headers. The A\+N\+C\+S buffer can only hold 8 messages at a time before it begins to overwrite old messages. 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & takes a user defined buffer of type A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T. When this function returns the buffer will be populated with messages \\
+\hline
+{\em max\+\_\+length} & takes the length of the maximum buffer size. If the user only has a buffer of one then max\+\_\+length should also be 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of messages actually read into the buffer. 
+\end{DoxyReturn}
+\hypertarget{class_bean_ancs_class_a13833644884b8cc61e8d70ac850a500c}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!is\+Enabled@{is\+Enabled}}
+\index{is\+Enabled@{is\+Enabled}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{is\+Enabled(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Ancs\+Class\+::is\+Enabled (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_a13833644884b8cc61e8d70ac850a500c}
+\begin{DoxyReturn}{Returns}
+true if A\+N\+C\+S is currently enabled 
+\end{DoxyReturn}
+\hypertarget{class_bean_ancs_class_aa9ac67079e02d7fffc198d27854226c0}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!notification\+Action@{notification\+Action}}
+\index{notification\+Action@{notification\+Action}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{notification\+Action(uint32\+\_\+t I\+D, uint8\+\_\+t action\+I\+D)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Ancs\+Class\+::notification\+Action (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{I\+D, }
+\item[{uint8\+\_\+t}]{action\+I\+D}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_aa9ac67079e02d7fffc198d27854226c0}
+Certain notifications allow different actions. For instance many push notifications can be cleared and calls can be answered. 
+\begin{DoxyParams}{Parameters}
+{\em I\+D} & the U\+U\+I\+D of the notification to perform the action on. \\
+\hline
+{\em action\+I\+D} & the I\+D of the action to perform. There are only two\+: Action\+I\+D\+Positive(0x00) and Action\+I\+D\+Negative(0x01). The result of the action is dependent on the notification. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_ancs_class_a29b6dc1d900b8c1dc93f40beaf29c8d9}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!notifications\+Available@{notifications\+Available}}
+\index{notifications\+Available@{notifications\+Available}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
+\subsubsection[{notifications\+Available()}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Ancs\+Class\+::notifications\+Available (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bean_ancs_class_a29b6dc1d900b8c1dc93f40beaf29c8d9}
+\begin{DoxyReturn}{Returns}
+number of notifications available that can be read using get\+Notification\+Headers 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hardware/bean/avr/cores/bean/Bean\+Ancs.\+h\end{DoxyCompactItemize}

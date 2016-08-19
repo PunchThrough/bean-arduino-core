@@ -1,39 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
-    <title>Bean - A BLE Arduino By Punch Through Design</title>
+    <title>LightBlue Bean Arduino Core</title>
     <detaileddescription>
-<para><heading level="2">Repo Overview </heading>
-</para><para>This repo contains the Arduino firmware and installation files used in the LightBlue Bean project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean, a system that has on it a few other features, a BLE radio an accelerometer and a multicolor LED.</para><para><heading level="3">TODO:</heading>
-</para><para><itemizedlist>
-<listitem><para>Add note to this doc regarding FUSES (!! BOD)</para></listitem><listitem><para>Fix Serial.println so, like Serial.print, extra radio messages arn&apos;t sent for the newline</para></listitem><listitem><para>Add proper doxygen comments to relelvent parts, especially the API</para></listitem><listitem><para>Add features to emulator to provide better, more useful testing</para></listitem><listitem><para>Add more and better examples</para></listitem></itemizedlist>
-</para><para><heading level="3">Reading and Setting Atmega Fuses with avrdude</heading>
-</para><para>We&apos;re going to need to set some fuses for our part in the factory. The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.</para><para>At the time of writing, I don&apos;t have a programmer at my disposal. However the steps taken should be the We write the fuse settings here: XX XX XX</para><para>Steps:</para><para><orderedlist>
-<listitem><para>Install avrdude. I used [<ulink url="http://www.obdev.at/products/crosspack/index.html">http://www.obdev.at/products/crosspack/index.html</ulink>](CrossPack) to do this.</para></listitem></orderedlist>
-<orderedlist>
-<listitem><para>Read the fuses from an off the shelf ArduinoPro. Use this command after avrdude is in your path: <computeroutput>avrdude -p atmega328p -c usbtiny -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h</computeroutput></para></listitem></orderedlist>
-<orderedlist>
-<listitem><para>Go to [<ulink url="http://www.engbedded.com/fusecalc/">http://www.engbedded.com/fusecalc/</ulink>](The Avr Fuse Calculator) and enter in the current state of the fuses</para></listitem></orderedlist>
-<orderedlist>
-<listitem><para>Turn off Brown Out Detection (BOD).</para></listitem></orderedlist>
-<orderedlist>
-<listitem><para>Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)</para></listitem></orderedlist>
-<orderedlist>
-<listitem><para>Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values: <computeroutput>avrdude -p atmega328p -c usbtiny -U lfuse:w:0xee:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m</computeroutput>)</para></listitem></orderedlist>
-</para><para><heading level="3">Key Files:</heading>
-</para><para><heading level="4">Everything in the <computeroutput>hardware</computeroutput> directory</heading>
-</para><para>The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board allow users to program it.</para><para><heading level="4">Everything in the <computeroutput>examples</computeroutput> directory</heading>
-</para><para>The contents of the examples directory should be copied separately on install to the examples resources in the Arduino IDE.</para><para><heading level="4">Everything in the <computeroutput>beanModuleEmulator</computeroutput> directory</heading>
-</para><para>This directory contains an Emulator of the &apos;non-Arduino&apos; parts of the bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected. You can run <computeroutput>python BeanModuleEmulator.py</computeroutput> from within the beanModuleEmulator directory.</para><para><heading level="5">Dependencies</heading>
-</para><para>There are a few python library dependencies you&apos;ll need to make the emulator work:</para><para><itemizedlist>
+<para>This repo contains the Arduino firmware and installation files used in the <ulink url="https://punchthrough.com/bean">LightBlue Bean</ulink> project. The firmware files are based off of the Arduino firmware release version 1.0.5 and have been modified to work on the LightBlue Bean. Bean has components that include a BLE radio, an accelerometer, and a multicolor LED.</para><para><ulink url="https://punchthrough.com/bean/reference">Reference Docs</ulink></para><para><heading level="1">Project Layout</heading>
+</para><para><heading level="2">/hardware</heading>
+</para><para>This directory contains the firmware for the LightBlue Bean, as well as the files needed for the Arduino IDE to recognize the board and allow users to program it. Its contents are copied to Arduino IDE&apos;s <computeroutput>hardware</computeroutput> directory when Bean Loader is installed on OS X or Windows.</para><para><heading level="2">/examples</heading>
+</para><para>This directory contains example Arduino sketches for use with Bean. Its contents are copied to Arduino IDE&apos;s <computeroutput>examples</computeroutput> directory when Bean Loader is installed.</para><para><heading level="2">/beanModuleEmulator</heading>
+</para><para>This directory contains an emulator for the &quot;non-Arduino&quot; parts of Bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.</para><para>You can run <computeroutput>python BeanModuleEmulator.py</computeroutput> from within the beanModuleEmulator directory. There are a few Python library dependencies you&apos;ll need to make the emulator work:</para><para><itemizedlist>
 <listitem><para>TkInter</para></listitem><listitem><para>numpy</para></listitem><listitem><para>pyserial</para></listitem><listitem><para>enum</para></listitem></itemizedlist>
-</para><para>The emulator has been tested with python 2.7.6 installed by Homebrew on OSX</para><para><heading level="3">Development:</heading>
-</para><para>During development, it is recommended to use soft links from inside your Arduino IDE resources to your repository. It will make it easier to test your work.</para><para><heading level="3">Repo Setup:</heading>
-</para><para>This repository uses git submodules and requires a few extra steps for cloning and pulling. <heading level="4">Clone</heading>
-</para><para>git clone REPO_URL <ndash/>recursive</para><para><heading level="4">Initialize Submodules</heading>
-</para><para><heading level="6">(This is unnecessary if the recursive clone works)</heading>
-</para><para>git submodule update <ndash/>init <ndash/>recursive</para><para><heading level="4">Pull</heading>
-</para><para>git pull git submodule update <ndash/>recursive </para>    </detaileddescription>
+</para><para>The emulator has been tested with Python 2.7.6 installed via Homebrew on OS X.</para><para><heading level="1">Development</heading>
+</para><para><heading level="2">Testing in Arduino IDE</heading>
+</para><para>You can use a symlink to install the development copy of Bean Arduino Core into your Arduino IDE&apos;s Hardware folder.</para><para>Here&apos;s a working command for OS X users:</para><para><programlisting><codeline><highlight class="normal">ln<sp/>-s<sp/>&quot;/absolute/path/to/bean-arduino-core-private/hardware/bean/&quot;<sp/>~/Documents/Arduino/hardware</highlight></codeline>
+</programlisting></para><para>Make sure to use an <emphasis>absolute path</emphasis>, not a relative path, as the source path for the symlink.</para><para><heading level="2">Pull Requests</heading>
+</para><para>All pull requests should be against the <computeroutput>develop</computeroutput> branch.</para><para><heading level="2">Repo Setup</heading>
+</para><para>This repository uses git submodules and requires a few extra steps for cloning and pulling.</para><para><heading level="2">Clone</heading>
+</para><para><programlisting><codeline><highlight class="normal">$<sp/>git<sp/>clone<sp/>REPO_URL<sp/>--recursive</highlight></codeline>
+</programlisting></para><para><heading level="2">Initialize Submodules</heading>
+</para><para>(This is unnecessary if the recursive clone works)</para><para><programlisting><codeline><highlight class="normal">$<sp/>git<sp/>submodule<sp/>update<sp/>--init<sp/>--recursive</highlight></codeline>
+</programlisting></para><para><heading level="2">Pull</heading>
+</para><para><programlisting><codeline><highlight class="normal">$<sp/>git<sp/>pull</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>git<sp/>submodule<sp/>update<sp/>--recursive</highlight></codeline>
+</programlisting></para><para><heading level="1">Code Style and Quality</heading>
+</para><para>Code in this repo should adhere to the <ulink url="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</ulink>.</para><para>This repo comes with tools to ensure your code meets style guidelines. If code you submit for review does not fit our style guide, your pull request will fail our automated tests. Lint your code before submitting it to avoid this.</para><para><heading level="2">Installing Tools</heading>
+</para><para>If you&apos;re running the reformatter or linter for the first time, run this first to install the tools:</para><para><programlisting><codeline><highlight class="normal">make<sp/>install</highlight></codeline>
+</programlisting></para><para>Are you getting the following error?</para><para><blockquote><para>Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo. </para></blockquote></para><para>This is an Xcode problem. Run <computeroutput>sudo xcodebuild</computeroutput> to agree with the Xcode license agreement, then run <computeroutput>make install</computeroutput> again.</para><para>clang-format uses the <computeroutput>.clang-format</computeroutput> file to set formatting style. See the <ulink url="http://clang.llvm.org/docs/ClangFormat.html">clang-format docs</ulink> for more info.</para><para><heading level="2">Linting</heading>
+</para><para>Our continuous integration server lints all code when it&apos;s submitted to a pull request. You can run the linter on your machine to make sure your code is up to this repo&apos;s standards.</para><para>To lint Bean files for errors before committing:</para><para><programlisting><codeline><highlight class="normal">make<sp/>lint</highlight></codeline>
+</programlisting></para><para>cpplint is configured in <computeroutput>CPPLINT.cfg</computeroutput>. See the <ulink url="https://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py">cpplint.py source</ulink> for more info on configuration options and linter filters.</para><para><heading level="2">View List of Linted Files</heading>
+</para><para>To see which files will be linted or reformatted:</para><para><programlisting><codeline><highlight class="normal">make<sp/>show</highlight></codeline>
+</programlisting></para><para><heading level="2">Auto-Reformatting</heading>
+</para><para>clang-format is set up to use the Google style guide. Reformatting your code will clean up many of the lint errors you might make.</para><para>To reformat Bean files in this project:</para><para><programlisting><codeline><highlight class="normal">make<sp/>reformat</highlight></codeline>
+</programlisting> </para>    </detaileddescription>
   </compounddef>
 </doxygen>

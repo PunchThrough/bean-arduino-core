@@ -1,0 +1,675 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="_bean_h_i_d_8h" kind="file" language="C++">
+    <compoundname>BeanHID.h</compoundname>
+    <includes local="yes">BeanSerialTransport.h</includes>
+    <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
+    <incdepgraph>
+      <node id="32">
+        <label>BeanSerialTransport.h</label>
+      </node>
+      <node id="31">
+        <label>hardware/bean/avr/cores/bean/BeanHID.h</label>
+        <link refid="BeanHID.h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="34">
+        <label>hardware/bean/avr/cores/bean/Bean.h</label>
+        <link refid="_bean_8h_source"/>
+      </node>
+      <node id="33">
+        <label>hardware/bean/avr/cores/bean/BeanHID.h</label>
+        <link refid="BeanHID.h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_key_report" prot="public">KeyReport</innerclass>
+    <innerclass refid="struct_mouse_report" prot="public">MouseReport</innerclass>
+    <innerclass refid="struct_cc_report" prot="public">CcReport</innerclass>
+    <innerclass refid="class_bean_hid__" prot="public">BeanHid_</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8" prot="public" static="no">
+        <name>mouseButtons</name>
+        <enumvalue id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8aee912017af684ebfa6d5aee892a4d241" prot="public">
+          <name>MOUSE_LEFT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8a72483425673b3c16cf86e860237ce837" prot="public">
+          <name>MOUSE_RIGHT</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8a7f45b948d9961a23d38837855e535f13" prot="public">
+          <name>MOUSE_MIDDLE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8a81adb9391789443a32fff459c8238961" prot="public">
+          <name>MOUSE_ALL</name>
+          <initializer>= (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="8" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="8" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97f" prot="public" static="no">
+        <name>modifierKey</name>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fad5355d7d2d2582960da81aefe8cd941d" prot="public">
+          <name>KEY_LEFT_CTRL</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa5d5eb3601a49913c3ab0f9bcbdc5918a" prot="public">
+          <name>KEY_LEFT_SHIFT</name>
+          <initializer>= 0x81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa4789cb1577c6b157cca51831266d2e71" prot="public">
+          <name>KEY_LEFT_ALT</name>
+          <initializer>= 0x82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa68d3b17199fbc1595d3d6a5baacb3eae" prot="public">
+          <name>KEY_LEFT_GUI</name>
+          <initializer>= 0x83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97faeb9ff466eebcae7089b92b717e4fad58" prot="public">
+          <name>KEY_RIGHT_CTRL</name>
+          <initializer>= 0x84</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa125ed6244c499a097a3e1cb111c8fa9c" prot="public">
+          <name>KEY_RIGHT_SHIFT</name>
+          <initializer>= 0x85</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa4f14c2020a65b3498ad86cf66e5f0ed5" prot="public">
+          <name>KEY_RIGHT_ALT</name>
+          <initializer>= 0x86</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa78a9092dfee2fbd8952c3e5ed9d9b386" prot="public">
+          <name>KEY_RIGHT_GUI</name>
+          <initializer>= 0x87</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97faa35707694e2bab78d36903af6198e6f5" prot="public">
+          <name>KEY_UP_ARROW</name>
+          <initializer>= 0xDA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa682c2546c34dea8d730992bc1616fca9" prot="public">
+          <name>KEY_DOWN_ARROW</name>
+          <initializer>= 0xD9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa647998d2a95d68a66ff9892f96150a04" prot="public">
+          <name>KEY_LEFT_ARROW</name>
+          <initializer>= 0xD8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa947cc696f802a13d955cb077600299da" prot="public">
+          <name>KEY_RIGHT_ARROW</name>
+          <initializer>= 0xD7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97faa3cd0158e01f834cebcfb3fc5578df4b" prot="public">
+          <name>KEY_BACKSPACE</name>
+          <initializer>= 0xB2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa60c75f9c8eded88ef76c0c94da27963c" prot="public">
+          <name>KEY_TAB</name>
+          <initializer>= 0xB3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97faaefd064b1e5d75c429bed314ac18eba0" prot="public">
+          <name>KEY_RETURN</name>
+          <initializer>= 0xB0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fae53e9370c0243e9b0260458d3a55f315" prot="public">
+          <name>KEY_ESC</name>
+          <initializer>= 0xB1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa26f2c18a3a0a7eabf7bd11f0ec93be78" prot="public">
+          <name>KEY_INSERT</name>
+          <initializer>= 0xD1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fae7a3a4540031b038014294aa6743a7a4" prot="public">
+          <name>KEY_DELETE</name>
+          <initializer>= 0xD4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fad435c2e06f3d05728ed52ede8a68295b" prot="public">
+          <name>KEY_PAGE_UP</name>
+          <initializer>= 0xD3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fada883d03c9fb53deb33064a13ca97639" prot="public">
+          <name>KEY_PAGE_DOWN</name>
+          <initializer>= 0xD6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fad5b83418c285e43af5d3a87b4d4049d7" prot="public">
+          <name>KEY_HOME</name>
+          <initializer>= 0xD2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97faa8adb6fcb92dec58fb19410eacfdd403" prot="public">
+          <name>KEY_END</name>
+          <initializer>= 0xD5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fabc5ade8c1b7fc0d409201d5fc46e02cc" prot="public">
+          <name>KEY_CAPS_LOCK</name>
+          <initializer>= 0xC1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fafcf70bc39c0032de8a1c6452ac9860a5" prot="public">
+          <name>KEY_F1</name>
+          <initializer>= 0xC2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa87897fd25282941e1a9bf72b9f64559a" prot="public">
+          <name>KEY_F2</name>
+          <initializer>= 0xC3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa965c99b1f4fc05cec09ef61b0af8e74a" prot="public">
+          <name>KEY_F3</name>
+          <initializer>= 0xC4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa01bce78a73ad136a7b42941297aff373" prot="public">
+          <name>KEY_F4</name>
+          <initializer>= 0xC5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa6a69ea34f5d1372692bf040637e57c8f" prot="public">
+          <name>KEY_F5</name>
+          <initializer>= 0xC6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa247a20a9998f080827dd34004abc2f9a" prot="public">
+          <name>KEY_F6</name>
+          <initializer>= 0xC7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa34a07203a0a4f3e996b44e9a4fcfd1c6" prot="public">
+          <name>KEY_F7</name>
+          <initializer>= 0xC8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa9eaf4e9e3d8451fd1332c013d12c1375" prot="public">
+          <name>KEY_F8</name>
+          <initializer>= 0xC9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa160e82eea885870bfa4924c27040cd7f" prot="public">
+          <name>KEY_F9</name>
+          <initializer>= 0xCA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa3b922025c26b38585ab140c7e40b291c" prot="public">
+          <name>KEY_F10</name>
+          <initializer>= 0xCB</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fad54743bc4e7f9279abf671cc2a091ce1" prot="public">
+          <name>KEY_F11</name>
+          <initializer>= 0xCC</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1a1cd5d4a56b985dd1a18d935501aeb97fa835f8397baa58fd73ff9c268d6458add" prot="public">
+          <name>KEY_F12</name>
+          <initializer>= 0xCD</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="15" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="15" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccd" prot="public" static="no">
+        <name>mediaControl</name>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda316771101d4b4b1dea7d7e2a82ef1658" prot="public">
+          <name>POWER</name>
+          <initializer>= 0x30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccdacc5c9ce7e272f5f0f3b723f48f42d924" prot="public">
+          <name>ASSIGN_SEL</name>
+          <initializer>= 0x81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda702580df5d6cda93de468efb2644f29b" prot="public">
+          <name>CHANNEL_UP</name>
+          <initializer>= 0x9C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccdada20fb9047e352185d8366363c78ddf7" prot="public">
+          <name>CHANNEL_DOWN</name>
+          <initializer>= 0x9D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccdabfd7854190e0ecb61dc15d7e252bd5e1" prot="public">
+          <name>RECALL_LAST</name>
+          <initializer>= 0x83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda0352906d1ea1dfcd663c918f3a86755b" prot="public">
+          <name>PLAY</name>
+          <initializer>= 0xB0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda56b36d0d0bb01b339cf1041adc08e262" prot="public">
+          <name>PAUSE</name>
+          <initializer>= 0xB1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccdaf9589b3c93e562a81e57588bb6662337" prot="public">
+          <name>RECORD</name>
+          <initializer>= 0xB2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccdad40fdc54a01e0c0b325a7369b7b69f3c" prot="public">
+          <name>FAST_FORWARD</name>
+          <initializer>= 0xB3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda154140ca979e199a025bea9119e4d384" prot="public">
+          <name>REWIND</name>
+          <initializer>= 0xB4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda28511ddf2a2c1cdd1b9f8aa664a490ab" prot="public">
+          <name>SCAN_NEXT_TRK</name>
+          <initializer>= 0xB5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda43da70faa014f47465f91b42ab67103f" prot="public">
+          <name>SCAN_PREV_TRK</name>
+          <initializer>= 0xB6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda679ee5320d66c8322e310daeb2ee99b8" prot="public">
+          <name>STOP</name>
+          <initializer>= 0xB7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda9a06e9be8a466cb25472fc5d2245adc2" prot="public">
+          <name>VOLUME_UP</name>
+          <initializer>= 0xE9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda529d2dedd2400b280c220d9892527bc7" prot="public">
+          <name>VOLUME_DOWN</name>
+          <initializer>= 0xEA</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda271edf5041b6e7d6307edccd670dc8dc" prot="public">
+          <name>MUTE</name>
+          <initializer>= 0xE2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="56" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="56" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_bean_h_i_d_8h_1ad938955f62f1016896c3e419ef7c1f4a" prot="public" static="no" mutable="no">
+        <type><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref></type>
+        <definition>BeanHid_ BeanHid</definition>
+        <argsstring></argsstring>
+        <name>BeanHid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="247" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanSerialTransport.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/>MOUSE_LEFT<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>MOUSE_RIGHT<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>MOUSE_MIDDLE<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>MOUSE_ALL<sp/>=<sp/>(MOUSE_LEFT<sp/>|<sp/>MOUSE_RIGHT<sp/>|<sp/>MOUSE_MIDDLE)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}<sp/>mouseButtons;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>KEY_LEFT_CTRL<sp/>=<sp/>0x80,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>KEY_LEFT_SHIFT<sp/>=<sp/>0x81,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>KEY_LEFT_ALT<sp/>=<sp/>0x82,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>KEY_LEFT_GUI<sp/>=<sp/>0x83,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>KEY_RIGHT_CTRL<sp/>=<sp/>0x84,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>KEY_RIGHT_SHIFT<sp/>=<sp/>0x85,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ALT<sp/>=<sp/>0x86,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>KEY_RIGHT_GUI<sp/>=<sp/>0x87,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>KEY_UP_ARROW<sp/>=<sp/>0xDA,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>KEY_DOWN_ARROW<sp/>=<sp/>0xD9,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>KEY_LEFT_ARROW<sp/>=<sp/>0xD8,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ARROW<sp/>=<sp/>0xD7,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>KEY_BACKSPACE<sp/>=<sp/>0xB2,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>KEY_TAB<sp/>=<sp/>0xB3,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>KEY_RETURN<sp/>=<sp/>0xB0,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>KEY_ESC<sp/>=<sp/>0xB1,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>KEY_INSERT<sp/>=<sp/>0xD1,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>KEY_DELETE<sp/>=<sp/>0xD4,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>KEY_PAGE_UP<sp/>=<sp/>0xD3,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>KEY_PAGE_DOWN<sp/>=<sp/>0xD6,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>KEY_HOME<sp/>=<sp/>0xD2,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>KEY_END<sp/>=<sp/>0xD5,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>KEY_CAPS_LOCK<sp/>=<sp/>0xC1,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>KEY_F1<sp/>=<sp/>0xC2,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>KEY_F2<sp/>=<sp/>0xC3,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>KEY_F3<sp/>=<sp/>0xC4,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>KEY_F4<sp/>=<sp/>0xC5,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>KEY_F5<sp/>=<sp/>0xC6,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>KEY_F6<sp/>=<sp/>0xC7,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>KEY_F7<sp/>=<sp/>0xC8,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>KEY_F8<sp/>=<sp/>0xC9,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>KEY_F9<sp/>=<sp/>0xCA,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>KEY_F10<sp/>=<sp/>0xCB,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>KEY_F11<sp/>=<sp/>0xCC,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>KEY_F12<sp/>=<sp/>0xCD</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/>modifierKey;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HID<sp/>Consumer<sp/>Usage<sp/>IDs<sp/>(subset<sp/>of<sp/>the<sp/>codes<sp/>available<sp/>in<sp/>the<sp/>USB<sp/>HID<sp/>Usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tables<sp/>spec)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>POWER<sp/>=<sp/>0x30,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>ASSIGN_SEL<sp/>=<sp/>0x81,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>CHANNEL_UP<sp/>=<sp/>0x9C,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>CHANNEL_DOWN<sp/>=<sp/>0x9D,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>RECALL_LAST<sp/>=<sp/>0x83,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>PLAY<sp/>=<sp/>0xB0,<sp/><sp/></highlight><highlight class="comment">//<sp/>Apple&apos;s<sp/>Play/Pause<sp/>button</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>PAUSE<sp/>=<sp/>0xB1,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>RECORD<sp/>=<sp/>0xB2,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>FAST_FORWARD<sp/>=<sp/>0xB3,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>REWIND<sp/>=<sp/>0xB4,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>SCAN_NEXT_TRK<sp/>=<sp/>0xB5,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>SCAN_PREV_TRK<sp/>=<sp/>0xB6,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>STOP<sp/>=<sp/>0xB7,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>VOLUME_UP<sp/>=<sp/>0xE9,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>VOLUME_DOWN<sp/>=<sp/>0xEA,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>MUTE<sp/>=<sp/>0xE2</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}<sp/>mediaControl;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Low<sp/>level<sp/>key<sp/>report:<sp/>up<sp/>to<sp/>6<sp/>keys<sp/>and<sp/>shift,<sp/>ctrl<sp/>etc<sp/>at<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="struct_key_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>uint8_t<sp/>modifiers;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>uint8_t<sp/>reserved;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>uint8_t<sp/>keys[6];</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}<sp/><ref refid="struct_key_report" kindref="compound">KeyReport</ref>;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="struct_mouse_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/>uint8_t<sp/>mouse[4];<sp/>}<sp/><ref refid="struct_mouse_report" kindref="compound">MouseReport</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="struct_cc_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/>uint8_t<sp/>bytes[2];<sp/>}<sp/><ref refid="struct_cc_report" kindref="compound">CcReport</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="class_bean_hid__" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>buttons(uint8_t<sp/>b);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_genericSendReport(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_mouse_report" kindref="compound">MouseReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_key_report" kindref="compound">KeyReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_cc_report" kindref="compound">CcReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_holdKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_releaseKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_sendKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" kindref="member">isEnabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" kindref="member">disable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" kindref="member">holdKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" kindref="member">holdKey</ref>(modifierKey<sp/>key);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" kindref="member">releaseKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" kindref="member">releaseKey</ref>(modifierKey<sp/>key);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a5f2464de95903311d251b9b92f5460cf" kindref="member">releaseAllKeys</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" kindref="member">sendKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" kindref="member">sendKey</ref>(modifierKey<sp/>key);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a9421d40df77b9d1f18d5a202879063ee" kindref="member">sendKeys</ref>(String<sp/>charsToType);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a8d40fc0c1a14803b5ebc472f5d34b4c0" kindref="member">moveMouse</ref>(</highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_x,<sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_y,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_wheel<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aab7466efc670230ce1f2694047eaa1d2" kindref="member">holdMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1accdc853cab0d52bd30d68f153e3f7f29" kindref="member">releaseMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a6568d01038b06a24afd93d5366ef9b00" kindref="member">sendMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a4fce5e764a70052ee85919f22ec04f4f" kindref="member">sendMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1af9919a1a3942fbe2bc3cfa34e1fe4f04" kindref="member">holdMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a3cb98f00d25098d7f45196d63eb92925" kindref="member">releaseMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a574a50368c284d3db59fba546f542538" kindref="member">releaseAllMediaControls</ref>();</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isShiftHeld;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref><sp/>BeanHid;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>if<sp/>defined(BeanHID)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h"/>
+  </compounddef>
+</doxygen>

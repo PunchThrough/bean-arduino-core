@@ -1,0 +1,718 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="class_bean_hid__" kind="class" language="C++" prot="public">
+    <compoundname>BeanHid_</compoundname>
+      <sectiondef kind="user-defined">
+      <header>HID</header>
+      <description><para>The user must enter a pairing code (default of 000000) to connect. HID allows the bean to act as a mouse, keyboard, or media control device.</para><para>Important: When disconnecting from a device, you must manually forget Bean in the system&apos;s Bluetooth settings as well as Bean Loader. </para></description>
+      <memberdef kind="function" id="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BeanHid_::BeanHid_</definition>
+        <argsstring>(void)</argsstring>
+        <name>BeanHid_</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::enable</definition>
+        <argsstring>(void)</argsstring>
+        <name>enable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function turns on the Bean&apos;s HID functionality. It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.</para><para>HID may not work well with other profiles such as ANCS or MIDI. Use multiple profiles simultaneously at your own risk.</para><para>You may need to power cycle Bean after enabling HID.</para><para><heading level="1">Examples</heading>
+</para><para>This sketch demonstrates how to use Bean as a HID peripheral. Bean will move a mouse pointer around the screen when it&apos;s tilted side to side, forward, and back. Sending ASCII &apos;1&apos; via Virtual Serial will cause Bean to type &quot;Hello, world!&quot;, and sending &apos;2&apos; will cause Bean to send the Play media key.</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanHid.enable();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>AccelerationReading<sp/>accel<sp/>=<sp/>Bean.getAcceleration();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>x<sp/>=<sp/>accel.xAxis;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>y<sp/>=<sp/>accel.yAxis;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>z<sp/>=<sp/>accel.zAxis;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Add<sp/>a<sp/>deadzone.<sp/>If<sp/>Bean<sp/>is<sp/>reasonabally<sp/>flat,<sp/>don&apos;t<sp/>move<sp/>the<sp/>mouse<sp/>pointer</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(abs(x)<sp/>&lt;<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(abs(y)<sp/>&lt;<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>we<sp/>want<sp/>to<sp/>map<sp/>the<sp/>movements<sp/>to<sp/>reasonable<sp/>values.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>This<sp/>constrains<sp/>the<sp/>accelerometer<sp/>to<sp/>-20<sp/>to<sp/>20.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>mousex<sp/>=<sp/>map(x,<sp/>-60,<sp/>60,<sp/>-20,<sp/>20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int16_t<sp/>mousey<sp/>=<sp/>map(y,<sp/>-60,<sp/>60,<sp/>20,<sp/>-20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanHid.moveMouse(mousex,<sp/>mousey);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Serial.available())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>byte<sp/>read<sp/>=<sp/>Serial.read();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(read<sp/>==<sp/>&apos;1&apos;)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>send<sp/>the<sp/>ASCII<sp/>number<sp/>1<sp/>to<sp/>type<sp/>a<sp/>message</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BeanHid.sendKeys(&quot;Hello,<sp/>world!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/>else<sp/>if<sp/>(read<sp/>==<sp/>&apos;2&apos;)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>send<sp/>the<sp/>ASCII<sp/>number<sp/>2<sp/>to<sp/>use<sp/>a<sp/>media<sp/>command</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>BeanHid.sendMediaControl(PLAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="123" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanHid_::isEnabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>isEnabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if HID is enabled </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::disable</definition>
+        <argsstring>(void)</argsstring>
+        <name>disable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables the HID functionality.</para><para>If Bean has been paired with another device, you must un-pair Bean from that device manually.</para><para>You may need to power cycle Bean after disabling HID. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::holdKey</definition>
+        <argsstring>(char key)</argsstring>
+        <name>holdKey</name>
+        <param>
+          <type>char</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Holds a key down. Takes any ascii character. Can hold a max of 6 character keys. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>single character key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if success 0 if failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="144" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a40083ffe2f60453c9988419b083a26ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::holdKey</definition>
+        <argsstring>(modifierKey key)</argsstring>
+        <name>holdKey</name>
+        <param>
+          <type>modifierKey</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Holds a key down. takes any modifier key specified by modifierKey. Does not affect a users keyboard (sending hold shift won&apos;t type capital letters when you press them on your keyboard) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a modifier key to hold down. Can hold down all 8 of the first 8 modifier keys. The keys that come after the first 8 are counted as standard keys and therefore part of the 6 character keys. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="152" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::releaseKey</definition>
+        <argsstring>(char key)</argsstring>
+        <name>releaseKey</name>
+        <param>
+          <type>char</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases a key. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to release in character form </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="158" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a41d8c234073789bcff992387f4398cac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::releaseKey</definition>
+        <argsstring>(modifierKey key)</argsstring>
+        <name>releaseKey</name>
+        <param>
+          <type>modifierKey</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases a key. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to release of type modifierKey </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if success 0 if failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="165" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a5f2464de95903311d251b9b92f5460cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::releaseAllKeys</definition>
+        <argsstring>()</argsstring>
+        <name>releaseAllKeys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases all currently held keys </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="170" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::sendKey</definition>
+        <argsstring>(char key)</argsstring>
+        <name>sendKey</name>
+        <param>
+          <type>char</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a full keypress event. Like calling holdKey then releaseKey <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to send in character form </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if success 0 if failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="177" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1abe48bfbb4e86e3e6411ebe507e388543" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::sendKey</definition>
+        <argsstring>(modifierKey key)</argsstring>
+        <name>sendKey</name>
+        <param>
+          <type>modifierKey</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a full keypress event. Like calling holdKey then releaseKey <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to send of type modifierKey </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if success 0 if failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="184" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a9421d40df77b9d1f18d5a202879063ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanHid_::sendKeys</definition>
+        <argsstring>(String charsToType)</argsstring>
+        <name>sendKeys</name>
+        <param>
+          <type>String</type>
+          <declname>charsToType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a string of characters as keyboard events <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>charsToType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a String of characters for the keyboard to emulate </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if success 0 if failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="191" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a8d40fc0c1a14803b5ebc472f5d34b4c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::moveMouse</definition>
+        <argsstring>(signed char delta_x, signed char delta_y, signed char delta_wheel=0)</argsstring>
+        <name>moveMouse</name>
+        <param>
+          <type>signed char</type>
+          <declname>delta_x</declname>
+        </param>
+        <param>
+          <type>signed char</type>
+          <declname>delta_y</declname>
+        </param>
+        <param>
+          <type>signed char</type>
+          <declname>delta_wheel</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a mouse move command <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delta_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signed 8 bit value for how many pixels to move the mouse in the x direction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delta_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a signed 8 bit value for how many pixels to move the mouse in the y direction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delta_wheel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an optional signed 8 bit balue for how many clicks to move the mouse wheel </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="199" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1aab7466efc670230ce1f2694047eaa1d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::holdMouseClick</definition>
+        <argsstring>(mouseButtons button=MOUSE_LEFT)</argsstring>
+        <name>holdMouseClick</name>
+        <param>
+          <type>mouseButtons</type>
+          <declname>button</declname>
+          <defval>MOUSE_LEFT</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Holds a mouse button down <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the button to hold of type mouseButtons. Defaults to MOUSE_LEFT. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="206" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1accdc853cab0d52bd30d68f153e3f7f29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::releaseMouseClick</definition>
+        <argsstring>(mouseButtons button=MOUSE_LEFT)</argsstring>
+        <name>releaseMouseClick</name>
+        <param>
+          <type>mouseButtons</type>
+          <declname>button</declname>
+          <defval>MOUSE_LEFT</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases a mouse button. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the button to release of type mouseButtons. Defaults to MOUSE_LEFT. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="212" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a6568d01038b06a24afd93d5366ef9b00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::sendMouseClick</definition>
+        <argsstring>(mouseButtons button=MOUSE_LEFT)</argsstring>
+        <name>sendMouseClick</name>
+        <param>
+          <type>mouseButtons</type>
+          <declname>button</declname>
+          <defval>MOUSE_LEFT</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a mouse hold then a mouse release command. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the button to click of type mouseButtons. Defaults to MOUSE_LEFT. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="218" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a4fce5e764a70052ee85919f22ec04f4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::sendMediaControl</definition>
+        <argsstring>(mediaControl command)</argsstring>
+        <name>sendMediaControl</name>
+        <param>
+          <type>mediaControl</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a media control command command of type mediaControl. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a media control command of type mediaControl </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="224" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1af9919a1a3942fbe2bc3cfa34e1fe4f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::holdMediaControl</definition>
+        <argsstring>(mediaControl command)</argsstring>
+        <name>holdMediaControl</name>
+        <param>
+          <type>mediaControl</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Holds a media control command command of type mediaControl. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a media control command of type mediaControl </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="230" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a3cb98f00d25098d7f45196d63eb92925" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::releaseMediaControl</definition>
+        <argsstring>(mediaControl command)</argsstring>
+        <name>releaseMediaControl</name>
+        <param>
+          <type>mediaControl</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases a media control command command of type mediaControl. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a media control command of type mediaControl </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="236" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a574a50368c284d3db59fba546f542538" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::releaseAllMediaControls</definition>
+        <argsstring>()</argsstring>
+        <name>releaseAllMediaControls</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases all currently held media control commands </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="241" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_bean_hid___1a2308e72ab32f2bbf76f70113b49c91a4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BeanHid_::isShiftHeld</definition>
+        <argsstring></argsstring>
+        <name>isShiftHeld</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="245" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_bean_hid___1ad04ac8a6a357ea5880c5a013cde6ffcf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::buttons</definition>
+        <argsstring>(uint8_t b)</argsstring>
+        <name>buttons</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a016a6598040b8c6ba89d722f896d3808" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::_genericSendReport</definition>
+        <argsstring>(uint8_t id, uint8_t *buffer, size_t length)</argsstring>
+        <name>_genericSendReport</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a093d17d3453679f59263a73fca0e777b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::sendReport</definition>
+        <argsstring>(MouseReport *pReport)</argsstring>
+        <name>sendReport</name>
+        <param>
+          <type><ref refid="struct_mouse_report" kindref="compound">MouseReport</ref> *</type>
+          <declname>pReport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a4a6c71b356741c4621f988b071051a22" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::sendReport</definition>
+        <argsstring>(KeyReport *pReport)</argsstring>
+        <name>sendReport</name>
+        <param>
+          <type><ref refid="struct_key_report" kindref="compound">KeyReport</ref> *</type>
+          <declname>pReport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1aa03eb0752b66afbdec23e0e31f2e95db" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanHid_::sendReport</definition>
+        <argsstring>(CcReport *pReport)</argsstring>
+        <name>sendReport</name>
+        <param>
+          <type><ref refid="struct_cc_report" kindref="compound">CcReport</ref> *</type>
+          <declname>pReport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a36794456d4859ebdefde68fbf62b60e1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t BeanHid_::_holdKey</definition>
+        <argsstring>(uint8_t c)</argsstring>
+        <name>_holdKey</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="93" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a8a313c85e6a0cf4ecad02dd171f8b5c8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t BeanHid_::_releaseKey</definition>
+        <argsstring>(uint8_t c)</argsstring>
+        <name>_releaseKey</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_hid___1a160d93a1aa1fecb9e06858267dde0296" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t BeanHid_::_sendKey</definition>
+        <argsstring>(uint8_t c)</argsstring>
+        <name>_sendKey</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="95" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="86" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="86" bodyend="246"/>
+    <listofallmembers>
+      <member refid="class_bean_hid___1a016a6598040b8c6ba89d722f896d3808" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>_genericSendReport</name></member>
+      <member refid="class_bean_hid___1a36794456d4859ebdefde68fbf62b60e1" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>_holdKey</name></member>
+      <member refid="class_bean_hid___1a8a313c85e6a0cf4ecad02dd171f8b5c8" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>_releaseKey</name></member>
+      <member refid="class_bean_hid___1a160d93a1aa1fecb9e06858267dde0296" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>_sendKey</name></member>
+      <member refid="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>BeanHid_</name></member>
+      <member refid="class_bean_hid___1ad04ac8a6a357ea5880c5a013cde6ffcf" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>buttons</name></member>
+      <member refid="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>disable</name></member>
+      <member refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>enable</name></member>
+      <member refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>holdKey</name></member>
+      <member refid="class_bean_hid___1a40083ffe2f60453c9988419b083a26ad" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>holdKey</name></member>
+      <member refid="class_bean_hid___1af9919a1a3942fbe2bc3cfa34e1fe4f04" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>holdMediaControl</name></member>
+      <member refid="class_bean_hid___1aab7466efc670230ce1f2694047eaa1d2" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>holdMouseClick</name></member>
+      <member refid="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>isEnabled</name></member>
+      <member refid="class_bean_hid___1a2308e72ab32f2bbf76f70113b49c91a4" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>isShiftHeld</name></member>
+      <member refid="class_bean_hid___1a8d40fc0c1a14803b5ebc472f5d34b4c0" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>moveMouse</name></member>
+      <member refid="class_bean_hid___1a5f2464de95903311d251b9b92f5460cf" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseAllKeys</name></member>
+      <member refid="class_bean_hid___1a574a50368c284d3db59fba546f542538" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseAllMediaControls</name></member>
+      <member refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseKey</name></member>
+      <member refid="class_bean_hid___1a41d8c234073789bcff992387f4398cac" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseKey</name></member>
+      <member refid="class_bean_hid___1a3cb98f00d25098d7f45196d63eb92925" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseMediaControl</name></member>
+      <member refid="class_bean_hid___1accdc853cab0d52bd30d68f153e3f7f29" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>releaseMouseClick</name></member>
+      <member refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>sendKey</name></member>
+      <member refid="class_bean_hid___1abe48bfbb4e86e3e6411ebe507e388543" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>sendKey</name></member>
+      <member refid="class_bean_hid___1a9421d40df77b9d1f18d5a202879063ee" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>sendKeys</name></member>
+      <member refid="class_bean_hid___1a4fce5e764a70052ee85919f22ec04f4f" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>sendMediaControl</name></member>
+      <member refid="class_bean_hid___1a6568d01038b06a24afd93d5366ef9b00" prot="public" virt="non-virtual"><scope>BeanHid_</scope><name>sendMouseClick</name></member>
+      <member refid="class_bean_hid___1a093d17d3453679f59263a73fca0e777b" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>sendReport</name></member>
+      <member refid="class_bean_hid___1a4a6c71b356741c4621f988b071051a22" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>sendReport</name></member>
+      <member refid="class_bean_hid___1aa03eb0752b66afbdec23e0e31f2e95db" prot="private" virt="non-virtual"><scope>BeanHid_</scope><name>sendReport</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,340 @@
+\hypertarget{class_bean_hid__}{}\section{Bean\+Hid\+\_\+ Class Reference}
+\label{class_bean_hid__}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf H\+I\+D}\par
+{\em The user must enter a pairing code (default of 000000) to connect. H\+I\+D allows the bean to act as a mouse, keyboard, or media control device.
+
+Important\+: When disconnecting from a device, you must manually forget Bean in the system\textquotesingle{}s Bluetooth settings as well as Bean Loader. }\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_bean_hid___a06070026a127db3b3523256a84f1f3b9}{}{\bfseries Bean\+Hid\+\_\+} (void)\label{class_bean_hid___a06070026a127db3b3523256a84f1f3b9}
+
+\item 
+void \hyperlink{class_bean_hid___abc7bfa1befc35668b656dabc3d8646fa}{enable} (void)
+\item 
+bool \hyperlink{class_bean_hid___a5ddd3768219028dcee875f94855837a4}{is\+Enabled} (void)
+\item 
+void \hyperlink{class_bean_hid___a90eaa0e5ab96bd8e4220c4e4daa75dde}{disable} (void)
+\item 
+int \hyperlink{class_bean_hid___aad9dd7f6967d211abb6edb618c80e1a9}{hold\+Key} (char key)
+\item 
+int \hyperlink{class_bean_hid___a40083ffe2f60453c9988419b083a26ad}{hold\+Key} (modifier\+Key key)
+\item 
+int \hyperlink{class_bean_hid___ad0bdfc47ceedf67a923fa378048e7d2e}{release\+Key} (char key)
+\item 
+int \hyperlink{class_bean_hid___a41d8c234073789bcff992387f4398cac}{release\+Key} (modifier\+Key key)
+\item 
+void \hyperlink{class_bean_hid___a5f2464de95903311d251b9b92f5460cf}{release\+All\+Keys} ()
+\item 
+int \hyperlink{class_bean_hid___acf1c04f167558c6d9c11c40e1a2d1cf7}{send\+Key} (char key)
+\item 
+int \hyperlink{class_bean_hid___abe48bfbb4e86e3e6411ebe507e388543}{send\+Key} (modifier\+Key key)
+\item 
+int \hyperlink{class_bean_hid___a9421d40df77b9d1f18d5a202879063ee}{send\+Keys} (String chars\+To\+Type)
+\item 
+void \hyperlink{class_bean_hid___a8d40fc0c1a14803b5ebc472f5d34b4c0}{move\+Mouse} (signed char delta\+\_\+x, signed char delta\+\_\+y, signed char delta\+\_\+wheel=0)
+\item 
+void \hyperlink{class_bean_hid___aab7466efc670230ce1f2694047eaa1d2}{hold\+Mouse\+Click} (mouse\+Buttons button=M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)
+\item 
+void \hyperlink{class_bean_hid___accdc853cab0d52bd30d68f153e3f7f29}{release\+Mouse\+Click} (mouse\+Buttons button=M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)
+\item 
+void \hyperlink{class_bean_hid___a6568d01038b06a24afd93d5366ef9b00}{send\+Mouse\+Click} (mouse\+Buttons button=M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)
+\item 
+void \hyperlink{class_bean_hid___a4fce5e764a70052ee85919f22ec04f4f}{send\+Media\+Control} (media\+Control command)
+\item 
+void \hyperlink{class_bean_hid___af9919a1a3942fbe2bc3cfa34e1fe4f04}{hold\+Media\+Control} (media\+Control command)
+\item 
+void \hyperlink{class_bean_hid___a3cb98f00d25098d7f45196d63eb92925}{release\+Media\+Control} (media\+Control command)
+\item 
+void \hyperlink{class_bean_hid___a574a50368c284d3db59fba546f542538}{release\+All\+Media\+Controls} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bean_hid___a90eaa0e5ab96bd8e4220c4e4daa75dde}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!disable@{disable}}
+\index{disable@{disable}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{disable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a90eaa0e5ab96bd8e4220c4e4daa75dde}
+Disables the H\+I\+D functionality.
+
+If Bean has been paired with another device, you must un-\/pair Bean from that device manually.
+
+You may need to power cycle Bean after disabling H\+I\+D. \hypertarget{class_bean_hid___abc7bfa1befc35668b656dabc3d8646fa}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!enable@{enable}}
+\index{enable@{enable}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{enable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___abc7bfa1befc35668b656dabc3d8646fa}
+This function turns on the Bean\textquotesingle{}s H\+I\+D functionality. It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.
+
+H\+I\+D may not work well with other profiles such as A\+N\+C\+S or M\+I\+D\+I. Use multiple profiles simultaneously at your own risk.
+
+You may need to power cycle Bean after enabling H\+I\+D.
+
+\subsection*{Examples}
+
+This sketch demonstrates how to use Bean as a H\+I\+D peripheral. Bean will move a mouse pointer around the screen when it\textquotesingle{}s tilted side to side, forward, and back. Sending A\+S\+C\+I\+I \textquotesingle{}1\textquotesingle{} via Virtual Serial will cause Bean to type \char`\"{}\+Hello, world!\char`\"{}, and sending \textquotesingle{}2\textquotesingle{} will cause Bean to send the Play media key.
+
+
+\begin{DoxyCodeInclude}
+1 void setup() \{
+2   BeanHid.enable();
+3   // Serial port is initialized automatically; we don't have to do anything
+4 \}
+5 
+6 void loop() \{
+7   AccelerationReading accel = Bean.getAcceleration();
+8 
+9   int16\_t x = accel.xAxis;
+10   int16\_t y = accel.yAxis;
+11   int16\_t z = accel.zAxis;
+12 
+13   // Add a deadzone. If Bean is reasonabally flat, don't move the mouse pointer
+14   if (abs(x) < 20) \{
+15     x = 0;
+16   \}
+17   if (abs(y) < 20) \{
+18     y = 0;
+19   \}
+20 
+21   // we want to map the movements to reasonable values.
+22   // This constrains the accelerometer to -20 to 20.
+23   int16\_t mousex = map(x, -60, 60, -20, 20);
+24   int16\_t mousey = map(y, -60, 60, 20, -20);
+25 
+26   BeanHid.moveMouse(mousex, mousey);
+27 
+28   if (Serial.available()) \{
+29     byte read = Serial.read();
+30     if (read == '1') \{
+31       // send the ASCII number 1 to type a message
+32       BeanHid.sendKeys("Hello, world!");
+33     \} else if (read == '2') \{
+34       // send the ASCII number 2 to use a media command
+35       BeanHid.sendMediaControl(PLAY);
+36     \}
+37   \}
+38 \}
+\end{DoxyCodeInclude}
+ \hypertarget{class_bean_hid___aad9dd7f6967d211abb6edb618c80e1a9}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!hold\+Key@{hold\+Key}}
+\index{hold\+Key@{hold\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{hold\+Key(char key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::hold\+Key (
+\begin{DoxyParamCaption}
+\item[{char}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___aad9dd7f6967d211abb6edb618c80e1a9}
+Holds a key down. Takes any ascii character. Can hold a max of 6 character keys. 
+\begin{DoxyParams}{Parameters}
+{\em key} & single character key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if success 0 if failure 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___a40083ffe2f60453c9988419b083a26ad}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!hold\+Key@{hold\+Key}}
+\index{hold\+Key@{hold\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{hold\+Key(modifier\+Key key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::hold\+Key (
+\begin{DoxyParamCaption}
+\item[{modifier\+Key}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a40083ffe2f60453c9988419b083a26ad}
+Holds a key down. takes any modifier key specified by modifier\+Key. Does not affect a users keyboard (sending hold shift won\textquotesingle{}t type capital letters when you press them on your keyboard) 
+\begin{DoxyParams}{Parameters}
+{\em key} & takes a modifier key to hold down. Can hold down all 8 of the first 8 modifier keys. The keys that come after the first 8 are counted as standard keys and therefore part of the 6 character keys. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___af9919a1a3942fbe2bc3cfa34e1fe4f04}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!hold\+Media\+Control@{hold\+Media\+Control}}
+\index{hold\+Media\+Control@{hold\+Media\+Control}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{hold\+Media\+Control(media\+Control command)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::hold\+Media\+Control (
+\begin{DoxyParamCaption}
+\item[{media\+Control}]{command}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___af9919a1a3942fbe2bc3cfa34e1fe4f04}
+Holds a media control command command of type media\+Control. 
+\begin{DoxyParams}{Parameters}
+{\em command} & takes a media control command of type media\+Control \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___aab7466efc670230ce1f2694047eaa1d2}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!hold\+Mouse\+Click@{hold\+Mouse\+Click}}
+\index{hold\+Mouse\+Click@{hold\+Mouse\+Click}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{hold\+Mouse\+Click(mouse\+Buttons button=\+M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::hold\+Mouse\+Click (
+\begin{DoxyParamCaption}
+\item[{mouse\+Buttons}]{button = {\ttfamily MOUSE\+\_\+LEFT}}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___aab7466efc670230ce1f2694047eaa1d2}
+Holds a mouse button down 
+\begin{DoxyParams}{Parameters}
+{\em button} & the button to hold of type mouse\+Buttons. Defaults to M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___a5ddd3768219028dcee875f94855837a4}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!is\+Enabled@{is\+Enabled}}
+\index{is\+Enabled@{is\+Enabled}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{is\+Enabled(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Hid\+\_\+\+::is\+Enabled (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a5ddd3768219028dcee875f94855837a4}
+\begin{DoxyReturn}{Returns}
+True if H\+I\+D is enabled 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___a8d40fc0c1a14803b5ebc472f5d34b4c0}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!move\+Mouse@{move\+Mouse}}
+\index{move\+Mouse@{move\+Mouse}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{move\+Mouse(signed char delta\+\_\+x, signed char delta\+\_\+y, signed char delta\+\_\+wheel=0)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::move\+Mouse (
+\begin{DoxyParamCaption}
+\item[{signed char}]{delta\+\_\+x, }
+\item[{signed char}]{delta\+\_\+y, }
+\item[{signed char}]{delta\+\_\+wheel = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a8d40fc0c1a14803b5ebc472f5d34b4c0}
+Sends a mouse move command 
+\begin{DoxyParams}{Parameters}
+{\em delta\+\_\+x} & a signed 8 bit value for how many pixels to move the mouse in the x direction \\
+\hline
+{\em delta\+\_\+y} & a signed 8 bit value for how many pixels to move the mouse in the y direction \\
+\hline
+{\em delta\+\_\+wheel} & an optional signed 8 bit balue for how many clicks to move the mouse wheel \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___a5f2464de95903311d251b9b92f5460cf}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+All\+Keys@{release\+All\+Keys}}
+\index{release\+All\+Keys@{release\+All\+Keys}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+All\+Keys()}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::release\+All\+Keys (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a5f2464de95903311d251b9b92f5460cf}
+Releases all currently held keys \hypertarget{class_bean_hid___a574a50368c284d3db59fba546f542538}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+All\+Media\+Controls@{release\+All\+Media\+Controls}}
+\index{release\+All\+Media\+Controls@{release\+All\+Media\+Controls}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+All\+Media\+Controls()}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::release\+All\+Media\+Controls (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a574a50368c284d3db59fba546f542538}
+Releases all currently held media control commands \hypertarget{class_bean_hid___ad0bdfc47ceedf67a923fa378048e7d2e}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+Key@{release\+Key}}
+\index{release\+Key@{release\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+Key(char key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::release\+Key (
+\begin{DoxyParamCaption}
+\item[{char}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___ad0bdfc47ceedf67a923fa378048e7d2e}
+Releases a key. 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to release in character form \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___a41d8c234073789bcff992387f4398cac}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+Key@{release\+Key}}
+\index{release\+Key@{release\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+Key(modifier\+Key key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::release\+Key (
+\begin{DoxyParamCaption}
+\item[{modifier\+Key}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a41d8c234073789bcff992387f4398cac}
+Releases a key. 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to release of type modifier\+Key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if success 0 if failure 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___a3cb98f00d25098d7f45196d63eb92925}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+Media\+Control@{release\+Media\+Control}}
+\index{release\+Media\+Control@{release\+Media\+Control}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+Media\+Control(media\+Control command)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::release\+Media\+Control (
+\begin{DoxyParamCaption}
+\item[{media\+Control}]{command}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a3cb98f00d25098d7f45196d63eb92925}
+Releases a media control command command of type media\+Control. 
+\begin{DoxyParams}{Parameters}
+{\em command} & takes a media control command of type media\+Control \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___accdc853cab0d52bd30d68f153e3f7f29}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!release\+Mouse\+Click@{release\+Mouse\+Click}}
+\index{release\+Mouse\+Click@{release\+Mouse\+Click}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{release\+Mouse\+Click(mouse\+Buttons button=\+M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::release\+Mouse\+Click (
+\begin{DoxyParamCaption}
+\item[{mouse\+Buttons}]{button = {\ttfamily MOUSE\+\_\+LEFT}}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___accdc853cab0d52bd30d68f153e3f7f29}
+Releases a mouse button. 
+\begin{DoxyParams}{Parameters}
+{\em button} & the button to release of type mouse\+Buttons. Defaults to M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___acf1c04f167558c6d9c11c40e1a2d1cf7}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!send\+Key@{send\+Key}}
+\index{send\+Key@{send\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{send\+Key(char key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::send\+Key (
+\begin{DoxyParamCaption}
+\item[{char}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___acf1c04f167558c6d9c11c40e1a2d1cf7}
+Sends a full keypress event. Like calling hold\+Key then release\+Key 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send in character form \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if success 0 if failure 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___abe48bfbb4e86e3e6411ebe507e388543}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!send\+Key@{send\+Key}}
+\index{send\+Key@{send\+Key}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{send\+Key(modifier\+Key key)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::send\+Key (
+\begin{DoxyParamCaption}
+\item[{modifier\+Key}]{key}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___abe48bfbb4e86e3e6411ebe507e388543}
+Sends a full keypress event. Like calling hold\+Key then release\+Key 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send of type modifier\+Key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if success 0 if failure 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___a9421d40df77b9d1f18d5a202879063ee}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!send\+Keys@{send\+Keys}}
+\index{send\+Keys@{send\+Keys}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{send\+Keys(\+String chars\+To\+Type)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Hid\+\_\+\+::send\+Keys (
+\begin{DoxyParamCaption}
+\item[{String}]{chars\+To\+Type}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a9421d40df77b9d1f18d5a202879063ee}
+Sends a string of characters as keyboard events 
+\begin{DoxyParams}{Parameters}
+{\em chars\+To\+Type} & a String of characters for the keyboard to emulate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if success 0 if failure 
+\end{DoxyReturn}
+\hypertarget{class_bean_hid___a4fce5e764a70052ee85919f22ec04f4f}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!send\+Media\+Control@{send\+Media\+Control}}
+\index{send\+Media\+Control@{send\+Media\+Control}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{send\+Media\+Control(media\+Control command)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::send\+Media\+Control (
+\begin{DoxyParamCaption}
+\item[{media\+Control}]{command}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a4fce5e764a70052ee85919f22ec04f4f}
+Sends a media control command command of type media\+Control. 
+\begin{DoxyParams}{Parameters}
+{\em command} & takes a media control command of type media\+Control \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_hid___a6568d01038b06a24afd93d5366ef9b00}{}\index{Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}!send\+Mouse\+Click@{send\+Mouse\+Click}}
+\index{send\+Mouse\+Click@{send\+Mouse\+Click}!Bean\+Hid\+\_\+@{Bean\+Hid\+\_\+}}
+\subsubsection[{send\+Mouse\+Click(mouse\+Buttons button=\+M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Hid\+\_\+\+::send\+Mouse\+Click (
+\begin{DoxyParamCaption}
+\item[{mouse\+Buttons}]{button = {\ttfamily MOUSE\+\_\+LEFT}}
+\end{DoxyParamCaption}
+)}\label{class_bean_hid___a6568d01038b06a24afd93d5366ef9b00}
+Sends a mouse hold then a mouse release command. 
+\begin{DoxyParams}{Parameters}
+{\em button} & the button to click of type mouse\+Buttons. Defaults to M\+O\+U\+S\+E\+\_\+\+L\+E\+F\+T. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hardware/bean/avr/cores/bean/Bean\+H\+I\+D.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_key_report" kind="struct" language="C++" prot="public">
+    <compoundname>KeyReport</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_key_report_1a2ead73d1505b8909d72f07d9b1c2874d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t KeyReport::modifiers</definition>
+        <argsstring></argsstring>
+        <name>modifiers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="77" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_key_report_1a47ab672d90ca943f19d552a07a5f2afa" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t KeyReport::reserved</definition>
+        <argsstring></argsstring>
+        <name>reserved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="78" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_key_report_1a73742ff22b1a767b260633c99baaa374" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t KeyReport::keys[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>keys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="79" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="76" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="76" bodyend="80"/>
+    <listofallmembers>
+      <member refid="struct_key_report_1a73742ff22b1a767b260633c99baaa374" prot="public" virt="non-virtual"><scope>KeyReport</scope><name>keys</name></member>
+      <member refid="struct_key_report_1a2ead73d1505b8909d72f07d9b1c2874d" prot="public" virt="non-virtual"><scope>KeyReport</scope><name>modifiers</name></member>
+      <member refid="struct_key_report_1a47ab672d90ca943f19d552a07a5f2afa" prot="public" virt="non-virtual"><scope>KeyReport</scope><name>reserved</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

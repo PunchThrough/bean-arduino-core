@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_mouse_report" kind="struct" language="C++" prot="public">
+    <compoundname>MouseReport</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_mouse_report_1abedbcaccb713b83fa301e329461e9664" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t MouseReport::mouse[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>mouse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="82" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="82" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="82" bodyend="82"/>
+    <listofallmembers>
+      <member refid="struct_mouse_report_1abedbcaccb713b83fa301e329461e9664" prot="public" virt="non-virtual"><scope>MouseReport</scope><name>mouse</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

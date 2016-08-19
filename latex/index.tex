@@ -1,63 +1,22 @@
-\subsection*{Repo Overview }
+This repo contains the Arduino firmware and installation files used in the \href{https://punchthrough.com/bean}{\tt Light\+Blue Bean} project. The firmware files are based off of the Arduino firmware release version 1.\+0.\+5 and have been modified to work on the Light\+Blue Bean. Bean has components that include a B\+L\+E radio, an accelerometer, and a multicolor L\+E\+D.
 
-This repo contains the Arduino firmware and installation files used in the Light\+Blue Bean project. The firmware files are based off of the Arduino firmware release version 1.\+0.\+5 and have been modified to work on the Light\+Blue Bean, a system that has on it a few other features, a B\+LE radio an accelerometer and a multicolor L\+ED.
+\href{https://punchthrough.com/bean/reference}{\tt Reference Docs}
 
-\subsubsection*{T\+O\+DO\+:}
+\section*{Project Layout}
 
+\subsection*{/hardware}
 
-\begin{DoxyItemize}
-\item Add note to this doc regarding F\+U\+S\+ES (!! B\+OD)
-\item Fix Serial.\+println so, like Serial.\+print, extra radio messages arn\textquotesingle{}t sent for the newline
-\item Add proper doxygen comments to relelvent parts, especially the A\+PI
-\item Add features to emulator to provide better, more useful testing
-\item Add more and better examples
-\end{DoxyItemize}
+This directory contains the firmware for the Light\+Blue Bean, as well as the files needed for the Arduino I\+D\+E to recognize the board and allow users to program it. Its contents are copied to Arduino I\+D\+E\textquotesingle{}s {\ttfamily hardware} directory when Bean Loader is installed on O\+S X or Windows.
 
-\subsubsection*{Reading and Setting Atmega Fuses with avrdude}
+\subsection*{/examples}
 
-We\textquotesingle{}re going to need to set some fuses for our part in the factory. The fuse settings we need are going to set our part to basically should match the Arduino Pro defaults with brownout disabled.
+This directory contains example Arduino sketches for use with Bean. Its contents are copied to Arduino I\+D\+E\textquotesingle{}s {\ttfamily examples} directory when Bean Loader is installed.
 
-At the time of writing, I don\textquotesingle{}t have a programmer at my disposal. However the steps taken should be the We write the fuse settings here\+: XX XX XX
+\subsection*{/bean\+Module\+Emulator}
 
-Steps\+:
+This directory contains an emulator for the \char`\"{}non-\/\+Arduino\char`\"{} parts of Bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected.
 
-
-\begin{DoxyEnumerate}
-\item Install avrdude. I used \mbox{[}\href{http://www.obdev.at/products/crosspack/index.html}{\tt http\+://www.\+obdev.\+at/products/crosspack/index.\+html}\mbox{]}(Cross\+Pack) to do this.
-\end{DoxyEnumerate}
-\begin{DoxyEnumerate}
-\item Read the fuses from an off the shelf Arduino\+Pro. Use this command after avrdude is in your path\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/U lfuse\+:r\+:-\/\+:h -\/U hfuse\+:r\+:-\/\+:h -\/U efuse\+:r\+:-\/\+:h -\/U lock\+:r\+:-\/\+:h}
-\end{DoxyEnumerate}
-\begin{DoxyEnumerate}
-\item Go to \mbox{[}\href{http://www.engbedded.com/fusecalc/}{\tt http\+://www.\+engbedded.\+com/fusecalc/}\mbox{]}(The Avr Fuse Calculator) and enter in the current state of the fuses
-\end{DoxyEnumerate}
-\begin{DoxyEnumerate}
-\item Turn off Brown Out Detection (B\+OD).
-\end{DoxyEnumerate}
-\begin{DoxyEnumerate}
-\item Calculate the new state of the fuses using the website, note for future (so no one else has to do these silly instructions)
-\end{DoxyEnumerate}
-\begin{DoxyEnumerate}
-\item Use avrdude to write and test your new fuse settings. The command line will look something like this (except, these are guessed values\+: {\ttfamily avrdude -\/p atmega328p -\/c usbtiny -\/U lfuse\+:w\+:0xee\+:m -\/U hfuse\+:w\+:0xdc\+:m -\/U efuse\+:w\+:0xff\+:m})
-\end{DoxyEnumerate}
-
-\subsubsection*{Key Files\+:}
-
-\paragraph*{Everything in the {\ttfamily hardware} directory}
-
-The contents of the hardware directory should be copied into the Arduino program resources hardware directory on install. This directory contains the firmware for the Light\+Blue Bean, as well as the files needed for the Arduino I\+DE to recognize the board allow users to program it.
-
-\paragraph*{Everything in the {\ttfamily examples} directory}
-
-The contents of the examples directory should be copied separately on install to the examples resources in the Arduino I\+DE.
-
-\paragraph*{Everything in the {\ttfamily bean\+Module\+Emulator} directory}
-
-This directory contains an Emulator of the \textquotesingle{}non-\/\+Arduino\textquotesingle{} parts of the bean. This acts as a test jig for the Arduino code, and allows us to verify that things operate as expected. You can run {\ttfamily python Bean\+Module\+Emulator.\+py} from within the bean\+Module\+Emulator directory.
-
-\subparagraph*{Dependencies}
-
-There are a few python library dependencies you\textquotesingle{}ll need to make the emulator work\+:
+You can run {\ttfamily python Bean\+Module\+Emulator.\+py} from within the bean\+Module\+Emulator directory. There are a few Python library dependencies you\textquotesingle{}ll need to make the emulator work\+:
 
 
 \begin{DoxyItemize}
@@ -67,24 +26,117 @@ There are a few python library dependencies you\textquotesingle{}ll need to make
 \item enum
 \end{DoxyItemize}
 
-The emulator has been tested with python 2.\+7.\+6 installed by Homebrew on O\+SX
+The emulator has been tested with Python 2.\+7.\+6 installed via Homebrew on O\+S X.
 
-\subsubsection*{Development\+:}
+\section*{Development}
 
-During development, it is recommended to use soft links from inside your Arduino I\+DE resources to your repository. It will make it easier to test your work.
+\subsection*{Testing in Arduino I\+D\+E}
 
-\subsubsection*{Repo Setup\+:}
+You can use a symlink to install the development copy of Bean Arduino Core into your Arduino I\+D\+E\textquotesingle{}s Hardware folder.
 
-This repository uses git submodules and requires a few extra steps for cloning and pulling. \paragraph*{Clone}
+Here\textquotesingle{}s a working command for O\+S X users\+:
 
-git clone R\+E\+P\+O\+\_\+\+U\+RL --recursive
 
-\paragraph*{Initialize Submodules}
+\begin{DoxyCode}
+1 ln -s "/absolute/path/to/bean-arduino-core-private/hardware/bean/" ~/Documents/Arduino/hardware
+\end{DoxyCode}
 
-\subparagraph*{(This is unnecessary if the recursive clone works)}
 
-git submodule update --init --recursive
+Make sure to use an {\itshape absolute path}, not a relative path, as the source path for the symlink.
 
-\paragraph*{Pull}
+\subsection*{Pull Requests}
 
-git pull git submodule update --recursive 
+All pull requests should be against the {\ttfamily develop} branch.
+
+\subsection*{Repo Setup}
+
+This repository uses git submodules and requires a few extra steps for cloning and pulling.
+
+\subsection*{Clone}
+
+
+\begin{DoxyCode}
+1 $ git clone REPO\_URL --recursive
+\end{DoxyCode}
+
+
+\subsection*{Initialize Submodules}
+
+(This is unnecessary if the recursive clone works)
+
+
+\begin{DoxyCode}
+1 $ git submodule update --init --recursive
+\end{DoxyCode}
+
+
+\subsection*{Pull}
+
+
+\begin{DoxyCode}
+1 $ git pull
+2 $ git submodule update --recursive
+\end{DoxyCode}
+
+
+\section*{Code Style and Quality}
+
+Code in this repo should adhere to the \href{https://google.github.io/styleguide/cppguide.html}{\tt Google C++ Style Guide}.
+
+This repo comes with tools to ensure your code meets style guidelines. If code you submit for review does not fit our style guide, your pull request will fail our automated tests. Lint your code before submitting it to avoid this.
+
+\subsection*{Installing Tools}
+
+If you\textquotesingle{}re running the reformatter or linter for the first time, run this first to install the tools\+:
+
+
+\begin{DoxyCode}
+1 make install
+\end{DoxyCode}
+
+
+Are you getting the following error?
+
+\begin{quote}
+Agreeing to the Xcode/i\+O\+S license requires admin privileges, please re-\/run as root via sudo. \end{quote}
+
+
+This is an Xcode problem. Run {\ttfamily sudo xcodebuild} to agree with the Xcode license agreement, then run {\ttfamily make install} again.
+
+clang-\/format uses the {\ttfamily .clang-\/format} file to set formatting style. See the \href{http://clang.llvm.org/docs/ClangFormat.html}{\tt clang-\/format docs} for more info.
+
+\subsection*{Linting}
+
+Our continuous integration server lints all code when it\textquotesingle{}s submitted to a pull request. You can run the linter on your machine to make sure your code is up to this repo\textquotesingle{}s standards.
+
+To lint Bean files for errors before committing\+:
+
+
+\begin{DoxyCode}
+1 make lint
+\end{DoxyCode}
+
+
+cpplint is configured in {\ttfamily C\+P\+P\+L\+I\+N\+T.\+cfg}. See the \href{https://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py}{\tt cpplint.\+py source} for more info on configuration options and linter filters.
+
+\subsection*{View List of Linted Files}
+
+To see which files will be linted or reformatted\+:
+
+
+\begin{DoxyCode}
+1 make show
+\end{DoxyCode}
+
+
+\subsection*{Auto-\/\+Reformatting}
+
+clang-\/format is set up to use the Google style guide. Reformatting your code will clean up many of the lint errors you might make.
+
+To reformat Bean files in this project\+:
+
+
+\begin{DoxyCode}
+1 make reformat
+\end{DoxyCode}
+ 

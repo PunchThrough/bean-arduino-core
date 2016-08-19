@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
   <compounddef id="dir_2b1dd4caef0fbc241f52df5abc8b1c90" kind="dir">
     <compoundname>hardware/bean/avr/cores/bean</compoundname>
-    <innerdir refid="dir_f3f581691bd9930acab3f95d022913ff">hardware/bean/avr/cores/bean/applicationMessageHeaders</innerdir>
     <innerfile refid="_bean_8h">Bean.h</innerfile>
+    <innerfile refid="_bean_ancs_8h">BeanAncs.h</innerfile>
+    <innerfile refid="_bean_h_i_d_8h">BeanHID.h</innerfile>
+    <innerfile refid="_bean_midi_8h">BeanMidi.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

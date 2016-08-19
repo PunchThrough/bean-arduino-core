@@ -1,48 +1,61 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
   <compounddef id="_bean_8h" kind="file" language="C++">
     <compoundname>Bean.h</compoundname>
     <includes local="yes">BeanSerialTransport.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/HardwareSerial.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/HardwareSerial.h</includes>
     <includes local="no">inttypes.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Stream.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Print.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Stream.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Print.h</includes>
     <includes local="no">stdio.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/WString.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Printable.h</includes>
-    <includes local="no">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/new.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Arduino.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/WString.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Printable.h</includes>
+    <includes local="no">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/new.h</includes>
+    <includes local="yes">applicationMessageHeaders/AppMessages.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Arduino.h</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">string.h</includes>
     <includes local="no">math.h</includes>
     <includes local="no">avr/pgmspace.h</includes>
     <includes local="no">avr/io.h</includes>
     <includes local="no">avr/interrupt.h</includes>
-    <includes local="yes">/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/binary.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/binary.h</includes>
     <includes local="yes">pins_arduino.h</includes>
+    <includes refid="_bean_h_i_d_8h" local="yes">BeanHID.h</includes>
+    <includes refid="_bean_midi_8h" local="yes">BeanMidi.h</includes>
+    <includes refid="_bean_ancs_8h" local="yes">BeanAncs.h</includes>
+    <includes local="yes">bma250.h</includes>
     <incdepgraph>
-      <node id="4">
+      <node id="1">
         <label>BeanSerialTransport.h</label>
       </node>
-      <node id="22">
-        <label>pins_arduino.h</label>
-      </node>
-      <node id="11">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Printable.h</label>
-      </node>
-      <node id="20">
-        <label>avr/interrupt.h</label>
-      </node>
-      <node id="15">
-        <label>stdlib.h</label>
+      <node id="18">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/binary.h</label>
       </node>
       <node id="7">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Stream.h</label>
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/WString.h</label>
       </node>
-      <node id="3">
+      <node id="19">
+        <label>pins_arduino.h</label>
+      </node>
+      <node id="17">
+        <label>avr/interrupt.h</label>
+      </node>
+      <node id="12">
+        <label>stdlib.h</label>
+      </node>
+      <node id="10">
+        <label>applicationMessageHeaders/AppMessages.h</label>
+      </node>
+      <node id="0">
         <label>hardware/bean/avr/cores/bean/Bean.h</label>
         <link refid="Bean.h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -79,53 +92,366 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/new.h</label>
+      </node>
+      <node id="24">
+        <label>bma250.h</label>
+      </node>
+      <node id="2">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/HardwareSerial.h</label>
+      </node>
+      <node id="21">
+        <label>BeanMidi.h</label>
+        <link refid="_bean_midi_8h_source"/>
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Print.h</label>
-      </node>
-      <node id="5">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/HardwareSerial.h</label>
-      </node>
-      <node id="19">
+      <node id="16">
         <label>avr/io.h</label>
       </node>
-      <node id="16">
+      <node id="13">
         <label>string.h</label>
       </node>
-      <node id="14">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/Arduino.h</label>
+      <node id="20">
+        <label>BeanHID.h</label>
+        <link refid="_bean_h_i_d_8h_source"/>
+        <childnode refid="1" relation="include">
+        </childnode>
       </node>
-      <node id="18">
+      <node id="4">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Stream.h</label>
+      </node>
+      <node id="5">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Print.h</label>
+      </node>
+      <node id="15">
         <label>avr/pgmspace.h</label>
       </node>
-      <node id="13">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</label>
+      <node id="11">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Arduino.h</label>
       </node>
-      <node id="21">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/binary.h</label>
-      </node>
-      <node id="17">
+      <node id="14">
         <label>math.h</label>
       </node>
-      <node id="10">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/WString.h</label>
+      <node id="22">
+        <label>Arduino.h</label>
       </node>
-      <node id="12">
-        <label>/Users/mplewis/Dropbox (Punch Through)/PTD Projects/PunchThrough-BEAN-Arduino-Firmware/hardware/bean/avr/cores/bean/new.h</label>
-      </node>
-      <node id="9">
-        <label>stdio.h</label>
+      <node id="8">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Printable.h</label>
       </node>
       <node id="6">
+        <label>stdio.h</label>
+      </node>
+      <node id="23">
+        <label>BeanAncs.h</label>
+        <link refid="_bean_ancs_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
         <label>inttypes.h</label>
       </node>
     </incdepgraph>
     <innerclass refid="class_bean_class" prot="public">BeanClass</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145" prot="public" static="no">
+        <name>AccelEventTypes</name>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145a8975895bbc0ff24bbe55b160d214dd37" prot="public">
+          <name>FLAT_EVENT</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145a530f634c0bd1731d4d00c31e76f7f4cc" prot="public">
+          <name>ORIENT_EVENT</name>
+          <initializer>= 0x40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145afa56c66f560263074abe71738ea451ae" prot="public">
+          <name>SINGLE_TAP_EVENT</name>
+          <initializer>= 0x20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145a76db9f62241be48fcac548a7306bfde1" prot="public">
+          <name>DOUBLE_TAP_EVENT</name>
+          <initializer>= 0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145a553bde19c7202517a635891d23e7b11c" prot="public">
+          <name>ANY_MOTION_EVENT</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145adf8336b079f7168eda9649d2dd896229" prot="public">
+          <name>HIGH_G_EVENT</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145a5832708541b05c63dacafebc3e48b8e6" prot="public">
+          <name>LOW_G_EVENT</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="19" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="19" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_8h_1a3ecac7669763e418533034118ef756ca" prot="public" static="no">
+        <name>AdvertisementDataTypes</name>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa79c912dc419638593776443954d64511" prot="public">
+          <name>GAP_ADTYPE_FLAGS</name>
+          <initializer>=  0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa1fb9ed13766a9482bea5d3aa72aa9c82" prot="public">
+          <name>GAP_ADTYPE_16BIT_MORE</name>
+          <initializer>=  0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caadabd913e245a63752065a60266284f5f" prot="public">
+          <name>GAP_ADTYPE_16BIT_COMPLETE</name>
+          <initializer>=  0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caad3146241f0ae01a047acf8b3b506adf3" prot="public">
+          <name>GAP_ADTYPE_32BIT_MORE</name>
+          <initializer>=  0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caae63eda27fb3ca7a6dda0339487825f67" prot="public">
+          <name>GAP_ADTYPE_32BIT_COMPLETE</name>
+          <initializer>=  0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa613d30bd31a7b49dd17be25197733efc" prot="public">
+          <name>GAP_ADTYPE_128BIT_MORE</name>
+          <initializer>=  0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa3f23ebf393254f8cd387c4468dbb387d" prot="public">
+          <name>GAP_ADTYPE_128BIT_COMPLETE</name>
+          <initializer>=  0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caaf61c6d6cb9aca794479533e642baafda" prot="public">
+          <name>GAP_ADTYPE_LOCAL_NAME_SHORT</name>
+          <initializer>=  0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa75d8d76465f95ac41eca9ece92d84a6d" prot="public">
+          <name>GAP_ADTYPE_LOCAL_NAME_COMPLETE</name>
+          <initializer>=  0x09</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caaf9f1bcd66f578ee7cb05a1372c6ce729" prot="public">
+          <name>GAP_ADTYPE_POWER_LEVEL</name>
+          <initializer>=  0x0A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caaa9ae17dc49501301a6ad3ee290830fa0" prot="public">
+          <name>GAP_ADTYPE_OOB_CLASS_OF_DEVICE</name>
+          <initializer>=  0x0D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa7a0e820704631cc4d341cef9572b39e4" prot="public">
+          <name>GAP_ADTYPE_OOB_SIMPLE_PAIRING_HASHC</name>
+          <initializer>=  0x0E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa6e5f2ca43201f585df65f16760cc078a" prot="public">
+          <name>GAP_ADTYPE_OOB_SIMPLE_PAIRING_RANDR</name>
+          <initializer>=  0x0F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa5406f47acaca961c9737a3b30e3ca4d6" prot="public">
+          <name>GAP_ADTYPE_SM_TK</name>
+          <initializer>=  0x10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caaf83b8eee489645cc99a43b73d1032d3e" prot="public">
+          <name>GAP_ADTYPE_SM_OOB_FLAG</name>
+          <initializer>=  0x11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caab615927a9283ede0ab46fbc18e8f87d1" prot="public">
+          <name>GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE</name>
+          <initializer>=  0x12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caae1224f9a8bfcd7fcd8903f2cb5bcd6ff" prot="public">
+          <name>GAP_ADTYPE_SIGNED_DATA</name>
+          <initializer>=  0x13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa4f5b82b5b983a84b11d78e672f135d94" prot="public">
+          <name>GAP_ADTYPE_SERVICES_LIST_16BIT</name>
+          <initializer>=  0x14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa4c2562a8c151ef71f79b1a58153a0a67" prot="public">
+          <name>GAP_ADTYPE_SERVICES_LIST_128BIT</name>
+          <initializer>=  0x15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa5c51bb4923e3a8328ff2d490d4d85a3b" prot="public">
+          <name>GAP_ADTYPE_SERVICE_DATA</name>
+          <initializer>=  0x16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa4cbc093f0f8439486864c1b53694ef30" prot="public">
+          <name>GAP_ADTYPE_APPEARANCE</name>
+          <initializer>=  0x19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3ecac7669763e418533034118ef756caa041482240d70b97aa787e7664f01046f" prot="public">
+          <name>GAP_ADTYPE_MANUFACTURER_SPECIFIC</name>
+          <initializer>=  0xFF</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="29" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="29" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_8h_1a3f7d8aa7cc92e6278ff5a29e3b7dc0a2" prot="public" static="no">
+        <name>AdvertisementType</name>
+        <enumvalue id="_bean_8h_1a3f7d8aa7cc92e6278ff5a29e3b7dc0a2abc6928eea1f2b42f902f47b8e291cc8d" prot="public">
+          <name>GAP_ADTYPE_FLAGS_LIMITED</name>
+          <initializer>=  0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3f7d8aa7cc92e6278ff5a29e3b7dc0a2af556ad0bc1aec4811403500e6204de42" prot="public">
+          <name>GAP_ADTYPE_FLAGS_GENERAL</name>
+          <initializer>=  0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_8h_1a3f7d8aa7cc92e6278ff5a29e3b7dc0a2ae750256814c39168b2111fb96a4c5a2a" prot="public">
+          <name>GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED</name>
+          <initializer>=  0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="66" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="_bean_8h_1abe3d58d06eff3046a29f245172e62427" prot="public" static="no">
-        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref></type>
+        <type>ACC_READING_T</type>
         <definition>typedef ACC_READING_T AccelerationReading</definition>
         <argsstring></argsstring>
         <name>AccelerationReading</name>
@@ -135,10 +461,10 @@
 <para>An acceleration reading from the Bean accelerometer, the BMA250 (<ulink url="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</ulink>). Also includes the current sensitivity setting.</para><para>The accelerometer has 10-bit resolution. Readings are returned raw in the range of -512 to 511. These readings need to be converted to g (<ulink url="https://en.wikipedia.org/wiki/G-force">g-force</ulink>).</para><para>The accelerometer has configurable sensitivity. When using the accelerometer at the default sensitivity of ±2g, a value of +1 corresponds to +3.91 mg.</para><para>The accelerometer sensitivity is ±2g, ±4g, ±8g, or ±16g. These are represented by the values 2, 4, 8, or 16. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="14" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="14" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="82" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_bean_8h_1a4303280f79143dd66eb5af27976ea880" prot="public" static="no">
-        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref></type>
+        <type>LED_SETTING_T</type>
         <definition>typedef LED_SETTING_T LedReading</definition>
         <argsstring></argsstring>
         <name>LedReading</name>
@@ -148,7 +474,33 @@
 <para>Intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="19" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="19" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="87" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_bean_8h_1a503c2b4d29e1e854fe01f9a9964afd03" prot="public" static="no">
+        <type>ADV_SWITCH_ENABLED_T</type>
+        <definition>typedef ADV_SWITCH_ENABLED_T BluetoothServices</definition>
+        <argsstring></argsstring>
+        <name>BluetoothServices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Currently enabled advertisements in the rotating advertisement controller. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="92" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_bean_8h_1a9c7c4ea65b8ab58c5e25b47021d797bc" prot="public" static="no">
+        <type>OBSERVER_INFO_MESSAGE_T</type>
+        <definition>typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo</definition>
+        <argsstring></argsstring>
+        <name>ObseverAdvertisementInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Data returned by the observer role. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="97" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -160,10 +512,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Needs docs </para>        </detaileddescription>
+<para>Needs docs Library of Bean-specific functions to run sketches on ATMega386p </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="492" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="894" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -174,122 +526,245 @@
 <codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>BEAN_BEAN_BEAN_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BEAN_BEAN_BEAN_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanSerialTransport.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref>;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref>;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21" refid="class_bean_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="27"></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" kindref="member">getAccelerationX</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" kindref="member">getAccelerationY</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a681df15a2b6952547d536f8faebce802" kindref="member">getAccelerationZ</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref><sp/><ref refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" kindref="member">getAcceleration</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" kindref="member">getAccelerationRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" kindref="member">setAccelerationRange</ref>(uint8_t<sp/>range);</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanHID.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanMidi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanAncs.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;bma250.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/>An<sp/>accelerometer<sp/>interrupt<sp/>type,<sp/>they<sp/>are<sp/>as<sp/>follows:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/>FLAT_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>is<sp/>lying<sp/>flat<sp/>on<sp/>a<sp/>surface</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/><sp/>ORIENT_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>is<sp/>NOT<sp/>lying<sp/>flat<sp/>on<sp/>a<sp/>surface,<sp/>but<sp/>is<sp/>tilted<sp/>*<sp/><sp/>in<sp/>any<sp/>direction</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/><sp/>SINGLE_TAP_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>is<sp/>tapped<sp/>once</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/><sp/>DOUBLE_TAP_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>is<sp/>tapped<sp/>twice</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/><sp/>ANY_MOTION_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>experiences<sp/>any<sp/>change<sp/>in<sp/>motion</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/><sp/>HIGH_G_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>experiences<sp/>a<sp/>velocity<sp/>event<sp/>higher<sp/>than<sp/>it&apos;s<sp/>*<sp/><sp/>sensitivity</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/><sp/>LOW_G_EVENT<sp/>-<sp/>triggers<sp/>when<sp/>the<sp/>accelerometer<sp/>is<sp/>in<sp/>free<sp/>fall<sp/>or<sp/>experiences<sp/>no<sp/>gravitational<sp/>*<sp/><sp/>pull</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>AccelEventTypes<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>FLAT_EVENT<sp/>=<sp/>0x80,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>ORIENT_EVENT<sp/>=<sp/>0x40,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>SINGLE_TAP_EVENT<sp/>=<sp/>0x20,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>DOUBLE_TAP_EVENT<sp/>=<sp/>0x10,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>ANY_MOTION_EVENT<sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>HIGH_G_EVENT<sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>LOW_G_EVENT<sp/>=<sp/>0x01</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>AdvertisementDataTypes<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_FLAGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x01,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Discovery<sp/>Mode:<sp/>@ref<sp/>GAP_ADTYPE_FLAGS_MODES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_16BIT_MORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x02,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>More<sp/>16-bit<sp/>UUIDs<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_16BIT_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x03,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>Complete<sp/>list<sp/>of<sp/>16-bit<sp/>UUIDs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_32BIT_MORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x04,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>More<sp/>32-bit<sp/>UUIDs<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_32BIT_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x05,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>Complete<sp/>list<sp/>of<sp/>32-bit<sp/>UUIDs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_128BIT_MORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x06,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>More<sp/>128-bit<sp/>UUIDs<sp/>available</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_128BIT_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x07,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service:<sp/>Complete<sp/>list<sp/>of<sp/>128-bit<sp/>UUIDs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_LOCAL_NAME_SHORT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x08,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Shortened<sp/>local<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_LOCAL_NAME_COMPLETE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x09,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Complete<sp/>local<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_POWER_LEVEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x0A,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>TX<sp/>Power<sp/>Level:<sp/>0xXX:<sp/>-127<sp/>to<sp/>+127<sp/>dBm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_OOB_CLASS_OF_DEVICE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x0D,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Simple<sp/>Pairing<sp/>OOB<sp/>Tag:<sp/>Class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>of<sp/>device<sp/>(3<sp/>octets)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_OOB_SIMPLE_PAIRING_HASHC<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x0E,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Simple<sp/>Pairing<sp/>OOB<sp/>Tag:<sp/>Simple<sp/>Pairing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Hash<sp/>C<sp/>(16<sp/>octets)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_OOB_SIMPLE_PAIRING_RANDR<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x0F,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Simple<sp/>Pairing<sp/>OOB<sp/>Tag:<sp/>Simple<sp/>Pairing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Randomizer<sp/>R<sp/>(16<sp/>octets)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SM_TK<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x10,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Security<sp/>Manager<sp/>TK<sp/>Value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SM_OOB_FLAG<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x11,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Secutiry<sp/>Manager<sp/>OOB<sp/>Flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE<sp/><sp/><sp/><sp/>=<sp/><sp/>0x12,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Min<sp/>and<sp/>Max<sp/>values<sp/>of<sp/>the<sp/>connection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>interval</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>(2<sp/>octets<sp/>Min,<sp/>2<sp/>octets<sp/>Max)<sp/>(0xFFFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>indicates<sp/>no<sp/>conn<sp/>interval<sp/>min<sp/>or<sp/>max)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SIGNED_DATA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x13,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Signed<sp/>Data<sp/>field</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SERVICES_LIST_16BIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x14,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service<sp/>Solicitation:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>list<sp/>of<sp/>16-bit<sp/>Service<sp/>UUIDs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SERVICES_LIST_128BIT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x15,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service<sp/>Solicitation:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>list<sp/>of<sp/>128-bit<sp/>Service<sp/>UUIDs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_SERVICE_DATA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x16,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Service<sp/>Data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_APPEARANCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x19,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Appearance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_MANUFACTURER_SPECIFIC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0xFF,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Manufacturer<sp/>Specific<sp/>Data:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>first<sp/>2<sp/>octets<sp/>contain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>the<sp/>Company<sp/>Identifier<sp/>Code</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>followed<sp/>by<sp/>the<sp/>additional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>manufacturer<sp/>specific<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>AdvertisementType<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_FLAGS_LIMITED<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x01,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Discovery<sp/>Mode:<sp/>LE<sp/>Limited<sp/>Discoverable<sp/>Mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_FLAGS_GENERAL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/>0x02,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Discovery<sp/>Mode:<sp/>LE<sp/>General<sp/>Discoverable<sp/>Mode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED<sp/><sp/><sp/><sp/>=<sp/><sp/>0x04,<sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>Discovery<sp/>Mode:<sp/>BR/EDR<sp/>Not<sp/>Supported</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="77"></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" kindref="member">setLed</ref>(uint8_t<sp/>red,<sp/>uint8_t<sp/>green,<sp/>uint8_t<sp/>blue);</highlight></codeline>
+<codeline lineno="82"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ACC_READING_T<sp/>AccelerationReading;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>LED_SETTING_T<sp/>LedReading;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref><sp/><ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" kindref="member">getLedRed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a5619292a562731e94f97e93432ab3639" kindref="member">getLedGreen</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" kindref="member">getLedBlue</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" kindref="member">setLedRed</ref>(uint8_t<sp/>intensity);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" kindref="member">setLedGreen</ref>(uint8_t<sp/>intensity);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" kindref="member">setLedBlue</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="92"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADV_SWITCH_ENABLED_T<sp/>BluetoothServices;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>OBSERVER_INFO_MESSAGE_T<sp/>ObseverAdvertisementInfo;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="class_bean_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="105"></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9d2f98bbb1b8a715c0fe549c438f44ed" kindref="member">enableMotionEvent</ref>(AccelEventTypes<sp/>events);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a0f9fb65a465070f9f3e9cdf4f2687bdc" kindref="member">disableMotionEvents</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a75492018fa92ad32c06a12ce456dc74c" kindref="member">checkMotionEvent</ref>(AccelEventTypes<sp/>events);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="154"></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" kindref="member">setScratchData</ref>(uint8_t<sp/>bank,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint8_t<sp/>dataLength);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" kindref="member">setScratchNumber</ref>(uint8_t<sp/>bank,<sp/>uint32_t<sp/>data);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/>ScratchData<sp/><ref refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" kindref="member">readScratchData</ref>(uint8_t<sp/>bank);</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" kindref="member">readScratchNumber</ref>(uint8_t<sp/>bank);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="219"></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" kindref="member">sleep</ref>(uint32_t<sp/>duration_ms);</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" kindref="member">keepAwake</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a639e425394c820a99025d136dddd3369" kindref="member">enableWakeOnConnect</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="285"></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" kindref="member">setBeanName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;s);</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"></highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" kindref="member">getBeanName</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" kindref="member">setAdvertisingInterval</ref>(uint16_t<sp/>interval_ms);</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"></highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable,<sp/>uint32_t<sp/>timer);</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
-<codeline lineno="348"><highlight class="normal"></highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" kindref="member">getAdvertisingState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="375"></codeline>
-<codeline lineno="384"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" kindref="member">setBeaconParameters</ref>(uint16_t<sp/>uuid,<sp/>uint16_t<sp/>major_id,<sp/>uint16_t<sp/>minor_id);</highlight></codeline>
-<codeline lineno="385"><highlight class="normal"></highlight></codeline>
-<codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" kindref="member">setBeaconEnable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>beaconEnable);</highlight></codeline>
-<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>int16_t<sp/><ref refid="class_bean_class_1a00cf73de73eeb00d220efa32a830d6ef" kindref="member">getAccelerationX</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>int16_t<sp/><ref refid="class_bean_class_1aba0554ca18558748b67205bd5bdcaeac" kindref="member">getAccelerationY</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>int16_t<sp/><ref refid="class_bean_class_1a5c977e7b185ebc038335228d8ef1d0b9" kindref="member">getAccelerationZ</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>AccelerationReading<sp/><ref refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" kindref="member">getAcceleration</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a47244506c985ef7aead3695811002ad2" kindref="member">accelRegisterWrite</ref>(uint8_t<sp/>reg,<sp/>uint8_t<sp/>value);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a3e743eb8cc8e5e04364f53801b8fe83e" kindref="member">accelRegisterRead</ref>(uint8_t<sp/>reg,<sp/>uint8_t<sp/>length,<sp/>uint8_t<sp/>*value);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" kindref="member">getAccelerationRange</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" kindref="member">setAccelerationRange</ref>(uint8_t<sp/>range);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a4eebb09ead4b598ef56c359ed14141be" kindref="member">setAccelerometerPowerMode</ref>(uint8_t<sp/>mode);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1afb4f9a75f687547ff8f6cb4146ab30fa" kindref="member">getAccelerometerPowerMode</ref>();</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="236"></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" kindref="member">setLed</ref>(uint8_t<sp/>red,<sp/>uint8_t<sp/>green,<sp/>uint8_t<sp/>blue);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>LedReading<sp/><ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" kindref="member">getLedRed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a5619292a562731e94f97e93432ab3639" kindref="member">getLedGreen</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" kindref="member">getLedBlue</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" kindref="member">setLedRed</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" kindref="member">setLedGreen</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" kindref="member">setLedBlue</ref>(uint8_t<sp/>intensity);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="317"></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a4d5307962a778b8cd8b792b196c5f908" kindref="member">getObserverMessage</ref>(ObseverAdvertisementInfo<sp/>*message,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>timeout);</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="360"></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" kindref="member">setScratchData</ref>(uint8_t<sp/>bank,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>*data,<sp/>uint8_t<sp/>dataLength);</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" kindref="member">setScratchNumber</ref>(uint8_t<sp/>bank,<sp/>uint32_t<sp/>data);</highlight></codeline>
 <codeline lineno="394"><highlight class="normal"></highlight></codeline>
-<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="399"></codeline>
-<codeline lineno="406"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" kindref="member">getBatteryLevel</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="407"><highlight class="normal"></highlight></codeline>
-<codeline lineno="415"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a862784d57eca8dd368172612e5e792de" kindref="member">getBatteryVoltage</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="417"><highlight class="normal"></highlight></codeline>
-<codeline lineno="418"><highlight class="normal"></highlight></codeline>
-<codeline lineno="419"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="423"></codeline>
-<codeline lineno="430"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" kindref="member">getTemperature</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="432"><highlight class="normal"></highlight></codeline>
-<codeline lineno="433"><highlight class="normal"></highlight></codeline>
-<codeline lineno="434"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="438"></codeline>
-<codeline lineno="444"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" kindref="member">disconnect</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="445"><highlight class="normal"></highlight></codeline>
-<codeline lineno="451"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ab426b11e8bee60de92707254c0501c20" kindref="member">getConnectionState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="453"><highlight class="normal"></highlight></codeline>
-<codeline lineno="454"><highlight class="normal"></highlight></codeline>
-<codeline lineno="455"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
-<codeline lineno="459"></codeline>
-<codeline lineno="472"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" kindref="member">enableConfigSave</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableSave);</highlight></codeline>
-<codeline lineno="474"><highlight class="normal"></highlight></codeline>
-<codeline lineno="475"><highlight class="normal"></highlight></codeline>
-<codeline lineno="476"><highlight class="normal"><sp/><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref>()<sp/>{}</highlight></codeline>
-<codeline lineno="477"><highlight class="normal"></highlight></codeline>
-<codeline lineno="478"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="486"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>attemptSleep(uint32_t<sp/>duration_ms);</highlight></codeline>
-<codeline lineno="487"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="488"><highlight class="normal"></highlight></codeline>
-<codeline lineno="492"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>Bean;</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/>ScratchData<sp/><ref refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" kindref="member">readScratchData</ref>(uint8_t<sp/>bank);</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" kindref="member">readScratchNumber</ref>(uint8_t<sp/>bank);</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="431"></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" kindref="member">sleep</ref>(uint32_t<sp/>duration_ms);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" kindref="member">keepAwake</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="479"><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a639e425394c820a99025d136dddd3369" kindref="member">enableWakeOnConnect</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
 <codeline lineno="493"><highlight class="normal"></highlight></codeline>
-<codeline lineno="494"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="503"></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" kindref="member">setBeanName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>String<sp/>&amp;s);</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"></highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" kindref="member">getBeanName</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" kindref="member">setAdvertisingInterval</ref>(uint16_t<sp/>interval_ms);</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"></highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable,<sp/>uint32_t<sp/>timer);</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" kindref="member">enableAdvertising</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" kindref="member">getAdvertisingState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"></highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a9bbcf8d6db2a229d12838b2626e514d0" kindref="member">enableCustom</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a02201abea93983434dec1025c4957e83" kindref="member">disableCustom</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="615"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1add3cfcf31fe80a72bf6e4cf2cdaf99bb" kindref="member">setCustomAdvertisement</ref>(uint8_t<sp/>*buf,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="617"><highlight class="normal"></highlight></codeline>
+<codeline lineno="618"><highlight class="normal"></highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="631"></codeline>
+<codeline lineno="636"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a31d4e4fa7d66ddf1988e456ecbf9dc58" kindref="member">enableiBeacon</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="637"><highlight class="normal"></highlight></codeline>
+<codeline lineno="651"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" kindref="member">setBeaconParameters</ref>(uint16_t<sp/>uuid,<sp/>uint16_t<sp/>major_id,<sp/>uint16_t<sp/>minor_id);</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"></highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" kindref="member">setBeaconEnable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>beaconEnable);</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"></highlight></codeline>
+<codeline lineno="661"><highlight class="normal"></highlight></codeline>
+<codeline lineno="662"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="666"></codeline>
+<codeline lineno="673"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" kindref="member">getBatteryLevel</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="674"><highlight class="normal"></highlight></codeline>
+<codeline lineno="688"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="class_bean_class_1a862784d57eca8dd368172612e5e792de" kindref="member">getBatteryVoltage</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="690"><highlight class="normal"></highlight></codeline>
+<codeline lineno="691"><highlight class="normal"></highlight></codeline>
+<codeline lineno="692"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="696"></codeline>
+<codeline lineno="709"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" kindref="member">getTemperature</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="711"><highlight class="normal"></highlight></codeline>
+<codeline lineno="712"><highlight class="normal"></highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="717"></codeline>
+<codeline lineno="723"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" kindref="member">disconnect</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="724"><highlight class="normal"></highlight></codeline>
+<codeline lineno="736"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1ab426b11e8bee60de92707254c0501c20" kindref="member">getConnectionState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"></highlight></codeline>
+<codeline lineno="739"><highlight class="normal"></highlight></codeline>
+<codeline lineno="740"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
+<codeline lineno="744"></codeline>
+<codeline lineno="749"><highlight class="normal"><sp/><sp/>BluetoothServices<sp/><ref refid="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" kindref="member">getServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="750"><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" kindref="member">setServices</ref>(BluetoothServices<sp/>services);</highlight></codeline>
+<codeline lineno="763"><highlight class="normal"></highlight></codeline>
+<codeline lineno="767"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" kindref="member">resetServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="768"><highlight class="normal"></highlight></codeline>
+<codeline lineno="788"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" kindref="member">setPairingPin</ref>(uint32_t<sp/>pin);</highlight></codeline>
+<codeline lineno="789"><highlight class="normal"></highlight></codeline>
+<codeline lineno="797"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" kindref="member">enablePairingPin</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="799"><highlight class="normal"></highlight></codeline>
+<codeline lineno="800"><highlight class="normal"></highlight></codeline>
+<codeline lineno="801"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
+<codeline lineno="805"></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" kindref="member">enableConfigSave</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableSave);</highlight></codeline>
+<codeline lineno="825"><highlight class="normal"></highlight></codeline>
+<codeline lineno="826"><highlight class="normal"></highlight></codeline>
+<codeline lineno="830"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" kindref="member">restartBluetooth</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="831"><highlight class="normal"></highlight></codeline>
+<codeline lineno="833"><highlight class="normal"></highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="835"><highlight class="normal"><sp/><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="836"><highlight class="normal"></highlight></codeline>
+<codeline lineno="837"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>attemptSleep(uint32_t<sp/>duration_ms);</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight></codeline>
+<codeline lineno="850"><highlight class="normal"><sp/><sp/>int16_t<sp/>convertAcceleration(uint8_t<sp/>high_byte,<sp/>uint8_t<sp/>low_byte);</highlight></codeline>
+<codeline lineno="851"><highlight class="normal"></highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>accelerometerConfig(uint16_t<sp/>interrupts,<sp/>uint8_t<sp/>power_mode);</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"></highlight></codeline>
+<codeline lineno="880"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enableWakeOnAccelerometer(uint8_t<sp/>sources);</highlight></codeline>
+<codeline lineno="881"><highlight class="normal"></highlight></codeline>
+<codeline lineno="887"><highlight class="normal"><sp/><sp/>uint8_t<sp/>checkAccelInterrupts();</highlight></codeline>
+<codeline lineno="888"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="889"><highlight class="normal"></highlight></codeline>
+<codeline lineno="894"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>Bean;</highlight></codeline>
+<codeline lineno="895"><highlight class="normal"></highlight></codeline>
+<codeline lineno="896"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="hardware/bean/avr/cores/bean/Bean.h"/>
   </compounddef>

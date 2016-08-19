@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="class_bean_ancs_class" kind="class" language="C++" prot="public">
+    <compoundname>BeanAncsClass</compoundname>
+      <sectiondef kind="user-defined">
+      <header>ANCS</header>
+      <description><para>Use the <ulink url="https://developer.apple.com/library/ios/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Introduction/Introduction.html">Apple Notification Center Service</ulink> to read notifications from your iOS device. This allows a connected Bluetooth device to receive information about iOS nofications. Bean can view details about these notifications, e.g. push notifications, SMS previews, or an incoming phone call&apos;s number.</para><para>To use ANCS, upload an ANCS sketch to Bean, power cycle Bean, and pair with Bean from your iOS device using pairing code 000000.</para><para>When you disconnect from an Bean in ANCS mode, you&apos;ll need to manually forget it from the iOS Bluetooth Settings menu. </para></description>
+      <memberdef kind="function" id="class_bean_ancs_class_1aa3d157f0b796947032a27e6185be895a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanAncsClass::enable</definition>
+        <argsstring>(void)</argsstring>
+        <name>enable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables ANCS functionality. After uploading an ANCS sketch, make sure to power cycle Bean. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1a13833644884b8cc61e8d70ac850a500c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanAncsClass::isEnabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>isEnabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if ANCS is currently enabled </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1a5eff3ac01fb4248dace32c7a18d9d68e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanAncsClass::disable</definition>
+        <argsstring>(void)</argsstring>
+        <name>disable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables ANCS functionality </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1a29b6dc1d900b8c1dc93f40beaf29c8d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanAncsClass::notificationsAvailable</definition>
+        <argsstring>()</argsstring>
+        <name>notificationsAvailable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>number of notifications available that can be read using getNotificationHeaders </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="54" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1affaf3691b746468f5e11f78c9b74a755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanAncsClass::getNotificationHeaders</definition>
+        <argsstring>(ANCS_SOURCE_MSG_T *buffer, size_t max_length)</argsstring>
+        <name>getNotificationHeaders</name>
+        <param>
+          <type>ANCS_SOURCE_MSG_T *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets all available notification headers. The ANCS buffer can only hold 8 messages at a time before it begins to overwrite old messages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a user defined buffer of type ANCS_SOURCE_MSG_T. When this function returns the buffer will be populated with messages </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes the length of the maximum buffer size. If the user only has a buffer of one then max_length should also be 1. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of messages actually read into the buffer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="62" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ANCS_SOURCE_MSG_T</type>
+        <definition>ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader</definition>
+        <argsstring>()</argsstring>
+        <name>getNotificationHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a single notification Header. If there are no messages available all values will be set to 0. It is up to the user to check using <ref refid="class_bean_ancs_class_1a29b6dc1d900b8c1dc93f40beaf29c8d9" kindref="member">notificationsAvailable()</ref> if there are messages to read. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1ae0dc33b6e27d0ed37a345462ad58ba01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanAncsClass::getNotificationAttributes</definition>
+        <argsstring>(NOTI_ATTR_ID_T type, uint32_t ID, uint16_t len, uint8_t *data, uint32_t timeout)</argsstring>
+        <name>getNotificationAttributes</name>
+        <param>
+          <type>NOTI_ATTR_ID_T</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>ID</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function can be used to request details about a particular notification. It can only be used to access one type of notification at a time and will block the thread until it receives a message. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the type of data the user wishes to receive of type NOTI_ATTR_ID_T </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the UUID of the notification as contained in ANCS_SOURCE_MSG_T. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the max number of bytes to receive into data. The maximum possible is 65535 bytes. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the user defined buffer to fill incoming data with. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the length of time in milliseconds before the function will return if it does not receive data or only receives partial data </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>return</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes actually read to data</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example sketch reads ANCS messages and prints them to Virtual Serial. Pair with your iOS device, then use <ulink url="https://itunes.apple.com/us/app/bean-console/id982751969?mt=8">Bean Console for iOS</ulink> to view data live from your iOS device.</para><para><programlisting><codeline><highlight class="normal">int<sp/>latestID<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal">AncsNotification<sp/>notifications[8];</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanAncs.enable();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>msgAvail<sp/>=<sp/>BeanAncs.notificationsAvailable();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(msgAvail)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>blink<sp/>red<sp/>every<sp/>time<sp/>we<sp/>have<sp/>a<sp/>new<sp/>message</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLedGreen(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLedRed(130);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>fills<sp/>the<sp/>notifications<sp/>array<sp/>with<sp/>message<sp/>header<sp/>info</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BeanAncs.getNotificationHeaders(notifications,<sp/>8);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>msgAvail;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;cat:&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(notifications[i].catID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;flg:&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(notifications[i].flags);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;evt:&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(notifications[i].eventID);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;cnt:&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(notifications[i].catCount);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;id:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(notifications[i].notiUID);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>get<sp/>some<sp/>information<sp/>about<sp/>each<sp/>message</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>char<sp/>data[64]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>len<sp/>=<sp/>BeanAncs.getNotificationAttributes(</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NOTI_ATTR_ID_MESSAGE,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>notifications[i].notiUID,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>39,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint8_t<sp/>*)data,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>5000);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;l:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(len);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&quot;<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>len;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(data[j]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delay(5000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLedRed(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>send<sp/>a<sp/>number<sp/>through<sp/>serial<sp/>(with<sp/>newline<sp/>at<sp/>end)<sp/>to<sp/>perform<sp/>a<sp/>negative</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>action<sp/>on<sp/>a<sp/>message<sp/>with<sp/>the<sp/>given<sp/>ID</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Serial.available()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char<sp/>idin[8]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>index<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>byte<sp/>read<sp/>=<sp/>Serial.read();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(read<sp/>!=<sp/>&apos;\n&apos;<sp/>&amp;&amp;<sp/>index<sp/>&lt;<sp/>7)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>idin[index]<sp/>=<sp/>read;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>index++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>read<sp/>=<sp/>Serial.read();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>id<sp/>=<sp/>atoi(idin);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;Performing<sp/>negative<sp/>action<sp/>on<sp/>ID:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(id);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BeanAncs.notificationAction(id,<sp/>0x01);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_ancs_class_1aa9ac67079e02d7fffc198d27854226c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanAncsClass::notificationAction</definition>
+        <argsstring>(uint32_t ID, uint8_t actionID)</argsstring>
+        <name>notificationAction</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>ID</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>actionID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Certain notifications allow different actions. For instance many push notifications can be cleared and calls can be answered. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the UUID of the notification to perform the action on. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actionID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ID of the action to perform. There are only two: ActionIDPositive(0x00) and ActionIDNegative(0x01). The result of the action is dependent on the notification. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="96" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="18" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanAncs.h" bodystart="18" bodyend="98"/>
+    <listofallmembers>
+      <member refid="class_bean_ancs_class_1a5eff3ac01fb4248dace32c7a18d9d68e" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>disable</name></member>
+      <member refid="class_bean_ancs_class_1aa3d157f0b796947032a27e6185be895a" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>enable</name></member>
+      <member refid="class_bean_ancs_class_1ae0dc33b6e27d0ed37a345462ad58ba01" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>getNotificationAttributes</name></member>
+      <member refid="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>getNotificationHeader</name></member>
+      <member refid="class_bean_ancs_class_1affaf3691b746468f5e11f78c9b74a755" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>getNotificationHeaders</name></member>
+      <member refid="class_bean_ancs_class_1a13833644884b8cc61e8d70ac850a500c" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>isEnabled</name></member>
+      <member refid="class_bean_ancs_class_1aa9ac67079e02d7fffc198d27854226c0" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>notificationAction</name></member>
+      <member refid="class_bean_ancs_class_1a29b6dc1d900b8c1dc93f40beaf29c8d9" prot="public" virt="non-virtual"><scope>BeanAncsClass</scope><name>notificationsAvailable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="class_bean_midi_class" kind="class" language="C++" prot="public">
+    <compoundname>BeanMidiClass</compoundname>
+      <sectiondef kind="user-defined">
+      <header>MIDI</header>
+      <description><para>Read and write MIDI packets via Bluetooth Low Energy. This profile uses Apple&apos;s <ulink url="https://developer.apple.com/library/ios/documentation/MusicAudio/Reference/CACoreMIDIRef/index.html">Core Midi Framework</ulink> to act as a musical instrument. The Bean can send midi messages to an app like garage band to emulate diferent instruments. A list of different types of MIDI messages can be found <ulink url="https://www.midi.org/specifications/item/table-1-summary-of-midi-message">here</ulink> </para></description>
+      <memberdef kind="function" id="class_bean_midi_class_1a526f499963ba700b7b3605ad5c583f8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::enable</definition>
+        <argsstring>(void)</argsstring>
+        <name>enable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables core Midi functionality on the Bean.</para><para><heading level="1">Examples</heading>
+</para><para>When connected to iOS&apos;s or OSX&apos;s garage band this bean will play through the C Major scale, play a C Major chord, and then bend a note up. The Bean will also listen for incoming Core Midi messages. If you have an app that can send core midi messages to BLE peripherals, the Bean&apos;s green LED will blink.</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>C<sp/>Major<sp/>Scale</highlight></codeline>
+<codeline><highlight class="normal">char<sp/>scale[8]<sp/>=<sp/>{NOTE_C4,<sp/>NOTE_D4,<sp/>NOTE_E4,<sp/>NOTE_F4,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NOTE_G4,<sp/>NOTE_A4,<sp/>NOTE_B4,<sp/>NOTE_C5};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>play<sp/>the<sp/>C<sp/>Major<sp/>scale</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BeanMidi.noteOn(CHANNEL1,<sp/>scale[i],<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BeanMidi.noteOff(CHANNEL1,<sp/>scale[i],<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>checkMidi();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>C<sp/>Major<sp/>chord</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOn(CHANNEL1,<sp/>NOTE_C4,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOn(CHANNEL1,<sp/>NOTE_E4,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOn(CHANNEL1,<sp/>NOTE_G4,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOff(CHANNEL1,<sp/>NOTE_C4,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOff(CHANNEL1,<sp/>NOTE_E4,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOff(CHANNEL1,<sp/>NOTE_G4,<sp/>60);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>pitch<sp/>bend</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOn(CHANNEL1,<sp/>60,<sp/>70);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.pitchBend(CHANNEL1,<sp/>0x2500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.pitchBend(CHANNEL1,<sp/>0x2000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BeanMidi.noteOff(CHANNEL1,<sp/>60,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>checkMidi();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Poll<sp/>MIDI<sp/>to<sp/>check<sp/>if<sp/>new<sp/>messages<sp/>have<sp/>arrived</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>checkMidi()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>stat,<sp/>byte1,<sp/>byte2;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(BeanMidi.readMessage(&amp;stat,<sp/>&amp;byte1,<sp/>&amp;byte2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLedGreen(130);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(50);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLedGreen(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="304" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1acfb35f85288cf76b4a69615a7c2f7c65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanMidiClass::isEnabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>isEnabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if Midi is currently enabled </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="309" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1acaede888f073a393a35170571ff7a907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::disable</definition>
+        <argsstring>(void)</argsstring>
+        <name>disable</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables core Midi functionality on the Bean. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="314" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a6aa7b50926b79b300f0432f249714bbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::sendMessage</definition>
+        <argsstring>(uint8_t *buff, uint8_t numBytes)</argsstring>
+        <name>sendMessage</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buff</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>numBytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads and sends a buffer of Midi messages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buff</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer of Midi messages. Will only send Midi messages in groups of 3. Must conform to the <ulink url="https://www.midi.org/specifications/item/table-1-summary-of-midi-message">Midi spec</ulink>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numBytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of Midi bytes sent, 0 if there are none to be sent </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="322" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a933dfbfd846731f38fc5fbb11ee7c697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::sendMessage</definition>
+        <argsstring>(uint8_t status, uint8_t byte1, uint8_t byte2)</argsstring>
+        <name>sendMessage</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads and sends a single Midi message. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the status byte signifying the type of message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the first data byte of the midi message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the second data byte of the midi message </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of Midi bytes sent, 0 if there are none to be sent </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="331" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a93453d829ea9cc9814b29358c7214e44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::readMessage</definition>
+        <argsstring>(uint8_t *status, uint8_t *byte1, uint8_t *byte2)</argsstring>
+        <name>readMessage</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>status</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>byte2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reads a single incoming Midi message. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the status the status byte signifying the type of message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the byte1 the first data byte of the midi message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pointer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to the byte2 the second data byte of the midi message </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Midi status/timestamp byte </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="340" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a22ea30a681afb82addbd7b5c9e2106c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::sendMessages</definition>
+        <argsstring>()</argsstring>
+        <name>sendMessages</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends Midi messages after they have been loaded to the midi buffer using <ref refid="class_bean_midi_class_1a9a7e91ea694b3e66ddc651afedbc5486" kindref="member">loadMessage()</ref> commands.</para><para>The buffer has a maximum size of 20 messages before it must be dumped or sent using this function.</para><para><simplesect kind="return"><para>number of Midi bytes sent, 0 if there are none to be sent </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="349" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a9a7e91ea694b3e66ddc651afedbc5486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::loadMessage</definition>
+        <argsstring>(uint8_t *buff, uint8_t numBytes)</argsstring>
+        <name>loadMessage</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buff</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>numBytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads a message into the Midi buffer for sending using the <ref refid="class_bean_midi_class_1a22ea30a681afb82addbd7b5c9e2106c4" kindref="member">sendMessages()</ref> function <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buff</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer of Midi messages. Will only send Midi messages in groups of 3. Must conform to the <ulink url="https://www.midi.org/specifications/item/table-1-summary-of-midi-message">Midi spec</ulink>. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numBytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of buffer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>number of bytes successfully loaded </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="357" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a310c0bcc3934390f5776b06425e672aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanMidiClass::loadMessage</definition>
+        <argsstring>(uint8_t status, uint8_t byte1, uint8_t byte2)</argsstring>
+        <name>loadMessage</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>status</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte1</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads a message into the Midi buffer for sending using the <ref refid="class_bean_midi_class_1a22ea30a681afb82addbd7b5c9e2106c4" kindref="member">sendMessages()</ref> function <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the status byte signifying the type of message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the first data byte of the midi message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the second data byte of the midi message </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if bytes successfully loaded 0 if unsuccessful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="366" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1ac584656a010e61088bce9b003491fa91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::noteOn</definition>
+        <argsstring>(midiChannels channel, uint8_t note, uint8_t volume)</argsstring>
+        <name>noteOn</name>
+        <param>
+          <type>midiChannels</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>note</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Turns a specific note on for a specified midi channel. The note will ring out until silenced via noteOff. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a channel 0-15 or specified by midiChannels </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>note</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a note from 0-127, can also take types midiNotes and midiDrums </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>volume</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a volume values of 0-127 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="374" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a65adbd3023f9fa4f3adabba90d95c6d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::noteOff</definition>
+        <argsstring>(midiChannels channel, uint8_t note, uint8_t volume)</argsstring>
+        <name>noteOff</name>
+        <param>
+          <type>midiChannels</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>note</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>volume</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Turns a specific note off for a specified midi channel. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a channel 0-15 or specified by midiChannels </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>note</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a note from 0-127, can also take types midiNotes and midiDrums </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>volume</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a volume values of 0-127 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="382" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1af4f3a26f920cf69f5d04433b8b40a796" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::pitchBend</definition>
+        <argsstring>(midiChannels channel, uint16_t value)</argsstring>
+        <name>pitchBend</name>
+        <param>
+          <type>midiChannels</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bends the pitch of a note up or down <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a channel 0-15 or specified by midiChannels  takes a pitch bend value from 0-16383 where 0x2000 is the middle or the true value of the note. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="389" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_midi_class_1a265fa91fe46fffedb371adae3749e6f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanMidiClass::sustain</definition>
+        <argsstring>(midiChannels channel, bool isOn)</argsstring>
+        <name>sustain</name>
+        <param>
+          <type>midiChannels</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isOn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables or disables sustain for the midi channel <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>takes a channel 0-15 or specified by midiChannels </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>isOn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to enable sustain and false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="396" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="284" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="284" bodyend="399"/>
+    <listofallmembers>
+      <member refid="class_bean_midi_class_1acaede888f073a393a35170571ff7a907" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>disable</name></member>
+      <member refid="class_bean_midi_class_1a526f499963ba700b7b3605ad5c583f8a" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>enable</name></member>
+      <member refid="class_bean_midi_class_1acfb35f85288cf76b4a69615a7c2f7c65" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>isEnabled</name></member>
+      <member refid="class_bean_midi_class_1a9a7e91ea694b3e66ddc651afedbc5486" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>loadMessage</name></member>
+      <member refid="class_bean_midi_class_1a310c0bcc3934390f5776b06425e672aa" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>loadMessage</name></member>
+      <member refid="class_bean_midi_class_1a65adbd3023f9fa4f3adabba90d95c6d4" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>noteOff</name></member>
+      <member refid="class_bean_midi_class_1ac584656a010e61088bce9b003491fa91" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>noteOn</name></member>
+      <member refid="class_bean_midi_class_1af4f3a26f920cf69f5d04433b8b40a796" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>pitchBend</name></member>
+      <member refid="class_bean_midi_class_1a93453d829ea9cc9814b29358c7214e44" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>readMessage</name></member>
+      <member refid="class_bean_midi_class_1a6aa7b50926b79b300f0432f249714bbe" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>sendMessage</name></member>
+      <member refid="class_bean_midi_class_1a933dfbfd846731f38fc5fbb11ee7c697" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>sendMessage</name></member>
+      <member refid="class_bean_midi_class_1a22ea30a681afb82addbd7b5c9e2106c4" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>sendMessages</name></member>
+      <member refid="class_bean_midi_class_1a265fa91fe46fffedb371adae3749e6f4" prot="public" virt="non-virtual"><scope>BeanMidiClass</scope><name>sustain</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

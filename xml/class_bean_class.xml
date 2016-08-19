@@ -1,13 +1,112 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
   <compounddef id="class_bean_class" kind="class" language="C++" prot="public">
     <compoundname>BeanClass</compoundname>
       <sectiondef kind="user-defined">
       <header>Accelerometer</header>
       <description><para>Read acceleration values and configure the accelerometer&apos;s sensitivity. </para></description>
-      <memberdef kind="function" id="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint16_t</type>
-        <definition>uint16_t BeanClass::getAccelerationX</definition>
+      <memberdef kind="function" id="class_bean_class_1a9d2f98bbb1b8a715c0fe549c438f44ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableMotionEvent</definition>
+        <argsstring>(AccelEventTypes events)</argsstring>
+        <name>enableMotionEvent</name>
+        <param>
+          <type>AccelEventTypes</type>
+          <declname>events</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable accelerometer interrupts</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>accepts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an event of type AccelEventTypes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="112" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a0f9fb65a465070f9f3e9cdf4f2687bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::disableMotionEvents</definition>
+        <argsstring>()</argsstring>
+        <name>disableMotionEvents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables all currently enabled accelerometer interrupts </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a75492018fa92ad32c06a12ce456dc74c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BeanClass::checkMotionEvent</definition>
+        <argsstring>(AccelEventTypes events)</argsstring>
+        <name>checkMotionEvent</name>
+        <param>
+          <type>AccelEventTypes</type>
+          <declname>events</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks to see if a particular acclerometer interrupt has occured. If the event occurs it sets a flag that can only be cleared by reading this function.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>accepts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an event of type AccelEventTypes</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example sets off police lights on the Bean if motion is detected:</para><para><programlisting><codeline><highlight class="normal">//<sp/>Create<sp/>boolean<sp/>to<sp/>run<sp/>loop<sp/>persistently</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>motionDetected<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>low-g<sp/>motion<sp/>events<sp/>to<sp/>be<sp/>detected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableMotionEvent(ANY_MOTION_EVENT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Make<sp/>sure<sp/>accelerometer<sp/>is<sp/>in<sp/>normal<sp/>power<sp/>mode</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.getAccelerometerPowerMode()<sp/>!=<sp/>VALUE_NORMAL_MODE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>accelerometer<sp/>power<sp/>mode<sp/>to<sp/>normal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setAccelerometerPowerMode(VALUE_NORMAL_MODE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Initially<sp/>set<sp/>LED<sp/>to<sp/>blank</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Check<sp/>for<sp/>low-g<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.checkMotionEvent(ANY_MOTION_EVENT)<sp/>&amp;&amp;<sp/>!motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motionDetected<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(!Bean.checkMotionEvent(ANY_MOTION_EVENT)<sp/>&amp;&amp;<sp/>!motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(2000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>2<sp/>seconds<sp/>before<sp/>rechecking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>If<sp/>motion<sp/>is<sp/>detected,<sp/>blue/red<sp/>lights<sp/>will<sp/>flash<sp/>continuously</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="130" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a00cf73de73eeb00d220efa32a830d6ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t BeanClass::getAccelerationX</definition>
         <argsstring>(void)</argsstring>
         <name>getAccelerationX</name>
         <param>
@@ -20,11 +119,11 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="34" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="137" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint16_t</type>
-        <definition>uint16_t BeanClass::getAccelerationY</definition>
+      <memberdef kind="function" id="class_bean_class_1aba0554ca18558748b67205bd5bdcaeac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t BeanClass::getAccelerationY</definition>
         <argsstring>(void)</argsstring>
         <name>getAccelerationY</name>
         <param>
@@ -37,11 +136,11 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="41" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="144" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="class_bean_class_1a681df15a2b6952547d536f8faebce802" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint16_t</type>
-        <definition>uint16_t BeanClass::getAccelerationZ</definition>
+      <memberdef kind="function" id="class_bean_class_1a5c977e7b185ebc038335228d8ef1d0b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t BeanClass::getAccelerationZ</definition>
         <argsstring>(void)</argsstring>
         <name>getAccelerationZ</name>
         <param>
@@ -54,10 +153,10 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="48" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="151" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref></type>
+        <type>AccelerationReading</type>
         <definition>AccelerationReading BeanClass::getAcceleration</definition>
         <argsstring>(void)</argsstring>
         <name>getAcceleration</name>
@@ -71,7 +170,131 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="55" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="158" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a47244506c985ef7aead3695811002ad2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::accelRegisterWrite</definition>
+        <argsstring>(uint8_t reg, uint8_t value)</argsstring>
+        <name>accelRegisterWrite</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Low level function for writing directly to the accelerometers registers.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the register to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to write to the register </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="166" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a3e743eb8cc8e5e04364f53801b8fe83e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanClass::accelRegisterRead</definition>
+        <argsstring>(uint8_t reg, uint8_t length, uint8_t *value)</argsstring>
+        <name>accelRegisterRead</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Low level function for reading the accelerometers register directly</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the register to read </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the number of bytes to read starting at that register </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to a user supplied array to fill with values </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the number of bytes actually read</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example uses a Bean as a motion alarm by reading/writing to the accelerometer register directly:</para><para><programlisting><codeline><highlight class="normal">//<sp/>Create<sp/>boolean<sp/>to<sp/>run<sp/>loop<sp/>persistently</highlight></codeline>
+<codeline><highlight class="normal">bool<sp/>motionDetected<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>low-g<sp/>motion<sp/>events<sp/>to<sp/>be<sp/>detected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableMotionEvent(ANY_MOTION_EVENT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>(The<sp/>next<sp/>two<sp/>lines<sp/>are<sp/>equivalent<sp/>to<sp/>&quot;uint8_t<sp/>value<sp/>=<sp/>Bean.getAccelerometerPowerMode()&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint8_t<sp/>value;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.accelRegisterRead(REG_POWER_MODE_X11,<sp/>1,<sp/>&amp;value);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(value<sp/>!=<sp/>VALUE_NORMAL_MODE)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>accelerometer<sp/>power<sp/>mode<sp/>to<sp/>normal<sp/>power<sp/>mode<sp/>if<sp/>it<sp/>isn&apos;t<sp/>already</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>(This<sp/>is<sp/>the<sp/>same<sp/>as<sp/>&quot;Bean.setAccelerometerPowerMode(VALUE_NORMAL_MODE)&quot;)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.accelRegisterWrite(REG_POWER_MODE_X11,<sp/>VALUE_NORMAL_MODE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Check<sp/>for<sp/>low-g<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.checkMotionEvent(ANY_MOTION_EVENT)<sp/>&amp;&amp;<sp/>!motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motionDetected<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(!Bean.checkMotionEvent(ANY_MOTION_EVENT)<sp/>&amp;&amp;<sp/>!motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(2000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>2<sp/>seconds<sp/>before<sp/>rechecking</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(motionDetected)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>If<sp/>motion<sp/>is<sp/>detected,<sp/>blue/red<sp/>lights<sp/>will<sp/>flash<sp/>continuously</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(500);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;Motion<sp/>has<sp/>been<sp/>detected;<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="182" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -88,7 +311,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="62" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="189" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -107,13 +330,95 @@
 <parametername>range</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g </para></parameterdescription>
+<para>2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+<heading level="1">Examples</heading>
+</para><para>This example prints out the acceleration values associated with high and low g-force values:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>motion<sp/>events<sp/>to<sp/>see<sp/>how<sp/>they&apos;re<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableMotionEvent(LOW_G_EVENT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableMotionEvent(HIGH_G_EVENT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Configure<sp/>accelerometer<sp/>to<sp/>sense<sp/>±16g<sp/>if<sp/>it&apos;s<sp/>not<sp/>set<sp/>already</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.getAccelerationRange()<sp/>!=<sp/>16)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setAccelerationRange(16);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Sleep<sp/>forever<sp/>while<sp/>transmitting<sp/>iBeacon<sp/>location<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.checkMotionEvent(HIGH_G_EVENT))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;High-g<sp/>event<sp/>detected:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printAcceleration(Bean.getAcceleration());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Blink<sp/>green<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(Bean.checkMotionEvent(LOW_G_EVENT))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;Low-g<sp/>event<sp/>detected:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printAcceleration(Bean.getAcceleration());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Blink<sp/>yellow<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;No<sp/>movement<sp/>detected:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printAcceleration(Bean.getAcceleration());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Blink<sp/>red<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(1000);<sp/><sp/>//<sp/>Sleep<sp/>and<sp/>recheck<sp/>every<sp/>second</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>printAcceleration(AccelerationReading<sp/>acceleration)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Print<sp/>axes<sp/>of<sp/>acceleration<sp/>in<sp/>a<sp/>nice-looking<sp/>way</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;(x=<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(acceleration.xAxis);<sp/><sp/>//<sp/>Same<sp/>as<sp/>getAccelerationX()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;,<sp/>y=<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(acceleration.yAxis);<sp/><sp/>//<sp/>Same<sp/>as<sp/>getAccelerationY()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;,<sp/>z=<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(acceleration.zAxis);<sp/><sp/>//<sp/>Same<sp/>as<sp/>getAccelerationZ()</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(&quot;)&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="69" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="202" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a4eebb09ead4b598ef56c359ed14141be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setAccelerometerPowerMode</definition>
+        <argsstring>(uint8_t mode)</argsstring>
+        <name>setAccelerometerPowerMode</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set power mode of the accelerometer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the power mode of the accelerometer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10ms: 0x54 (~16.4uA) Low Power 100ms: 0x5A (~2.3uA) Low Power 1s: 0x5E (~0.7uA) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="215" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1afb4f9a75f687547ff8f6cb4146ab30fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::getAccelerometerPowerMode</definition>
+        <argsstring>()</argsstring>
+        <name>getAccelerometerPowerMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get power mode of the accelerometer</para><para><simplesect kind="return"><para>the power mode of the accelerometer</para></simplesect>
+Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10ms: 0x54 (~16.4uA) Low Power 100ms: 0x5A (~2.3uA) Low Power 1s: 0x5E (~0.7uA) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="228" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -139,8 +444,31 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.</para><para><heading level="1">Examples</heading>
-</para><para>This example sets the LED to white (all channels on, full intensity): <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<para>Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the red LED. 0 is off and 255 is on.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the green LED. 0 is off and 255 is on.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the blue LED. 0 is off and 255 is on.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example sets the LED to white (all channels on, full intensity):</para><para><programlisting><codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Bean.setLed(255,<sp/>255,<sp/>255);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
@@ -150,10 +478,10 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="87" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="253" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref></type>
+        <type>LedReading</type>
         <definition>LedReading BeanClass::getLed</definition>
         <argsstring>(void)</argsstring>
         <name>getLed</name>
@@ -165,12 +493,12 @@
         <detaileddescription>
 <para>Get current intensity values for the color channels of the Bean RGB LED.</para><para><simplesect kind="return"><para><computeroutput>LedReading</computeroutput> struct that contains an integer representation of each color.</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interpret the return value. <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);<sp/><sp/>//<sp/>Initialize<sp/>serial<sp/>port</highlight></codeline>
+</para><para>This example shows the usage of the <ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed()</ref> function and how to interperet the return value.</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>LedReading<sp/>rgbSetting<sp/>=<sp/>Bean.getLed();;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>LedReading<sp/>rgbSetting<sp/>=<sp/>Bean.getLed();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;<sp/><sp/>Red:<sp/>&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Serial.println(rgbSetting.red);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Green:<sp/>&quot;);</highlight></codeline>
@@ -182,7 +510,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="266" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -195,10 +523,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Get intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><simplesect kind="return"><para>0 for off and 255 for on. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="104" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="273" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a5619292a562731e94f97e93432ab3639" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -211,10 +540,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Get intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><simplesect kind="return"><para>0 for off and 255 for on. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="109" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="280" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -227,10 +557,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Get intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><simplesect kind="return"><para>0 for off and 255 for on. </para></simplesect>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="114" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="287" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -244,10 +575,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Set intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Set intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>intensity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the red LED. 0 is off and 255 is on. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="119" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="294" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -261,10 +600,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Set intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Set intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>intensity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the green LED. 0 is off and 255 is on. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="124" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="301" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -278,10 +625,116 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Set intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on. </para>        </detaileddescription>
+<para>Set intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>intensity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the intensity of the blue LED. 0 is off and 255 is on. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="129" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="308" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer</header>
+      <description><para>Functions related to Observer mode. Observer role allows the Bean to listen for advertisements. As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements. Paired with the custom advertising role, you can have two Beans interact with each other. This role works even when the Bean is connected. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a4d5307962a778b8cd8b792b196c5f908" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int BeanClass::getObserverMessage</definition>
+        <argsstring>(ObseverAdvertisementInfo *message, unsigned long timeout)</argsstring>
+        <name>getObserverMessage</name>
+        <param>
+          <type>ObseverAdvertisementInfo *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Listens for advertisements and fills an ObserverAdvertisementInfo message with the first advertisement it sees This function blocks until it receives a message or times out.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a pointer to a message object supplied by the user </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>how long in milliseconds to listen for an advertisement </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>-1 if there was a failure, 1 if there was a success</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This sketch (observer.ino) demonstrates Bean&apos;s observer role functionality.</para><para>When a Bean running this sketch is near a Bean running advertiser.ino, it will change its LED to reflect the state of the LED on the advertising Bean.</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>expectedPacket[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>general<sp/>discoverable<sp/>mode<sp/>advertises<sp/>indefinitely</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0x02,<sp/><sp/>//<sp/>length<sp/>of<sp/>this<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_FLAGS,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_FLAGS_GENERAL<sp/>|<sp/>GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED,</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>two-byte<sp/>broadcast</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0x03,<sp/><sp/>//<sp/>length<sp/>of<sp/>this<sp/>data<sp/>including<sp/>the<sp/>data<sp/>type<sp/>byte</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_MANUFACTURER_SPECIFIC,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0xAC<sp/><sp/>//<sp/>arbitrary<sp/>data<sp/>so<sp/>we<sp/>can<sp/>make<sp/>sure<sp/>this<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>Bean<sp/>we&apos;re<sp/>looking<sp/>for</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>start<sp/>=<sp/>millis();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>ObseverAdvertisementInfo<sp/>info;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>res<sp/>=<sp/>Bean.getObserverMessage(&amp;info,<sp/>2000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(res<sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(info.eventType);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&apos;,&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(info.addrType);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&apos;,&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;addr:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(info.addr[i]);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&apos;,&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.print(&quot;<sp/><sp/>advData:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>info.dataLen;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(info.advData[i],<sp/>HEX);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.print(&apos;,&apos;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>check<sp/>to<sp/>see<sp/>if<sp/>this<sp/>packet<sp/>is<sp/>form<sp/>the<sp/>custom<sp/>advertiser</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>isEqual<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>for<sp/>(int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>sizeof(expectedPacket)<sp/>-<sp/>1;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(expectedPacket[i]<sp/>!=<sp/>info.advData[i])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>isEqual<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(isEqual)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Serial.println(&quot;Custom<sp/>adv<sp/>found&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(info.advData[6]<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Bean.setLedGreen(60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Bean.setLedGreen(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="335" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -335,7 +788,7 @@
 </parameterlist>
 <simplesect kind="return"><para>Success: false if <computeroutput>dataLength</computeroutput> is greater than 20, true otherwise</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example reads two of Bean&apos;s analog pins and writes the values to two scratch characteristics: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+</para><para>This example reads two of Bean&apos;s analog pins and writes the values to two scratch characteristics:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>We<sp/>don&apos;t<sp/>need<sp/>to<sp/>set<sp/>anything<sp/>up<sp/>here</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
@@ -370,7 +823,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="170" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="377" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -405,8 +858,8 @@
 </parameterlist>
 <simplesect kind="return"><para>Success: always returns true, since all 32-bit numbers are under 20 bytes in length</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);</highlight></codeline>
+</para><para>This example writes a value to and reads a value from a scratch characteristic:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
@@ -427,7 +880,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="185" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="393" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>ScratchData</type>
@@ -451,7 +904,7 @@
 </parameterlist>
 <simplesect kind="return"><para>The contents of the scratch characteristic</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example polls a scratch characteristic and blinks Bean&apos;s LED if the value changes: <programlisting><codeline><highlight class="normal">//<sp/>Holds<sp/>the<sp/>last<sp/>data<sp/>we<sp/>read<sp/>from<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
+</para><para>This example polls a scratch characteristic and blinks Bean&apos;s LED if the value changes:</para><para><programlisting><codeline><highlight class="normal">//<sp/>Holds<sp/>the<sp/>last<sp/>data<sp/>we<sp/>read<sp/>from<sp/>scratch<sp/>characteristic<sp/>1</highlight></codeline>
 <codeline><highlight class="normal">ScratchData<sp/>lastScratch;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">//<sp/>Compare<sp/>two<sp/>ScratchData<sp/>objects.</highlight></codeline>
@@ -501,7 +954,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="199" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="408" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>long</type>
@@ -523,9 +976,10 @@
 <para>The index of the source scratch char: <computeroutput>1</computeroutput>, <computeroutput>2</computeroutput>, <computeroutput>3</computeroutput>, <computeroutput>4</computeroutput>, or <computeroutput>5</computeroutput></para></parameterdescription>
 </parameteritem>
 </parameterlist>
+<simplesect kind="return"><para>The number of the scratch characteristic</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example writes a value to and reads a value from a scratch characteristic: <programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);</highlight></codeline>
+</para><para>This example writes a value to and reads a value from a scratch characteristic:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
@@ -546,7 +1000,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="211" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="423" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -594,7 +1048,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="247" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="459" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -613,13 +1067,28 @@
 <parametername>true</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>to enable keep-awake, false to disable </para></parameterdescription>
+<para>to enable keep-awake, false to disable</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+<heading level="1">Examples</heading>
+</para><para>This example keeps the Bean awake to reduce latency between reading a pinstate and transmitting Bluetooth information:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Keep<sp/>Bean<sp/>awake<sp/>to<sp/>reduce<sp/>latency<sp/>between<sp/>certain<sp/>events</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.keepAwake(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pinMode(0,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>digital<sp/>pin<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!digitalRead(0))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>D0<sp/>is<sp/>LOW;<sp/>check<sp/>to<sp/>see<sp/>if<sp/>BLE<sp/>connected<sp/>to<sp/>any<sp/>devices</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>bool<sp/>connectionState<sp/>=<sp/>Bean.getConnectionState();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Serial.println(connectionState);<sp/><sp/>//<sp/>True<sp/>if<sp/>connected<sp/>to<sp/>a<sp/>device,<sp/>false<sp/>if<sp/>not</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(1000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="260" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="478" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a639e425394c820a99025d136dddd3369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -675,12 +1144,12 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="273" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="491" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Advertising</header>
-      <description><para>Set and verify the Bean BLE advertising configuration.</para><para>Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.</para><para>Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see <ulink url="https://punchthrough.com/bean/guides/help/troubleshooting/#reset-your-bean-s-memory">this guide</ulink> to clear the sketch stored on Bean. </para></description>
+      <description><para>Set and verify the Bean BLE advertising configuration.</para><para>Bean makes itself visible to BLE Central devices by broadcasting BLE advertising packets. If advertising is disabled, Central devices will not be able to find or connect to Bean.</para><para>Advertising is automatically enabled when Bean is powered on or resets. However, uploading a sketch that disables advertising indefinitely may make it impossible to connect to Bean. If this happens to you, see <ulink url="#">this guide (TODO: ADD GUIDE + LINK)</ulink> to clear the sketch stored on Bean. </para></description>
       <memberdef kind="function" id="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void BeanClass::setBeanName</definition>
@@ -726,7 +1195,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="298" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="516" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a5b50d48ce0b6ccb3f267d1d7ba660dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const char *</type>
@@ -741,10 +1210,26 @@
         <detaileddescription>
 <para>Read the currently-advertised name of the Bean.</para><para><simplesect kind="return"><para>The Bean name as a char array, null-terminated</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example prints Bean&apos;s name to Virtual Serial every two seconds:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example prints Bean&apos;s name to Virtual Serial every two seconds:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>up<sp/>serial<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.begin(57600);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Retrieve<sp/>the<sp/>name<sp/>of<sp/>this<sp/>Bean</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>const<sp/>char<sp/>*name<sp/>=<sp/>Bean.getBeanName();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>And<sp/>print<sp/>it</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;My<sp/>name<sp/>is<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(name);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Then<sp/>sleep<sp/>for<sp/>2<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(2000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="311" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="529" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -758,10 +1243,18 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Needs docs </para>        </detaileddescription>
+<para>Sets the Beans advertisement interval. This is useful if you are trying to optimize battery life at the exense of advertisement rates and can also be useful for increasing beacon advertisement rates. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>interval_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>length of advertisement interval in milliseconds. Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="316" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="536" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -812,7 +1305,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="332" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="552" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ade5d4c6a061eeb6d7897ef4c3b2c26d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -855,7 +1348,7 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="347" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="567" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -892,12 +1385,147 @@
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="361" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="581" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a9bbcf8d6db2a229d12838b2626e514d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableCustom</definition>
+        <argsstring>(void)</argsstring>
+        <name>enableCustom</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables custom advertisement. The Bean will enter a rotating advertisement mode where it will advertise as a bean for a few moments then advertise whatever is in the custom advertisement packet and back again </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="586" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a02201abea93983434dec1025c4957e83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::disableCustom</definition>
+        <argsstring>(void)</argsstring>
+        <name>disableCustom</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables custom advertisement. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="591" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1add3cfcf31fe80a72bf6e4cf2cdaf99bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setCustomAdvertisement</definition>
+        <argsstring>(uint8_t *buf, int len)</argsstring>
+        <name>setCustomAdvertisement</name>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buf</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the custom advertisement packet. The max length is 31 bytes. The first 3 bytes specify the advertisement mode. They take the form 0x2, GAP_ADTYPE_FLAGS, any sum of advertisement types (as defined by AdvertisementType) All following data are up to the user to define and follow the pattern of [length, AdvertisementDataTypes, data1, data2, ...] where length includes the number of data plus 1 (for the AdvertisementDataTypes) The data can be chained together into the single buffer up to the maxiumum length. For example: [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a buffer full of data to advertise </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the length of the buffer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This sketch (advertiser.ino) will enable a custom advertisement for the Bean. It will broadcast the following packet:</para><para><computeroutput>{0x02, GAP_ADTYPE_FLAGS (0x01), GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED (0x06), 0x03, GAP_ADTYPE_MANUFACTURER_SPECIFIC (0xFF), 0xAC, 0x0n}</computeroutput></para><para>When pin 0 is pulled to ground, Bean will toggle the green LED. It will also set the last byte in the advertisement packet to reflect the LED&apos;s on state. When used in conjunction with observer.ino, the observer Bean will see this packet and will turn its light on.</para><para><programlisting><codeline><highlight class="normal">//<sp/>debounce<sp/>code</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>buttonState;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>current<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">int<sp/>lastButtonState<sp/>=<sp/>LOW;<sp/><sp/>//<sp/>the<sp/>previous<sp/>read<sp/>input</highlight></codeline>
+<codeline><highlight class="normal">long<sp/>lastDebounceTime<sp/>=<sp/>0;<sp/><sp/>//<sp/>the<sp/>last<sp/>time<sp/>we<sp/>flipped<sp/>the<sp/>output<sp/>pin</highlight></codeline>
+<codeline><highlight class="normal">long<sp/>debounceDelay<sp/>=<sp/>50;<sp/><sp/><sp/><sp/>//<sp/>how<sp/>long<sp/>to<sp/>debounce<sp/>for</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">static<sp/>uint8_t<sp/>customAdvertData[]<sp/>=<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>general<sp/>discoverable<sp/>mode<sp/>advertises<sp/>indefinitely</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0x02,<sp/><sp/>//<sp/>length<sp/>of<sp/>this<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_FLAGS,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_FLAGS_GENERAL<sp/>|<sp/>GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED,</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>two-byte<sp/>broadcast</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0x03,<sp/><sp/>//<sp/>length<sp/>of<sp/>this<sp/>data<sp/>including<sp/>the<sp/>data<sp/>type<sp/>byte</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GAP_ADTYPE_MANUFACTURER_SPECIFIC,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0xAC,<sp/><sp/>//<sp/>arbitrary<sp/>data<sp/>so<sp/>we<sp/>can<sp/>make<sp/>sure<sp/>this<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>Bean<sp/>we&apos;re<sp/>looking<sp/>for</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>0x00};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">bool<sp/>enabled<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setCustomAdvertisement(customAdvertData,<sp/>sizeof(customAdvertData));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableCustom();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableConfigSave(false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setAdvertisingInterval(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pinMode(0,<sp/>INPUT_PULLUP);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Read<sp/>the<sp/>state<sp/>of<sp/>pin<sp/>0<sp/>and<sp/>debounce<sp/>in<sp/>software</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>reading<sp/>=<sp/>digitalRead(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(reading<sp/>!=<sp/>lastButtonState)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>lastDebounceTime<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>((millis()<sp/>-<sp/>lastDebounceTime)<sp/>&gt;<sp/>debounceDelay)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(reading<sp/>!=<sp/>buttonState)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buttonState<sp/>=<sp/>reading;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(buttonState<sp/>==<sp/>LOW)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Pin<sp/>0<sp/>was<sp/>pulled<sp/>to<sp/>ground<sp/>(button<sp/>was<sp/>pressed)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enabled<sp/>=<sp/>!enabled;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Bean.setLedGreen(enabled<sp/>?<sp/>0<sp/>:<sp/>255);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>customAdvertData[6]<sp/>=<sp/>enabled<sp/>?<sp/>1<sp/>:<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Bean.setCustomAdvertisement(customAdvertData,<sp/>sizeof(customAdvertData));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lastButtonState<sp/>=<sp/>reading;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="615" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>iBeacon</header>
-      <description><para>Let your Bean act as an <ulink url="https://developer.apple.com/ibeacon/">iBeacon</ulink>, a way to convey real-world location to iOS devices.</para><para>Bean supports a limited subset of UUIDs available to iBeacon devices. A Bean iBeacon UUID is made up of 16 user-configurable bits and 112 preconfigured bits, where <computeroutput>xx</computeroutput> represents a user-configurable byte:</para><para><computeroutput>A495xxxx-C5B1-4B44-B512-1370F02D74DE</computeroutput></para><para>Using iBeacon features will, by default, write to Bean&apos;s NVRAM. The NVRAM has a limited number of writes. Use <computeroutput>enableConfigSave</computeroutput> to store settings temporarily and conserve NVRAM writes. </para></description>
+      <description><para>Let your Bean act as an <ulink url="https://developer.apple.com/ibeacon/">iBeacon</ulink>, a way to convey real-world location to iOS devices.</para><para>Bean supports a limited subset of UUIDs available to iBeacon devices. A Bean iBeacon UUID is made up of 16 user-configurable bits and 112 preconfigured bits, where <computeroutput>xx</computeroutput> represents a user-configurable byte:</para><para><computeroutput>A495xxxx-C5B1-4B44-B512-1370F02D74DE</computeroutput></para><para>Major and minor IDs are used to identify the iBeacon with greater accuracy than with the UUID alone, and are both unsigned integers between 0 and 66535</para><para>Using iBeacon features will, by default, write to Bean&apos;s NVRAM. The NVRAM has a limited number of writes. Use <computeroutput>enableConfigSave</computeroutput> to store settings temporarily and conserve NVRAM writes. </para></description>
+      <memberdef kind="function" id="class_bean_class_1a31d4e4fa7d66ddf1988e456ecbf9dc58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableiBeacon</definition>
+        <argsstring>(void)</argsstring>
+        <name>enableiBeacon</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Works very similarly to setBeaconEnable. The primary difference being that enableiBeacon adds the beacon advertisement to a rotating adverisement instead of overrwriting the current standard Bean advertisement. Parameters are still set with the setBeaconParameters function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="636" column="1"/>
+      </memberdef>
       <memberdef kind="function" id="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void BeanClass::setBeaconParameters</definition>
@@ -937,13 +1565,32 @@
 <parametername>major_id</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The minor ID of the iBeacon </para></parameterdescription>
+<para>The minor ID of the iBeacon</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+<heading level="1">Examples</heading>
+</para><para>This example configures iBeacon and uses the Bean only to advertise and transmit iBeacon data:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/*<sp/>Configure<sp/>beacon<sp/>with:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>----------------------</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>UUID:<sp/>A495-BEEF-C5B1-4B44-B512-1370F02D74DE</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>Major<sp/>ID:<sp/>0<sp/>(Any<sp/>unsigned<sp/>int<sp/>0-66535)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>Minor<sp/>ID:<sp/>65535<sp/>(Any<sp/>unsigned<sp/>int<sp/>0-66535)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setBeaconParameters(0xBEEF,<sp/>0,<sp/>999);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>iBeacon</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setBeaconEnable(true);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Blink<sp/>LED<sp/>to<sp/>verify<sp/>the<sp/>sketch<sp/>is<sp/>working</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(5000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="384" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="651" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -968,7 +1615,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="391" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="658" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -989,7 +1636,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="406" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="673" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a862784d57eca8dd368172612e5e792de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint16_t</type>
@@ -1002,11 +1649,12 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get the current battery voltage, in volts.</para><para>Accuracy is ±0.01 V.</para><para><simplesect kind="return"><para>a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V </para></simplesect>
-</para>        </detaileddescription>
+<para>Get the current battery voltage, in volts.</para><para>Accuracy is ±0.01 V.</para><para><simplesect kind="return"><para>a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example will display a Bean&apos;s respective current battery level and voltage every 5 seconds:</para><para><programlisting></programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="415" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="688" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1023,11 +1671,32 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Get the current temperature of the Bean, in degrees Celsius. The Bean uses the BMA250 (<ulink url="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</ulink>) for temperature readings.</para><para><simplesect kind="return"><para>temperature, between -40 and 88 degrees Celsius </para></simplesect>
-</para>        </detaileddescription>
+<para>Get the current temperature of the Bean, in degrees Celsius. The Bean uses the BMA250 (<ulink url="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</ulink>) for temperature readings.</para><para><simplesect kind="return"><para>temperature, between -40 and 88 degrees Celsius</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example changes the color of the LED based on the temperature reading of the Bean:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Get<sp/>temperature<sp/>reading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>temperature<sp/>=<sp/>Bean.getTemperature();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>LED<sp/>color<sp/>based<sp/>on<sp/>temperature<sp/>of<sp/>the<sp/>Bean</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(temperature<sp/>&gt;<sp/>80)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);<sp/><sp/>//<sp/>Set<sp/>LED<sp/>red</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(temperature<sp/>&gt;<sp/>60)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>150,<sp/>0);<sp/><sp/>//<sp/>Set<sp/>LED<sp/>orange</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(temperature<sp/>&gt;<sp/>40)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>255,<sp/>0);<sp/><sp/>//<sp/>Set<sp/>LED<sp/>yellow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(temperature<sp/>&gt;<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);<sp/><sp/>//<sp/>Set<sp/>LED<sp/>green</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>255);<sp/><sp/>//<sp/>Set<sp/>LED<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(5000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>5<sp/>seconds<sp/>before<sp/>rechecking<sp/>temperature</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="430" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="709" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1047,7 +1716,7 @@
 <para>Terminate the connection between Bean and the connected BLE Central device. If no Central device is connected, this method does nothing. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="444" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="723" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ab426b11e8bee60de92707254c0501c20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1060,11 +1729,173 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Check if any BLE Central devices are currently connected to Bean.</para><para><simplesect kind="return"><para>true if a device is connected, false otherwise </para></simplesect>
+<para>Check if any BLE Central devices are currently connected to Bean.</para><para><simplesect kind="return"><para>true if a device is connected, false otherwise</para></simplesect>
+<heading level="1">Examples</heading>
+</para><para>This example blinks the LED on the Bean green if connected, red if disconnected:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="736" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Bluetooth Services</header>
+      <description><para>Functions dealing with Bluetooth service configurations and pairing. </para></description>
+      <memberdef kind="function" id="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>BluetoothServices</type>
+        <definition>BluetoothServices BeanClass::getServices</definition>
+        <argsstring>(void)</argsstring>
+        <name>getServices</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a struct of all of the currently services and whether or not they are enabled. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="749" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setServices</definition>
+        <argsstring>(BluetoothServices services)</argsstring>
+        <name>setServices</name>
+        <param>
+          <type>BluetoothServices</type>
+          <declname>services</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>services</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the services to change</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Get<sp/>and<sp/>print<sp/>the<sp/>current<sp/>Bluetooth<sp/>services</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BluetoothServices<sp/>originalServices<sp/>=<sp/>Bean.getServices();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printServices(originalServices);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Reset<sp/>the<sp/>services<sp/>to<sp/>default</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.resetServices();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Reset<sp/>the<sp/>Bluetooth<sp/>module<sp/>itself</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.restartBluetooth();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Wait<sp/>for<sp/>a<sp/>few<sp/>moments<sp/>for<sp/>Bluetooth<sp/>to<sp/>come<sp/>back<sp/>up...</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(5000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>services<sp/>to<sp/>include<sp/>standard<sp/>advertising<sp/>(default)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>BluetoothServices<sp/>newServices;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>newServices.standard<sp/>=<sp/>1;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setServices(newServices);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Print<sp/>out<sp/>new<sp/>service<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printServices(newServices);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>anything<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>printServices(BluetoothServices<sp/>services)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(&quot;Bluetooth<sp/>services:&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Standard:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.standard);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;HID:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.hid);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;MIDI:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.midi);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;ANCS:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.ancs);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Observer:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.observer);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;iBeacon:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.ibeacon);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Custom:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.custom);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="762" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::resetServices</definition>
+        <argsstring>(void)</argsstring>
+        <name>resetServices</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets services leaving only the primary standard Bean service advertising. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="767" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::setPairingPin</definition>
+        <argsstring>(uint32_t pin)</argsstring>
+        <name>setPairingPin</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the pairing PIN for a secure PIN-based connection. The default PIN is 000000.</para><para>Calling this function enables the pairing PIN mode. Disable it with <computeroutput>enablePairingPin(false)</computeroutput>.</para><para>If you wish to use this with HID or ANCS, set the PIN after enabling either of the profiles.</para><para>After pairing, your device and Bean will be bonded. In order to un-bond, you will have to manually disconnect from Bean in your device&apos;s settings.</para><para>The PIN will be saved to nonvolatile memory unless <computeroutput>enableConfigSave(false)</computeroutput> is called.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the pairing PIN to set, from 000000 to 999999</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<heading level="1">Examples</heading>
+</para><para>This example sets a pairing PIN of 123456 for future connections:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>6-digit<sp/>pairing<sp/>PIN<sp/>code<sp/>(default<sp/>is<sp/>000000)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enablePairingPin(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>pairing<sp/>PIN<sp/>to<sp/>123456</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setPairingPin(123456);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Pairing<sp/>PIN<sp/>will<sp/>be<sp/>required<sp/>when<sp/>future<sp/>connections<sp/>are<sp/>established</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Sleep<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(0xffffffff);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="788" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enablePairingPin</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>enablePairingPin</name>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables or disables pairing PIN functionality.</para><para>The default PIN is 000000. This can be changed using <computeroutput>setPairingPin</computeroutput>.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>true</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>to enable, false to disable </para></parameterdescription>
+</parameteritem>
+</parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="451" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="797" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1087,13 +1918,42 @@
 <parametername>enableSave</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true to enable saving to NVRAM, false to disable </para></parameterdescription>
+<para>true to disable saving to NVRAM, false to enable</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+<heading level="1">Examples</heading>
+</para><para>This example enables settings that will only be used temporarily because enableConfigSave is used:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>enableConfigSave<sp/>to<sp/>true<sp/>to<sp/>save<sp/>settings<sp/>temporarily</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableConfigSave(false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Enable<sp/>some<sp/>settings<sp/>which<sp/>will<sp/>be<sp/>temporary<sp/>now</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableAdvertising(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableCustom();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.enableiBeacon();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>These<sp/>settings<sp/>will<sp/>be<sp/>reset<sp/>to<sp/>default<sp/>upon<sp/>rebooting<sp/>the<sp/>Bean</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>anything<sp/>here<sp/>with<sp/>new<sp/>temporary<sp/>settings</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="472" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="824" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::restartBluetooth</definition>
+        <argsstring>(void)</argsstring>
+        <name>restartBluetooth</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Performs a hard reset on the bluetooth module. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="830" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -1108,7 +1968,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="476" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="476" bodyend="476"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="835" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="835" bodyend="835"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -1136,27 +1996,137 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="486" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="845" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1abfcf60b2b2065b6fe3c9ae639d1d0fd8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int16_t</type>
+        <definition>int16_t BeanClass::convertAcceleration</definition>
+        <argsstring>(uint8_t high_byte, uint8_t low_byte)</argsstring>
+        <name>convertAcceleration</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>high_byte</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>low_byte</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Needs docs </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="850" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a118526842dd8cbf820ba34e83d706033" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::accelerometerConfig</definition>
+        <argsstring>(uint16_t interrupts, uint8_t power_mode)</argsstring>
+        <name>accelerometerConfig</name>
+        <param>
+          <type>uint16_t</type>
+          <declname>interrupts</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>power_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set interrupts and power mode of the accelerometer</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>interrupts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of accelerometer interrupts </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>power_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>power mode of the accelerometer</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10ms: 0x54 (~16.4uA) Low Power 100ms: 0x5A (~2.3uA) Low Power 1s: 0x5E (~0.7uA) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="864" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1a6fc48e30999657b04b27908fc4f1bf24" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BeanClass::enableWakeOnAccelerometer</definition>
+        <argsstring>(uint8_t sources)</argsstring>
+        <name>enableWakeOnAccelerometer</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>sources</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables Bean to awaken when acceleration is detected</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sources</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set wake interrupt; awake until latch time expires (default 250 ms)</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Wake modes: Wake for any event 0xF7 Wake when flat 0x80 Wake when oriented 0x40 Wake on single tap 0x20 Wake on double-tap 0x10 Wake on any motion 0x04 Wake on high g-force 0x02 Wake on low g-force 0x01 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="880" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_bean_class_1aaa0bac4371fd7f49671f06f6373242be" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t BeanClass::checkAccelInterrupts</definition>
+        <argsstring>()</argsstring>
+        <name>checkAccelInterrupts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the accelerometer interrupts</para><para><simplesect kind="return"><para>the accelerometer interrupts </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="887" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="hardware/bean/avr/cores/bean/Bean.h" line="21" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="21" bodyend="487"/>
+    <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="99" bodyend="888"/>
     <listofallmembers>
+      <member refid="class_bean_class_1a118526842dd8cbf820ba34e83d706033" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>accelerometerConfig</name></member>
+      <member refid="class_bean_class_1a3e743eb8cc8e5e04364f53801b8fe83e" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>accelRegisterRead</name></member>
+      <member refid="class_bean_class_1a47244506c985ef7aead3695811002ad2" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>accelRegisterWrite</name></member>
       <member refid="class_bean_class_1a10616ad423d48bafbcc72164b0df525d" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>attemptSleep</name></member>
       <member refid="class_bean_class_1a235666c4a2138d1178f11edb1504fa7a" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>BeanClass</name></member>
+      <member refid="class_bean_class_1aaa0bac4371fd7f49671f06f6373242be" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>checkAccelInterrupts</name></member>
+      <member refid="class_bean_class_1a75492018fa92ad32c06a12ce456dc74c" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>checkMotionEvent</name></member>
+      <member refid="class_bean_class_1abfcf60b2b2065b6fe3c9ae639d1d0fd8" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>convertAcceleration</name></member>
+      <member refid="class_bean_class_1a02201abea93983434dec1025c4957e83" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>disableCustom</name></member>
+      <member refid="class_bean_class_1a0f9fb65a465070f9f3e9cdf4f2687bdc" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>disableMotionEvents</name></member>
       <member refid="class_bean_class_1a1509dbbc3ddbd08725e2cb65a9289e90" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>disconnect</name></member>
       <member refid="class_bean_class_1a9bff2d903c4a543ba48f0ac1b392c7cc" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableAdvertising</name></member>
       <member refid="class_bean_class_1ade5d4c6a061eeb6d7897ef4c3b2c26d3" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableAdvertising</name></member>
       <member refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableConfigSave</name></member>
+      <member refid="class_bean_class_1a9bbcf8d6db2a229d12838b2626e514d0" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableCustom</name></member>
+      <member refid="class_bean_class_1a31d4e4fa7d66ddf1988e456ecbf9dc58" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableiBeacon</name></member>
+      <member refid="class_bean_class_1a9d2f98bbb1b8a715c0fe549c438f44ed" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableMotionEvent</name></member>
+      <member refid="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enablePairingPin</name></member>
+      <member refid="class_bean_class_1a6fc48e30999657b04b27908fc4f1bf24" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>enableWakeOnAccelerometer</name></member>
       <member refid="class_bean_class_1a639e425394c820a99025d136dddd3369" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>enableWakeOnConnect</name></member>
       <member refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAcceleration</name></member>
       <member refid="class_bean_class_1ad08dec6f240de8a53f110ddf066f6ab2" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationRange</name></member>
-      <member refid="class_bean_class_1a00e0acb00c41d234b533a7b41ad047cd" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationX</name></member>
-      <member refid="class_bean_class_1a6f10d22cc2d3ed4fcc6a63c19858168f" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationY</name></member>
-      <member refid="class_bean_class_1a681df15a2b6952547d536f8faebce802" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationZ</name></member>
+      <member refid="class_bean_class_1a00cf73de73eeb00d220efa32a830d6ef" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationX</name></member>
+      <member refid="class_bean_class_1aba0554ca18558748b67205bd5bdcaeac" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationY</name></member>
+      <member refid="class_bean_class_1a5c977e7b185ebc038335228d8ef1d0b9" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerationZ</name></member>
+      <member refid="class_bean_class_1afb4f9a75f687547ff8f6cb4146ab30fa" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAccelerometerPowerMode</name></member>
       <member refid="class_bean_class_1a099bbffcf98e71f533f8277ec5274785" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getAdvertisingState</name></member>
       <member refid="class_bean_class_1ac21fd79279f5e25c37609ff15e53cea1" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getBatteryLevel</name></member>
       <member refid="class_bean_class_1a862784d57eca8dd368172612e5e792de" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getBatteryVoltage</name></member>
@@ -1166,21 +2136,29 @@
       <member refid="class_bean_class_1a8dcd68a87dc75dd0fe912483cc05fa43" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedBlue</name></member>
       <member refid="class_bean_class_1a5619292a562731e94f97e93432ab3639" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedGreen</name></member>
       <member refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getLedRed</name></member>
+      <member refid="class_bean_class_1a4d5307962a778b8cd8b792b196c5f908" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getObserverMessage</name></member>
+      <member refid="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getServices</name></member>
       <member refid="class_bean_class_1a711e837c145b51a8e95aa22a3fc9bcf9" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>getTemperature</name></member>
       <member refid="class_bean_class_1abbd5ae43b98270dfc94b98b2ecd66281" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>keepAwake</name></member>
       <member refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>readScratchData</name></member>
       <member refid="class_bean_class_1a4c835abe680607ce956af4f7fa965a20" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>readScratchNumber</name></member>
+      <member refid="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>resetServices</name></member>
+      <member refid="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>restartBluetooth</name></member>
       <member refid="class_bean_class_1acb8e9a741e2538393256f95d27c4571d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setAccelerationRange</name></member>
+      <member refid="class_bean_class_1a4eebb09ead4b598ef56c359ed14141be" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setAccelerometerPowerMode</name></member>
       <member refid="class_bean_class_1a41412684c0f01f06f260fb1e724475d9" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setAdvertisingInterval</name></member>
       <member refid="class_bean_class_1a354e2ff36d0e101b35255bae0a5e33ca" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeaconEnable</name></member>
       <member refid="class_bean_class_1a3b78a7b755cda9f066104f339638d69c" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeaconParameters</name></member>
       <member refid="class_bean_class_1a32c0dc702c367caf274b72ba4a4cb8a2" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setBeanName</name></member>
+      <member refid="class_bean_class_1add3cfcf31fe80a72bf6e4cf2cdaf99bb" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setCustomAdvertisement</name></member>
       <member refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLed</name></member>
       <member refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedBlue</name></member>
       <member refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedGreen</name></member>
       <member refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setLedRed</name></member>
+      <member refid="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setPairingPin</name></member>
       <member refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setScratchData</name></member>
       <member refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setScratchNumber</name></member>
+      <member refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>setServices</name></member>
       <member refid="class_bean_class_1a15d6716d0bdc66a0345acc29d0c14a14" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>sleep</name></member>
     </listofallmembers>
   </compounddef>

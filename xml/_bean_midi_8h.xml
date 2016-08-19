@@ -1,0 +1,2458 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="_bean_midi_8h" kind="file" language="C++">
+    <compoundname>BeanMidi.h</compoundname>
+    <includes local="yes">Arduino.h</includes>
+    <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
+    <incdepgraph>
+      <node id="35">
+        <label>hardware/bean/avr/cores/bean/BeanMidi.h</label>
+        <link refid="BeanMidi.h"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>Arduino.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="38">
+        <label>hardware/bean/avr/cores/bean/Bean.h</label>
+        <link refid="_bean_8h_source"/>
+      </node>
+      <node id="37">
+        <label>hardware/bean/avr/cores/bean/BeanMidi.h</label>
+        <link refid="BeanMidi.h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_bean_midi_class" prot="public">BeanMidiClass</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844" prot="public" static="no">
+        <name>midiChannels</name>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a58badc2ed9cbe9a2cd09e731f2968d97" prot="public">
+          <name>CHANNEL0</name>
+          <initializer>= 0x00</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a18ef6ed7e5cb8ad29777e073d5291168" prot="public">
+          <name>CHANNEL1</name>
+          <initializer>= 0x01</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a2fd0d2d0de61e296adb15b78b066a94e" prot="public">
+          <name>CHANNEL2</name>
+          <initializer>= 0x02</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844aeb9ceb7fac8ee01c734c766f1f27d5ca" prot="public">
+          <name>CHANNEL3</name>
+          <initializer>= 0x03</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844ad462001d07701b5efdb761e7164d5e28" prot="public">
+          <name>CHANNEL4</name>
+          <initializer>= 0x04</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844ad8c8c9ca56752f1a9e32113456c903e7" prot="public">
+          <name>CHANNEL5</name>
+          <initializer>= 0x05</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a7de3f7c827a8349b778987072cbe94c0" prot="public">
+          <name>CHANNEL6</name>
+          <initializer>= 0x06</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a6e4851eb52a46217417c1e74ca68ba6d" prot="public">
+          <name>CHANNEL7</name>
+          <initializer>= 0x07</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a1c4647862ba6234cc2eb0d35fa6caa5e" prot="public">
+          <name>CHANNEL8</name>
+          <initializer>= 0x08</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a2c9bc583b3ec027ac3c9d8877ff30828" prot="public">
+          <name>CHANNEL9</name>
+          <initializer>= 0x09</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a20ca03ff52881491e919c1d2838f3a8a" prot="public">
+          <name>CHANNEL10</name>
+          <initializer>= 0x0A</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a3615b921b8468bd935c8cd6a7b56e0fd" prot="public">
+          <name>CHANNEL11</name>
+          <initializer>= 0x0B</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844aa565377235efb51541630baf207334ba" prot="public">
+          <name>CHANNEL12</name>
+          <initializer>= 0x0C</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844aa424d4154de2b4f0368e82b81505aab4" prot="public">
+          <name>CHANNEL13</name>
+          <initializer>= 0x0D</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844ad293117b3f75ece16c572f4cefa8ddab" prot="public">
+          <name>CHANNEL14</name>
+          <initializer>= 0x0E</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844a4dc4dcababcfc3906942b92b99003e8d" prot="public">
+          <name>CHANNEL15</name>
+          <initializer>= 0x0F</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="6" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="6" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840c" prot="public" static="no">
+        <name>midiNotes</name>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca0b13f3374b618a2889b4da7428e01921" prot="public">
+          <name>NOTE_Cn1</name>
+          <initializer>=   0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cabbb8d70583d58cb26c5a3d9cd34b5de9" prot="public">
+          <name>NOTE_Csn1</name>
+          <initializer>=   1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca91c8369017459c93ea4c1e3f2b001ae1" prot="public">
+          <name>NOTE_Dn1</name>
+          <initializer>=   2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cabd18d622e8be1cbf2500dc344021936f" prot="public">
+          <name>NOTE_Dsn1</name>
+          <initializer>=   3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cadb995d84f4248e527454cb5845269e13" prot="public">
+          <name>NOTE_En1</name>
+          <initializer>=   4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caab9fc2fc877ddb88ea0012a2223bc4b5" prot="public">
+          <name>NOTE_Fn1</name>
+          <initializer>=   5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad6517622f1989dc46b745d6c99d99007" prot="public">
+          <name>NOTE_Fsn1</name>
+          <initializer>=   6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca54723c63e9650c7374ede6ccda569c4d" prot="public">
+          <name>NOTE_Gn1</name>
+          <initializer>=   7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9ed9136fee2199cdfd62102f892bd709" prot="public">
+          <name>NOTE_Gsn1</name>
+          <initializer>=   8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad48f6753bcbf859c4f324f169848ea6a" prot="public">
+          <name>NOTE_An1</name>
+          <initializer>=   9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9c2d0f58ee94f5be44202796605504b4" prot="public">
+          <name>NOTE_Asn1</name>
+          <initializer>=   10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca5585ec26f9933edf399ab7252bfb2525" prot="public">
+          <name>NOTE_Bn1</name>
+          <initializer>=   11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca63416c5f08656720828d8f73ce026bd2" prot="public">
+          <name>NOTE_C0</name>
+          <initializer>=   12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cabdba72aea2a4411277a1cb1362a6996e" prot="public">
+          <name>NOTE_Cs0</name>
+          <initializer>=   13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cab006820e42f10109a0d0bd99e48e25ff" prot="public">
+          <name>NOTE_D0</name>
+          <initializer>=   14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae5daf4292abbb704bb7331662967595b" prot="public">
+          <name>NOTE_Ds0</name>
+          <initializer>=   15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca88bac789f14f8075a4beb3fe3fa8c7ef" prot="public">
+          <name>NOTE_E0</name>
+          <initializer>=   16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca925d0b42f59ce79198a581992a04c49a" prot="public">
+          <name>NOTE_F0</name>
+          <initializer>=   17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae0f54a245263ab7314711345cc74fcd4" prot="public">
+          <name>NOTE_Fs0</name>
+          <initializer>=   18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca603a847ebea0ec7ad4a8ea9ca7a115e6" prot="public">
+          <name>NOTE_G0</name>
+          <initializer>=   19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca13be4c81a374b50014a8d4d612c4d191" prot="public">
+          <name>NOTE_Gs0</name>
+          <initializer>=   20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca8a2544a7f914defeab8d8100bfd49169" prot="public">
+          <name>NOTE_A0</name>
+          <initializer>=   21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf7877578c2c2241d6980dcae79a96d2e" prot="public">
+          <name>NOTE_As0</name>
+          <initializer>=   22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca72223c8d8136f7d2a6f0df293fd8f423" prot="public">
+          <name>NOTE_B0</name>
+          <initializer>=   23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae5e4f7277fa102d2a02b622e71197eff" prot="public">
+          <name>NOTE_C1</name>
+          <initializer>=   24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafbe9c4caf2ed31fd7039eb2026b35e10" prot="public">
+          <name>NOTE_Cs1</name>
+          <initializer>=   25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca1c01bb12f87af813d07cdc3ff09b7266" prot="public">
+          <name>NOTE_D1</name>
+          <initializer>=   26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf63373b1360bf5ead29f06cb86986aea" prot="public">
+          <name>NOTE_Ds1</name>
+          <initializer>=   27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad6238bf8b9ef20e486799dda7cb85d12" prot="public">
+          <name>NOTE_E1</name>
+          <initializer>=   28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca7057096a2199e5ac924a6acf23ce4d5c" prot="public">
+          <name>NOTE_F1</name>
+          <initializer>=   29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae9c1f69916e6b88581e5ac20b815b075" prot="public">
+          <name>NOTE_Fs1</name>
+          <initializer>=   30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9de5b6ddaacc71d3693dc62b3535ebd0" prot="public">
+          <name>NOTE_G1</name>
+          <initializer>=   31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca09dc66b37095795d65fa772708a4bd9b" prot="public">
+          <name>NOTE_Gs1</name>
+          <initializer>=   32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca089f764d50905e04bfb6b416bda84731" prot="public">
+          <name>NOTE_A1</name>
+          <initializer>=   33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca5e7639d6f5bc43bcdff64b15b0f7732e" prot="public">
+          <name>NOTE_As1</name>
+          <initializer>=   34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caa055db2cca2d890b3afc5a7841fb386e" prot="public">
+          <name>NOTE_B1</name>
+          <initializer>=   35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf9fed3f0afcdb696133899fd69f59868" prot="public">
+          <name>NOTE_C2</name>
+          <initializer>=   36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caae9112bb87b130ee0d0822fdd188326c" prot="public">
+          <name>NOTE_Cs2</name>
+          <initializer>=   37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca240f3471a1d41937ecb2a86f2884f165" prot="public">
+          <name>NOTE_D2</name>
+          <initializer>=   38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca8b2bb0110ecbb91ad11fe289f22c47d2" prot="public">
+          <name>NOTE_Ds2</name>
+          <initializer>=   39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca3b3e8d245de1813a3d822fd6682738f0" prot="public">
+          <name>NOTE_E2</name>
+          <initializer>=   40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caaa04d3fc3b73ee313be9e5aaf91a3589" prot="public">
+          <name>NOTE_F2</name>
+          <initializer>=   41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca8d0e6f3d37c12f0037d587d1d0cfc8de" prot="public">
+          <name>NOTE_Fs2</name>
+          <initializer>=   42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca25a28e5912708b6dce92d17549f53f83" prot="public">
+          <name>NOTE_G2</name>
+          <initializer>=   43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caef0506769db05591b5a062e6463af8e1" prot="public">
+          <name>NOTE_Gs2</name>
+          <initializer>=   44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca841fde920b948362be8652dcf4dde579" prot="public">
+          <name>NOTE_A2</name>
+          <initializer>=   45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca0055a2824585d0eada265feea15288fd" prot="public">
+          <name>NOTE_As2</name>
+          <initializer>=   46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca55649cbb8fd1ff275591c8952dca3f34" prot="public">
+          <name>NOTE_B2</name>
+          <initializer>=   47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca3c518fd508e954e4a6a11d8a6c6bfdb3" prot="public">
+          <name>NOTE_C3</name>
+          <initializer>=   48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cacda7ff74b78ed726b8516ec3f2a29c59" prot="public">
+          <name>NOTE_Cs3</name>
+          <initializer>=   49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca261ddfc022c7492c5cf13cd9e971a799" prot="public">
+          <name>NOTE_D3</name>
+          <initializer>=   50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca02b390162e8e48b4a543c886e66fa19a" prot="public">
+          <name>NOTE_Ds3</name>
+          <initializer>=   51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad917d80c7ed12d683bd0b22db6531cc7" prot="public">
+          <name>NOTE_E3</name>
+          <initializer>=   52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafb20a1e26bb1240a3cadfe4674249d0f" prot="public">
+          <name>NOTE_F3</name>
+          <initializer>=   53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca0fe47da608791905682baae6ef898228" prot="public">
+          <name>NOTE_Fs3</name>
+          <initializer>=   54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca828bc4c915b2e9ddeea4a656a6040c17" prot="public">
+          <name>NOTE_G3</name>
+          <initializer>=   55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafeab6f40a20ba57a67f6390fd170bbde" prot="public">
+          <name>NOTE_Gs3</name>
+          <initializer>=   56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca69a95568564524d7a86400bf81cae815" prot="public">
+          <name>NOTE_A3</name>
+          <initializer>=   57</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cab4951a4a7e45ae7665c326b8c451f80e" prot="public">
+          <name>NOTE_As3</name>
+          <initializer>=   58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca4180032c6a9b3d99648dc0a606268f97" prot="public">
+          <name>NOTE_B3</name>
+          <initializer>=   59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca8eaff022fc378bbce8ec48f854a96aec" prot="public">
+          <name>NOTE_C4</name>
+          <initializer>=   60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca7ffe856793af373cf0ade49c8598fde6" prot="public">
+          <name>NOTE_Cs4</name>
+          <initializer>=   61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf3443549fc4586c4aea4373e991eda60" prot="public">
+          <name>NOTE_D4</name>
+          <initializer>=   62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cab061ff6066794765638bcc4d51b54f2b" prot="public">
+          <name>NOTE_Ds4</name>
+          <initializer>=   63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca6f587f89c610d2b1f85675e1a47c3d36" prot="public">
+          <name>NOTE_E4</name>
+          <initializer>=   64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca868f5a9ae76826b41b2066d8c0151ada" prot="public">
+          <name>NOTE_F4</name>
+          <initializer>=   65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca858b961bb6840aaaf7135d3c3fb48f03" prot="public">
+          <name>NOTE_Fs4</name>
+          <initializer>=   66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cab9e1a56fc79a4af3b966f778a96421a9" prot="public">
+          <name>NOTE_G4</name>
+          <initializer>=   67</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca222cd3b74d9e2d3e56c1b4f16c5364f5" prot="public">
+          <name>NOTE_Gs4</name>
+          <initializer>=   68</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca857f784b499adb0b60330cc1ae5df274" prot="public">
+          <name>NOTE_A4</name>
+          <initializer>=   69</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca354d9e7b9a7e7fbacedf7a77af5e7fe0" prot="public">
+          <name>NOTE_As4</name>
+          <initializer>=   70</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca31b85e33e3a53feb89a45910ce9c356d" prot="public">
+          <name>NOTE_B4</name>
+          <initializer>=   71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf44491a61c84f7505ed6a31f918b2db7" prot="public">
+          <name>NOTE_C5</name>
+          <initializer>=   72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad4db25ef190dff5ff6bc64cb254263a5" prot="public">
+          <name>NOTE_Cs5</name>
+          <initializer>=   73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caaf7c0986b98de00eec1725edad718317" prot="public">
+          <name>NOTE_D5</name>
+          <initializer>=   74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca6d5fc55d0eb33b9f2207b97dcbaf2a10" prot="public">
+          <name>NOTE_Ds5</name>
+          <initializer>=   75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caca5afcaf3db747d4104b708035d06aea" prot="public">
+          <name>NOTE_E5</name>
+          <initializer>=   76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca74c05fcc5b32baf6e6789b62faab343a" prot="public">
+          <name>NOTE_F5</name>
+          <initializer>=   77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca850d820d7dce979a77d7c63fc78d6ac0" prot="public">
+          <name>NOTE_Fs5</name>
+          <initializer>=   78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca752e7849fc8a58d4050bc6beb8097d8a" prot="public">
+          <name>NOTE_G5</name>
+          <initializer>=   79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca6adef6691339fca61c8d95733d1e08a5" prot="public">
+          <name>NOTE_Gs5</name>
+          <initializer>=   80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca163008d307bac37e8ca82d99174e8dcb" prot="public">
+          <name>NOTE_A5</name>
+          <initializer>=   81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cabba15a78889fa60877a6c7d16bbac3f6" prot="public">
+          <name>NOTE_As5</name>
+          <initializer>=   82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca49291515bc3e4da26c2b4036ca6bd2ad" prot="public">
+          <name>NOTE_B5</name>
+          <initializer>=   83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafaeb77caa9abb831d8b52043037eccb6" prot="public">
+          <name>NOTE_C6</name>
+          <initializer>=   84</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafa1ce862f2491d8fa035400d3d80b944" prot="public">
+          <name>NOTE_Cs6</name>
+          <initializer>=   85</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2bad384936383ce723039094a8df5502" prot="public">
+          <name>NOTE_D6</name>
+          <initializer>=   86</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cabe4675755533b0a8bba56e669d01916c" prot="public">
+          <name>NOTE_Ds6</name>
+          <initializer>=   87</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf4c7104a7f29e49f156008fa896a4411" prot="public">
+          <name>NOTE_E6</name>
+          <initializer>=   88</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2870cec3c8bc20b88d11cf262c222a27" prot="public">
+          <name>NOTE_F6</name>
+          <initializer>=   89</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae1ba4b3031736346fa0c25ddc3566c29" prot="public">
+          <name>NOTE_Fs6</name>
+          <initializer>=   90</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2907b33666cdf58434f47c45b9cef1f2" prot="public">
+          <name>NOTE_G6</name>
+          <initializer>=   91</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9dcca9ce48da8430982191554287cc6b" prot="public">
+          <name>NOTE_Gs6</name>
+          <initializer>=   92</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cac6eeb16ea07af0c8e87048a8b025b713" prot="public">
+          <name>NOTE_A6</name>
+          <initializer>=   93</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafdf8850cd600b1490724910f6406e3c3" prot="public">
+          <name>NOTE_As6</name>
+          <initializer>=   94</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca459413835aee9d8b78b045cd89213cb6" prot="public">
+          <name>NOTE_B6</name>
+          <initializer>=   95</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca15d9c171c7008c059d47d78d89b9ea35" prot="public">
+          <name>NOTE_C7</name>
+          <initializer>=   96</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cac27434f08acfecedc2eeb45ec51edb32" prot="public">
+          <name>NOTE_Cs7</name>
+          <initializer>=   97</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cac02b8c508db28ff261fc4d99531176d9" prot="public">
+          <name>NOTE_D7</name>
+          <initializer>=   98</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cacb98279cdd2a4cc177a2721cf5ea56c6" prot="public">
+          <name>NOTE_Ds7</name>
+          <initializer>=   99</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9d21568d7341a300cc447113d8c8f123" prot="public">
+          <name>NOTE_E7</name>
+          <initializer>=   100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca32b731e48682dc1bf05b3a883cf2c1cc" prot="public">
+          <name>NOTE_F7</name>
+          <initializer>=   101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae37f6ac192f2e7a6f5d3c7cdb1cde5a6" prot="public">
+          <name>NOTE_Fs7</name>
+          <initializer>=   102</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caecb22a8a81fc70d5ca897b40e999a027" prot="public">
+          <name>NOTE_G7</name>
+          <initializer>=   103</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca0a704d4e111ea0e74aee29e41e847b22" prot="public">
+          <name>NOTE_Gs7</name>
+          <initializer>=   104</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cadf1dc1809f6f8eab8dd0992cbd8ceffc" prot="public">
+          <name>NOTE_A7</name>
+          <initializer>=   105</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca77f83e3e25820d56223c0c8ded0af659" prot="public">
+          <name>NOTE_As7</name>
+          <initializer>=   106</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2ab7ae8994788289893e5579ece3e92a" prot="public">
+          <name>NOTE_B7</name>
+          <initializer>=   107</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca47db5079c90cc896b70842e62f6cc868" prot="public">
+          <name>NOTE_C8</name>
+          <initializer>=   108</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cac30e1b6fcd9e2d2d64eadd52b243b479" prot="public">
+          <name>NOTE_Cs8</name>
+          <initializer>=   109</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf703f1d1b8320c1f10afcbd87bc198bc" prot="public">
+          <name>NOTE_D8</name>
+          <initializer>=   110</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae6b2f8a3a6d317844db7ed8af6af7ca5" prot="public">
+          <name>NOTE_Ds8</name>
+          <initializer>=   111</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caaedfc36e34d8b62c9ace2e904aa3447f" prot="public">
+          <name>NOTE_E8</name>
+          <initializer>=   112</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca7dd90148510aa0050a7cbe66f546ee3e" prot="public">
+          <name>NOTE_F8</name>
+          <initializer>=   113</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cab65a48e95eb34cbf00104e06c7dee92c" prot="public">
+          <name>NOTE_Fs8</name>
+          <initializer>=   114</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca19c5bacfdbd6cc0a979b2d44ff23477f" prot="public">
+          <name>NOTE_G8</name>
+          <initializer>=   115</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caf4bae3e8dce966de73aba215a26c0cf1" prot="public">
+          <name>NOTE_Gs8</name>
+          <initializer>=   116</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca4a75ba9a1de790ca26b33b624a6d3418" prot="public">
+          <name>NOTE_A8</name>
+          <initializer>=   117</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2df84a9a3c4836ff86307cc2124691ab" prot="public">
+          <name>NOTE_As8</name>
+          <initializer>=   118</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca2a4d366e4a746a48e44f9abf3e9939ba" prot="public">
+          <name>NOTE_B8</name>
+          <initializer>=   119</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca9624516ec4b24e2654a40f2e35dd3bdb" prot="public">
+          <name>NOTE_C9</name>
+          <initializer>=   120</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca015d64fddfca88ebb448907a31f192c8" prot="public">
+          <name>NOTE_Cs9</name>
+          <initializer>=   121</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cad8118c15b0e3749e7d1188c80d04a7e7" prot="public">
+          <name>NOTE_D9</name>
+          <initializer>=   122</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca92d25d164634a3a408a7b6b1d918055b" prot="public">
+          <name>NOTE_Ds9</name>
+          <initializer>=   123</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca373908db45ca47f761e95c01957d2584" prot="public">
+          <name>NOTE_E9</name>
+          <initializer>=   124</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca404b3793d2aa4238ced13d129ca92a06" prot="public">
+          <name>NOTE_F9</name>
+          <initializer>=   125</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca535e02815427e8e1e4bf711ebda0a684" prot="public">
+          <name>NOTE_Fs9</name>
+          <initializer>=   126</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca348fa1fd8de3e10df3d73730538d3155" prot="public">
+          <name>NOTE_G9</name>
+          <initializer>=   127</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840caa41890129621b278ee5d686a5d2cbea5" prot="public">
+          <name>NOTE_Gs9</name>
+          <initializer>=   128</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840ca330a259af8f6936c6e1e2d090e0e2dda" prot="public">
+          <name>NOTE_A9</name>
+          <initializer>=   129</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cafaf7790b44bec980895251893f1a26f3" prot="public">
+          <name>NOTE_As9</name>
+          <initializer>=   130</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a67299bd0e2a6d3446f1b6222b1f9840cae30d59e916944509750e7f7a4c25ba9e" prot="public">
+          <name>NOTE_B9</name>
+          <initializer>=   131</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="25" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="25" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886" prot="public" static="no">
+        <name>midiControlChange</name>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a9d8aa151a1972e6a88403cbe3dfe87a6" prot="public">
+          <name>BANKSELECT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a1fe5208f6970e947f7dd7ad9dd984bdf" prot="public">
+          <name>MODULATIONWHEEL</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a33c1dd64e5786886dcc60838b5646d1f" prot="public">
+          <name>BREATHCONTROLLER</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a0fc5b103ad0caec4e0487e56cfba30d9" prot="public">
+          <name>FOOTCONTROLLER</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ae008e15f820ca3ceeb43045cf6bb9965" prot="public">
+          <name>PORTAMENTOTIME</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a3dca14577975a134bcbe49312412ab72" prot="public">
+          <name>DATAENTRY</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a211c185936ca4dcf7de584e431530e31" prot="public">
+          <name>CHANNELVOLUME</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aa7fbdba844f9e290189b826a10c1d399" prot="public">
+          <name>BALANCE</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a1fea4799e7e5d4fd82b3df6813ce0e71" prot="public">
+          <name>PAN</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a190d8edf439ecceb36adac7bf025a0a8" prot="public">
+          <name>EXPRESSIONCONTROLLER</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a20f00f219387cc5b998c78b665f3e762" prot="public">
+          <name>EFFECTCONTROL1</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a3d0eb7b3d37babf9935023ea621c1e6d" prot="public">
+          <name>EFFECTCONTROL2</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a223149ce7bd5967ce2159e5dc60612e3" prot="public">
+          <name>GENERALPURPOSECONTROLLER1</name>
+          <initializer>= 16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a828c741abc2dccbe3a126d61cabb008c" prot="public">
+          <name>GENERALPURPOSECONTROLLER2</name>
+          <initializer>= 17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ab78d35b883aa09397288aaf6f089e94d" prot="public">
+          <name>GENERALPURPOSECONTROLLER3</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a25db4e43a256038f3acc976b38cd995b" prot="public">
+          <name>GENERALPURPOSECONTROLLER4</name>
+          <initializer>= 19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aff8f2c749b743b02577de567de908efd" prot="public">
+          <name>SUSTAIN</name>
+          <initializer>= 64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a2e38f844954f3cdc5254c3fe8d7bac28" prot="public">
+          <name>PORTAMENTO</name>
+          <initializer>= 65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a4df433d3f69fbddf55335df62c3cef1a" prot="public">
+          <name>SOSTENUTO</name>
+          <initializer>= 66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a8fdc496b1825cbe9503977a6778da795" prot="public">
+          <name>SOFTPEDAL</name>
+          <initializer>= 67</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ad59d7960b0c704f3ea1bdf5adcc63485" prot="public">
+          <name>LEGATO</name>
+          <initializer>= 68</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a9cfa27b414cab750fb14ec07cdf5cf6a" prot="public">
+          <name>HOLD</name>
+          <initializer>= 69</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a903919b2a6a4b18ea9c59affccd1a8fc" prot="public">
+          <name>SOUNDCONTROLLER1</name>
+          <initializer>= 70</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ad96212a91b09e9c5f4023d9c81f9ee31" prot="public">
+          <name>SOUNDCONTROLLER2</name>
+          <initializer>= 71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a1957b340ed0d4f466739b64704474d29" prot="public">
+          <name>SOUNDCONTROLLER3</name>
+          <initializer>= 72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a7aae2ab72a547b987bae733bf4c89502" prot="public">
+          <name>SOUNDCONTROLLER4</name>
+          <initializer>= 73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a0c62b74c3ccfb587200a4695fe3cec3d" prot="public">
+          <name>SOUNDCONTROLLER5</name>
+          <initializer>= 74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aae474c7489d84d8bdac8c70662302ca9" prot="public">
+          <name>SOUNDCONTROLLER6</name>
+          <initializer>= 75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a76be32e95f26be97dbd77322eaeb97f2" prot="public">
+          <name>SOUNDCONTROLLER7</name>
+          <initializer>= 76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886abfe4a4b75887d34192978ed73575e0d7" prot="public">
+          <name>SOUNDCONTROLLER8</name>
+          <initializer>= 77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aa849e9eaac095009a48d26ae594bf7ce" prot="public">
+          <name>SOUNDCONTROLLER9</name>
+          <initializer>= 78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a2a15d3cb7bcf41d37e5542b55197a8ad" prot="public">
+          <name>SOUNDCONTROLLER10</name>
+          <initializer>= 79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a4f00c5c364204c097fecde996cd35ced" prot="public">
+          <name>GENERALPURPOSECONTROLLER5</name>
+          <initializer>= 80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a29cecc8ffae6de375782099c4b035e2b" prot="public">
+          <name>GENERALPURPOSECONTROLLER6</name>
+          <initializer>= 81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a85d1aba28399e6328e7dfc63044966dc" prot="public">
+          <name>GENERALPURPOSECONTROLLER7</name>
+          <initializer>= 82</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a8295e0152619ecc5b2648975cc846d18" prot="public">
+          <name>GENERALPURPOSECONTROLLER8</name>
+          <initializer>= 83</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a96f6a93e06dba4df5b0c2abd435e81ba" prot="public">
+          <name>PORTAMENTOCONTROL</name>
+          <initializer>= 84</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a5d2f7023e107b09c5736a07683735a8e" prot="public">
+          <name>EFFECTS1</name>
+          <initializer>= 91</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a574869e741fff18af86c03b6c92f4d51" prot="public">
+          <name>EFFECTS2</name>
+          <initializer>= 92</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a31e46e7b89b65a51165aaf30b5925054" prot="public">
+          <name>EFFECTS3</name>
+          <initializer>= 93</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ab3a25c584bfe3f7fcb2d5b6b1dbdeff2" prot="public">
+          <name>EFFECTS4</name>
+          <initializer>= 94</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a9301116fb44421632d9392236e279271" prot="public">
+          <name>EFFECTS5</name>
+          <initializer>= 95</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ae4208720b168180a49b9a47854bfbcc0" prot="public">
+          <name>ALLSOUNDOFF</name>
+          <initializer>= 120</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a65708bca24324ef60110b79d1e62ce48" prot="public">
+          <name>RESETALLCONTROLLERS</name>
+          <initializer>= 121</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aa61b062dbbd084b16d95b117b7f64248" prot="public">
+          <name>LOCALCONTROL</name>
+          <initializer>= 122</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a54568c295e44d2595323c24cad8d11e2" prot="public">
+          <name>ALLNOTESOFF</name>
+          <initializer>= 123</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886ad13387b317e0b02c2e24c4aac530c4f1" prot="public">
+          <name>OMNIMODEOFF</name>
+          <initializer>= 124</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886aaf15d025cc8402322d9f39fdb7f4b6b4" prot="public">
+          <name>OMNIMODEON</name>
+          <initializer>= 125</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a32b94e2175ea7f8969c3bff325708e0a" prot="public">
+          <name>MONOMODEON</name>
+          <initializer>= 126</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a55f7ee99a41be14fe73a8da2afc6a886a04129eaba0a81fdc3fa7bbd28d1bd8eb" prot="public">
+          <name>POLYMODEON</name>
+          <initializer>= 127</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="160" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="160" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37" prot="public" static="no">
+        <name>midiMessageTypes</name>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37aaba616af7d350716449953553882a7ed" prot="public">
+          <name>NOTEOFF</name>
+          <initializer>= 0x80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37a925616520fd4f5c0ac8d302c936ade73" prot="public">
+          <name>NOTEON</name>
+          <initializer>= 0x90</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37a55d0b6a8ffb5c2c3d289cdce8cd627a6" prot="public">
+          <name>POLYPHONICPRESSURE</name>
+          <initializer>= 0xA0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37ae983f39b511f0e6243b0627ae2756576" prot="public">
+          <name>CONTROLCHANGE</name>
+          <initializer>= 0xB0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37aa011eb0c661bd600e632ec8903077ddc" prot="public">
+          <name>PROGRAMCHANGE</name>
+          <initializer>= 0xC0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37a24260e1c1cfd2acf6cba3f7b3b597ba5" prot="public">
+          <name>CHANNELPRESSURE</name>
+          <initializer>= 0xD0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37a45bf1249bcedee2c608942ee049d8a80" prot="public">
+          <name>PITCHBENDCHANGE</name>
+          <initializer>= 0xE0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37abceaf084fd3f5cffefe1a6698b4a94d9" prot="public">
+          <name>SYSTEMCOMMON</name>
+          <initializer>= 0xF0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1a45c141890aecab10aa78276bad71da37a5f66d8c747e490501cf2864f872c3b1d" prot="public">
+          <name>SYSTEMREALTIME</name>
+          <initializer>= 0xF8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="221" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="221" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="enum" id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2" prot="public" static="no">
+        <name>midiDrums</name>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a1830bbc4b80156ae66f684052400fa74" prot="public">
+          <name>BASS_DRUM_2</name>
+          <initializer>=   35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2aa45928333913c3e8246d21bdea96e1b9" prot="public">
+          <name>BASS_DRUM_1</name>
+          <initializer>=   36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a5ae5b2e4385b9cc9818ec9b6fdd419fa" prot="public">
+          <name>SIDE_STICK</name>
+          <initializer>=   37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2ac19a9818162b011276d59a017f987afe" prot="public">
+          <name>SNARE_DRUM_1</name>
+          <initializer>=   38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2acddcfdeafa776c34b6f14951bd2c1c37" prot="public">
+          <name>HAND_CLAP</name>
+          <initializer>=   39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2af369515fc2a2f7f851ceb1c30ef03679" prot="public">
+          <name>SNARE_DRUM_2</name>
+          <initializer>=   40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2aae5ec9d1be31d79229c4c8e47c4b6054" prot="public">
+          <name>LOW_TOM_2</name>
+          <initializer>=   41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a57ea67151262a79c45a75eef8c4c2cfe" prot="public">
+          <name>CLOSED_HIHAT</name>
+          <initializer>=   42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a868261f507583184e2ff6859c337ac8b" prot="public">
+          <name>LOW_TOM_1</name>
+          <initializer>=   43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2ab5e3cdb8a34da980bbe62502c2868239" prot="public">
+          <name>PEDAL_HIHAT</name>
+          <initializer>=   44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a19a1537e09e4bd7d3b50108922a1fafc" prot="public">
+          <name>MID_TOM_2</name>
+          <initializer>=   45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a89321a118fc2ef076286ecd5cac31b4a" prot="public">
+          <name>OPEN_HIHAT</name>
+          <initializer>=   46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a525b37faf4b0095dde2cb5e8351e9290" prot="public">
+          <name>MID_TOM_1</name>
+          <initializer>=   47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2af4b0067b2ead920669e536dc3b014514" prot="public">
+          <name>HIGH_TOM_2</name>
+          <initializer>=   48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a48290b8648dad1ca3ad17aa8fbc493fd" prot="public">
+          <name>CRASH_CYMBAL_1</name>
+          <initializer>=   49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2aa789990cc3dd01a711a31a88b4b5cfc4" prot="public">
+          <name>HIGH_TOM_1</name>
+          <initializer>=   50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a5b07185f8b15004c228aaec321b5a064" prot="public">
+          <name>RIDE_CYMBAL_1</name>
+          <initializer>=   51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a36305f7e6e95a63dd8115ae047c94d04" prot="public">
+          <name>CHINESE_CYMBAL</name>
+          <initializer>=   52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a39fb28d5d1cdd82d50d8edea1e5c08e3" prot="public">
+          <name>RIDE_BELL</name>
+          <initializer>=   53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a91aa4791a188c2d109e07cb332de4cdf" prot="public">
+          <name>TAMBOURINE</name>
+          <initializer>=   54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a9bb5b0dbaeebbf5d9724b0382235b134" prot="public">
+          <name>SPLASH_CYMBAL</name>
+          <initializer>=   55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a0ff67c8ed9d68ba2157b475eeec38f1d" prot="public">
+          <name>COWBELL</name>
+          <initializer>=   56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a43474e7e1789cfeb6e9db31f7a3a4213" prot="public">
+          <name>CRASH_CYMBAL_2</name>
+          <initializer>=   57</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2adbdf77a0b3e3893f7906416f2d533ed6" prot="public">
+          <name>VIBRA_SLAP</name>
+          <initializer>=   58</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a3756389384f14b81591fe7b3cc64d4b0" prot="public">
+          <name>RIDE_CYMBAL_2</name>
+          <initializer>=   59</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a3277e7496d488fad79063c8579263ef9" prot="public">
+          <name>HIGH_BONGO</name>
+          <initializer>=   60</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a2dd14c018056a50c81348bd714a50733" prot="public">
+          <name>LOW_BONGO</name>
+          <initializer>=   61</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a991b4677bfeb166b0dca279bd45cb00f" prot="public">
+          <name>MUTE_HIGH_CONGA</name>
+          <initializer>=   62</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a66fc04555333640ca008f7f9237434ff" prot="public">
+          <name>OPEN_HIGH_CONGA</name>
+          <initializer>=   63</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2aa8aeb55171bfff0f72e2b5c40de021e6" prot="public">
+          <name>LOW_CONGA</name>
+          <initializer>=   64</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a4d7f9092b1378343bc1033aaf315ba33" prot="public">
+          <name>HIGH_TIMBALE</name>
+          <initializer>=   65</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2ab43732348f7d16b8b0e37ba6be084942" prot="public">
+          <name>LOW_TIMBALE</name>
+          <initializer>=   66</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a8376c91b82f1e13c4421c018504ef04b" prot="public">
+          <name>HIGH_AGOGO</name>
+          <initializer>=   67</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a4d7ce63d8ec849a524c8e59b27c4cf99" prot="public">
+          <name>LOW_AGOGO</name>
+          <initializer>=   68</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a41b93634ff0d8a2a4e1f6eaf235693a8" prot="public">
+          <name>CABASA</name>
+          <initializer>=   69</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2accef62152c5388513e7e21309d2fe564" prot="public">
+          <name>MARACAS</name>
+          <initializer>=   70</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2aa5f5777417348881eca5fe05053aaeb5" prot="public">
+          <name>SHORT_WHISTLE</name>
+          <initializer>=   71</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a7e8304d5d6ffffb06e00c2a44ddcc53e" prot="public">
+          <name>LONG_WHISTLE</name>
+          <initializer>=   72</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a3daf7457ad7ab28acbf45cc25b6eeb77" prot="public">
+          <name>SHORT_GUIRO</name>
+          <initializer>=   73</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a3830132dfc95adc8bd7729e2fdd5fa69" prot="public">
+          <name>LONG_GUIRO</name>
+          <initializer>=   74</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a605e311e812bca2242fcd111bbfaff30" prot="public">
+          <name>CLAVES</name>
+          <initializer>=   75</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a54dcdf53d79bd63624b7c5ef7b74881c" prot="public">
+          <name>HIGH_WOOD_BLOCK</name>
+          <initializer>=   76</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a175d9c1ea2a128bb0a1321384e6f1d1d" prot="public">
+          <name>LOW_WOOD_BLOCK</name>
+          <initializer>=   77</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a418db27bf6052ebed7aee963038a5b28" prot="public">
+          <name>MUTE_CUICA</name>
+          <initializer>=   78</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2ab6d5f4ef4a233cc97a00e9742c5cf0a6" prot="public">
+          <name>OPEN_CUICA</name>
+          <initializer>=   79</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2add611832276a56ea645fc4d462b29843" prot="public">
+          <name>MUTE_TRIANGLE</name>
+          <initializer>=   80</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_bean_midi_8h_1aca25b1052548f080ddcacf8eca726ed2a08f81fb34e7a76fcc5dba8b5a9af7c5b" prot="public">
+          <name>OPEN_TRIANGLE</name>
+          <initializer>=   81</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="233" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanMidi.h" bodystart="233" bodyend="281"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_bean_midi_8h_1a5e644fa0aa2721a816bb62521ab8a975" prot="public" static="no" mutable="no">
+        <type><ref refid="class_bean_midi_class" kindref="compound">BeanMidiClass</ref></type>
+        <definition>BeanMidiClass BeanMidi</definition>
+        <argsstring></argsstring>
+        <name>BeanMidi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanMidi.h" line="403" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>BEAN_MIDI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BEAN_MIDI_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL0<sp/>=<sp/>0x00,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL1<sp/>=<sp/>0x01,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL2<sp/>=<sp/>0x02,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL3<sp/>=<sp/>0x03,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL4<sp/>=<sp/>0x04,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL5<sp/>=<sp/>0x05,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL6<sp/>=<sp/>0x06,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL7<sp/>=<sp/>0x07,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL8<sp/>=<sp/>0x08,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL9<sp/>=<sp/>0x09,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL10<sp/>=<sp/>0x0A,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL11<sp/>=<sp/>0x0B,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL12<sp/>=<sp/>0x0C,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL13<sp/>=<sp/>0x0D,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL14<sp/>=<sp/>0x0E,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL15<sp/>=<sp/>0x0F</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}midiChannels;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>0,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Csn1<sp/><sp/><sp/>=<sp/><sp/><sp/>1,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Dn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>2,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Dsn1<sp/><sp/><sp/>=<sp/><sp/><sp/>3,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_En1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>4,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>5,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fsn1<sp/><sp/><sp/>=<sp/><sp/><sp/>6,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>7,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gsn1<sp/><sp/><sp/>=<sp/><sp/><sp/>8,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_An1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>9,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Asn1<sp/><sp/><sp/>=<sp/><sp/><sp/>10,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Bn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>11,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>12,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs0<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>13,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>14,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds0<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>15,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>16,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>17,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs0<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>18,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>19,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs0<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>20,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>21,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As0<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>22,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B0<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>23,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>24,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>25,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>26,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>27,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>28,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>29,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>30,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>31,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>32,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>33,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>34,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>35,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>36,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>37,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>38,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>39,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>40,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>41,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>42,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>43,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>44,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>45,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>46,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>47,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>48,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs3<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>49,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>50,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds3<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>51,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>52,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>53,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs3<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>54,</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>55,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs3<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>56,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>57,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As3<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>58,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B3<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>59,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>60,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs4<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>61,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>62,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds4<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>63,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>64,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>65,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs4<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>66,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>67,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs4<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>68,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>69,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As4<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>70,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B4<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>71,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>72,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs5<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>73,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>74,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds5<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>75,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>76,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>77,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs5<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>78,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>79,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs5<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>80,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>81,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As5<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>82,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B5<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>83,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>84,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs6<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>85,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>86,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds6<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>87,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>88,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>89,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs6<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>90,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>91,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs6<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>92,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>93,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As6<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>94,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B6<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>95,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>96,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs7<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>97,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>98,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds7<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>99,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>100,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>101,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs7<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>102,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>103,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs7<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>104,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>105,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As7<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>106,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B7<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>107,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>108,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs8<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>109,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>110,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds8<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>111,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>112,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>113,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs8<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>114,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>115,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs8<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>116,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>117,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As8<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>118,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B8<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>119,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_C9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>120,</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cs9<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>121,</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_D9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>122,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Ds9<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>123,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_E9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>124,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_F9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>125,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Fs9<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>126,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_G9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>127,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Gs9<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>128,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_A9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>129,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_As9<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>130,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_B9<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>131,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}midiNotes;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>High<sp/>resolution<sp/>Continuous<sp/>Controllers<sp/>MSB<sp/>(+32<sp/>for<sp/>LSB)<sp/>----------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>BANKSELECT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>MODULATIONWHEEL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>BREATHCONTROLLER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>FOOTCONTROLLER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>PORTAMENTOTIME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>DATAENTRY<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNELVOLUME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>7,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>BALANCE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>PAN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>EXPRESSIONCONTROLLER<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>11,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTCONTROL1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>12,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTCONTROL2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>13,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER1<sp/><sp/><sp/>=<sp/>16,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER2<sp/><sp/><sp/>=<sp/>17,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER3<sp/><sp/><sp/>=<sp/>18,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER4<sp/><sp/><sp/>=<sp/>19,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>SUSTAIN<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>64,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>PORTAMENTO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>65,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>SOSTENUTO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>66,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>SOFTPEDAL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>67,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>LEGATO<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>68,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>HOLD<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>69,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>70,</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>71,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>72,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>73,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>74,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER6<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>75,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>76,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>77,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>78,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>SOUNDCONTROLLER10<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>79,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER5<sp/><sp/><sp/>=<sp/>80,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER6<sp/><sp/><sp/>=<sp/>81,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER7<sp/><sp/><sp/>=<sp/>82,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERALPURPOSECONTROLLER8<sp/><sp/><sp/>=<sp/>83,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>PORTAMENTOCONTROL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>84,</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTS1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>91,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTS2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>92,</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTS3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>93,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTS4<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>94,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>EFFECTS5<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>95,</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>ALLSOUNDOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>120,</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>RESETALLCONTROLLERS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>121,</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>LOCALCONTROL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>122,</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>ALLNOTESOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>123,</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>OMNIMODEOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>124,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>OMNIMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>125,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>MONOMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>126,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>POLYMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>127</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}midiControlChange;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTEOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x80,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x90,</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>POLYPHONICPRESSURE<sp/><sp/>=<sp/>0xA0,</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>CONTROLCHANGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xB0,</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>PROGRAMCHANGE<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xC0,</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNELPRESSURE<sp/><sp/><sp/><sp/><sp/>=<sp/>0xD0,</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>PITCHBENDCHANGE<sp/><sp/><sp/><sp/><sp/>=<sp/>0xE0,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>SYSTEMCOMMON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF0,</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>SYSTEMREALTIME<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF8</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}midiMessageTypes;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>BASS_DRUM_2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>35,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>BASS_DRUM_1<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>36,</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>SIDE_STICK<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>37,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>SNARE_DRUM_1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>38,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>HAND_CLAP<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>39,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>SNARE_DRUM_2<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>40,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_TOM_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>41,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>CLOSED_HIHAT<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>42,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_TOM_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>43,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>PEDAL_HIHAT<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>44,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>MID_TOM_2<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>45,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_HIHAT<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>46,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>MID_TOM_1<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>47,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_TOM_2<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>48,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>CRASH_CYMBAL_1<sp/><sp/>=<sp/><sp/><sp/>49,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_TOM_1<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>50,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>RIDE_CYMBAL_1<sp/><sp/><sp/>=<sp/><sp/><sp/>51,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>CHINESE_CYMBAL<sp/><sp/>=<sp/><sp/><sp/>52,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>RIDE_BELL<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>53,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>TAMBOURINE<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>54,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>SPLASH_CYMBAL<sp/><sp/><sp/>=<sp/><sp/><sp/>55,</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>COWBELL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>56,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>CRASH_CYMBAL_2<sp/><sp/>=<sp/><sp/><sp/>57,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>VIBRA_SLAP<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>58,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>RIDE_CYMBAL_2<sp/><sp/><sp/>=<sp/><sp/><sp/>59,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_BONGO<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>60,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_BONGO<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>61,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>MUTE_HIGH_CONGA<sp/>=<sp/><sp/><sp/>62,</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_HIGH_CONGA<sp/>=<sp/><sp/><sp/>63,</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_CONGA<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>64,</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_TIMBALE<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>65,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_TIMBALE<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>66,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_AGOGO<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>67,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_AGOGO<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>68,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>CABASA<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>69,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>MARACAS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>70,</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>SHORT_WHISTLE<sp/><sp/><sp/>=<sp/><sp/><sp/>71,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>LONG_WHISTLE<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>72,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>SHORT_GUIRO<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>73,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>LONG_GUIRO<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>74,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>CLAVES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>75,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH_WOOD_BLOCK<sp/>=<sp/><sp/><sp/>76,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>LOW_WOOD_BLOCK<sp/><sp/>=<sp/><sp/><sp/>77,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>MUTE_CUICA<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>78,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_CUICA<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>79,</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>MUTE_TRIANGLE<sp/><sp/><sp/>=<sp/><sp/><sp/>80,</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_TRIANGLE<sp/><sp/><sp/>=<sp/><sp/><sp/>81</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}midiDrums;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284" refid="class_bean_midi_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_midi_class" kindref="compound">BeanMidiClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="293"></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a526f499963ba700b7b3605ad5c583f8a" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1acfb35f85288cf76b4a69615a7c2f7c65" kindref="member">isEnabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1acaede888f073a393a35170571ff7a907" kindref="member">disable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a6aa7b50926b79b300f0432f249714bbe" kindref="member">sendMessage</ref>(uint8_t<sp/>*buff,<sp/>uint8_t<sp/>numBytes);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a6aa7b50926b79b300f0432f249714bbe" kindref="member">sendMessage</ref>(uint8_t<sp/>status,<sp/>uint8_t<sp/>byte1,<sp/>uint8_t<sp/>byte2);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a93453d829ea9cc9814b29358c7214e44" kindref="member">readMessage</ref>(uint8_t<sp/>*status,<sp/>uint8_t<sp/>*byte1,<sp/>uint8_t<sp/>*byte2);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a22ea30a681afb82addbd7b5c9e2106c4" kindref="member">sendMessages</ref>();</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a9a7e91ea694b3e66ddc651afedbc5486" kindref="member">loadMessage</ref>(uint8_t<sp/>*buff,<sp/>uint8_t<sp/>numBytes);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a9a7e91ea694b3e66ddc651afedbc5486" kindref="member">loadMessage</ref>(uint8_t<sp/>status,<sp/>uint8_t<sp/>byte1,<sp/>uint8_t<sp/>byte2);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1ac584656a010e61088bce9b003491fa91" kindref="member">noteOn</ref>(midiChannels<sp/>channel,<sp/>uint8_t<sp/>note,<sp/>uint8_t<sp/>volume);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a65adbd3023f9fa4f3adabba90d95c6d4" kindref="member">noteOff</ref>(midiChannels<sp/>channel,<sp/>uint8_t<sp/>note,<sp/>uint8_t<sp/>volume);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1af4f3a26f920cf69f5d04433b8b40a796" kindref="member">pitchBend</ref>(midiChannels<sp/>channel,<sp/>uint16_t<sp/>value);</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class_1a265fa91fe46fffedb371adae3749e6f4" kindref="member">sustain</ref>(midiChannels<sp/>channel,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isOn);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_midi_class" kindref="compound">BeanMidiClass</ref><sp/>BeanMidi;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="hardware/bean/avr/cores/bean/BeanMidi.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,298 @@
+\hypertarget{class_bean_midi_class}{}\section{Bean\+Midi\+Class Class Reference}
+\label{class_bean_midi_class}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsection*{Public Member Functions}
+\begin{Indent}{\bf M\+I\+D\+I}\par
+{\em Read and write M\+I\+D\+I packets via Bluetooth Low Energy. This profile uses Apple\textquotesingle{}s \href{https://developer.apple.com/library/ios/documentation/MusicAudio/Reference/CACoreMIDIRef/index.html}{\tt Core Midi Framework} to act as a musical instrument. The Bean can send midi messages to an app like garage band to emulate diferent instruments. A list of different types of M\+I\+D\+I messages can be found \href{https://www.midi.org/specifications/item/table-1-summary-of-midi-message}{\tt here} }\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_bean_midi_class_a526f499963ba700b7b3605ad5c583f8a}{enable} (void)
+\item 
+bool \hyperlink{class_bean_midi_class_acfb35f85288cf76b4a69615a7c2f7c65}{is\+Enabled} (void)
+\item 
+void \hyperlink{class_bean_midi_class_acaede888f073a393a35170571ff7a907}{disable} (void)
+\item 
+int \hyperlink{class_bean_midi_class_a6aa7b50926b79b300f0432f249714bbe}{send\+Message} (uint8\+\_\+t $\ast$buff, uint8\+\_\+t num\+Bytes)
+\item 
+int \hyperlink{class_bean_midi_class_a933dfbfd846731f38fc5fbb11ee7c697}{send\+Message} (uint8\+\_\+t status, uint8\+\_\+t byte1, uint8\+\_\+t byte2)
+\item 
+int \hyperlink{class_bean_midi_class_a93453d829ea9cc9814b29358c7214e44}{read\+Message} (uint8\+\_\+t $\ast$status, uint8\+\_\+t $\ast$byte1, uint8\+\_\+t $\ast$byte2)
+\item 
+int \hyperlink{class_bean_midi_class_a22ea30a681afb82addbd7b5c9e2106c4}{send\+Messages} ()
+\item 
+int \hyperlink{class_bean_midi_class_a9a7e91ea694b3e66ddc651afedbc5486}{load\+Message} (uint8\+\_\+t $\ast$buff, uint8\+\_\+t num\+Bytes)
+\item 
+int \hyperlink{class_bean_midi_class_a310c0bcc3934390f5776b06425e672aa}{load\+Message} (uint8\+\_\+t status, uint8\+\_\+t byte1, uint8\+\_\+t byte2)
+\item 
+void \hyperlink{class_bean_midi_class_ac584656a010e61088bce9b003491fa91}{note\+On} (midi\+Channels channel, uint8\+\_\+t note, uint8\+\_\+t volume)
+\item 
+void \hyperlink{class_bean_midi_class_a65adbd3023f9fa4f3adabba90d95c6d4}{note\+Off} (midi\+Channels channel, uint8\+\_\+t note, uint8\+\_\+t volume)
+\item 
+void \hyperlink{class_bean_midi_class_af4f3a26f920cf69f5d04433b8b40a796}{pitch\+Bend} (midi\+Channels channel, uint16\+\_\+t value)
+\item 
+void \hyperlink{class_bean_midi_class_a265fa91fe46fffedb371adae3749e6f4}{sustain} (midi\+Channels channel, bool is\+On)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_bean_midi_class_acaede888f073a393a35170571ff7a907}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!disable@{disable}}
+\index{disable@{disable}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{disable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_acaede888f073a393a35170571ff7a907}
+Disables core Midi functionality on the Bean. \hypertarget{class_bean_midi_class_a526f499963ba700b7b3605ad5c583f8a}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!enable@{enable}}
+\index{enable@{enable}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{enable(void)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a526f499963ba700b7b3605ad5c583f8a}
+Enables core Midi functionality on the Bean.
+
+\subsection*{Examples}
+
+When connected to i\+O\+S\textquotesingle{}s or O\+S\+X\textquotesingle{}s garage band this bean will play through the C Major scale, play a C Major chord, and then bend a note up. The Bean will also listen for incoming Core Midi messages. If you have an app that can send core midi messages to B\+L\+E peripherals, the Bean\textquotesingle{}s green L\+E\+D will blink.
+
+
+\begin{DoxyCodeInclude}
+1 void setup() \{
+2   // We don't have to do anything here
+3 \}
+4 
+5 // C Major Scale
+6 char scale[8] = \{NOTE\_C4, NOTE\_D4, NOTE\_E4, NOTE\_F4,
+7                  NOTE\_G4, NOTE\_A4, NOTE\_B4, NOTE\_C5\};
+8 
+9 void loop() \{
+10   // play the C Major scale
+11   for (int i = 0; i < 8; i++) \{
+12     BeanMidi.noteOn(CHANNEL1, scale[i], 60);
+13     delay(1000);
+14     BeanMidi.noteOff(CHANNEL1, scale[i], 60);
+15     checkMidi();
+16   \}
+17 
+18   // C Major chord
+19   BeanMidi.noteOn(CHANNEL1, NOTE\_C4, 60);
+20   BeanMidi.noteOn(CHANNEL1, NOTE\_E4, 60);
+21   BeanMidi.noteOn(CHANNEL1, NOTE\_G4, 60);
+22   delay(2000);
+23   BeanMidi.noteOff(CHANNEL1, NOTE\_C4, 60);
+24   BeanMidi.noteOff(CHANNEL1, NOTE\_E4, 60);
+25   BeanMidi.noteOff(CHANNEL1, NOTE\_G4, 60);
+26 
+27   // pitch bend
+28   BeanMidi.noteOn(CHANNEL1, 60, 70);
+29   delay(1000);
+30   BeanMidi.pitchBend(CHANNEL1, 0x2500);
+31   delay(1000);
+32   BeanMidi.pitchBend(CHANNEL1, 0x2000);
+33   delay(1000);
+34   BeanMidi.noteOff(CHANNEL1, 60, 0);
+35 
+36   checkMidi();
+37 \}
+38 
+39 // Poll MIDI to check if new messages have arrived
+40 void checkMidi() \{
+41   uint8\_t stat, byte1, byte2;
+42   if (BeanMidi.readMessage(&stat, &byte1, &byte2)) \{
+43     Bean.setLedGreen(130);
+44     delay(50);
+45     Bean.setLedGreen(0);
+46   \}
+47 \}
+\end{DoxyCodeInclude}
+ \hypertarget{class_bean_midi_class_acfb35f85288cf76b4a69615a7c2f7c65}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!is\+Enabled@{is\+Enabled}}
+\index{is\+Enabled@{is\+Enabled}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{is\+Enabled(void)}]{\setlength{\rightskip}{0pt plus 5cm}bool Bean\+Midi\+Class\+::is\+Enabled (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_acfb35f85288cf76b4a69615a7c2f7c65}
+\begin{DoxyReturn}{Returns}
+true if Midi is currently enabled 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a9a7e91ea694b3e66ddc651afedbc5486}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!load\+Message@{load\+Message}}
+\index{load\+Message@{load\+Message}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{load\+Message(uint8\+\_\+t $\ast$buff, uint8\+\_\+t num\+Bytes)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::load\+Message (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{buff, }
+\item[{uint8\+\_\+t}]{num\+Bytes}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a9a7e91ea694b3e66ddc651afedbc5486}
+Loads a message into the Midi buffer for sending using the \hyperlink{class_bean_midi_class_a22ea30a681afb82addbd7b5c9e2106c4}{send\+Messages()} function 
+\begin{DoxyParams}{Parameters}
+{\em buff} & a buffer of Midi messages. Will only send Midi messages in groups of 3. Must conform to the \href{https://www.midi.org/specifications/item/table-1-summary-of-midi-message}{\tt Midi spec}. \\
+\hline
+{\em num\+Bytes} & length of buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of bytes successfully loaded 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a310c0bcc3934390f5776b06425e672aa}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!load\+Message@{load\+Message}}
+\index{load\+Message@{load\+Message}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{load\+Message(uint8\+\_\+t status, uint8\+\_\+t byte1, uint8\+\_\+t byte2)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::load\+Message (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{status, }
+\item[{uint8\+\_\+t}]{byte1, }
+\item[{uint8\+\_\+t}]{byte2}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a310c0bcc3934390f5776b06425e672aa}
+Loads a message into the Midi buffer for sending using the \hyperlink{class_bean_midi_class_a22ea30a681afb82addbd7b5c9e2106c4}{send\+Messages()} function 
+\begin{DoxyParams}{Parameters}
+{\em status} & the status byte signifying the type of message \\
+\hline
+{\em byte1} & the first data byte of the midi message \\
+\hline
+{\em byte2} & the second data byte of the midi message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if bytes successfully loaded 0 if unsuccessful 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a65adbd3023f9fa4f3adabba90d95c6d4}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!note\+Off@{note\+Off}}
+\index{note\+Off@{note\+Off}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{note\+Off(midi\+Channels channel, uint8\+\_\+t note, uint8\+\_\+t volume)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::note\+Off (
+\begin{DoxyParamCaption}
+\item[{midi\+Channels}]{channel, }
+\item[{uint8\+\_\+t}]{note, }
+\item[{uint8\+\_\+t}]{volume}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a65adbd3023f9fa4f3adabba90d95c6d4}
+Turns a specific note off for a specified midi channel. 
+\begin{DoxyParams}{Parameters}
+{\em channel} & takes a channel 0-\/15 or specified by midi\+Channels \\
+\hline
+{\em note} & takes a note from 0-\/127, can also take types midi\+Notes and midi\+Drums \\
+\hline
+{\em volume} & takes a volume values of 0-\/127 \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_midi_class_ac584656a010e61088bce9b003491fa91}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!note\+On@{note\+On}}
+\index{note\+On@{note\+On}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{note\+On(midi\+Channels channel, uint8\+\_\+t note, uint8\+\_\+t volume)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::note\+On (
+\begin{DoxyParamCaption}
+\item[{midi\+Channels}]{channel, }
+\item[{uint8\+\_\+t}]{note, }
+\item[{uint8\+\_\+t}]{volume}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_ac584656a010e61088bce9b003491fa91}
+Turns a specific note on for a specified midi channel. The note will ring out until silenced via note\+Off. 
+\begin{DoxyParams}{Parameters}
+{\em channel} & takes a channel 0-\/15 or specified by midi\+Channels \\
+\hline
+{\em note} & takes a note from 0-\/127, can also take types midi\+Notes and midi\+Drums \\
+\hline
+{\em volume} & takes a volume values of 0-\/127 \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_midi_class_af4f3a26f920cf69f5d04433b8b40a796}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!pitch\+Bend@{pitch\+Bend}}
+\index{pitch\+Bend@{pitch\+Bend}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{pitch\+Bend(midi\+Channels channel, uint16\+\_\+t value)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::pitch\+Bend (
+\begin{DoxyParamCaption}
+\item[{midi\+Channels}]{channel, }
+\item[{uint16\+\_\+t}]{value}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_af4f3a26f920cf69f5d04433b8b40a796}
+Bends the pitch of a note up or down 
+\begin{DoxyParams}{Parameters}
+{\em channel} & takes a channel 0-\/15 or specified by midi\+Channels  takes a pitch bend value from 0-\/16383 where 0x2000 is the middle or the true value of the note. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_bean_midi_class_a93453d829ea9cc9814b29358c7214e44}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!read\+Message@{read\+Message}}
+\index{read\+Message@{read\+Message}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{read\+Message(uint8\+\_\+t $\ast$status, uint8\+\_\+t $\ast$byte1, uint8\+\_\+t $\ast$byte2)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::read\+Message (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{status, }
+\item[{uint8\+\_\+t $\ast$}]{byte1, }
+\item[{uint8\+\_\+t $\ast$}]{byte2}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a93453d829ea9cc9814b29358c7214e44}
+Reads a single incoming Midi message. 
+\begin{DoxyParams}{Parameters}
+{\em pointer} & to the status the status byte signifying the type of message \\
+\hline
+{\em pointer} & to the byte1 the first data byte of the midi message \\
+\hline
+{\em pointer} & to the byte2 the second data byte of the midi message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Midi status/timestamp byte 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a6aa7b50926b79b300f0432f249714bbe}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{send\+Message(uint8\+\_\+t $\ast$buff, uint8\+\_\+t num\+Bytes)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::send\+Message (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{buff, }
+\item[{uint8\+\_\+t}]{num\+Bytes}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a6aa7b50926b79b300f0432f249714bbe}
+Loads and sends a buffer of Midi messages. 
+\begin{DoxyParams}{Parameters}
+{\em buff} & a buffer of Midi messages. Will only send Midi messages in groups of 3. Must conform to the \href{https://www.midi.org/specifications/item/table-1-summary-of-midi-message}{\tt Midi spec}. \\
+\hline
+{\em num\+Bytes} & length of buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of Midi bytes sent, 0 if there are none to be sent 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a933dfbfd846731f38fc5fbb11ee7c697}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{send\+Message(uint8\+\_\+t status, uint8\+\_\+t byte1, uint8\+\_\+t byte2)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::send\+Message (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{status, }
+\item[{uint8\+\_\+t}]{byte1, }
+\item[{uint8\+\_\+t}]{byte2}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a933dfbfd846731f38fc5fbb11ee7c697}
+Loads and sends a single Midi message. 
+\begin{DoxyParams}{Parameters}
+{\em status} & the status byte signifying the type of message \\
+\hline
+{\em byte1} & the first data byte of the midi message \\
+\hline
+{\em byte2} & the second data byte of the midi message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of Midi bytes sent, 0 if there are none to be sent 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a22ea30a681afb82addbd7b5c9e2106c4}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!send\+Messages@{send\+Messages}}
+\index{send\+Messages@{send\+Messages}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{send\+Messages()}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Midi\+Class\+::send\+Messages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a22ea30a681afb82addbd7b5c9e2106c4}
+Sends Midi messages after they have been loaded to the midi buffer using \hyperlink{class_bean_midi_class_a9a7e91ea694b3e66ddc651afedbc5486}{load\+Message()} commands.
+
+The buffer has a maximum size of 20 messages before it must be dumped or sent using this function.
+
+\begin{DoxyReturn}{Returns}
+number of Midi bytes sent, 0 if there are none to be sent 
+\end{DoxyReturn}
+\hypertarget{class_bean_midi_class_a265fa91fe46fffedb371adae3749e6f4}{}\index{Bean\+Midi\+Class@{Bean\+Midi\+Class}!sustain@{sustain}}
+\index{sustain@{sustain}!Bean\+Midi\+Class@{Bean\+Midi\+Class}}
+\subsubsection[{sustain(midi\+Channels channel, bool is\+On)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Midi\+Class\+::sustain (
+\begin{DoxyParamCaption}
+\item[{midi\+Channels}]{channel, }
+\item[{bool}]{is\+On}
+\end{DoxyParamCaption}
+)}\label{class_bean_midi_class_a265fa91fe46fffedb371adae3749e6f4}
+Enables or disables sustain for the midi channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & takes a channel 0-\/15 or specified by midi\+Channels \\
+\hline
+{\em is\+On} & set to true to enable sustain and false to disable \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+hardware/bean/avr/cores/bean/Bean\+Midi.\+h\end{DoxyCompactItemize}

@@ -106,7 +106,7 @@ class BeanClass {
 
   /**
    *  Enable accelerometer interrupts
-   *  
+   *
    *  @param accepts an event of type AccelEventTypes
    */
   void enableMotionEvent(AccelEventTypes events);
@@ -118,7 +118,7 @@ class BeanClass {
 
   /**
    *  Checks to see if a particular acclerometer interrupt has occured.  If the event occurs it sets a flag that can only be cleared by reading this function.
-   *  
+   *
    *  @param accepts an event of type AccelEventTypes
    *
    *  # Examples
@@ -174,9 +174,9 @@ class BeanClass {
    *  @return the number of bytes actually read
    *
    *  # Examples
-   *  
+   *
    *  This example uses a Bean as a motion alarm by reading/writing to the accelerometer register directly:
-   * 
+   *
    *  @include accelerometer/accelRegisterWrite.ino
    */
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
@@ -192,9 +192,9 @@ class BeanClass {
    *  Configure the sensitivity of the Bean accelerometer.
    *
    *  @param range 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g
-   * 
+   *
    *  # Examples
-   * 
+   *
    *  This example prints out the acceleration values associated with high and low g-force values:
    *
    *  @include accelerometer/getAccelerationRange.ino
@@ -529,7 +529,7 @@ class BeanClass {
   const char *getBeanName(void);
 
   /**
-   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates 
+   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates
    *  and can also be useful for increasing beacon advertisement rates.
    *  @param interval_ms length of advertisement interval in milliseconds.  Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS
    */
@@ -597,7 +597,7 @@ class BeanClass {
    *  The data can be chained together into the single buffer up to the maxiumum length.
    *  For example:
    *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
-   *  
+   *
    *  @param buf a buffer full of data to advertise
    *  @param len the length of the buffer
    *
@@ -643,7 +643,7 @@ class BeanClass {
    *  @param major_id The minor ID of the iBeacon
    *
    *  # Examples
-   *  
+   *
    *  This example configures iBeacon and uses the Bean only to advertise and transmit iBeacon data:
    *
    *  @include beacon/setBeaconParameters.ino
@@ -680,10 +680,10 @@ class BeanClass {
    *  @return a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V
    *
    *  # Examples
-   * 
+   *
    *  This example will display a Bean's respective current battery level and voltage every 5 seconds:
    *
-   *  @include battery/batteryLevel.ino
+   *  @include battery/getBatteryLevel.ino
    */
   uint16_t getBatteryVoltage(void);
   ///@}
@@ -703,7 +703,7 @@ class BeanClass {
    *  # Examples
    *
    *  This example changes the color of the LED based on the temperature reading of the Bean:
-   *  
+   *
    *  @include temperature/getTemperature.ino
    */
   int8_t getTemperature(void);
@@ -728,10 +728,10 @@ class BeanClass {
    *  @return true if a device is connected, false otherwise
    *
    *  # Examples
-   *  
+   *
    *  This example blinks the LED on the Bean green if connected, red if disconnected:
    *
-   *  @include getConnectionState.ino
+   *  @include connection/getConnectionState.ino
    */
   bool getConnectionState(void);
   ///@}
@@ -780,7 +780,7 @@ class BeanClass {
    *  @param pin the pairing PIN to set, from 000000 to 999999
    *
    *  # Examples
-   *  
+   *
    *  This example sets a pairing PIN of 123456 for future connections:
    *
    *  @include pairing/setPairingPin.ino

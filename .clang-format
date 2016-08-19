@@ -1,0 +1,6 @@
+---
+# To see the actual lint settings that are being set by this file, run:
+#     clang-format -dump-config
+BasedOnStyle: Google
+ColumnLimit:     100
+---

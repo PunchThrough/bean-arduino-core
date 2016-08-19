@@ -1,2 +1,6 @@
 .DS_Store
 *.pyc
+.idea/
+node_modules/
+docs/build/
+.publish/

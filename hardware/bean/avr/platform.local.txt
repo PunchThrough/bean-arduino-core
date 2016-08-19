@@ -56,7 +56,7 @@ recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -m
 recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.S.flags} -mmcu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
 
 ## Create archives
-recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{build.path}/{archive_file}" "{object_file}"
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
 ## Combine gc-sections, archives, and objects
 recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" "-L{build.path}" -lm
@@ -82,13 +82,13 @@ tools.beanupload.cmd.path={path}/hardware/tools/bean
 
 tools.beanupload.upload.params.verbose=-v
 tools.beanupload.upload.params.quiet=-q
-tools.beanupload.upload.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}"
-tools.beanupload.upload.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}"
+tools.beanupload.upload.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
+tools.beanupload.upload.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
 
 tools.beanupload.program.params.verbose=-v
 tools.beanupload.program.params.quiet=-q
-tools.beanupload.program.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}"
-tools.beanupload.program.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}"
+tools.beanupload.program.pattern.windows="{cmd.path}\WinBeanPostScript.exe" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
+tools.beanupload.program.pattern="{cmd.path}/post_compile" "-board={build.mcu}" "-tools={cmd.path}" "-path={build.path}" "-file={build.project_name}" "-bean_variant={build.bean_variant}"
 
 # USB Default Flags
 # Default blank usb manufacturer will be filled it at compile time

@@ -1,0 +1,43 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+machine:
+  python:
+    version: 2.7.10
+  node:
+    version: 0.12.0
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
+dependencies:
+  cache_directories:
+    - ~/.platformio
+  override:
+    - pip install cpplint
+    # Used for deployment
+    - sudo apt-get update
+    - sudo apt-get install doxygen
+    - npm install
+    # Don't install PlatformIO if it's already been set up; it takes forever
+    - if [ ! -f "~/.platformio/appstate.json" ]; then tests/setup_platformio.sh; fi
+
+test:
+  override:
+    - tests/lint_all.py --lint
+    - tests/compile_all.py
+  post:
+    - make docs
+    - mv docs $CIRCLE_ARTIFACTS
+
+deployment:
+  release:  # docs are released when master is updated
+    branch: master
+    commands:
+      - git config --global user.email 'circleci@punchthrough.com'
+      - git config --global user.name 'CircleCI Automated Build'
+      - npm run gulp deploy

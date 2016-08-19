@@ -1,6 +1,6 @@
 [submodule "hardware/bean/avr/cores/bean/applicationMessageHeaders"]
 	path = hardware/bean/avr/cores/bean/applicationMessageHeaders
-	url = git@bitbucket.org:punchthroughdesign/bean-application-message-definitions.git
+	url = https://bitbucket.org/punchthroughdesign/bean-application-message-definitions.git
 [submodule "hardware/bean/avr/libraries/PinChangeInt"]
 	path = hardware/bean/avr/libraries/PinChangeInt
 	url = https://github.com/PunchThrough/PinChangeInt.git

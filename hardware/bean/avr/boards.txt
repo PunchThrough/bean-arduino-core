@@ -1,4 +1,4 @@
-bean.name=LightBlue Bean
+bean.name=LightBlue Bean (1.8.0-beta1)
 bean.upload.tool=beanupload
 bean.upload.protocol=ptdble
 bean.upload.maximum_size=32256
@@ -11,7 +11,7 @@ bean.build.variant=bean
 bean.build.bean_variant=1
 bean.build.board=AVR_UNO
 
-beanplus.name=LightBlue Bean+
+beanplus.name=LightBlue Bean+ (1.8.0-beta1)
 beanplus.upload.tool=beanupload
 beanplus.upload.protocol=ptdble
 beanplus.upload.maximum_size=32256

@@ -27,38 +27,31 @@
 
 #include <avr/pgmspace.h>
 
-#define NUM_DIGITAL_PINS            6
-#define NUM_ANALOG_INPUTS           2
-#define analogInputToDigitalPin(p)  ((p < 6) ? (p) + 14 : -1)
+#define NUM_DIGITAL_PINS            10
+#define NUM_ANALOG_INPUTS           6
+#define analogInputToDigitalPin(p)  ((p < NUM_DIGITAL_PINS) ? (p) + NUM_DIGITAL_PINS : -1)
 
-#if defined(__AVR_ATmega8__)
-#define digitalPinHasPWM(p)         ((p) == 9 || (p) == 10 || (p) == 11)
-#else
-#define digitalPinHasPWM(p)         ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
-#endif
+#define digitalPinHasPWM(p)         ((p) == 2 || (p) == 5 || (p) == 6 || (p) == 7)
 
-  #define IS_BEAN (1)
+static const uint8_t SS   = 6;
+static const uint8_t MOSI = 7;
+static const uint8_t MISO = 8;
+static const uint8_t SCK  = 9;
 
-static const uint8_t SS   = 2;
-static const uint8_t MOSI = 3;
-static const uint8_t MISO = 4;
-static const uint8_t SCK  = 5;
+static const uint8_t SDA = 14;
+static const uint8_t SCL = 15;
+//static const uint8_t LED_BUILTIN = 13;
 
-static const uint8_t SDA = 18;
-static const uint8_t SCL = 19;
-static const uint8_t LED_BUILTIN = 13;
+static const uint8_t A0 = 10;
+static const uint8_t A1 = 11;
+static const uint8_t A2 = 12;
+static const uint8_t A3 = 13;
+static const uint8_t A4 = 14;
+static const uint8_t A5 = 15;
 
-static const uint8_t A0 = 18; // remapped for Bean (swapped with A4)
-static const uint8_t A1 = 19; // remapped for Bean (swapped with A5)
-static const uint8_t A2 = 16;
-static const uint8_t A3 = 17;
-static const uint8_t A4 = 14; // remapped for Bean (swapped with A0)
-static const uint8_t A5 = 15; // remapped for Bean (swapped with A1)
-static const uint8_t A6 = 20;
-static const uint8_t A7 = 21;
+static const uint8_t CC_INTERRUPT_PIN = 16;
 
-static const uint8_t CC_INTERRUPT_PIN = 13;
-
+// TODO - I don't know what this stuff is
 #define digitalPinToPCICR(p)    (((p) >= 0 && (p) <= 21) ? (&PCICR) : ((uint8_t *)0))
 #define digitalPinToPCICRbit(p) (((p) <= 7) ? 2 : (((p) <= 13) ? 0 : 1))
 #define digitalPinToPCMSK(p)    (((p) <= 7) ? (&PCMSK2) : (((p) <= 13) ? (&PCMSK0) : (((p) <= 21) ? (&PCMSK1) : ((uint8_t *)0))))
@@ -134,72 +127,63 @@ const uint16_t PROGMEM port_to_input_PGM[] = {
 };
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
-	PD, /* 0 */ // Swapped With D6 (requires mask change, but no port change)
-	PB,         // Swapped with D9 (no mask change)
-	PB,         // Swapped with D10 (no mask change)
-	PB,         // Swapped with D11 (no mask change)
-	PB,         // Swapped with D12 (no mask change)
-	PB,         // Swapped with D13 (no mask change)
-	PD,         // Swapped with D0 (requires mask change, but no port change)
-	PD,
-	PB, /* 8 */
-	PD,         // Swapped with D1 (no mask change)
-	PD,         // Swapped with D2 (no mask change)
-	PD,         // Swapped with D3 (no mask change)
-	PD,         // Swapped with D4 (no mask change)
-	PD,         // Swapped with D5 (no mask change)
-	PC, /* 14 */
-	PC,
-	PC,
-	PC,
-	PC,
-	PC,
+	PD, 	// D0
+	PD,     // D1    
+	PD,     // D2	PWM    
+	PD,     // D3    
+	PB,     // D4    
+	PB,     // D5	PWM
+	PB,     // D6   PWM 
+	PB,	    // D7	PWM
+	PB,	    // D8
+	PB, 	// D9
+	PC,     // A0
+	PC,	    // A1
+	PC,     // A2
+	PC, 	// A3    
+	PC,	    // A4
+	PC,	    // A5
+	PD,     // CC_INTERRUPT
 };
 
 const uint8_t PROGMEM digital_pin_to_bit_mask_PGM[] = {
-	_BV(6), /* 0, port D */  // swapped for Bean with D6
-	_BV(1),
-	_BV(2),
-	_BV(3),
-	_BV(4),
-	_BV(5),
-	_BV(0),  // Swapped with Bean for D0
-	_BV(7),
-	_BV(0), /* 8, port B */
-	_BV(1),
-	_BV(2),
-	_BV(3),
-	_BV(4),
-	_BV(5),
-	_BV(0), /* 14, port C */
-	_BV(1),
-	_BV(2),
-	_BV(3),
-	_BV(4),
-	_BV(5),
+	_BV(2),	// D0
+	_BV(4),	// D1
+	_BV(6),	// D2	PWM
+	_BV(7),	// D3
+	_BV(0),	// D4
+	_BV(1),	// D5	PWM
+	_BV(2),	// D6	PWM
+	_BV(3),	// D7	PWM
+	_BV(4),	// D8
+	_BV(5),	// D9
+	_BV(0),	// A0
+	_BV(1),	// A1
+	_BV(2),	// A2
+	_BV(3),	// A3
+	_BV(4),	// A4
+	_BV(5),	// A5
+	_BV(5), // D5
 };
 
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
-	TIMER0A, /* 0 - port D */ // Swapped With D6
-	TIMER1A,      // Swapped with D9
-	TIMER1B,      // Swapped with D10
-	TIMER2A,      // Swapped with D11
-	NOT_ON_TIMER, // Swapped with D12
-	NOT_ON_TIMER, // Swapped with D13
-	NOT_ON_TIMER, // Swapped with D0
-	NOT_ON_TIMER,
-	NOT_ON_TIMER, /* 8 - port B */
-	NOT_ON_TIMER, // Swapped with D1
-	NOT_ON_TIMER, // Swapped with D2
-	TIMER2B,      // Swapped with D3
-	NOT_ON_TIMER, // Swapped with D4
-	TIMER0B,      // Swapped with D5
-	NOT_ON_TIMER, /* 14 - port C */
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
-	NOT_ON_TIMER,
+	NOT_ON_TIMER, // D0
+	NOT_ON_TIMER, // D1
+	TIMER0A,      // D2	PWM
+	NOT_ON_TIMER, // D3
+	NOT_ON_TIMER, // D4
+	TIMER1A,      // D5	PWM
+	TIMER1B,      // D6	PWM
+	TIMER2A,      // D7	PWM
+	NOT_ON_TIMER, // D8
+	NOT_ON_TIMER, // D9
+	NOT_ON_TIMER, // A0
+	NOT_ON_TIMER, // A1
+	NOT_ON_TIMER, // A2
+	NOT_ON_TIMER, // A3
+	NOT_ON_TIMER, // A4
+	NOT_ON_TIMER, // A5
+	NOT_ON_TIMER, // CC_INTERRUPT
 };
 
 #endif  // ARDUINO_MAIN

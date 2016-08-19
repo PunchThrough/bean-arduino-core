@@ -4,16 +4,17 @@
 #include "BeanHID.h"
 #include "BeanMidi.h"
 #include "BeanAncs.h"
+#include "bma250.h"
 
 /*
  *  An accelerometer interrupt type, they are as follows:
  *  FLAT_EVENT - triggers when the accelerometer is lying flat on a surface
- *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted in any direction
+ *  ORIENT_EVENT - triggers when the accelerometer is NOT lying flat on a surface, but is tilted *  in any direction
  *  SINGLE_TAP_EVENT - triggers when the accelerometer is tapped once
  *  DOUBLE_TAP_EVENT - triggers when the accelerometer is tapped twice
  *  ANY_MOTION_EVENT - triggers when the accelerometer experiences any change in motion
- *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's sensitivity
- *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational pull
+ *  HIGH_G_EVENT - triggers when the accelerometer experiences a velocity event higher than it's *  sensitivity
+ *  LOW_G_EVENT - triggers when the accelerometer is in free fall or experiences no gravitational *  pull
  */
 typedef enum AccelEventTypes {
   FLAT_EVENT = 0x80,
@@ -105,6 +106,7 @@ class BeanClass {
 
   /**
    *  Enable accelerometer interrupts
+   *  
    *  @param accepts an event of type AccelEventTypes
    */
   void enableMotionEvent(AccelEventTypes events);
@@ -116,7 +118,14 @@ class BeanClass {
 
   /**
    *  Checks to see if a particular acclerometer interrupt has occured.  If the event occurs it sets a flag that can only be cleared by reading this function.
+   *  
    *  @param accepts an event of type AccelEventTypes
+   *
+   *  # Examples
+   *
+   *  This example sets off police lights on the Bean if motion is detected:
+   *
+   *  @include accelerometer/checkMotionEvent.ino
    */
   bool checkMotionEvent(AccelEventTypes events);
 
@@ -150,6 +159,7 @@ class BeanClass {
 
   /**
    *  Low level function for writing directly to the accelerometers registers.
+   *
    *  @param reg the register to write to
    *  @param value the value to write to the register
    */
@@ -157,10 +167,17 @@ class BeanClass {
 
   /**
    *  Low level function for reading the accelerometers register directly
+   *
    *  @param reg the register to read
    *  @param length the number of bytes to read starting at that register
    *  @param value a pointer to a user supplied array to fill with values
    *  @return the number of bytes actually read
+   *
+   *  # Examples
+   *  
+   *  This example uses a Bean as a motion alarm by reading/writing to the accelerometer register directly:
+   * 
+   *  @include accelerometer/accelRegisterWrite.ino
    */
   int accelRegisterRead(uint8_t reg, uint8_t length, uint8_t *value);
 
@@ -175,16 +192,38 @@ class BeanClass {
    *  Configure the sensitivity of the Bean accelerometer.
    *
    *  @param range 2, 4, 8, or 16, corresponding to ±2g, ±4g, ±8g, or ±16g
+   * 
+   *  # Examples
+   * 
+   *  This example prints out the acceleration values associated with high and low g-force values:
+   *
+   *  @include accelerometer/getAccelerationRange.ino
    */
   void setAccelerationRange(uint8_t range);
 
   /**
-   *  Needs docs
+   *  Set power mode of the accelerometer
+   *
+   *  @param mode the power mode of the accelerometer
+   *
+   *  Power modes: Normal mode:     0x00    (~140uA)
+   *               Suspend mode:    0x80    (~0.5uA)
+   *               Low Power 10ms:  0x54    (~16.4uA)
+   *               Low Power 100ms: 0x5A    (~2.3uA)
+   *               Low Power 1s:    0x5E    (~0.7uA)
    */
   void setAccelerometerPowerMode(uint8_t mode);
 
   /**
-   *  Needs docs
+   *  Get power mode of the accelerometer
+   *
+   *  @return the power mode of the accelerometer
+   *
+   *  Power modes: Normal mode:     0x00    (~140uA)
+   *               Suspend mode:    0x80    (~0.5uA)
+   *               Low Power 10ms:  0x54    (~16.4uA)
+   *               Low Power 100ms: 0x5A    (~2.3uA)
+   *               Low Power 1s:    0x5E    (~0.7uA)
    */
   uint8_t getAccelerometerPowerMode();
   ///@}
@@ -199,9 +238,16 @@ class BeanClass {
   /**
    *  Set intensity values for the color channels of the Bean RGB LED. 0 is off and 255 is on.
    *
+   *  @param red the intensity of the red LED. 0 is off and 255 is on.
+   *
+   *  @param green the intensity of the green LED. 0 is off and 255 is on.
+   *
+   *  @param blue the intensity of the blue LED. 0 is off and 255 is on.
+   *
    *  # Examples
    *
    *  This example sets the LED to white (all channels on, full intensity):
+   *
    *  @include led/setLed.ino
    */
   void setLed(uint8_t red, uint8_t green, uint8_t blue);
@@ -214,37 +260,50 @@ class BeanClass {
    *  # Examples
    *
    *  This example shows the usage of the getLed() function and how to interperet the return value.
+   *
    *  @include led/getLed.ino
    */
   LedReading getLed(void);
 
   /**
    *  Get intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @return 0 for off and 255 for on.
    */
   uint8_t getLedRed(void);
 
   /**
    *  Get intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @return 0 for off and 255 for on.
    */
   uint8_t getLedGreen(void);
 
   /**
    *  Get intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @return 0 for off and 255 for on.
    */
   uint8_t getLedBlue(void);
 
   /**
    *  Set intensity of the red channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @param intensity the intensity of the red LED. 0 is off and 255 is on.
    */
   void setLedRed(uint8_t intensity);
 
   /**
    *  Set intensity of the green channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @param intensity the intensity of the green LED. 0 is off and 255 is on.
    */
   void setLedGreen(uint8_t intensity);
 
   /**
    *  Set intensity of the blue channel of the Bean RGB LED. 0 is off and 255 is on.
+   *
+   *  @param intensity the intensity of the blue LED. 0 is off and 255 is on.
    */
   void setLedBlue(uint8_t intensity);
   ///@}
@@ -260,6 +319,7 @@ class BeanClass {
   /**
    *  Listens for advertisements and fills an ObserverAdvertisementInfo message with the first advertisement it sees
    *  This function blocks until it receives a message or times out.
+   *
    *  @param message a pointer to a message object supplied by the user
    *  @param timeout how long in milliseconds to listen for an advertisement
    *  @return -1 if there was a failure, 1 if there was a success
@@ -311,6 +371,7 @@ class BeanClass {
    *  # Examples
    *
    *  This example reads two of Bean's analog pins and writes the values to two scratch characteristics:
+   *
    *  @include scratchChars/setScratchData.ino
    */
   bool setScratchData(uint8_t bank, const uint8_t *data, uint8_t dataLength);
@@ -326,6 +387,7 @@ class BeanClass {
    *  # Examples
    *
    *  This example writes a value to and reads a value from a scratch characteristic:
+   *
    *  @include scratchChars/setScratchNumber.ino
    */
   bool setScratchNumber(uint8_t bank, uint32_t data);
@@ -340,6 +402,7 @@ class BeanClass {
    *  # Examples
    *
    *  This example polls a scratch characteristic and blinks Bean's LED if the value changes:
+   *
    *  @include scratchChars/readScratchData.ino
    */
   ScratchData readScratchData(uint8_t bank);
@@ -349,9 +412,12 @@ class BeanClass {
    *
    *  @param bank         The index of the source scratch char: `1`, `2`, `3`, `4`, or `5`
    *
+   *  @return             The number of the scratch characteristic
+   *
    *  # Examples
    *
    *  This example writes a value to and reads a value from a scratch characteristic:
+   *
    *  @include scratchChars/setScratchNumber.ino
    */
   long readScratchNumber(uint8_t bank);
@@ -402,6 +468,12 @@ class BeanClass {
    *  Enabling keep-awake may signficantly decrease battery life. Use with caution.
    *
    *  @param true to enable keep-awake, false to disable
+   *
+   *  # Examples
+   *
+   *  This example keeps the Bean awake to reduce latency between reading a pinstate and transmitting Bluetooth information:
+   *
+   *  @include awake/keepAwake.ino
    */
   void keepAwake(bool enable);
 
@@ -457,8 +529,8 @@ class BeanClass {
   const char *getBeanName(void);
 
   /**
-   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates
-   and can also be useful for increasing beacon advertisement rates.
+   *  Sets the Beans advertisement interval.  This is useful if you are trying to optimize battery life at the exense of advertisement rates 
+   *  and can also be useful for increasing beacon advertisement rates.
    *  @param interval_ms length of advertisement interval in milliseconds.  Minimum of BEAN_MIN_ADVERTISING_INT_MS and max of BEAN_MAX_ADVERTISING_INT_MS
    */
   void setAdvertisingInterval(uint16_t interval_ms);
@@ -514,7 +586,7 @@ class BeanClass {
   void enableCustom(void);
 
   /**
-   *  Disables custom advertisement
+   *  Disables custom advertisement.
    */
   void disableCustom(void);
 
@@ -525,10 +597,12 @@ class BeanClass {
    *  The data can be chained together into the single buffer up to the maxiumum length.
    *  For example:
    *  [0x02, GAP_ADTYPE_FLAGS, GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED + GAP_ADTYPE_FLAGS_GENERAL, 0x02, GAP_ADTYPE_MANUFACTURER_SPECIFIC, 42, 0x02, GAP_ADTYPE_POWER_LEVEL, 10, ...]
+   *  
    *  @param buf a buffer full of data to advertise
    *  @param len the length of the buffer
    *
    *  # Examples
+   *
    *  This sketch (advertiser.ino) will enable a custom advertisement for the Bean. It will broadcast the following packet:
    *
    *  `{0x02, GAP_ADTYPE_FLAGS (0x01), GAP_ADTYPE_FLAGS_GENERAL | GAP_ADTYPE_FLAGS_BREDR_NOT_SUPPORTED (0x06), 0x03, GAP_ADTYPE_MANUFACTURER_SPECIFIC (0xFF), 0xAC, 0x0n}`
@@ -550,6 +624,8 @@ class BeanClass {
    *
    *  `A495xxxx-C5B1-4B44-B512-1370F02D74DE`
    *
+   *  Major and minor IDs are used to identify the iBeacon with greater accuracy than with the UUID alone, and are both unsigned integers between 0 and 66535
+   *
    *  Using iBeacon features will, by default, write to Bean's NVRAM. The NVRAM has a limited number of writes. Use `enableConfigSave` to store settings temporarily and conserve NVRAM writes.
    */
   ///@{
@@ -565,6 +641,12 @@ class BeanClass {
    *  @param uuid The 16-bit value used to set part of the iBeacon UUID. For example: Passing `0xABCD` to `uuid` will set the Bean's UUID to `A495ABCD-C5B1-4B44-B512-1370F02D74DE`.
    *  @param major_id The major ID of the iBeacon
    *  @param major_id The minor ID of the iBeacon
+   *
+   *  # Examples
+   *  
+   *  This example configures iBeacon and uses the Bean only to advertise and transmit iBeacon data:
+   *
+   *  @include beacon/setBeaconParameters.ino
    */
   void setBeaconParameters(uint16_t uuid, uint16_t major_id, uint16_t minor_id);
 
@@ -596,6 +678,12 @@ class BeanClass {
    *  Accuracy is ±0.01 V.
    *
    *  @return a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V
+   *
+   *  # Examples
+   * 
+   *  This example will display a Bean's respective current battery level and voltage every 5 seconds:
+   *
+   *  @include battery/batteryLevel.ino
    */
   uint16_t getBatteryVoltage(void);
   ///@}
@@ -611,6 +699,12 @@ class BeanClass {
    *  Get the current temperature of the Bean, in degrees Celsius. The Bean uses the BMA250 (<a href="http://ae-bst.resource.bosch.com/media/products/dokumente/bma250/bst-bma250-ds002-05.pdf">datasheet</a>) for temperature readings.
    *
    *  @return temperature, between -40 and 88 degrees Celsius
+   *
+   *  # Examples
+   *
+   *  This example changes the color of the LED based on the temperature reading of the Bean:
+   *  
+   *  @include temperature/getTemperature.ino
    */
   int8_t getTemperature(void);
   ///@}
@@ -632,6 +726,12 @@ class BeanClass {
    *  Check if any BLE Central devices are currently connected to Bean.
    *
    *  @return true if a device is connected, false otherwise
+   *
+   *  # Examples
+   *  
+   *  This example blinks the LED on the Bean green if connected, red if disconnected:
+   *
+   *  @include getConnectionState.ino
    */
   bool getConnectionState(void);
   ///@}
@@ -639,7 +739,7 @@ class BeanClass {
 
   /***************************************************************************/
   /** @name Bluetooth Services
-   *  Needs description
+   *  Functions dealing with Bluetooth service configurations and pairing.
    */
   ///@{
 
@@ -650,7 +750,14 @@ class BeanClass {
 
   /**
    *  Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)
+   *
    *  @param services the services to change
+   *
+   *  # Examples
+   *
+   *  This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those:
+   *
+   *  @include services/setServices.ino
    */
   void setServices(BluetoothServices services);
 
@@ -671,15 +778,21 @@ class BeanClass {
    *  The PIN will be saved to nonvolatile memory unless `enableConfigSave(false)` is called.
    *
    *  @param pin the pairing PIN to set, from 000000 to 999999
+   *
+   *  # Examples
+   *  
+   *  This example sets a pairing PIN of 123456 for future connections:
+   *
+   *  @include pairing/setPairingPin.ino
    */
   void setPairingPin(uint32_t pin);
 
   /**
-   * Enables or disables pairing PIN functionality.
+   *  Enables or disables pairing PIN functionality.
    *
-   * The default PIN is 000000. This chan be changed using `setPairingPin`.
+   *  The default PIN is 000000. This can be changed using `setPairingPin`.
    *
-   * @param true to enable, false to disable
+   *  @param true to enable, false to disable
    */
   void enablePairingPin(bool enable);
   ///@}
@@ -701,6 +814,12 @@ class BeanClass {
    *  When the Bean is power cycled, saving to NVRAM is re-enabled.
    *
    *  @param enableSave true to disable saving to NVRAM, false to enable
+   *
+   *  # Examples
+   *
+   *  This example enables settings that will only be used temporarily because enableConfigSave is used:
+   *
+   *  @include config/enableConfigSave.ino
    */
   void enableConfigSave(bool enableSave);
 
@@ -731,23 +850,46 @@ class BeanClass {
   int16_t convertAcceleration(uint8_t high_byte, uint8_t low_byte);
 
   /**
-   *  Needs docs
+   *  Set interrupts and power mode of the accelerometer
+   *
+   *  @param interrupts number of accelerometer interrupts
+   *  @param power_mode power mode of the accelerometer
+   *
+   *  Power modes: Normal mode:     0x00    (~140uA)
+   *               Suspend mode:    0x80    (~0.5uA)
+   *               Low Power 10ms:  0x54    (~16.4uA)
+   *               Low Power 100ms: 0x5A    (~2.3uA)
+   *               Low Power 1s:    0x5E    (~0.7uA)
    */
   void accelerometerConfig(uint16_t interrupts, uint8_t power_mode);
 
   /**
-   *  Needs docs
+   *  Enables Bean to awaken when acceleration is detected
+   *
+   *  @param sources set wake interrupt; awake until latch time expires (default 250 ms)
+   *
+   *  Wake modes: Wake for any event     0xF7
+   *              Wake when flat         0x80
+   *              Wake when oriented     0x40
+   *              Wake on single tap     0x20
+   *              Wake on double-tap     0x10
+   *              Wake on any motion     0x04
+   *              Wake on high g-force   0x02
+   *              Wake on low g-force    0x01
    */
   void enableWakeOnAccelerometer(uint8_t sources);
 
   /**
-   *  Needs docs
+   *  Get the accelerometer interrupts
+   *
+   *  @return the accelerometer interrupts
    */
   uint8_t checkAccelInterrupts();
 };
 
 /**
  *  Needs docs
+ *  Library of Bean-specific functions to run sketches on ATMega386p
  */
 extern BeanClass Bean;
 

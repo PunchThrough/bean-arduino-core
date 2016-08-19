@@ -5,7 +5,7 @@ void setup() {
   // Reset the services to default
   Bean.resetServices();
   // Reset the Bluetooth module itself
-  Bean.resetBluetooth();
+  Bean.restartBluetooth();
   // Wait for a few moments for Bluetooth to come back up...
   Bean.sleep(5000);
   // Set services to include standard advertising (default)

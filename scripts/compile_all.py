@@ -16,7 +16,7 @@ compiler_configs = [
 ]
 
 test_sketches = [
-    'tests/resources/test_sketches/*.ino',
+    'resources/test_sketches/*.ino',
     'examples/**/*.ino',
 ]
 

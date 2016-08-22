@@ -3,13 +3,13 @@ install:
 	sudo pip install cpplint
 
 show:
-	tests/lint_all.py --show
+	scripts/lint_all.py --show
 
 reformat:
-	tests/lint_all.py --reformat
+	scripts/lint_all.py --reformat
 
 lint:
-	tests/lint_all.py --lint
+	scripts/lint_all.py --lint
 
 docs:
 	doxygen doxygen.cfg

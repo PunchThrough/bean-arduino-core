@@ -7,7 +7,7 @@ platformio platforms install atmelavr
 # Add Punch Through boards definition
 # -p: no error if cached /boards already exists
 mkdir -p ~/.platformio/boards
-cp tests/resources/platformio/boards/* ~/.platformio/boards/
+cp resources/platformio/boards/* ~/.platformio/boards/
 
 # Compile once to initialize framework-arduinoavr and ignore errors
 platformio ci --board=uno || true

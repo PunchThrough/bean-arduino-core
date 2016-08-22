@@ -14,4 +14,7 @@ lint:
 docs:
 	doxygen doxygen.cfg
 
+bundle:
+	scripts/bundle.sh
+
 .PHONY: docs

@@ -15,6 +15,6 @@ docs:
 	doxygen doxygen.cfg
 
 bundle:
-	scripts/bundle.sh
+	scripts/bundle.py
 
 .PHONY: docs

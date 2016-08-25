@@ -94,6 +94,8 @@ class BeanHid_ {
   size_t _releaseKey(uint8_t c);
   size_t _sendKey(uint8_t c);
 
+ public:
+  BeanHid_(void);
   /****************************************************************************/
   /** @name HID
    * The user must enter a pairing code (default of 000000) to connect.
@@ -103,8 +105,6 @@ class BeanHid_ {
    */
   ///@{
 
- public:
-  BeanHid_(void);
 
   /**
    *  This function turns on the Bean's HID functionality.  It will require pairing using a pin code with your device and if you wish to disconnect it you must disconnect through your devices bluetooth system settings menu.

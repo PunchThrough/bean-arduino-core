@@ -619,10 +619,10 @@
 <codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_releaseKey(uint8_t<sp/>c);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_sendKey(uint8_t<sp/>c);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>

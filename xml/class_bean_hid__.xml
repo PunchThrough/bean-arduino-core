@@ -5,22 +5,6 @@
       <sectiondef kind="user-defined">
       <header>HID</header>
       <description><para>The user must enter a pairing code (default of 000000) to connect. HID allows the bean to act as a mouse, keyboard, or media control device.</para><para>Important: When disconnecting from a device, you must manually forget Bean in the system&apos;s Bluetooth settings as well as Bean Loader. </para></description>
-      <memberdef kind="function" id="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>BeanHid_::BeanHid_</definition>
-        <argsstring>(void)</argsstring>
-        <name>BeanHid_</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="107" column="1"/>
-      </memberdef>
       <memberdef kind="function" id="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void BeanHid_::enable</definition>
@@ -676,6 +660,24 @@
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="95" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BeanHid_::BeanHid_</definition>
+        <argsstring>(void)</argsstring>
+        <name>BeanHid_</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="98" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

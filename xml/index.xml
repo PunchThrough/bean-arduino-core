@@ -72,7 +72,6 @@
     <member refid="class_bean_class_1aaa0bac4371fd7f49671f06f6373242be" kind="function"><name>checkAccelInterrupts</name></member>
   </compound>
   <compound refid="class_bean_hid__" kind="class"><name>BeanHid_</name>
-    <member refid="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" kind="function"><name>BeanHid_</name></member>
     <member refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" kind="function"><name>enable</name></member>
     <member refid="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" kind="function"><name>isEnabled</name></member>
     <member refid="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" kind="function"><name>disable</name></member>
@@ -101,6 +100,7 @@
     <member refid="class_bean_hid___1a36794456d4859ebdefde68fbf62b60e1" kind="function"><name>_holdKey</name></member>
     <member refid="class_bean_hid___1a8a313c85e6a0cf4ecad02dd171f8b5c8" kind="function"><name>_releaseKey</name></member>
     <member refid="class_bean_hid___1a160d93a1aa1fecb9e06858267dde0296" kind="function"><name>_sendKey</name></member>
+    <member refid="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" kind="function"><name>BeanHid_</name></member>
   </compound>
   <compound refid="class_bean_midi_class" kind="class"><name>BeanMidiClass</name>
     <member refid="class_bean_midi_class_1a526f499963ba700b7b3605ad5c583f8a" kind="function"><name>enable</name></member>

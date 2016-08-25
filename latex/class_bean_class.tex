@@ -710,6 +710,35 @@ This example will display a Bean\textquotesingle{}s respective current battery l
 
 
 \begin{DoxyCodeInclude}
+1 void setup() \{
+2   // Serial port is initialized automatically; we don't have to do anything
+3 \}
+4 void loop() \{
+5   int batteryPercentage = Bean.getBatteryLevel();  // Between 0 and 100
+6   int batteryVoltage = Bean.getBatteryVoltage();   // Between 191 and 353 (1.91V-3.53V)
+7   Serial.print("The remaining battery life is: %");
+8   Serial.println(batteryPercentage);
+9   blinkLedBasedOnBatteryLevel(batteryPercentage);
+10   Serial.print("The current battery voltage is: ");
+11   Serial.print(batteryVoltage / 100);
+12   Serial.println("V");
+13   Bean.sleep(5000);  // Sleep for 5 seconds before repeating
+14 \}
+15 void blinkLedBasedOnBatteryLevel(int batteryPercentage) \{
+16   if (batteryPercentage > 80) \{
+17     Bean.setLed(0, 255, 0);
+18   \} else if (batteryPercentage > 60) \{
+19     Bean.setLed(255, 255, 0);
+20   \} else if (batteryPercentage > 40) \{
+21     Bean.setLed(255, 150, 0);
+22   \} else if (batteryPercentage > 20) \{
+23     Bean.setLed(255, 75, 0);
+24   \} else \{
+25     Bean.setLed(255, 0, 15);
+26   \}
+27   Bean.sleep(100);
+28   Bean.setLed(0, 0, 0);
+29 \}
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_class_a5b50d48ce0b6ccb3f267d1d7ba660dd3}{}\index{Bean\+Class@{Bean\+Class}!get\+Bean\+Name@{get\+Bean\+Name}}
 \index{get\+Bean\+Name@{get\+Bean\+Name}!Bean\+Class@{Bean\+Class}}
@@ -764,6 +793,24 @@ This example blinks the L\+E\+D on the Bean green if connected, red if disconnec
 
 
 \begin{DoxyCodeInclude}
+1 void setup() \{
+2   // Nothing to initialize up here
+3 \}
+4 void loop() \{
+5   // If Bean is connected to a device, blink green LED
+6   if (Bean.getConnectionState() == true) \{
+7     Bean.setLed(0, 255, 0);
+8     Bean.sleep(250);
+9     Bean.setLed(0, 0, 0);
+10     // If Bean is not connected, blink red LED
+11   \} else if (Bean.getConnectionState() == false) \{
+12     Bean.setLed(255, 0, 0);
+13     Bean.sleep(250);
+14     Bean.setLed(0, 0, 0);
+15   \}
+16   // Sleep for 2 seconds
+17   Bean.sleep(2000);
+18 \}
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{}\index{Bean\+Class@{Bean\+Class}!get\+Led@{get\+Led}}
 \index{get\+Led@{get\+Led}!Bean\+Class@{Bean\+Class}}

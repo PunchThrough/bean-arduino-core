@@ -942,7 +942,36 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V</dd></dl>
 <h1>Examples</h1>
 <p>This example will display a Bean's respective current battery level and voltage every 5 seconds:</p>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line">void setup() {</div>
+<div class="line">  // Serial port is initialized automatically; we don&#39;t have to do anything</div>
+<div class="line">}</div>
+<div class="line">void loop() {</div>
+<div class="line">  int batteryPercentage = Bean.getBatteryLevel();  // Between 0 and 100</div>
+<div class="line">  int batteryVoltage = Bean.getBatteryVoltage();   // Between 191 and 353 (1.91V-3.53V)</div>
+<div class="line">  Serial.print(&quot;The remaining battery life is: %&quot;);</div>
+<div class="line">  Serial.println(batteryPercentage);</div>
+<div class="line">  blinkLedBasedOnBatteryLevel(batteryPercentage);</div>
+<div class="line">  Serial.print(&quot;The current battery voltage is: &quot;);</div>
+<div class="line">  Serial.print(batteryVoltage / 100);</div>
+<div class="line">  Serial.println(&quot;V&quot;);</div>
+<div class="line">  Bean.sleep(5000);  // Sleep for 5 seconds before repeating</div>
+<div class="line">}</div>
+<div class="line">void blinkLedBasedOnBatteryLevel(int batteryPercentage) {</div>
+<div class="line">  if (batteryPercentage &gt; 80) {</div>
+<div class="line">    Bean.setLed(0, 255, 0);</div>
+<div class="line">  } else if (batteryPercentage &gt; 60) {</div>
+<div class="line">    Bean.setLed(255, 255, 0);</div>
+<div class="line">  } else if (batteryPercentage &gt; 40) {</div>
+<div class="line">    Bean.setLed(255, 150, 0);</div>
+<div class="line">  } else if (batteryPercentage &gt; 20) {</div>
+<div class="line">    Bean.setLed(255, 75, 0);</div>
+<div class="line">  } else {</div>
+<div class="line">    Bean.setLed(255, 0, 15);</div>
+<div class="line">  }</div>
+<div class="line">  Bean.sleep(100);</div>
+<div class="line">  Bean.setLed(0, 0, 0);</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="a5b50d48ce0b6ccb3f267d1d7ba660dd3"></a>
@@ -998,7 +1027,25 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if a device is connected, false otherwise</dd></dl>
 <h1>Examples</h1>
 <p>This example blinks the LED on the Bean green if connected, red if disconnected:</p>
-<div class="fragment"></div><!-- fragment --> 
+<div class="fragment"><div class="line">void setup() {</div>
+<div class="line">  // Nothing to initialize up here</div>
+<div class="line">}</div>
+<div class="line">void loop() {</div>
+<div class="line">  // If Bean is connected to a device, blink green LED</div>
+<div class="line">  if (Bean.getConnectionState() == true) {</div>
+<div class="line">    Bean.setLed(0, 255, 0);</div>
+<div class="line">    Bean.sleep(250);</div>
+<div class="line">    Bean.setLed(0, 0, 0);</div>
+<div class="line">    // If Bean is not connected, blink red LED</div>
+<div class="line">  } else if (Bean.getConnectionState() == false) {</div>
+<div class="line">    Bean.setLed(255, 0, 0);</div>
+<div class="line">    Bean.sleep(250);</div>
+<div class="line">    Bean.setLed(0, 0, 0);</div>
+<div class="line">  }</div>
+<div class="line">  // Sleep for 2 seconds</div>
+<div class="line">  Bean.sleep(2000);</div>
+<div class="line">}</div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a class="anchor" id="ab73794fbf27d0297ead453ca60ac4aaf"></a>

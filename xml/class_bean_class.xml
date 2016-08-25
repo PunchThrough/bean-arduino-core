@@ -1651,7 +1651,36 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <detaileddescription>
 <para>Get the current battery voltage, in volts.</para><para>Accuracy is ±0.01 V.</para><para><simplesect kind="return"><para>a value in the range 195 to 353: 195 = 1.95 V, 353 = 3.53 V</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example will display a Bean&apos;s respective current battery level and voltage every 5 seconds:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example will display a Bean&apos;s respective current battery level and voltage every 5 seconds:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Serial<sp/>port<sp/>is<sp/>initialized<sp/>automatically;<sp/>we<sp/>don&apos;t<sp/>have<sp/>to<sp/>do<sp/>anything</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>batteryPercentage<sp/>=<sp/>Bean.getBatteryLevel();<sp/><sp/>//<sp/>Between<sp/>0<sp/>and<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>batteryVoltage<sp/>=<sp/>Bean.getBatteryVoltage();<sp/><sp/><sp/>//<sp/>Between<sp/>191<sp/>and<sp/>353<sp/>(1.91V-3.53V)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;The<sp/>remaining<sp/>battery<sp/>life<sp/>is:<sp/>%&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(batteryPercentage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>blinkLedBasedOnBatteryLevel(batteryPercentage);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;The<sp/>current<sp/>battery<sp/>voltage<sp/>is:<sp/>&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.print(batteryVoltage<sp/>/<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Serial.println(&quot;V&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(5000);<sp/><sp/>//<sp/>Sleep<sp/>for<sp/>5<sp/>seconds<sp/>before<sp/>repeating</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>blinkLedBasedOnBatteryLevel(int<sp/>batteryPercentage)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(batteryPercentage<sp/>&gt;<sp/>80)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(batteryPercentage<sp/>&gt;<sp/>60)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(batteryPercentage<sp/>&gt;<sp/>40)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>150,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(batteryPercentage<sp/>&gt;<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>75,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>15);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="688" column="1"/>
@@ -1731,7 +1760,25 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <detaileddescription>
 <para>Check if any BLE Central devices are currently connected to Bean.</para><para><simplesect kind="return"><para>true if a device is connected, false otherwise</para></simplesect>
 <heading level="1">Examples</heading>
-</para><para>This example blinks the LED on the Bean green if connected, red if disconnected:</para><para><programlisting></programlisting> </para>        </detaileddescription>
+</para><para>This example blinks the LED on the Bean green if connected, red if disconnected:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Nothing<sp/>to<sp/>initialize<sp/>up<sp/>here</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>If<sp/>Bean<sp/>is<sp/>connected<sp/>to<sp/>a<sp/>device,<sp/>blink<sp/>green<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(Bean.getConnectionState()<sp/>==<sp/>true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>255,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(250);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>If<sp/>Bean<sp/>is<sp/>not<sp/>connected,<sp/>blink<sp/>red<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}<sp/>else<sp/>if<sp/>(Bean.getConnectionState()<sp/>==<sp/>false)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(255,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.sleep(250);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Bean.setLed(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Sleep<sp/>for<sp/>2<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(2000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="736" column="1"/>

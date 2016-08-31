@@ -5,7 +5,9 @@ import os
 import shutil
 import subprocess
 
-BUNDLE_NAME = 'bean-arduino-core'
+# yolo
+GIT_VERSION = subprocess.check_output('git describe', shell=True).split('-')[0]
+BUNDLE_NAME = 'bean-arduino-core-{}'.format(GIT_VERSION)
 
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))
 TMP_DIR = os.path.join(THIS_DIR, '..', 'tmp')
@@ -43,10 +45,8 @@ def copy_examples():
 
 
 def bundle():
-    git_describe = subprocess.check_output('git describe', shell=True)
-    core_version = git_describe.split('-')[0]
     os.chdir(TMP_DIR)
-    zipcmd = "tar -zcvf {}-{}.tar.gz {}".format(BUNDLE_NAME, core_version, BUNDLE_NAME)
+    zipcmd = "tar -zcvf {}.tar.gz {}".format(BUNDLE_NAME, BUNDLE_NAME)
     subprocess.check_output(zipcmd, shell=True)
 
 

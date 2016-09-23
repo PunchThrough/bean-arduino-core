@@ -32,7 +32,7 @@ test:
     #- scripts/compile_all.py
   post:
     - make docs
-    - mv docs $CIRCLE_ARTIFACTS
+    - cp -R docs $CIRCLE_ARTIFACTS
 
 deployment:
   release:  # docs are released when master is updated

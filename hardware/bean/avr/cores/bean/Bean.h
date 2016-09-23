@@ -752,12 +752,6 @@ class BeanClass {
    *  Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)
    *
    *  @param services the services to change
-   *
-   *  # Examples
-   *
-   *  This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those:
-   *
-   *  @include services/setServices.ino
    */
   void setServices(BluetoothServices services);
 

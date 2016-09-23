@@ -820,6 +820,9 @@ class BeanClass {
 
   /**
    *  Performs a hard reset on the bluetooth module.
+   *
+   *  WARNING: Advanced function. The misuse of this method can cause the Bean
+   *           to repeatedly reboot, causing it to be unconnectable.
    */
   void restartBluetooth(void);
 

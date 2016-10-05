@@ -1820,51 +1820,13 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 <parametername>services</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the services to change</para></parameterdescription>
+<para>the services to change </para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<heading level="1">Examples</heading>
-</para><para>This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those:</para><para><programlisting><codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Get<sp/>and<sp/>print<sp/>the<sp/>current<sp/>Bluetooth<sp/>services</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>BluetoothServices<sp/>originalServices<sp/>=<sp/>Bean.getServices();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printServices(originalServices);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Reset<sp/>the<sp/>services<sp/>to<sp/>default</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Bean.resetServices();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Reset<sp/>the<sp/>Bluetooth<sp/>module<sp/>itself</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Bean.restartBluetooth();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Wait<sp/>for<sp/>a<sp/>few<sp/>moments<sp/>for<sp/>Bluetooth<sp/>to<sp/>come<sp/>back<sp/>up...</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Bean.sleep(5000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Set<sp/>services<sp/>to<sp/>include<sp/>standard<sp/>advertising<sp/>(default)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>BluetoothServices<sp/>newServices;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>newServices.standard<sp/>=<sp/>1;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Bean.setServices(newServices);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Print<sp/>out<sp/>new<sp/>service<sp/>configuration</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printServices(newServices);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline><highlight class="normal">void<sp/>loop()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>anything<sp/>here</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-<codeline><highlight class="normal">void<sp/>printServices(BluetoothServices<sp/>services)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(&quot;Bluetooth<sp/>services:&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Standard:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.standard);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;HID:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.hid);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;MIDI:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.midi);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;ANCS:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.ancs);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Observer:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.observer);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;iBeacon:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.ibeacon);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.print(&quot;Custom:<sp/>&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>Serial.println(services.custom);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>        </detaileddescription>
+</para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="762" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="756" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1880,7 +1842,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 <para>Resets services leaving only the primary standard Bean service advertising. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="767" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="761" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1917,7 +1879,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="788" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="782" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1942,7 +1904,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="797" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="791" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1984,7 +1946,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 </programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="824" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="818" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1997,10 +1959,10 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Performs a hard reset on the bluetooth module. </para>        </detaileddescription>
+<para>Performs a hard reset on the bluetooth module.</para><para>WARNING: Advanced function. The misuse of this method can cause the Bean to repeatedly reboot, causing it to be unconnectable. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="830" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="827" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -2015,7 +1977,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="835" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="835" bodyend="835"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="832" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="832" bodyend="832"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -2043,7 +2005,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="845" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="842" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1abfcf60b2b2065b6fe3c9ae639d1d0fd8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int16_t</type>
@@ -2064,7 +2026,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 <para>Needs docs </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="850" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="847" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a118526842dd8cbf820ba34e83d706033" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2100,7 +2062,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10ms: 0x54 (~16.4uA) Low Power 100ms: 0x5A (~2.3uA) Low Power 1s: 0x5E (~0.7uA) </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="864" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="861" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a6fc48e30999657b04b27908fc4f1bf24" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2125,7 +2087,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
 Wake modes: Wake for any event 0xF7 Wake when flat 0x80 Wake when oriented 0x40 Wake on single tap 0x20 Wake on double-tap 0x10 Wake on any motion 0x04 Wake on high g-force 0x02 Wake on low g-force 0x01 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="880" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="877" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1aaa0bac4371fd7f49671f06f6373242be" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint8_t</type>
@@ -2139,14 +2101,14 @@ Wake modes: Wake for any event 0xF7 Wake when flat 0x80 Wake when oriented 0x40 
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="887" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="884" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="99" bodyend="888"/>
+    <location file="hardware/bean/avr/cores/bean/Bean.h" line="99" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="99" bodyend="885"/>
     <listofallmembers>
       <member refid="class_bean_class_1a118526842dd8cbf820ba34e83d706033" prot="private" virt="non-virtual"><scope>BeanClass</scope><name>accelerometerConfig</name></member>
       <member refid="class_bean_class_1a3e743eb8cc8e5e04364f53801b8fe83e" prot="public" virt="non-virtual"><scope>BeanClass</scope><name>accelRegisterRead</name></member>

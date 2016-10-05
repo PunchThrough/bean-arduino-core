@@ -1181,7 +1181,9 @@ Resets services leaving only the primary standard Bean service advertising. \hyp
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}\label{class_bean_class_a8823b48c41914a1a32d6dd3974ebf57d}
-Performs a hard reset on the bluetooth module. \hypertarget{class_bean_class_acb8e9a741e2538393256f95d27c4571d}{}\index{Bean\+Class@{Bean\+Class}!set\+Acceleration\+Range@{set\+Acceleration\+Range}}
+Performs a hard reset on the bluetooth module.
+
+W\+A\+R\+N\+I\+N\+G\+: Advanced function. The misuse of this method can cause the Bean to repeatedly reboot, causing it to be unconnectable. \hypertarget{class_bean_class_acb8e9a741e2538393256f95d27c4571d}{}\index{Bean\+Class@{Bean\+Class}!set\+Acceleration\+Range@{set\+Acceleration\+Range}}
 \index{set\+Acceleration\+Range@{set\+Acceleration\+Range}!Bean\+Class@{Bean\+Class}}
 \subsubsection[{set\+Acceleration\+Range(uint8\+\_\+t range)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Acceleration\+Range (
 \begin{DoxyParamCaption}
@@ -1685,54 +1687,10 @@ Sets services for the Bean to use (N\+O\+T\+E\+: disabling the standard service 
 
 
 \begin{DoxyParams}{Parameters}
-{\em services} & the services to change\\
+{\em services} & the services to change \\
 \hline
 \end{DoxyParams}
-\subsection*{Examples}
-
-This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those\+:
-
-
-\begin{DoxyCodeInclude}
-1 void setup() \{
-2   // Get and print the current Bluetooth services
-3   BluetoothServices originalServices = Bean.getServices();
-4   printServices(originalServices);
-5   // Reset the services to default
-6   Bean.resetServices();
-7   // Reset the Bluetooth module itself
-8   Bean.restartBluetooth();
-9   // Wait for a few moments for Bluetooth to come back up...
-10   Bean.sleep(5000);
-11   // Set services to include standard advertising (default)
-12   BluetoothServices newServices;
-13   newServices.standard = 1;
-14   Bean.setServices(newServices);
-15   // Print out new service configuration
-16   printServices(newServices);
-17 \}
-18 void loop() \{
-19   // Do anything here
-20 \}
-21 void printServices(BluetoothServices services) \{
-22   Serial.println("Bluetooth services:");
-23   Serial.print("Standard: ");
-24   Serial.println(services.standard);
-25   Serial.print("HID: ");
-26   Serial.println(services.hid);
-27   Serial.print("MIDI: ");
-28   Serial.println(services.midi);
-29   Serial.print("ANCS: ");
-30   Serial.println(services.ancs);
-31   Serial.print("Observer: ");
-32   Serial.println(services.observer);
-33   Serial.print("iBeacon: ");
-34   Serial.println(services.ibeacon);
-35   Serial.print("Custom: ");
-36   Serial.println(services.custom);
-37 \}
-\end{DoxyCodeInclude}
- \hypertarget{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}{}\index{Bean\+Class@{Bean\+Class}!sleep@{sleep}}
+\hypertarget{class_bean_class_a15d6716d0bdc66a0345acc29d0c14a14}{}\index{Bean\+Class@{Bean\+Class}!sleep@{sleep}}
 \index{sleep@{sleep}!Bean\+Class@{Bean\+Class}}
 \subsubsection[{sleep(uint32\+\_\+t duration\+\_\+ms)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::sleep (
 \begin{DoxyParamCaption}

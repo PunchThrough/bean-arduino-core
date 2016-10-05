@@ -1477,7 +1477,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Performs a hard reset on the bluetooth module. </p>
+<p>Performs a hard reset on the bluetooth module.</p>
+<p>WARNING: Advanced function. The misuse of this method can cause the Bean to repeatedly reboot, causing it to be unconnectable. </p>
 
 </div>
 </div>
@@ -2120,50 +2121,11 @@ Public Member Functions</h2></td></tr>
 <p>Sets services for the Bean to use (NOTE: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">services</td><td>the services to change</td></tr>
+    <tr><td class="paramname">services</td><td>the services to change </td></tr>
   </table>
   </dd>
 </dl>
-<h1>Examples</h1>
-<p>This example prints the current Bluetooth service configuration, resets them, resets Bluetooth, then sets new values and prints those:</p>
-<div class="fragment"><div class="line">void setup() {</div>
-<div class="line">  // Get and print the current Bluetooth services</div>
-<div class="line">  BluetoothServices originalServices = Bean.getServices();</div>
-<div class="line">  printServices(originalServices);</div>
-<div class="line">  // Reset the services to default</div>
-<div class="line">  Bean.resetServices();</div>
-<div class="line">  // Reset the Bluetooth module itself</div>
-<div class="line">  Bean.restartBluetooth();</div>
-<div class="line">  // Wait for a few moments for Bluetooth to come back up...</div>
-<div class="line">  Bean.sleep(5000);</div>
-<div class="line">  // Set services to include standard advertising (default)</div>
-<div class="line">  BluetoothServices newServices;</div>
-<div class="line">  newServices.standard = 1;</div>
-<div class="line">  Bean.setServices(newServices);</div>
-<div class="line">  // Print out new service configuration</div>
-<div class="line">  printServices(newServices);</div>
-<div class="line">}</div>
-<div class="line">void loop() {</div>
-<div class="line">  // Do anything here</div>
-<div class="line">}</div>
-<div class="line">void printServices(BluetoothServices services) {</div>
-<div class="line">  Serial.println(&quot;Bluetooth services:&quot;);</div>
-<div class="line">  Serial.print(&quot;Standard: &quot;);</div>
-<div class="line">  Serial.println(services.standard);</div>
-<div class="line">  Serial.print(&quot;HID: &quot;);</div>
-<div class="line">  Serial.println(services.hid);</div>
-<div class="line">  Serial.print(&quot;MIDI: &quot;);</div>
-<div class="line">  Serial.println(services.midi);</div>
-<div class="line">  Serial.print(&quot;ANCS: &quot;);</div>
-<div class="line">  Serial.println(services.ancs);</div>
-<div class="line">  Serial.print(&quot;Observer: &quot;);</div>
-<div class="line">  Serial.println(services.observer);</div>
-<div class="line">  Serial.print(&quot;iBeacon: &quot;);</div>
-<div class="line">  Serial.println(services.ibeacon);</div>
-<div class="line">  Serial.print(&quot;Custom: &quot;);</div>
-<div class="line">  Serial.println(services.custom);</div>
-<div class="line">}</div>
-</div><!-- fragment --> 
+
 </div>
 </div>
 <a class="anchor" id="a15d6716d0bdc66a0345acc29d0c14a14"></a>

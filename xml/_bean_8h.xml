@@ -515,7 +515,7 @@
 <para>Needs docs Library of Bean-specific functions to run sketches on ATMega386p </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/Bean.h" line="894" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/Bean.h" line="891" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -730,41 +730,41 @@
 <codeline lineno="744"></codeline>
 <codeline lineno="749"><highlight class="normal"><sp/><sp/>BluetoothServices<sp/><ref refid="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" kindref="member">getServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="750"><highlight class="normal"></highlight></codeline>
-<codeline lineno="762"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" kindref="member">setServices</ref>(BluetoothServices<sp/>services);</highlight></codeline>
-<codeline lineno="763"><highlight class="normal"></highlight></codeline>
-<codeline lineno="767"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" kindref="member">resetServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="768"><highlight class="normal"></highlight></codeline>
-<codeline lineno="788"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" kindref="member">setPairingPin</ref>(uint32_t<sp/>pin);</highlight></codeline>
-<codeline lineno="789"><highlight class="normal"></highlight></codeline>
-<codeline lineno="797"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" kindref="member">enablePairingPin</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
-<codeline lineno="799"><highlight class="normal"></highlight></codeline>
-<codeline lineno="800"><highlight class="normal"></highlight></codeline>
-<codeline lineno="801"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
-<codeline lineno="805"></codeline>
-<codeline lineno="824"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" kindref="member">enableConfigSave</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableSave);</highlight></codeline>
-<codeline lineno="825"><highlight class="normal"></highlight></codeline>
-<codeline lineno="826"><highlight class="normal"></highlight></codeline>
-<codeline lineno="830"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" kindref="member">restartBluetooth</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="756"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" kindref="member">setServices</ref>(BluetoothServices<sp/>services);</highlight></codeline>
+<codeline lineno="757"><highlight class="normal"></highlight></codeline>
+<codeline lineno="761"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" kindref="member">resetServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="762"><highlight class="normal"></highlight></codeline>
+<codeline lineno="782"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a11cb6a1ec42d1af44af840dff1875d00" kindref="member">setPairingPin</ref>(uint32_t<sp/>pin);</highlight></codeline>
+<codeline lineno="783"><highlight class="normal"></highlight></codeline>
+<codeline lineno="791"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1afff90ba1cdb690b88c1b8b4917e71b32" kindref="member">enablePairingPin</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable);</highlight></codeline>
+<codeline lineno="793"><highlight class="normal"></highlight></codeline>
+<codeline lineno="794"><highlight class="normal"></highlight></codeline>
+<codeline lineno="795"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
+<codeline lineno="799"></codeline>
+<codeline lineno="818"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a2ae5aa1b912ca67715670f1dea865431" kindref="member">enableConfigSave</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enableSave);</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"></highlight></codeline>
+<codeline lineno="820"><highlight class="normal"></highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a8823b48c41914a1a32d6dd3974ebf57d" kindref="member">restartBluetooth</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"></highlight></codeline>
+<codeline lineno="830"><highlight class="normal"></highlight></codeline>
 <codeline lineno="831"><highlight class="normal"></highlight></codeline>
+<codeline lineno="832"><highlight class="normal"><sp/><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref>()<sp/>{}</highlight></codeline>
 <codeline lineno="833"><highlight class="normal"></highlight></codeline>
-<codeline lineno="834"><highlight class="normal"></highlight></codeline>
-<codeline lineno="835"><highlight class="normal"><sp/><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref>()<sp/>{}</highlight></codeline>
-<codeline lineno="836"><highlight class="normal"></highlight></codeline>
-<codeline lineno="837"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="845"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>attemptSleep(uint32_t<sp/>duration_ms);</highlight></codeline>
-<codeline lineno="846"><highlight class="normal"></highlight></codeline>
-<codeline lineno="850"><highlight class="normal"><sp/><sp/>int16_t<sp/>convertAcceleration(uint8_t<sp/>high_byte,<sp/>uint8_t<sp/>low_byte);</highlight></codeline>
-<codeline lineno="851"><highlight class="normal"></highlight></codeline>
-<codeline lineno="864"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>accelerometerConfig(uint16_t<sp/>interrupts,<sp/>uint8_t<sp/>power_mode);</highlight></codeline>
-<codeline lineno="865"><highlight class="normal"></highlight></codeline>
-<codeline lineno="880"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enableWakeOnAccelerometer(uint8_t<sp/>sources);</highlight></codeline>
-<codeline lineno="881"><highlight class="normal"></highlight></codeline>
-<codeline lineno="887"><highlight class="normal"><sp/><sp/>uint8_t<sp/>checkAccelInterrupts();</highlight></codeline>
-<codeline lineno="888"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="889"><highlight class="normal"></highlight></codeline>
-<codeline lineno="894"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>Bean;</highlight></codeline>
-<codeline lineno="895"><highlight class="normal"></highlight></codeline>
-<codeline lineno="896"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="834"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="842"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>attemptSleep(uint32_t<sp/>duration_ms);</highlight></codeline>
+<codeline lineno="843"><highlight class="normal"></highlight></codeline>
+<codeline lineno="847"><highlight class="normal"><sp/><sp/>int16_t<sp/>convertAcceleration(uint8_t<sp/>high_byte,<sp/>uint8_t<sp/>low_byte);</highlight></codeline>
+<codeline lineno="848"><highlight class="normal"></highlight></codeline>
+<codeline lineno="861"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>accelerometerConfig(uint16_t<sp/>interrupts,<sp/>uint8_t<sp/>power_mode);</highlight></codeline>
+<codeline lineno="862"><highlight class="normal"></highlight></codeline>
+<codeline lineno="877"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>enableWakeOnAccelerometer(uint8_t<sp/>sources);</highlight></codeline>
+<codeline lineno="878"><highlight class="normal"></highlight></codeline>
+<codeline lineno="884"><highlight class="normal"><sp/><sp/>uint8_t<sp/>checkAccelInterrupts();</highlight></codeline>
+<codeline lineno="885"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="886"><highlight class="normal"></highlight></codeline>
+<codeline lineno="891"><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>Bean;</highlight></codeline>
+<codeline lineno="892"><highlight class="normal"></highlight></codeline>
+<codeline lineno="893"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="hardware/bean/avr/cores/bean/Bean.h"/>
   </compounddef>

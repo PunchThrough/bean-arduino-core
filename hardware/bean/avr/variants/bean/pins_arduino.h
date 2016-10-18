@@ -37,7 +37,7 @@
 #define digitalPinHasPWM(p)         ((p) == 3 || (p) == 5 || (p) == 6 || (p) == 9 || (p) == 10 || (p) == 11)
 #endif
 
-  #define IS_BEAN (1)
+#define IS_BEAN (1)
 
 static const uint8_t SS   = 2;
 static const uint8_t MOSI = 3;
@@ -204,4 +204,3 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 
 #endif  // ARDUINO_MAIN
 #endif  // Pins_Arduino_h
-

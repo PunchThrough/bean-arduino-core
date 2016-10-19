@@ -33,6 +33,8 @@
 
 #define digitalPinHasPWM(p)         ((p) == 2 || (p) == 5 || (p) == 6 || (p) == 7)
 
+#define IS_BEAN (0)
+
 static const uint8_t SS   = 6;
 static const uint8_t MOSI = 7;
 static const uint8_t MISO = 8;
@@ -128,19 +130,19 @@ const uint16_t PROGMEM port_to_input_PGM[] = {
 
 const uint8_t PROGMEM digital_pin_to_port_PGM[] = {
 	PD, 	// D0
-	PD,     // D1    
-	PD,     // D2	PWM    
-	PD,     // D3    
-	PB,     // D4    
+	PD,     // D1
+	PD,     // D2	PWM
+	PD,     // D3
+	PB,     // D4
 	PB,     // D5	PWM
-	PB,     // D6   PWM 
+	PB,     // D6   PWM
 	PB,	    // D7	PWM
 	PB,	    // D8
 	PB, 	// D9
 	PC,     // A0
 	PC,	    // A1
 	PC,     // A2
-	PC, 	// A3    
+	PC, 	// A3
 	PC,	    // A4
 	PC,	    // A5
 	PD,     // CC_INTERRUPT
@@ -188,4 +190,3 @@ const uint8_t PROGMEM digital_pin_to_timer_PGM[] = {
 
 #endif  // ARDUINO_MAIN
 #endif  // Pins_Arduino_h
-

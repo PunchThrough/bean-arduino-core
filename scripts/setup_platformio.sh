@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Installing PlatformIO with pip is kind of broken. Just use their install script.
-python -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+pip install "platformio==2.3.5"
 platformio platforms install atmelavr
 
 # Add Punch Through boards definition
@@ -15,5 +14,8 @@ platformio ci --board=uno || true
 # Add Punch Through core files
 # packages/framework-arduinoavr may not exist until the first compile happens,
 # so create the directory right away
-mkdir -p /home/ubuntu/.platformio/packages/framework-arduinoavr/
+mkdir -p ~/.platformio/packages/framework-arduinoavr/
 cp -rvf hardware/bean/avr/* ~/.platformio/packages/framework-arduinoavr/
+
+# Install libraries
+cp -rvf hardware/bean/avr/libraries/ ~/.platformio/lib/

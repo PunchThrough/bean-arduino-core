@@ -18,6 +18,7 @@ dependencies:
   cache_directories:
     - ~/.platformio
   override:
+    - pip install --upgrade pip setuptools virtualenv
     - pip install cpplint
     # Used for deployment
     - sudo apt-get update

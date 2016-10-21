@@ -1,6 +1,3 @@
 [submodule "hardware/bean/avr/cores/bean/applicationMessageHeaders"]
 	path = hardware/bean/avr/cores/bean/applicationMessageHeaders
 	url = https://bitbucket.org/punchthroughdesign/bean-application-message-definitions.git
-[submodule "hardware/bean/avr/libraries"]
-	path = hardware/bean/avr/libraries
-	url = git@github.com:PunchThrough/bean-arduino-libraries.git

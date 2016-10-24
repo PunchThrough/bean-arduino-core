@@ -1,3 +1,4 @@
+
 /*
   ByteBuffer.h - A circular buffer implementation for Arduino
   Created by Sigurdur Orn, July 19, 2010.  siggi@mit.edu
@@ -65,7 +66,9 @@ public:
 	//
 	uint8_t putInFront(byte in);
 	uint8_t put(byte in);
-	uint8_t putString(char *in);
+
+	uint8_t putString(const char *in);
+  uint8_t putString(char *in);
 
 	void putIntInFront(int in);
 	void putInt(int in);
@@ -76,7 +79,10 @@ public:
 	void putFloatInFront(float in);
 	void putFloat(float in);
 
-  void putHex(uint8_t theByte);
+  void putHex(uint8_t);
+
+  void putDec(uint8_t);
+  void putDec(int8_t);
 
 	//
 	// Get methods, either a regular get from front or from back

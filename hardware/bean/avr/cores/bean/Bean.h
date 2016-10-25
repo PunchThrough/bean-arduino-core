@@ -94,7 +94,7 @@ typedef ADV_SWITCH_ENABLED_T BluetoothServices;
 /**
  *  Data returned by the observer role.
  */
-typedef OBSERVER_INFO_MESSAGE_T ObseverAdvertisementInfo;
+typedef OBSERVER_INFO_MESSAGE_T ObserverAdvertisementInfo;
 
 class BeanClass {
  public:
@@ -332,7 +332,7 @@ class BeanClass {
    *
    *  @include observer/observer.ino
    */
-  int getObserverMessage(ObseverAdvertisementInfo *message, unsigned long timeout);
+  int getObserverMessage(ObserverAdvertisementInfo *message, unsigned long timeout);
   ///@}
 
 

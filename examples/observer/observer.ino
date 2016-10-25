@@ -18,7 +18,7 @@ uint8_t expectedPacket[] = {
 void loop() {
   uint32_t start = millis();
 
-  ObseverAdvertisementInfo info;
+  ObserverAdvertisementInfo info;
   int res = Bean.getObserverMessage(&info, 2000);
   if (res == 1) {
     Serial.print(info.eventType);

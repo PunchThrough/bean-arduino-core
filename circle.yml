@@ -18,18 +18,19 @@ dependencies:
   cache_directories:
     - ~/.platformio
   override:
+    - pip install --upgrade pip setuptools virtualenv
     - pip install cpplint
     # Used for deployment
     - sudo apt-get update
     - sudo apt-get install doxygen
     - npm install
     # Don't install PlatformIO if it's already been set up; it takes forever
-    #- if [ ! -f "~/.platformio/appstate.json" ]; then scripts/setup_platformio.sh; fi
+    - if [ ! -f "~/.platformio/appstate.json" ]; then scripts/setup_platformio.sh; fi
 
 test:
   override:
     - scripts/lint_all.py --lint
-    #- scripts/compile_all.py
+    - scripts/compile_all.py
   post:
     - make docs
     - cp -R docs $CIRCLE_ARTIFACTS

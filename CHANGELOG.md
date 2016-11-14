@@ -7,6 +7,12 @@
 ### Fixes
 
 * Fixed typo `ObserverAdvertisementInfo`
+* Fixed PlatformIO tests on Circle
+
+### Other
+
+* Removed PinChangeInt submodule, added as direct dependency
+* New PlatformIO test that includes builtin libraries
 
 ---
 

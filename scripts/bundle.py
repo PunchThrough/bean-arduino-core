@@ -6,7 +6,7 @@ import shutil
 import subprocess
 
 # yolo
-GIT_VERSION = subprocess.check_output('git describe', shell=True).split('-')[0]
+GIT_VERSION = subprocess.check_output('git describe', shell=True).split('-')[0].strip('\r\n')
 BUNDLE_NAME = 'bean-arduino-core-{}'.format(GIT_VERSION)
 
 THIS_DIR = os.path.abspath(os.path.dirname(__file__))

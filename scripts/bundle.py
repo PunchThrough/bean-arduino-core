@@ -44,6 +44,10 @@ def copy_examples():
                 shutil.copy(orig_sketch_path, bundle_sketch_path)
 
 
+def update_submodules():
+    subprocess.check_output("git submodule update --init --recursive", shell=True)
+
+
 def bundle():
     os.chdir(TMP_DIR)
     zipcmd = "tar -zcvf {}.tar.gz {}".format(BUNDLE_NAME, BUNDLE_NAME)
@@ -51,6 +55,7 @@ def bundle():
 
 
 clean()
+update_submodules()
 copy_core()
 copy_examples()
 bundle()

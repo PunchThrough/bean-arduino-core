@@ -83,7 +83,7 @@ typedef struct { uint8_t mouse[4]; } MouseReport;
 
 typedef struct { uint8_t bytes[2]; } CcReport;
 
-class BeanHid_ {
+class BeanHidClass {
  private:
   void buttons(uint8_t b);
   void _genericSendReport(uint8_t id, uint8_t *buffer, size_t length);
@@ -95,7 +95,7 @@ class BeanHid_ {
   size_t _sendKey(uint8_t c);
 
  public:
-  BeanHid_(void);
+  BeanHidClass(void);
   /****************************************************************************/
   /** @name HID
    * The user must enter a pairing code (default of 000000) to connect.
@@ -244,6 +244,6 @@ class BeanHid_ {
  private:
   bool isShiftHeld;
 };
-extern BeanHid_ BeanHid;
+extern BeanHidClass BeanHid;
 
 #endif /* if defined(BeanHID) */

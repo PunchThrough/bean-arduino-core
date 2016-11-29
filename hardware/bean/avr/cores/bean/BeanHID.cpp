@@ -20,7 +20,7 @@
 #include "BeanHID.h"
 
 // Singleton
-BeanHid_ BeanHid;
+BeanHidClass BeanHid;
 
 #define HID_DEV_DATA_LEN 8
 
@@ -267,7 +267,7 @@ uint8_t _hid_idle = 1;
 // void sendReport(CcReport *pReport);
 // void buttons(uint8_t b);
 
-BeanHid_::BeanHid_(void) {
+BeanHidClass::BeanHidClass(void) {
   _buttons = 0;
   isShiftHeld = false;
 }
@@ -363,7 +363,7 @@ static void addCommandToCcReport(CcReport *pReport, uint8_t cmd) {
   }
 }
 
-void BeanHid_::_genericSendReport(uint8_t id, uint8_t *buffer, size_t length) {
+void BeanHidClass::_genericSendReport(uint8_t id, uint8_t *buffer, size_t length) {
   hidDevReport_t report;
   report.type = HID_REPORT_TYPE_INPUT;
   report.id = id;
@@ -376,20 +376,20 @@ void BeanHid_::_genericSendReport(uint8_t id, uint8_t *buffer, size_t length) {
   }
 }
 
-void BeanHid_::sendReport(MouseReport *pReport) {
+void BeanHidClass::sendReport(MouseReport *pReport) {
   _genericSendReport(HID_RPT_ID_MOUSE_IN, (uint8_t *)pReport,
                      sizeof(MouseReport));
 }
 
-void BeanHid_::sendReport(KeyReport *pReport) {
+void BeanHidClass::sendReport(KeyReport *pReport) {
   _genericSendReport(HID_RPT_ID_KEY_IN, (uint8_t *)pReport, sizeof(KeyReport));
 }
 
-void BeanHid_::sendReport(CcReport *pReport) {
+void BeanHidClass::sendReport(CcReport *pReport) {
   _genericSendReport(HID_RPT_ID_CC_IN, (uint8_t *)pReport, sizeof(CcReport));
 }
 
-void BeanHid_::buttons(uint8_t b) {
+void BeanHidClass::buttons(uint8_t b) {
   if (b != _buttons) {
     _buttons = b;
     moveMouse(0, 0, 0);
@@ -398,25 +398,25 @@ void BeanHid_::buttons(uint8_t b) {
 
 // Public functions
 
-void BeanHid_::enable(void) {
+void BeanHidClass::enable(void) {
   ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
   curServices.hid = 1;
   Bean.setServices(curServices);
 }
 
-bool BeanHid_::isEnabled(void) {
+bool BeanHidClass::isEnabled(void) {
   ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
   return (curServices.hid == 1) ? true : false;
 }
 
-void BeanHid_::disable(void) {
+void BeanHidClass::disable(void) {
   ADV_SWITCH_ENABLED_T curServices = Bean.getServices();
   curServices.hid = 0;
   Bean.setServices(curServices);
 }
 
 // Mouse
-void BeanHid_::moveMouse(signed char delta_x, signed char delta_y,
+void BeanHidClass::moveMouse(signed char delta_x, signed char delta_y,
                          signed char delta_wheel) {
   MouseReport m;
   m.mouse[0] = _buttons;
@@ -426,31 +426,31 @@ void BeanHid_::moveMouse(signed char delta_x, signed char delta_y,
   sendReport(&m);
 }
 
-void BeanHid_::holdMouseClick(mouseButtons button) {
+void BeanHidClass::holdMouseClick(mouseButtons button) {
   buttons(_buttons | button);
 }
 
-void BeanHid_::releaseMouseClick(mouseButtons button) {
+void BeanHidClass::releaseMouseClick(mouseButtons button) {
   buttons(_buttons & ~button);
 }
 
-void BeanHid_::sendMouseClick(mouseButtons button) {
+void BeanHidClass::sendMouseClick(mouseButtons button) {
   holdMouseClick(button);
   releaseMouseClick(button);
 }
 
 // Consumer Control
-void BeanHid_::sendMediaControl(mediaControl command) {
+void BeanHidClass::sendMediaControl(mediaControl command) {
   holdMediaControl(command);
   releaseMediaControl(command);
 }
 
-void BeanHid_::holdMediaControl(mediaControl command) {
+void BeanHidClass::holdMediaControl(mediaControl command) {
   addCommandToCcReport(&ccReportForHeldCommands, command);
   sendReport(&ccReportForHeldCommands);
 }
 
-void BeanHid_::releaseMediaControl(mediaControl command) {
+void BeanHidClass::releaseMediaControl(mediaControl command) {
   CcReport report = {0, 0};
   addCommandToCcReport(&report, command);
 
@@ -461,7 +461,7 @@ void BeanHid_::releaseMediaControl(mediaControl command) {
   sendReport(&ccReportForHeldCommands);
 }
 
-void BeanHid_::releaseAllMediaControls() {
+void BeanHidClass::releaseAllMediaControls() {
   ccReportForHeldCommands = {0, 0};
   sendReport(&ccReportForHeldCommands);
 }
@@ -472,7 +472,7 @@ void BeanHid_::releaseAllMediaControls() {
 // to the persistent key report and sends the report.  Because of the way
 // USB HID works, the host acts like the key remains pressed until we
 // call release(), releaseAll(), or otherwise clear the report and resend.
-size_t BeanHid_::_holdKey(uint8_t k) {
+size_t BeanHidClass::_holdKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -516,7 +516,7 @@ size_t BeanHid_::_holdKey(uint8_t k) {
 // _release() takes the specified key out of the persistent key report and
 // sends the report.  This tells the OS the key is no longer pressed and that
 // it shouldn't be repeated any more.
-size_t BeanHid_::_releaseKey(uint8_t k) {
+size_t BeanHidClass::_releaseKey(uint8_t k) {
   uint8_t i;
   if (k >= 136) {  // it's a non-printing key (not a modifier)
     k = k - 136;
@@ -549,27 +549,27 @@ size_t BeanHid_::_releaseKey(uint8_t k) {
   return 1;
 }
 
-size_t BeanHid_::_sendKey(uint8_t c) {
+size_t BeanHidClass::_sendKey(uint8_t c) {
   uint8_t p = _holdKey(c);     // Keydown
   uint8_t r = _releaseKey(c);  // Keyup
   return (p & r);
 }
 
-int BeanHid_::holdKey(char key) { return (int)_holdKey((uint8_t)key); }
-int BeanHid_::holdKey(modifierKey key) { return (int)_holdKey((uint8_t)key); }
+int BeanHidClass::holdKey(char key) { return (int)_holdKey((uint8_t)key); }
+int BeanHidClass::holdKey(modifierKey key) { return (int)_holdKey((uint8_t)key); }
 
 /**
  *  Needs docs
  */
-int BeanHid_::releaseKey(char key) { return (int)_releaseKey((uint8_t)key); }
-int BeanHid_::releaseKey(modifierKey key) {
+int BeanHidClass::releaseKey(char key) { return (int)_releaseKey((uint8_t)key); }
+int BeanHidClass::releaseKey(modifierKey key) {
   return (int)_releaseKey((uint8_t)key);
 }
 
 /**
  *  Needs docs
  */
-void BeanHid_::releaseAllKeys(void) {
+void BeanHidClass::releaseAllKeys(void) {
   _keyReport.keys[0] = 0;
   _keyReport.keys[1] = 0;
   _keyReport.keys[2] = 0;
@@ -583,13 +583,13 @@ void BeanHid_::releaseAllKeys(void) {
 /**
  *  Needs docs
  */
-int BeanHid_::sendKey(char key) { return (int)_sendKey((uint8_t)key); }
-int BeanHid_::sendKey(modifierKey key) { return (int)_sendKey((uint8_t)key); }
+int BeanHidClass::sendKey(char key) { return (int)_sendKey((uint8_t)key); }
+int BeanHidClass::sendKey(modifierKey key) { return (int)_sendKey((uint8_t)key); }
 
 /**
  *  Needs docs
  */
-int BeanHid_::sendKeys(String charsToType) {
+int BeanHidClass::sendKeys(String charsToType) {
   int status = 0;
   int maxIndex = charsToType.length();
   for (int i = 0; i < maxIndex; i++) {

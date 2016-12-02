@@ -1,17 +1,19 @@
-
-
 #ifndef __BEANHID__
 #define __BEANHID__
 
 #include "BeanSerialTransport.h"
 
-typedef enum {
+/** Enumeration of mouse buttons
+ */
+typedef enum mouseButtons{
   MOUSE_LEFT = 1,
   MOUSE_RIGHT = 2,
   MOUSE_MIDDLE = 4,
   MOUSE_ALL = (MOUSE_LEFT | MOUSE_RIGHT | MOUSE_MIDDLE)
-} mouseButtons;
+};
 
+/** Enumeration of modifier keys
+ */
 typedef enum {
   KEY_LEFT_CTRL = 0x80,
   KEY_LEFT_SHIFT = 0x81,
@@ -21,7 +23,6 @@ typedef enum {
   KEY_RIGHT_SHIFT = 0x85,
   KEY_RIGHT_ALT = 0x86,
   KEY_RIGHT_GUI = 0x87,
-
   KEY_UP_ARROW = 0xDA,
   KEY_DOWN_ARROW = 0xD9,
   KEY_LEFT_ARROW = 0xD8,
@@ -51,8 +52,8 @@ typedef enum {
   KEY_F12 = 0xCD
 } modifierKey;
 
-// HID Consumer Usage IDs (subset of the codes available in the USB HID Usage
-// Tables spec)
+/** HID Consumer Usage IDs (subset of the codes available in the USB HID Usage Tables spec)
+ */
 typedef enum {
   POWER = 0x30,
   ASSIGN_SEL = 0x81,
@@ -72,16 +73,21 @@ typedef enum {
   MUTE = 0xE2
 } mediaControl;
 
-// Low level key report: up to 6 keys and shift, ctrl etc at once
+/** Low level key report: up to 6 keys and shift, ctrl etc at once
+ */
 typedef struct {
   uint8_t modifiers;
   uint8_t reserved;
   uint8_t keys[6];
 } KeyReport;
 
-typedef struct { uint8_t mouse[4]; } MouseReport;
+typedef struct {
+  uint8_t mouse[4];
+} MouseReport;
 
-typedef struct { uint8_t bytes[2]; } CcReport;
+typedef struct {
+  uint8_t bytes[2];
+} CcReport;
 
 class BeanHidClass {
  private:

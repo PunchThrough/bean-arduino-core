@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kind="struct" language="C++" prot="public">
+    <compoundname>OBSERVER_INFO_MESSAGE_T</compoundname>
+    <includes refid="_app_messages_8h" local="no">AppMessages.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa406929bc3232dc32ced9055f61bde10" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 OBSERVER_INFO_MESSAGE_T::eventType</definition>
+        <argsstring></argsstring>
+        <name>eventType</name>
+        <briefdescription>
+<para>Advertisement Type: GAP_ADVERTISEMENT_REPORT_TYPE_DEFINES. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="214" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a730452712ad963c16942398b82f17912" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 OBSERVER_INFO_MESSAGE_T::addrType</definition>
+        <argsstring></argsstring>
+        <name>addrType</name>
+        <briefdescription>
+<para>address type: GAP_ADDR_TYPE_DEFINES </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="215" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a44b8aab5e220f6e5a32da5238e0c5237" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 OBSERVER_INFO_MESSAGE_T::addr[B_ADDR_LEN]</definition>
+        <argsstring>[B_ADDR_LEN]</argsstring>
+        <name>addr</name>
+        <briefdescription>
+<para>Address of the advertisement or SCAN_RSP. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="216" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa43f4a895184a8a9dc970c71648c5c96" prot="public" static="no" mutable="no">
+        <type>PTD_INT8</type>
+        <definition>PTD_INT8 OBSERVER_INFO_MESSAGE_T::rssi</definition>
+        <argsstring></argsstring>
+        <name>rssi</name>
+        <briefdescription>
+<para>Advertisement or SCAN_RSP RSSI. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="217" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a33467e95974dbe9f3bebf54c10ce9404" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 OBSERVER_INFO_MESSAGE_T::dataLen</definition>
+        <argsstring></argsstring>
+        <name>dataLen</name>
+        <briefdescription>
+<para>Length (in bytes) of the data field (evtData) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="218" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a6f9ccb4068dec648b6f04589b1c8f0ef" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 OBSERVER_INFO_MESSAGE_T::advData[31]</definition>
+        <argsstring>[31]</argsstring>
+        <name>advData</name>
+        <briefdescription>
+<para>Data field of advertisement or SCAN_RSP (max of 3 bytes) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="219" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure that encapsulates an Observer Info Message. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="213" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="213" bodyend="220"/>
+    <listofallmembers>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a44b8aab5e220f6e5a32da5238e0c5237" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>addr</name></member>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a730452712ad963c16942398b82f17912" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>addrType</name></member>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a6f9ccb4068dec648b6f04589b1c8f0ef" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>advData</name></member>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a33467e95974dbe9f3bebf54c10ce9404" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>dataLen</name></member>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa406929bc3232dc32ced9055f61bde10" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>eventType</name></member>
+      <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa43f4a895184a8a9dc970c71648c5c96" prot="public" virt="non-virtual"><scope>OBSERVER_INFO_MESSAGE_T</scope><name>rssi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

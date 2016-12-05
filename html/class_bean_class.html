@@ -112,7 +112,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aba0554ca18558748b67205bd5bdcaeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c977e7b185ebc038335228d8ef1d0b9"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a5c977e7b185ebc038335228d8ef1d0b9">getAccelerationZ</a> (void)</td></tr>
 <tr class="separator:a5c977e7b185ebc038335228d8ef1d0b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f2174dd2f3c2907acc3355cef64842"><td class="memItemLeft" align="right" valign="top">AccelerationReading&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a53f2174dd2f3c2907acc3355cef64842">getAcceleration</a> (void)</td></tr>
+<tr class="memitem:a53f2174dd2f3c2907acc3355cef64842"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_c_c___r_e_a_d_i_n_g___t.html">AccelerationReading</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a53f2174dd2f3c2907acc3355cef64842">getAcceleration</a> (void)</td></tr>
 <tr class="separator:a53f2174dd2f3c2907acc3355cef64842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47244506c985ef7aead3695811002ad2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a47244506c985ef7aead3695811002ad2">accelRegisterWrite</a> (uint8_t reg, uint8_t value)</td></tr>
 <tr class="separator:a47244506c985ef7aead3695811002ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,7 +131,7 @@ Public Member Functions</h2></td></tr>
 </div></td></tr>
 <tr class="memitem:a7af1f9d1edb112f761db9b69686b5a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a7af1f9d1edb112f761db9b69686b5a5a">setLed</a> (uint8_t red, uint8_t green, uint8_t blue)</td></tr>
 <tr class="separator:a7af1f9d1edb112f761db9b69686b5a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab73794fbf27d0297ead453ca60ac4aaf"><td class="memItemLeft" align="right" valign="top">LedReading&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#ab73794fbf27d0297ead453ca60ac4aaf">getLed</a> (void)</td></tr>
+<tr class="memitem:ab73794fbf27d0297ead453ca60ac4aaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_l_e_d___s_e_t_t_i_n_g___t.html">LedReading</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#ab73794fbf27d0297ead453ca60ac4aaf">getLed</a> (void)</td></tr>
 <tr class="separator:ab73794fbf27d0297ead453ca60ac4aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea8736bf91c03de609233ddb270fb77d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#aea8736bf91c03de609233ddb270fb77d">getLedRed</a> (void)</td></tr>
 <tr class="separator:aea8736bf91c03de609233ddb270fb77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,7 +148,7 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Observer</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Functions related to Observer mode. Observer role allows the Bean to listen for advertisements. As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements. Paired with the custom advertising role, you can have two Beans interact with each other. This role works even when the Bean is connected. </p>
 </div></td></tr>
-<tr class="memitem:a5aa91cc9c0a3e17da864978845735ded"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a5aa91cc9c0a3e17da864978845735ded">getObserverMessage</a> (ObserverAdvertisementInfo *message, unsigned long timeout)</td></tr>
+<tr class="memitem:a5aa91cc9c0a3e17da864978845735ded"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a5aa91cc9c0a3e17da864978845735ded">getObserverMessage</a> (<a class="el" href="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t.html">ObserverAdvertisementInfo</a> *message, unsigned long timeout)</td></tr>
 <tr class="separator:a5aa91cc9c0a3e17da864978845735ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Scratch</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Read and write arbitrary data using pre-defined BLE characteristics.</p>
@@ -243,9 +243,9 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Bluetooth Services</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Functions dealing with Bluetooth service configurations and pairing. </p>
 </div></td></tr>
-<tr class="memitem:ae2547ba8f4b67a9ac774ce6d89b14dcb"><td class="memItemLeft" align="right" valign="top">BluetoothServices&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#ae2547ba8f4b67a9ac774ce6d89b14dcb">getServices</a> (void)</td></tr>
+<tr class="memitem:ae2547ba8f4b67a9ac774ce6d89b14dcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t.html">BluetoothServices</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#ae2547ba8f4b67a9ac774ce6d89b14dcb">getServices</a> (void)</td></tr>
 <tr class="separator:ae2547ba8f4b67a9ac774ce6d89b14dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b6e95f7b93e39ae83971ed796edd5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a17b6e95f7b93e39ae83971ed796edd5b">setServices</a> (BluetoothServices services)</td></tr>
+<tr class="memitem:a17b6e95f7b93e39ae83971ed796edd5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a17b6e95f7b93e39ae83971ed796edd5b">setServices</a> (<a class="el" href="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t.html">BluetoothServices</a> services)</td></tr>
 <tr class="separator:a17b6e95f7b93e39ae83971ed796edd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a040220137d9dd047250e247bd4ebd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a98a040220137d9dd047250e247bd4ebd">resetServices</a> (void)</td></tr>
 <tr class="separator:a98a040220137d9dd047250e247bd4ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -764,7 +764,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">AccelerationReading BeanClass::getAcceleration </td>
+          <td class="memname"><a class="el" href="struct_a_c_c___r_e_a_d_i_n_g___t.html">AccelerationReading</a> BeanClass::getAcceleration </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1053,7 +1053,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LedReading BeanClass::getLed </td>
+          <td class="memname"><a class="el" href="struct_l_e_d___s_e_t_t_i_n_g___t.html">LedReading</a> BeanClass::getLed </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -1143,7 +1143,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int BeanClass::getObserverMessage </td>
           <td>(</td>
-          <td class="paramtype">ObserverAdvertisementInfo *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t.html">ObserverAdvertisementInfo</a> *&#160;</td>
           <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
@@ -1235,7 +1235,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">BluetoothServices BeanClass::getServices </td>
+          <td class="memname"><a class="el" href="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t.html">BluetoothServices</a> BeanClass::getServices </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -2112,7 +2112,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void BeanClass::setServices </td>
           <td>(</td>
-          <td class="paramtype">BluetoothServices&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t.html">BluetoothServices</a>&#160;</td>
           <td class="paramname"><em>services</em></td><td>)</td>
           <td></td>
         </tr>

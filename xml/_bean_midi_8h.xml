@@ -5,25 +5,25 @@
     <includes local="yes">Arduino.h</includes>
     <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
     <incdepgraph>
-      <node id="35">
+      <node id="41">
         <label>hardware/bean/avr/cores/bean/BeanMidi.h</label>
         <link refid="BeanMidi.h"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="42">
         <label>Arduino.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="38">
+      <node id="44">
         <label>hardware/bean/avr/cores/bean/Bean.h</label>
         <link refid="_bean_8h_source"/>
       </node>
-      <node id="37">
+      <node id="43">
         <label>hardware/bean/avr/cores/bean/BeanMidi.h</label>
         <link refid="BeanMidi.h"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

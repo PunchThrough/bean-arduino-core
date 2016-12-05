@@ -16,7 +16,7 @@ int16\+\_\+t \hyperlink{class_bean_class_aba0554ca18558748b67205bd5bdcaeac}{get\
 \item 
 int16\+\_\+t \hyperlink{class_bean_class_a5c977e7b185ebc038335228d8ef1d0b9}{get\+Acceleration\+Z} (void)
 \item 
-Acceleration\+Reading \hyperlink{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{get\+Acceleration} (void)
+\hyperlink{struct_a_c_c___r_e_a_d_i_n_g___t}{Acceleration\+Reading} \hyperlink{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{get\+Acceleration} (void)
 \item 
 void \hyperlink{class_bean_class_a47244506c985ef7aead3695811002ad2}{accel\+Register\+Write} (uint8\+\_\+t reg, uint8\+\_\+t value)
 \item 
@@ -36,7 +36,7 @@ uint8\+\_\+t \hyperlink{class_bean_class_afb4f9a75f687547ff8f6cb4146ab30fa}{get\
 \item 
 void \hyperlink{class_bean_class_a7af1f9d1edb112f761db9b69686b5a5a}{set\+Led} (uint8\+\_\+t red, uint8\+\_\+t green, uint8\+\_\+t blue)
 \item 
-Led\+Reading \hyperlink{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{get\+Led} (void)
+\hyperlink{struct_l_e_d___s_e_t_t_i_n_g___t}{Led\+Reading} \hyperlink{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{get\+Led} (void)
 \item 
 uint8\+\_\+t \hyperlink{class_bean_class_aea8736bf91c03de609233ddb270fb77d}{get\+Led\+Red} (void)
 \item 
@@ -54,7 +54,7 @@ void \hyperlink{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}{set\+Led\+Bl
 \begin{Indent}{\bf Observer}\par
 {\em Functions related to Observer mode. Observer role allows the Bean to listen for advertisements. As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements. Paired with the custom advertising role, you can have two Beans interact with each other. This role works even when the Bean is connected. }\begin{DoxyCompactItemize}
 \item 
-int \hyperlink{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}{get\+Observer\+Message} (Observer\+Advertisement\+Info $\ast$message, unsigned long timeout)
+int \hyperlink{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}{get\+Observer\+Message} (\hyperlink{struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t}{Observer\+Advertisement\+Info} $\ast$message, unsigned long timeout)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Scratch}\par
@@ -169,9 +169,9 @@ bool \hyperlink{class_bean_class_ab426b11e8bee60de92707254c0501c20}{get\+Connect
 \begin{Indent}{\bf Bluetooth Services}\par
 {\em Functions dealing with Bluetooth service configurations and pairing. }\begin{DoxyCompactItemize}
 \item 
-Bluetooth\+Services \hyperlink{class_bean_class_ae2547ba8f4b67a9ac774ce6d89b14dcb}{get\+Services} (void)
+\hyperlink{struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t}{Bluetooth\+Services} \hyperlink{class_bean_class_ae2547ba8f4b67a9ac774ce6d89b14dcb}{get\+Services} (void)
 \item 
-void \hyperlink{class_bean_class_a17b6e95f7b93e39ae83971ed796edd5b}{set\+Services} (Bluetooth\+Services services)
+void \hyperlink{class_bean_class_a17b6e95f7b93e39ae83971ed796edd5b}{set\+Services} (\hyperlink{struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t}{Bluetooth\+Services} services)
 \item 
 void \hyperlink{class_bean_class_a98a040220137d9dd047250e247bd4ebd}{reset\+Services} (void)
 \item 
@@ -570,7 +570,7 @@ This example wakes Bean when a client connects, waits for the client to disconne
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_class_a53f2174dd2f3c2907acc3355cef64842}{}\index{Bean\+Class@{Bean\+Class}!get\+Acceleration@{get\+Acceleration}}
 \index{get\+Acceleration@{get\+Acceleration}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Acceleration(void)}]{\setlength{\rightskip}{0pt plus 5cm}Acceleration\+Reading Bean\+Class\+::get\+Acceleration (
+\subsubsection[{get\+Acceleration(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Acceleration\+Reading} Bean\+Class\+::get\+Acceleration (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -814,7 +814,7 @@ This example blinks the L\+E\+D on the Bean green if connected, red if disconnec
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_class_ab73794fbf27d0297ead453ca60ac4aaf}{}\index{Bean\+Class@{Bean\+Class}!get\+Led@{get\+Led}}
 \index{get\+Led@{get\+Led}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Led(void)}]{\setlength{\rightskip}{0pt plus 5cm}Led\+Reading Bean\+Class\+::get\+Led (
+\subsubsection[{get\+Led(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Led\+Reading} Bean\+Class\+::get\+Led (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -885,7 +885,7 @@ Get intensity of the red channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 i
 \index{get\+Observer\+Message@{get\+Observer\+Message}!Bean\+Class@{Bean\+Class}}
 \subsubsection[{get\+Observer\+Message(\+Observer\+Advertisement\+Info $\ast$message, unsigned long timeout)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Class\+::get\+Observer\+Message (
 \begin{DoxyParamCaption}
-\item[{Observer\+Advertisement\+Info $\ast$}]{message, }
+\item[{{\bf Observer\+Advertisement\+Info} $\ast$}]{message, }
 \item[{unsigned long}]{timeout}
 \end{DoxyParamCaption}
 )}\label{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}
@@ -968,7 +968,7 @@ When a Bean running this sketch is near a Bean running advertiser.\+ino, it will
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_class_ae2547ba8f4b67a9ac774ce6d89b14dcb}{}\index{Bean\+Class@{Bean\+Class}!get\+Services@{get\+Services}}
 \index{get\+Services@{get\+Services}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Services(void)}]{\setlength{\rightskip}{0pt plus 5cm}Bluetooth\+Services Bean\+Class\+::get\+Services (
+\subsubsection[{get\+Services(void)}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bluetooth\+Services} Bean\+Class\+::get\+Services (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
@@ -1680,7 +1680,7 @@ This example writes a value to and reads a value from a scratch characteristic\+
 \index{set\+Services@{set\+Services}!Bean\+Class@{Bean\+Class}}
 \subsubsection[{set\+Services(\+Bluetooth\+Services services)}]{\setlength{\rightskip}{0pt plus 5cm}void Bean\+Class\+::set\+Services (
 \begin{DoxyParamCaption}
-\item[{Bluetooth\+Services}]{services}
+\item[{{\bf Bluetooth\+Services}}]{services}
 \end{DoxyParamCaption}
 )}\label{class_bean_class_a17b6e95f7b93e39ae83971ed796edd5b}
 Sets services for the Bean to use (N\+O\+T\+E\+: disabling the standard service will no longer allow the Bean to connect to the Bean Loader)

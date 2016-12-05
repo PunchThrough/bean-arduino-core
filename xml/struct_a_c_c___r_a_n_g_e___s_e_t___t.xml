@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_a_c_c___r_a_n_g_e___s_e_t___t" kind="struct" language="C++" prot="public">
+    <compoundname>ACC_RANGE_SET_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_a_c_c___r_a_n_g_e___s_e_t___t_1a25ad520026f90860ce7d04f30145c742" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ACC_RANGE_SET_T::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="392" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="392" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="391" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="389" bodyend="393"/>
+    <listofallmembers>
+      <member refid="struct_a_c_c___r_a_n_g_e___s_e_t___t_1a25ad520026f90860ce7d04f30145c742" prot="public" virt="non-virtual"><scope>ACC_RANGE_SET_T</scope><name>range</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

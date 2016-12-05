@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_t___a_d_v___o_n_o_f_f___t" kind="struct" language="C++" prot="public">
+    <compoundname>BT_ADV_ONOFF_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_t___a_d_v___o_n_o_f_f___t_1ae5d71728eac5a5a55cfde06ffbe75f4e" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 BT_ADV_ONOFF_T::adv_timer</definition>
+        <argsstring></argsstring>
+        <name>adv_timer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="417" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="417" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___a_d_v___o_n_o_f_f___t_1aa77a9330146830b6451be534b41ea389" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_ADV_ONOFF_T::adv_onOff</definition>
+        <argsstring></argsstring>
+        <name>adv_onOff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="418" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="418" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="416" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="414" bodyend="419"/>
+    <listofallmembers>
+      <member refid="struct_b_t___a_d_v___o_n_o_f_f___t_1aa77a9330146830b6451be534b41ea389" prot="public" virt="non-virtual"><scope>BT_ADV_ONOFF_T</scope><name>adv_onOff</name></member>
+      <member refid="struct_b_t___a_d_v___o_n_o_f_f___t_1ae5d71728eac5a5a55cfde06ffbe75f4e" prot="public" virt="non-virtual"><scope>BT_ADV_ONOFF_T</scope><name>adv_timer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

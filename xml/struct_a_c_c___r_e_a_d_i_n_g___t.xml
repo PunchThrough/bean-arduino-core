@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_a_c_c___r_e_a_d_i_n_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>ACC_READING_T</compoundname>
+    <includes refid="_app_messages_8h" local="no">AppMessages.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_a_c_c___r_e_a_d_i_n_g___t_1afd4a389ac161d7dd67a0f5955368df39" prot="public" static="no" mutable="no">
+        <type>PTD_INT16</type>
+        <definition>PTD_INT16 ACC_READING_T::xAxis</definition>
+        <argsstring></argsstring>
+        <name>xAxis</name>
+        <briefdescription>
+<para>TODO: Describe xAxis. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="369" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_c_c___r_e_a_d_i_n_g___t_1ac816a3b3d0e12c83458c8a5b5dbfaf90" prot="public" static="no" mutable="no">
+        <type>PTD_INT16</type>
+        <definition>PTD_INT16 ACC_READING_T::yAxis</definition>
+        <argsstring></argsstring>
+        <name>yAxis</name>
+        <briefdescription>
+<para>TODO: Describe yAxis. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="370" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_c_c___r_e_a_d_i_n_g___t_1ac7b2fe087dbbf046ce51893a032c662e" prot="public" static="no" mutable="no">
+        <type>PTD_INT16</type>
+        <definition>PTD_INT16 ACC_READING_T::zAxis</definition>
+        <argsstring></argsstring>
+        <name>zAxis</name>
+        <briefdescription>
+<para>TODO: Describe zAxis. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="371" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="371" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_c_c___r_e_a_d_i_n_g___t_1a26626c8cd8cbebee04c55efb32ac357e" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ACC_READING_T::sensitivity</definition>
+        <argsstring></argsstring>
+        <name>sensitivity</name>
+        <briefdescription>
+<para>Valid value(s) include: 2, 4, 8, or 16 g/512LSB. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="372" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="372" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure that encapsulates an accelerometer reading. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="368" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="366" bodyend="373"/>
+    <listofallmembers>
+      <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1a26626c8cd8cbebee04c55efb32ac357e" prot="public" virt="non-virtual"><scope>ACC_READING_T</scope><name>sensitivity</name></member>
+      <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1afd4a389ac161d7dd67a0f5955368df39" prot="public" virt="non-virtual"><scope>ACC_READING_T</scope><name>xAxis</name></member>
+      <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1ac816a3b3d0e12c83458c8a5b5dbfaf90" prot="public" virt="non-virtual"><scope>ACC_READING_T</scope><name>yAxis</name></member>
+      <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1ac7b2fe087dbbf046ce51893a032c662e" prot="public" virt="non-virtual"><scope>ACC_READING_T</scope><name>zAxis</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

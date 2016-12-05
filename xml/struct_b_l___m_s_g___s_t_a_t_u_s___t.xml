@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_l___m_s_g___s_t_a_t_u_s___t" kind="struct" language="C++" prot="public">
+    <compoundname>BL_MSG_STATUS_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a4effec1e63765a35393842da0b99ef6b" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BL_MSG_STATUS_T::hlState</definition>
+        <argsstring></argsstring>
+        <name>hlState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="507" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a16c3b44d869de82f5f87ea0b1335f8b5" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BL_MSG_STATUS_T::intState</definition>
+        <argsstring></argsstring>
+        <name>intState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="508" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a7fd8df74353b15d8ea4d58cf5baca701" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BL_MSG_STATUS_T::blocksSent</definition>
+        <argsstring></argsstring>
+        <name>blocksSent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="509" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="509" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___m_s_g___s_t_a_t_u_s___t_1ac1f0614b561e348afd6e16648690ff9e" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 BL_MSG_STATUS_T::bytesSent</definition>
+        <argsstring></argsstring>
+        <name>bytesSent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="510" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="510" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="506" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="504" bodyend="511"/>
+    <listofallmembers>
+      <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a7fd8df74353b15d8ea4d58cf5baca701" prot="public" virt="non-virtual"><scope>BL_MSG_STATUS_T</scope><name>blocksSent</name></member>
+      <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1ac1f0614b561e348afd6e16648690ff9e" prot="public" virt="non-virtual"><scope>BL_MSG_STATUS_T</scope><name>bytesSent</name></member>
+      <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a4effec1e63765a35393842da0b99ef6b" prot="public" virt="non-virtual"><scope>BL_MSG_STATUS_T</scope><name>hlState</name></member>
+      <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a16c3b44d869de82f5f87ea0b1335f8b5" prot="public" virt="non-virtual"><scope>BL_MSG_STATUS_T</scope><name>intState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

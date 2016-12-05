@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keyreport',['KeyReport',['../struct_key_report.html',1,'']]]
+  ['ccreport',['CcReport',['../struct_cc_report.html',1,'']]]
 ];

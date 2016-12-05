@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_t___s_t_a_t_e_s___t" kind="struct" language="C++" prot="public">
+    <compoundname>BT_STATES_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_t___s_t_a_t_e_s___t_1a06b16edf83d9bf148d6d9f238787998d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_STATES_T::conn_state</definition>
+        <argsstring></argsstring>
+        <name>conn_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="344" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_t___s_t_a_t_e_s___t_1a346ea237f71d6e001b75170b6410d94d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BT_STATES_T::adv_state</definition>
+        <argsstring></argsstring>
+        <name>adv_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="345" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="343" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="341" bodyend="346"/>
+    <listofallmembers>
+      <member refid="struct_b_t___s_t_a_t_e_s___t_1a346ea237f71d6e001b75170b6410d94d" prot="public" virt="non-virtual"><scope>BT_STATES_T</scope><name>adv_state</name></member>
+      <member refid="struct_b_t___s_t_a_t_e_s___t_1a06b16edf83d9bf148d6d9f238787998d" prot="public" virt="non-virtual"><scope>BT_STATES_T</scope><name>conn_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

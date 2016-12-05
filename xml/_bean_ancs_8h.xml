@@ -3,40 +3,46 @@
   <compounddef id="_bean_ancs_8h" kind="file" language="C++">
     <compoundname>BeanAncs.h</compoundname>
     <includes local="yes">Arduino.h</includes>
-    <includes local="yes">applicationMessageHeaders/AppMessages.h</includes>
+    <includes refid="_app_messages_8h" local="yes">applicationMessageHeaders/AppMessages.h</includes>
     <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
     <incdepgraph>
-      <node id="28">
+      <node id="33">
         <label>applicationMessageHeaders/AppMessages.h</label>
+        <link refid="_app_messages_8h_source"/>
+        <childnode refid="34" relation="include">
+        </childnode>
       </node>
-      <node id="27">
+      <node id="32">
         <label>Arduino.h</label>
       </node>
-      <node id="26">
+      <node id="34">
+        <label>AppMessageTypes.h</label>
+      </node>
+      <node id="31">
         <label>hardware/bean/avr/cores/bean/BeanAncs.h</label>
         <link refid="BeanAncs.h"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="30">
+      <node id="36">
         <label>hardware/bean/avr/cores/bean/Bean.h</label>
         <link refid="_bean_8h_source"/>
       </node>
-      <node id="29">
+      <node id="35">
         <label>hardware/bean/avr/cores/bean/BeanAncs.h</label>
         <link refid="BeanAncs.h"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="class_bean_ancs_class" prot="public">BeanAncsClass</innerclass>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="_bean_ancs_8h_1a6a538590858196ec28a49c979f21fb04" prot="public" static="no">
-        <type>ANCS_SOURCE_MSG_T</type>
+        <type><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref></type>
         <definition>typedef ANCS_SOURCE_MSG_T AncsNotification</definition>
         <argsstring></argsstring>
         <name>AncsNotification</name>
@@ -88,7 +94,7 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Arduino.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;applicationMessageHeaders/AppMessages.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ANCS_SOURCE_MSG_T<sp/>AncsNotification;</highlight></codeline>
+<codeline lineno="10"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref><sp/><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">AncsNotification</ref>;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>NOTI_ATTR_ID_T<sp/>AncsNotificationAttribute;</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
@@ -105,9 +111,9 @@
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1a29b6dc1d900b8c1dc93f40beaf29c8d9" kindref="member">notificationsAvailable</ref>();</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1affaf3691b746468f5e11f78c9b74a755" kindref="member">getNotificationHeaders</ref>(ANCS_SOURCE_MSG_T<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_length);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1affaf3691b746468f5e11f78c9b74a755" kindref="member">getNotificationHeaders</ref>(<ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref><sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_length);</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>ANCS_SOURCE_MSG_T<sp/><ref refid="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" kindref="member">getNotificationHeader</ref>();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref><sp/><ref refid="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" kindref="member">getNotificationHeader</ref>();</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_ancs_class_1ae0dc33b6e27d0ed37a345462ad58ba01" kindref="member">getNotificationAttributes</ref>(NOTI_ATTR_ID_T<sp/>type,<sp/>uint32_t<sp/>ID,</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>len,<sp/>uint8_t*<sp/>data,</highlight></codeline>

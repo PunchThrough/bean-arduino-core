@@ -6,7 +6,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
@@ -17,7 +18,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_bean_8h_source.html"
+"_app_messages_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

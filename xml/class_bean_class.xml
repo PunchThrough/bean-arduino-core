@@ -156,7 +156,7 @@
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="150" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>AccelerationReading</type>
+        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref></type>
         <definition>AccelerationReading BeanClass::getAcceleration</definition>
         <argsstring>(void)</argsstring>
         <name>getAcceleration</name>
@@ -481,7 +481,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="252" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>LedReading</type>
+        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref></type>
         <definition>LedReading BeanClass::getLed</definition>
         <argsstring>(void)</argsstring>
         <name>getLed</name>
@@ -648,7 +648,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <argsstring>(ObserverAdvertisementInfo *message, unsigned long timeout)</argsstring>
         <name>getObserverMessage</name>
         <param>
-          <type>ObserverAdvertisementInfo *</type>
+          <type><ref refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kindref="compound">ObserverAdvertisementInfo</ref> *</type>
           <declname>message</declname>
         </param>
         <param>
@@ -1788,7 +1788,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
       <header>Bluetooth Services</header>
       <description><para>Functions dealing with Bluetooth service configurations and pairing. </para></description>
       <memberdef kind="function" id="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>BluetoothServices</type>
+        <type><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">BluetoothServices</ref></type>
         <definition>BluetoothServices BeanClass::getServices</definition>
         <argsstring>(void)</argsstring>
         <name>getServices</name>
@@ -1809,7 +1809,7 @@ Power modes: Normal mode: 0x00 (~140uA) Suspend mode: 0x80 (~0.5uA) Low Power 10
         <argsstring>(BluetoothServices services)</argsstring>
         <name>setServices</name>
         <param>
-          <type>BluetoothServices</type>
+          <type><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">BluetoothServices</ref></type>
           <declname>services</declname>
         </param>
         <briefdescription>

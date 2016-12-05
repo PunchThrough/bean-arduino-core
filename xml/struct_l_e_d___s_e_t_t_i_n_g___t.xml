@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_l_e_d___s_e_t_t_i_n_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>LED_SETTING_T</compoundname>
+    <includes refid="_app_messages_8h" local="no">AppMessages.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_l_e_d___s_e_t_t_i_n_g___t_1a4af1cfe5d52b72803f31f1aefeba4dad" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 LED_SETTING_T::red</definition>
+        <argsstring></argsstring>
+        <name>red</name>
+        <briefdescription>
+<para>Integer between 0-255. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="399" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_l_e_d___s_e_t_t_i_n_g___t_1ab6d80e7108e2a40f38db65ed7d068284" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 LED_SETTING_T::green</definition>
+        <argsstring></argsstring>
+        <name>green</name>
+        <briefdescription>
+<para>Integer between 0-255. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="400" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_l_e_d___s_e_t_t_i_n_g___t_1a453318108cb8ffe685e852435db2e48d" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 LED_SETTING_T::blue</definition>
+        <argsstring></argsstring>
+        <name>blue</name>
+        <briefdescription>
+<para>Integer between 0-255. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="401" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="401" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Structure that encapsulates a LED RGB value. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="398" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="398" bodyend="402"/>
+    <listofallmembers>
+      <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1a453318108cb8ffe685e852435db2e48d" prot="public" virt="non-virtual"><scope>LED_SETTING_T</scope><name>blue</name></member>
+      <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1ab6d80e7108e2a40f38db65ed7d068284" prot="public" virt="non-virtual"><scope>LED_SETTING_T</scope><name>green</name></member>
+      <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1a4af1cfe5d52b72803f31f1aefeba4dad" prot="public" virt="non-virtual"><scope>LED_SETTING_T</scope><name>red</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

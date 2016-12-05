@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>ANCS_SOURCE_MSG_T</compoundname>
+    <includes refid="_app_messages_8h" local="no">AppMessages.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a2a96a3529f89aa04921715ef93656b74" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_SOURCE_MSG_T::eventID</definition>
+        <argsstring></argsstring>
+        <name>eventID</name>
+        <briefdescription>
+<para>TODO: Describe member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="235" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a6e93073a497ffc5114dce4d8515bb384" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_SOURCE_MSG_T::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <briefdescription>
+<para>TODO: Describe member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="236" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1ab2fed6d4c02a443c04fe7706db51ee35" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_SOURCE_MSG_T::catID</definition>
+        <argsstring></argsstring>
+        <name>catID</name>
+        <briefdescription>
+<para>TODO: Describe member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="237" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a520bb5541b19a010ff45cc733106fdc0" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_SOURCE_MSG_T::catCount</definition>
+        <argsstring></argsstring>
+        <name>catCount</name>
+        <briefdescription>
+<para>TODO: Describe member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="238" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1abee34a46b1aebf1764ed32e48cca48d5" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 ANCS_SOURCE_MSG_T::notiUID</definition>
+        <argsstring></argsstring>
+        <name>notiUID</name>
+        <briefdescription>
+<para>TODO: Describe member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="239" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>TODO: Documentation needed. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="234" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="234" bodyend="240"/>
+    <listofallmembers>
+      <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a520bb5541b19a010ff45cc733106fdc0" prot="public" virt="non-virtual"><scope>ANCS_SOURCE_MSG_T</scope><name>catCount</name></member>
+      <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1ab2fed6d4c02a443c04fe7706db51ee35" prot="public" virt="non-virtual"><scope>ANCS_SOURCE_MSG_T</scope><name>catID</name></member>
+      <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a2a96a3529f89aa04921715ef93656b74" prot="public" virt="non-virtual"><scope>ANCS_SOURCE_MSG_T</scope><name>eventID</name></member>
+      <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a6e93073a497ffc5114dce4d8515bb384" prot="public" virt="non-virtual"><scope>ANCS_SOURCE_MSG_T</scope><name>flags</name></member>
+      <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1abee34a46b1aebf1764ed32e48cca48d5" prot="public" virt="non-virtual"><scope>ANCS_SOURCE_MSG_T</scope><name>notiUID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

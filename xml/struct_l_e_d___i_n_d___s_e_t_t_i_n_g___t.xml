@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t" kind="struct" language="C++" prot="public">
+    <compoundname>LED_IND_SETTING_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1ac9fb345e99435dc6c3b82565a315659e" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 LED_IND_SETTING_T::color</definition>
+        <argsstring></argsstring>
+        <name>color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="407" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="407" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1a8565652133d7ee8d97ea1f3240d78875" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 LED_IND_SETTING_T::intensity</definition>
+        <argsstring></argsstring>
+        <name>intensity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="408" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="408" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="406" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="406" bodyend="409"/>
+    <listofallmembers>
+      <member refid="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1ac9fb345e99435dc6c3b82565a315659e" prot="public" virt="non-virtual"><scope>LED_IND_SETTING_T</scope><name>color</name></member>
+      <member refid="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1a8565652133d7ee8d97ea1f3240d78875" prot="public" virt="non-virtual"><scope>LED_IND_SETTING_T</scope><name>intensity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

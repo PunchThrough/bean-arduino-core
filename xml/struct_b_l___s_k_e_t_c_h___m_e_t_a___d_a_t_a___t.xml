@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t" kind="struct" language="C++" prot="public">
+    <compoundname>BL_SKETCH_META_DATA_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9e51f84ff4b61da949d9d08efe5633a7" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 BL_SKETCH_META_DATA_T::hexSize</definition>
+        <argsstring></argsstring>
+        <name>hexSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="475" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="475" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a4baaf0e3cba8d7e1d7200a32531f3db4" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 BL_SKETCH_META_DATA_T::hexCrc</definition>
+        <argsstring></argsstring>
+        <name>hexCrc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="476" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="476" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a2650b9923e0acb1cdb4ebef3541657c5" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 BL_SKETCH_META_DATA_T::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="477" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="477" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9f08c868a16dac0f0430c9115d817178" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BL_SKETCH_META_DATA_T::hexNameSize</definition>
+        <argsstring></argsstring>
+        <name>hexNameSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="478" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="478" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a17019df0616eba02dd2fc22402740ba6" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 BL_SKETCH_META_DATA_T::hexName[MAX_SKETCH_NAME_SIZE]</definition>
+        <argsstring>[MAX_SKETCH_NAME_SIZE]</argsstring>
+        <name>hexName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="479" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="479" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="474" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="472" bodyend="480"/>
+    <listofallmembers>
+      <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a4baaf0e3cba8d7e1d7200a32531f3db4" prot="public" virt="non-virtual"><scope>BL_SKETCH_META_DATA_T</scope><name>hexCrc</name></member>
+      <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a17019df0616eba02dd2fc22402740ba6" prot="public" virt="non-virtual"><scope>BL_SKETCH_META_DATA_T</scope><name>hexName</name></member>
+      <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9f08c868a16dac0f0430c9115d817178" prot="public" virt="non-virtual"><scope>BL_SKETCH_META_DATA_T</scope><name>hexNameSize</name></member>
+      <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9e51f84ff4b61da949d9d08efe5633a7" prot="public" virt="non-virtual"><scope>BL_SKETCH_META_DATA_T</scope><name>hexSize</name></member>
+      <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a2650b9923e0acb1cdb4ebef3541657c5" prot="public" virt="non-virtual"><scope>BL_SKETCH_META_DATA_T</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

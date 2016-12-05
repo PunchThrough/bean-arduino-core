@@ -1,5 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.10">
+  <compound refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t" kind="struct"><name>ACC_AXES_READING_T</name>
+    <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1ae69a9b056f681d3f3822fa9abd829334" kind="variable"><name>axis</name></member>
+    <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a66d4a402c79f1769dd23c6e91600862e" kind="variable"><name>reading</name></member>
+    <member refid="struct_a_c_c___a_x_e_s___r_e_a_d_i_n_g___t_1a726d2fb3bec4083a4c3abfeaae5f4f11" kind="variable"><name>sensitivity</name></member>
+  </compound>
+  <compound refid="struct_a_c_c___r_a_n_g_e___s_e_t___t" kind="struct"><name>ACC_RANGE_SET_T</name>
+    <member refid="struct_a_c_c___r_a_n_g_e___s_e_t___t_1a25ad520026f90860ce7d04f30145c742" kind="variable"><name>range</name></member>
+  </compound>
+  <compound refid="struct_a_c_c___r_e_a_d_i_n_g___t" kind="struct"><name>ACC_READING_T</name>
+    <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1afd4a389ac161d7dd67a0f5955368df39" kind="variable"><name>xAxis</name></member>
+    <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1ac816a3b3d0e12c83458c8a5b5dbfaf90" kind="variable"><name>yAxis</name></member>
+    <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1ac7b2fe087dbbf046ce51893a032c662e" kind="variable"><name>zAxis</name></member>
+    <member refid="struct_a_c_c___r_e_a_d_i_n_g___t_1a26626c8cd8cbebee04c55efb32ac357e" kind="variable"><name>sensitivity</name></member>
+  </compound>
+  <compound refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kind="struct"><name>ADV_SWITCH_ENABLED_T</name>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a97e45a326a9d7e25d909cbf36c754d8f" kind="variable"><name>standard</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a9e5f7379d6b0d2f588374397d399ad4b" kind="variable"><name>hid</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a12417ec9e2b1fc97c5a751a968debc4a" kind="variable"><name>midi</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a3d85791b6d608aba9ad18b46df48b876" kind="variable"><name>ancs</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a68c79482b324ba225bd665ec82747c4b" kind="variable"><name>observer</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1ae8406f0474ff406d1b90cb4e0c3ca37b" kind="variable"><name>ibeacon</name></member>
+    <member refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t_1a96fb2aabe9c48dd9961dae8e712015ad" kind="variable"><name>custom</name></member>
+  </compound>
+  <compound refid="struct_a_n_c_s___g_e_t___n_t_f___t" kind="struct"><name>ANCS_GET_NTF_T</name>
+    <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1af6470e407966b42dbb146b0fe9278c60" kind="variable"><name>cmdID</name></member>
+    <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1a875eaed32ae49fbac64055d74e400085" kind="variable"><name>notifUID</name></member>
+    <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1aee990866ce9075ccf5f1f2fa315da45c" kind="variable"><name>attr</name></member>
+    <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1a70ae10e567b1f52c19992b7d1abbf43e" kind="variable"><name>attrLength</name></member>
+  </compound>
+  <compound refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kind="struct"><name>ANCS_SOURCE_MSG_T</name>
+    <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a2a96a3529f89aa04921715ef93656b74" kind="variable"><name>eventID</name></member>
+    <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a6e93073a497ffc5114dce4d8515bb384" kind="variable"><name>flags</name></member>
+    <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1ab2fed6d4c02a443c04fe7706db51ee35" kind="variable"><name>catID</name></member>
+    <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1a520bb5541b19a010ff45cc733106fdc0" kind="variable"><name>catCount</name></member>
+    <member refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_1abee34a46b1aebf1764ed32e48cca48d5" kind="variable"><name>notiUID</name></member>
+  </compound>
   <compound refid="class_bean_ancs_class" kind="class"><name>BeanAncsClass</name>
     <member refid="class_bean_ancs_class_1aa3d157f0b796947032a27e6185be895a" kind="function"><name>enable</name></member>
     <member refid="class_bean_ancs_class_1a13833644884b8cc61e8d70ac850a500c" kind="function"><name>isEnabled</name></member>
@@ -117,16 +153,337 @@
     <member refid="class_bean_midi_class_1af4f3a26f920cf69f5d04433b8b40a796" kind="function"><name>pitchBend</name></member>
     <member refid="class_bean_midi_class_1a265fa91fe46fffedb371adae3749e6f4" kind="function"><name>sustain</name></member>
   </compound>
+  <compound refid="struct_b_l___m_s_g___c_m_d___s_t_a_r_t___t" kind="struct"><name>BL_MSG_CMD_START_T</name>
+    <member refid="struct_b_l___m_s_g___c_m_d___s_t_a_r_t___t_1ae10257f15699ce3b59839bad5767ae06" kind="variable"><name>metaData</name></member>
+  </compound>
+  <compound refid="struct_b_l___m_s_g___f_w___b_l_o_c_k___t" kind="struct"><name>BL_MSG_FW_BLOCK_T</name>
+    <member refid="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1a95eebace63ad93ca6385a32410a589ce" kind="variable"><name>fwAddress</name></member>
+    <member refid="struct_b_l___m_s_g___f_w___b_l_o_c_k___t_1ae0a2a8428f4091045c5cb0702cf805e5" kind="variable"><name>fwBlock</name></member>
+  </compound>
+  <compound refid="struct_b_l___m_s_g___s_t_a_t_u_s___t" kind="struct"><name>BL_MSG_STATUS_T</name>
+    <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a4effec1e63765a35393842da0b99ef6b" kind="variable"><name>hlState</name></member>
+    <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a16c3b44d869de82f5f87ea0b1335f8b5" kind="variable"><name>intState</name></member>
+    <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1a7fd8df74353b15d8ea4d58cf5baca701" kind="variable"><name>blocksSent</name></member>
+    <member refid="struct_b_l___m_s_g___s_t_a_t_u_s___t_1ac1f0614b561e348afd6e16648690ff9e" kind="variable"><name>bytesSent</name></member>
+  </compound>
+  <compound refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t" kind="struct"><name>BL_SKETCH_META_DATA_T</name>
+    <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9e51f84ff4b61da949d9d08efe5633a7" kind="variable"><name>hexSize</name></member>
+    <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a4baaf0e3cba8d7e1d7200a32531f3db4" kind="variable"><name>hexCrc</name></member>
+    <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a2650b9923e0acb1cdb4ebef3541657c5" kind="variable"><name>timestamp</name></member>
+    <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a9f08c868a16dac0f0430c9115d817178" kind="variable"><name>hexNameSize</name></member>
+    <member refid="struct_b_l___s_k_e_t_c_h___m_e_t_a___d_a_t_a___t_1a17019df0616eba02dd2fc22402740ba6" kind="variable"><name>hexName</name></member>
+  </compound>
+  <compound refid="struct_b_t___a_d_v___o_n_o_f_f___t" kind="struct"><name>BT_ADV_ONOFF_T</name>
+    <member refid="struct_b_t___a_d_v___o_n_o_f_f___t_1ae5d71728eac5a5a55cfde06ffbe75f4e" kind="variable"><name>adv_timer</name></member>
+    <member refid="struct_b_t___a_d_v___o_n_o_f_f___t_1aa77a9330146830b6451be534b41ea389" kind="variable"><name>adv_onOff</name></member>
+  </compound>
+  <compound refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t" kind="struct"><name>BT_RADIOCONFIG_T</name>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad33001fb2788fb7f7ee708d19501411d" kind="variable"><name>adv_int</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a22d62d1efb45a3c59d1fabd7bf06a12d" kind="variable"><name>conn_int</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a5f380703f2fdc83686b02f7195a79454" kind="variable"><name>power</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1acf7c07be6fbdc7a3e98a80c4d7f4ffdc" kind="variable"><name>adv_mode</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1ad6dfca1289e15f0724b9bae23fe859c3" kind="variable"><name>ibeacon_uuid</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1aeb5cc04ec74670d4285fb2e75b718b88" kind="variable"><name>ibeacon_major</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a7fa1e31f642afc5ce4e2021ca9d9a426" kind="variable"><name>ibeacon_minor</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a07432b46b98c8f527882134e6a9c6299" kind="variable"><name>local_name</name></member>
+    <member refid="struct_b_t___r_a_d_i_o_c_o_n_f_i_g___t_1a1028444b2f941f543f3e63f2f1b7d531" kind="variable"><name>local_name_size</name></member>
+  </compound>
+  <compound refid="struct_b_t___s_c_r_a_t_c_h___t" kind="struct"><name>BT_SCRATCH_T</name>
+    <member refid="struct_b_t___s_c_r_a_t_c_h___t_1afa931e12cf31f7ba824213e012492c36" kind="variable"><name>number</name></member>
+    <member refid="struct_b_t___s_c_r_a_t_c_h___t_1a7a33ff73c781026808bc6bd7d27fa45d" kind="variable"><name>scratch</name></member>
+  </compound>
+  <compound refid="struct_b_t___s_e_t___p_i_n___t" kind="struct"><name>BT_SET_PIN_T</name>
+    <member refid="struct_b_t___s_e_t___p_i_n___t_1a94c77f9d979a537a554c81551b45c24c" kind="variable"><name>pinCode</name></member>
+    <member refid="struct_b_t___s_e_t___p_i_n___t_1a857fc35778ecf9700cb5d1ea97e4a2f5" kind="variable"><name>pincodeActive</name></member>
+  </compound>
+  <compound refid="struct_b_t___s_t_a_t_e_s___t" kind="struct"><name>BT_STATES_T</name>
+    <member refid="struct_b_t___s_t_a_t_e_s___t_1a06b16edf83d9bf148d6d9f238787998d" kind="variable"><name>conn_state</name></member>
+    <member refid="struct_b_t___s_t_a_t_e_s___t_1a346ea237f71d6e001b75170b6410d94d" kind="variable"><name>adv_state</name></member>
+  </compound>
   <compound refid="struct_cc_report" kind="struct"><name>CcReport</name>
     <member refid="struct_cc_report_1accbeb8de031a175ebf43b5fcaaa02836" kind="variable"><name>bytes</name></member>
+  </compound>
+  <compound refid="struct_e_r_r_o_r___m_s_g___t" kind="struct"><name>ERROR_MSG_T</name>
+    <member refid="struct_e_r_r_o_r___m_s_g___t_1a5ebd68786cc6a3da920b024bab348688" kind="variable"><name>errorCode</name></member>
+    <member refid="struct_e_r_r_o_r___m_s_g___t_1ae3c5534a4496df5e1c0bf78cc1d94d2b" kind="variable"><name>payloadSize</name></member>
+    <member refid="struct_e_r_r_o_r___m_s_g___t_1a19a3c7a07290ee567d6e101b5a36312c" kind="variable"><name>payload</name></member>
+  </compound>
+  <compound refid="struct_h_i_d___r_e_p_o_r_t___t" kind="struct"><name>HID_REPORT_T</name>
+    <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a4e3b15b71170f48f9d1772e2e5b65f7b" kind="variable"><name>id</name></member>
+    <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a293a2b82c572b81d925bb8822435db62" kind="variable"><name>type</name></member>
+    <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a833870632158c0c0a2d9727764fcbcb4" kind="variable"><name>len</name></member>
+    <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a4516a8128b3acb98449e070da9868a1c" kind="variable"><name>data</name></member>
   </compound>
   <compound refid="struct_key_report" kind="struct"><name>KeyReport</name>
     <member refid="struct_key_report_1a2ead73d1505b8909d72f07d9b1c2874d" kind="variable"><name>modifiers</name></member>
     <member refid="struct_key_report_1a47ab672d90ca943f19d552a07a5f2afa" kind="variable"><name>reserved</name></member>
     <member refid="struct_key_report_1a73742ff22b1a767b260633c99baaa374" kind="variable"><name>keys</name></member>
   </compound>
+  <compound refid="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t" kind="struct"><name>LED_IND_SETTING_T</name>
+    <member refid="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1ac9fb345e99435dc6c3b82565a315659e" kind="variable"><name>color</name></member>
+    <member refid="struct_l_e_d___i_n_d___s_e_t_t_i_n_g___t_1a8565652133d7ee8d97ea1f3240d78875" kind="variable"><name>intensity</name></member>
+  </compound>
+  <compound refid="struct_l_e_d___s_e_t_t_i_n_g___t" kind="struct"><name>LED_SETTING_T</name>
+    <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1a4af1cfe5d52b72803f31f1aefeba4dad" kind="variable"><name>red</name></member>
+    <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1ab6d80e7108e2a40f38db65ed7d068284" kind="variable"><name>green</name></member>
+    <member refid="struct_l_e_d___s_e_t_t_i_n_g___t_1a453318108cb8ffe685e852435db2e48d" kind="variable"><name>blue</name></member>
+  </compound>
   <compound refid="struct_mouse_report" kind="struct"><name>MouseReport</name>
     <member refid="struct_mouse_report_1abedbcaccb713b83fa301e329461e9664" kind="variable"><name>mouse</name></member>
+  </compound>
+  <compound refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kind="struct"><name>OBSERVER_INFO_MESSAGE_T</name>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa406929bc3232dc32ced9055f61bde10" kind="variable"><name>eventType</name></member>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a730452712ad963c16942398b82f17912" kind="variable"><name>addrType</name></member>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a44b8aab5e220f6e5a32da5238e0c5237" kind="variable"><name>addr</name></member>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1aa43f4a895184a8a9dc970c71648c5c96" kind="variable"><name>rssi</name></member>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a33467e95974dbe9f3bebf54c10ce9404" kind="variable"><name>dataLen</name></member>
+    <member refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t_1a6f9ccb4068dec648b6f04589b1c8f0ef" kind="variable"><name>advData</name></member>
+  </compound>
+  <compound refid="_app_messages_8h" kind="file"><name>AppMessages.h</name>
+    <member refid="_app_messages_8h_1a5917990e56d0fc2c3c852c2fcec97ac6" kind="define"><name>APP_MSG_MAX_LENGTH</name></member>
+    <member refid="_app_messages_8h_1adb79c6a63f03cc787be02f44c6e572c6" kind="define"><name>APP_MSG_RESPONSE_BIT</name></member>
+    <member refid="_app_messages_8h_1a6910198601189b2409ad631712baf989" kind="define"><name>APP_MSG_FIELD_SIZE_MAJOR</name></member>
+    <member refid="_app_messages_8h_1a09d11e88e42d7ff67bf0452bd659e22a" kind="define"><name>APP_MSG_FIELD_SIZE_MINOR</name></member>
+    <member refid="_app_messages_8h_1a543aa60f972b2ad998f94c9270bf2e8a" kind="define"><name>APP_MSG_ID_SIZE</name></member>
+    <member refid="_app_messages_8h_1ad1fc9160b6dbbaaa550e2123971d6ebd" kind="define"><name>SERIAL_FIELD_SIZE_LENGTH</name></member>
+    <member refid="_app_messages_8h_1af19ebb01d77f51f457fea99d3cf79698" kind="define"><name>SERIAL_FIELD_SIZE_RESERVED</name></member>
+    <member refid="_app_messages_8h_1a25182ad20866298ee7b1117b7af6ef91" kind="define"><name>SERIAL_FIELD_SIZE_CRC</name></member>
+    <member refid="_app_messages_8h_1a49a2b25dd2c3c302a5486ff08fda9fca" kind="define"><name>SERIAL_MSG_SIZE_HEADER</name></member>
+    <member refid="_app_messages_8h_1a1a5eefb62ac3106021b46be6692931bd" kind="define"><name>SERIAL_MSG_SIZE_FOOTER</name></member>
+    <member refid="_app_messages_8h_1a5e3cf74989a6bbedee6d778bd4b2fb35" kind="define"><name>SERIAL_MSG_SIZE_OVERHEAD</name></member>
+    <member refid="_app_messages_8h_1a3a0798efad9153af8c25b9dc60fb72f6" kind="define"><name>UT_CHAR_START</name></member>
+    <member refid="_app_messages_8h_1a471ee27d498794b7aa5567fbedcddaff" kind="define"><name>UT_CHAR_ESC</name></member>
+    <member refid="_app_messages_8h_1af82beec29e23092efcb7a077d5dfab4e" kind="define"><name>UT_CHAR_END</name></member>
+    <member refid="_app_messages_8h_1ac771edeb56c88c57aaf5dbdcd539d554" kind="define"><name>HDLC_ESCAPE_XOR</name></member>
+    <member refid="_app_messages_8h_1a5ba32caa8f2e7d79cbae07b1ad84a9e6" kind="define"><name>MSG_MIN_LEN_SERIAL_DATA</name></member>
+    <member refid="_app_messages_8h_1a6fe092f08b0f7fe558f1e8f3eab546df" kind="define"><name>MSG_MIN_LEN_BT_SET_ADV</name></member>
+    <member refid="_app_messages_8h_1af94e821f019d0eec34d7ee1927e908db" kind="define"><name>MSG_MIN_LEN_BT_SET_CONN</name></member>
+    <member refid="_app_messages_8h_1a379dd5883eb38637567659ac77b495fb" kind="define"><name>MSG_MIN_LEN_BT_SET_LOCAL_NAME</name></member>
+    <member refid="_app_messages_8h_1abfb6758136b94ec44560fed6de89940c" kind="define"><name>MSG_MIN_LEN_BT_SET_PIN</name></member>
+    <member refid="_app_messages_8h_1adc55c7bd3c264703f97d950f24d49700" kind="define"><name>MSG_MIN_LEN_BT_ENABLE_PAIRING_PIN</name></member>
+    <member refid="_app_messages_8h_1a03bc160b53acfe32c37c216c7f65e7b1" kind="define"><name>MSG_MIN_LEN_BT_SET_TX_PWR</name></member>
+    <member refid="_app_messages_8h_1ab3aad5c51e237407c629a6af63059098" kind="define"><name>MSG_MIN_LEN_BT_GET_CONFIG</name></member>
+    <member refid="_app_messages_8h_1a0a6b2622da5d586050f9c5e101e2d0fa" kind="define"><name>MSG_MIN_LEN_BT_SET_CONFIG</name></member>
+    <member refid="_app_messages_8h_1a8901674ad33d43129db857184de971e2" kind="define"><name>MSG_MIN_LEN_BT_ADV_ONOFF</name></member>
+    <member refid="_app_messages_8h_1af4bae2245301dc931fb9bff0e359fd92" kind="define"><name>MSG_MIN_LEN_BT_SET_SCRATCH</name></member>
+    <member refid="_app_messages_8h_1abb3b743639981be91fec0093bf011637" kind="define"><name>MSG_MIN_LEN_BT_GET_SCRATCH</name></member>
+    <member refid="_app_messages_8h_1a42731b85ae56872a1c648e7062392c01" kind="define"><name>MSG_MIN_LEN_BT_GET_STATES</name></member>
+    <member refid="_app_messages_8h_1ae94f2afffc985e35cee7137bcb4e2eaf" kind="define"><name>MSG_MIN_LEN_BT_RESTART</name></member>
+    <member refid="_app_messages_8h_1a8815a5e508c7831781cb432cabcef201" kind="define"><name>MSG_MIN_LEN_BT_DISCONNECT</name></member>
+    <member refid="_app_messages_8h_1a97fd54b3cc02c10edbdc7d89b5bdcca3" kind="define"><name>MSG_MIN_LEN_BT_SET_CONFIG_NOSAVE</name></member>
+    <member refid="_app_messages_8h_1acffcbf93d1d5aa837b4fe232d919506b" kind="define"><name>MSG_MIN_LEN_BT_END_GATE</name></member>
+    <member refid="_app_messages_8h_1a775481b1327f50ab3c4186264c4b592e" kind="define"><name>MSG_MIN_LEN_GATT_SET_GATT</name></member>
+    <member refid="_app_messages_8h_1aaed71b3e949929fe9ceaa2bb88dacb77" kind="define"><name>MSG_MIN_LEN_GATT_GET_GATT</name></member>
+    <member refid="_app_messages_8h_1a05c1f91710a23c5b7c4905d6a33ebcf3" kind="define"><name>MSG_MIN_LEN_BL_CMD_START</name></member>
+    <member refid="_app_messages_8h_1a4b402d5671e85a84bf7c2212508150eb" kind="define"><name>MSG_MIN_LEN_BL_FW_BLOCK</name></member>
+    <member refid="_app_messages_8h_1a3a5c55a4715aaf6d98698adf9d48a103" kind="define"><name>MSG_MIN_LEN_BL_STATUS</name></member>
+    <member refid="_app_messages_8h_1a6279433845eaaedb040c39a02f765cc5" kind="define"><name>MSG_MIN_LEN_BL_GET_META</name></member>
+    <member refid="_app_messages_8h_1a010fdfc03c86e9b07311fb77d6b5dd78" kind="define"><name>MSG_MIN_LEN_CC_LED_WRITE</name></member>
+    <member refid="_app_messages_8h_1aa44955961a27a0b4e536ba1ed69e2830" kind="define"><name>MSG_MIN_LEN_CC_LED_WRITE_ALL</name></member>
+    <member refid="_app_messages_8h_1adab8734a53f1a4a261eadf2ec631c286" kind="define"><name>MSG_MIN_LEN_CC_LED_READ_ALL</name></member>
+    <member refid="_app_messages_8h_1a052c7ad5bf6960ed247033362874f262" kind="define"><name>MSG_MIN_LEN_CC_ACCEL_READ</name></member>
+    <member refid="_app_messages_8h_1aa9ab1dbf21b09903cd1ba0a01826336d" kind="define"><name>MSG_MIN_LEN_CC_TEMP_READ</name></member>
+    <member refid="_app_messages_8h_1a8cbc5714fadb0320643d542c8aafd1ca" kind="define"><name>MSG_MIN_LEN_CC_BATT_READ</name></member>
+    <member refid="_app_messages_8h_1a9f20c02df3e43e3eb32cd1178021ceef" kind="define"><name>MSG_MIN_LEN_CC_POWER_ARDUINO</name></member>
+    <member refid="_app_messages_8h_1a2b6b5f84006b7db3d7fcd1e3aa83726b" kind="define"><name>MSG_MIN_LEN_CC_GET_AR_POWER</name></member>
+    <member refid="_app_messages_8h_1ac5827bf590eac758182599aa5ef2ac56" kind="define"><name>MSG_MIN_LEN_CC_ACCEL_GET_RANGE</name></member>
+    <member refid="_app_messages_8h_1a7d98a1f25cbb365f51d1a4a32fd343f8" kind="define"><name>MSG_MIN_LEN_CC_ACCEL_SET_RANGE</name></member>
+    <member refid="_app_messages_8h_1ad62b903b52a3e349cb743331601ba1ad" kind="define"><name>MSG_MIN_LEN_CC_ACCEL_WRITE_REG</name></member>
+    <member refid="_app_messages_8h_1a05da52e11f7def05f7fb86fc1f53ef87" kind="define"><name>MSG_MIN_LEN_CC_ACCEL_READ_REG</name></member>
+    <member refid="_app_messages_8h_1ae17a38869e2f590e1ed1d24e1063ff67" kind="define"><name>MSG_MIN_LEN_CC_WAKE_ON_ACCEL</name></member>
+    <member refid="_app_messages_8h_1a3c46b11831cdbf4e211c11f18ca160ed" kind="define"><name>MSG_MIN_LEN_AR_SLEEP</name></member>
+    <member refid="_app_messages_8h_1a40c44eef75e5a0fee51a8e4cf66072da" kind="define"><name>MSG_MIN_LEN_AR_WAKE_ON_CONNECT</name></member>
+    <member refid="_app_messages_8h_1ab505c4f038ee59ad6000fab1b129f4d6" kind="define"><name>MSG_MIN_LEN_GATT_SET_CUSTOM</name></member>
+    <member refid="_app_messages_8h_1a1561cb011a62a1bf438e6d21e5c3d1ef" kind="define"><name>MSG_MIN_LEN_HID_SEND_REPORT</name></member>
+    <member refid="_app_messages_8h_1a64392a808889a5bc610725dec83a7efe" kind="define"><name>MSG_MIN_LEN_ANCS_GET_NOTI</name></member>
+    <member refid="_app_messages_8h_1a0777f5788ba8d0c4a4c7b2386e2e4121" kind="define"><name>MSG_MIN_LEN_MIDI_WRITE</name></member>
+    <member refid="_app_messages_8h_1aa0ee9dee50980a73c08fe629e7b42c23" kind="define"><name>MSG_MIN_LEN_OBSERVER_START</name></member>
+    <member refid="_app_messages_8h_1a9ee7f123deeb273bc3ac4f54da5ff79f" kind="define"><name>MSG_MIN_LEN_OBSERVER_STOP</name></member>
+    <member refid="_app_messages_8h_1af2d8d6d5e60f254cadfc6941174b3fe1" kind="define"><name>MSG_MIN_LEN_DB_LOOPBACK</name></member>
+    <member refid="_app_messages_8h_1a9bb996c39e6fff1a02fdc1fd76e080e3" kind="define"><name>MSG_MIN_LEN_DB_COUNTER</name></member>
+    <member refid="_app_messages_8h_1a6e01f07a1c37ea9b787e2e6f57b36c7a" kind="define"><name>MSG_MIN_LEN_DB_E2E_LOOPBACK</name></member>
+    <member refid="_app_messages_8h_1ab2ef57d1a683b9d32b92fdd5fabebc23" kind="define"><name>MSG_MIN_LEN_DB_PTM</name></member>
+    <member refid="_app_messages_8h_1a447064c2b00474eb44d238d219fb12d3" kind="define"><name>MSG_MIN_LEN_ER_SERIAL</name></member>
+    <member refid="_app_messages_8h_1a68fb5d6c797413860c6b3aa0094545d6" kind="define"><name>B_ADDR_LEN</name></member>
+    <member refid="_app_messages_8h_1a2c7c18bfcd90120b14b45ab971854de3" kind="define"><name>ERROR_MSG_PAYLOAD_SIZE_MAX</name></member>
+    <member refid="_app_messages_8h_1a61ffbb6b1d3c59620f5e117808be95b2" kind="define"><name>ERROR_</name></member>
+    <member refid="_app_messages_8h_1a3ca490a2bd57d7d2eb3ca7cfe713230c" kind="define"><name>MAX_LOCAL_NAME_SIZE</name></member>
+    <member refid="_app_messages_8h_1a86bcb37739f000d7bca11f4496a2326c" kind="define"><name>ADV_MODE_BEAN_AUTH_SET</name></member>
+    <member refid="_app_messages_8h_1a211e6efd7651749014ca3835b2cbf23a" kind="define"><name>NEW_RADIO_CONFIG</name></member>
+    <member refid="_app_messages_8h_1a5d25d5311175eee7495a24128aed3f7b" kind="define"><name>BL_HEX_FIELD_SIZE</name></member>
+    <member refid="_app_messages_8h_1a6d191a3d3bc722d1f293c502872b6aa0" kind="define"><name>BL_CRC_FIELD_SIZE</name></member>
+    <member refid="_app_messages_8h_1a9a7d2a5c4274755b1655e779e3ab4e00" kind="define"><name>MAX_SKETCH_NAME_SIZE</name></member>
+    <member refid="_app_messages_8h_1a544d38547ad6f7c053b970203ab59202" kind="define"><name>HID_DATA_LEN</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bcee" kind="enum"><name>MSG_ID_MAJOR_T</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeaff6ec41fff6914f00016a7df819ab815" kind="enumvalue"><name>MSG_ID_MAJOR_SERIAL</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea5ffaac165164d68186a6334aecb943a7" kind="enumvalue"><name>MSG_ID_MAJOR_BLE</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea9150439e4b34c8bca59d52e72e88a148" kind="enumvalue"><name>MSG_ID_MAJOR_BOOTLOADER</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea8c7cb618ce5532acceb5da7878b791c6" kind="enumvalue"><name>MSG_ID_MAJOR_CC</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeafccaeb9ff908361b10598f0066457d03" kind="enumvalue"><name>MSG_ID_MAJOR_ARDUINO</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeaa4f4175e1c78467ab67bde30725bbb10" kind="enumvalue"><name>MSG_ID_MAJOR_HID</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeaa0ffcd9526e56663f906c159f7f468da" kind="enumvalue"><name>MSG_ID_MAJOR_ERROR</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeac538770997ad4ec7765c9b9233343d19" kind="enumvalue"><name>MSG_ID_MAJOR_GATT</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea7ce0657778d3ce0acfd69750dda19edc" kind="enumvalue"><name>MSG_ID_MAJOR_ANCS</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceeaf4a8e523e3e2e3915d2dcd8a41514e8d" kind="enumvalue"><name>MSG_ID_MAJOR_MIDI</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea60f3c370062dfa99b5aeff7725e874b1" kind="enumvalue"><name>MSG_ID_MAJOR_OBSERVER</name></member>
+    <member refid="_app_messages_8h_1aff5f213843091ac87bf01990de02bceea394b3851408cb597f475824f705ce848" kind="enumvalue"><name>MSG_ID_MAJOR_DEBUG</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7" kind="enum"><name>MSG_ID_T</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a4dd9da8b88c865674215f65e75d31e3f" kind="enumvalue"><name>MSG_ID_SERIAL_DATA</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ab1c86449f2e2284c89b7cb43a9c87848" kind="enumvalue"><name>MSG_ID_BT_SET_ADV</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7aef51fd957938f36d60bdaa54227dba4f" kind="enumvalue"><name>MSG_ID_BT_SET_CONN</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ab35d1e44a46e6537fa49b9d4717c8b80" kind="enumvalue"><name>MSG_ID_BT_SET_LOCAL_NAME</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7accfaf9e31f81c2aca2add49b53321536" kind="enumvalue"><name>MSG_ID_BT_SET_PIN</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ad3a356640badeeeb59c67019608fb3a9" kind="enumvalue"><name>MSG_ID_BT_ENABLE_PAIRING_PIN</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a883f3d64e79e98c293a6d63686e3e5ba" kind="enumvalue"><name>MSG_ID_BT_SET_TX_PWR</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a61764bd11aa44b6b7cbdcfb95b69527d" kind="enumvalue"><name>MSG_ID_BT_GET_CONFIG</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7af3489ac5b40ba06192974c12159e044d" kind="enumvalue"><name>MSG_ID_BT_SET_CONFIG</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a97101978b6d8ba6d9149c816901e6792" kind="enumvalue"><name>MSG_ID_BT_ADV_ONOFF</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a4f0d382f2433993294c4314ec4ed5429" kind="enumvalue"><name>MSG_ID_BT_SET_SCRATCH</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a7c455c9c2136967f640350da8d2e118a" kind="enumvalue"><name>MSG_ID_BT_GET_SCRATCH</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a24b867ec3c5f25ee56fb6b27a8bf8873" kind="enumvalue"><name>MSG_ID_BT_RESTART</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ad84a6aae19901bb8addf2c456ca93d38" kind="enumvalue"><name>MSG_ID_BT_DISCONNECT</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ad5663b2c0d9f0ed565910eaa8d08b967" kind="enumvalue"><name>MSG_ID_BT_GET_STATES</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a50f8effa7556f9b53aa67cfb1e8c1c75" kind="enumvalue"><name>MSG_ID_BT_SET_CONFIG_NOSAVE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a90fa9e4562748fb44c0234dc71c496a3" kind="enumvalue"><name>MSG_ID_BT_END_GATE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a965179233e84bf9449278f7568c0978c" kind="enumvalue"><name>MSG_ID_BL_CMD_START</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7aefb1aae33bd5b7705630711154ceb2c8" kind="enumvalue"><name>MSG_ID_BL_FW_BLOCK</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a570ffaed066861ea6e52ca65cbbae588" kind="enumvalue"><name>MSG_ID_BL_STATUS</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a60a475d07762b0ed3b29f0d2b308b5d8" kind="enumvalue"><name>MSG_ID_BL_GET_META</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a5607f90805a077d0eb27bd20f644776b" kind="enumvalue"><name>MSG_ID_CC_LED_WRITE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a0b68361bf571ca63cdeb423e633d723b" kind="enumvalue"><name>MSG_ID_CC_LED_WRITE_ALL</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a69c93a3638c93e3b6eb3ecf74834f21d" kind="enumvalue"><name>MSG_ID_CC_LED_READ_ALL</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a651267b4d24bfc13f9c6b6d630c4e9cf" kind="enumvalue"><name>MSG_ID_CC_ACCEL_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a91af181ab0cdea6201c969a52413552c" kind="enumvalue"><name>MSG_ID_CC_TEMP_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7afb26ced4453cfe9172a9bf0d46a507bf" kind="enumvalue"><name>MSG_ID_CC_BATT_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a8fd1ac01da6f278a847937c2cdcbbf15" kind="enumvalue"><name>MSG_ID_CC_POWER_ARDUINO</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a64223e43006d412721a76a4917ff830b" kind="enumvalue"><name>MSG_ID_CC_GET_AR_POWER</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ac15484151f3b66599a120fa9e3cee241" kind="enumvalue"><name>MSG_ID_CC_ACCEL_GET_RANGE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a12161be26350de53ba21debc6701ae53" kind="enumvalue"><name>MSG_ID_CC_ACCEL_SET_RANGE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a3a084de816de735231e3ad36915e12ca" kind="enumvalue"><name>MSG_ID_CC_ACCEL_WRITE_REG</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a9b5fdef66851c065ec750595c70fb44e" kind="enumvalue"><name>MSG_ID_CC_ACCEL_READ_REG</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7af809c5cc621c79b1826ef308e710d227" kind="enumvalue"><name>MSG_ID_CC_WAKE_ON_ACCEL</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a98155d3d3814f10445e01010fcfac368" kind="enumvalue"><name>MSG_ID_GATT_SET_GATT</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7abdcc78d61c8b176e825b06a556ebb0ff" kind="enumvalue"><name>MSG_ID_GATT_GET_GATT</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a1ae7fe55f99a0e2e505186c9a4fdaa99" kind="enumvalue"><name>MSG_ID_GATT_SET_CUSTOM</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a74daf9da4c1502c573cf3b363b26611c" kind="enumvalue"><name>MSG_ID_ANCS_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a33d493a474fdcd2d26cb31ec02cc7dc0" kind="enumvalue"><name>MSG_ID_ANCS_GET_NOTI</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ab67048e97475727f0ee06e20c16c5462" kind="enumvalue"><name>MSG_ID_MIDI_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a9bfe59d5f0453a89fd163a42e80835f3" kind="enumvalue"><name>MSG_ID_MIDI_WRITE</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a4ba246d0fc91b819011b14cb3c82d163" kind="enumvalue"><name>MSG_ID_OBSERVER_START</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7ad8eed119ce6ca81320f90791abe9a66c" kind="enumvalue"><name>MSG_ID_OBSERVER_STOP</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a9bf9467a9b6ae8c49d052f1e57dfc890" kind="enumvalue"><name>MSG_ID_OBSERVER_READ</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7aad753cb1d2adc1b0edfed4052af80b6e" kind="enumvalue"><name>MSG_ID_AR_SLEEP</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a1ba6f4b30a19ad7d300c6ebfd7b2b2ab" kind="enumvalue"><name>MSG_ID_AR_WAKE_ON_CONNECT</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a2df1af99bd9504b7c0a5a5437810fcca" kind="enumvalue"><name>MSG_ID_HID_SEND_REPORT</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7aadb4359e97e8f7cc121b3b4c1d159c0f" kind="enumvalue"><name>MSG_ID_ERROR_CC</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7af68ac9079ab17175a82db89d74fef3f6" kind="enumvalue"><name>MSG_ID_DB_LOOPBACK</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7afb44ce82761b67c20ab37743aec7d64d" kind="enumvalue"><name>MSG_ID_DB_COUNTER</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7a902597d94c175ebc5819d794e8059ac9" kind="enumvalue"><name>MSG_ID_DB_E2E_LOOPBACK</name></member>
+    <member refid="_app_messages_8h_1ade7075e3d56378af75d2c2dd4110ddd7adec39a21b816c19a6d10158300baa4f5" kind="enumvalue"><name>MSG_ID_DB_PTM</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450" kind="enum"><name>ADV_SWITCH_T</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a9caf3006543775a6260d2367f28dd330" kind="enumvalue"><name>ADV_SWITCH_STANDARD</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a4945d16129cc6fa5fe58f82865639b92" kind="enumvalue"><name>ADV_SWITCH_HID</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a631b63b76cf8aa5b454653647173d0c5" kind="enumvalue"><name>ADV_SWITCH_MIDI</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a46843114bfd0ae1c262314cec28df77d" kind="enumvalue"><name>ADV_SWITCH_ANCS</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a55abbe9b85591322cd5a441cdc4e53c9" kind="enumvalue"><name>ADV_SWITCH_OBSERVER</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a7ba4712d711c1a4f6b5ceb6c4852ae9d" kind="enumvalue"><name>ADV_SWITCH_IBEACON</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a51e129a1ce6b02f95f8069dfc50c2617" kind="enumvalue"><name>ADV_SWITCH_CUSTOM</name></member>
+    <member refid="_app_messages_8h_1a7806f03e4276f7496e8f4def27d1e450a75a6434a8ec8d500eb0a72f7896ce32d" kind="enumvalue"><name>ADV_SWITCH_SIZE</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aa" kind="enum"><name>EVT_FLAG_T</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aaafa92a9d539f8e0586425bbbd05ef3df2" kind="enumvalue"><name>EVT_FLAG_SILENT</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aaa10cfa3e713f97197ff41973e10d06f78" kind="enumvalue"><name>EVT_FLAG_IMPORTANT</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aaa41afe1b03a10871a865eb260925b07f5" kind="enumvalue"><name>EVT_FLAG_PRE_EXISTING</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aaa161989647d4fb14372b8f79ab925ada6" kind="enumvalue"><name>EVT_FLAG_POSITIVE_ACTION</name></member>
+    <member refid="_app_messages_8h_1a58d6c72d3aa93bc5772e7fbda1e583aaa876ecb6b3a46fcde94ac2c85c292eb54" kind="enumvalue"><name>EVT_FLAG_NEGATIVE_ACTION</name></member>
+    <member refid="_app_messages_8h_1accba598a113d4d02ec6a0c95e0b1ea51" kind="enum"><name>EVENT_ID_T</name></member>
+    <member refid="_app_messages_8h_1accba598a113d4d02ec6a0c95e0b1ea51a38b894253494ad31002cd090d994bdae" kind="enumvalue"><name>EVT_ID_ADDED</name></member>
+    <member refid="_app_messages_8h_1accba598a113d4d02ec6a0c95e0b1ea51a69d305ffd6927371baa88efaa5de38c0" kind="enumvalue"><name>EVT_ID_MOD</name></member>
+    <member refid="_app_messages_8h_1accba598a113d4d02ec6a0c95e0b1ea51a757f8b622771f38ef948e5e208bbdad4" kind="enumvalue"><name>EVT_ID_REMOVED</name></member>
+    <member refid="_app_messages_8h_1a90b7d3fa21ae05a840c6464cc9f9dd1c" kind="enum"><name>CMD_ID_T</name></member>
+    <member refid="_app_messages_8h_1a90b7d3fa21ae05a840c6464cc9f9dd1ca1fb0a744ee688889179ff2cb3ca0f542" kind="enumvalue"><name>CMD_ID_ATTR_NOTI</name></member>
+    <member refid="_app_messages_8h_1a90b7d3fa21ae05a840c6464cc9f9dd1ca0259c7413bf8736644a11f141213b6ba" kind="enumvalue"><name>CMD_ID_ATTR_GET</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02" kind="enum"><name>NOTI_ATTR_ID_T</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02a8531a117c36735bce86ddd73196929d8" kind="enumvalue"><name>NOTI_ATTR_ID_APPID</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02a69670efb03a7e53ec807fd53aeda3c83" kind="enumvalue"><name>NOTI_ATTR_ID_TITLE</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02a9af4c9ff34ed8496c617f9d48b92a258" kind="enumvalue"><name>NOTI_ATTR_ID_SUBTITLE</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02a9354dee84f17f2b660c45068fb2a4b2f" kind="enumvalue"><name>NOTI_ATTR_ID_MESSAGE</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02ab105aade6b618858a76e1409ee85b5f6" kind="enumvalue"><name>NOTI_ATTR_ID_MSG_SIZE</name></member>
+    <member refid="_app_messages_8h_1acf7f720e306e61c9c4842c8dca5c5d02a14a22eca9cbdec31c5286234b3b7800d" kind="enumvalue"><name>NOTI_ATTR_ID_DATE</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2" kind="enum"><name>CAT_ID_T</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a0312a8c803dffca5b27cd714cc0352c6" kind="enumvalue"><name>CAT_ID_OTHER</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2ab64520fda4a9ac2874cbde5187fea09d" kind="enumvalue"><name>CAT_ID_INCOMING_CALL</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a4d8f948b14d42ca8bf5c52f672a7e4da" kind="enumvalue"><name>CAT_ID_MISSED_CALL</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a5c54604d9da1d284fcfce35bf14e494c" kind="enumvalue"><name>CAT_ID_VOICEMAIL</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a76f54482966c805765a167f9fa398b50" kind="enumvalue"><name>CAT_ID_SOCIAL</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a1c0f6c712c826bc1bd2c58eb264cfd15" kind="enumvalue"><name>CAT_ID_SCHEDULE</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a082ac8bfe98c2bd0a1bc7dac7e0d45d8" kind="enumvalue"><name>CAT_ID_EMAIL</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2ab902e303017148268d65754c61d8d363" kind="enumvalue"><name>CAT_ID_NEWS</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a8a3c61e73405df785e062c52b0a9c0d2" kind="enumvalue"><name>CAT_ID_HEALTH</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2af1510c2dc15926d6057b3a40ca379f04" kind="enumvalue"><name>CAT_ID_BUSINESS</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a62ffd89a70d5defc5cc6cfbec8830087" kind="enumvalue"><name>CAT_ID_LOCATION</name></member>
+    <member refid="_app_messages_8h_1a02a82df9e98b19542994f881fbc67fe2a68fe26be7f8002835f389efad882230b" kind="enumvalue"><name>CAT_ID_ENTERTAINMENT</name></member>
+    <member refid="_app_messages_8h_1a4909b9d922ab4d481c054adc277398cc" kind="enum"><name>PTM_MSG_ID_T</name></member>
+    <member refid="_app_messages_8h_1a4909b9d922ab4d481c054adc277398cca749ffdae90b805c6b2c84d9bca1bf000" kind="enumvalue"><name>PTM_MSG_ID_GET_PINSTATE</name></member>
+    <member refid="_app_messages_8h_1a4909b9d922ab4d481c054adc277398ccaa83228e15cb5bf43503c147d020c09bd" kind="enumvalue"><name>PTM_MSG_ID_SET_PINSTATE</name></member>
+    <member refid="_app_messages_8h_1a10eeb9968bf2b76bae2f0fc588f3b22a" kind="enum"><name>BT_TXPOWER_DB_T</name></member>
+    <member refid="_app_messages_8h_1a10eeb9968bf2b76bae2f0fc588f3b22aa9c7a4b9137637fc15f6bd92ebcaa115f" kind="enumvalue"><name>TXPOWER_NEG23DB</name></member>
+    <member refid="_app_messages_8h_1a10eeb9968bf2b76bae2f0fc588f3b22aaf6c451826a309d1595a95b9c2c8fd0a4" kind="enumvalue"><name>TXPOWER_NEG6DB</name></member>
+    <member refid="_app_messages_8h_1a10eeb9968bf2b76bae2f0fc588f3b22aaca6aa8f09c7df3f82b0aaf408faffa0f" kind="enumvalue"><name>TXPOWER_0DB</name></member>
+    <member refid="_app_messages_8h_1a10eeb9968bf2b76bae2f0fc588f3b22aadc4a64fc87c6c498ab824e1fdda33b78" kind="enumvalue"><name>TXPOWER_4DB</name></member>
+    <member refid="_app_messages_8h_1ace0fc8fa55f1270c2a87b7d3db9e04bf" kind="enum"><name>ERROR_CODES_T</name></member>
+    <member refid="_app_messages_8h_1ace0fc8fa55f1270c2a87b7d3db9e04bfaedb1cdbbe536f19613dcf8a86f69dec2" kind="enumvalue"><name>ERROR_ID_CC_SERIAL_HEADER</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8" kind="enum"><name>ADV_MODE_T</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8af8ac93fc96f12bcc8dc9e109b499d56c" kind="enumvalue"><name>ADV_STANDARD</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8a292dfe43341b98b404756d5a1e0cc5bf" kind="enumvalue"><name>ADV_IBEACON</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8a7f657a0c62d36b7a607ad043393cd24f" kind="enumvalue"><name>ADV_STANDARD_AUTH</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8a9fb3d684718e148612b385097eb30545" kind="enumvalue"><name>ADV_HID_KEYB</name></member>
+    <member refid="_app_messages_8h_1a287504a20077cb2889e3ecfc8bd05aa8ae44ad40c8f27557f0f1d848100dba2af" kind="enumvalue"><name>ADV_IBEACON_AUTH</name></member>
+    <member refid="_app_messages_8h_1af6403c8b3a5b17e7a69a8f1553252a5c" kind="enum"><name>ACC_AXIS_T</name></member>
+    <member refid="_app_messages_8h_1af6403c8b3a5b17e7a69a8f1553252a5caf86dd804f6d1d6e7d7ba5c2df3b5fa2c" kind="enumvalue"><name>ACC_AXIS_X</name></member>
+    <member refid="_app_messages_8h_1af6403c8b3a5b17e7a69a8f1553252a5cad95c9cfb3ff4625f9bda6ea1be47871c" kind="enumvalue"><name>ACC_AXIS_Y</name></member>
+    <member refid="_app_messages_8h_1af6403c8b3a5b17e7a69a8f1553252a5ca8ee720321929283db8417f4877d1a73a" kind="enumvalue"><name>ACC_AXIS_Z</name></member>
+    <member refid="_app_messages_8h_1aa29e91cbd8353621aa37162983a13ec9" kind="enum"><name>LED_COLOR_T</name></member>
+    <member refid="_app_messages_8h_1aa29e91cbd8353621aa37162983a13ec9ad80f13022b6d309268fadc7b1da89cb9" kind="enumvalue"><name>LED_RED</name></member>
+    <member refid="_app_messages_8h_1aa29e91cbd8353621aa37162983a13ec9a0ad916c7f80666dc88f6b5b22a72e742" kind="enumvalue"><name>LED_GREEN</name></member>
+    <member refid="_app_messages_8h_1aa29e91cbd8353621aa37162983a13ec9aa67c57c0ff22a2772cb6a5751a3327bf" kind="enumvalue"><name>LED_BLUE</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143" kind="enum"><name>BL_STATE_T</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a6ecb7d5fe195166c4c63c4e1c64bad62" kind="enumvalue"><name>BL_STATE_INIT</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a0ed75b8cbe2eabd8fa25272257dd13b4" kind="enumvalue"><name>BL_STATE_WRITE_ADDRESS</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143ad811d0d564f1312eb25e81b5d0811c23" kind="enumvalue"><name>BL_STATE_WRITE_ADDRESS_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a81e353077a03477c890a3c83de8a10e2" kind="enumvalue"><name>BL_STATE_WRITE_CHUNK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a53c454f77169b4e3b87f3e0aa499996e" kind="enumvalue"><name>BL_STATE_WRITE_CHUNK_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143ac93dc81c2da89e929a812bb4fe133873" kind="enumvalue"><name>BL_STATE_READ_ADDRESS</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a59232b18a12a91b997e3f1ce8627836e" kind="enumvalue"><name>BL_STATE_READ_ADDRESS_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a8562d539512447f84524aa5974217293" kind="enumvalue"><name>BL_STATE_READ_CHUNK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a460521a9091348e39e035dcb76fe68fb" kind="enumvalue"><name>BL_STATE_READ_CHUNK_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a59648ea799ea88d6fdf9329d28b9bb4e" kind="enumvalue"><name>BL_STATE_VERIFY</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a48ff93209e8de8c7c19f0484229cfd87" kind="enumvalue"><name>BL_STATE_DONE</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143af8a59dc49c8d13064facd28d5f790845" kind="enumvalue"><name>BL_STATE_DONE_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a7cb816b3fafd785be8d986c563473a39" kind="enumvalue"><name>BL_STATE_START</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143afb9a21918a550df5c798042eaa83a7a2" kind="enumvalue"><name>BL_STATE_START_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143ab423e6374de12fd2633fb7a462d41046" kind="enumvalue"><name>BL_STATE_HELLO</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a068b604fd4098821bee34899638a49d7" kind="enumvalue"><name>BL_STATE_HELLO_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a1b0f9d4d0791b440468de577aaabe795" kind="enumvalue"><name>BL_STATE_START_RSTAGAIN</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a1c62e26ef2122014c21efc919682ec46" kind="enumvalue"><name>BL_STATE_DONE_RESET</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143afdb70783720d983744f4ff41c4ea41d6" kind="enumvalue"><name>BL_STATE_PROG_MODE</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143aaf084a69f0081a54ceefda95a616db58" kind="enumvalue"><name>BL_STATE_PROG_MODE_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143ab806369cb6a925413089b4342398ee14" kind="enumvalue"><name>BL_STATE_DEVICE_SIG</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a179ad80ada393b99e45ca39d963683bf" kind="enumvalue"><name>BL_STATE_DEVICE_SIG_ACK</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143ab437a9bd777fccf376285489dc8e65a1" kind="enumvalue"><name>BL_STATE_WRITE_CHUNK_TWO</name></member>
+    <member refid="_app_messages_8h_1a6849cd3f46cd6956113237d30ada3143a0dcbb24a478f34990e92df3af1598cb9" kind="enumvalue"><name>BL_STATE_ERROR</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89" kind="enum"><name>BL_HL_STATE_T</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89afbfc7dfbeda52eefc0cc70b4fffb071b" kind="enumvalue"><name>BL_HL_STATE_NULL</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89a415d486eaca4cf72cc15a6edfba54b35" kind="enumvalue"><name>BL_HL_STATE_INIT</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89ac27b08c68d3e5e915c5b452aec7e50bd" kind="enumvalue"><name>BL_HL_STATE_READY</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89a93fe16242f38bed25e48de5b449bfae7" kind="enumvalue"><name>BL_HL_STATE_PROGRAMMING</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89a76e6608fc836d47daa547ff6e8bba55a" kind="enumvalue"><name>BL_HL_STATE_VERIFY</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89a1692bb7a7c9ed2392991950d2edadfea" kind="enumvalue"><name>BL_HL_STATE_COMPLETE</name></member>
+    <member refid="_app_messages_8h_1a0c1de2a409cecedc8e2b0f0271ad1c89a7796adcba8dfb1ab4a790c5a574edbf9" kind="enumvalue"><name>BL_HL_STATE_ERROR</name></member>
+    <member refid="_app_messages_8h_1a3474ce9dbb0259d0c4a8b01841f862e4" kind="enum"><name>BL_CMD_T</name></member>
+    <member refid="_app_messages_8h_1a3474ce9dbb0259d0c4a8b01841f862e4a3967c58146ba65611e25b8c175db6370" kind="enumvalue"><name>BL_CMD_START_PRG</name></member>
+    <member refid="_app_messages_8h_1a3474ce9dbb0259d0c4a8b01841f862e4a6e7352c8fd4e889bb41fee833a9f1080" kind="enumvalue"><name>BL_CMD_VERIFY</name></member>
+    <member refid="_app_messages_8h_1a3474ce9dbb0259d0c4a8b01841f862e4ac32d02570f8e5c92e73f6e9fa35caeaf" kind="enumvalue"><name>BL_CMD_RESET</name></member>
+    <member refid="_app_messages_8h_1abba99c81c721c611a7cd0fecb777b769" kind="variable"><name>GATTServiceEnabled</name></member>
   </compound>
   <compound refid="_bean_8h" kind="file"><name>Bean.h</name>
     <member refid="_bean_8h_1a9b52b0ae2c2e2461020419fdaed41145" kind="enum"><name>AccelEventTypes</name></member>
@@ -500,15 +857,17 @@
   </compound>
   <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
   </compound>
-  <compound refid="dir_1f61126cded4d41a9b56d2556f5ebe64" kind="dir"><name>hardware/bean/avr</name>
+  <compound refid="dir_4050686725accb713580570e2ab408d2" kind="dir"><name>hardware/bean/avr/cores/bean/applicationMessageHeaders</name>
   </compound>
-  <compound refid="dir_2b1dd4caef0fbc241f52df5abc8b1c90" kind="dir"><name>hardware/bean/avr/cores/bean</name>
+  <compound refid="dir_d07eaf1f8a9fcdc94ce15e68be04b612" kind="dir"><name>hardware/bean/avr</name>
   </compound>
-  <compound refid="dir_75b9d17f541d2cec944f118512d24c27" kind="dir"><name>hardware/bean</name>
+  <compound refid="dir_f7e20e7f07a68f03c463b31c5e377278" kind="dir"><name>hardware/bean/avr/cores/bean</name>
   </compound>
-  <compound refid="dir_9013e5660f5083e8da0bdd20b010def7" kind="dir"><name>hardware/bean/avr/cores</name>
+  <compound refid="dir_7c43ec495913d52183c496b3c366ee3f" kind="dir"><name>hardware/bean</name>
   </compound>
-  <compound refid="dir_f4316de2dfb04db90651672103de31d6" kind="dir"><name>hardware</name>
+  <compound refid="dir_245e09084cb90b142ef6d0974144183f" kind="dir"><name>hardware/bean/avr/cores</name>
+  </compound>
+  <compound refid="dir_b40532bd9fe276396eed72de45558f87" kind="dir"><name>hardware</name>
   </compound>
   <compound refid="indexpage" kind="page"><name>index</name>
   </compound>

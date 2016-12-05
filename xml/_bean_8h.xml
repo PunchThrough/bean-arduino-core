@@ -11,7 +11,7 @@
     <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/WString.h</includes>
     <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Printable.h</includes>
     <includes local="no">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/new.h</includes>
-    <includes local="yes">applicationMessageHeaders/AppMessages.h</includes>
+    <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</includes>
     <includes local="yes">/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Arduino.h</includes>
     <includes local="no">stdlib.h</includes>
     <includes local="no">string.h</includes>
@@ -26,40 +26,27 @@
     <includes refid="_bean_ancs_8h" local="yes">BeanAncs.h</includes>
     <includes local="yes">bma250.h</includes>
     <incdepgraph>
-      <node id="1">
+      <node id="6">
         <label>BeanSerialTransport.h</label>
       </node>
-      <node id="18">
+      <node id="23">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/binary.h</label>
       </node>
-      <node id="7">
+      <node id="12">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/WString.h</label>
       </node>
-      <node id="19">
+      <node id="24">
         <label>pins_arduino.h</label>
       </node>
-      <node id="17">
+      <node id="22">
         <label>avr/interrupt.h</label>
       </node>
-      <node id="12">
+      <node id="17">
         <label>stdlib.h</label>
       </node>
-      <node id="10">
-        <label>applicationMessageHeaders/AppMessages.h</label>
-      </node>
-      <node id="0">
+      <node id="5">
         <label>hardware/bean/avr/cores/bean/Bean.h</label>
         <link refid="Bean.h"/>
-        <childnode refid="1" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -92,71 +79,84 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="9">
+      <node id="14">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/new.h</label>
       </node>
-      <node id="24">
+      <node id="29">
         <label>bma250.h</label>
       </node>
-      <node id="2">
+      <node id="7">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/HardwareSerial.h</label>
       </node>
-      <node id="21">
+      <node id="26">
         <label>BeanMidi.h</label>
         <link refid="_bean_midi_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="21">
         <label>avr/io.h</label>
       </node>
-      <node id="13">
+      <node id="18">
         <label>string.h</label>
       </node>
-      <node id="20">
+      <node id="25">
         <label>BeanHID.h</label>
         <link refid="_bean_h_i_d_8h_source"/>
-        <childnode refid="1" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="9">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Stream.h</label>
       </node>
-      <node id="5">
+      <node id="10">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Print.h</label>
       </node>
       <node id="15">
+        <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h</label>
+      </node>
+      <node id="20">
         <label>avr/pgmspace.h</label>
       </node>
-      <node id="11">
+      <node id="16">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Arduino.h</label>
       </node>
-      <node id="14">
+      <node id="19">
         <label>math.h</label>
       </node>
-      <node id="22">
+      <node id="27">
         <label>Arduino.h</label>
       </node>
-      <node id="8">
+      <node id="13">
         <label>/Users/swstack/projects/bean-arduino-core/hardware/bean/avr/cores/bean/Printable.h</label>
       </node>
-      <node id="6">
+      <node id="11">
         <label>stdio.h</label>
       </node>
-      <node id="23">
+      <node id="28">
         <label>BeanAncs.h</label>
         <link refid="_bean_ancs_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="8">
         <label>inttypes.h</label>
       </node>
     </incdepgraph>
@@ -451,7 +451,7 @@
       </sectiondef>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="_bean_8h_1abe3d58d06eff3046a29f245172e62427" prot="public" static="no">
-        <type>ACC_READING_T</type>
+        <type><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref></type>
         <definition>typedef ACC_READING_T AccelerationReading</definition>
         <argsstring></argsstring>
         <name>AccelerationReading</name>
@@ -464,7 +464,7 @@
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="81" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_bean_8h_1a4303280f79143dd66eb5af27976ea880" prot="public" static="no">
-        <type>LED_SETTING_T</type>
+        <type><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref></type>
         <definition>typedef LED_SETTING_T LedReading</definition>
         <argsstring></argsstring>
         <name>LedReading</name>
@@ -477,7 +477,7 @@
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="86" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_bean_8h_1a503c2b4d29e1e854fe01f9a9964afd03" prot="public" static="no">
-        <type>ADV_SWITCH_ENABLED_T</type>
+        <type><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">ADV_SWITCH_ENABLED_T</ref></type>
         <definition>typedef ADV_SWITCH_ENABLED_T BluetoothServices</definition>
         <argsstring></argsstring>
         <name>BluetoothServices</name>
@@ -490,7 +490,7 @@
         <location file="hardware/bean/avr/cores/bean/Bean.h" line="91" column="1" bodyfile="hardware/bean/avr/cores/bean/Bean.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_bean_8h_1a219d9f0e8570057514bd2146d0a5d817" prot="public" static="no">
-        <type>OBSERVER_INFO_MESSAGE_T</type>
+        <type><ref refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kindref="compound">OBSERVER_INFO_MESSAGE_T</ref></type>
         <definition>typedef OBSERVER_INFO_MESSAGE_T ObserverAdvertisementInfo</definition>
         <argsstring></argsstring>
         <name>ObserverAdvertisementInfo</name>
@@ -573,13 +573,13 @@
 <codeline lineno="69"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ACC_READING_T<sp/>AccelerationReading;</highlight></codeline>
+<codeline lineno="81"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">ACC_READING_T</ref><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref>;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>LED_SETTING_T<sp/>LedReading;</highlight></codeline>
+<codeline lineno="86"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LED_SETTING_T</ref><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref>;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>ADV_SWITCH_ENABLED_T<sp/>BluetoothServices;</highlight></codeline>
+<codeline lineno="91"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">ADV_SWITCH_ENABLED_T</ref><sp/><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">BluetoothServices</ref>;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>OBSERVER_INFO_MESSAGE_T<sp/>ObserverAdvertisementInfo;</highlight></codeline>
+<codeline lineno="96"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kindref="compound">OBSERVER_INFO_MESSAGE_T</ref><sp/><ref refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kindref="compound">ObserverAdvertisementInfo</ref>;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98" refid="class_bean_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_class" kindref="compound">BeanClass</ref><sp/>{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
@@ -597,7 +597,7 @@
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>int16_t<sp/><ref refid="class_bean_class_1a5c977e7b185ebc038335228d8ef1d0b9" kindref="member">getAccelerationZ</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/>AccelerationReading<sp/><ref refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" kindref="member">getAcceleration</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="struct_a_c_c___r_e_a_d_i_n_g___t" kindref="compound">AccelerationReading</ref><sp/><ref refid="class_bean_class_1a53f2174dd2f3c2907acc3355cef64842" kindref="member">getAcceleration</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a47244506c985ef7aead3695811002ad2" kindref="member">accelRegisterWrite</ref>(uint8_t<sp/>reg,<sp/>uint8_t<sp/>value);</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
@@ -616,7 +616,7 @@
 <codeline lineno="235"></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a7af1f9d1edb112f761db9b69686b5a5a" kindref="member">setLed</ref>(uint8_t<sp/>red,<sp/>uint8_t<sp/>green,<sp/>uint8_t<sp/>blue);</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/>LedReading<sp/><ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><ref refid="struct_l_e_d___s_e_t_t_i_n_g___t" kindref="compound">LedReading</ref><sp/><ref refid="class_bean_class_1ab73794fbf27d0297ead453ca60ac4aaf" kindref="member">getLed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"></highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="class_bean_class_1aea8736bf91c03de609233ddb270fb77d" kindref="member">getLedRed</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"></highlight></codeline>
@@ -632,7 +632,7 @@
 <codeline lineno="309"><highlight class="normal"></highlight></codeline>
 <codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
 <codeline lineno="316"></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a5aa91cc9c0a3e17da864978845735ded" kindref="member">getObserverMessage</ref>(ObserverAdvertisementInfo<sp/>*message,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>timeout);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a5aa91cc9c0a3e17da864978845735ded" kindref="member">getObserverMessage</ref>(<ref refid="struct_o_b_s_e_r_v_e_r___i_n_f_o___m_e_s_s_a_g_e___t" kindref="compound">ObserverAdvertisementInfo</ref><sp/>*message,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>timeout);</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
 <codeline lineno="337"><highlight class="normal"></highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
@@ -706,9 +706,9 @@
 <codeline lineno="738"><highlight class="normal"></highlight></codeline>
 <codeline lineno="739"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/***************************************************************************/</highlight></codeline>
 <codeline lineno="743"></codeline>
-<codeline lineno="748"><highlight class="normal"><sp/><sp/>BluetoothServices<sp/><ref refid="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" kindref="member">getServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="748"><highlight class="normal"><sp/><sp/><ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">BluetoothServices</ref><sp/><ref refid="class_bean_class_1ae2547ba8f4b67a9ac774ce6d89b14dcb" kindref="member">getServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="749"><highlight class="normal"></highlight></codeline>
-<codeline lineno="755"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" kindref="member">setServices</ref>(BluetoothServices<sp/>services);</highlight></codeline>
+<codeline lineno="755"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a17b6e95f7b93e39ae83971ed796edd5b" kindref="member">setServices</ref>(<ref refid="struct_a_d_v___s_w_i_t_c_h___e_n_a_b_l_e_d___t" kindref="compound">BluetoothServices</ref><sp/>services);</highlight></codeline>
 <codeline lineno="756"><highlight class="normal"></highlight></codeline>
 <codeline lineno="760"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_class_1a98a040220137d9dd047250e247bd4ebd" kindref="member">resetServices</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="761"><highlight class="normal"></highlight></codeline>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_a_n_c_s___g_e_t___n_t_f___t" kind="struct" language="C++" prot="public">
+    <compoundname>ANCS_GET_NTF_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_a_n_c_s___g_e_t___n_t_f___t_1af6470e407966b42dbb146b0fe9278c60" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_GET_NTF_T::cmdID</definition>
+        <argsstring></argsstring>
+        <name>cmdID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="225" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___g_e_t___n_t_f___t_1a875eaed32ae49fbac64055d74e400085" prot="public" static="no" mutable="no">
+        <type>PTD_UINT32</type>
+        <definition>PTD_UINT32 ANCS_GET_NTF_T::notifUID</definition>
+        <argsstring></argsstring>
+        <name>notifUID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="226" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___g_e_t___n_t_f___t_1aee990866ce9075ccf5f1f2fa315da45c" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 ANCS_GET_NTF_T::attr</definition>
+        <argsstring></argsstring>
+        <name>attr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="227" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_a_n_c_s___g_e_t___n_t_f___t_1a70ae10e567b1f52c19992b7d1abbf43e" prot="public" static="no" mutable="no">
+        <type>PTD_UINT16</type>
+        <definition>PTD_UINT16 ANCS_GET_NTF_T::attrLength</definition>
+        <argsstring></argsstring>
+        <name>attrLength</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="228" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="224" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="224" bodyend="229"/>
+    <listofallmembers>
+      <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1aee990866ce9075ccf5f1f2fa315da45c" prot="public" virt="non-virtual"><scope>ANCS_GET_NTF_T</scope><name>attr</name></member>
+      <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1a70ae10e567b1f52c19992b7d1abbf43e" prot="public" virt="non-virtual"><scope>ANCS_GET_NTF_T</scope><name>attrLength</name></member>
+      <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1af6470e407966b42dbb146b0fe9278c60" prot="public" virt="non-virtual"><scope>ANCS_GET_NTF_T</scope><name>cmdID</name></member>
+      <member refid="struct_a_n_c_s___g_e_t___n_t_f___t_1a875eaed32ae49fbac64055d74e400085" prot="public" virt="non-virtual"><scope>ANCS_GET_NTF_T</scope><name>notifUID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

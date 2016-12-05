@@ -110,9 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5eff3ac01fb4248dace32c7a18d9d68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29b6dc1d900b8c1dc93f40beaf29c8d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#a29b6dc1d900b8c1dc93f40beaf29c8d9">notificationsAvailable</a> ()</td></tr>
 <tr class="separator:a29b6dc1d900b8c1dc93f40beaf29c8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affaf3691b746468f5e11f78c9b74a755"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755">getNotificationHeaders</a> (ANCS_SOURCE_MSG_T *buffer, size_t max_length)</td></tr>
+<tr class="memitem:affaf3691b746468f5e11f78c9b74a755"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755">getNotificationHeaders</a> (<a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> *buffer, size_t max_length)</td></tr>
 <tr class="separator:affaf3691b746468f5e11f78c9b74a755"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8acff1decc559bc697e2757f5ebc12ee"><td class="memItemLeft" align="right" valign="top">ANCS_SOURCE_MSG_T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#a8acff1decc559bc697e2757f5ebc12ee">getNotificationHeader</a> ()</td></tr>
+<tr class="memitem:a8acff1decc559bc697e2757f5ebc12ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#a8acff1decc559bc697e2757f5ebc12ee">getNotificationHeader</a> ()</td></tr>
 <tr class="separator:a8acff1decc559bc697e2757f5ebc12ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0dc33b6e27d0ed37a345462ad58ba01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_ancs_class.html#ae0dc33b6e27d0ed37a345462ad58ba01">getNotificationAttributes</a> (NOTI_ATTR_ID_T type, uint32_t ID, uint16_t len, uint8_t *data, uint32_t timeout)</td></tr>
 <tr class="separator:ae0dc33b6e27d0ed37a345462ad58ba01"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,7 +198,7 @@ Public Member Functions</h2></td></tr>
 <p>This function can be used to request details about a particular notification. It can only be used to access one type of notification at a time and will block the thread until it receives a message. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>is the type of data the user wishes to receive of type NOTI_ATTR_ID_T </td></tr>
-    <tr><td class="paramname">ID</td><td>is the UUID of the notification as contained in ANCS_SOURCE_MSG_T. </td></tr>
+    <tr><td class="paramname">ID</td><td>is the UUID of the notification as contained in <a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html" title="TODO: Documentation needed. ">ANCS_SOURCE_MSG_T</a>. </td></tr>
     <tr><td class="paramname">len</td><td>is the max number of bytes to receive into data. The maximum possible is 65535 bytes. </td></tr>
     <tr><td class="paramname">data</td><td>is the user defined buffer to fill incoming data with. </td></tr>
     <tr><td class="paramname">timeout</td><td>is the length of time in milliseconds before the function will return if it does not receive data or only receives partial data </td></tr>
@@ -285,7 +285,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader </td>
+          <td class="memname"><a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> BeanAncsClass::getNotificationHeader </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -303,7 +303,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">int BeanAncsClass::getNotificationHeaders </td>
           <td>(</td>
-          <td class="paramtype">ANCS_SOURCE_MSG_T *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
         </tr>
         <tr>
@@ -321,7 +321,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Gets all available notification headers. The ANCS buffer can only hold 8 messages at a time before it begins to overwrite old messages. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buffer</td><td>takes a user defined buffer of type ANCS_SOURCE_MSG_T. When this function returns the buffer will be populated with messages </td></tr>
+    <tr><td class="paramname">buffer</td><td>takes a user defined buffer of type <a class="el" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html" title="TODO: Documentation needed. ">ANCS_SOURCE_MSG_T</a>. When this function returns the buffer will be populated with messages </td></tr>
     <tr><td class="paramname">max_length</td><td>takes the length of the maximum buffer size. If the user only has a buffer of one then max_length should also be 1. </td></tr>
   </table>
   </dd>

@@ -74,7 +74,7 @@
         <argsstring>(ANCS_SOURCE_MSG_T *buffer, size_t max_length)</argsstring>
         <name>getNotificationHeaders</name>
         <param>
-          <type>ANCS_SOURCE_MSG_T *</type>
+          <type><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref> *</type>
           <declname>buffer</declname>
         </param>
         <param>
@@ -89,7 +89,7 @@
 <parametername>buffer</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>takes a user defined buffer of type ANCS_SOURCE_MSG_T. When this function returns the buffer will be populated with messages </para></parameterdescription>
+<para>takes a user defined buffer of type <ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref>. When this function returns the buffer will be populated with messages </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -106,7 +106,7 @@
         <location file="hardware/bean/avr/cores/bean/BeanAncs.h" line="62" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_bean_ancs_class_1a8acff1decc559bc697e2757f5ebc12ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>ANCS_SOURCE_MSG_T</type>
+        <type><ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref></type>
         <definition>ANCS_SOURCE_MSG_T BeanAncsClass::getNotificationHeader</definition>
         <argsstring>()</argsstring>
         <name>getNotificationHeader</name>
@@ -158,7 +158,7 @@
 <parametername>ID</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>is the UUID of the notification as contained in ANCS_SOURCE_MSG_T. </para></parameterdescription>
+<para>is the UUID of the notification as contained in <ref refid="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t" kindref="compound">ANCS_SOURCE_MSG_T</ref>. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>

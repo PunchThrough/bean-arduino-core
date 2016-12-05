@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="struct_h_i_d___r_e_p_o_r_t___t" kind="struct" language="C++" prot="public">
+    <compoundname>HID_REPORT_T</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_h_i_d___r_e_p_o_r_t___t_1a4e3b15b71170f48f9d1772e2e5b65f7b" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 HID_REPORT_T::id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="521" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="521" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_i_d___r_e_p_o_r_t___t_1a293a2b82c572b81d925bb8822435db62" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 HID_REPORT_T::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="522" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="522" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_i_d___r_e_p_o_r_t___t_1a833870632158c0c0a2d9727764fcbcb4" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 HID_REPORT_T::len</definition>
+        <argsstring></argsstring>
+        <name>len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="523" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="523" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_h_i_d___r_e_p_o_r_t___t_1a4516a8128b3acb98449e070da9868a1c" prot="public" static="no" mutable="no">
+        <type>PTD_UINT8</type>
+        <definition>PTD_UINT8 HID_REPORT_T::data[HID_DATA_LEN]</definition>
+        <argsstring>[HID_DATA_LEN]</argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="524" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="524" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" line="520" column="1" bodyfile="hardware/bean/avr/cores/bean/applicationMessageHeaders/AppMessages.h" bodystart="518" bodyend="525"/>
+    <listofallmembers>
+      <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a4516a8128b3acb98449e070da9868a1c" prot="public" virt="non-virtual"><scope>HID_REPORT_T</scope><name>data</name></member>
+      <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a4e3b15b71170f48f9d1772e2e5b65f7b" prot="public" virt="non-virtual"><scope>HID_REPORT_T</scope><name>id</name></member>
+      <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a833870632158c0c0a2d9727764fcbcb4" prot="public" virt="non-virtual"><scope>HID_REPORT_T</scope><name>len</name></member>
+      <member refid="struct_h_i_d___r_e_p_o_r_t___t_1a293a2b82c572b81d925bb8822435db62" prot="public" virt="non-virtual"><scope>HID_REPORT_T</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

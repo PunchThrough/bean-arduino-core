@@ -5,25 +5,25 @@
     <includes local="yes">BeanSerialTransport.h</includes>
     <includedby refid="_bean_8h" local="yes">hardware/bean/avr/cores/bean/Bean.h</includedby>
     <incdepgraph>
-      <node id="32">
+      <node id="38">
         <label>BeanSerialTransport.h</label>
       </node>
-      <node id="31">
+      <node id="37">
         <label>hardware/bean/avr/cores/bean/BeanHID.h</label>
         <link refid="BeanHID.h"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="34">
+      <node id="40">
         <label>hardware/bean/avr/cores/bean/Bean.h</label>
         <link refid="_bean_8h_source"/>
       </node>
-      <node id="33">
+      <node id="39">
         <label>hardware/bean/avr/cores/bean/BeanHID.h</label>
         <link refid="BeanHID.h"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

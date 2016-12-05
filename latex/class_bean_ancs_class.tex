@@ -16,9 +16,9 @@ void \hyperlink{class_bean_ancs_class_a5eff3ac01fb4248dace32c7a18d9d68e}{disable
 \item 
 int \hyperlink{class_bean_ancs_class_a29b6dc1d900b8c1dc93f40beaf29c8d9}{notifications\+Available} ()
 \item 
-int \hyperlink{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}{get\+Notification\+Headers} (A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$buffer, size\+\_\+t max\+\_\+length)
+int \hyperlink{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}{get\+Notification\+Headers} (\hyperlink{struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t}{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T} $\ast$buffer, size\+\_\+t max\+\_\+length)
 \item 
-A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T \hyperlink{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}{get\+Notification\+Header} ()
+\hyperlink{struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t}{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T} \hyperlink{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}{get\+Notification\+Header} ()
 \item 
 int \hyperlink{class_bean_ancs_class_ae0dc33b6e27d0ed37a345462ad58ba01}{get\+Notification\+Attributes} (N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T type, uint32\+\_\+t I\+D, uint16\+\_\+t len, uint8\+\_\+t $\ast$data, uint32\+\_\+t timeout)
 \item 
@@ -57,7 +57,7 @@ This function can be used to request details about a particular notification. It
 \begin{DoxyParams}{Parameters}
 {\em type} & is the type of data the user wishes to receive of type N\+O\+T\+I\+\_\+\+A\+T\+T\+R\+\_\+\+I\+D\+\_\+\+T \\
 \hline
-{\em I\+D} & is the U\+U\+I\+D of the notification as contained in A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T. \\
+{\em I\+D} & is the U\+U\+I\+D of the notification as contained in \hyperlink{struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t}{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T}. \\
 \hline
 {\em len} & is the max number of bytes to receive into data. The maximum possible is 65535 bytes. \\
 \hline
@@ -146,7 +146,7 @@ This example sketch reads A\+N\+C\+S messages and prints them to Virtual Serial.
 \end{DoxyCodeInclude}
  \hypertarget{class_bean_ancs_class_a8acff1decc559bc697e2757f5ebc12ee}{}\index{Bean\+Ancs\+Class@{Bean\+Ancs\+Class}!get\+Notification\+Header@{get\+Notification\+Header}}
 \index{get\+Notification\+Header@{get\+Notification\+Header}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
-\subsubsection[{get\+Notification\+Header()}]{\setlength{\rightskip}{0pt plus 5cm}A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T Bean\+Ancs\+Class\+::get\+Notification\+Header (
+\subsubsection[{get\+Notification\+Header()}]{\setlength{\rightskip}{0pt plus 5cm}{\bf A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T} Bean\+Ancs\+Class\+::get\+Notification\+Header (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -155,13 +155,13 @@ Gets a single notification Header. If there are no messages available all values
 \index{get\+Notification\+Headers@{get\+Notification\+Headers}!Bean\+Ancs\+Class@{Bean\+Ancs\+Class}}
 \subsubsection[{get\+Notification\+Headers(\+A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$buffer, size\+\_\+t max\+\_\+length)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Ancs\+Class\+::get\+Notification\+Headers (
 \begin{DoxyParamCaption}
-\item[{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T $\ast$}]{buffer, }
+\item[{{\bf A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T} $\ast$}]{buffer, }
 \item[{size\+\_\+t}]{max\+\_\+length}
 \end{DoxyParamCaption}
 )}\label{class_bean_ancs_class_affaf3691b746468f5e11f78c9b74a755}
 Gets all available notification headers. The A\+N\+C\+S buffer can only hold 8 messages at a time before it begins to overwrite old messages. 
 \begin{DoxyParams}{Parameters}
-{\em buffer} & takes a user defined buffer of type A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T. When this function returns the buffer will be populated with messages \\
+{\em buffer} & takes a user defined buffer of type \hyperlink{struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t}{A\+N\+C\+S\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+M\+S\+G\+\_\+\+T}. When this function returns the buffer will be populated with messages \\
 \hline
 {\em max\+\_\+length} & takes the length of the maximum buffer size. If the user only has a buffer of one then max\+\_\+length should also be 1. \\
 \hline

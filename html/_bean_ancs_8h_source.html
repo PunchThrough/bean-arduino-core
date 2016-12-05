@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('_bean_ancs_8h_source.html','');});
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Arduino.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;applicationMessageHeaders/AppMessages.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> ANCS_SOURCE_MSG_T AncsNotification;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">typedef</span> <a class="code" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> <a class="code" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">AncsNotification</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">typedef</span> NOTI_ATTR_ID_T AncsNotificationAttribute;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
@@ -115,9 +115,9 @@ $(document).ready(function(){initNavTree('_bean_ancs_8h_source.html','');});
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_bean_ancs_class.html#a29b6dc1d900b8c1dc93f40beaf29c8d9">notificationsAvailable</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755">getNotificationHeaders</a>(ANCS_SOURCE_MSG_T *buffer, <span class="keywordtype">size_t</span> max_length);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755">getNotificationHeaders</a>(<a class="code" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> *buffer, <span class="keywordtype">size_t</span> max_length);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  ANCS_SOURCE_MSG_T <a class="code" href="class_bean_ancs_class.html#a8acff1decc559bc697e2757f5ebc12ee">getNotificationHeader</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a> <a class="code" href="class_bean_ancs_class.html#a8acff1decc559bc697e2757f5ebc12ee">getNotificationHeader</a>();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="class_bean_ancs_class.html#ae0dc33b6e27d0ed37a345462ad58ba01">getNotificationAttributes</a>(NOTI_ATTR_ID_T type, uint32_t ID,</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        uint16_t len, uint8_t* data,</div>
@@ -134,6 +134,7 @@ $(document).ready(function(){initNavTree('_bean_ancs_8h_source.html','');});
 <div class="ttc" id="class_bean_ancs_class_html_a13833644884b8cc61e8d70ac850a500c"><div class="ttname"><a href="class_bean_ancs_class.html#a13833644884b8cc61e8d70ac850a500c">BeanAncsClass::isEnabled</a></div><div class="ttdeci">bool isEnabled(void)</div></div>
 <div class="ttc" id="class_bean_ancs_class_html_a5eff3ac01fb4248dace32c7a18d9d68e"><div class="ttname"><a href="class_bean_ancs_class.html#a5eff3ac01fb4248dace32c7a18d9d68e">BeanAncsClass::disable</a></div><div class="ttdeci">void disable(void)</div></div>
 <div class="ttc" id="class_bean_ancs_class_html_aa3d157f0b796947032a27e6185be895a"><div class="ttname"><a href="class_bean_ancs_class.html#aa3d157f0b796947032a27e6185be895a">BeanAncsClass::enable</a></div><div class="ttdeci">void enable(void)</div></div>
+<div class="ttc" id="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t_html"><div class="ttname"><a href="struct_a_n_c_s___s_o_u_r_c_e___m_s_g___t.html">ANCS_SOURCE_MSG_T</a></div><div class="ttdoc">TODO: Documentation needed. </div><div class="ttdef"><b>Definition:</b> AppMessages.h:234</div></div>
 <div class="ttc" id="class_bean_ancs_class_html"><div class="ttname"><a href="class_bean_ancs_class.html">BeanAncsClass</a></div><div class="ttdef"><b>Definition:</b> BeanAncs.h:18</div></div>
 <div class="ttc" id="class_bean_ancs_class_html_aa9ac67079e02d7fffc198d27854226c0"><div class="ttname"><a href="class_bean_ancs_class.html#aa9ac67079e02d7fffc198d27854226c0">BeanAncsClass::notificationAction</a></div><div class="ttdeci">void notificationAction(uint32_t ID, uint8_t actionID)</div></div>
 <div class="ttc" id="class_bean_ancs_class_html_affaf3691b746468f5e11f78c9b74a755"><div class="ttname"><a href="class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755">BeanAncsClass::getNotificationHeaders</a></div><div class="ttdeci">int getNotificationHeaders(ANCS_SOURCE_MSG_T *buffer, size_t max_length)</div></div>
@@ -143,7 +144,7 @@ $(document).ready(function(){initNavTree('_bean_ancs_8h_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f4316de2dfb04db90651672103de31d6.html">hardware</a></li><li class="navelem"><a class="el" href="dir_75b9d17f541d2cec944f118512d24c27.html">bean</a></li><li class="navelem"><a class="el" href="dir_1f61126cded4d41a9b56d2556f5ebe64.html">avr</a></li><li class="navelem"><a class="el" href="dir_9013e5660f5083e8da0bdd20b010def7.html">cores</a></li><li class="navelem"><a class="el" href="dir_2b1dd4caef0fbc241f52df5abc8b1c90.html">bean</a></li><li class="navelem"><b>BeanAncs.h</b></li>
+    <li class="navelem"><a class="el" href="dir_b40532bd9fe276396eed72de45558f87.html">hardware</a></li><li class="navelem"><a class="el" href="dir_7c43ec495913d52183c496b3c366ee3f.html">bean</a></li><li class="navelem"><a class="el" href="dir_d07eaf1f8a9fcdc94ce15e68be04b612.html">avr</a></li><li class="navelem"><a class="el" href="dir_245e09084cb90b142ef6d0974144183f.html">cores</a></li><li class="navelem"><a class="el" href="dir_f7e20e7f07a68f03c463b31c5e377278.html">bean</a></li><li class="navelem"><b>BeanAncs.h</b></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>

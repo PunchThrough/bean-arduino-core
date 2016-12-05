@@ -14,14 +14,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="84" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="84" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="89" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="89" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="84" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="84" bodyend="84"/>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="88" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="88" bodyend="90"/>
     <listofallmembers>
       <member refid="struct_cc_report_1accbeb8de031a175ebf43b5fcaaa02836" prot="public" virt="non-virtual"><scope>CcReport</scope><name>bytes</name></member>
     </listofallmembers>

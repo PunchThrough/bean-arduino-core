@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['enable',['enable',['../class_bean_hid__.html#abc7bfa1befc35668b656dabc3d8646fa',1,'BeanHid_::enable()'],['../class_bean_midi_class.html#a526f499963ba700b7b3605ad5c583f8a',1,'BeanMidiClass::enable()'],['../class_bean_ancs_class.html#aa3d157f0b796947032a27e6185be895a',1,'BeanAncsClass::enable()']]],
+  ['enable',['enable',['../class_bean_hid_class.html#a13765378242667b5be0cd50ae2da2afd',1,'BeanHidClass::enable()'],['../class_bean_midi_class.html#a526f499963ba700b7b3605ad5c583f8a',1,'BeanMidiClass::enable()'],['../class_bean_ancs_class.html#aa3d157f0b796947032a27e6185be895a',1,'BeanAncsClass::enable()']]],
   ['enableadvertising',['enableAdvertising',['../class_bean_class.html#a9bff2d903c4a543ba48f0ac1b392c7cc',1,'BeanClass::enableAdvertising(bool enable, uint32_t timer)'],['../class_bean_class.html#ade5d4c6a061eeb6d7897ef4c3b2c26d3',1,'BeanClass::enableAdvertising(bool enable)']]],
   ['enableconfigsave',['enableConfigSave',['../class_bean_class.html#a2ae5aa1b912ca67715670f1dea865431',1,'BeanClass']]],
   ['enablecustom',['enableCustom',['../class_bean_class.html#a9bbcf8d6db2a229d12838b2626e514d0',1,'BeanClass']]],

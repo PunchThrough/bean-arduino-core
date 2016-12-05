@@ -32,7 +32,7 @@
     <member refid="class_bean_class_1adfc2642320c53819c83bbaa59bbcef9b" kind="function"><name>setLedRed</name></member>
     <member refid="class_bean_class_1ae1955c0312d1fa90bfeb847dada48c8c" kind="function"><name>setLedGreen</name></member>
     <member refid="class_bean_class_1ac09c0f3cea6025e2e12e8b6c5419434b" kind="function"><name>setLedBlue</name></member>
-    <member refid="class_bean_class_1a4d5307962a778b8cd8b792b196c5f908" kind="function"><name>getObserverMessage</name></member>
+    <member refid="class_bean_class_1a5aa91cc9c0a3e17da864978845735ded" kind="function"><name>getObserverMessage</name></member>
     <member refid="class_bean_class_1a6a8c9b33ada6cc7da1d9229dd0d7849e" kind="function"><name>setScratchData</name></member>
     <member refid="class_bean_class_1a74e7107c64bec91d676cdd534ac6bb4d" kind="function"><name>setScratchNumber</name></member>
     <member refid="class_bean_class_1af5b9029cc816e5ce21263be975aa6050" kind="function"><name>readScratchData</name></member>
@@ -71,36 +71,36 @@
     <member refid="class_bean_class_1a6fc48e30999657b04b27908fc4f1bf24" kind="function"><name>enableWakeOnAccelerometer</name></member>
     <member refid="class_bean_class_1aaa0bac4371fd7f49671f06f6373242be" kind="function"><name>checkAccelInterrupts</name></member>
   </compound>
-  <compound refid="class_bean_hid__" kind="class"><name>BeanHid_</name>
-    <member refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" kind="function"><name>enable</name></member>
-    <member refid="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" kind="function"><name>isEnabled</name></member>
-    <member refid="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" kind="function"><name>disable</name></member>
-    <member refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" kind="function"><name>holdKey</name></member>
-    <member refid="class_bean_hid___1a40083ffe2f60453c9988419b083a26ad" kind="function"><name>holdKey</name></member>
-    <member refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" kind="function"><name>releaseKey</name></member>
-    <member refid="class_bean_hid___1a41d8c234073789bcff992387f4398cac" kind="function"><name>releaseKey</name></member>
-    <member refid="class_bean_hid___1a5f2464de95903311d251b9b92f5460cf" kind="function"><name>releaseAllKeys</name></member>
-    <member refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" kind="function"><name>sendKey</name></member>
-    <member refid="class_bean_hid___1abe48bfbb4e86e3e6411ebe507e388543" kind="function"><name>sendKey</name></member>
-    <member refid="class_bean_hid___1a9421d40df77b9d1f18d5a202879063ee" kind="function"><name>sendKeys</name></member>
-    <member refid="class_bean_hid___1a8d40fc0c1a14803b5ebc472f5d34b4c0" kind="function"><name>moveMouse</name></member>
-    <member refid="class_bean_hid___1aab7466efc670230ce1f2694047eaa1d2" kind="function"><name>holdMouseClick</name></member>
-    <member refid="class_bean_hid___1accdc853cab0d52bd30d68f153e3f7f29" kind="function"><name>releaseMouseClick</name></member>
-    <member refid="class_bean_hid___1a6568d01038b06a24afd93d5366ef9b00" kind="function"><name>sendMouseClick</name></member>
-    <member refid="class_bean_hid___1a4fce5e764a70052ee85919f22ec04f4f" kind="function"><name>sendMediaControl</name></member>
-    <member refid="class_bean_hid___1af9919a1a3942fbe2bc3cfa34e1fe4f04" kind="function"><name>holdMediaControl</name></member>
-    <member refid="class_bean_hid___1a3cb98f00d25098d7f45196d63eb92925" kind="function"><name>releaseMediaControl</name></member>
-    <member refid="class_bean_hid___1a574a50368c284d3db59fba546f542538" kind="function"><name>releaseAllMediaControls</name></member>
-    <member refid="class_bean_hid___1a2308e72ab32f2bbf76f70113b49c91a4" kind="variable"><name>isShiftHeld</name></member>
-    <member refid="class_bean_hid___1ad04ac8a6a357ea5880c5a013cde6ffcf" kind="function"><name>buttons</name></member>
-    <member refid="class_bean_hid___1a016a6598040b8c6ba89d722f896d3808" kind="function"><name>_genericSendReport</name></member>
-    <member refid="class_bean_hid___1a093d17d3453679f59263a73fca0e777b" kind="function"><name>sendReport</name></member>
-    <member refid="class_bean_hid___1a4a6c71b356741c4621f988b071051a22" kind="function"><name>sendReport</name></member>
-    <member refid="class_bean_hid___1aa03eb0752b66afbdec23e0e31f2e95db" kind="function"><name>sendReport</name></member>
-    <member refid="class_bean_hid___1a36794456d4859ebdefde68fbf62b60e1" kind="function"><name>_holdKey</name></member>
-    <member refid="class_bean_hid___1a8a313c85e6a0cf4ecad02dd171f8b5c8" kind="function"><name>_releaseKey</name></member>
-    <member refid="class_bean_hid___1a160d93a1aa1fecb9e06858267dde0296" kind="function"><name>_sendKey</name></member>
-    <member refid="class_bean_hid___1a06070026a127db3b3523256a84f1f3b9" kind="function"><name>BeanHid_</name></member>
+  <compound refid="class_bean_hid_class" kind="class"><name>BeanHidClass</name>
+    <member refid="class_bean_hid_class_1a13765378242667b5be0cd50ae2da2afd" kind="function"><name>enable</name></member>
+    <member refid="class_bean_hid_class_1afd8c0eec7e3104ae14cd538e954d8306" kind="function"><name>isEnabled</name></member>
+    <member refid="class_bean_hid_class_1afa5abdeac9960f5461b78efa58880abf" kind="function"><name>disable</name></member>
+    <member refid="class_bean_hid_class_1a5e80e1a866e97a27ee57e9361864aa01" kind="function"><name>holdKey</name></member>
+    <member refid="class_bean_hid_class_1aa32f0b43c31a36450899b84e13cfb18c" kind="function"><name>holdKey</name></member>
+    <member refid="class_bean_hid_class_1aa55a6740f7eb7586a02acc4e285308d1" kind="function"><name>releaseKey</name></member>
+    <member refid="class_bean_hid_class_1a776d559506390cb3ee9068cfdbfe78f3" kind="function"><name>releaseKey</name></member>
+    <member refid="class_bean_hid_class_1a0301c3d8352555b033cc1499c8660ddb" kind="function"><name>releaseAllKeys</name></member>
+    <member refid="class_bean_hid_class_1adba60b7a4ff098727a0df2afa2ee5b97" kind="function"><name>sendKey</name></member>
+    <member refid="class_bean_hid_class_1a9608d4e79b947b2f43209edcfe874a6a" kind="function"><name>sendKey</name></member>
+    <member refid="class_bean_hid_class_1a89d770aed9c9e5fb66ce5fd33889c328" kind="function"><name>sendKeys</name></member>
+    <member refid="class_bean_hid_class_1aa7f4a73aa962ec437f5a929df9142167" kind="function"><name>moveMouse</name></member>
+    <member refid="class_bean_hid_class_1a98a401af2c7eb990164a9c00999906f3" kind="function"><name>holdMouseClick</name></member>
+    <member refid="class_bean_hid_class_1ae9ecc9e80b67ac1fcedd31d27b5a4fc6" kind="function"><name>releaseMouseClick</name></member>
+    <member refid="class_bean_hid_class_1a77f302f0aab20d303c2c78ab82b539a0" kind="function"><name>sendMouseClick</name></member>
+    <member refid="class_bean_hid_class_1a8bafed3a93633321757dd15153edf2dc" kind="function"><name>sendMediaControl</name></member>
+    <member refid="class_bean_hid_class_1af598e4203d6d7f5dbbb1fe6a48457f9b" kind="function"><name>holdMediaControl</name></member>
+    <member refid="class_bean_hid_class_1a0741bb83d801168ff5f1b58c0cf51ccf" kind="function"><name>releaseMediaControl</name></member>
+    <member refid="class_bean_hid_class_1a438a17883bef87cd43ec0b9dde0b8a0e" kind="function"><name>releaseAllMediaControls</name></member>
+    <member refid="class_bean_hid_class_1af12f08c58de388f46020564d3aa2802f" kind="variable"><name>isShiftHeld</name></member>
+    <member refid="class_bean_hid_class_1af053ee094a0d14226ec7eb5e54527ef5" kind="function"><name>buttons</name></member>
+    <member refid="class_bean_hid_class_1a81c000dbc4c05aa4094417d7f79e1849" kind="function"><name>_genericSendReport</name></member>
+    <member refid="class_bean_hid_class_1acab51fa301656dd6f2344e4e574625d3" kind="function"><name>sendReport</name></member>
+    <member refid="class_bean_hid_class_1a0e3451eb15092f96bdc4df7d0f697270" kind="function"><name>sendReport</name></member>
+    <member refid="class_bean_hid_class_1a69aa34e0948549d00b2cf1646716df16" kind="function"><name>sendReport</name></member>
+    <member refid="class_bean_hid_class_1a7b48e1fc33591b15ef2f696f29b3dcaf" kind="function"><name>_holdKey</name></member>
+    <member refid="class_bean_hid_class_1a96a0a7be05fa6ea0c441e28ae9d275cc" kind="function"><name>_releaseKey</name></member>
+    <member refid="class_bean_hid_class_1a9445ac0f1afa3c0bdfe99e64f0ab0bcf" kind="function"><name>_sendKey</name></member>
+    <member refid="class_bean_hid_class_1a80cc62d85705a57299f9a4b316f2d9c7" kind="function"><name>BeanHidClass</name></member>
   </compound>
   <compound refid="class_bean_midi_class" kind="class"><name>BeanMidiClass</name>
     <member refid="class_bean_midi_class_1a526f499963ba700b7b3605ad5c583f8a" kind="function"><name>enable</name></member>
@@ -167,7 +167,7 @@
     <member refid="_bean_8h_1abe3d58d06eff3046a29f245172e62427" kind="typedef"><name>AccelerationReading</name></member>
     <member refid="_bean_8h_1a4303280f79143dd66eb5af27976ea880" kind="typedef"><name>LedReading</name></member>
     <member refid="_bean_8h_1a503c2b4d29e1e854fe01f9a9964afd03" kind="typedef"><name>BluetoothServices</name></member>
-    <member refid="_bean_8h_1a9c7c4ea65b8ab58c5e25b47021d797bc" kind="typedef"><name>ObseverAdvertisementInfo</name></member>
+    <member refid="_bean_8h_1a219d9f0e8570057514bd2146d0a5d817" kind="typedef"><name>ObserverAdvertisementInfo</name></member>
     <member refid="_bean_8h_1a895a61920490883fbdec3ba5423e8fa8" kind="variable"><name>Bean</name></member>
   </compound>
   <compound refid="_bean_ancs_8h" kind="file"><name>BeanAncs.h</name>
@@ -234,7 +234,7 @@
     <member refid="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda9a06e9be8a466cb25472fc5d2245adc2" kind="enumvalue"><name>VOLUME_UP</name></member>
     <member refid="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda529d2dedd2400b280c220d9892527bc7" kind="enumvalue"><name>VOLUME_DOWN</name></member>
     <member refid="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccda271edf5041b6e7d6307edccd670dc8dc" kind="enumvalue"><name>MUTE</name></member>
-    <member refid="_bean_h_i_d_8h_1ad938955f62f1016896c3e419ef7c1f4a" kind="variable"><name>BeanHid</name></member>
+    <member refid="_bean_h_i_d_8h_1a8f3f34fcfb8254213306b54bda812909" kind="variable"><name>BeanHid</name></member>
   </compound>
   <compound refid="_bean_midi_8h" kind="file"><name>BeanMidi.h</name>
     <member refid="_bean_midi_8h_1a22380dd310606886b1704cbd1e569844" kind="enum"><name>midiChannels</name></member>

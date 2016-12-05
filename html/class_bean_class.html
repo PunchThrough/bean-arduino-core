@@ -148,8 +148,8 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Observer</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Functions related to Observer mode. Observer role allows the Bean to listen for advertisements. As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements. Paired with the custom advertising role, you can have two Beans interact with each other. This role works even when the Bean is connected. </p>
 </div></td></tr>
-<tr class="memitem:a4d5307962a778b8cd8b792b196c5f908"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a4d5307962a778b8cd8b792b196c5f908">getObserverMessage</a> (ObseverAdvertisementInfo *message, unsigned long timeout)</td></tr>
-<tr class="separator:a4d5307962a778b8cd8b792b196c5f908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa91cc9c0a3e17da864978845735ded"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bean_class.html#a5aa91cc9c0a3e17da864978845735ded">getObserverMessage</a> (ObserverAdvertisementInfo *message, unsigned long timeout)</td></tr>
+<tr class="separator:a5aa91cc9c0a3e17da864978845735ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Scratch</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Read and write arbitrary data using pre-defined BLE characteristics.</p>
 <p>Scratch characteristics are Bluetooth Low Energy characteristics that Bean provides for arbitrary use by developers. Each characteristic can hold up to 20 bytes due to BLE restrictions.</p>
@@ -1136,14 +1136,14 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4d5307962a778b8cd8b792b196c5f908"></a>
+<a class="anchor" id="a5aa91cc9c0a3e17da864978845735ded"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int BeanClass::getObserverMessage </td>
           <td>(</td>
-          <td class="paramtype">ObseverAdvertisementInfo *&#160;</td>
+          <td class="paramtype">ObserverAdvertisementInfo *&#160;</td>
           <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
@@ -1191,7 +1191,7 @@ Public Member Functions</h2></td></tr>
 <div class="line">void loop() {</div>
 <div class="line">  uint32_t start = millis();</div>
 <div class="line"></div>
-<div class="line">  ObseverAdvertisementInfo info;</div>
+<div class="line">  ObserverAdvertisementInfo info;</div>
 <div class="line">  int res = Bean.getObserverMessage(&amp;info, 2000);</div>
 <div class="line">  if (res == 1) {</div>
 <div class="line">    Serial.print(info.eventType);</div>

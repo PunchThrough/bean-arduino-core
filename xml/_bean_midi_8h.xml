@@ -2154,7 +2154,7 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL13<sp/>=<sp/>0x0D,</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL14<sp/>=<sp/>0x0E,</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>CHANNEL15<sp/>=<sp/>0x0F</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">}midiChannels;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}<sp/>midiChannels;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_Cn1<sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>0,</highlight></codeline>
@@ -2350,7 +2350,7 @@
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>OMNIMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>125,</highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>MONOMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>126,</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>POLYMODEON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>127</highlight></codeline>
-<codeline lineno="219"><highlight class="normal">}midiControlChange;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal">}<sp/>midiControlChange;</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"></highlight></codeline>
 <codeline lineno="221"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTEOFF<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0x80,</highlight></codeline>
@@ -2362,7 +2362,7 @@
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>PITCHBENDCHANGE<sp/><sp/><sp/><sp/><sp/>=<sp/>0xE0,</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>SYSTEMCOMMON<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF0,</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>SYSTEMREALTIME<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0xF8</highlight></codeline>
-<codeline lineno="231"><highlight class="normal">}midiMessageTypes;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal">}<sp/>midiMessageTypes;</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"></highlight></codeline>
 <codeline lineno="233"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>BASS_DRUM_2<sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>35,</highlight></codeline>
@@ -2412,7 +2412,7 @@
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_CUICA<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><sp/><sp/>79,</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>MUTE_TRIANGLE<sp/><sp/><sp/>=<sp/><sp/><sp/>80,</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/>OPEN_TRIANGLE<sp/><sp/><sp/>=<sp/><sp/><sp/>81</highlight></codeline>
-<codeline lineno="281"><highlight class="normal">}midiDrums;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}<sp/>midiDrums;</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"></highlight></codeline>
 <codeline lineno="283"><highlight class="normal"></highlight></codeline>
 <codeline lineno="284" refid="class_bean_midi_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_midi_class" kindref="compound">BeanMidiClass</ref><sp/>{</highlight></codeline>

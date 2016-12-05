@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
   <compounddef id="struct_key_report" kind="struct" language="C++" prot="public">
     <compoundname>KeyReport</compoundname>
+    <includes refid="_bean_h_i_d_8h" local="no">BeanHID.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="struct_key_report_1a2ead73d1505b8909d72f07d9b1c2874d" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -14,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="77" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="77" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="79" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_key_report_1a47ab672d90ca943f19d552a07a5f2afa" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -27,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="78" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="78" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="80" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_key_report_1a73742ff22b1a767b260633c99baaa374" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -40,14 +41,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="79" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="79" bodyend="-1"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="81" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-    </detaileddescription>
-    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="76" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="76" bodyend="80"/>
+<para>Low level key report: up to 6 keys and shift, ctrl etc at once </para>    </detaileddescription>
+    <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="78" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="78" bodyend="82"/>
     <listofallmembers>
       <member refid="struct_key_report_1a73742ff22b1a767b260633c99baaa374" prot="public" virt="non-virtual"><scope>KeyReport</scope><name>keys</name></member>
       <member refid="struct_key_report_1a2ead73d1505b8909d72f07d9b1c2874d" prot="public" virt="non-virtual"><scope>KeyReport</scope><name>modifiers</name></member>

@@ -3,11 +3,11 @@ var searchData=
   ['readmessage',['readMessage',['../class_bean_midi_class.html#a93453d829ea9cc9814b29358c7214e44',1,'BeanMidiClass']]],
   ['readscratchdata',['readScratchData',['../class_bean_class.html#af5b9029cc816e5ce21263be975aa6050',1,'BeanClass']]],
   ['readscratchnumber',['readScratchNumber',['../class_bean_class.html#a4c835abe680607ce956af4f7fa965a20',1,'BeanClass']]],
-  ['releaseallkeys',['releaseAllKeys',['../class_bean_hid__.html#a5f2464de95903311d251b9b92f5460cf',1,'BeanHid_']]],
-  ['releaseallmediacontrols',['releaseAllMediaControls',['../class_bean_hid__.html#a574a50368c284d3db59fba546f542538',1,'BeanHid_']]],
-  ['releasekey',['releaseKey',['../class_bean_hid__.html#ad0bdfc47ceedf67a923fa378048e7d2e',1,'BeanHid_::releaseKey(char key)'],['../class_bean_hid__.html#a41d8c234073789bcff992387f4398cac',1,'BeanHid_::releaseKey(modifierKey key)']]],
-  ['releasemediacontrol',['releaseMediaControl',['../class_bean_hid__.html#a3cb98f00d25098d7f45196d63eb92925',1,'BeanHid_']]],
-  ['releasemouseclick',['releaseMouseClick',['../class_bean_hid__.html#accdc853cab0d52bd30d68f153e3f7f29',1,'BeanHid_']]],
+  ['releaseallkeys',['releaseAllKeys',['../class_bean_hid_class.html#a0301c3d8352555b033cc1499c8660ddb',1,'BeanHidClass']]],
+  ['releaseallmediacontrols',['releaseAllMediaControls',['../class_bean_hid_class.html#a438a17883bef87cd43ec0b9dde0b8a0e',1,'BeanHidClass']]],
+  ['releasekey',['releaseKey',['../class_bean_hid_class.html#aa55a6740f7eb7586a02acc4e285308d1',1,'BeanHidClass::releaseKey(char key)'],['../class_bean_hid_class.html#a776d559506390cb3ee9068cfdbfe78f3',1,'BeanHidClass::releaseKey(modifierKey key)']]],
+  ['releasemediacontrol',['releaseMediaControl',['../class_bean_hid_class.html#a0741bb83d801168ff5f1b58c0cf51ccf',1,'BeanHidClass']]],
+  ['releasemouseclick',['releaseMouseClick',['../class_bean_hid_class.html#ae9ecc9e80b67ac1fcedd31d27b5a4fc6',1,'BeanHidClass']]],
   ['resetservices',['resetServices',['../class_bean_class.html#a98a040220137d9dd047250e247bd4ebd',1,'BeanClass']]],
   ['restartbluetooth',['restartBluetooth',['../class_bean_class.html#a8823b48c41914a1a32d6dd3974ebf57d',1,'BeanClass']]]
 ];

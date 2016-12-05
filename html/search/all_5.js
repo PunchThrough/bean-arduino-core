@@ -18,7 +18,7 @@ var searchData=
   ['getnotificationattributes',['getNotificationAttributes',['../class_bean_ancs_class.html#ae0dc33b6e27d0ed37a345462ad58ba01',1,'BeanAncsClass']]],
   ['getnotificationheader',['getNotificationHeader',['../class_bean_ancs_class.html#a8acff1decc559bc697e2757f5ebc12ee',1,'BeanAncsClass']]],
   ['getnotificationheaders',['getNotificationHeaders',['../class_bean_ancs_class.html#affaf3691b746468f5e11f78c9b74a755',1,'BeanAncsClass']]],
-  ['getobservermessage',['getObserverMessage',['../class_bean_class.html#a4d5307962a778b8cd8b792b196c5f908',1,'BeanClass']]],
+  ['getobservermessage',['getObserverMessage',['../class_bean_class.html#a5aa91cc9c0a3e17da864978845735ded',1,'BeanClass']]],
   ['getservices',['getServices',['../class_bean_class.html#ae2547ba8f4b67a9ac774ce6d89b14dcb',1,'BeanClass']]],
   ['gettemperature',['getTemperature',['../class_bean_class.html#a711e837c145b51a8e95aa22a3fc9bcf9',1,'BeanClass']]]
 ];

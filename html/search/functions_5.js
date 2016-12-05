@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['holdkey',['holdKey',['../class_bean_hid__.html#aad9dd7f6967d211abb6edb618c80e1a9',1,'BeanHid_::holdKey(char key)'],['../class_bean_hid__.html#a40083ffe2f60453c9988419b083a26ad',1,'BeanHid_::holdKey(modifierKey key)']]],
-  ['holdmediacontrol',['holdMediaControl',['../class_bean_hid__.html#af9919a1a3942fbe2bc3cfa34e1fe4f04',1,'BeanHid_']]],
-  ['holdmouseclick',['holdMouseClick',['../class_bean_hid__.html#aab7466efc670230ce1f2694047eaa1d2',1,'BeanHid_']]]
+  ['holdkey',['holdKey',['../class_bean_hid_class.html#a5e80e1a866e97a27ee57e9361864aa01',1,'BeanHidClass::holdKey(char key)'],['../class_bean_hid_class.html#aa32f0b43c31a36450899b84e13cfb18c',1,'BeanHidClass::holdKey(modifierKey key)']]],
+  ['holdmediacontrol',['holdMediaControl',['../class_bean_hid_class.html#af598e4203d6d7f5dbbb1fe6a48457f9b',1,'BeanHidClass']]],
+  ['holdmouseclick',['holdMouseClick',['../class_bean_hid_class.html#a98a401af2c7eb990164a9c00999906f3',1,'BeanHidClass']]]
 ];

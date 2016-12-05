@@ -54,7 +54,7 @@ void \hyperlink{class_bean_class_ac09c0f3cea6025e2e12e8b6c5419434b}{set\+Led\+Bl
 \begin{Indent}{\bf Observer}\par
 {\em Functions related to Observer mode. Observer role allows the Bean to listen for advertisements. As a peripheral, the Bean cannot send scan response requests, but it can listen for undirected advertisements. Paired with the custom advertising role, you can have two Beans interact with each other. This role works even when the Bean is connected. }\begin{DoxyCompactItemize}
 \item 
-int \hyperlink{class_bean_class_a4d5307962a778b8cd8b792b196c5f908}{get\+Observer\+Message} (Obsever\+Advertisement\+Info $\ast$message, unsigned long timeout)
+int \hyperlink{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}{get\+Observer\+Message} (Observer\+Advertisement\+Info $\ast$message, unsigned long timeout)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Scratch}\par
@@ -881,14 +881,14 @@ Get intensity of the red channel of the Bean R\+G\+B L\+E\+D. 0 is off and 255 i
 \begin{DoxyReturn}{Returns}
 0 for off and 255 for on. 
 \end{DoxyReturn}
-\hypertarget{class_bean_class_a4d5307962a778b8cd8b792b196c5f908}{}\index{Bean\+Class@{Bean\+Class}!get\+Observer\+Message@{get\+Observer\+Message}}
+\hypertarget{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}{}\index{Bean\+Class@{Bean\+Class}!get\+Observer\+Message@{get\+Observer\+Message}}
 \index{get\+Observer\+Message@{get\+Observer\+Message}!Bean\+Class@{Bean\+Class}}
-\subsubsection[{get\+Observer\+Message(\+Obsever\+Advertisement\+Info $\ast$message, unsigned long timeout)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Class\+::get\+Observer\+Message (
+\subsubsection[{get\+Observer\+Message(\+Observer\+Advertisement\+Info $\ast$message, unsigned long timeout)}]{\setlength{\rightskip}{0pt plus 5cm}int Bean\+Class\+::get\+Observer\+Message (
 \begin{DoxyParamCaption}
-\item[{Obsever\+Advertisement\+Info $\ast$}]{message, }
+\item[{Observer\+Advertisement\+Info $\ast$}]{message, }
 \item[{unsigned long}]{timeout}
 \end{DoxyParamCaption}
-)}\label{class_bean_class_a4d5307962a778b8cd8b792b196c5f908}
+)}\label{class_bean_class_a5aa91cc9c0a3e17da864978845735ded}
 Listens for advertisements and fills an Observer\+Advertisement\+Info message with the first advertisement it sees This function blocks until it receives a message or times out.
 
 
@@ -929,7 +929,7 @@ When a Bean running this sketch is near a Bean running advertiser.\+ino, it will
 18 void loop() \{
 19   uint32\_t start = millis();
 20 
-21   ObseverAdvertisementInfo info;
+21   ObserverAdvertisementInfo info;
 22   int res = Bean.getObserverMessage(&info, 2000);
 23   if (res == 1) \{
 24     Serial.print(info.eventType);

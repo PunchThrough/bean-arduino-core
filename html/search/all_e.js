@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['sendkey',['sendKey',['../class_bean_hid__.html#acf1c04f167558c6d9c11c40e1a2d1cf7',1,'BeanHid_::sendKey(char key)'],['../class_bean_hid__.html#abe48bfbb4e86e3e6411ebe507e388543',1,'BeanHid_::sendKey(modifierKey key)']]],
-  ['sendkeys',['sendKeys',['../class_bean_hid__.html#a9421d40df77b9d1f18d5a202879063ee',1,'BeanHid_']]],
-  ['sendmediacontrol',['sendMediaControl',['../class_bean_hid__.html#a4fce5e764a70052ee85919f22ec04f4f',1,'BeanHid_']]],
+  ['sendkey',['sendKey',['../class_bean_hid_class.html#adba60b7a4ff098727a0df2afa2ee5b97',1,'BeanHidClass::sendKey(char key)'],['../class_bean_hid_class.html#a9608d4e79b947b2f43209edcfe874a6a',1,'BeanHidClass::sendKey(modifierKey key)']]],
+  ['sendkeys',['sendKeys',['../class_bean_hid_class.html#a89d770aed9c9e5fb66ce5fd33889c328',1,'BeanHidClass']]],
+  ['sendmediacontrol',['sendMediaControl',['../class_bean_hid_class.html#a8bafed3a93633321757dd15153edf2dc',1,'BeanHidClass']]],
   ['sendmessage',['sendMessage',['../class_bean_midi_class.html#a6aa7b50926b79b300f0432f249714bbe',1,'BeanMidiClass::sendMessage(uint8_t *buff, uint8_t numBytes)'],['../class_bean_midi_class.html#a933dfbfd846731f38fc5fbb11ee7c697',1,'BeanMidiClass::sendMessage(uint8_t status, uint8_t byte1, uint8_t byte2)']]],
   ['sendmessages',['sendMessages',['../class_bean_midi_class.html#a22ea30a681afb82addbd7b5c9e2106c4',1,'BeanMidiClass']]],
-  ['sendmouseclick',['sendMouseClick',['../class_bean_hid__.html#a6568d01038b06a24afd93d5366ef9b00',1,'BeanHid_']]],
+  ['sendmouseclick',['sendMouseClick',['../class_bean_hid_class.html#a77f302f0aab20d303c2c78ab82b539a0',1,'BeanHidClass']]],
   ['setaccelerationrange',['setAccelerationRange',['../class_bean_class.html#acb8e9a741e2538393256f95d27c4571d',1,'BeanClass']]],
   ['setaccelerometerpowermode',['setAccelerometerPowerMode',['../class_bean_class.html#a4eebb09ead4b598ef56c359ed14141be',1,'BeanClass']]],
   ['setadvertisinginterval',['setAdvertisingInterval',['../class_bean_class.html#a41412684c0f01f06f260fb1e724475d9',1,'BeanClass']]],

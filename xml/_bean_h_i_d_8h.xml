@@ -30,7 +30,7 @@
     <innerclass refid="struct_key_report" prot="public">KeyReport</innerclass>
     <innerclass refid="struct_mouse_report" prot="public">MouseReport</innerclass>
     <innerclass refid="struct_cc_report" prot="public">CcReport</innerclass>
-    <innerclass refid="class_bean_hid__" prot="public">BeanHid_</innerclass>
+    <innerclass refid="class_bean_hid_class" prot="public">BeanHidClass</innerclass>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="_bean_h_i_d_8h_1aba307b55c0889ec7a6bdcebefe2638d8" prot="public" static="no">
         <name>mouseButtons</name>
@@ -69,7 +69,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Enumeration of mouse buttons </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="8" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="8" bodyend="13"/>
@@ -359,10 +359,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Enumeration of modifier keys </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="15" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="15" bodyend="52"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="17" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="17" bodyend="53"/>
       </memberdef>
       <memberdef kind="enum" id="_bean_h_i_d_8h_1ad6f71fad0e94081a859321241ceefccd" prot="public" static="no">
         <name>mediaControl</name>
@@ -497,16 +497,16 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>HID Consumer Usage IDs (subset of the codes available in the USB HID Usage Tables spec) </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="56" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="56" bodyend="73"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="57" column="1" bodyfile="hardware/bean/avr/cores/bean/BeanHID.h" bodystart="57" bodyend="74"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="_bean_h_i_d_8h_1ad938955f62f1016896c3e419ef7c1f4a" prot="public" static="no" mutable="no">
-        <type><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref></type>
-        <definition>BeanHid_ BeanHid</definition>
+      <memberdef kind="variable" id="_bean_h_i_d_8h_1a8f3f34fcfb8254213306b54bda812909" prot="public" static="no" mutable="no">
+        <type><ref refid="class_bean_hid_class" kindref="compound">BeanHidClass</ref></type>
+        <definition>BeanHidClass BeanHid</definition>
         <argsstring></argsstring>
         <name>BeanHid</name>
         <briefdescription>
@@ -515,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="247" column="1"/>
+        <location file="hardware/bean/avr/cores/bean/BeanHID.h" line="253" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -523,152 +523,150 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__BEANHID__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanSerialTransport.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;BeanSerialTransport.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>mouseButtons<sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/>MOUSE_LEFT<sp/>=<sp/>1,</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/>MOUSE_RIGHT<sp/>=<sp/>2,</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/>MOUSE_MIDDLE<sp/>=<sp/>4,</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/>MOUSE_ALL<sp/>=<sp/>(MOUSE_LEFT<sp/>|<sp/>MOUSE_RIGHT<sp/>|<sp/>MOUSE_MIDDLE)</highlight></codeline>
-<codeline lineno="13"><highlight class="normal">}<sp/>mouseButtons;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/>KEY_LEFT_CTRL<sp/>=<sp/>0x80,</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/>KEY_LEFT_SHIFT<sp/>=<sp/>0x81,</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/>KEY_LEFT_ALT<sp/>=<sp/>0x82,</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/>KEY_LEFT_GUI<sp/>=<sp/>0x83,</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/>KEY_RIGHT_CTRL<sp/>=<sp/>0x84,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/>KEY_RIGHT_SHIFT<sp/>=<sp/>0x85,</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ALT<sp/>=<sp/>0x86,</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/>KEY_RIGHT_GUI<sp/>=<sp/>0x87,</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/>KEY_UP_ARROW<sp/>=<sp/>0xDA,</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/>KEY_DOWN_ARROW<sp/>=<sp/>0xD9,</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/>KEY_LEFT_ARROW<sp/>=<sp/>0xD8,</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ARROW<sp/>=<sp/>0xD7,</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/>KEY_BACKSPACE<sp/>=<sp/>0xB2,</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/>KEY_TAB<sp/>=<sp/>0xB3,</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/>KEY_RETURN<sp/>=<sp/>0xB0,</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>KEY_ESC<sp/>=<sp/>0xB1,</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/>KEY_INSERT<sp/>=<sp/>0xD1,</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>KEY_DELETE<sp/>=<sp/>0xD4,</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/>KEY_PAGE_UP<sp/>=<sp/>0xD3,</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/>KEY_PAGE_DOWN<sp/>=<sp/>0xD6,</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/>KEY_HOME<sp/>=<sp/>0xD2,</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/>KEY_END<sp/>=<sp/>0xD5,</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/>KEY_CAPS_LOCK<sp/>=<sp/>0xC1,</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/>KEY_F1<sp/>=<sp/>0xC2,</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/>KEY_F2<sp/>=<sp/>0xC3,</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/>KEY_F3<sp/>=<sp/>0xC4,</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/>KEY_F4<sp/>=<sp/>0xC5,</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/>KEY_F5<sp/>=<sp/>0xC6,</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/>KEY_F6<sp/>=<sp/>0xC7,</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/>KEY_F7<sp/>=<sp/>0xC8,</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/>KEY_F8<sp/>=<sp/>0xC9,</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/>KEY_F9<sp/>=<sp/>0xCA,</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/>KEY_F10<sp/>=<sp/>0xCB,</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/>KEY_F11<sp/>=<sp/>0xCC,</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/>KEY_F12<sp/>=<sp/>0xCD</highlight></codeline>
-<codeline lineno="52"><highlight class="normal">}<sp/>modifierKey;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>HID<sp/>Consumer<sp/>Usage<sp/>IDs<sp/>(subset<sp/>of<sp/>the<sp/>codes<sp/>available<sp/>in<sp/>the<sp/>USB<sp/>HID<sp/>Usage</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tables<sp/>spec)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/>POWER<sp/>=<sp/>0x30,</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/>ASSIGN_SEL<sp/>=<sp/>0x81,</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/>CHANNEL_UP<sp/>=<sp/>0x9C,</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/>CHANNEL_DOWN<sp/>=<sp/>0x9D,</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/>RECALL_LAST<sp/>=<sp/>0x83,</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/>PLAY<sp/>=<sp/>0xB0,<sp/><sp/></highlight><highlight class="comment">//<sp/>Apple&apos;s<sp/>Play/Pause<sp/>button</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/>PAUSE<sp/>=<sp/>0xB1,</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/>RECORD<sp/>=<sp/>0xB2,</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/>FAST_FORWARD<sp/>=<sp/>0xB3,</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>REWIND<sp/>=<sp/>0xB4,</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>SCAN_NEXT_TRK<sp/>=<sp/>0xB5,</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/>SCAN_PREV_TRK<sp/>=<sp/>0xB6,</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>STOP<sp/>=<sp/>0xB7,</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/>VOLUME_UP<sp/>=<sp/>0xE9,</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/>VOLUME_DOWN<sp/>=<sp/>0xEA,</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/>MUTE<sp/>=<sp/>0xE2</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">}<sp/>mediaControl;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Low<sp/>level<sp/>key<sp/>report:<sp/>up<sp/>to<sp/>6<sp/>keys<sp/>and<sp/>shift,<sp/>ctrl<sp/>etc<sp/>at<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="struct_key_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/>uint8_t<sp/>modifiers;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/>uint8_t<sp/>reserved;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/>uint8_t<sp/>keys[6];</highlight></codeline>
-<codeline lineno="80"><highlight class="normal">}<sp/><ref refid="struct_key_report" kindref="compound">KeyReport</ref>;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="struct_mouse_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/>uint8_t<sp/>mouse[4];<sp/>}<sp/><ref refid="struct_mouse_report" kindref="compound">MouseReport</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>KEY_LEFT_CTRL<sp/>=<sp/>0x80,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>KEY_LEFT_SHIFT<sp/>=<sp/>0x81,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>KEY_LEFT_ALT<sp/>=<sp/>0x82,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>KEY_LEFT_GUI<sp/>=<sp/>0x83,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>KEY_RIGHT_CTRL<sp/>=<sp/>0x84,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>KEY_RIGHT_SHIFT<sp/>=<sp/>0x85,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ALT<sp/>=<sp/>0x86,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>KEY_RIGHT_GUI<sp/>=<sp/>0x87,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>KEY_UP_ARROW<sp/>=<sp/>0xDA,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>KEY_DOWN_ARROW<sp/>=<sp/>0xD9,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>KEY_LEFT_ARROW<sp/>=<sp/>0xD8,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>KEY_RIGHT_ARROW<sp/>=<sp/>0xD7,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>KEY_BACKSPACE<sp/>=<sp/>0xB2,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>KEY_TAB<sp/>=<sp/>0xB3,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>KEY_RETURN<sp/>=<sp/>0xB0,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>KEY_ESC<sp/>=<sp/>0xB1,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>KEY_INSERT<sp/>=<sp/>0xD1,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>KEY_DELETE<sp/>=<sp/>0xD4,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>KEY_PAGE_UP<sp/>=<sp/>0xD3,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>KEY_PAGE_DOWN<sp/>=<sp/>0xD6,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>KEY_HOME<sp/>=<sp/>0xD2,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>KEY_END<sp/>=<sp/>0xD5,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>KEY_CAPS_LOCK<sp/>=<sp/>0xC1,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>KEY_F1<sp/>=<sp/>0xC2,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>KEY_F2<sp/>=<sp/>0xC3,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>KEY_F3<sp/>=<sp/>0xC4,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>KEY_F4<sp/>=<sp/>0xC5,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>KEY_F5<sp/>=<sp/>0xC6,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>KEY_F6<sp/>=<sp/>0xC7,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>KEY_F7<sp/>=<sp/>0xC8,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>KEY_F8<sp/>=<sp/>0xC9,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>KEY_F9<sp/>=<sp/>0xCA,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>KEY_F10<sp/>=<sp/>0xCB,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>KEY_F11<sp/>=<sp/>0xCC,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>KEY_F12<sp/>=<sp/>0xCD</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}<sp/>modifierKey;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>POWER<sp/>=<sp/>0x30,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>ASSIGN_SEL<sp/>=<sp/>0x81,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>CHANNEL_UP<sp/>=<sp/>0x9C,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>CHANNEL_DOWN<sp/>=<sp/>0x9D,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>RECALL_LAST<sp/>=<sp/>0x83,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>PLAY<sp/>=<sp/>0xB0,<sp/><sp/></highlight><highlight class="comment">//<sp/>Apple&apos;s<sp/>Play/Pause<sp/>button</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>PAUSE<sp/>=<sp/>0xB1,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>RECORD<sp/>=<sp/>0xB2,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>FAST_FORWARD<sp/>=<sp/>0xB3,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>REWIND<sp/>=<sp/>0xB4,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>SCAN_NEXT_TRK<sp/>=<sp/>0xB5,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>SCAN_PREV_TRK<sp/>=<sp/>0xB6,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>STOP<sp/>=<sp/>0xB7,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>VOLUME_UP<sp/>=<sp/>0xE9,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>VOLUME_DOWN<sp/>=<sp/>0xEA,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>MUTE<sp/>=<sp/>0xE2</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}<sp/>mediaControl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="struct_key_report" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>uint8_t<sp/>modifiers;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>uint8_t<sp/>reserved;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>uint8_t<sp/>keys[6];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}<sp/><ref refid="struct_key_report" kindref="compound">KeyReport</ref>;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="struct_cc_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{<sp/>uint8_t<sp/>bytes[2];<sp/>}<sp/><ref refid="struct_cc_report" kindref="compound">CcReport</ref>;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86" refid="class_bean_hid__" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref><sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>buttons(uint8_t<sp/>b);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_genericSendReport(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_mouse_report" kindref="compound">MouseReport</ref><sp/>*pReport);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_key_report" kindref="compound">KeyReport</ref><sp/>*pReport);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_cc_report" kindref="compound">CcReport</ref><sp/>*pReport);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_holdKey(uint8_t<sp/>c);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_releaseKey(uint8_t<sp/>c);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_sendKey(uint8_t<sp/>c);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1abc7bfa1befc35668b656dabc3d8646fa" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a5ddd3768219028dcee875f94855837a4" kindref="member">isEnabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a90eaa0e5ab96bd8e4220c4e4daa75dde" kindref="member">disable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" kindref="member">holdKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aad9dd7f6967d211abb6edb618c80e1a9" kindref="member">holdKey</ref>(modifierKey<sp/>key);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" kindref="member">releaseKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="84" refid="struct_mouse_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>uint8_t<sp/>mouse[4];</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}<sp/><ref refid="struct_mouse_report" kindref="compound">MouseReport</ref>;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="struct_cc_report" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>uint8_t<sp/>bytes[2];</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}<sp/><ref refid="struct_cc_report" kindref="compound">CcReport</ref>;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="class_bean_hid_class" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_bean_hid_class" kindref="compound">BeanHidClass</ref><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>buttons(uint8_t<sp/>b);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_genericSendReport(uint8_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint8_t<sp/>*buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_mouse_report" kindref="compound">MouseReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_key_report" kindref="compound">KeyReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>sendReport(<ref refid="struct_cc_report" kindref="compound">CcReport</ref><sp/>*pReport);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_holdKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_releaseKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>_sendKey(uint8_t<sp/>c);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="class_bean_hid_class" kindref="compound">BeanHidClass</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/****************************************************************************/</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a13765378242667b5be0cd50ae2da2afd" kindref="member">enable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1afd8c0eec7e3104ae14cd538e954d8306" kindref="member">isEnabled</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1afa5abdeac9960f5461b78efa58880abf" kindref="member">disable</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a5e80e1a866e97a27ee57e9361864aa01" kindref="member">holdKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a5e80e1a866e97a27ee57e9361864aa01" kindref="member">holdKey</ref>(modifierKey<sp/>key);</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1ad0bdfc47ceedf67a923fa378048e7d2e" kindref="member">releaseKey</ref>(modifierKey<sp/>key);</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a5f2464de95903311d251b9b92f5460cf" kindref="member">releaseAllKeys</ref>();</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" kindref="member">sendKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1acf1c04f167558c6d9c11c40e1a2d1cf7" kindref="member">sendKey</ref>(modifierKey<sp/>key);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a9421d40df77b9d1f18d5a202879063ee" kindref="member">sendKeys</ref>(String<sp/>charsToType);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a8d40fc0c1a14803b5ebc472f5d34b4c0" kindref="member">moveMouse</ref>(</highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_x,<sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_y,</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_wheel<sp/>=<sp/>0);</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"></highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1aab7466efc670230ce1f2694047eaa1d2" kindref="member">holdMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1aa55a6740f7eb7586a02acc4e285308d1" kindref="member">releaseKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1aa55a6740f7eb7586a02acc4e285308d1" kindref="member">releaseKey</ref>(modifierKey<sp/>key);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a0301c3d8352555b033cc1499c8660ddb" kindref="member">releaseAllKeys</ref>();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1adba60b7a4ff098727a0df2afa2ee5b97" kindref="member">sendKey</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1adba60b7a4ff098727a0df2afa2ee5b97" kindref="member">sendKey</ref>(modifierKey<sp/>key);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a89d770aed9c9e5fb66ce5fd33889c328" kindref="member">sendKeys</ref>(String<sp/>charsToType);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1aa7f4a73aa962ec437f5a929df9142167" kindref="member">moveMouse</ref>(</highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_x,<sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_y,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>delta_wheel<sp/>=<sp/>0);</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1accdc853cab0d52bd30d68f153e3f7f29" kindref="member">releaseMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a98a401af2c7eb990164a9c00999906f3" kindref="member">holdMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a6568d01038b06a24afd93d5366ef9b00" kindref="member">sendMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1ae9ecc9e80b67ac1fcedd31d27b5a4fc6" kindref="member">releaseMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a4fce5e764a70052ee85919f22ec04f4f" kindref="member">sendMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a77f302f0aab20d303c2c78ab82b539a0" kindref="member">sendMouseClick</ref>(mouseButtons<sp/>button<sp/>=<sp/>MOUSE_LEFT);</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"></highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1af9919a1a3942fbe2bc3cfa34e1fe4f04" kindref="member">holdMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a8bafed3a93633321757dd15153edf2dc" kindref="member">sendMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a3cb98f00d25098d7f45196d63eb92925" kindref="member">releaseMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1af598e4203d6d7f5dbbb1fe6a48457f9b" kindref="member">holdMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid___1a574a50368c284d3db59fba546f542538" kindref="member">releaseAllMediaControls</ref>();</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a0741bb83d801168ff5f1b58c0cf51ccf" kindref="member">releaseMediaControl</ref>(mediaControl<sp/>command);</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isShiftHeld;</highlight></codeline>
-<codeline lineno="246"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid__" kindref="compound">BeanHid_</ref><sp/>BeanHid;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>if<sp/>defined(BeanHID)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class_1a438a17883bef87cd43ec0b9dde0b8a0e" kindref="member">releaseAllMediaControls</ref>();</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isShiftHeld;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="class_bean_hid_class" kindref="compound">BeanHidClass</ref><sp/>BeanHid;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>if<sp/>defined(BeanHID)<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
     </programlisting>
     <location file="hardware/bean/avr/cores/bean/BeanHID.h"/>
   </compounddef>

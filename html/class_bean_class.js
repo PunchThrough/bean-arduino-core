@@ -30,7 +30,7 @@ var class_bean_class =
     [ "getLedBlue", "class_bean_class.html#a8dcd68a87dc75dd0fe912483cc05fa43", null ],
     [ "getLedGreen", "class_bean_class.html#a5619292a562731e94f97e93432ab3639", null ],
     [ "getLedRed", "class_bean_class.html#aea8736bf91c03de609233ddb270fb77d", null ],
-    [ "getObserverMessage", "class_bean_class.html#a4d5307962a778b8cd8b792b196c5f908", null ],
+    [ "getObserverMessage", "class_bean_class.html#a5aa91cc9c0a3e17da864978845735ded", null ],
     [ "getServices", "class_bean_class.html#ae2547ba8f4b67a9ac774ce6d89b14dcb", null ],
     [ "getTemperature", "class_bean_class.html#a711e837c145b51a8e95aa22a3fc9bcf9", null ],
     [ "keepAwake", "class_bean_class.html#abbd5ae43b98270dfc94b98b2ecd66281", null ],

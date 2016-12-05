@@ -9,7 +9,8 @@ var config = {
 
 function deployMarkers() {
   return {
-    'UPDATED_AT': new Date().toISOString()
+    'UPDATED_AT': new Date().toISOString(),
+    '.nojekyll': ""
   }
 }
 

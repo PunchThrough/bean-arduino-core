@@ -5,7 +5,7 @@
 
 /** Enumeration of mouse buttons
  */
-typedef enum mouseButtons{
+typedef enum mouseButtons {
   MOUSE_LEFT = 1,
   MOUSE_RIGHT = 2,
   MOUSE_MIDDLE = 4,

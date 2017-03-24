@@ -335,7 +335,7 @@ uint8_t BeanClass::getAccelerationRange(void) {
 
 void BeanClass::setAccelerationRange(uint8_t range) {
   //Serial.accelRegisterWrite(REG_G_SETTING, range);
-  Serial.accelRangeSet(&range);
+  Serial.accelRangeSet(range);
 }
 
 int16_t BeanClass::getAccelerationX(void) {

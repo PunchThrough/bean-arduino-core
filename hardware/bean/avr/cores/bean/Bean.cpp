@@ -329,9 +329,7 @@ void BeanClass::enableWakeOnAccelerometer(uint8_t sources) {
 uint8_t BeanClass::getAccelerationRange(void) {
   uint8_t value;
   //Serial.accelRegisterRead(REG_G_SETTING, 1, &value);
-  if (Serial.accelRangeRead(&value)) {
-    return 0xFF;
-  }
+  Serial.accelRangeRead(&value);
   return value;
 }
 

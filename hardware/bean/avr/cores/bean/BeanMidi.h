@@ -20,7 +20,7 @@ typedef enum {
     CHANNEL13 = 0x0D,
     CHANNEL14 = 0x0E,
     CHANNEL15 = 0x0F
-}midiChannels;
+} midiChannels;
 
 typedef enum {
     NOTE_Cn1    =   0,
@@ -216,7 +216,7 @@ typedef enum {
     OMNIMODEON                  = 125,
     MONOMODEON                  = 126,
     POLYMODEON                  = 127
-}midiControlChange;
+} midiControlChange;
 
 typedef enum {
     NOTEOFF             = 0x80,
@@ -228,7 +228,7 @@ typedef enum {
     PITCHBENDCHANGE     = 0xE0,
     SYSTEMCOMMON        = 0xF0,
     SYSTEMREALTIME      = 0xF8
-}midiMessageTypes;
+} midiMessageTypes;
 
 typedef enum  {
     BASS_DRUM_2     =   35,
@@ -278,7 +278,7 @@ typedef enum  {
     OPEN_CUICA      =   79,
     MUTE_TRIANGLE   =   80,
     OPEN_TRIANGLE   =   81
-}midiDrums;
+} midiDrums;
 
 
 class BeanMidiClass {
@@ -286,7 +286,7 @@ class BeanMidiClass {
   /****************************************************************************/
   /** @name MIDI
    *  Read and write MIDI packets via Bluetooth Low Energy.
-   *  This profile uses Apple's <a href="https://developer.apple.com/library/ios/documentation/MusicAudio/Reference/CACoreMIDIRef/index.html">Core Midi Framework</a> to act as a musical instrument.  
+   *  This profile uses Apple's <a href="https://developer.apple.com/library/ios/documentation/MusicAudio/Reference/CACoreMIDIRef/index.html">Core Midi Framework</a> to act as a musical instrument.
    *  The Bean can send midi messages to an app like garage band to emulate diferent instruments.
    *  A list of different types of MIDI messages can be found <a href="https://www.midi.org/specifications/item/table-1-summary-of-midi-message">here</a>
    */
@@ -294,11 +294,11 @@ class BeanMidiClass {
 
   /**
    *  Enables core Midi functionality on the Bean.
-   *  
+   *
    *  # Examples
    *  When connected to iOS's or OSX's garage band this bean will play through the C Major scale, play a C Major chord, and then bend a note up.
    *  The Bean will also listen for incoming Core Midi messages.  If you have an app that can send core midi messages to BLE peripherals, the Bean's green LED will blink.
-   *  
+   *
    *  @include profiles/MIDI.ino
    */
   void enable(void);
@@ -340,7 +340,7 @@ class BeanMidiClass {
   int readMessage(uint8_t *status, uint8_t *byte1, uint8_t *byte2);
 
   /**
-   *  Sends Midi messages after they have been loaded to the midi buffer using loadMessage() commands.  
+   *  Sends Midi messages after they have been loaded to the midi buffer using loadMessage() commands.
    *
    *  The buffer has a maximum size of 20 messages before it must be dumped or sent using this function.
    *

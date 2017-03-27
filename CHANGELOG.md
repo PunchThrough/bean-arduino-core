@@ -1,3 +1,9 @@
+# 2.0.2
+
+### Fixes
+
+* Last release did not have the submodules correctly bundled. The `bundle.py` script now ensures this wont happen again.
+
 # 2.0.1
 
 ### Features

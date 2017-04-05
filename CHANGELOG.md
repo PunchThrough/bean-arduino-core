@@ -1,3 +1,9 @@
+# 2.0.3
+
+### Fixes
+
+* Fix `getAccelerationRange`
+
 # 2.0.2
 
 ### Fixes

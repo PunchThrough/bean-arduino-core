@@ -6,3 +6,4 @@ Documentation:
 
 * [Reference Docs](https://punchthrough.com/bean/reference)
 * [Developer Docs](docs/developer.md)
+* [Release Notes](CHANGELOG.md)

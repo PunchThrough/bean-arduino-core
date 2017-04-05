@@ -127,3 +127,35 @@ make reformat
 ```
 
 # Release Process
+
+1. Make sure all submodules are updated
+
+  ```
+  git submodule update --init --recursive
+  ```
+
+2. Make a new section [CHANGELOG.md](../CHANGELOG.md) with the version number and add the release notes.
+3. Update version in `hardware/bean/avr/boards.txt`
+4. Commit everything and push directly to `develop`
+
+```
+git commit -m "release: changelog and boards.txt for x.x.x"
+git push origin develop:develop
+```
+
+5. Open PR from `develop` -> `master`. The diff should contain ALL of the changes in this release.
+6. Merge to master
+7. Checkout and tag master
+
+```
+git checkout master
+git pull
+git tag -a x.x.x
+```
+
+8. Push tags and new code to `origin` and `public`. This assumes you have a remote `public` setup which points to the open source repo.
+
+```
+git push origin master --tags
+git push public master --tags
+```

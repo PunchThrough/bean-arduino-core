@@ -1,3 +1,13 @@
+[<< Back](../README.md)
+
+# Developer Guide
+
+This document describes the following:
+
+* [Project Layout](#project-layout)
+* [Contributing](#contributing)
+* [Release Process](#release-process)
+
 # Project Layout
 
 ## /hardware
@@ -21,7 +31,7 @@ You can run `python BeanModuleEmulator.py` from within the beanModuleEmulator di
 
 The emulator has been tested with Python 2.7.6 installed via Homebrew on OS X.
 
-# Development
+# Contributing
 
 ## Testing in Arduino IDE
 
@@ -115,3 +125,5 @@ To reformat Bean files in this project:
 ```sh
 make reformat
 ```
+
+# Release Process

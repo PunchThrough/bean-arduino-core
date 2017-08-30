@@ -172,8 +172,8 @@ int BeanMidiClass::loadMessage(uint8_t *buff, uint8_t numBytes) {
   int idx = 0;
   while (numBytes >= 3) {
     int isFull = loadMessage(buff[idx], buff[idx + 1], buff[idx + 2]);
-    idx += 3;
     if (isFull == 0) return idx;
+    idx += 3;
     numBytes -= 3;
   }
   return idx;
